@@ -1,2 +1,2 @@
 # projet_jeu
-un jeu de survie et scenarisé codé en C avec SDL2/3
+un jeu de survie en 2D et scenarisé codé en C avec SDL2/3
