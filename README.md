@@ -1,2 +1,6 @@
 # projet_jeu
-un jeu de survie en 2D et scenarisé codé en C avec SDL2/3
+Collaborateurs: Raison Matéo - Joshua Donne - Leroux Maxime
+
+L2 INFORMATIQUE 2025-2026
+
+Concept du Jeu:
