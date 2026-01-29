@@ -4,7 +4,8 @@
 Collaborateurs: Raison Matéo - Joshua Donne - Leroux Maxime
 
 Dans le cadre du module Projet de L2 INFORMATIQUE 2025-2026
-
+Debut de projet : 1 décembre 2025
+Fin de projet : 17 avril 2026
 Concept du Jeu:
 
 L'astronaute se retrouve sur une planete qui lui est inconnue suite a un accident qui a endommagé son vaisseau spatial.
