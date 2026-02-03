@@ -19,7 +19,7 @@ CC := gcc
 
 # Flags
 CFLAGS := -Wall -Wextra -I$(INC_DIR)
-LDFLAGS := -L$(LIB_DIR) -lSDL3 -Wl,-rpath,'$$ORIGIN/../lib'
+LDFLAGS := -L$(LIB_DIR) -lSDL3 -lSDL3_image -Wl,-rpath,'$$ORIGIN/../lib'
 
 # ========================
 # Règles
