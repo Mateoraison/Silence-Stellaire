@@ -20,3 +20,5 @@ Moyen mis en place :
 -SDLImage
 -SDLTTF
 
+Lien du drive GANTT : 
+https://docs.google.com/spreadsheets/d/1nhEIKJEQFC_p0bhr-RSHRnsxeiCNj1qGXCWOt2GKiK8/edit?usp=sharing
