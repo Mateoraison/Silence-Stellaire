@@ -8,11 +8,13 @@ Debut de projet : 1 décembre 2025
 Fin de projet : 17 avril 2026
 Concept du Jeu:
 
+Le jeu sera en deux dimensions vue de haut dans un style spatial/science-fictions.
 L'astronaute se retrouve sur une planete qui lui est inconnue suite a un accident qui a endommagé son vaisseau spatial.
 Il doit retourné sur la planete Terre, pour cela il devra parcourir plusieurs planètes afin de trouver des ressources pour réparer son vaisseau ou ameliorer son équipement.
 En chemin, il devra affronter des créatures hostiles et résoudre des énigmes pour progresser dans son aventure.
 Il y aura un systeme de creation d'objets qui permettra au joueur de fabriquer des équipements et des outils à partir des ressources collectées.
 Les planètes auront des environnements et des défis différents.
+Nous utiliserons SDL3 pour l'implémentation du jeu en interface graphique, SDL3Image sera utilisé pour gerer l'acces et la lecture des format image (png etc) car SLD3 ne les charges pas naturellement et SDLTTF pour le texte afficher a l'écran.
 
 
 Moyen mis en place :
