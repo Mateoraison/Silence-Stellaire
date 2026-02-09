@@ -3,38 +3,52 @@
 # ========================
 NAME := silenceStellaire
 
+# ========================
 # Dossiers
+# ========================
 SRC_DIR := src
+OBJ_DIR := obj
 BIN_DIR := bin
 INC_DIR := include
+HDR_DIR := src/headers
 LIB_DIR := lib
 
+# ========================
 # Fichiers
-SRC := $(SRC_DIR)/main.c
-OBJ := $(SRC:.c=.o)
+# ========================
+SRC := $(wildcard $(SRC_DIR)/*.c)
+OBJ := $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRC))
 BIN := $(BIN_DIR)/$(NAME)
 
+# ========================
 # Compilateur
+# ========================
 CC := gcc
 
+# ========================
 # Flags
-CFLAGS := -Wall -Wextra -I$(INC_DIR)
-LDFLAGS := -L$(LIB_DIR) -lSDL3 -lSDL3_image -Wl,-rpath,'$$ORIGIN/../lib'
+# ========================
+CFLAGS := -Wall -Wextra -I$(INC_DIR) -I$(HDR_DIR)
+LDFLAGS := -L$(LIB_DIR) -lSDL3 -lSDL3_image -lm -Wl,-rpath,'$$ORIGIN/../lib'
 
 # ========================
 # Règles
 # ========================
 all: $(BIN)
 
-$(BIN): $(SRC)
+$(BIN): $(OBJ)
 	@mkdir -p $(BIN_DIR)
-	$(CC) $(SRC) -o $(BIN) $(CFLAGS) $(LDFLAGS)
+	$(CC) $(OBJ) -o $@ $(LDFLAGS)
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 run: all
 	./$(BIN)
 
 clean:
-	rm -f $(BIN)
+	rm -rf $(OBJ_DIR) $(BIN)
 
 re: clean all
 
