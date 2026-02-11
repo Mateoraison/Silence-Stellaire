@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map Editor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 1200px;
+        }
+
+        .sidebar {
+            width: 180px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .palette {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+        }
+
+        .palette h3 {
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .tile-button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 8px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.2s;
+            color: white;
+        }
+
+        .tile-button:hover {
+            transform: translateX(3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .tile-button.active {
+            border: 3px solid #333;
+            transform: scale(1.05);
+        }
+
+        .controls {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .controls h3 {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        input[type="number"] {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: #2196F3;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1976D2;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(33, 150, 243, 0.4);
+        }
+
+        .btn-success {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+        }
+
+        .btn-info {
+            background: #00BCD4;
+            color: white;
+        }
+
+        .btn-info:hover {
+            background: #0097A7;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 188, 212, 0.4);
+        }
+
+        .btn-danger {
+            background: #f44336;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #da190b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(244, 67, 54, 0.4);
+        }
+
+        .btn-warning {
+            background: #ff9800;
+            color: white;
+        }
+
+        .btn-warning:hover {
+            background: #e68900;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 152, 0, 0.4);
+        }
+
+        .canvas-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        canvas {
+            border: 2px solid #333;
+            background: white;
+            cursor: crosshair;
+            border-radius: 8px;
+            display: block;
+            max-width: 100%;
+        }
+
+        .info {
+            background: #e3f2fd;
+            padding: 10px;
+            border-radius: 6px;
+            border-left: 4px solid #2196F3;
+            font-size: 12px;
+            color: #1976D2;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .file-label {
+            padding: 10px;
+            background: #9C27B0;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: center;
+            font-weight: 600;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+
+        .file-label:hover {
+            background: #7B1FA2;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(156, 39, 176, 0.4);
+        }
+
+        .tile-colors {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 5px;
+        }
+
+        .color-box {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 3px;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="palette">
+                <h3>🎨 Tuiles</h3>
+                <div class="tile-colors" id="paletteContainer"></div>
+            </div>
+
+            <div class="controls">
+                <h3>⚙️ Contrôles</h3>
+                <div class="control-group">
+                    <label>Largeur:</label>
+                    <input type="number" id="widthInput" min="4" max="64" value="8">
+                </div>
+                <div class="control-group">
+                    <label>Hauteur:</label>
+                    <input type="number" id="heightInput" min="4" max="64" value="8">
+                </div>
+                <button class="btn-primary" onclick="createNewMap()">📋 Nouvelle Map</button>
+                <button class="btn-warning" onclick="addTiles()">➕ + Tuiles</button>
+                <button class="btn-info" onclick="addNewTile()">✨ + Tuile Type</button>
+                <button class="btn-danger" onclick="clearMap()">🗑️ Effacer</button>
+                <label class="file-label">
+                    📂 Charger Map
+                    <input type="file" id="fileInput" accept=".txt">
+                </label>
+                <label class="file-label" style="background: #FF6F00;">
+                    🎨 Charger Pinceaux
+                    <input type="file" id="brushFile" accept=".json">
+                </label>
+                <button class="btn-success" onclick="downloadMap()">⬇️ Télécharger Map</button>
+                <button class="btn-success" onclick="downloadBrushes()" style="background: #FF6F00;">🎨 Télécharger Pinceaux</button>
+            </div>
+        </div>
+
+        <div class="canvas-area">
+            <canvas id="canvas"></canvas>
+            <div class="info">
+                📍 Cliquez ou glissez pour dessiner • <strong id="coordInfo">Tuile sélectionnée: Vide (0)</strong>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        const tiles = [
+            { id: 0, name: 'Vide', color: '#FFFFFF', border: '#CCCCCC' },
+            { id: 1, name: 'TerreP', color: '#8B4513', border: '#654321' },
+            { id: 2, name: 'Eau', color: '#1E90FF', border: '#1873cc' },
+            { id: 3, name: 'TerreCHG', color: '#A0522D', border: '#8B4513' },
+            { id: 4, name: 'TerreCHD', color: '#A0522D', border: '#8B4513' },
+            { id: 5, name: 'TerreCBG', color: '#A0522D', border: '#8B4513' },
+            { id: 6, name: 'TerreCBD', color: '#A0522D', border: '#8B4513' },
+            { id: 7, name: 'TerreH', color: '#A0522D', border: '#8B4513' },
+            { id: 8, name: 'TerreB', color: '#A0522D', border: '#8B4513' },
+            { id: 9, name: 'TerreG', color: '#A0522D', border: '#8B4513' },
+            { id: 10, name: 'TerreD', color: '#A0522D', border: '#8B4513' },
+        ];
+
+        let selectedTile = 0;
+        let gridWidth = 8;
+        let gridHeight = 8;
+        let tileSize = 40;
+        let mapData = [];
+        let isDrawing = false;
+
+        // Initialiser la palette
+        function initPalette() {
+            const container = document.getElementById('paletteContainer');
+            container.innerHTML = '';
+            tiles.forEach(tile => {
+                const btn = document.createElement('button');
+                btn.className = 'tile-button';
+                btn.style.background = tile.color;
+                btn.style.borderColor = tile.border;
+                if (tile.id === selectedTile) btn.classList.add('active');
+                btn.textContent = `${tile.name}`;
+                btn.onclick = () => selectTile(tile.id);
+                container.appendChild(btn);
+            });
+        }
+
+        function selectTile(id) {
+            selectedTile = id;
+            updateCoordInfo();
+            initPalette();
+        }
+
+        function updateCoordInfo() {
+            const tile = tiles.find(t => t.id === selectedTile);
+            document.getElementById('coordInfo').textContent =
+                `Tuile sélectionnée: ${tile.name} (${tile.id})`;
+        }
+
+        function createNewMap() {
+            gridWidth = parseInt(document.getElementById('widthInput').value);
+            gridHeight = parseInt(document.getElementById('heightInput').value);
+            mapData = Array(gridHeight).fill(null).map(() => Array(gridWidth).fill(0));
+            resizeCanvas();
+            draw();
+        }
+
+        function addTiles() {
+            const currentW = gridWidth;
+            const currentH = gridHeight;
+
+            // Augmenter par 4 tuiles
+            gridWidth = Math.min(currentW + 4, 64);
+            gridHeight = Math.min(currentH + 4, 64);
+
+            // Étendre la map avec les anciennes données
+            const newData = Array(gridHeight).fill(null).map(() => Array(gridWidth).fill(0));
+            for (let y = 0; y < currentH; y++) {
+                for (let x = 0; x < currentW; x++) {
+                    newData[y][x] = mapData[y][x];
+                }
+            }
+            mapData = newData;
+
+            document.getElementById('widthInput').value = gridWidth;
+            document.getElementById('heightInput').value = gridHeight;
+
+            resizeCanvas();
+            draw();
+        }
+
+        function clearMap() {
+            if (confirm('Êtes-vous sûr de vouloir effacer la map?')) {
+                mapData = Array(gridHeight).fill(null).map(() => Array(gridWidth).fill(0));
+                draw();
+            }
+        }
+
+        function resizeCanvas() {
+            tileSize = Math.max(20, Math.min(50, Math.floor(600 / Math.max(gridWidth, gridHeight))));
+            canvas.width = gridWidth * tileSize;
+            canvas.height = gridHeight * tileSize;
+        }
+
+        function draw() {
+            ctx.fillStyle = '#f0f0f0';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            for (let y = 0; y < gridHeight; y++) {
+                for (let x = 0; x < gridWidth; x++) {
+                    const tileId = mapData[y][x];
+                    const tile = tiles.find(t => t.id === tileId);
+
+                    const px = x * tileSize;
+                    const py = y * tileSize;
+
+                    ctx.fillStyle = tile.color;
+                    ctx.fillRect(px, py, tileSize, tileSize);
+
+                    ctx.strokeStyle = tile.border;
+                    ctx.lineWidth = 2;
+                    ctx.strokeRect(px, py, tileSize, tileSize);
+
+                    if (tileSize > 25) {
+                        ctx.fillStyle = tile.border;
+                        ctx.font = 'bold ' + Math.floor(tileSize * 0.4) + 'px Arial';
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
+                        ctx.fillText(tileId, px + tileSize / 2, py + tileSize / 2);
+                    }
+                }
+            }
+        }
+
+        function getTileFromMouse(e) {
+            const rect = canvas.getBoundingClientRect();
+            const x = Math.floor((e.clientX - rect.left) / tileSize);
+            const y = Math.floor((e.clientY - rect.top) / tileSize);
+            return { x, y };
+        }
+
+        canvas.addEventListener('mousedown', (e) => {
+            isDrawing = true;
+            const { x, y } = getTileFromMouse(e);
+            if (x >= 0 && x < gridWidth && y >= 0 && y < gridHeight) {
+                mapData[y][x] = selectedTile;
+                draw();
+            }
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+            if (isDrawing) {
+                const { x, y } = getTileFromMouse(e);
+                if (x >= 0 && x < gridWidth && y >= 0 && y < gridHeight) {
+                    mapData[y][x] = selectedTile;
+                    draw();
+                }
+            }
+        });
+
+        canvas.addEventListener('mouseup', () => {
+            isDrawing = false;
+        });
+
+        canvas.addEventListener('mouseleave', () => {
+            isDrawing = false;
+        });
+
+        function mapToString() {
+            return mapData.map(row => row.join('-')).join('-\n');
+        }
+
+        function downloadMap() {
+            const mapText = mapToString();
+            const blob = new Blob([mapText], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'map.txt';
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            setTimeout(() => {
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+            }, 100);
+        }
+
+        function addNewTile() {
+            const name = prompt('Nom de la tuile:');
+            if (!name) return;
+
+            const color = prompt('Couleur (hex, ex: #FF5733):', '#808080');
+            if (!color) return;
+
+            const newId = Math.max(...tiles.map(t => t.id)) + 1;
+            tiles.push({
+                id: newId,
+                name: name,
+                color: color,
+                border: adjustColor(color, -30)
+            });
+
+            initPalette();
+            selectTile(newId);
+        }
+
+        function adjustColor(hex, percent) {
+            const num = parseInt(hex.replace('#', ''), 16);
+            const amt = Math.round(2.55 * percent);
+            const R = Math.max(0, Math.min(255, (num >> 16) + amt));
+            const G = Math.max(0, Math.min(255, (num >> 8 & 0x00FF) + amt));
+            const B = Math.max(0, Math.min(255, (num & 0x0000FF) + amt));
+            return '#' + (0x1000000 + (R << 16) + (G << 8) + B).toString(16).slice(1).toUpperCase();
+        }
+
+        function downloadBrushes() {
+            const brushData = tiles.filter(t => t.id !== 0).map(t => ({
+                name: t.name,
+                color: t.color,
+                border: t.border
+            }));
+            const json = JSON.stringify(brushData, null, 2);
+            const blob = new Blob([json], { type: 'application/json;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'pinceaux.json';
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            setTimeout(() => {
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+            }, 100);
+        }
+
+        document.getElementById('brushFile').addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    try {
+                        const brushData = JSON.parse(event.target.result);
+                        tiles = [
+                            { id: 0, name: 'Vide', color: '#FFFFFF', border: '#CCCCCC' }
+                        ];
+                        brushData.forEach((brush, index) => {
+                            tiles.push({
+                                id: index + 1,
+                                name: brush.name,
+                                color: brush.color,
+                                border: brush.border
+                            });
+                        });
+                        selectedTile = 0;
+                        initPalette();
+                        updateCoordInfo();
+                        alert('Pinceaux chargés avec succès ! 🎨');
+                    } catch (err) {
+                        alert('Erreur lors du chargement des pinceaux');
+                    }
+                };
+                reader.readAsText(file);
+            }
+        });
+
+        document.getElementById('fileInput').addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    const text = event.target.result;
+                    // Gérer CRLF, ignorer lignes vides
+                    const lines = text.trim().split(/\r?\n/).filter(line => line.trim() !== '');
+                    if (lines.length === 0) return;
+
+                    gridHeight = lines.length;
+                    gridWidth = lines[0].split('-').length;
+
+                    mapData = lines.map(line =>
+                        line.split('-').map(s => {
+                            const n = parseInt(s, 10);
+                            return Number.isNaN(n) ? 0 : n;
+                        })
+                    );
+
+                    document.getElementById('widthInput').value = gridWidth;
+                    document.getElementById('heightInput').value = gridHeight;
+
+                    resizeCanvas();
+                    draw();
+                };
+                reader.readAsText(file);
+            }
+        });
+
+        // Initialiser
+        createNewMap();
+        initPalette();
+    </script>
+</body>
+</html>

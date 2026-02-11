@@ -4,15 +4,16 @@
 #include <stdbool.h>
 #include <time.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 
-#define W_MAP 20
+#define W_MAP 21
 #define H_MAP 20
-#define SOURCE_TILE_SIZE 32
-#define DISPLAY_TILE_SIZE 100
+#define SOURCE_TILE_SIZE 64
+#define DISPLAY_TILE_SIZE 90
 
 
-typedef enum {terre, eau, pierre} type_t;
+typedef enum {vide, terreP, eau, terreCHG, terreCHD, terreCBG, terreCBD, terreH, terreB, terreG, terreD, pierre} type_t;
 
 typedef struct tile_{
     type_t type;
@@ -28,18 +29,36 @@ typedef struct tileset_{
 
 
 void remplir_tileset(t_tile map[W_MAP][H_MAP]){
-    for(int x = 0; x < W_MAP; x++){
-        for(int y = 0; y < H_MAP; y++){
+    // for(int x = 0; x < W_MAP; x++){
+    //     for(int y = 0; y < H_MAP; y++){
+    //         map[x][y].width = DISPLAY_TILE_SIZE;
+    //         map[x][y].height = DISPLAY_TILE_SIZE;
+
+    //         if(x == 0 || x == W_MAP - 1 || y == 0 || y == H_MAP - 1){
+    //             map[x][y].type = eau;
+    //         } else {
+    //             map[x][y].type = terre;
+    //         }
+    //     }
+    // }
+
+    FILE *file = fopen("assets/map/map.txt", "r");
+    if (!file) {
+        SDL_Log("Erreur ouverture fichier Map : %s", SDL_GetError());
+        return;
+    }
+
+    for (int y = 0; y < H_MAP; y++) {
+        for (int x = 0; x < W_MAP; x++) {
+            fscanf(file, "%d-", &map[x][y].type);
+            printf("Type de la tuile [%d][%d] : %d\n", x, y, map[x][y].type);
             map[x][y].width = DISPLAY_TILE_SIZE;
             map[x][y].height = DISPLAY_TILE_SIZE;
-
-            if(x == 0 || x == W_MAP - 1 || y == 0 || y == H_MAP - 1){
-                map[x][y].type = eau;
-            } else {
-                map[x][y].type = terre;
-            }
         }
+        fscanf(file, "\n"); // Lire le saut de ligne à la fin de chaque ligne de la carte
     }
+
+    fclose(file);
 }
 
 
@@ -69,21 +88,57 @@ void charger_tilemap(SDL_Renderer *renderer, SDL_Texture *tileset,
             };
 
             SDL_FRect src;
+            float type_x = 0;
             float type_y = 0;
 
             switch(map[x][y].type){
-                case terre:
+                case terreP:
+                    type_x = 64;
+                    type_y = 64;
+                    break;
+                case terreCHG:
+                    type_x = 0;
                     type_y = 0;
+                    break;
+                case terreCHD:
+                    type_x = 128;
+                    type_y = 0;
+                    break;
+                case terreCBG:
+                    type_x = 0;
+                    type_y = 128;
+                    break;
+                case terreCBD:
+                    type_x = 128;
+                    type_y = 128;
+                    break;
+                case terreH:
+                    type_x = 64;
+                    type_y = 0;
+                    break;
+                case terreB:
+                    type_x = 64;
+                    type_y = 128;
+                    break;
+                case terreG:
+                    type_x = 0;
+                    type_y = 64;
+                    break;
+                case terreD:
+                    type_x = 128;
+                    type_y = 64;
                     break;
                 case eau:
-                    type_y = 320;
+                    type_x = 125;
+                    type_y = 265;
                     break;
-                default:
-                    type_y = 0;
+                case vide:
+                    type_x = 256;
+                    type_y = 6 * 64;
                     break;
             }
 
-            src = (SDL_FRect){0, type_y, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};
+            src = (SDL_FRect){type_x, type_y, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};
             SDL_RenderTexture(renderer, tileset, &src, &dest);
         }
     }
@@ -93,7 +148,7 @@ void charger_tilemap(SDL_Renderer *renderer, SDL_Texture *tileset,
 
 int jeu_principal(SDL_Window *window, SDL_Renderer *renderer) {
     srand(time(NULL));
-    SDL_Texture *tileset = IMG_LoadTexture(renderer, "assets/tileset/V1/tileset.png");
+    SDL_Texture *tileset = IMG_LoadTexture(renderer, "assets/tileset/V2/Tilemap_color1.png");
     if (!tileset){
         SDL_Log("Erreur chargement tileset : %s", SDL_GetError());
         SDL_Delay(2000);
