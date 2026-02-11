@@ -90,6 +90,7 @@ void charger_tilemap(SDL_Renderer *renderer, SDL_Texture *tileset,
             SDL_FRect src;
             float type_x = 0;
             float type_y = 0;
+            float type_x = 0;
 
             switch(map[x][y].type){
                 case terreP:

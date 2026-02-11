@@ -9,7 +9,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    SDL_Window *fenetre = SDL_CreateWindow("Silence Stellaire", 800, 600, SDL_WINDOW_FULLSCREEN);
+    SDL_Window *fenetre = SDL_CreateWindow("Silence Stellaire", 800, 600, SDL_WINDOW_BORDERLESS);
     if (!fenetre) {
         SDL_Log("erreur creation fenetre: %s", SDL_GetError());
         SDL_Quit();
