@@ -49,9 +49,7 @@ void draw_map(SDL_Renderer *renderer, SDL_Texture *tileset) {
     }
 }
 
-int main(int argc, char *argv[]) {
-    (void)argc; (void)argv;
-
+int vaisseau(void) {
     if (!SDL_Init(SDL_INIT_VIDEO)) return 1;
 
     SDL_Window *window = SDL_CreateWindow("Vaisseau Stellaire - Deck 1", 800, 600, 0);
@@ -59,7 +57,7 @@ int main(int argc, char *argv[]) {
     
     // Activer le filtrage pour que les tuiles soient nettes
     SDL_SetHint("SDL_RENDER_SCALE_QUALITY", "nearest");
-    
+
     SDL_Texture *tileset = IMG_LoadTexture(renderer, "assets/tileset/V1/vaisseau.png");
     if (tileset) {
         SDL_SetTextureScaleMode(tileset, SDL_SCALEMODE_NEAREST);
