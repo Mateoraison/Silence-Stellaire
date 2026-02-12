@@ -29,19 +29,6 @@ typedef struct tileset_{
 
 
 void remplir_tileset(t_tile map[W_MAP][H_MAP]){
-    // for(int x = 0; x < W_MAP; x++){
-    //     for(int y = 0; y < H_MAP; y++){
-    //         map[x][y].width = DISPLAY_TILE_SIZE;
-    //         map[x][y].height = DISPLAY_TILE_SIZE;
-
-    //         if(x == 0 || x == W_MAP - 1 || y == 0 || y == H_MAP - 1){
-    //             map[x][y].type = eau;
-    //         } else {
-    //             map[x][y].type = terre;
-    //         }
-    //     }
-    // }
-
     FILE *file = fopen("assets/map/map.txt", "r");
     if (!file) {
         SDL_Log("Erreur ouverture fichier Map : %s", SDL_GetError());
@@ -51,7 +38,6 @@ void remplir_tileset(t_tile map[W_MAP][H_MAP]){
     for (int y = 0; y < H_MAP; y++) {
         for (int x = 0; x < W_MAP; x++) {
             fscanf(file, "%d-", &map[x][y].type);
-            printf("Type de la tuile [%d][%d] : %d\n", x, y, map[x][y].type);
             map[x][y].width = DISPLAY_TILE_SIZE;
             map[x][y].height = DISPLAY_TILE_SIZE;
         }
@@ -67,10 +53,8 @@ typedef struct {
     float y;
 } Camera;
 
-
-
 void charger_tilemap(SDL_Renderer *renderer, SDL_Texture *tileset,
-                     t_tile map[W_MAP][H_MAP], Camera camera){
+                     t_tile map[W_MAP][H_MAP], int foam[W_MAP][H_MAP], Camera camera){
 
     if (!tileset){
         SDL_Log("Erreur chargement tileset : %s", SDL_GetError());
@@ -137,9 +121,21 @@ void charger_tilemap(SDL_Renderer *renderer, SDL_Texture *tileset,
                     type_y = 6 * 64;
                     break;
             }
-
-            src = (SDL_FRect){type_x, type_y, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};
-            SDL_RenderTexture(renderer, tileset, &src, &dest);
+            if(map[x][y].type != vide){
+                src = (SDL_FRect){125, 265, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};
+                SDL_RenderTexture(renderer, tileset, &src, &dest);
+            }
+            // if (foam[x][y] != 100){
+            //     int mousse_x = 10 + foam[x][y] * 192;
+            //     int mousse_y =  385;
+            //     SDL_FRect src_mousse = (SDL_FRect){mousse_x, mousse_y, 192, 192};
+            //     SDL_FRect dest_mousse = (SDL_FRect){ x * DISPLAY_TILE_SIZE + camera.x - 10, y * DISPLAY_TILE_SIZE + camera.y - 15%y, 192, 192};
+            //     SDL_RenderTexture(renderer, tileset, &src_mousse, &dest_mousse); 
+            // }
+            if(map[x][y].type != eau){
+                src = (SDL_FRect){type_x, type_y, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};
+                SDL_RenderTexture(renderer, tileset, &src, &dest);
+            }
         }
     }
 }
@@ -156,7 +152,14 @@ int jeu_principal(SDL_Window *window, SDL_Renderer *renderer) {
     }
     
     t_tile map[W_MAP][H_MAP];
+    int foam[W_MAP][H_MAP];
     remplir_tileset(map);
+    for (int x = 0; x < W_MAP; x++) {
+        for (int y = 0; y < H_MAP; y++) {
+            if(map[x][y].type <= 10 && map[x][y].type >= 3 ) foam[x][y] = rand() % 16 ;
+            else foam[x][y] = 100 ;  
+        }
+    }
     Camera camera = (Camera){0, 0};
     bool running = true;
     SDL_Event event;
@@ -180,7 +183,12 @@ int jeu_principal(SDL_Window *window, SDL_Renderer *renderer) {
         }
 
         SDL_RenderClear(renderer);
-        charger_tilemap(renderer, tileset, map, camera);
+        charger_tilemap(renderer, tileset, map, foam, camera);
+        for (int x = 0; x < W_MAP; x++) {
+            for (int y = 0; y < H_MAP; y++) {
+                if(map[x][y].type <= 10 && map[x][y].type >= 3 ) foam[x][y] = (foam[x][y] + 1) % 16 ;
+        }
+    }
         SDL_RenderPresent(renderer);
     }
 

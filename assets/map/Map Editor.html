@@ -249,6 +249,7 @@
                     <label>Hauteur:</label>
                     <input type="number" id="heightInput" min="4" max="64" value="8">
                 </div>
+                <button class="btn-info" onclick="enablePaintBucket()">Seau de peinture</button>
                 <button class="btn-primary" onclick="createNewMap()">📋 Nouvelle Map</button>
                 <button class="btn-warning" onclick="addTiles()">➕ + Tuiles</button>
                 <button class="btn-info" onclick="addNewTile()">✨ + Tuile Type</button>
@@ -437,7 +438,7 @@
         });
 
         function mapToString() {
-            return mapData.map(row => row.join('-')).join('-\n');
+            return mapData.map(row => row.join('-')).join('\n');
         }
 
         function downloadMap() {
@@ -504,6 +505,49 @@
                 URL.revokeObjectURL(url);
             }, 100);
         }
+
+        let isBucketMode = false;
+
+        function enablePaintBucket() {
+            isBucketMode = !isBucketMode;
+        }
+
+        canvas.addEventListener("mousedown", e => {
+            const { x, y } = getTileFromMouse(e);
+            if (x < 0 || x >= gridWidth || y < 0 || y >= gridHeight) return;
+
+            if (isBucketMode) {
+                const targetId = mapData[y][x];
+                if (targetId !== selectedTile) {
+                    floodFill(x, y, targetId, selectedTile);
+                    draw();
+                }
+            } else {
+                isDrawing = true;
+                mapData[y][x] = selectedTile;
+                draw();
+            }
+        });
+
+        function floodFill(startX, startY, oldId, newId) {
+            if (oldId === newId) return;
+            const stack = [{ x: startX, y: startY }];
+
+            while (stack.length > 0) {
+                const { x, y } = stack.pop();
+                if (x < 0 || x >= gridWidth || y < 0 || y >= gridHeight) continue;
+                if (mapData[y][x] !== oldId) continue;
+
+                mapData[y][x] = newId;
+
+                stack.push({ x: x + 1, y });
+                stack.push({ x: x - 1, y });
+                stack.push({ x,y: y + 1 });
+                stack.push({ x,y: y - 1 });
+            }
+        }
+
+
 
         document.getElementById('brushFile').addEventListener('change', (e) => {
             const file = e.target.files[0];
