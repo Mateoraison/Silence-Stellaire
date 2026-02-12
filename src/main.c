@@ -1,15 +1,25 @@
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
 #include <SDL3_image/SDL_image.h>
+#include <SDL3_ttf/SDL_ttf.h>
 #include "headers/main.h"
 
 int main(int argc, char* argv[]) {
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        SDL_Log("Unable to initialize SDL: %s", SDL_GetError());
+    (void)argc;
+    (void)argv;
+
+
+    if (SDL_Init(SDL_INIT_VIDEO) == false) {
+        SDL_Log("impossible a charger SDL: %s", SDL_GetError());
         return 1;
     }
 
-    SDL_Window *fenetre = SDL_CreateWindow("Silence Stellaire", 800, 600, SDL_WINDOW_BORDERLESS);
+    if(TTF_Init() == false) {
+        SDL_Log("impossible a charger SDL_ttf: %s", SDL_GetError()); SDL_Quit(); 
+        return 1; 
+    }
+
+    SDL_Window *fenetre = SDL_CreateWindow("Silence Stellaire", 1000, 800, SDL_WINDOW_MAXIMIZED);
     if (!fenetre) {
         SDL_Log("erreur creation fenetre: %s", SDL_GetError());
         SDL_Quit();
@@ -26,14 +36,15 @@ int main(int argc, char* argv[]) {
 
     bool running = true;
     while (running) {
-        int action_menu = afficher_menu(fenetre, renderer);
+        int action_menu = afficher_menu(renderer);
         if (action_menu == 1) {
-            int resultat_jeu = jeu_principal(fenetre, renderer);
-            if (resultat_jeu == 0) {
-                running = false;
-            } else if (resultat_jeu == 1) {
-            }
-        } else {
+            int resultat_jeu = jeu_principal(renderer);
+            if (resultat_jeu == 0) running = false;
+        }else if(action_menu == 2){
+            int resultat_option = afficher_option(renderer);
+            if(resultat_option == 0) running = false;
+        }
+        else {
             running = false;
         }
     }

@@ -2,7 +2,8 @@
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
 #include <SDL3_image/SDL_image.h>
-
+#include <SDL3/SDL_render.h>
+#include <SDL3_ttf/SDL_ttf.h>
 
 //verifie si un point est dans un rectangle
 int pointDansRect(float x, float y, const SDL_FRect *r) {
@@ -53,3 +54,18 @@ void Bouton_Afficher(Bouton *b, SDL_Renderer *renderer) {
     if (!b->texture) return;
     SDL_RenderTexture(renderer, b->texture, NULL, &b->rect);
 }
+
+void afficher_texte_centre(SDL_Renderer *renderer, SDL_Texture *texture, SDL_FRect *rect_bouton) {
+    float texte_w, texte_h;
+    SDL_GetTextureSize(texture, &texte_w, &texte_h);
+    
+    SDL_FRect dst = {
+        rect_bouton->x + (rect_bouton->w - texte_w) / 2,
+        rect_bouton->y + (rect_bouton->h - texte_h) / 2,
+        texte_w,
+        texte_h
+    };
+    
+    SDL_RenderTexture(renderer, texture, NULL, &dst);
+}
+

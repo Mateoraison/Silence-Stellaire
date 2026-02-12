@@ -142,7 +142,7 @@ void charger_tilemap(SDL_Renderer *renderer, SDL_Texture *tileset,
 
 
 
-int jeu_principal(SDL_Window *window, SDL_Renderer *renderer) {
+int jeu_principal(SDL_Renderer *renderer) {
     srand(time(NULL));
     SDL_Texture *tileset = IMG_LoadTexture(renderer, "assets/tileset/V2/Tilemap_color1.png");
     if (!tileset){

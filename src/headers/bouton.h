@@ -23,5 +23,7 @@ int Bouton_GererEvenement(Bouton *b, const SDL_Event *e);
 
 // dessine l'image du bouton dans son rect
 void Bouton_Afficher(Bouton *b, SDL_Renderer *renderer);
+void afficher_texte_centre(SDL_Renderer *renderer, SDL_Texture *texture, SDL_FRect *rect_bouton);
+
 
 #endif
