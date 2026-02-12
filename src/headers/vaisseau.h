@@ -3,6 +3,6 @@
 
 #include <SDL3/SDL.h>
 
-int vaisseau_run(SDL_Window *window, SDL_Renderer *renderer);
+int vaisseau(void); 
 
 #endif // VAISSEAU_H
