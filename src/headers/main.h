@@ -1,13 +1,28 @@
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
+#include <math.h>
 
-#include "menu.h"
-#include "jeux.h"
-#include "bouton.h"
-#include "option.h"
-#include "perso.h"
 
 #define FRAME_DUREE 50
+
+#define W_MAP 21
+#define H_MAP 20
+#define SOURCE_TILE_SIZE 64
+#define DISPLAY_TILE_SIZE 90
+
+typedef enum {vide, terreP, eau, terreCHG, terreCHD, terreCBG, terreCBD, terreH, terreB, terreG, terreD, pierre} type_t;
+
+typedef struct tile_{
+    type_t type;
+    int width;
+    int height;
+}t_tile;
+
+typedef struct tileset_{
+    int width;
+    int height;
+    t_tile tab[W_MAP][H_MAP];
+}t_tileset;
 
 typedef struct {
     float x;
@@ -16,6 +31,11 @@ typedef struct {
     int direction; // 0=south,1=north,2=west,3=east
 } Perso;
 
+#include "menu.h"
+#include "jeux.h"
+#include "bouton.h"
+#include "option.h"
+#include "perso.h"
 
 extern Perso perso;
 extern int animation_frame;   

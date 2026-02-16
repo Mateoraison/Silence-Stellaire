@@ -21,6 +21,11 @@ int afficher_perso(SDL_Renderer *renderer) {
     SDL_FRect src = {0, 0, 64, 64};
     SDL_FRect dest = {500.0f , 400.0f, 90, 90};
 
+    // SDL_Color noir = {0, 0, 0, 255};
+    // SDL_Color blanc = {255, 255, 255, 255};
+    // SDL_Color gris_fonce = {50, 50, 50, 255};
+    // SDL_RenderFillRect(renderer, &dest);
+
     SDL_RenderTexture(renderer, perso_texture, &src, &dest);
     SDL_DestroyTexture(perso_texture);
     return 0;
@@ -36,28 +41,26 @@ int deplacer_perso(SDL_Event event) {
         perso_bouge = true;
         bouge_timer = SDL_GetTicks();
         switch (event.key.key) {
-            case SDLK_Z: perso.y += 5;
+            case SDLK_Z :
+            case SDLK_W : perso.y += 5;
             perso.texture = IMG_LoadTexture(SDL_GetRenderer(SDL_GetWindowFromID(event.key.windowID)), "assets/personnage/Astronaute/rotations/north.png");
             perso.direction = 1;
-            SDL_Log("Perso coordone : (%.2f, %.2f)", perso.x, perso.y);
             break;
 
             case SDLK_S: perso.y -= 5; 
             perso.texture = IMG_LoadTexture(SDL_GetRenderer(SDL_GetWindowFromID(event.key.windowID)), "assets/personnage/Astronaute/rotations/south.png");
             perso.direction = 0;
-            SDL_Log("Perso coordone : (%.2f, %.2f)", perso.x, perso.y);
             break;
 
-            case SDLK_Q: perso.x += 5;
+            case SDLK_Q:
+            case SDLK_A: perso.x += 5;
             perso.texture = IMG_LoadTexture(SDL_GetRenderer(SDL_GetWindowFromID(event.key.windowID)), "assets/personnage/Astronaute/rotations/west.png");
             perso.direction = 2;
-            SDL_Log("Perso coordone : (%.2f, %.2f)", perso.x, perso.y);
             break;
 
             case SDLK_D: perso.x -= 5; 
             perso.texture = IMG_LoadTexture(SDL_GetRenderer(SDL_GetWindowFromID(event.key.windowID)), "assets/personnage/Astronaute/rotations/east.png");
             perso.direction = 3;
-            SDL_Log("Perso coordone : (%.2f, %.2f)", perso.x, perso.y);
             break;
 
             default: break;
@@ -85,5 +88,19 @@ void update_animation() {
         }
     } else {
         animation_frame = 0;
+    }
+}
+
+int test_collision(int x, int y, t_tile map[W_MAP][H_MAP]) {
+    /**
+     * Cette fonction teste si la tile à la position (x, y) est une tile d'un type avec collision.
+     */
+    switch (map[x][y].type)
+    {
+    case eau:
+    case pierre:
+        return 1;
+    default:
+        return 0;
     }
 }

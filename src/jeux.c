@@ -6,34 +6,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-
-#define W_MAP 21
-#define H_MAP 20
-#define SOURCE_TILE_SIZE 64
-#define DISPLAY_TILE_SIZE 90
-
 Perso  perso = {0.0f, 0.0f, NULL};
 int animation_frame = 0;
 Uint32 animation_timer = 0;
 bool perso_bouge = false;
 Uint32 bouge_timer = 0;
-
-
-typedef enum {vide, terreP, eau, terreCHG, terreCHD, terreCBG, terreCBD, terreH, terreB, terreG, terreD, pierre} type_t;
-
-typedef struct tile_{
-    type_t type;
-    int width;
-    int height;
-    int colision;
-}t_tile;
-
-typedef struct tileset_{
-    int width;
-    int height;
-    t_tile tab[W_MAP][H_MAP];
-}t_tileset;
-
 
 void remplir_tileset(t_tile map[W_MAP][H_MAP]){
     FILE *file = fopen("assets/map/map.txt", "r");
@@ -47,11 +24,6 @@ void remplir_tileset(t_tile map[W_MAP][H_MAP]){
             fscanf(file, "%d-", &map[x][y].type);
             map[x][y].width = DISPLAY_TILE_SIZE;
             map[x][y].height = DISPLAY_TILE_SIZE;
-            if(map[x][y].type == terreP || map[x][y].type == terreCHG || map[x][y].type == terreCHD || map[x][y].type == terreCBG || map[x][y].type == terreCBD || map[x][y].type == terreH || map[x][y].type == terreB || map[x][y].type == terreG || map[x][y].type == terreD || map[x][y].type == pierre || map[x][y].type == eau){
-                map[x][y].colision = 1;
-            } else {
-                map[x][y].colision = 0;
-            }
         }
         fscanf(file, "\n"); // Lire le saut de ligne à la fin de chaque ligne de la carte
     }
@@ -91,58 +63,30 @@ void charger_tilemap(SDL_Renderer *renderer, SDL_Texture *tileset,
 
 
 
-            switch(map[x][y].type){
-                case terreP:
-                    type_x = 64;
-                    type_y = 64;
-                    break;
-                case terreCHG:
-                    type_x = 0;
-                    type_y = 0;
-                    break;
-                case terreCHD:
-                    type_x = 128;
-                    type_y = 0;
-                    break;
-                case terreCBG:
-                    type_x = 0;
-                    type_y = 128;
-                    break;
-                case terreCBD:
-                    type_x = 128;
-                    type_y = 128;
-                    break;
-                case terreH:
-                    type_x = 64;
-                    type_y = 0;
-                    break;
-                case terreB:
-                    type_x = 64;
-                    type_y = 128;
-                    break;
-                case terreG:
-                    type_x = 0;
-                    type_y = 64;
-                    break;
-                case terreD:
-                    type_x = 128;
-                    type_y = 64;
-                    break;
-                case eau:
-                    type_x = 125;
-                    type_y = 265;
-                    break;
-                case vide:
-                    type_x = 256;
-                    type_y = 6 * 64;
-                    break;
+            switch(map[x][y].type) {
+                case terreP:   src = (SDL_FRect){64, 64, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE}; break;
+                case terreCHG: src = (SDL_FRect){0, 0, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE}; break;
+                case terreCHD: src = (SDL_FRect){128,0, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE}; break;
+                case terreCBG: src = (SDL_FRect){0, 128,SOURCE_TILE_SIZE, SOURCE_TILE_SIZE}; break;
+                case terreCBD: src = (SDL_FRect){128,128,SOURCE_TILE_SIZE, SOURCE_TILE_SIZE}; break;
+                case terreH:   src = (SDL_FRect){64, 0, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE}; break;
+                case terreB:   src = (SDL_FRect){64, 128,SOURCE_TILE_SIZE, SOURCE_TILE_SIZE}; break;
+                case terreG:   src = (SDL_FRect){0, 64, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE}; break;
+                case terreD:   src = (SDL_FRect){128,64, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE}; break;
+                case eau:      src = (SDL_FRect){125, 265,SOURCE_TILE_SIZE, SOURCE_TILE_SIZE}; break;
+                case pierre:   src = (SDL_FRect){576, 0, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE}; break;
+                default:       continue;
             }
             if(map[x][y].type != vide){
-                src = (SDL_FRect){125, 265, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};
+                SDL_FRect src2 = (SDL_FRect){125, 265, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};
+                SDL_RenderTexture(renderer, tileset, &src2, &dest);
+            }
+            if(map[x][y].type == pierre){
+                SDL_FRect src3 = (SDL_FRect){64, 64, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};
+                SDL_RenderTexture(renderer, tileset, &src3, &dest);
                 SDL_RenderTexture(renderer, tileset, &src, &dest);
             }
-            if(map[x][y].type != eau){
-                src = (SDL_FRect){type_x, type_y, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};
+            else if(map[x][y].type != eau){
                 SDL_RenderTexture(renderer, tileset, &src, &dest);
             }
         }
@@ -168,7 +112,7 @@ int jeu_principal(SDL_Renderer *renderer) {
     remplir_tileset(map);
     for (int x = 0; x < W_MAP; x++) {
         for (int y = 0; y < H_MAP; y++) {
-            if(map[x][y].type <= 10 && map[x][y].type >= 3 ) foam[x][y] = rand() % 16 ;
+            if((map[x][y].type <= 10) && (map[x][y].type >= 3 )) foam[x][y] = rand() % 16 ;
             else foam[x][y] = 100 ;  
         }
     }
@@ -188,6 +132,48 @@ int jeu_principal(SDL_Renderer *renderer) {
                     code_sortie = 1; 
             }
             deplacer_perso(event);
+            
+            const float joueur_ecran_x = -perso.x + 500.0f;
+            const float joueur_ecran_y = -perso.y + 400.0f;
+
+            const float largeur_src = (float)SOURCE_TILE_SIZE;   
+            const float hauteur_src = (float)SOURCE_TILE_SIZE;   
+            const float largeur_dest = (float)DISPLAY_TILE_SIZE; 
+            const float hauteur_dest = (float)DISPLAY_TILE_SIZE; 
+            const float echelle_x = largeur_dest / largeur_src;
+            const float echelle_y = hauteur_dest / hauteur_src;
+
+            const float decalage_src_x = 15.0f;
+            const float decalage_src_y = 7.0f;
+            const float sprite_src_largeur = 26.0f;
+            const float sprite_src_hauteur = 44.0f;
+
+            float boite_x = joueur_ecran_x + decalage_src_x * echelle_x;
+            float boite_y = joueur_ecran_y + decalage_src_y * echelle_y;
+            float boite_w = sprite_src_largeur * echelle_x;
+            float boite_h = sprite_src_hauteur * echelle_y;
+
+            int tuile_gauche = (int)floorf(boite_x / DISPLAY_TILE_SIZE);
+            int tuile_droite = (int)floorf((boite_x + boite_w - 1.0f) / DISPLAY_TILE_SIZE);
+            int tuile_haut = (int)floorf((boite_y + boite_h - 10.0f) / DISPLAY_TILE_SIZE);
+            int tuile_bas = (int)floorf((boite_y + boite_h - 1.0f) / DISPLAY_TILE_SIZE);
+
+            int collision_trouve = 0;
+            for (int tx = tuile_gauche; tx <= tuile_droite && !collision_trouve; tx++) {
+                for (int ty = tuile_haut; ty <= tuile_bas; ty++) {
+                    if (tx < 0 || ty < 0 || tx >= W_MAP || ty >= H_MAP) continue;
+                    if (test_collision(tx, ty, map)) { collision_trouve = 1; break; }
+                }
+            }
+
+            if (collision_trouve) {
+                switch (perso.direction) {
+                    case 0: perso.y += 5; break;
+                    case 1: perso.y -= 5; break;
+                    case 2: perso.x -= 5; break;
+                    case 3: perso.x += 5; break;
+                }
+            }
         }
 
         SDL_RenderClear(renderer);
