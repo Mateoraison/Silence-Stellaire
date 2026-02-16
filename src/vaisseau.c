@@ -1,7 +1,8 @@
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
-#include <SDL3/SDL_main.h>
 #include <stdbool.h>
+#include <stdio.h>
+
 
 #define TILE_SIZE 32
 #define TILESET_TILE_SIZE 32
@@ -48,7 +49,7 @@
 
 int tile_map[MAP_H][MAP_W]; 
 
-void remplir_tileset(int tile_map[MAP_H][MAP_W]){
+void remplir_tileset2(int tile_map[MAP_H][MAP_W]){
 
     FILE *file = fopen("assets/map/vaisseau.txt", "r");
     if (!file) {
@@ -116,7 +117,7 @@ int vaisseau(void) {
         return 1;
     }
 
-    remplir_tileset(tile_map);
+    remplir_tileset2(tile_map);
 
     SDL_FRect player = { 400, 300, 20, 20 };
     bool running = true;

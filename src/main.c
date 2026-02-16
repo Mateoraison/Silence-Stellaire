@@ -7,13 +7,14 @@
 int main(int argc, char* argv[]) {
     (void)argc;
     (void)argv;
+    
 
+    
 
     if (SDL_Init(SDL_INIT_VIDEO) == false) {
         SDL_Log("impossible a charger SDL: %s", SDL_GetError());
         return 1;
     }
-
     if(TTF_Init() == false) {
         SDL_Log("impossible a charger SDL_ttf: %s", SDL_GetError()); SDL_Quit(); 
         return 1; 

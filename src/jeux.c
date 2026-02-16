@@ -12,6 +12,12 @@
 #define SOURCE_TILE_SIZE 64
 #define DISPLAY_TILE_SIZE 90
 
+Perso  perso = {0.0f, 0.0f, NULL};
+int animation_frame = 0;
+Uint32 animation_timer = 0;
+bool perso_bouge = false;
+Uint32 bouge_timer = 0;
+
 
 typedef enum {vide, terreP, eau, terreCHG, terreCHD, terreCBG, terreCBD, terreH, terreB, terreG, terreD, pierre} type_t;
 
@@ -19,6 +25,7 @@ typedef struct tile_{
     type_t type;
     int width;
     int height;
+    int colision;
 }t_tile;
 
 typedef struct tileset_{
@@ -40,6 +47,11 @@ void remplir_tileset(t_tile map[W_MAP][H_MAP]){
             fscanf(file, "%d-", &map[x][y].type);
             map[x][y].width = DISPLAY_TILE_SIZE;
             map[x][y].height = DISPLAY_TILE_SIZE;
+            if(map[x][y].type == terreP || map[x][y].type == terreCHG || map[x][y].type == terreCHD || map[x][y].type == terreCBG || map[x][y].type == terreCBD || map[x][y].type == terreH || map[x][y].type == terreB || map[x][y].type == terreG || map[x][y].type == terreD || map[x][y].type == pierre || map[x][y].type == eau){
+                map[x][y].colision = 1;
+            } else {
+                map[x][y].colision = 0;
+            }
         }
         fscanf(file, "\n"); // Lire le saut de ligne à la fin de chaque ligne de la carte
     }
@@ -48,13 +60,11 @@ void remplir_tileset(t_tile map[W_MAP][H_MAP]){
 }
 
 
-typedef struct {
-    float x;
-    float y;
-} Camera;
 
 void charger_tilemap(SDL_Renderer *renderer, SDL_Texture *tileset,
-                     t_tile map[W_MAP][H_MAP], int foam[W_MAP][H_MAP], Camera camera){
+                     t_tile map[W_MAP][H_MAP], int foam[W_MAP][H_MAP]){
+
+
 
     if (!tileset){
         SDL_Log("Erreur chargement tileset : %s", SDL_GetError());
@@ -62,18 +72,24 @@ void charger_tilemap(SDL_Renderer *renderer, SDL_Texture *tileset,
         return;
     }
 
+
+
     for(int x = 0; x < W_MAP; x++){
         for(int y = 0; y < H_MAP; y++){
             SDL_FRect dest = {
-                x * DISPLAY_TILE_SIZE + camera.x,
-                y * DISPLAY_TILE_SIZE + camera.y,
+                x * DISPLAY_TILE_SIZE + perso.x,
+                y * DISPLAY_TILE_SIZE +  perso.y,
                 DISPLAY_TILE_SIZE,
                 DISPLAY_TILE_SIZE
             };
 
+
+
             SDL_FRect src;
             float type_x = 0;
             float type_y = 0;
+
+
 
             switch(map[x][y].type){
                 case terreP:
@@ -125,13 +141,6 @@ void charger_tilemap(SDL_Renderer *renderer, SDL_Texture *tileset,
                 src = (SDL_FRect){125, 265, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};
                 SDL_RenderTexture(renderer, tileset, &src, &dest);
             }
-            // if (foam[x][y] != 100){
-            //     int mousse_x = 10 + foam[x][y] * 192;
-            //     int mousse_y =  385;
-            //     SDL_FRect src_mousse = (SDL_FRect){mousse_x, mousse_y, 192, 192};
-            //     SDL_FRect dest_mousse = (SDL_FRect){ x * DISPLAY_TILE_SIZE + camera.x - 10, y * DISPLAY_TILE_SIZE + camera.y - 15%y, 192, 192};
-            //     SDL_RenderTexture(renderer, tileset, &src_mousse, &dest_mousse); 
-            // }
             if(map[x][y].type != eau){
                 src = (SDL_FRect){type_x, type_y, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};
                 SDL_RenderTexture(renderer, tileset, &src, &dest);
@@ -139,6 +148,8 @@ void charger_tilemap(SDL_Renderer *renderer, SDL_Texture *tileset,
         }
     }
 }
+
+
 
 
 
@@ -150,6 +161,7 @@ int jeu_principal(SDL_Renderer *renderer) {
         SDL_Delay(2000);
         return 1;
     }
+
     
     t_tile map[W_MAP][H_MAP];
     int foam[W_MAP][H_MAP];
@@ -160,7 +172,7 @@ int jeu_principal(SDL_Renderer *renderer) {
             else foam[x][y] = 100 ;  
         }
     }
-    Camera camera = (Camera){0, 0};
+
     bool running = true;
     SDL_Event event;
 
@@ -171,24 +183,30 @@ int jeu_principal(SDL_Renderer *renderer) {
             if (event.type == SDL_EVENT_QUIT){
                 running = false;
                 code_sortie = 1;
-            } else if (event.type == SDL_EVENT_KEY_DOWN){
-                switch(event.key.key){
-                    case SDLK_Z: camera.y += 10; break;
-                    case SDLK_S: camera.y -= 10; break;
-                    case SDLK_Q: camera.x += 10; break;
-                    case SDLK_D: camera.x -= 10; break;
-                    case SDLK_ESCAPE: running = false; code_sortie = 1; break;
-                }
+            } else if (event.type == SDL_EVENT_KEY_DOWN && event.key.key == SDLK_ESCAPE) {
+                    running = false;
+                    code_sortie = 1; 
             }
+            deplacer_perso(event);
         }
 
         SDL_RenderClear(renderer);
-        charger_tilemap(renderer, tileset, map, foam, camera);
-        for (int x = 0; x < W_MAP; x++) {
-            for (int y = 0; y < H_MAP; y++) {
-                if(map[x][y].type <= 10 && map[x][y].type >= 3 ) foam[x][y] = (foam[x][y] + 1) % 16 ;
+        
+        charger_tilemap(renderer, tileset, map, foam);
+        update_animation();
+        afficher_perso(renderer);
+
+        
+        static Uint32 foam_timer = 0;
+        Uint32 maintenant = SDL_GetTicks();
+        if (maintenant - foam_timer > 800) {  
+            for (int x = 0; x < W_MAP; x++) {
+                for (int y = 0; y < H_MAP; y++) {
+                    if(map[x][y].type == eau) foam[x][y] = (foam[x][y] + 1) % 3;
+                }
+            }
+            foam_timer = maintenant;
         }
-    }
         SDL_RenderPresent(renderer);
     }
 
