@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-Perso  perso = {0.0f, 0.0f, NULL};
+Perso  perso = {0.0f, 0.0f, NULL, 0};
 int animation_frame = 0;
 Uint32 animation_timer = 0;
 bool perso_bouge = false;
@@ -22,7 +22,7 @@ void remplir_tileset(t_tile map[W_MAP][H_MAP]){
 
     for (int y = 0; y < H_MAP; y++) {
         for (int x = 0; x < W_MAP; x++) {
-            fscanf(file, "%d-", &map[x][y].type);
+            fscanf(file, "%d-", (int*)&map[x][y].type);
             map[x][y].width = DISPLAY_TILE_SIZE;
             map[x][y].height = DISPLAY_TILE_SIZE;
         }
@@ -59,10 +59,6 @@ void charger_tilemap(SDL_Renderer *renderer, SDL_Texture *tileset,
 
 
             SDL_FRect src;
-            float type_x = 0;
-            float type_y = 0;
-
-
 
             switch(map[x][y].type) {
                 case terreP:   src = (SDL_FRect){64, 64, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE}; break;

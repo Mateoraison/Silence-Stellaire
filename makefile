@@ -29,7 +29,7 @@ CC := gcc
 # Flags
 # ========================
 CFLAGS := -Wall -Wextra -I$(INC_DIR) -I$(HDR_DIR)
-LDFLAGS := -L$(LIB_DIR) -lSDL3 -lSDL3_image -lSDL3_ttf -lm -Wl,-rpath,'$$ORIGIN/../lib'
+LDFLAGS := -L$(LIB_DIR) -lSDL3 -lSDL3_image -lSDL3_ttf -lSDL3_mixer -lm -Wl,-rpath,'$$ORIGIN/../lib'
 
 # ========================
 # Règles

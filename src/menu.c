@@ -6,7 +6,7 @@
 #include <string.h>
 
 
-int afficher_menu(SDL_Renderer *renderer,MIX_Track *track) {
+int afficher_menu(SDL_Renderer *renderer) {
     /*action = 
         0 pour le menu 
         1 pour le jeu  

@@ -13,7 +13,6 @@ int afficher_option(SDL_Renderer *renderer, MIX_Track *track_global) {
     SDL_Event event;
     bool son_active = true;
 
-    SDL_Color noir = {0, 0, 0, 255};
     SDL_Color blanc = {255, 255, 255, 255};
     SDL_Color gris_fonce = {50, 50, 50, 255};
 

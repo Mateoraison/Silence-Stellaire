@@ -92,7 +92,7 @@ void draw_map(SDL_Renderer *renderer, SDL_Texture *tileset) {
 
 bool is_blocking(int tile) {
     return (
-        tile >= 10 && tile <= 19 ||   // murs
+        ((tile >= 10) && (tile <= 19)) ||   // murs
         tile == 20 ||                 // porte fermée
         tile == 22                    // sas
     );
