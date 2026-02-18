@@ -98,6 +98,8 @@ int test_collision(int x, int y, t_tile map[W_MAP][H_MAP]) {
     {
     case eau:
     case pierre:
+    case feu:
+    case arbrecoupe:
         return 1;
     default:
         return 0;

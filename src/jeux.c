@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-Perso  perso = {0.0f, 0.0f, NULL, 0};
+Perso  perso = {-580.0f, -500.0f, NULL, 0};
 int animation_frame = 0;
 Uint32 animation_timer = 0;
 bool perso_bouge = false;
@@ -56,32 +56,35 @@ void charger_tilemap(SDL_Renderer *renderer, SDL_Texture *tileset,
                 DISPLAY_TILE_SIZE
             };
 
+            SDL_FRect dest2;
 
-
+            bool src_remplit = false;
             SDL_FRect src;
 
             switch(map[x][y].type) {
-                case terreP:   src = (SDL_FRect){64, 64, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE}; break;
-                case terreCHG: src = (SDL_FRect){0, 0, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE}; break;
-                case terreCHD: src = (SDL_FRect){128,0, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE}; break;
-                case terreCBG: src = (SDL_FRect){0, 128,SOURCE_TILE_SIZE, SOURCE_TILE_SIZE}; break;
-                case terreCBD: src = (SDL_FRect){128,128,SOURCE_TILE_SIZE, SOURCE_TILE_SIZE}; break;
-                case terreH:   src = (SDL_FRect){64, 0, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE}; break;
-                case terreB:   src = (SDL_FRect){64, 128,SOURCE_TILE_SIZE, SOURCE_TILE_SIZE}; break;
-                case terreG:   src = (SDL_FRect){0, 64, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE}; break;
-                case terreD:   src = (SDL_FRect){128,64, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE}; break;
-                case eau:      src = (SDL_FRect){125, 265,SOURCE_TILE_SIZE, SOURCE_TILE_SIZE}; break;
-                case pierre:   src = (SDL_FRect){576, 0, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE}; break;
-                default:       continue;
+                case terreP:   src = (SDL_FRect){64, 64, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};src_remplit = true; break;
+                case terreCHG: src = (SDL_FRect){0, 0, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};src_remplit = true;break;
+                case terreCHD: src = (SDL_FRect){128,0, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};src_remplit = true;break;
+                case terreCBG: src = (SDL_FRect){0, 128,SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};src_remplit = true; break;
+                case terreCBD: src = (SDL_FRect){128,128,SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};src_remplit = true; break;
+                case terreH:   src = (SDL_FRect){64, 0, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};src_remplit = true; break;
+                case terreB:   src = (SDL_FRect){64, 128,SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};src_remplit = true; break;
+                case terreG:   src = (SDL_FRect){0, 64, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};src_remplit = true; break;
+                case terreD:   src = (SDL_FRect){128,64, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};src_remplit = true;break;
+                case eau:      src = (SDL_FRect){125, 265,SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};src_remplit = true; break;
+                case pierre:   src = (SDL_FRect){576, 0, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};src_remplit = true; break;
+                case feu:      src = (SDL_FRect){640, 128, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};src_remplit = true; break;
+                case arbrecoupe:    src = (SDL_FRect){640, 0, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};src_remplit = true; break;
+                case arbreEntier: if((map[x-1][y].type != arbreEntier) && (map[x][y-1].type != arbreEntier)){ src = (SDL_FRect){768,0,128,192}; dest2 = (SDL_FRect){x*DISPLAY_TILE_SIZE + perso.x, y*DISPLAY_TILE_SIZE+perso.y,128,192};src_remplit = true;}break;
             }
             if(map[x][y].type != vide){
                 SDL_FRect src2 = (SDL_FRect){125, 265, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};
                 SDL_RenderTexture(renderer, tileset, &src2, &dest);
             }
-            if(map[x][y].type == pierre){
+            if((map[x][y].type == pierre && map[x+1][y].type == terreP) || map[x][y].type == feu || map[x][y].type == arbrecoupe || map[x][y].type == arbreEntier){
                 SDL_FRect src3 = (SDL_FRect){64, 64, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};
                 SDL_RenderTexture(renderer, tileset, &src3, &dest);
-                SDL_RenderTexture(renderer, tileset, &src, &dest);
+                if(src_remplit != false) SDL_RenderTexture(renderer, tileset, &src, map[x][y].type == arbreEntier? &dest2:&dest);
             }
             else if(map[x][y].type != eau){
                 SDL_RenderTexture(renderer, tileset, &src, &dest);

@@ -6,12 +6,12 @@
 
 #define FRAME_DUREE 50
 
-#define W_MAP 21
-#define H_MAP 20
+#define W_MAP 40
+#define H_MAP 40
 #define SOURCE_TILE_SIZE 64
 #define DISPLAY_TILE_SIZE 90
 
-typedef enum {vide, terreP, eau, terreCHG, terreCHD, terreCBG, terreCBD, terreH, terreB, terreG, terreD, pierre} type_t;
+typedef enum {vide, terreP, eau, terreCHG, terreCHD, terreCBG, terreCBD, terreH, terreB, terreG, terreD, feu, pierre, arbrecoupe, arbreEntier} type_t;
 
 typedef struct tile_{
     type_t type;
