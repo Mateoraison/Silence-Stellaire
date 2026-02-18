@@ -1,7 +1,8 @@
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
 #include <math.h>
-
+#include <SDL3_mixer/SDL_mixer.h>
+#include <stdio.h>
 
 #define FRAME_DUREE 50
 
@@ -31,11 +32,14 @@ typedef struct {
     int direction; // 0=south,1=north,2=west,3=east
 } Perso;
 
+
+
 #include "menu.h"
 #include "jeux.h"
 #include "bouton.h"
 #include "option.h"
 #include "perso.h"
+#include "son.h"
 
 extern Perso perso;
 extern int animation_frame;   
@@ -43,4 +47,5 @@ extern Uint32 animation_timer;
 extern Uint32 bouge_timer;
 extern bool perso_bouge;
 
+extern MIX_Track *track_global;
 

@@ -1,8 +1,6 @@
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
 
-
-#ifndef BOUTON_H
 #define BOUTON_H
 
 #include <SDL3/SDL.h>
@@ -25,5 +23,3 @@ int Bouton_GererEvenement(Bouton *b, const SDL_Event *e);
 void Bouton_Afficher(Bouton *b, SDL_Renderer *renderer);
 void afficher_texte_centre(SDL_Renderer *renderer, SDL_Texture *texture, SDL_FRect *rect_bouton);
 
-
-#endif

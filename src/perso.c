@@ -9,8 +9,7 @@ int afficher_perso(SDL_Renderer *renderer) {
     const char* dir_name = dirs[perso.direction];
     
     char full_path[512];
-    sprintf(full_path, "assets/personnage/Astronaute/animations/walk/%s/frame_00%d.png", 
-            dir_name, animation_frame);
+    sprintf(full_path, "assets/personnage/Astronaute/animations/walk/%s/frame_00%d.png", dir_name, animation_frame);
 
     SDL_Texture *perso_texture = IMG_LoadTexture(renderer, full_path);
     if (!perso_texture) {
