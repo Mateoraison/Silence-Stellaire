@@ -38,7 +38,9 @@ void charger_tilemap(SDL_Renderer *renderer, SDL_Texture *tileset,
                      t_tile map[W_MAP][H_MAP], int foam[W_MAP][H_MAP]){
 
 
-
+    SDL_Color bleu_eau = {71, 171, 169, 255};
+    SDL_SetRenderDrawColor(renderer, bleu_eau.r, bleu_eau.g, bleu_eau.b, bleu_eau.a);
+    
     if (!tileset){
         SDL_Log("Erreur chargement tileset : %s", SDL_GetError());
         SDL_Delay(2000);
@@ -60,6 +62,8 @@ void charger_tilemap(SDL_Renderer *renderer, SDL_Texture *tileset,
 
             bool src_remplit = false;
             SDL_FRect src;
+            SDL_FRect src3 = (SDL_FRect){64, 64, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};
+
 
             switch(map[x][y].type) {
                 case terreP:   src = (SDL_FRect){64, 64, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};src_remplit = true; break;
@@ -75,18 +79,33 @@ void charger_tilemap(SDL_Renderer *renderer, SDL_Texture *tileset,
                 case pierre:   src = (SDL_FRect){576, 0, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};src_remplit = true; break;
                 case feu:      src = (SDL_FRect){640, 128, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};src_remplit = true; break;
                 case arbrecoupe:    src = (SDL_FRect){640, 0, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};src_remplit = true; break;
-                case arbreEntier: if((map[x-1][y].type != arbreEntier) && (map[x][y-1].type != arbreEntier)){ src = (SDL_FRect){768,0,128,192}; dest2 = (SDL_FRect){x*DISPLAY_TILE_SIZE + perso.x, y*DISPLAY_TILE_SIZE+perso.y,128,192};src_remplit = true;}break;
+                case arbreEntier: if((map[x-1][y].type != arbreEntier) && (map[x][y-1].type != arbreEntier)){ src = (SDL_FRect){768,0,128,192}; dest2 = (SDL_FRect){x*DISPLAY_TILE_SIZE + perso.x, y*DISPLAY_TILE_SIZE+perso.y,180,270};src_remplit = true;}break;
             }
-            if(map[x][y].type != vide){
+            if(map[x][y].type != vide && src_remplit != false){
                 SDL_FRect src2 = (SDL_FRect){125, 265, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};
                 SDL_RenderTexture(renderer, tileset, &src2, &dest);
             }
-            if((map[x][y].type == pierre && map[x+1][y].type == terreP) || map[x][y].type == feu || map[x][y].type == arbrecoupe || map[x][y].type == arbreEntier){
-                SDL_FRect src3 = (SDL_FRect){64, 64, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};
+            if((map[x][y].type == pierre && map[x+1][y].type == terreP) || map[x][y].type == feu || map[x][y].type == arbrecoupe){
                 SDL_RenderTexture(renderer, tileset, &src3, &dest);
-                if(src_remplit != false) SDL_RenderTexture(renderer, tileset, &src, map[x][y].type == arbreEntier? &dest2:&dest);
+                SDL_RenderTexture(renderer, tileset, &src,&dest);
             }
-            else if(map[x][y].type != eau){
+            else if(map[x][y].type == arbreEntier && src_remplit != false){
+                SDL_RenderTexture(renderer, tileset, &src3, &dest);
+                dest.y = (y+1)*DISPLAY_TILE_SIZE + perso.y;
+                SDL_RenderTexture(renderer, tileset, &src3, &dest);
+                dest.y = (y+2)*DISPLAY_TILE_SIZE + perso.y;
+                SDL_RenderTexture(renderer, tileset, &src3, &dest);
+                dest.x = (x+1)*DISPLAY_TILE_SIZE + perso.x;
+                SDL_RenderTexture(renderer, tileset, &src3, &dest);
+                dest.y = (y+1)*DISPLAY_TILE_SIZE + perso.y;
+                SDL_RenderTexture(renderer, tileset, &src3, &dest);
+                dest.y = y*DISPLAY_TILE_SIZE + perso.y;
+                SDL_RenderTexture(renderer, tileset, &src3, &dest);
+                dest.x = x*DISPLAY_TILE_SIZE + perso.x;
+                SDL_RenderTexture(renderer, tileset, &src3, &dest);
+                SDL_RenderTexture(renderer, tileset, &src, &dest2);
+            }
+            else if(map[x][y].type != eau && src_remplit != false){
                 SDL_RenderTexture(renderer, tileset, &src, &dest);
             }
         }

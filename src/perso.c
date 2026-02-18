@@ -22,8 +22,6 @@ int afficher_perso(SDL_Renderer *renderer) {
 
     // SDL_Color noir = {0, 0, 0, 255};
     // SDL_Color blanc = {255, 255, 255, 255};
-    // SDL_Color gris_fonce = {50, 50, 50, 255};
-    // SDL_RenderFillRect(renderer, &dest);
 
     SDL_RenderTexture(renderer, perso_texture, &src, &dest);
     SDL_DestroyTexture(perso_texture);
@@ -100,6 +98,7 @@ int test_collision(int x, int y, t_tile map[W_MAP][H_MAP]) {
     case pierre:
     case feu:
     case arbrecoupe:
+    case arbreEntier:
         return 1;
     default:
         return 0;

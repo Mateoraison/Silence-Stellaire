@@ -291,6 +291,10 @@
             { id: 8, name: 'TerreB', color: '#A0522D', border: '#8B4513' },
             { id: 9, name: 'TerreG', color: '#A0522D', border: '#8B4513' },
             { id: 10, name: 'TerreD', color: '#A0522D', border: '#8B4513' },
+            { id: 11, name: 'feu', color: '#FF2900', border: '#B30000' },
+            { id: 12, name: 'Pierre', color: '#807B6C', border: '#342F20' },
+            { id: 13, name: 'ArbreCoupe', color: '#229119', border: '#004500' },
+            { id: 14, name: 'ArbreEntier', color: '#0D5C21', border: '#001000' }
         ];
 
         let selectedTile = 0;
@@ -410,17 +414,8 @@
             return { x, y };
         }
 
-        canvas.addEventListener('mousedown', (e) => {
-            isDrawing = true;
-            const { x, y } = getTileFromMouse(e);
-            if (x >= 0 && x < gridWidth && y >= 0 && y < gridHeight) {
-                mapData[y][x] = selectedTile;
-                draw();
-            }
-        });
-
         canvas.addEventListener('mousemove', (e) => {
-            if (isDrawing) {
+            if (isDrawing && !isBucketMode) {
                 const { x, y } = getTileFromMouse(e);
                 if (x >= 0 && x < gridWidth && y >= 0 && y < gridHeight) {
                     mapData[y][x] = selectedTile;
@@ -510,6 +505,11 @@
 
         function enablePaintBucket() {
             isBucketMode = !isBucketMode;
+            if (isBucketMode) {
+                canvas.style.cursor = 'pointer';
+            } else {
+                canvas.style.cursor = 'crosshair';
+            }
         }
 
         canvas.addEventListener("mousedown", e => {
@@ -542,8 +542,8 @@
 
                 stack.push({ x: x + 1, y });
                 stack.push({ x: x - 1, y });
-                stack.push({ x,y: y + 1 });
-                stack.push({ x,y: y - 1 });
+                stack.push({ x, y: y + 1 });
+                stack.push({ x, y: y - 1 });
             }
         }
 
@@ -609,7 +609,42 @@
             }
         });
 
+        // Charger les pinceaux automatiquement depuis pinceaux.json
+        function loadBrushesFromFile() {
+            const brushData = [
+              {"name": "TerreP", "color": "#8B4513", "border": "#654321"},
+              {"name": "Eau", "color": "#1E90FF", "border": "#1873cc"},
+              {"name": "TerreCHG", "color": "#A0522D", "border": "#8B4513"},
+              {"name": "TerreCHD", "color": "#A0522D", "border": "#8B4513"},
+              {"name": "TerreCBG", "color": "#A0522D", "border": "#8B4513"},
+              {"name": "TerreCBD", "color": "#A0522D", "border": "#8B4513"},
+              {"name": "TerreH", "color": "#A0522D", "border": "#8B4513"},
+              {"name": "TerreB", "color": "#A0522D", "border": "#8B4513"},
+              {"name": "TerreG", "color": "#A0522D", "border": "#8B4513"},
+              {"name": "TerreD", "color": "#A0522D", "border": "#8B4513"},
+              {"name": "feu", "color": "#FF2900", "border": "#B30000"},
+              {"name": "Pierre", "color": "#807B6C", "border": "#342F20"},
+              {"name": "ArbreCoupe", "color": "#229119", "border": "#004500"},
+              {"name": "ArbreEntier", "color": "#0D5C21", "border": "#001000"}
+            ];
+            
+            // Réinitialiser les tuiles avec le vide
+            tiles.length = 1; // Garder seulement "Vide"
+            
+            // Ajouter les pinceaux
+            brushData.forEach((brush, index) => {
+                tiles.push({
+                    id: index + 1,
+                    name: brush.name,
+                    color: brush.color,
+                    border: brush.border
+                });
+            });
+            console.log('✅ Pinceaux chargés avec succès');
+        }
+
         // Initialiser
+        loadBrushesFromFile();
         createNewMap();
         initPalette();
     </script>
