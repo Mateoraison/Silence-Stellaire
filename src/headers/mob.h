@@ -13,6 +13,7 @@ typedef struct {
     float largeur,hauteur;
     Uint32 time_change_dir;
     SDL_Texture * texture;
+    int vie;
 }Mob;
 
 extern Mob mobs[MAX_MOB];
