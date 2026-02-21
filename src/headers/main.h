@@ -31,6 +31,9 @@ typedef struct {
     float y;
     SDL_Texture *texture;
     int direction; // 0=south,1=north,2=west,3=east
+    int vie;
+    int vie_max;
+    Uint32 invincibiliter_timer;
 } Perso;
 
 
@@ -49,6 +52,9 @@ extern int animation_frame;
 extern Uint32 animation_timer; 
 extern Uint32 bouge_timer;
 extern bool perso_bouge;
+extern bool combat_en_cours;
+extern int combat_frame;
+extern Uint32 combat_timer;
 
 extern MIX_Track *track_global;
 

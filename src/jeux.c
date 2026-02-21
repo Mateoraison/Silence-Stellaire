@@ -7,11 +7,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-Perso  perso = {-580.0f, -500.0f, NULL, 0};
+Perso  perso = {-580.0f, -500.0f, NULL, 0, 10, 10, 2000};
 int animation_frame = 0;
 Uint32 animation_timer = 0;
 bool perso_bouge = false;
 Uint32 bouge_timer = 0;
+bool combat_en_cours = false;
+int combat_frame = 0;
+Uint32 combat_timer = 0;
 
 void remplir_tileset(t_tile map[W_MAP][H_MAP]){
     FILE *file = fopen("assets/map/map.txt", "r");
@@ -117,6 +120,8 @@ void charger_tilemap(SDL_Renderer *renderer, SDL_Texture *tileset,
 
 
 int jeu_principal(SDL_Renderer *renderer) {
+
+    perso = (Perso){-580.0f, -500.0f, NULL, 0, 10, 10, SDL_GetTicks()};
     srand(time(NULL));
     SDL_Texture *tileset = IMG_LoadTexture(renderer, "assets/tileset/V2/Tilemap_color1.png");
     if (!tileset){
@@ -145,6 +150,7 @@ int jeu_principal(SDL_Renderer *renderer) {
     int code_sortie = 0;
 
     while (running){
+
         while (SDL_PollEvent(&event)){
             if (event.type == SDL_EVENT_QUIT){
                 running = false;
@@ -154,6 +160,7 @@ int jeu_principal(SDL_Renderer *renderer) {
                     code_sortie = 1; 
             }
             deplacer_perso(event);
+            gerer_combat(event);
             
             const float joueur_ecran_x = -perso.x + 500.0f;
             const float joueur_ecran_y = -perso.y + 400.0f;
@@ -184,7 +191,7 @@ int jeu_principal(SDL_Renderer *renderer) {
             for (int tx = tuile_gauche; tx <= tuile_droite && !collision_trouve; tx++) {
                 for (int ty = tuile_haut; ty <= tuile_bas; ty++) {
                     if (tx < 0 || ty < 0 || tx >= W_MAP || ty >= H_MAP) continue;
-                    if (test_collision(tx, ty, map)) { collision_trouve = 1; break; }
+                    if (test_collision(tx, ty, map, 0)) { collision_trouve = 1; break; }
                 }
             }
 
@@ -204,11 +211,14 @@ int jeu_principal(SDL_Renderer *renderer) {
 
         charger_tilemap(renderer, tileset, map, foam);
         update_animation();
-        update_mobs();
-        afficher_perso(renderer);
+        update_combat();
+        update_mobs(map);
+        if (combat_en_cours == false) afficher_perso(renderer);
+        afficher_combat(renderer);
         afficher_mob(renderer);
-        
+        afficher_vie(renderer);
 
+        perso.invincibiliter_timer = (maintenant - perso.invincibiliter_timer > 2000) ? 0 : perso.invincibiliter_timer;
         
         static Uint32 foam_timer = 0;
         
