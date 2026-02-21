@@ -40,6 +40,7 @@ typedef struct {
 #include "option.h"
 #include "perso.h"
 #include "son.h"
+#include "vaisseau.h"
 
 extern Perso perso;
 extern int animation_frame;   
