@@ -3,6 +3,7 @@
 #include <math.h>
 #include <SDL3_mixer/SDL_mixer.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #define FRAME_DUREE 50
 
@@ -40,6 +41,7 @@ typedef struct {
 #include "option.h"
 #include "perso.h"
 #include "son.h"
+#include "mob.h"
 
 extern Perso perso;
 extern int animation_frame;   

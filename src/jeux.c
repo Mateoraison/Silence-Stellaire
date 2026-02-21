@@ -135,6 +135,9 @@ int jeu_principal(SDL_Renderer *renderer) {
             else foam[x][y] = 100 ;  
         }
     }
+    
+
+    init_mobs(renderer);
 
     bool running = true;
     SDL_Event event;
@@ -197,13 +200,18 @@ int jeu_principal(SDL_Renderer *renderer) {
 
         SDL_RenderClear(renderer);
         
+        Uint32 maintenant = SDL_GetTicks();
+
         charger_tilemap(renderer, tileset, map, foam);
         update_animation();
+        update_mobs();
         afficher_perso(renderer);
+        afficher_mob(renderer);
+        
 
         
         static Uint32 foam_timer = 0;
-        Uint32 maintenant = SDL_GetTicks();
+        
         if (maintenant - foam_timer > 800) {  
             for (int x = 0; x < W_MAP; x++) {
                 for (int y = 0; y < H_MAP; y++) {

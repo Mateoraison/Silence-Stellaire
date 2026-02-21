@@ -20,9 +20,6 @@ int afficher_perso(SDL_Renderer *renderer) {
     SDL_FRect src = {0, 0, 64, 64};
     SDL_FRect dest = {500.0f , 400.0f, 90, 90};
 
-    // SDL_Color noir = {0, 0, 0, 255};
-    // SDL_Color blanc = {255, 255, 255, 255};
-
     SDL_RenderTexture(renderer, perso_texture, &src, &dest);
     SDL_DestroyTexture(perso_texture);
     return 0;
