@@ -57,7 +57,7 @@ int main(int argc, char* argv[]) {
         int action_menu = afficher_menu(renderer);
         if (action_menu == 1) {
             int resultat_jeu = jeu_principal(renderer);
-            if (resultat_jeu == 0) running = false;
+            if (resultat_jeu == 3) afficher_map(renderer);
         }else if(action_menu == 2){
             int resultat_option = afficher_option(renderer,track_global);
             if(resultat_option == 0) running = false;

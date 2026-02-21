@@ -149,9 +149,16 @@ int jeu_principal(SDL_Renderer *renderer) {
             if (event.type == SDL_EVENT_QUIT){
                 running = false;
                 code_sortie = 1;
-            } else if (event.type == SDL_EVENT_KEY_DOWN && event.key.key == SDLK_ESCAPE) {
+            } else if (event.type == SDL_EVENT_KEY_DOWN) {
+                if(event.key.key == SDLK_ESCAPE){
                     running = false;
                     code_sortie = 1; 
+                }
+                if(event.key.key == SDLK_M){
+                    running = false;
+                    code_sortie = 3;
+                }
+                    
             }
             deplacer_perso(event);
             

@@ -22,14 +22,14 @@ int afficher_menu(SDL_Renderer *renderer) {
         return 1;
     }
 
-    SDL_Texture *texture = IMG_LoadTexture(renderer, "assets/menu.png");
+    SDL_Texture *texture = IMG_LoadTexture(renderer, "assets/menu/menu.png");
     if(!texture) {
         SDL_Log("erreur chargement texture: %s", SDL_GetError());
         return 1;
     }
 
 
-    SDL_Texture *BoutonText = IMG_LoadTexture(renderer, "assets/bouton.png");
+    SDL_Texture *BoutonText = IMG_LoadTexture(renderer, "assets/menu/bouton.png");
     if(!BoutonText) {
         SDL_Log("erreur chargement texture bouton: %s", SDL_GetError());
         SDL_DestroyTexture(texture);

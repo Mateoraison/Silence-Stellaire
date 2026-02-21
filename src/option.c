@@ -22,7 +22,7 @@ int afficher_option(SDL_Renderer *renderer, MIX_Track *track_global) {
         return -1;
     }
 
-    SDL_Texture *bouton_texture = IMG_LoadTexture(renderer, "assets/bouton.png");
+    SDL_Texture *bouton_texture = IMG_LoadTexture(renderer, "assets/menu/bouton.png");
     if (!bouton_texture) {
         SDL_Log("Erreur texture bouton: %s", SDL_GetError());
         SDL_Delay(20000);
