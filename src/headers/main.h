@@ -42,6 +42,7 @@ typedef struct {
 #include "perso.h"
 #include "son.h"
 #include "mob.h"
+#include "vaisseau.h"
 
 extern Perso perso;
 extern int animation_frame;   

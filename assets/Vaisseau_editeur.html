@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Éditeur de Vaisseau Spatial</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Thème sombre "Espace" */
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+            background: #1e1e1e; /* Fond conteneur sombre */
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            max-width: 1400px;
+        }
+
+        .sidebar {
+            width: 220px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        /* Personnalisation de la scrollbar pour la palette */
+        .sidebar::-webkit-scrollbar { width: 6px; }
+        .sidebar::-webkit-scrollbar-track { background: #2c2c2c; border-radius: 4px; }
+        .sidebar::-webkit-scrollbar-thumb { background: #555; border-radius: 4px; }
+
+        .palette {
+            background: #2c2c2c;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #3d3d3d;
+        }
+
+        .palette h3 {
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        .category-title {
+            font-size: 11px;
+            color: #aaa;
+            margin: 10px 0 5px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #444;
+            padding-bottom: 3px;
+        }
+
+        .tile-button {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 5px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 600;
+            transition: all 0.2s;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        .tile-button:hover {
+            transform: translateX(3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .tile-button.active {
+            border: 3px solid #fff;
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .controls {
+            background: #2c2c2c;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #3d3d3d;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            color: white;
+        }
+
+        .controls h3 {
+            font-size: 14px;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        input[type="number"] {
+            padding: 8px;
+            border: 1px solid #555;
+            background: #1e1e1e;
+            color: white;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn-primary { background: #2196F3; color: white; }
+        .btn-primary:hover { background: #1976D2; transform: translateY(-2px); }
+
+        .btn-success { background: #4CAF50; color: white; }
+        .btn-success:hover { background: #45a049; transform: translateY(-2px); }
+
+        .btn-info { background: #00BCD4; color: white; }
+        .btn-info:hover { background: #0097A7; transform: translateY(-2px); }
+
+        .btn-danger { background: #f44336; color: white; }
+        .btn-danger:hover { background: #da190b; transform: translateY(-2px); }
+
+        .btn-warning { background: #ff9800; color: white; }
+        .btn-warning:hover { background: #e68900; transform: translateY(-2px); }
+
+        .canvas-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            overflow: auto;
+        }
+
+        canvas {
+            border: 2px solid #444;
+            background: #000;
+            cursor: crosshair;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .info {
+            background: #1a365d;
+            padding: 10px;
+            border-radius: 6px;
+            border-left: 4px solid #2196F3;
+            font-size: 12px;
+            color: #90cdf4;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .file-label {
+            padding: 10px;
+            background: #9C27B0;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: center;
+            font-weight: 600;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+
+        .file-label:hover {
+            background: #7B1FA2;
+            transform: translateY(-2px);
+        }
+
+        .tile-colors {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="palette">
+                <h3>🚀 Tuiles Vaisseau</h3>
+                <div class="tile-colors" id="paletteContainer"></div>
+            </div>
+
+            <div class="controls">
+                <h3>⚙️ Contrôles</h3>
+                <div class="control-group">
+                    <label>Largeur (MAP_W):</label>
+                    <input type="number" id="widthInput" min="4" max="100" value="24">
+                </div>
+                <div class="control-group">
+                    <label>Hauteur (MAP_H):</label>
+                    <input type="number" id="heightInput" min="4" max="100" value="19">
+                </div>
+                <button class="btn-info" onclick="enablePaintBucket()">Seau de peinture</button>
+                <button class="btn-primary" onclick="createNewMap()">📋 Appliquer Dimensions</button>
+                <button class="btn-danger" onclick="clearMap()">🗑️ Effacer tout</button>
+                <label class="file-label">
+                    📂 Charger Map (.txt)
+                    <input type="file" id="fileInput" accept=".txt">
+                </label>
+                <button class="btn-success" onclick="downloadMap()">⬇️ Exporter Map (.txt)</button>
+            </div>
+        </div>
+
+        <div class="canvas-area">
+            <canvas id="canvas"></canvas>
+            <div class="info">
+                📍 Cliquez ou glissez pour dessiner • <strong id="coordInfo">Tuile sélectionnée: Métal clair (0)</strong>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Définition des tuiles basées sur tes macros C
+        const tiles = [
+            // ---- Sols ----
+            { id: 0, category: 'Sols', name: '0: Métal clair', color: '#B0BEC5', border: '#78909C' },
+            { id: 1, category: 'Sols', name: '1: Métal sombre', color: '#455A64', border: '#263238' },
+            { id: 2, category: 'Sols', name: '2: Sol lignes', color: '#546E7A', border: '#FFB300' },
+            { id: 3, category: 'Sols', name: '3: Sol grillagé', color: '#37474F', border: '#000000' },
+            
+            // ---- Murs ----
+            { id: 10, category: 'Murs', name: '10: Mur plein', color: '#1A237E', border: '#000000' },
+            { id: 11, category: 'Murs', name: '11: Mur panneaux', color: '#283593', border: '#3949AB' },
+            { id: 12, category: 'Murs', name: '12: Mur tuyaux', color: '#311B92', border: '#00BFA5' },
+            { id: 13, category: 'Murs', name: '13: Mur lumière', color: '#1A237E', border: '#00E5FF' },
+            { id: 14, category: 'Murs', name: '14: Mur coin G', color: '#0D47A1', border: '#1976D2' },
+            { id: 15, category: 'Murs', name: '15: Mur coin D', color: '#0D47A1', border: '#1976D2' },
+
+            // ---- Structures ----
+            { id: 20, category: 'Structures', name: '20: Porte fermée', color: '#C62828', border: '#800000' },
+            { id: 21, category: 'Structures', name: '21: Porte ouverte', color: '#2E7D32', border: '#1B5E20' },
+            { id: 22, category: 'Structures', name: '22: Sas', color: '#6A1B9A', border: '#4A148C' },
+            { id: 23, category: 'Structures', name: '23: Hublot', color: '#0277BD', border: '#81D4FA' },
+            { id: 24, category: 'Structures', name: '24: Fenêtre spat.', color: '#000000', border: '#FFFFFF' },
+
+            // ---- Consoles & déco ----
+            { id: 30, category: 'Consoles', name: '30: Console éteinte', color: '#212121', border: '#424242' },
+            { id: 31, category: 'Consoles', name: '31: Console allumée', color: '#00C853', border: '#B9F6CA' },
+            { id: 32, category: 'Consoles', name: '32: Ecran radar', color: '#00E676', border: '#004D40' },
+            { id: 33, category: 'Consoles', name: '33: Terminal', color: '#00B0FF', border: '#E1F5FE' },
+            { id: 34, category: 'Consoles', name: '34: Panneau alerte', color: '#D50000', border: '#FFEA00' },
+
+            // ---- Détails techniques ----
+            { id: 40, category: 'Technique', name: '40: Grille aération', color: '#616161', border: '#212121' },
+            { id: 41, category: 'Technique', name: '41: Câbles', color: '#E65100', border: '#FF9800' },
+            { id: 42, category: 'Technique', name: '42: Générateur', color: '#0091EA', border: '#84FFFF' },
+            { id: 43, category: 'Technique', name: '43: Réacteur', color: '#AA00FF', border: '#EA80FC' },
+            { id: 44, category: 'Technique', name: '44: Batterie', color: '#AEEA00', border: '#F4FF81' }
+        ];
+
+        let selectedTile = 0;
+        let gridWidth = 24; // MAP_W
+        let gridHeight = 19; // MAP_H
+        let tileSize = 30; // Taille d'affichage par défaut
+        let mapData = [];
+        let isDrawing = false;
+        let isBucketMode = false;
+
+        // Initialiser la palette avec des catégories
+        function initPalette() {
+            const container = document.getElementById('paletteContainer');
+            container.innerHTML = '';
+            
+            let currentCategory = '';
+
+            tiles.forEach(tile => {
+                if(tile.category !== currentCategory) {
+                    const title = document.createElement('div');
+                    title.className = 'category-title';
+                    title.textContent = tile.category;
+                    container.appendChild(title);
+                    currentCategory = tile.category;
+                }
+
+                const btn = document.createElement('button');
+                btn.className = 'tile-button';
+                btn.style.background = tile.color;
+                btn.style.borderColor = tile.border;
+                
+                // Adapter la couleur du texte selon le fond pour la lisibilité
+                if(tile.color === '#B0BEC5' || tile.color === '#AEEA00' || tile.color === '#00E676') {
+                    btn.style.color = '#000';
+                    btn.style.textShadow = 'none';
+                }
+
+                if (tile.id === selectedTile) btn.classList.add('active');
+                btn.textContent = `${tile.name}`;
+                btn.onclick = () => selectTile(tile.id);
+                container.appendChild(btn);
+            });
+        }
+
+        function selectTile(id) {
+            selectedTile = id;
+            updateCoordInfo();
+            initPalette(); // Rafraîchir pour afficher la tuile active
+        }
+
+        function updateCoordInfo() {
+            const tile = tiles.find(t => t.id === selectedTile);
+            if(tile) {
+                document.getElementById('coordInfo').textContent =
+                    `Tuile sélectionnée: ${tile.name}`;
+            }
+        }
+
+        function createNewMap() {
+            const newW = parseInt(document.getElementById('widthInput').value);
+            const newH = parseInt(document.getElementById('heightInput').value);
+            
+            const newData = Array(newH).fill(null).map(() => Array(newW).fill(0));
+            
+            // Conserver l'ancien dessin si possible lors du redimensionnement
+            if(mapData.length > 0) {
+                for (let y = 0; y < Math.min(gridHeight, newH); y++) {
+                    for (let x = 0; x < Math.min(gridWidth, newW); x++) {
+                        newData[y][x] = mapData[y][x];
+                    }
+                }
+            }
+
+            gridWidth = newW;
+            gridHeight = newH;
+            mapData = newData;
+
+            resizeCanvas();
+            draw();
+        }
+
+        function clearMap() {
+            if (confirm('Êtes-vous sûr de vouloir vider le vaisseau ?')) {
+                mapData = Array(gridHeight).fill(null).map(() => Array(gridWidth).fill(0));
+                draw();
+            }
+        }
+
+        function resizeCanvas() {
+            // Calcule la taille optimale de la tuile en fonction de l'écran
+            tileSize = Math.max(15, Math.min(40, Math.floor(800 / Math.max(gridWidth, gridHeight))));
+            canvas.width = gridWidth * tileSize;
+            canvas.height = gridHeight * tileSize;
+        }
+
+        function draw() {
+            ctx.fillStyle = '#000000';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            for (let y = 0; y < gridHeight; y++) {
+                for (let x = 0; x < gridWidth; x++) {
+                    const tileId = mapData[y][x];
+                    // Fallback de sécurité sur la tuile 0 si l'ID n'est pas trouvé
+                    const tile = tiles.find(t => t.id === tileId) || tiles[0];
+
+                    const px = x * tileSize;
+                    const py = y * tileSize;
+
+                    ctx.fillStyle = tile.color;
+                    ctx.fillRect(px, py, tileSize, tileSize);
+
+                    ctx.strokeStyle = tile.border;
+                    ctx.lineWidth = 1.5;
+                    ctx.strokeRect(px, py, tileSize, tileSize);
+
+                    // Afficher le numéro de l'ID si la tuile est assez grande
+                    if (tileSize > 25) {
+                        ctx.fillStyle = '#FFFFFF';
+                        ctx.font = 'bold ' + Math.floor(tileSize * 0.35) + 'px Arial';
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
+                        // Ombre portée pour la lisibilité
+                        ctx.shadowColor = "black";
+                        ctx.shadowBlur = 3;
+                        ctx.fillText(tileId, px + tileSize / 2, py + tileSize / 2);
+                        ctx.shadowBlur = 0; // reset
+                    }
+                }
+            }
+        }
+
+        function getTileFromMouse(e) {
+            const rect = canvas.getBoundingClientRect();
+            const x = Math.floor((e.clientX - rect.left) / tileSize);
+            const y = Math.floor((e.clientY - rect.top) / tileSize);
+            return { x, y };
+        }
+
+        canvas.addEventListener('mousemove', (e) => {
+            if (isDrawing && !isBucketMode) {
+                const { x, y } = getTileFromMouse(e);
+                if (x >= 0 && x < gridWidth && y >= 0 && y < gridHeight) {
+                    mapData[y][x] = selectedTile;
+                    draw();
+                }
+            }
+        });
+
+        canvas.addEventListener('mouseup', () => { isDrawing = false; });
+        canvas.addEventListener('mouseleave', () => { isDrawing = false; });
+
+        function mapToString() {
+            return mapData.map(row => row.join('-')).join('\n');
+        }
+
+        function downloadMap() {
+            const mapText = mapToString();
+            const blob = new Blob([mapText], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'vaisseau_map.txt';
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            setTimeout(() => {
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+            }, 100);
+        }
+
+        function enablePaintBucket() {
+            isBucketMode = !isBucketMode;
+            if (isBucketMode) {
+                canvas.style.cursor = 'crosshair'; // ou une image personnalisée
+                document.querySelector('.btn-info').style.border = "2px solid white";
+            } else {
+                canvas.style.cursor = 'crosshair';
+                document.querySelector('.btn-info').style.border = "none";
+            }
+        }
+
+        canvas.addEventListener("mousedown", e => {
+            const { x, y } = getTileFromMouse(e);
+            if (x < 0 || x >= gridWidth || y < 0 || y >= gridHeight) return;
+
+            if (isBucketMode) {
+                const targetId = mapData[y][x];
+                if (targetId !== selectedTile) {
+                    floodFill(x, y, targetId, selectedTile);
+                    draw();
+                }
+            } else {
+                isDrawing = true;
+                mapData[y][x] = selectedTile;
+                draw();
+            }
+        });
+
+        function floodFill(startX, startY, oldId, newId) {
+            if (oldId === newId) return;
+            const stack = [{ x: startX, y: startY }];
+
+            while (stack.length > 0) {
+                const { x, y } = stack.pop();
+                if (x < 0 || x >= gridWidth || y < 0 || y >= gridHeight) continue;
+                if (mapData[y][x] !== oldId) continue;
+
+                mapData[y][x] = newId;
+
+                stack.push({ x: x + 1, y });
+                stack.push({ x: x - 1, y });
+                stack.push({ x, y: y + 1 });
+                stack.push({ x, y: y - 1 });
+            }
+        }
+
+        document.getElementById('fileInput').addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    const text = event.target.result;
+                    const lines = text.trim().split(/\r?\n/).filter(line => line.trim() !== '');
+                    if (lines.length === 0) return;
+
+                    gridHeight = lines.length;
+                    gridWidth = lines[0].split('-').length;
+
+                    mapData = lines.map(line =>
+                        line.split('-').map(s => {
+                            const n = parseInt(s, 10);
+                            return Number.isNaN(n) ? 0 : n;
+                        })
+                    );
+
+                    document.getElementById('widthInput').value = gridWidth;
+                    document.getElementById('heightInput').value = gridHeight;
+
+                    resizeCanvas();
+                    draw();
+                };
+                reader.readAsText(file);
+            }
+        });
+
+        // Initialisation de l'outil
+        createNewMap();
+        initPalette();
+    </script>
+</body>
+</html>

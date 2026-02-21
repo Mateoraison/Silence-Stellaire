@@ -98,45 +98,42 @@ bool is_blocking(int tile) {
     );
 }
 
-int vaisseau(void) {
-    if (!SDL_Init(SDL_INIT_VIDEO)) return 1;
+int vaisseau(SDL_Renderer *renderer) {
 
-    SDL_Window *window = SDL_CreateWindow("Vaisseau Stellaire - Deck 1", 800, 600, 0);
-    SDL_Renderer *renderer = SDL_CreateRenderer(window, NULL);
-    
-    // Activer le filtrage pour que les tuiles soient nettes
-    SDL_SetHint("SDL_RENDER_SCALE_QUALITY", "nearest");
-
-    SDL_Texture *tileset = IMG_LoadTexture(renderer, "assets/tileset/V2/Interieur_Vaisseau/free_tiles.png");
-    if (tileset) {
-        SDL_SetTextureScaleMode(tileset, SDL_SCALEMODE_NEAREST);
-    }
+    SDL_Texture *tileset =
+        IMG_LoadTexture(renderer,
+        "assets/tileset/V2/Interieur_Vaisseau/free_tiles.png");
 
     if (!tileset) {
         SDL_Log("Erreur: %s", SDL_GetError());
         return 1;
     }
 
+    SDL_SetTextureScaleMode(tileset, SDL_SCALEMODE_NEAREST);
+
     remplir_tileset2(tile_map);
 
-    SDL_FRect player = { 400, 300, 20, 20 };
+    SDL_FRect player = {400, 300, 20, 20};
     bool running = true;
     SDL_Event event;
 
     while (running) {
+
         while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_EVENT_QUIT) running = false;
+            if (event.type == SDL_EVENT_QUIT)
+                return 0; // quitter le jeu
         }
 
-        // Déplacement simple
         const bool *state = SDL_GetKeyboardState(NULL);
-        float next_x = player.x, next_y = player.y;
+
+        float next_x = player.x;
+        float next_y = player.y;
+
         if (state[SDL_SCANCODE_W]) next_y -= 3;
         if (state[SDL_SCANCODE_S]) next_y += 3;
         if (state[SDL_SCANCODE_A]) next_x -= 3;
         if (state[SDL_SCANCODE_D]) next_x += 3;
 
-        // Collision très basique avec les murs 
         int grid_x = (int)(next_x + 10) / TILE_SIZE;
         int grid_y = (int)(next_y + 10) / TILE_SIZE;
 
@@ -145,22 +142,18 @@ int vaisseau(void) {
             player.y = next_y;
         }
 
-        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+        SDL_SetRenderDrawColor(renderer,0,0,0,255);
         SDL_RenderClear(renderer);
 
         draw_map(renderer, tileset);
 
-        // Dessin du joueur (un petit curseur de vaisseau)
-        SDL_SetRenderDrawColor(renderer, 0, 255, 255, 255);
-        SDL_RenderFillRect(renderer, &player);
+        SDL_SetRenderDrawColor(renderer,0,255,255,255);
+        SDL_RenderFillRect(renderer,&player);
 
         SDL_RenderPresent(renderer);
         SDL_Delay(16);
     }
 
     SDL_DestroyTexture(tileset);
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(window);
-    SDL_Quit();
-    return 0;
+    return 1;
 }

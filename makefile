@@ -1,4 +1,9 @@
 # ========================
+# Détection de l'OS
+# ========================
+UNAME_S := $(shell uname -s)
+
+# ========================
 # Projet
 # ========================
 NAME := silenceStellaire
@@ -29,7 +34,17 @@ CC := gcc
 # Flags
 # ========================
 CFLAGS := -Wall -Wextra -I$(INC_DIR) -I$(HDR_DIR)
-LDFLAGS := -L$(LIB_DIR) -lSDL3 -lSDL3_image -lSDL3_ttf -lSDL3_mixer -lm -Wl,-rpath,'$$ORIGIN/../lib'
+
+# Gestion dynamique du RPATH selon l'OS
+ifeq ($(UNAME_S), Darwin)
+    # Configuration pour macOS
+    RPATH_FLAG := -Wl,-rpath,@loader_path/../$(LIB_DIR)
+else
+    # Configuration pour Linux (et autres)
+    RPATH_FLAG := -Wl,-rpath,'$$ORIGIN/../$(LIB_DIR)'
+endif
+
+LDFLAGS := -L$(LIB_DIR) -lSDL3 -lSDL3_image -lSDL3_ttf -lSDL3_mixer -lm $(RPATH_FLAG)
 
 # ========================
 # Règles
