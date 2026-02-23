@@ -60,3 +60,4 @@ extern Uint32 combat_timer;
 
 extern MIX_Track *track_global;
 
+extern int Planete_actuelle;

@@ -12,6 +12,7 @@
 
 int main(int argc, char* argv[]) {
     MIX_Track *track_global = NULL; 
+    int Planete_actuelle = 1;
     (void)argc;
     (void)argv;
     
@@ -56,8 +57,12 @@ int main(int argc, char* argv[]) {
     while (running) {
         int action_menu = afficher_menu(renderer);
         if (action_menu == 1) {
-            int resultat_jeu = jeu_principal(renderer);
-            if (resultat_jeu == 3) afficher_map(renderer);
+            int resultat_jeu = jeu_principal(renderer,Planete_actuelle);
+            if (resultat_jeu == 3){
+                int nouvelle_planete = afficher_map(renderer);
+                Planete_actuelle = nouvelle_planete;
+            }
+            if (resultat_jeu == 4) vaisseau(renderer);
         }else if(action_menu == 2){
             int resultat_option = afficher_option(renderer,track_global);
             if(resultat_option == 0) running = false;

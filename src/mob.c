@@ -32,7 +32,7 @@ void update_mobs(t_tile map[W_MAP][H_MAP]) {
         float nouvelle_x = mobs[i].x;
         float nouvelle_y = mobs[i].y;
         
-        float vitesse = 1.0f;
+        float vitesse = 0.1f;
         
         switch (mobs[i].direction) {
             case 0: nouvelle_y -= vitesse; break;  // south

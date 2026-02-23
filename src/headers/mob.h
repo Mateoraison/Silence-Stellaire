@@ -5,8 +5,8 @@
 #define MAX_MOB 100
 
 typedef struct {
-    int x;
-    int y;
+    float x;
+    float y;
     int direction;
     int vitesse_x;
     int vitesse_y;

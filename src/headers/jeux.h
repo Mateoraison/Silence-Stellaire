@@ -3,4 +3,4 @@
 
 
 
-int jeu_principal(SDL_Renderer *renderer);
+int jeu_principal(SDL_Renderer *renderer,int planete);

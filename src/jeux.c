@@ -16,8 +16,14 @@ bool combat_en_cours = false;
 int combat_frame = 0;
 Uint32 combat_timer = 0;
 
-void remplir_tileset(t_tile map[W_MAP][H_MAP]){
-    FILE *file = fopen("assets/map/map.txt", "r");
+
+
+void remplir_tileset(t_tile map[W_MAP][H_MAP], char * map_txt){
+
+    char chemin[50] = "assets/map/";
+    strcat(chemin,map_txt);
+    FILE *file = fopen(chemin, "r");
+
     if (!file) {
         SDL_Log("Erreur ouverture fichier Map : %s", SDL_GetError());
         return;
@@ -69,6 +75,7 @@ void charger_tilemap(SDL_Renderer *renderer, SDL_Texture *tileset,
 
 
             switch(map[x][y].type) {
+                case vide:
                 case terreP:   src = (SDL_FRect){64, 64, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};src_remplit = true; break;
                 case terreCHG: src = (SDL_FRect){0, 0, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};src_remplit = true;break;
                 case terreCHD: src = (SDL_FRect){128,0, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};src_remplit = true;break;
@@ -119,8 +126,7 @@ void charger_tilemap(SDL_Renderer *renderer, SDL_Texture *tileset,
 
 
 
-int jeu_principal(SDL_Renderer *renderer) {
-
+int jeu_principal(SDL_Renderer *renderer, int planete) {
     perso = (Perso){-580.0f, -500.0f, NULL, 0, 10, 10, SDL_GetTicks()};
     srand(time(NULL));
     SDL_Texture *tileset = IMG_LoadTexture(renderer, "assets/tileset/V2/Tilemap_color1.png");
@@ -133,7 +139,14 @@ int jeu_principal(SDL_Renderer *renderer) {
     
     t_tile map[W_MAP][H_MAP];
     int foam[W_MAP][H_MAP];
-    remplir_tileset(map);
+    switch (planete){
+    case 1: remplir_tileset(map,"map.txt");break;
+    case 2: remplir_tileset(map,"map2.txt");break;
+    case 3: remplir_tileset(map,"map3.txt");break;
+    default: break;
+    }
+    
+
     for (int x = 0; x < W_MAP; x++) {
         for (int y = 0; y < H_MAP; y++) {
             if((map[x][y].type <= 10) && (map[x][y].type >= 3 )) foam[x][y] = rand() % 16 ;
@@ -163,6 +176,10 @@ int jeu_principal(SDL_Renderer *renderer) {
                 if(event.key.key == SDLK_M){
                     running = false;
                     code_sortie = 3;
+                }
+                if(event.key.key == SDLK_V){
+                    running = false;
+                    code_sortie = 4;
                 }
                     
             }
