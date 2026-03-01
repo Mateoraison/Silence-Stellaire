@@ -15,6 +15,13 @@ Uint32 bouge_timer = 0;
 bool combat_en_cours = false;
 int combat_frame = 0;
 Uint32 combat_timer = 0;
+int est_animation_degat = 0;
+Uint32 animation_degat_timer = 0;
+int tramblement_degat_camera = 0;
+Uint32 tramblement_camera_timer = 0;
+float tramblement_camera_x = 0.0f;
+float tramblement_camera_y = 0.0f;
+
 
 
 
@@ -163,6 +170,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
     int code_sortie = 0;
 
     while (running){
+        int vie_avant = perso.vie;
 
         while (SDL_PollEvent(&event)){
             if (event.type == SDL_EVENT_QUIT){
@@ -233,14 +241,52 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
         
         Uint32 maintenant = SDL_GetTicks();
 
+        // Sauvegarder les positions réelles du personnage
+        float perso_x_original = perso.x;
+        float perso_y_original = perso.y;
+
+        // Appliquer le tremblement de caméra
+        if (tramblement_degat_camera && (maintenant - tramblement_camera_timer < 500)) {
+            tramblement_camera_x = (float)(rand() % 11 - 5);
+            tramblement_camera_y = (float)(rand() % 11 - 5);
+            perso.x += tramblement_camera_x;
+            perso.y += tramblement_camera_y;
+        } else if (tramblement_degat_camera && (maintenant - tramblement_camera_timer >= 500)) {
+            tramblement_degat_camera = 0;
+            tramblement_camera_x = 0.0f;
+            tramblement_camera_y = 0.0f;
+        }
+
         charger_tilemap(renderer, tileset, map, foam);
         update_animation();
-        update_combat();
+        update_combat(map);
         update_mobs(map);
         if (combat_en_cours == false) afficher_perso(renderer);
         afficher_combat(renderer);
         afficher_mob(renderer);
         afficher_vie(renderer);
+
+        // Restaurer la position réelle du personnage après l'affichage
+        perso.x = perso_x_original;
+        perso.y = perso_y_original;
+        if (vie_avant > perso.vie) {
+            est_animation_degat = 1;
+            tramblement_degat_camera = 1;
+            animation_degat_timer = maintenant;
+            tramblement_camera_timer = maintenant;
+        }
+
+        if (est_animation_degat) {
+            SDL_Texture *animation_degat = IMG_LoadTexture(renderer, "assets/UI/flash.png");
+            SDL_FRect src = {0, 0, 64, 64};
+            SDL_FRect dest = {0.0f, 0.0f, 1000.0f, 800.0f};
+            SDL_RenderTexture(renderer, animation_degat, &src, &dest);
+            SDL_DestroyTexture(animation_degat);
+        }
+
+        if(est_animation_degat && (maintenant - animation_degat_timer > 500)) {
+            est_animation_degat = 0;
+        }
 
         perso.invincibiliter_timer = (maintenant - perso.invincibiliter_timer > 2000) ? 0 : perso.invincibiliter_timer;
         

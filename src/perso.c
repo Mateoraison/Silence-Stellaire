@@ -98,7 +98,7 @@ int test_collision(int x, int y, t_tile map[W_MAP][H_MAP], int est_mob) {
     case arbreEntier:
         return 1;
     case feu:
-        if (est_mob == 0 && perso.vie > 0 && perso.invincibiliter_timer == 0) {
+        if (est_mob == 0 && perso.vie > 0 && perso.invincibiliter_timer == 0){
             perso.vie -= 1;
             perso.invincibiliter_timer = SDL_GetTicks();
         }
@@ -183,7 +183,7 @@ void afficher_combat(SDL_Renderer *renderer) {
     SDL_DestroyTexture(combat_texture);
 }
 
-void update_combat() {
+void update_combat(t_tile map[W_MAP][H_MAP]) {
     /**
      * Cette fonction met à jour l'état du combat et les frames d'animation.
      */
@@ -200,12 +200,12 @@ void update_combat() {
         if (combat_frame >= 3) {
             combat_en_cours = false;
             combat_frame = 0;
-            tester_collision_combat();
+            tester_collision_combat(map);
         }
     }
 }
 
-void tester_collision_combat() {
+void tester_collision_combat(t_tile map[W_MAP][H_MAP]) {
     /**
      * Cette fonction teste si un mob est touché par le coup de poing et enlève sa vie.
      * La zone d'attaque dépend de la direction du personnage.
@@ -253,21 +253,30 @@ void tester_collision_combat() {
                 }
                 nb_mobs--;
             } else {
+
                 float recul = 25.0f;
+                float dir_x = 0.0f, dir_y = 0.0f;
                 switch (perso.direction) {
-                    case 0: 
-                        mobs[i].y += recul;
-                        break;
-                    case 1: 
-                        mobs[i].y -= recul;
-                        break;
-                    case 2: 
-                        mobs[i].x -= recul;
-                        break;
-                    case 3: 
-                        mobs[i].x += recul;
-                        break;
+                    case 0: /* south */ dir_y =  1.0f; break;
+                    case 1: /* north */ dir_y = -1.0f; break;
+                    case 2: /* west  */ dir_x = -1.0f; break;
+                    case 3: /* east  */ dir_x =  1.0f; break;
                 }
+
+                float best_recul = 0.0f;
+                for (float push = recul; push > 0.0f; push -= 1.0f) {
+                    float nx = mobs[i].x + dir_x * push;
+                    float ny = mobs[i].y + dir_y * push;
+                    int tile_x = (int)((nx + mobs[i].largeur * DISPLAY_TILE_SIZE / 2) / DISPLAY_TILE_SIZE);
+                    int tile_y = (int)((ny + mobs[i].hauteur * DISPLAY_TILE_SIZE / 2) / DISPLAY_TILE_SIZE);
+                    if (!test_collision(tile_x, tile_y, map, 1)) {
+                        best_recul = push;
+                        break;
+                    }
+                }
+
+                mobs[i].x += dir_x * best_recul;
+                mobs[i].y += dir_y * best_recul;
             }
         }
     }
