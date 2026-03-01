@@ -1,26 +1,114 @@
-# projet_jeu
-# Silence-Stellaire
+# 🌌 Silence Stellaire
 
-Collaborateurs: Raison Matéo - Joshua Donne - Leroux Maxime
+[![Language](https://img.shields.io/badge/language-C-blue.svg)](https://en.wikipedia.org/wiki/C_(programming_language))
+[![SDL3](https://img.shields.io/badge/SDL-3.0-green.svg)](https://www.libsdl.org/)
 
-Dans le cadre du module Projet de L2 INFORMATIQUE 2025-2026
-Debut de projet : 1 décembre 2025
-Fin de projet : 17 avril 2026
-Concept du Jeu:
+> Un jeu de survie spatial en 2D développé en C avec SDL3
 
-Le jeu sera en deux dimensions vue de haut dans un style spatial/science-fictions.
-L'astronaute se retrouve sur une planete qui lui est inconnue suite a un accident qui a endommagé son vaisseau spatial.
-Il doit retourné sur la planete Terre, pour cela il devra parcourir plusieurs planètes afin de trouver des ressources pour réparer son vaisseau ou ameliorer son équipement.
-En chemin, il devra affronter des créatures hostiles et résoudre des énigmes pour progresser dans son aventure.
-Il y aura un systeme de creation d'objets qui permettra au joueur de fabriquer des équipements et des outils à partir des ressources collectées.
-Les planètes auront des environnements et des défis différents.
-Nous utiliserons SDL3 pour l'implémentation du jeu en interface graphique, SDL3Image sera utilisé pour gerer l'acces et la lecture des format image (png etc) car SLD3 ne les charges pas naturellement et SDLTTF pour le texte afficher a l'écran.
+## 📋 Table des matières
 
+- [À propos](#à-propos)
+- [Fonctionnalités](#fonctionnalités)
+- [Installation](#installation)
+- [Utilisation](#utilisation)
+- [Architecture du projet](#architecture-du-projet)
+- [Équipe](#équipe)
+- [Planification](#planification)
+- [Licence](#licence)
 
-Moyen mis en place :
--SDL3
--SDLImage
--SDLTTF
+## 🎮 À propos
 
-Lien du drive GANTT : 
-https://docs.google.com/spreadsheets/d/1nhEIKJEQFC_p0bhr-RSHRnsxeiCNj1qGXCWOt2GKiK8/edit?usp=sharing
+**Silence Stellaire** est un jeu de survie et d'aventure en 2D vue de dessus, développé dans le cadre du module Projet de L2 Informatique 2025-2026.
+
+### Histoire
+
+Suite à un accident catastrophique, votre astronaute se retrouve échoué sur une planète inconnue avec un vaisseau spatial endommagé. Votre mission : parcourir différentes planètes hostiles, collecter des ressources, affronter des créatures extraterrestres et résoudre des énigmes pour réparer votre vaisseau et rentrer sur Terre.
+
+### Période de développement
+
+- **Début** : 1er décembre 2025
+- **Fin prévue** : 17 avril 2026
+
+## ✨ Fonctionnalités
+
+- 🚀 **Exploration spatiale** : Voyagez à travers plusieurs planètes aux environnements uniques
+- ⚔️ **Combat** : Affrontez des créatures hostiles dans des combats dynamiques
+- 🧩 **Énigmes** : Résolvez des puzzles pour progresser dans votre aventure
+- 🌍 **Environnements variés** : Chaque planète offre des défis et une atmosphère différents
+- 💾 **Sauvegarde** : Système de sauvegarde de progression
+
+## 🔧 Prérequis
+
+- **Compilateur C** : GCC
+- **Make** : Pour la compilation automatisée
+- **SDL3** : Bibliothèque graphique principale
+- **SDL3_image** : Gestion des formats d'images (PNG, JPG, etc.)
+- **SDL3_ttf** : Rendu du texte à l'écran
+
+## 🚀 Installation
+
+1. **Cloner le dépôt**
+```bash
+git clone https://github.com/Mateoraison/Silence-Stellaire.git
+cd Silence-Stellaire
+```
+
+2. **Compiler le projet**
+```bash
+make all                                                                                                        # Linux et Mac
+gcc src/*.c -Iinclude -Llib -lSDL3 -lSDL3_image -lSDL3_ttf -lSDL3_mixer -lm -Wall -o bin/Silence-Stellaire.exe  # Windows
+```
+
+3. **Lancer le jeu**
+```bash
+./bin/silenceStellaire       # Linux
+./bin/Silence-Stellaire.exe  # Windows
+```
+
+## 🎯 Utilisation
+
+### Commandes de base
+
+- **Déplacement** : ZQSD ou WASD
+- **Combat** : Clic Gauche
+- **Inventaire** : E
+- **Interraction** : Clic Droit
+- **Pause** : Échap
+
+## 📁 Architecture du projet
+
+```
+Silence-Stellaire/
+├── src/              # Code source du jeu
+├── include/          # Fichiers d'en-tête des librairies
+├── bin/              # Lien de librairie et executable
+├── lib/              # Librairie
+├── obj/              # Fichiers .o
+├── test/             # Jeux de test
+├── assets/           # Ressources graphiques et sonores
+├── doc/              # Documentation technique
+├── Makefile          # Script de compilation
+└── README.md         # Ce fichier
+```
+
+## 👥 Équipe
+
+| Nom | Rôle | GitHub |
+|-----|------|--------|
+| **Raison Matéo** | Chef de projet / Développeur | [@Mateoraison](https://github.com/Mateoraison) |
+| **Joshua Donné** | Développeur | [@joshuadonne](https://github.com/joshuadonne) |
+| **Leroux Maxime** | Développeur | [@OniZurKa](https://github.com/OniZurKa) |
+
+## 📊 Planification
+
+Le suivi du projet et le diagramme de Gantt sont disponibles sur Google Sheets :
+
+🔗 [Diagramme de Gantt du projet](https://docs.google.com/spreadsheets/d/1nhEIKJEQFC_p0bhr-RSHRnsxeiCNj1qGXCWOt2GKiK8/edit?usp=sharing)
+
+## 📝 Licence
+
+Ce projet est réalisé dans le cadre universitaire à l'Université du Mans.
+
+---
+
+**Projet de L2 Informatique 2025-2026** | Université du Mans
