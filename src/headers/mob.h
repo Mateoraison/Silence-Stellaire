@@ -22,3 +22,4 @@ extern int nb_mobs;
 void init_mobs(SDL_Renderer * renderer);
 void update_mobs(t_tile map[W_MAP][H_MAP]);
 void afficher_mob(SDL_Renderer * renderer);
+void detruire_mobs();

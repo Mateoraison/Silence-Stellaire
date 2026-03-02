@@ -3,15 +3,23 @@
 
 int nb_mobs;
 Mob mobs[MAX_MOB];
+static SDL_Texture * shared_mob_texture = NULL;
 
 void init_mobs(SDL_Renderer * renderer){
+    if (shared_mob_texture == NULL) {
+        shared_mob_texture = IMG_LoadTexture(renderer, "assets/tileset/V2/Tiny_Swords/Units/BlackUnits/Pawn/Pawn.png");
+        if (shared_mob_texture == NULL) {
+            SDL_Log("Erreur chargement texture mob: %s", SDL_GetError());
+        }
+    }
+
     nb_mobs = 100;
-    for(int i = 0 ; i<nb_mobs; i++){
-        mobs[i].x = 580+rand()%50;
-        mobs[i].y = 500+rand()%50;
+    for (int i = 0; i < nb_mobs; i++) {
+        mobs[i].x = 580 + rand() % 100;
+        mobs[i].y = 500 + rand() % 100;
         mobs[i].vitesse_y = 10;
         mobs[i].vitesse_x = 20;
-        mobs[i].texture = IMG_LoadTexture(renderer,"assets/tileset/V2/Tiny_Swords/Units/BlackUnits/Pawn/Pawn.png");
+        mobs[i].texture = shared_mob_texture;
         mobs[i].direction = 0;
         mobs[i].largeur = 1.5;
         mobs[i].hauteur = 1.5;
@@ -73,7 +81,18 @@ void afficher_mob(SDL_Renderer * renderer){
             .w = 192,
             .h = 192
         };
-        if(mobs[i].texture == NULL) SDL_Log("erreur mob : %s",SDL_GetError());
+        if (mobs[i].texture == NULL) SDL_Log("erreur mob : %s", SDL_GetError());
         SDL_RenderTexture(renderer, mobs[i].texture, &src, &dest);
     }
+}
+
+void detruire_mobs() {
+    if (shared_mob_texture) {
+        SDL_DestroyTexture(shared_mob_texture);
+        shared_mob_texture = NULL;
+    }
+    for (int i = 0; i < MAX_MOB; i++) {
+        mobs[i].texture = NULL;
+    }
+    nb_mobs = 0;
 }

@@ -211,74 +211,84 @@ void tester_collision_combat(t_tile map[W_MAP][H_MAP]) {
      * La zone d'attaque dépend de la direction du personnage.
      */
 
-    float zone_attaque_x = 500.0f;
-    float zone_attaque_y = 400.0f;
-    float zone_attaque_w = 90.0f;
-    float zone_attaque_h = 90.0f;
+    const float char_screen_x = 500.0f;
+    const float char_screen_y = 400.0f;
+    const float char_w = DISPLAY_TILE_SIZE;
+    const float char_h = DISPLAY_TILE_SIZE;
+
+    float zone_attaque_w = DISPLAY_TILE_SIZE * 0.6f; 
+    float zone_attaque_h = DISPLAY_TILE_SIZE * 0.5f; 
+    float zone_attaque_x = char_screen_x + (char_w - zone_attaque_w) / 2.0f;
+    float zone_attaque_y = char_screen_y + (char_h - zone_attaque_h) / 2.0f;
 
     switch (perso.direction) {
-        case 0: 
-            zone_attaque_y += zone_attaque_h;
-            zone_attaque_h = 60.0f;
+        case 0: /* sud */
+            zone_attaque_x = char_screen_x + (char_w - zone_attaque_w) / 2.0f;
+            zone_attaque_y = char_screen_y + char_h;
             break;
-        case 1: 
-            zone_attaque_y -= 60.0f;
-            zone_attaque_h = 60.0f;
+        case 1: /* nord */
+            zone_attaque_x = char_screen_x + (char_w - zone_attaque_w) / 2.0f;
+            zone_attaque_y = char_screen_y - zone_attaque_h;
             break;
-        case 2: 
-            zone_attaque_x -= 60.0f;
-            zone_attaque_w = 60.0f;
+        case 2: /* ouest */
+            zone_attaque_x = char_screen_x - zone_attaque_w;
+            zone_attaque_y = char_screen_y + (char_h - zone_attaque_h) / 2.0f;
             break;
-        case 3:
-            zone_attaque_x += zone_attaque_w;
-            zone_attaque_w = 60.0f;
+        case 3: /* est */
+            zone_attaque_x = char_screen_x + char_w;
+            zone_attaque_y = char_screen_y + (char_h - zone_attaque_h) / 2.0f;
+            break;
+        default:
             break;
     }
 
     // Tester les collisions avec les mobs
+    int mob_touche_lim = 5;
     for (int i = 0; i < nb_mobs; i++) {
         float mob_x = mobs[i].x + perso.x;
         float mob_y = mobs[i].y + perso.y;
         float mob_w = mobs[i].largeur * DISPLAY_TILE_SIZE;
         float mob_h = mobs[i].hauteur * DISPLAY_TILE_SIZE;
+        if(mob_touche_lim > 0){
+            if (zone_attaque_x < mob_x + mob_w &&
+                zone_attaque_x + zone_attaque_w > mob_x &&
+                zone_attaque_y < mob_y + mob_h &&
+                zone_attaque_y + zone_attaque_h > mob_y) {
+                mobs[i].vie--;
+                mob_touche_lim--;
 
-        if (zone_attaque_x < mob_x + mob_w &&
-            zone_attaque_x + zone_attaque_w > mob_x &&
-            zone_attaque_y < mob_y + mob_h &&
-            zone_attaque_y + zone_attaque_h > mob_y) {
-            mobs[i].vie--;
-            if (mobs[i].vie <= 0) {
-                for (int j = i; j < nb_mobs - 1; j++) {
-                    mobs[j] = mobs[j + 1];
-                }
-                nb_mobs--;
-            } else {
-
-                float recul = 25.0f;
-                float dir_x = 0.0f, dir_y = 0.0f;
-                switch (perso.direction) {
-                    case 0: /* south */ dir_y =  1.0f; break;
-                    case 1: /* north */ dir_y = -1.0f; break;
-                    case 2: /* west  */ dir_x = -1.0f; break;
-                    case 3: /* east  */ dir_x =  1.0f; break;
-                }
-
-                float best_recul = 0.0f;
-                for (float push = recul; push > 0.0f; push -= 1.0f) {
-                    float nx = mobs[i].x + dir_x * push;
-                    float ny = mobs[i].y + dir_y * push;
-                    int tile_x = (int)((nx + mobs[i].largeur * DISPLAY_TILE_SIZE / 2) / DISPLAY_TILE_SIZE);
-                    int tile_y = (int)((ny + mobs[i].hauteur * DISPLAY_TILE_SIZE / 2) / DISPLAY_TILE_SIZE);
-                    if (!test_collision(tile_x, tile_y, map, 1)) {
-                        best_recul = push;
-                        break;
+                if (mobs[i].vie <= 0) {
+                    for (int j = i; j < nb_mobs - 1; j++) {
+                        mobs[j] = mobs[j + 1];
                     }
-                }
+                    nb_mobs--;
+                } else {
 
-                mobs[i].x += dir_x * best_recul;
-                mobs[i].y += dir_y * best_recul;
+                    float recul = 25.0f;
+                    float dir_x = 0.0f, dir_y = 0.0f;
+                    switch (perso.direction) {
+                        case 0: /* south */ dir_y =  1.0f; break;
+                        case 1: /* north */ dir_y = -1.0f; break;
+                        case 2: /* west  */ dir_x = -1.0f; break;
+                        case 3: /* east  */ dir_x =  1.0f; break;
+                    }
+
+                    float best_recul = 0.0f;
+                    for (float push = recul; push > 0.0f; push -= 1.0f) {
+                        float nx = mobs[i].x + dir_x * push;
+                        float ny = mobs[i].y + dir_y * push;
+                        int tile_x = (int)((nx + mobs[i].largeur * DISPLAY_TILE_SIZE / 2) / DISPLAY_TILE_SIZE);
+                        int tile_y = (int)((ny + mobs[i].hauteur * DISPLAY_TILE_SIZE / 2) / DISPLAY_TILE_SIZE);
+                        if (!test_collision(tile_x, tile_y, map, 1)) {
+                            best_recul = push;
+                            break;
+                        }
+                    }
+
+                    mobs[i].x += dir_x * best_recul;
+                    mobs[i].y += dir_y * best_recul;
+                }
             }
         }
     }
 }
-

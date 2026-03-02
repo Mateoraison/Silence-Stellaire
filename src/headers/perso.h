@@ -12,5 +12,5 @@ void gerer_combat(SDL_Event event);
 void afficher_combat(SDL_Renderer *renderer);
 void update_combat(t_tile map[W_MAP][H_MAP]);
 void tester_collision_combat(t_tile map[W_MAP][H_MAP]);
-void afficher_zone_attaque(SDL_Renderer *renderer);
+ 
 

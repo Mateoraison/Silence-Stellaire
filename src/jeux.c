@@ -168,6 +168,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
     SDL_Event event;
 
     int code_sortie = 0;
+    SDL_Texture * exterieure = IMG_LoadTexture(renderer, "assets/tileset/V2/EXT_vaisseau/ext_vaisseau1.png");
 
     while (running){
         int vie_avant = perso.vie;
@@ -235,17 +236,39 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
                     case 3: perso.x += 5; break;
                 }
             }
+
+            /* Collision with the crashed ship (exterieure). The ship is drawn at
+               screen position {750 + perso.x, 550 + perso.y} with size 644x388. */
+            {
+                float ship_x = 750.0f + perso.x;
+                float ship_y = 550.0f + perso.y;
+                float ship_w = 644.0f;
+                float ship_h = 388.0f;
+
+                /* Axis-aligned rectangle intersection test (player box == boite_*) */
+                int intersect = !(ship_x + ship_w  < boite_x ||
+                                  ship_x         > boite_x + boite_w ||
+                                  ship_y + ship_h < boite_y ||
+                                  ship_y         > boite_y + boite_h);
+
+                if (intersect) {
+                    switch (perso.direction) {
+                        case 0: perso.y += 5; break;
+                        case 1: perso.y -= 5; break;
+                        case 2: perso.x -= 5; break;
+                        case 3: perso.x += 5; break;
+                    }
+                }
+            }
         }
 
         SDL_RenderClear(renderer);
         
         Uint32 maintenant = SDL_GetTicks();
 
-        // Sauvegarder les positions réelles du personnage
         float perso_x_original = perso.x;
         float perso_y_original = perso.y;
 
-        // Appliquer le tremblement de caméra
         if (tramblement_degat_camera && (maintenant - tramblement_camera_timer < 500)) {
             tramblement_camera_x = (float)(rand() % 11 - 5);
             tramblement_camera_y = (float)(rand() % 11 - 5);
@@ -266,7 +289,12 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
         afficher_mob(renderer);
         afficher_vie(renderer);
 
-        // Restaurer la position réelle du personnage après l'affichage
+        
+        SDL_FRect src = {0, 0, 644, 388};
+        SDL_FRect dest = {750.0f + perso.x, 550.0f + perso.y, 644.0f, 388.0f};
+        SDL_RenderTexture(renderer, exterieure, &src, &dest);
+        
+
         perso.x = perso_x_original;
         perso.y = perso_y_original;
         if (vie_avant > perso.vie) {
@@ -302,7 +330,8 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
         }
         SDL_RenderPresent(renderer);
     }
-
+    SDL_DestroyTexture(exterieure);
+    detruire_mobs();
     SDL_DestroyTexture(tileset);
     return code_sortie;
 }
