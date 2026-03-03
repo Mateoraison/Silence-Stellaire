@@ -63,6 +63,7 @@ int afficher_option(SDL_Renderer *renderer, MIX_Track *track_global) {
             "Echap - Retour au menu principal",
             "Souris - Cliquer sur boutons",
             "ZQSD - Déplacement du personnage",
+            "M - Ouvrir le menu des cartes",
             NULL
         };
         float y_start = 200;

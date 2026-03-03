@@ -23,6 +23,10 @@ float tramblement_camera_x = 0.0f;
 float tramblement_camera_y = 0.0f;
 
 
+extern t_Item * items[MAX_ITEMS];
+Mob * mobs[MAX_MOB] = {NULL};
+
+
 
 
 void remplir_tileset(t_tile map[W_MAP][H_MAP], char * map_txt){
@@ -162,13 +166,15 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
     }
     
 
-    init_mobs(renderer);
+    init_mobs(renderer,mobs);
 
     bool running = true;
     SDL_Event event;
 
     int code_sortie = 0;
     SDL_Texture * exterieure = IMG_LoadTexture(renderer, "assets/tileset/V2/EXT_vaisseau/ext_vaisseau1.png");
+
+    
 
     while (running){
         int vie_avant = perso.vie;
@@ -282,12 +288,16 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
 
         charger_tilemap(renderer, tileset, map, foam);
         update_animation();
-        update_combat(map);
-        update_mobs(map);
+        update_combat(map, mobs, items);
+        update_mobs(map, mobs);
         if (combat_en_cours == false) afficher_perso(renderer);
         afficher_combat(renderer);
-        afficher_mob(renderer);
+        afficher_mob(renderer, mobs);
+
+
         afficher_vie(renderer);
+
+        
 
         
         SDL_FRect src = {0, 0, 644, 388};
@@ -331,7 +341,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
         SDL_RenderPresent(renderer);
     }
     SDL_DestroyTexture(exterieure);
-    detruire_mobs();
+    detruire_mobs(mobs);
     SDL_DestroyTexture(tileset);
     return code_sortie;
 }

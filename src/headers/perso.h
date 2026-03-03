@@ -10,7 +10,7 @@ int test_collision(int x, int y, t_tile map[W_MAP][H_MAP], int est_mob);
 int afficher_vie(SDL_Renderer *renderer);
 void gerer_combat(SDL_Event event);
 void afficher_combat(SDL_Renderer *renderer);
-void update_combat(t_tile map[W_MAP][H_MAP]);
-void tester_collision_combat(t_tile map[W_MAP][H_MAP]);
- 
+void update_combat(t_tile map[W_MAP][H_MAP], Mob * mobs[MAX_MOB], t_Item * items[MAX_ITEMS]);
+void tester_collision_combat(t_tile map[W_MAP][H_MAP], Mob * mobs[MAX_MOB], t_Item * items[MAX_ITEMS]);
+
 

@@ -1,25 +1,7 @@
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
 
-
-#define MAX_MOB 100
-
-typedef struct {
-    float x;
-    float y;
-    int direction;
-    int vitesse_x;
-    int vitesse_y;
-    float largeur,hauteur;
-    Uint32 time_change_dir;
-    SDL_Texture * texture;
-    int vie;
-}Mob;
-
-extern Mob mobs[MAX_MOB];
-extern int nb_mobs;
-
-void init_mobs(SDL_Renderer * renderer);
-void update_mobs(t_tile map[W_MAP][H_MAP]);
-void afficher_mob(SDL_Renderer * renderer);
-void detruire_mobs();
+void init_mobs(SDL_Renderer * renderer, Mob * mobs[MAX_MOB]);
+void update_mobs(t_tile map[W_MAP][H_MAP], Mob * mobs[MAX_MOB]);
+void afficher_mob(SDL_Renderer * renderer, Mob * mobs[MAX_MOB]);
+void detruire_mobs(Mob * mobs[MAX_MOB]);

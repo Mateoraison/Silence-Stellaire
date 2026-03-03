@@ -12,6 +12,8 @@
 #define SOURCE_TILE_SIZE 64
 #define DISPLAY_TILE_SIZE 90
 
+#define MAX_MOB 100
+
 typedef enum {vide, terreP, eau, terreCHG, terreCHD, terreCBG, terreCBD, terreH, terreB, terreG, terreD, feu, pierre, arbrecoupe, arbreEntier} type_t;
 
 typedef struct tile_{
@@ -36,6 +38,24 @@ typedef struct {
     Uint32 invincibiliter_timer;
 } Perso;
 
+typedef enum {BOIS,VIANDE} typeItem;
+
+typedef struct item_ {
+    typeItem type;
+    SDL_Texture * texture;
+}t_Item;
+
+typedef struct {
+    float x;
+    float y;
+    int direction;
+    int vitesse_x;
+    int vitesse_y;
+    float largeur,hauteur;
+    Uint32 time_change_dir;
+    SDL_Texture * texture;
+    int vie;
+}Mob;
 
 
 #include "menu.h"
@@ -47,7 +67,7 @@ typedef struct {
 #include "mob.h"
 #include "vaisseau.h"
 #include "map.h"
-
+#include "item.h"
 
 extern Perso perso;
 extern int animation_frame;   
