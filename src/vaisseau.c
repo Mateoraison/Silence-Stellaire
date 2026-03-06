@@ -193,6 +193,9 @@ int vaisseau(SDL_Renderer *renderer) {
     while (running) {
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_EVENT_QUIT) running = false;
+            if (event.type == SDL_EVENT_KEY_DOWN) {
+                if (event.key.key == SDLK_ESCAPE) running = false;
+            }
         }
 
         SDL_SetRenderDrawColor(renderer, 20, 20, 30, 255);

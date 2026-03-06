@@ -23,7 +23,7 @@ float tramblement_camera_x = 0.0f;
 float tramblement_camera_y = 0.0f;
 
 
-extern t_Item * items[MAX_ITEMS];
+t_Item * items[MAX_ITEMS];
 Mob * mobs[MAX_MOB] = {NULL};
 
 
@@ -97,7 +97,7 @@ void charger_tilemap(SDL_Renderer *renderer, SDL_Texture *tileset,
                 case terreG:   src = (SDL_FRect){0, 64, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};src_remplit = true; break;
                 case terreD:   src = (SDL_FRect){128,64, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};src_remplit = true;break;
                 case eau:      src = (SDL_FRect){125, 265,SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};src_remplit = true; break;
-                case pierre:   src = (SDL_FRect){576, 0, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};src_remplit = true; break;
+                case pierre:   src = (SDL_FRect){577, 0, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};src_remplit = true; break;
                 case feu:      src = (SDL_FRect){640, 128, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};src_remplit = true; break;
                 case arbrecoupe:    src = (SDL_FRect){640, 0, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};src_remplit = true; break;
                 case arbreEntier: if((map[x-1][y].type != arbreEntier) && (map[x][y-1].type != arbreEntier)){ src = (SDL_FRect){768,0,128,192}; dest2 = (SDL_FRect){x*DISPLAY_TILE_SIZE + perso.x, y*DISPLAY_TILE_SIZE+perso.y,180,270};src_remplit = true;}break;
@@ -240,30 +240,6 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
                     case 1: perso.y -= 5; break;
                     case 2: perso.x -= 5; break;
                     case 3: perso.x += 5; break;
-                }
-            }
-
-            /* Collision with the crashed ship (exterieure). The ship is drawn at
-               screen position {750 + perso.x, 550 + perso.y} with size 644x388. */
-            {
-                float ship_x = 750.0f + perso.x;
-                float ship_y = 550.0f + perso.y;
-                float ship_w = 644.0f;
-                float ship_h = 388.0f;
-
-                /* Axis-aligned rectangle intersection test (player box == boite_*) */
-                int intersect = !(ship_x + ship_w  < boite_x ||
-                                  ship_x         > boite_x + boite_w ||
-                                  ship_y + ship_h < boite_y ||
-                                  ship_y         > boite_y + boite_h);
-
-                if (intersect) {
-                    switch (perso.direction) {
-                        case 0: perso.y += 5; break;
-                        case 1: perso.y -= 5; break;
-                        case 2: perso.x -= 5; break;
-                        case 3: perso.x += 5; break;
-                    }
                 }
             }
         }

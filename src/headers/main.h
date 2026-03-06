@@ -13,6 +13,8 @@
 #define DISPLAY_TILE_SIZE 90
 
 #define MAX_MOB 100
+#define MAX_ITEMS 200
+
 
 typedef enum {vide, terreP, eau, terreCHG, terreCHD, terreCBG, terreCBD, terreH, terreB, terreG, terreD, feu, pierre, arbrecoupe, arbreEntier} type_t;
 
