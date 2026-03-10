@@ -4,6 +4,7 @@
 #include <SDL3_mixer/SDL_mixer.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 #define FRAME_DUREE 50
 

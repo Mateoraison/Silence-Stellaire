@@ -3,6 +3,7 @@
 
 #include <SDL3/SDL.h>
 
+void spawn_perso(int tileX, int tileY) ;
 int vaisseau(SDL_Renderer *renderer) ; 
 
 #endif // VAISSEAU_H
