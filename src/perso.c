@@ -27,40 +27,29 @@ int afficher_perso(SDL_Renderer *renderer) {
 
 
 
-int deplacer_perso(SDL_Event event) {
-    if (event.type != SDL_EVENT_KEY_DOWN && event.type != SDL_EVENT_KEY_UP) return 0;
+int deplacer_perso(float delta_time) {
+    const bool *keys = SDL_GetKeyboardState(NULL);
 
+    float vitesse = 200.0f;
 
-    if (event.type == SDL_EVENT_KEY_DOWN) {
+    perso_bouge = false;
+
+    if (keys[SDL_SCANCODE_W] || keys[SDL_SCANCODE_Z]) {
+        perso.y += vitesse * delta_time;
+        perso.direction = 1;
         perso_bouge = true;
-        bouge_timer = SDL_GetTicks();
-        switch (event.key.key) {
-            case SDLK_Z :
-            case SDLK_W : perso.y += 5;
-            perso.texture = IMG_LoadTexture(SDL_GetRenderer(SDL_GetWindowFromID(event.key.windowID)), "assets/personnage/Astronaute/rotations/north.png");
-            perso.direction = 1;
-            break;
-
-            case SDLK_S: perso.y -= 5; 
-            perso.texture = IMG_LoadTexture(SDL_GetRenderer(SDL_GetWindowFromID(event.key.windowID)), "assets/personnage/Astronaute/rotations/south.png");
-            perso.direction = 0;
-            break;
-
-            case SDLK_Q:
-            case SDLK_A: perso.x += 5;
-            perso.texture = IMG_LoadTexture(SDL_GetRenderer(SDL_GetWindowFromID(event.key.windowID)), "assets/personnage/Astronaute/rotations/west.png");
-            perso.direction = 2;
-            break;
-
-            case SDLK_D: perso.x -= 5; 
-            perso.texture = IMG_LoadTexture(SDL_GetRenderer(SDL_GetWindowFromID(event.key.windowID)), "assets/personnage/Astronaute/rotations/east.png");
-            perso.direction = 3;
-            break;
-
-            default: break;
-        }
-    }else{
-        perso_bouge = false;
+    } else if (keys[SDL_SCANCODE_S]) {
+        perso.y -= vitesse * delta_time;
+        perso.direction = 0;
+        perso_bouge = true;
+    } else if (keys[SDL_SCANCODE_A] || keys[SDL_SCANCODE_Q]) {
+        perso.x += vitesse * delta_time;
+        perso.direction = 2;
+        perso_bouge = true;
+    } else if (keys[SDL_SCANCODE_D]) {
+        perso.x -= vitesse * delta_time;
+        perso.direction = 3;
+        perso_bouge = true;
     }
     
     return 0;
@@ -69,19 +58,16 @@ int deplacer_perso(SDL_Event event) {
 
 void update_animation() {
     Uint32 maintenant = SDL_GetTicks();
-    
-    if (perso_bouge && (maintenant - bouge_timer > FRAME_DUREE)) {
-        perso_bouge = false;
-    }
-    
+
     if (perso_bouge) {
+        if (animation_timer == 0) animation_timer = maintenant;
         if (maintenant - animation_timer >= FRAME_DUREE) {
-            animation_frame++;
-            if (animation_frame >= 5) animation_frame = 0;
+            animation_frame = (animation_frame + 1) % 5;
             animation_timer = maintenant;
         }
     } else {
         animation_frame = 0;
+        animation_timer = 0;
     }
 }
 
@@ -270,8 +256,17 @@ void tester_collision_combat(t_tile map[W_MAP][H_MAP], Mob * mobs[MAX_MOB], SDL_
                             }
                         }
                     }
-                    else{
+                    else if(mobs[i]->id == 2){ // Si c'est un pawn, drop de la piece
+                        float x, y;
+                        x = mobs[i]->x;
+                        y = mobs[i]->y;
                         detruire_un_mob(mobs[i]);
+                        if(index_item < MAX_ITEMS && rand()%100 < mobs[i]->drop_chance) {
+                            t_Item * item = init_item(PIECE, renderer, x, y);
+                            if(item != NULL) {
+                                items[index_item++] = item;
+                            }
+                        }
                     }
                     int j = i;
                     while(mobs[j+1] != NULL) {
@@ -311,23 +306,28 @@ void tester_collision_combat(t_tile map[W_MAP][H_MAP], Mob * mobs[MAX_MOB], SDL_
 }
 
 
-void possible_ramasser_item(t_Item * items[MAX_ITEMS], SDL_Renderer * renderer) {
-    /* Le personnage est rendu toujours à l'écran en 500,400 (voir afficher_perso)
-       donc utiliser ces coordonnées écran pour la détection. Les items sont
-       dessinés avec l'offset camera: screen = item->x + perso.x, item->y + perso.y
-       Il faut donc comparer en coordonnées écran. */
+void possible_ramasser_item(t_Item * items[MAX_ITEMS], SDL_Renderer * renderer, t_case * hotbar[HOTBAR_SIZE]) {
     SDL_Rect rect_perso = {500, 400, 40, 60};
 
     for (int i = 0; i < index_item; i++) {
         if (items[i] != NULL) {
-            /* position écran de l'item (même calcul que dans afficher_item) */
             SDL_Rect rect_item = {(int)(items[i]->x + perso.x), (int)(items[i]->y + perso.y), 32, 32};
 
-            /* Vérifier la collision et ramasser si besoin */
             if (SDL_HasRectIntersection(&rect_perso, &rect_item)) {
-                SDL_Log("possible_ramasser_item: intersection détectée avec item[%d]", i);
-                ramasser_item(items[i]);
-                detruire_item(&items[i]);
+                const bool *keys = SDL_GetKeyboardState(NULL);
+                if (keys[SDL_SCANCODE_E]) {
+                    ajouter_item_hotbar(hotbar, items[i], renderer);
+
+                    free(items[i]);
+                    items[i] = NULL;
+
+                    for (int j = i; j < index_item - 1; j++){
+                        items[j] = items[j + 1];
+                    }
+                    items[index_item - 1] = NULL;
+                    index_item--;
+                    i--;
+                }
             }
         }
     }

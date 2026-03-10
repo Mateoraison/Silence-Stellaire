@@ -244,9 +244,7 @@ int vaisseau(SDL_Renderer *renderer) {
                 // On sauvegarde l'ancienne position
                 old_x = perso.x;
                 old_y = perso.y;
-
-                // On tente le déplacement
-                deplacer_perso(event);
+                
 
                 // On calcule la hitbox uniquement au niveau des PIEDS
                 // Le perso fait 64x64. On veut une zone de collision en bas.
@@ -264,6 +262,15 @@ int vaisseau(SDL_Renderer *renderer) {
                 }
             }
         }
+
+        Uint32 maintenant_dt = SDL_GetTicks();
+        static Uint32 dernier_frame_dt = 0;
+        float delta = (dernier_frame_dt == 0) ? 0.016f : (maintenant_dt - dernier_frame_dt) / 1000.0f;
+        dernier_frame_dt = maintenant_dt;
+
+        // On tente le déplacement
+        deplacer_perso(delta);
+
 
         SDL_SetRenderDrawColor(renderer, 20, 20, 30, 255);
         SDL_RenderClear(renderer);

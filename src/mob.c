@@ -94,7 +94,7 @@ void init_mobs(SDL_Renderer * renderer, Mob * mobs[MAX_MOB], t_tile map[W_MAP][H
         mobs[index]->texture = texture_pawns;
         mobs[index]->vie = 3;
         mobs[index]->id = 2; // 2 = pawns
-        mobs[index]->drop_chance = 10;
+        mobs[index]->drop_chance = 100;
         index++;
     }
     mobs[index] = NULL;

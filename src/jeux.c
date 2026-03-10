@@ -28,8 +28,8 @@ Mob * mobs[MAX_MOB] = {NULL};
 int index_item = 0;
 
 t_case * hotbar[HOTBAR_SIZE] = {NULL};
-
-
+t_case *inventaire[INVENTAIRE_SIZE] = {NULL};
+bool inventaire_ouvert = false;
 
 void remplir_tileset(t_tile map[W_MAP][H_MAP], char * map_txt){
 
@@ -198,9 +198,12 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
                     running = false;
                     code_sortie = 4;
                 }
+                if(event.key.key == SDLK_I){
+                    inventaire_ouvert = !inventaire_ouvert;
+                }
                     
             }
-            deplacer_perso(event);
+            gerer_clic_inventaire(inventaire, hotbar, &event);
             gerer_combat(event);
             
             const float joueur_ecran_x = -perso.x + 500.0f;
@@ -245,7 +248,12 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
                 }
             }
         }
-
+        Uint32 maintenant_dt = SDL_GetTicks();
+        static Uint32 dernier_frame_dt = 0;
+        float delta = (dernier_frame_dt == 0) ? 0.016f : (maintenant_dt - dernier_frame_dt) / 1000.0f;
+        dernier_frame_dt = maintenant_dt;
+        
+        deplacer_perso(delta);
         SDL_RenderClear(renderer);
         
         Uint32 maintenant = SDL_GetTicks();
@@ -264,23 +272,31 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
             tramblement_camera_y = 0.0f;
         }
 
+
+        
+
         charger_tilemap(renderer, tileset, map, foam);
         update_animation();
         update_combat(map, mobs, renderer, items);
         update_mobs(map, mobs);
-        possible_ramasser_item(items, renderer);
+        possible_ramasser_item(items, renderer, hotbar);
         afficher_item(items, renderer);
         if (combat_en_cours == false) afficher_perso(renderer);
+
+        SDL_FRect src = {0, 0, 644, 388};
+        SDL_FRect dest = {750.0f + perso.x, 550.0f + perso.y, 644.0f, 388.0f};
+        SDL_RenderTexture(renderer, exterieure, &src, &dest);
+
         afficher_combat(renderer);
         afficher_mob(renderer, mobs);
         afficher_hotbar(hotbar, renderer);
 
         afficher_vie(renderer);
 
-        SDL_FRect src = {0, 0, 644, 388};
-        SDL_FRect dest = {750.0f + perso.x, 550.0f + perso.y, 644.0f, 388.0f};
-        SDL_RenderTexture(renderer, exterieure, &src, &dest);
         
+        if(inventaire_ouvert) {
+            afficher_inventaire(inventaire, renderer);
+        }
 
         perso.x = perso_x_original;
         perso.y = perso_y_original;

@@ -1,4 +1,4 @@
-#include "main.h"
+#include "headers/main.h"
 
 
 
@@ -11,7 +11,7 @@ t_Item * init_item(typeItem type,SDL_Renderer * renderer,float x,float y){
     item->x = x;
     item->y = y;
     switch (type){
-        case BOIS: item->texture = IMG_LoadTexture(renderer,"assets/UI/bois.png"); break;
+        case PIECE: item->texture = IMG_LoadTexture(renderer,"assets/UI/piece.png"); break;
         case VIANDE: item->texture = IMG_LoadTexture(renderer,"assets/UI/viande.png");
         break;
     }
@@ -39,9 +39,8 @@ void detruire_item(t_Item ** item){
     *item = NULL;
 }
 
-void ramasser_item(t_Item * item){
+void ramasser_item(t_Item * item, SDL_Renderer * renderer, t_case * hotbar[HOTBAR_SIZE]){
     if(item != NULL){
-        //ajouter_item_inventaire(item);
-        printf("Item ramassé\n");
+        ajouter_item_hotbar(hotbar,item, renderer);
     }
 }

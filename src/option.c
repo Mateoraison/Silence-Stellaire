@@ -64,6 +64,7 @@ int afficher_option(SDL_Renderer *renderer, MIX_Track *track_global) {
             "Souris - Cliquer sur boutons",
             "ZQSD - Déplacement du personnage",
             "M - Ouvrir le menu des cartes",
+            "E - Rammasser un objet",
             NULL
         };
         float y_start = 200;

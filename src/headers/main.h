@@ -14,7 +14,11 @@
 
 #define MAX_MOB 200
 #define MAX_ITEMS 200
+
 #define HOTBAR_SIZE 5
+#define INVENTAIRE_COLS 5
+#define INVENTAIRE_ROWS 4
+#define INVENTAIRE_SIZE (INVENTAIRE_COLS * INVENTAIRE_ROWS)
 
 typedef enum {vide, terreP, eau, terreCHG, terreCHD, terreCBG, terreCBD, terreH, terreB, terreG, terreD, feu, pierre, arbrecoupe, arbreEntier} type_t;
 
@@ -40,7 +44,7 @@ typedef struct {
     Uint32 invincibiliter_timer;
 } Perso;
 
-typedef enum {BOIS,VIANDE} typeItem;
+typedef enum {PIECE,VIANDE} typeItem;
 
 typedef struct item_ {
     typeItem type;
@@ -72,6 +76,7 @@ typedef struct {
     t_Item * item;
     int stackable;
     int quantiter;
+    int verrouille;
 }t_case;
 
 
@@ -101,3 +106,6 @@ extern MIX_Track *track_global;
 extern int Planete_actuelle;
 
 extern int index_item;
+
+extern t_case *inventaire[INVENTAIRE_SIZE];
+extern bool inventaire_ouvert;
