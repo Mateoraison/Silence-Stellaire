@@ -183,7 +183,7 @@ void afficher_combat(SDL_Renderer *renderer) {
     SDL_DestroyTexture(combat_texture);
 }
 
-void update_combat(t_tile map[W_MAP][H_MAP], Mob * mobs[MAX_MOB], t_Item * items[MAX_ITEMS]) {
+void update_combat(t_tile map[W_MAP][H_MAP], Mob * mobs[MAX_MOB], SDL_Renderer * renderer, t_Item * items[MAX_ITEMS]) {
     /**
      * Cette fonction met à jour l'état du combat et les frames d'animation.
      */
@@ -200,12 +200,12 @@ void update_combat(t_tile map[W_MAP][H_MAP], Mob * mobs[MAX_MOB], t_Item * items
         if (combat_frame >= 3) {
             combat_en_cours = false;
             combat_frame = 0;
-            tester_collision_combat(map, mobs,items);
+            tester_collision_combat(map, mobs, renderer, items);
         }
     }
 }
 
-void tester_collision_combat(t_tile map[W_MAP][H_MAP], Mob * mobs[MAX_MOB], t_Item * items[MAX_ITEMS]) {
+void tester_collision_combat(t_tile map[W_MAP][H_MAP], Mob * mobs[MAX_MOB], SDL_Renderer * renderer, t_Item * items[MAX_ITEMS]) {
     /**
      * Cette fonction teste si un mob est touché par le coup de poing et enlève sa vie.
      * La zone d'attaque dépend de la direction du personnage.
@@ -258,15 +258,27 @@ void tester_collision_combat(t_tile map[W_MAP][H_MAP], Mob * mobs[MAX_MOB], t_It
                 mob_touche_lim--;
 
                 if (mobs[i]->vie <= 0) {
+                    if(mobs[i]->id == 1){ // Si c'est un mouton, drop du viande
+                        float x, y;
+                        x = mobs[i]->x;
+                        y = mobs[i]->y;
+                        detruire_un_mob(mobs[i]);
+                        if(index_item < MAX_ITEMS && rand()%100 < mobs[i]->drop_chance) {
+                            t_Item * item = init_item(VIANDE, renderer, x, y);
+                            if(item != NULL) {
+                                items[index_item++] = item;
+                            }
+                        }
+                    }
+                    else{
+                        detruire_un_mob(mobs[i]);
+                    }
                     int j = i;
-                    mobs[i]->texture = NULL;
-                    free(mobs[i]);
-                    mobs[i] = NULL;
-                    while(mobs[j] == NULL && mobs[j+1] != NULL) {
+                    while(mobs[j+1] != NULL) {
                         mobs[j] = mobs[j+1];
-                        mobs[j+1] = NULL;
                         j++;
                     }
+                    mobs[j] = NULL;
                 } else {
 
                     float recul = 25.0f;
@@ -293,6 +305,29 @@ void tester_collision_combat(t_tile map[W_MAP][H_MAP], Mob * mobs[MAX_MOB], t_It
                     mobs[i]->x += dir_x * best_recul;
                     mobs[i]->y += dir_y * best_recul;
                 }
+            }
+        }
+    }
+}
+
+
+void possible_ramasser_item(t_Item * items[MAX_ITEMS], SDL_Renderer * renderer) {
+    /* Le personnage est rendu toujours à l'écran en 500,400 (voir afficher_perso)
+       donc utiliser ces coordonnées écran pour la détection. Les items sont
+       dessinés avec l'offset camera: screen = item->x + perso.x, item->y + perso.y
+       Il faut donc comparer en coordonnées écran. */
+    SDL_Rect rect_perso = {500, 400, 40, 60};
+
+    for (int i = 0; i < index_item; i++) {
+        if (items[i] != NULL) {
+            /* position écran de l'item (même calcul que dans afficher_item) */
+            SDL_Rect rect_item = {(int)(items[i]->x + perso.x), (int)(items[i]->y + perso.y), 32, 32};
+
+            /* Vérifier la collision et ramasser si besoin */
+            if (SDL_HasRectIntersection(&rect_perso, &rect_item)) {
+                SDL_Log("possible_ramasser_item: intersection détectée avec item[%d]", i);
+                ramasser_item(items[i]);
+                detruire_item(&items[i]);
             }
         }
     }

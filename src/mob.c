@@ -3,7 +3,7 @@
 static SDL_Texture * texture_pawns = NULL;
 static SDL_Texture * texture_mouton = NULL;
 
-void init_mobs(SDL_Renderer * renderer, Mob * mobs[MAX_MOB]){
+void init_mobs(SDL_Renderer * renderer, Mob * mobs[MAX_MOB], t_tile map[W_MAP][H_MAP], int nb_pawns, int nb_moutons) {
     if (texture_pawns == NULL) {
         texture_pawns = IMG_LoadTexture(renderer, "assets/tileset/V2/Tiny_Swords/Units/BlackUnits/Pawn/Pawn.png");
         if (texture_pawns == NULL) {
@@ -18,21 +18,86 @@ void init_mobs(SDL_Renderer * renderer, Mob * mobs[MAX_MOB]){
         }
     }
 
-    mobs[0] = malloc(sizeof(Mob));
-    if (mobs[0] == NULL) {
-        SDL_Log("Erreur allocation mob: %s", SDL_GetError());
-        return;
+    int index = 0;
+
+    /* Apparition autour du joueur (en tuiles) */
+    int rayon_app = 2; /* en tuiles */
+    /* Position du joueur en coordonnées monde (mêmes constantes que dans jeux.c) */
+    float joueur_monde_x = -perso.x + 500.0f; /* pixels */
+    float joueur_monde_y = -perso.y + 400.0f; /* pixels */
+    int tuile_joueur_x = (int)(joueur_monde_x / DISPLAY_TILE_SIZE);
+    int tuile_joueur_y = (int)(joueur_monde_y / DISPLAY_TILE_SIZE);
+
+    for(int i = 0; i < nb_moutons && index < MAX_MOB; i++){
+        mobs[index]  = malloc(sizeof(Mob));
+
+        /* choisir une tuile aléatoire dans le carré de rayon et clamp aux bords */
+        int min_tuile_x = tuile_joueur_x - rayon_app;
+        int max_tuile_x = tuile_joueur_x + rayon_app;
+        int min_tuile_y = tuile_joueur_y - rayon_app;
+        int max_tuile_y = tuile_joueur_y + rayon_app;
+        if (min_tuile_x < 0) min_tuile_x = 0;
+        if (min_tuile_y < 0) min_tuile_y = 0;
+        if (max_tuile_x >= W_MAP) max_tuile_x = W_MAP - 1;
+        if (max_tuile_y >= H_MAP) max_tuile_y = H_MAP - 1;
+
+        int tuile_x = min_tuile_x + (rand() % (max_tuile_x - min_tuile_x + 1));
+        int tuile_y = min_tuile_y + (rand() % (max_tuile_y - min_tuile_y + 1));
+        if(test_collision(tuile_x, tuile_y, map, 1)) {
+            free(mobs[index]);
+            continue;
+        }
+
+        mobs[index]->x = tuile_x * DISPLAY_TILE_SIZE;
+        mobs[index]->y = tuile_y * DISPLAY_TILE_SIZE;
+        mobs[index]->direction = 0;
+        mobs[index]->vitesse_x = 0;
+        mobs[index]->vitesse_y = 0;
+        mobs[index]->largeur = 1;
+        mobs[index]->hauteur = 1;
+        mobs[index]->time_change_dir = 0;
+        mobs[index]->texture = texture_mouton;
+        mobs[index]->vie = 3;
+        mobs[index]->id = 1; // 1 = mouton
+        mobs[index]->drop_chance = 100;
+        index++;
     }
-    mobs[0]->x = 7*DISPLAY_TILE_SIZE;
-    mobs[0]->y = 5*DISPLAY_TILE_SIZE;
-    mobs[0]->direction = 0;
-    mobs[0]->vitesse_x = 0;
-    mobs[0]->vitesse_y = 0;
-    mobs[0]->largeur = 1;
-    mobs[0]->hauteur = 1;
-    mobs[0]->time_change_dir = 0;
-    mobs[0]->texture = texture_mouton;
-    mobs[0]->vie = 3;
+
+    for(int i = 0; i < nb_pawns && index < MAX_MOB; i++){
+        mobs[index]  = malloc(sizeof(Mob));
+
+        /* apparition des pawns avec la même logique */
+        int min_tuile_x = tuile_joueur_x - rayon_app;
+        int max_tuile_x = tuile_joueur_x + rayon_app;
+        int min_tuile_y = tuile_joueur_y - rayon_app;
+        int max_tuile_y = tuile_joueur_y + rayon_app;
+        if (min_tuile_x < 0) min_tuile_x = 0;
+        if (min_tuile_y < 0) min_tuile_y = 0;
+        if (max_tuile_x >= W_MAP) max_tuile_x = W_MAP - 1;
+        if (max_tuile_y >= H_MAP) max_tuile_y = H_MAP - 1;
+
+        int tuile_x = min_tuile_x + (rand() % (max_tuile_x - min_tuile_x + 1));
+        int tuile_y = min_tuile_y + (rand() % (max_tuile_y - min_tuile_y + 1));
+        if(test_collision(tuile_x, tuile_y, map, 1)) {
+            free(mobs[index]);
+            continue;
+        }
+
+        mobs[index]->x = tuile_x * DISPLAY_TILE_SIZE;
+        mobs[index]->y = tuile_y * DISPLAY_TILE_SIZE;
+        mobs[index]->direction = 0;
+        mobs[index]->vitesse_x = 0;
+        mobs[index]->vitesse_y = 0;
+        mobs[index]->largeur = 1;
+        mobs[index]->hauteur = 1;
+        mobs[index]->time_change_dir = 0;
+        mobs[index]->texture = texture_pawns;
+        mobs[index]->vie = 3;
+        mobs[index]->id = 2; // 2 = pawns
+        mobs[index]->drop_chance = 10;
+        index++;
+    }
+    mobs[index] = NULL;
 
 }
 
@@ -111,5 +176,12 @@ void detruire_mobs(Mob * mobs[MAX_MOB]) {
     }
     for (int i = 0; mobs[i] != NULL; i++) {
         mobs[i]->texture = NULL;
+    }
+}
+
+
+void detruire_un_mob(Mob * mob) {
+    if (mob != NULL) {
+        free(mob);
     }
 }

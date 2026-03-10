@@ -4,7 +4,6 @@
 #include <SDL3_mixer/SDL_mixer.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
 #define FRAME_DUREE 50
 
@@ -13,9 +12,9 @@
 #define SOURCE_TILE_SIZE 64
 #define DISPLAY_TILE_SIZE 90
 
-#define MAX_MOB 100
+#define MAX_MOB 200
 #define MAX_ITEMS 200
-
+#define HOTBAR_SIZE 5
 
 typedef enum {vide, terreP, eau, terreCHG, terreCHD, terreCBG, terreCBD, terreH, terreB, terreG, terreD, feu, pierre, arbrecoupe, arbreEntier} type_t;
 
@@ -46,6 +45,8 @@ typedef enum {BOIS,VIANDE} typeItem;
 typedef struct item_ {
     typeItem type;
     SDL_Texture * texture;
+    float x;
+    float y;
 }t_Item;
 
 typedef struct {
@@ -58,7 +59,20 @@ typedef struct {
     Uint32 time_change_dir;
     SDL_Texture * texture;
     int vie;
+    int id; //1 = mouton, 2 = pawns
+    int drop_chance;
 }Mob;
+
+
+typedef struct {
+    int x;
+    int y;
+    int w;
+    int h;
+    t_Item * item;
+    int stackable;
+    int quantiter;
+}t_case;
 
 
 #include "menu.h"
@@ -71,6 +85,7 @@ typedef struct {
 #include "vaisseau.h"
 #include "map.h"
 #include "item.h"
+#include "inventaire.h"
 
 extern Perso perso;
 extern int animation_frame;   
@@ -84,3 +99,5 @@ extern Uint32 combat_timer;
 extern MIX_Track *track_global;
 
 extern int Planete_actuelle;
+
+extern int index_item;

@@ -5,5 +5,7 @@
 
 
 
-t_Item * init_item(typeItem type,SDL_Renderer * renderer);
-void afficher_item(t_Item * item, float x, float y,SDL_Renderer * renderer);
+t_Item * init_item(typeItem type,SDL_Renderer * renderer,float x,float y);
+void afficher_item(t_Item * items[MAX_ITEMS],SDL_Renderer * renderer);
+void detruire_item(t_Item ** item);
+void ramasser_item(t_Item * item);

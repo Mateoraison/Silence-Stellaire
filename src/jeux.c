@@ -23,9 +23,11 @@ float tramblement_camera_x = 0.0f;
 float tramblement_camera_y = 0.0f;
 
 
-t_Item * items[MAX_ITEMS];
+t_Item * items[MAX_ITEMS] = {NULL};
 Mob * mobs[MAX_MOB] = {NULL};
+int index_item = 0;
 
+t_case * hotbar[HOTBAR_SIZE] = {NULL};
 
 
 
@@ -166,7 +168,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
     }
     
 
-    init_mobs(renderer,mobs);
+    init_mobs(renderer,mobs,map,50,50);
 
     bool running = true;
     SDL_Event event;
@@ -264,18 +266,17 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
 
         charger_tilemap(renderer, tileset, map, foam);
         update_animation();
-        update_combat(map, mobs, items);
+        update_combat(map, mobs, renderer, items);
         update_mobs(map, mobs);
+        possible_ramasser_item(items, renderer);
+        afficher_item(items, renderer);
         if (combat_en_cours == false) afficher_perso(renderer);
         afficher_combat(renderer);
         afficher_mob(renderer, mobs);
-
+        afficher_hotbar(hotbar, renderer);
 
         afficher_vie(renderer);
 
-        
-
-        
         SDL_FRect src = {0, 0, 644, 388};
         SDL_FRect dest = {750.0f + perso.x, 550.0f + perso.y, 644.0f, 388.0f};
         SDL_RenderTexture(renderer, exterieure, &src, &dest);
