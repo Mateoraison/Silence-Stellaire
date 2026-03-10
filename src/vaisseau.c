@@ -2,6 +2,7 @@
 #include <SDL3_image/SDL_image.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include "headers/main.h"
 
 #define TILE_SIZE 64
 #define MAP_W 24
@@ -14,8 +15,68 @@ typedef struct {
     int tileY;
 } TileRef;
 
+// --- FONCTIONS DE COLLISION ---
+
+int en_collision(int tileX, int tileY) {
+    // Sécurité pour ne pas sortir du tableau
+    if (tileX < 0 || tileX >= MAP_W || tileY < 0 || tileY >= MAP_H) return 1;
+
+    int type = tile_map[tileY][tileX];
+
+    switch(type) {
+        // Contours du vaisseau 
+        case 1: case 2: case 3: case 4: case 5: 
+        case 6: case 7: case 8: case 9: 
+
+        // Murs du vaisseau
+        case 19: case 21: case 22: case 23:
+        case 24: case 26: case 28: case 30: 
+        case 32: case 34: case 36: case 38: 
+        case 40: case 42: case 44: 
+            return 1;
+
+        default:
+            return 0;
+    }
+}
+
+// Vérifie si un rectangle (hitbox) touche une tuile solide
+bool est_en_collision_rect(SDL_FRect hitbox) {
+    // On calcule les tuiles qui sont couvertes par la hitbox
+    int startX = (int)(hitbox.x / DISPLAY_TILE_SIZE);
+    int startY = (int)(hitbox.y / DISPLAY_TILE_SIZE);
+    int endX   = (int)((hitbox.x + hitbox.w) / DISPLAY_TILE_SIZE);
+    int endY   = (int)((hitbox.y + hitbox.h) / DISPLAY_TILE_SIZE);
+
+    for (int y = startY; y <= endY; y++) {
+        for (int x = startX; x <= endX; x++) {
+            if (en_collision(x, y)) {
+                SDL_FRect tile_rect = {
+                    (float)x * DISPLAY_TILE_SIZE,
+                    (float)y * DISPLAY_TILE_SIZE,
+                    (float)DISPLAY_TILE_SIZE,
+                    (float)DISPLAY_TILE_SIZE
+                };
+
+                // SDL3 : Vérifie l'intersection entre la hitbox et la tuile
+                if (SDL_HasRectIntersectionFloat(&hitbox, &tile_rect)) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
+// --- GESTION DE LA MAP ---
+
+void spawn_perso(int tileX, int tileY) {
+    // Centre le spawn (500, 400 étant le centre de l'écran)
+    perso.x = -(tileX * DISPLAY_TILE_SIZE) + 500;
+    perso.y = -(tileY * DISPLAY_TILE_SIZE) + 400;
+}
+
 void charger_map(const char* filename) {
-    // 1. Initialisation forcée à -1
     for (int y = 0; y < MAP_H; y++) {
         for (int x = 0; x < MAP_W; x++) tile_map[y][x] = -1;
     }
@@ -26,33 +87,19 @@ void charger_map(const char* filename) {
         return;
     }
 
-    int count = 0;
     for (int y = 0; y < MAP_H; y++) {
         for (int x = 0; x < MAP_W; x++) {
-            // " %d-" avec l'espace au début permet d'ignorer les retours à la ligne
             if (fscanf(file, " %d-", &tile_map[y][x]) == 1) {
-                count++;
+                // Spawn du perso quand on lit la tuile 36
+                if(tile_map[y][x] == 99){
+                    spawn_perso(x,y);
+                    tile_map[y][x] = 37; 
+                }
             }
         }
     }
     fclose(file);
-    SDL_Log("Map chargee : %d tuiles lues.", count);
 }
-
-/*
-Comment trouver les bonnes coordonnées X, Y ?
-
-Ouvre ton fichier tileset_sf.png dans un logiciel de dessin (Paint, Photoshop, GIMP) :
-S'aider de piskelapp.com pour trouver les bonnes coordonnées X, Y de chaque tuile dans le tileset.
-
-Place ton curseur sur la tuile voulue.
-
-Regarde les coordonnées en pixels (ex: x=384, y=320).
-
-Divise par 64 (ex: 384/64 = 12, 320/64 = 10).
-
-Tes coordonnées sont {12, 10} dans la palette.
-*/
 
 void draw_map(SDL_Renderer *renderer, SDL_Texture *tileset) {
     /*
@@ -151,31 +198,25 @@ void draw_map(SDL_Renderer *renderer, SDL_Texture *tileset) {
     for (int y = 0; y < MAP_H; y++) {
         for (int x = 0; x < MAP_W; x++) {
             int type = tile_map[y][x];
-
-            // Si type est -1, on ne dessine rien
             if (type < 0) continue; 
-            
-            // Sécurité pour ne pas dépasser la taille de la palette 
-            if (type >= sizeof(palette)/sizeof(palette[0])) type = 0;
+            if (type >= (int)(sizeof(palette)/sizeof(palette[0]))) type = 0;
 
-            SDL_FRect src = { 
-                (float)palette[type].tileX * TILE_SIZE, 
-                (float)palette[type].tileY * TILE_SIZE, 
-                TILE_SIZE, TILE_SIZE 
-            };
-            
-            SDL_FRect dst = { 
-                (x * TILE_SIZE / 2 ), 
-                (y * TILE_SIZE / 2 ), 
-                TILE_SIZE / 2, TILE_SIZE / 2
-            };
-            
+            SDL_FRect src = { (float)palette[type].tileX * TILE_SIZE, (float)palette[type].tileY * TILE_SIZE, TILE_SIZE, TILE_SIZE };
+            SDL_FRect dst = { (x * DISPLAY_TILE_SIZE + perso.x), (y * DISPLAY_TILE_SIZE + perso.y), (float)DISPLAY_TILE_SIZE, (float)DISPLAY_TILE_SIZE };
             SDL_RenderTexture(renderer, tileset, &src, &dst);
         }
     }
 }
 
+// --- FONCTION PRINCIPALE ---
+
 int vaisseau(SDL_Renderer *renderer) {
+    int code_sortie = 0;
+    float old_x, old_y;
+
+    int hitbox_x = 30 ;
+    int hitbox_y = 60 ; 
+
     SDL_Texture *t_tiles = IMG_LoadTexture(renderer, "assets/tileset/V2/Interieur_Vaisseau/tileset_sf.png");
     SDL_Texture *t_bg = IMG_LoadTexture(renderer, "assets/tileset/V2/Interieur_Vaisseau/Grafika/bg.png"); 
 
@@ -192,25 +233,68 @@ int vaisseau(SDL_Renderer *renderer) {
 
     while (running) {
         while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_EVENT_QUIT) running = false;
-            if (event.type == SDL_EVENT_KEY_DOWN) {
-                if (event.key.key == SDLK_ESCAPE) running = false;
+            if (event.type == SDL_EVENT_QUIT) {
+                running = false;
+                code_sortie = 1;
+            } 
+            else if (event.type == SDL_EVENT_KEY_DOWN) {
+                if (event.key.key == SDLK_ESCAPE) { running = false; code_sortie = 1; }
+                if (event.key.key == SDLK_M)      { running = false; code_sortie = 3; }
+
+                // On sauvegarde l'ancienne position
+                old_x = perso.x;
+                old_y = perso.y;
+
+                // On tente le déplacement
+                deplacer_perso(event);
+
+                // On calcule la hitbox uniquement au niveau des PIEDS
+                // Le perso fait 64x64. On veut une zone de collision en bas.
+                SDL_FRect hitbox_pieds = {
+                    .x = (500.0f - perso.x) + hitbox_x, // On centre la hitbox sur le personnage
+                    .y = (400.0f - perso.y) + hitbox_y, // On descend vers les pieds
+                    .w = 32.0f,                   // Largeur étroite pour passer partout
+                    .h = 16.0f                    // Hauteur très fine (juste la semelle)
+                };
+
+                // Test de collision avec cette nouvelle zone
+                if (est_en_collision_rect(hitbox_pieds)) {
+                    perso.x = old_x;
+                    perso.y = old_y;
+                }
             }
         }
 
         SDL_SetRenderDrawColor(renderer, 20, 20, 30, 255);
         SDL_RenderClear(renderer);
 
-        if (t_bg) {
-            SDL_RenderTexture(renderer, t_bg, NULL, NULL);
-        }
+        if (t_bg) SDL_RenderTexture(renderer, t_bg, NULL, NULL);
 
         draw_map(renderer, t_tiles);
+        update_animation();
+        afficher_perso(renderer);
+
+        // --- CODE DE DEBUG POUR VOIR LA HITBOX ---
+        // On choisit une couleur (Rouge : 255, 0, 0)
+        SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+
+        // On définit le rectangle à l'écran (coordonnées fixes du perso)
+        // On utilise exactement les mêmes offsets (+16, +44) et tailles (32, 16)
+        SDL_FRect debug_rect = {
+            .x = 500.0f + hitbox_x, 
+            .y = 400.0f + hitbox_y, 
+            .w = 32.0f, 
+            .h = 16.0f
+        };
+
+        // On dessine le contour du rectangle
+        SDL_RenderRect(renderer, &debug_rect);
+        // -----------------------------------------
 
         SDL_RenderPresent(renderer);
     }
 
     SDL_DestroyTexture(t_tiles);
     SDL_DestroyTexture(t_bg);
-    return 0;
+    return code_sortie;
 }
