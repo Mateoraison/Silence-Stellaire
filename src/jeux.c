@@ -205,55 +205,49 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
             }
             gerer_clic_inventaire(inventaire, hotbar, &event);
             gerer_combat(event);
-            
-            const float joueur_ecran_x = -perso.x + 500.0f;
-            const float joueur_ecran_y = -perso.y + 400.0f;
-
-            const float largeur_src = (float)SOURCE_TILE_SIZE;   
-            const float hauteur_src = (float)SOURCE_TILE_SIZE;   
-            const float largeur_dest = (float)DISPLAY_TILE_SIZE; 
-            const float hauteur_dest = (float)DISPLAY_TILE_SIZE; 
-            const float echelle_x = largeur_dest / largeur_src;
-            const float echelle_y = hauteur_dest / hauteur_src;
-
-            const float decalage_src_x = 15.0f;
-            const float decalage_src_y = 7.0f;
-            const float sprite_src_largeur = 26.0f;
-            const float sprite_src_hauteur = 44.0f;
-
-            float boite_x = joueur_ecran_x + decalage_src_x * echelle_x;
-            float boite_y = joueur_ecran_y + decalage_src_y * echelle_y;
-            float boite_w = sprite_src_largeur * echelle_x;
-            float boite_h = sprite_src_hauteur * echelle_y;
-
-            int tuile_gauche = (int)floorf(boite_x / DISPLAY_TILE_SIZE);
-            int tuile_droite = (int)floorf((boite_x + boite_w - 1.0f) / DISPLAY_TILE_SIZE);
-            int tuile_haut = (int)floorf((boite_y + boite_h - 10.0f) / DISPLAY_TILE_SIZE);
-            int tuile_bas = (int)floorf((boite_y + boite_h - 1.0f) / DISPLAY_TILE_SIZE);
-
-            int collision_trouve = 0;
-            for (int tx = tuile_gauche; tx <= tuile_droite && !collision_trouve; tx++) {
-                for (int ty = tuile_haut; ty <= tuile_bas; ty++) {
-                    if (tx < 0 || ty < 0 || tx >= W_MAP || ty >= H_MAP) continue;
-                    if (test_collision(tx, ty, map, 0)) { collision_trouve = 1; break; }
-                }
-            }
-
-            if (collision_trouve) {
-                switch (perso.direction) {
-                    case 0: perso.y += 5; break;
-                    case 1: perso.y -= 5; break;
-                    case 2: perso.x -= 5; break;
-                    case 3: perso.x += 5; break;
-                }
-            }
         }
         Uint32 maintenant_dt = SDL_GetTicks();
         static Uint32 dernier_frame_dt = 0;
         float delta = (dernier_frame_dt == 0) ? 0.016f : (maintenant_dt - dernier_frame_dt) / 1000.0f;
         dernier_frame_dt = maintenant_dt;
         
+        float old_x = perso.x;
+        float old_y = perso.y;
+
         deplacer_perso(delta);
+
+        SDL_Rect hitbox = {
+            .x = (500 - perso.x) + 30, 
+            .y = (400 - perso.y) + 60, 
+            .w = 32,                   
+            .h = 16                    
+        };
+
+        int tx0 = hitbox.x / DISPLAY_TILE_SIZE;
+        int ty0 = hitbox.y / DISPLAY_TILE_SIZE;
+        int tx1 = (hitbox.x + hitbox.w) / DISPLAY_TILE_SIZE;
+        int ty1 = (hitbox.y + hitbox.h) / DISPLAY_TILE_SIZE;
+
+        if (tx0 < 0) tx0 = 0;
+        if (ty0 < 0) ty0 = 0;
+        if (tx1 >= W_MAP) tx1 = W_MAP - 1;
+        if (ty1 >= H_MAP) ty1 = H_MAP - 1;
+
+        bool collision_trouve = false;
+        for (int tx = tx0; tx <= tx1 && !collision_trouve; tx++) {
+            for (int ty = ty0; ty <= ty1; ty++) {
+                if (test_collision(tx, ty, map, 0, hitbox)) {
+                    collision_trouve = true;
+                    continue;
+                }
+            }
+        }
+
+        if (collision_trouve) {
+            perso.x = old_x;
+            perso.y = old_y;
+        }
+        
         SDL_RenderClear(renderer);
         
         Uint32 maintenant = SDL_GetTicks();

@@ -240,26 +240,6 @@ int vaisseau(SDL_Renderer *renderer) {
             else if (event.type == SDL_EVENT_KEY_DOWN) {
                 if (event.key.key == SDLK_ESCAPE) { running = false; code_sortie = 1; }
                 if (event.key.key == SDLK_M)      { running = false; code_sortie = 3; }
-
-                // On sauvegarde l'ancienne position
-                old_x = perso.x;
-                old_y = perso.y;
-                
-
-                // On calcule la hitbox uniquement au niveau des PIEDS
-                // Le perso fait 64x64. On veut une zone de collision en bas.
-                SDL_FRect hitbox_pieds = {
-                    .x = (500.0f - perso.x) + hitbox_x, // On centre la hitbox sur le personnage
-                    .y = (400.0f - perso.y) + hitbox_y, // On descend vers les pieds
-                    .w = 32.0f,                   // Largeur étroite pour passer partout
-                    .h = 16.0f                    // Hauteur très fine (juste la semelle)
-                };
-
-                // Test de collision avec cette nouvelle zone
-                if (est_en_collision_rect(hitbox_pieds)) {
-                    perso.x = old_x;
-                    perso.y = old_y;
-                }
             }
         }
 
@@ -268,8 +248,27 @@ int vaisseau(SDL_Renderer *renderer) {
         float delta = (dernier_frame_dt == 0) ? 0.016f : (maintenant_dt - dernier_frame_dt) / 1000.0f;
         dernier_frame_dt = maintenant_dt;
 
+        // On sauvegarde l'ancienne position
+        old_x = perso.x;
+        old_y = perso.y;
+
         // On tente le déplacement
         deplacer_perso(delta);
+
+        // On calcule la hitbox uniquement au niveau des PIEDS
+        // Le perso fait 64x64. On veut une zone de collision en bas.
+        SDL_FRect hitbox_pieds = {
+            .x = (500.0f - perso.x) + hitbox_x, // On centre la hitbox sur le personnage
+            .y = (400.0f - perso.y) + hitbox_y, // On descend vers les pieds
+            .w = 32.0f,                   // Largeur étroite pour passer partout
+            .h = 16.0f                    // Hauteur très fine (juste la semelle)
+        };
+
+        // Test de collision avec cette nouvelle zone
+        if (est_en_collision_rect(hitbox_pieds)) {
+            perso.x = old_x;
+            perso.y = old_y;
+        }
 
 
         SDL_SetRenderDrawColor(renderer, 20, 20, 30, 255);

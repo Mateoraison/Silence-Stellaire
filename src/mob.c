@@ -43,7 +43,7 @@ void init_mobs(SDL_Renderer * renderer, Mob * mobs[MAX_MOB], t_tile map[W_MAP][H
 
         int tuile_x = min_tuile_x + (rand() % (max_tuile_x - min_tuile_x + 1));
         int tuile_y = min_tuile_y + (rand() % (max_tuile_y - min_tuile_y + 1));
-        if(test_collision(tuile_x, tuile_y, map, 1)) {
+        if(test_collision(tuile_x, tuile_y, map, 1, (SDL_Rect){tuile_x * DISPLAY_TILE_SIZE, tuile_y * DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE})) {
             free(mobs[index]);
             continue;
         }
@@ -78,7 +78,7 @@ void init_mobs(SDL_Renderer * renderer, Mob * mobs[MAX_MOB], t_tile map[W_MAP][H
 
         int tuile_x = min_tuile_x + (rand() % (max_tuile_x - min_tuile_x + 1));
         int tuile_y = min_tuile_y + (rand() % (max_tuile_y - min_tuile_y + 1));
-        if(test_collision(tuile_x, tuile_y, map, 1)) {
+        if(test_collision(tuile_x, tuile_y, map, 1, (SDL_Rect){tuile_x * DISPLAY_TILE_SIZE, tuile_y * DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE})) {
             free(mobs[index]);
             continue;
         }
@@ -126,7 +126,7 @@ void update_mobs(t_tile map[W_MAP][H_MAP], Mob * mobs[MAX_MOB]) {
         int tile_y = (int)((nouvelle_y + mobs[i]->hauteur * DISPLAY_TILE_SIZE / 2) / DISPLAY_TILE_SIZE);
 
         if (tile_x >= 0 && tile_x < W_MAP && tile_y >= 0 && tile_y < H_MAP) {
-            if (!test_collision(tile_x, tile_y, map, 1)) {
+            if (!test_collision(tile_x, tile_y, map, 1, (SDL_Rect){nouvelle_x, nouvelle_y, mobs[i]->largeur * DISPLAY_TILE_SIZE, mobs[i]->hauteur * DISPLAY_TILE_SIZE})) {
                 mobs[i]->x = nouvelle_x;
                 mobs[i]->y = nouvelle_y;
             } else {

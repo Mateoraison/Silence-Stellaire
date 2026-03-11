@@ -39,6 +39,8 @@ void afficher_hotbar(t_case * hotbar[HOTBAR_SIZE], SDL_Renderer *renderer) {
             }
         }
     }
+    if (texture) SDL_DestroyTexture(texture);
+    if (font) TTF_CloseFont(font);
 }
 
 
@@ -266,11 +268,6 @@ void gerer_clic_inventaire(t_case *inventaire[INVENTAIRE_SIZE], t_case *hotbar[H
 
     t_case **slot_a = NULL;
     t_case **slot_b = NULL;
-
-    if ((*slot_a != NULL && (*slot_a)->verrouille) || (*slot_b != NULL && (*slot_b)->verrouille)) {
-        slot_selectionne = -1;
-        return;
-    }
 
     if (slot_selectionne < INVENTAIRE_SIZE)
         slot_a = &inventaire[slot_selectionne];

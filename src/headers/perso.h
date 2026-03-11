@@ -6,7 +6,7 @@
 int afficher_perso(SDL_Renderer *renderer);
 int deplacer_perso(float delta_time);
 void update_animation();
-int test_collision(int x, int y, t_tile map[W_MAP][H_MAP], int est_mob);
+int test_collision(int x, int y, t_tile map[W_MAP][H_MAP], int est_mob, SDL_Rect hitbox);
 int afficher_vie(SDL_Renderer *renderer);
 void gerer_combat(SDL_Event event);
 void afficher_combat(SDL_Renderer *renderer);

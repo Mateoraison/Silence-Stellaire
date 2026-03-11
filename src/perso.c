@@ -71,27 +71,68 @@ void update_animation() {
     }
 }
 
-int test_collision(int x, int y, t_tile map[W_MAP][H_MAP], int est_mob) {
+int test_collision(int x, int y, t_tile map[W_MAP][H_MAP], int est_mob, SDL_Rect hitbox) {
     /**
      * Cette fonction teste si la tile à la position (x, y) est une tile d'un type avec collision.
      */
 
     switch (map[x][y].type)
     {
-    case eau:
-    case pierre:
-    case arbrecoupe:
-    case arbreEntier:
-        return 1;
-    case feu:
-        if (est_mob == 0 && perso.vie > 0 && perso.invincibiliter_timer == 0){
-            perso.vie -= 1;
-            perso.invincibiliter_timer = SDL_GetTicks();
-        }
-        return 1;
-    default:
-        return 0;
+        case eau: 
+            SDL_Rect hitbox_eau = {x*DISPLAY_TILE_SIZE, y*DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE};
+            if(SDL_HasRectIntersection(&hitbox_eau, &hitbox)) {
+                return 1;
+            }
+            break;
+        case pierre: 
+            SDL_Rect hitbox_pierre = {x*DISPLAY_TILE_SIZE + 8, y*DISPLAY_TILE_SIZE + 4, 84, 76};
+            if(SDL_HasRectIntersection(&hitbox_pierre, &hitbox)) {
+                return 1;
+            }
+            break;
+        case arbrecoupe: 
+            SDL_Rect hitbox_arbrecoupe = {x*DISPLAY_TILE_SIZE + 13, y*DISPLAY_TILE_SIZE + 8, 62, 51};
+            if(SDL_HasRectIntersection(&hitbox_arbrecoupe, &hitbox)) {
+                return 1;
+            }
+            break;
+        case arbreEntier:
+            if(map[x][y].type == arbreEntier && map[x-1][y].type == arbreEntier && map[x][y-1].type == arbreEntier && map[x][y+1].type == arbreEntier){
+                x -= 1;
+                y -= 1;
+            }else if(map[x][y].type == arbreEntier && map[x+1][y].type == arbreEntier && map[x][y-1].type == arbreEntier && map[x][y+1].type == arbreEntier){
+                y -= 1;
+            }else if(map[x][y].type == arbreEntier && map[x+1][y].type == arbreEntier && map[x][y-1].type == arbreEntier && map[x][y+1].type != arbreEntier){
+                y -= 2;
+            }else if(map[x][y].type == arbreEntier && map[x-1][y].type == arbreEntier && map[x][y-1].type == arbreEntier && map[x][y+1].type != arbreEntier){
+                x -= 1;
+                y -= 2;
+            }else if(map[x][y].type == arbreEntier && map[x-1][y].type == arbreEntier && map[x][y-1].type != arbreEntier && map[x][y+1].type == arbreEntier){
+                x -= 1;
+            }
+
+            SDL_Rect hitbox_arbreEntier1 = {x*DISPLAY_TILE_SIZE + 59*1.4, y*DISPLAY_TILE_SIZE + 38*1.4, 13, 38};
+            SDL_Rect hitbox_arbreEntier2 = {x*DISPLAY_TILE_SIZE + 48*1.4, y*DISPLAY_TILE_SIZE + 65*1.4, 48, 22};
+            SDL_Rect hitbox_arbreEntier3 = {x*DISPLAY_TILE_SIZE + 39*1.4, y*DISPLAY_TILE_SIZE + 82*1.4, 70, 31};
+            SDL_Rect hitbox_arbreEntier4 = {x*DISPLAY_TILE_SIZE + 33*1.4, y*DISPLAY_TILE_SIZE + 105*1.4, 91, 35};
+            SDL_Rect hitbox_arbreEntier5 = {x*DISPLAY_TILE_SIZE + 23*1.4, y*DISPLAY_TILE_SIZE + 130*1.4, 115, 34};
+            SDL_Rect hitbox_arbreEntier6 = {x*DISPLAY_TILE_SIZE + 34*1.4, y*DISPLAY_TILE_SIZE + 154*1.4, 87, 14};
+            SDL_Rect hitbox_arbreEntier7 = {x*DISPLAY_TILE_SIZE + 50*1.4, y*DISPLAY_TILE_SIZE + 164*1.4, 42, 17};
+            
+            if(SDL_HasRectIntersection(&hitbox_arbreEntier1, &hitbox) || SDL_HasRectIntersection(&hitbox_arbreEntier2, &hitbox) || SDL_HasRectIntersection(&hitbox_arbreEntier3, &hitbox) || SDL_HasRectIntersection(&hitbox_arbreEntier4, &hitbox) || SDL_HasRectIntersection(&hitbox_arbreEntier5, &hitbox) || SDL_HasRectIntersection(&hitbox_arbreEntier6, &hitbox) || SDL_HasRectIntersection(&hitbox_arbreEntier7, &hitbox)) {
+                return 1;
+            }
+            break;
+        case feu:
+            if (est_mob == 0 && perso.vie > 0 && perso.invincibiliter_timer == 0){
+                perso.vie -= 1;
+                perso.invincibiliter_timer = SDL_GetTicks();
+            }
+            return 0;
+        default:
+            return 0;
     }
+    return 0;
 
 }
 
@@ -291,7 +332,7 @@ void tester_collision_combat(t_tile map[W_MAP][H_MAP], Mob * mobs[MAX_MOB], SDL_
                         float ny = mobs[i]->y + dir_y * push;
                         int tile_x = (int)((nx + mobs[i]->largeur * DISPLAY_TILE_SIZE / 2) / DISPLAY_TILE_SIZE);
                         int tile_y = (int)((ny + mobs[i]->hauteur * DISPLAY_TILE_SIZE / 2) / DISPLAY_TILE_SIZE);
-                        if (!test_collision(tile_x, tile_y, map, 1)) {
+                        if (!test_collision(tile_x, tile_y, map, 1, (SDL_Rect){nx, ny, mobs[i]->largeur * DISPLAY_TILE_SIZE, mobs[i]->hauteur * DISPLAY_TILE_SIZE})) {
                             best_recul = push;
                             break;
                         }

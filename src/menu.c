@@ -18,7 +18,6 @@ int afficher_menu(SDL_Renderer *renderer) {
     TTF_Font *font = TTF_OpenFont("assets/police.ttf", 24);
     if (!font) {
         SDL_Log("Erreur chargement police: %s", SDL_GetError());
-        TTF_Quit();
         return 1;
     }
 
@@ -34,7 +33,6 @@ int afficher_menu(SDL_Renderer *renderer) {
         SDL_Log("erreur chargement texture bouton: %s", SDL_GetError());
         SDL_DestroyTexture(texture);
         TTF_CloseFont(font);
-        TTF_Quit();
         return 1;
     }
 
