@@ -31,11 +31,11 @@ Suite à un accident catastrophique, votre astronaute se retrouve échoué sur u
 
 ## ✨ Fonctionnalités
 
-- 🚀 **Exploration spatiale** : Voyagez à travers plusieurs planètes aux environnements uniques
-- ⚔️ **Combat** : Affrontez des créatures hostiles dans des combats dynamiques
-- 🧩 **Énigmes** : Résolvez des puzzles pour progresser dans votre aventure
-- 🌍 **Environnements variés** : Chaque planète offre des défis et une atmosphère différents
-- 💾 **Sauvegarde** : Système de sauvegarde de progression
+- **Exploration spatiale** : Voyagez à travers plusieurs planètes aux environnements uniques
+- **Combat** : Affrontez des créatures hostiles dans des combats dynamiques
+- **Énigmes** : Résolvez des puzzles pour progresser dans votre aventure
+- **Environnements variés** : Chaque planète offre des défis et une atmosphère différents
+- **Sauvegarde** : Système de sauvegarde de progression
 
 ## 🔧 Prérequis
 
@@ -71,7 +71,8 @@ gcc src/*.c -Iinclude -Llib -lSDL3 -lSDL3_image -lSDL3_ttf -lSDL3_mixer -lm -Wal
 
 - **Déplacement** : ZQSD ou WASD
 - **Combat** : Clic Gauche
-- **Inventaire** : E
+- **Inventaire** : I
+- **Rammaser Items** : E
 - **Interraction** : Clic Droit
 - **Pause** : Échap
 
