@@ -92,6 +92,7 @@ typedef struct {
 #include "item.h"
 #include "inventaire.h"
 
+
 extern Perso perso;
 extern int animation_frame;   
 extern Uint32 animation_timer; 

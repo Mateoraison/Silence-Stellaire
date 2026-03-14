@@ -78,24 +78,27 @@ int test_collision(int x, int y, t_tile map[W_MAP][H_MAP], int est_mob, SDL_Rect
 
     switch (map[x][y].type)
     {
-        case eau: 
-            SDL_Rect hitbox_eau = {x*DISPLAY_TILE_SIZE, y*DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE};
-            if(SDL_HasRectIntersection(&hitbox_eau, &hitbox)) {
-                return 1;
+            case eau: {
+                SDL_Rect hitbox_eau = {x*DISPLAY_TILE_SIZE, y*DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE};
+                if(SDL_HasRectIntersection(&hitbox_eau, &hitbox)) {
+                    return 1;
+                }
+                break;
             }
-            break;
-        case pierre: 
-            SDL_Rect hitbox_pierre = {x*DISPLAY_TILE_SIZE + 8, y*DISPLAY_TILE_SIZE + 4, 84, 76};
-            if(SDL_HasRectIntersection(&hitbox_pierre, &hitbox)) {
-                return 1;
+            case pierre: {
+                SDL_Rect hitbox_pierre = {x*DISPLAY_TILE_SIZE + 8, y*DISPLAY_TILE_SIZE + 4, 84, 76};
+                if(SDL_HasRectIntersection(&hitbox_pierre, &hitbox)) {
+                    return 1;
+                }
+                break;
             }
-            break;
-        case arbrecoupe: 
-            SDL_Rect hitbox_arbrecoupe = {x*DISPLAY_TILE_SIZE + 13, y*DISPLAY_TILE_SIZE + 8, 62, 51};
-            if(SDL_HasRectIntersection(&hitbox_arbrecoupe, &hitbox)) {
-                return 1;
+            case arbrecoupe: {
+                SDL_Rect hitbox_arbrecoupe = {x*DISPLAY_TILE_SIZE + 13, y*DISPLAY_TILE_SIZE + 8, 62, 51};
+                if(SDL_HasRectIntersection(&hitbox_arbrecoupe, &hitbox)) {
+                    return 1;
+                }
+                break;
             }
-            break;
         case arbreEntier:
             if(map[x][y].type == arbreEntier && map[x-1][y].type == arbreEntier && map[x][y-1].type == arbreEntier && map[x][y+1].type == arbreEntier){
                 x -= 1;

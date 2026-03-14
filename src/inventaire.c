@@ -171,6 +171,10 @@ void afficher_inventaire(t_case *inventaire[INVENTAIRE_SIZE], SDL_Renderer *rend
                         SDL_DestroyTexture(lock_tex);
                     }
                 }
+            }else{
+                SDL_Texture * texture_lock = IMG_LoadTexture(renderer, "assets/UI/locker.png");
+                SDL_RenderTexture(renderer, texture_lock, NULL, &slot_rect);
+                SDL_DestroyTexture(texture_lock);
             }
         }
     }

@@ -137,6 +137,15 @@ void charger_tilemap(SDL_Renderer *renderer, SDL_Texture *tileset,
 
 
 
+void afficher_init_caisse_outils(SDL_Renderer *renderer){
+    SDL_Texture * caisse_outils = IMG_LoadTexture(renderer, "assets/UI/caisse_outils.png");
+    SDL_FRect src = {0, 0, 64, 64};
+    SDL_FRect dest = {5*DISPLAY_TILE_SIZE + perso.x, 5*DISPLAY_TILE_SIZE + perso.y, DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE};
+    SDL_RenderTexture(renderer, caisse_outils, &src, &dest);
+    SDL_DestroyTexture(caisse_outils);
+}
+
+
 
 
 int jeu_principal(SDL_Renderer *renderer, int planete) {
