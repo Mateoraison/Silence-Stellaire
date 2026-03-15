@@ -52,12 +52,13 @@ int main(int argc, char* argv[]) {
     }
 
     SDL_SetWindowIcon(fenetre, IMG_Load("assets/logo_win.png"));
-
+    init_caisse_outils(renderer);
     bool running = true; 
     track_global = jouer_son("assets/audio/ambiance.wav");
     while (running) {
         int action_menu = afficher_menu(renderer);
         if (action_menu == 1) {
+            
             int resultat_jeu = jeu_principal(renderer,Planete_actuelle);
             if (resultat_jeu == 3){
                 int nouvelle_planete = afficher_map(renderer);

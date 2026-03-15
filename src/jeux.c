@@ -1,3 +1,4 @@
+int argent = 0;
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
 #include <SDL3_mixer/SDL_mixer.h>
@@ -30,6 +31,7 @@ int index_item = 0;
 t_case * hotbar[HOTBAR_SIZE] = {NULL};
 t_case *inventaire[INVENTAIRE_SIZE] = {NULL};
 t_case *caisse_outils[3] = {NULL};
+t_case *caisse_outils[5] = {NULL};
 bool inventaire_ouvert = false;
 bool caisse_outils_ouvert = false;
 
@@ -138,6 +140,29 @@ void charger_tilemap(SDL_Renderer *renderer, SDL_Texture *tileset,
     }
 }
 
+void init_caisse_outils(SDL_Renderer *renderer) {
+    if (caisse_outils[0] == NULL && caisse_outils[1] == NULL && caisse_outils[2] == NULL) {
+        t_Item *marteau = init_item(MARTEAU, renderer, 0.0f, 0.0f);
+        t_Item *soin = init_item(SOIN, renderer, 0.0f, 0.0f);
+        t_Item *piece = init_item(PIECE, renderer, 0.0f, 0.0f);
+        t_Item *briquet = init_item(BRIQUET, renderer, 0.0f, 0.0f);
+        t_Item *bois = init_item(BOIS, renderer, 0.0f, 0.0f);
+        ajouter_item_inventaire(caisse_outils, marteau);
+        ajouter_item_inventaire(caisse_outils, soin);
+        ajouter_item_inventaire(caisse_outils, piece);
+        ajouter_item_inventaire(caisse_outils, briquet);
+        ajouter_item_inventaire(caisse_outils, bois);
+    }
+}
+
+typedef struct {
+    int actif;
+    int slot_hotbar;  
+    Uint32 debut_cuisson;
+    SDL_Renderer *renderer;
+} t_Cuisson;
+
+static t_Cuisson cuisson = {0, -1, 0, NULL};
 
 
 
@@ -228,11 +253,115 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
                         caisse_outils_ouvert = !caisse_outils_ouvert;
                     }
                 }
+                
+                if ((event.key.mod & SDL_KMOD_CTRL) != 0) {
+                    for (int slot_drop = 0; slot_drop < HOTBAR_SIZE; ++slot_drop) {
+                        if (event.key.key == SDLK_1 + slot_drop) {
+                            if (hotbar[slot_drop] && hotbar[slot_drop]->item) {
+                                if (index_item < MAX_ITEMS) {
+                                    t_Item *drop = malloc(sizeof(t_Item));
+                                    if (drop) {
+                                        *drop = *(hotbar[slot_drop]->item);
+                                        drop->x = -perso.x + 500.0f;
+                                        drop->y = -perso.y + 400.0f;
+                                        items[index_item++] = drop;
+                                    }
+                                }
+                                hotbar[slot_drop]->quantiter--;
+                                if (hotbar[slot_drop]->quantiter <= 0) {
+                                    free(hotbar[slot_drop]->item);
+                                    free(hotbar[slot_drop]);
+                                    hotbar[slot_drop] = NULL;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                
+                for (int k = 0; k < 5; ++k) {
+                    if (event.key.key == SDLK_1 + k) {
+                        if (hotbar[k] && hotbar[k]->item) {
+                            t_Item *outil = hotbar[k]->item;
+                            if (outil->type == SOIN) {
+                                perso.vie += 2;
+                                if (perso.vie > perso.vie_max) perso.vie = perso.vie_max;
+                                hotbar[k]->quantiter--;
+                                if (hotbar[k]->quantiter <= 0) { free(hotbar[k]->item); free(hotbar[k]); hotbar[k] = NULL; }
+
+                            } else if (outil->type == MARTEAU) {
+                                SDL_Log("Marteau utilisé : réparation du vaisseau !");
+
+                            } else if (outil->type == PIECE) {
+                                argent += 1;
+                                hotbar[k]->quantiter--;
+                                if (hotbar[k]->quantiter <= 0) { free(hotbar[k]->item); free(hotbar[k]); hotbar[k] = NULL; }
+                                
+                            }else if(outil->type == BRIQUET){
+                                float perso_monde_x = -perso.x + 500.0f;
+                                float perso_monde_y = -perso.y + 400.0f;
+                                float rayon = 120.0f;
+
+                                for (int b = 0; b < index_item; b++) {
+                                    if (items[b] != NULL && items[b]->type == BOIS) {
+                                        float dx = items[b]->x - perso_monde_x;
+                                        float dy = items[b]->y - perso_monde_y;
+                                        if (dx*dx + dy*dy <= rayon*rayon) {
+                                            float fx = items[b]->x;
+                                            float fy = items[b]->y;
+
+                                            free(items[b]);
+                                            for (int j = b; j < index_item - 1; j++)
+                                                items[j] = items[j+1];
+                                            items[index_item - 1] = NULL;
+                                            index_item--;
+
+                                            if (index_item < MAX_ITEMS) {
+                                                t_Item *fdc = init_item(FEUDECAMP, renderer, fx, fy);
+                                                if (fdc) items[index_item++] = fdc;
+                                            }
+                                        }
+                                    }
+                                }
+                            }else if(outil->type == VIANDE){
+                                float perso_monde_x = -perso.x + 500.0f;
+                                float perso_monde_y = -perso.y + 400.0f;
+                                float rayon = 120.0f;
+
+                                for (int b = 0; b < index_item; b++) {
+                                    if (items[b] != NULL && items[b]->type == FEUDECAMP) {
+                                        float dx = items[b]->x - perso_monde_x;
+                                        float dy = items[b]->y - perso_monde_y;
+                                        if (dx*dx + dy*dy <= rayon*rayon && !cuisson.actif) {
+                                            // utilise une viande
+                                            hotbar[k]->quantiter--;
+                                            if (hotbar[k]->quantiter <= 0) {
+                                                free(hotbar[k]->item);
+                                                free(hotbar[k]);
+                                                hotbar[k] = NULL;
+                                            }
+                                            // Lancer la cuisson
+                                            cuisson.actif = 1;
+                                            cuisson.slot_hotbar = k;
+                                            cuisson.debut_cuisson = SDL_GetTicks();
+                                            cuisson.renderer = renderer;
+                                            SDL_Log("Cuisson en cours...");
+                                            break;
+                                        }
+                                    }
+                                }
+                            } else {
+                                SDL_Log("Outil utilisé (slot %d): type %d", k+1, outil->type);
+                            }
+                        }
+                    }
+                }
             }
             if (inventaire_ouvert)
                 gerer_clic_inventaire(inventaire, hotbar, &event, INVENTAIRE_SIZE, INVENTAIRE_COLS, INVENTAIRE_ROWS);
             if (caisse_outils_ouvert)
                 gerer_clic_inventaire(caisse_outils, hotbar, &event, 3, 3, 1);
+                gerer_clic_inventaire(caisse_outils, hotbar, &event, 5, 5, 1);
             gerer_combat(event);
         }
         Uint32 maintenant_dt = SDL_GetTicks();
@@ -300,6 +429,50 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
 
         charger_tilemap(renderer, tileset, map, foam);
         update_animation();
+        if (cuisson.actif && SDL_GetTicks() - cuisson.debut_cuisson >= 3000) {
+            cuisson.actif = 0;
+
+            int slot_dest = -1;
+
+            // 1. Priorité : chercher un slot VIANDE_CUITE existant pour stacker
+            for (int s = 0; s < HOTBAR_SIZE; s++) {
+                if (hotbar[s] != NULL && hotbar[s]->item != NULL &&
+                    hotbar[s]->item->type == VIANDECUITE) {
+                    slot_dest = s;
+                    break;
+                }
+            }
+
+            // 2. Sinon, chercher un slot vide
+            if (slot_dest == -1) {
+                for (int s = 0; s < HOTBAR_SIZE; s++) {
+                    if (hotbar[s] == NULL) { slot_dest = s; break; }
+                }
+            }
+
+            if (slot_dest != -1) {
+                if (hotbar[slot_dest] != NULL && hotbar[slot_dest]->item != NULL &&
+                    hotbar[slot_dest]->item->type == VIANDECUITE) {
+                    // Stack sur l'existant
+                    hotbar[slot_dest]->quantiter++;
+                } else {
+                    // Nouveau slot
+                    t_Item *vc = init_item(VIANDECUITE, renderer, 0.0f, 0.0f);
+                    if (vc) {
+                        hotbar[slot_dest] = malloc(sizeof(t_case));
+                        hotbar[slot_dest]->item      = vc;
+                        hotbar[slot_dest]->quantiter = 1;
+                        hotbar[slot_dest]->stackable = 1;
+                        hotbar[slot_dest]->x = hotbar[slot_dest]->y = 0;
+                        hotbar[slot_dest]->w = hotbar[slot_dest]->h = 0;
+                    }
+                }
+                SDL_Log("Viande cuite prête !");
+            } else {
+                SDL_Log("Hotbar pleine, viande cuite perdue !");
+            }
+        }
+
         update_combat(map, mobs, renderer, items);
         update_mobs(map, mobs);
         possible_ramasser_item(items, renderer, hotbar);
@@ -330,15 +503,10 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
 
         afficher_hotbar(hotbar, renderer);
 
-        if ((maintenant - faim_timer) > 10000) {
-            if (perso.faim > 0) perso.faim--;
-            faim_timer = maintenant;
-        }
-
-        afficher_stat(renderer);
 
         if(caisse_outils_ouvert) {
             afficher_inventaire(caisse_outils, renderer, 3, 3, 1);
+            afficher_inventaire(caisse_outils, renderer, 5, 5, 1);
         }
         
         if(inventaire_ouvert) {

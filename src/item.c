@@ -15,6 +15,11 @@ t_Item * init_item(typeItem type,SDL_Renderer * renderer,float x,float y){
         case VIANDE: item->texture = IMG_LoadTexture(renderer,"assets/UI/viande.png"); if(item->texture == NULL){ SDL_Log("Erreur chargement viande : %s", SDL_GetError()); } break;
         case MARTEAU: item->texture = IMG_LoadTexture(renderer,"assets/UI/marteau.png"); if(item->texture == NULL){ SDL_Log("Erreur chargement marteau : %s", SDL_GetError()); } break;
         case SOIN: item->texture = IMG_LoadTexture(renderer,"assets/UI/kit_soin.png"); if(item->texture == NULL){ SDL_Log("Erreur chargement kit_soin : %s", SDL_GetError()); } break;
+        case BRIQUET: item->texture = IMG_LoadTexture(renderer,"assets/UI/briquet.png"); if(item->texture == NULL){ SDL_Log("Erreur chargement briquet : %s", SDL_GetError()); } break;
+        case BOIS: item->texture = IMG_LoadTexture(renderer,"assets/UI/bois.png"); if(item->texture == NULL){ SDL_Log("Erreur chargement bois : %s", SDL_GetError()); } break;
+        case FEUDECAMP: item->texture = IMG_LoadTexture(renderer,"assets/UI/feu_de_camp.png"); if(item->texture == NULL){ SDL_Log("Erreur chargement feu de camp : %s", SDL_GetError()); } break;
+        case VIANDECUITE: item->texture = IMG_LoadTexture(renderer,"assets/UI/viande_cuite.png"); if(item->texture == NULL){ SDL_Log("Erreur chargement viande cuite : %s", SDL_GetError()); } break;
+        default: SDL_Log("Type d'item inconnu : %d", type); break;
     }
     if(item->texture == NULL){
         SDL_Log("init item fail ");
@@ -27,8 +32,15 @@ t_Item * init_item(typeItem type,SDL_Renderer * renderer,float x,float y){
 void afficher_item(t_Item * items[MAX_ITEMS],SDL_Renderer * renderer){
     for(int i = 0; i < index_item; i++) {
         if(items[i] != NULL) {
-            SDL_FRect dest = {(items[i]->x)+perso.x,(items[i]->y)+perso.y,32,32};
-            SDL_RenderTexture(renderer, items[i]->texture, NULL, &dest);
+            if(items[i]->type == FEUDECAMP){
+                SDL_FRect dest = {(items[i]->x)+perso.x,(items[i]->y)+perso.y,64,64};
+                SDL_RenderTexture(renderer, items[i]->texture, NULL, &dest);
+                continue;
+            }else{
+                SDL_FRect dest = {(items[i]->x)+perso.x,(items[i]->y)+perso.y,32,32};
+                SDL_RenderTexture(renderer, items[i]->texture, NULL, &dest);
+            }
+            
         }
     }
 }

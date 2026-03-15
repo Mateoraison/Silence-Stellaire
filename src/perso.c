@@ -379,10 +379,26 @@ void possible_ramasser_item(t_Item * items[MAX_ITEMS], SDL_Renderer * renderer, 
     SDL_Rect rect_perso = {500, 400, 40, 60};
 
     for (int i = 0; i < index_item; i++) {
-        if (items[i] != NULL) {
+        if (items[i] != NULL && items[i]->type != FEUDECAMP) {
             SDL_Rect rect_item = {(int)(items[i]->x + perso.x), (int)(items[i]->y + perso.y), 32, 32};
 
             if (SDL_HasRectIntersection(&rect_perso, &rect_item)) {
+                TTF_Font *font_text = TTF_OpenFont("assets/police.ttf", 24);
+                if (font_text) {
+                    char text_touche[64];
+                    if(items[i]->type == BOIS)SDL_snprintf(text_touche, sizeof(text_touche), " Utiliser briquet pour faire feu de camp");
+                    else SDL_snprintf(text_touche, sizeof(text_touche), "Appuyez sur E pour ramasser");
+                    SDL_Color blanc = {255, 255, 255, 255};
+                    SDL_Surface *surf_text = TTF_RenderText_Solid(font_text, text_touche, strlen(text_touche), blanc);
+                    if (surf_text) {
+                        SDL_Texture *tex_text = SDL_CreateTextureFromSurface(renderer, surf_text);
+                        SDL_FRect rect_text = {400.0f, 350.0f, (float)surf_text->w, (float)surf_text->h};
+                        SDL_RenderTexture(renderer, tex_text, NULL, &rect_text);
+                        SDL_DestroyTexture(tex_text);
+                        SDL_DestroySurface(surf_text);
+                    }
+                    TTF_CloseFont(font_text);
+                }
                 const bool *keys = SDL_GetKeyboardState(NULL);
                 if (keys[SDL_SCANCODE_E]) {
                     ajouter_item_hotbar(hotbar, items[i], renderer);

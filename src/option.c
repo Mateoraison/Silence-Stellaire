@@ -32,7 +32,7 @@ int afficher_option(SDL_Renderer *renderer, MIX_Track *track_global) {
     
     
     Bouton bouton_son;
-    Bouton_Init(&bouton_son, 350, 500, 300, 60, bouton_texture);
+    Bouton_Init(&bouton_son, 350, 600, 300, 60, bouton_texture);
     
     while (running) {
         
@@ -65,6 +65,9 @@ int afficher_option(SDL_Renderer *renderer, MIX_Track *track_global) {
             "ZQSD - Déplacement du personnage",
             "M - Ouvrir le menu des cartes",
             "E - Rammasser un objet",
+            "I - Ouvrir l'inventaire",
+            "1-5 - Utiliser un objet de la hotbar",
+            "CRTL + numéro de l'outil (1-5) - Jeter un item ",
             NULL
         };
         float y_start = 200;
