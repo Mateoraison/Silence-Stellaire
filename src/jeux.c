@@ -340,11 +340,15 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
                                             cuisson.slot_hotbar = k;
                                             cuisson.debut_cuisson = SDL_GetTicks();
                                             cuisson.renderer = renderer;
-                                            SDL_Log("Cuisson en cours...");
                                             break;
                                         }
                                     }
                                 }
+                            }else if(outil->type == VIANDECUITE){
+                                perso.faim += 1;
+                                if(perso.faim > perso.faim_max) perso.faim = perso.faim_max;
+                                hotbar[k]->quantiter--;
+                                if(hotbar[k]->quantiter <= 0){free(hotbar[k]->item); free(hotbar[k]); hotbar[k] = NULL; }
                             } else {
                                 SDL_Log("Outil utilisé (slot %d): type %d", k+1, outil->type);
                             }
@@ -461,9 +465,41 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
                         hotbar[slot_dest]->w = hotbar[slot_dest]->h = 0;
                     }
                 }
-                SDL_Log("Viande cuite prête !");
             } else {
                 SDL_Log("Hotbar pleine, viande cuite perdue !");
+            }
+        }
+        if (cuisson.actif) {
+            Uint32 ecoule = SDL_GetTicks() - cuisson.debut_cuisson;
+            int secondes_restantes = 3 - (int)(ecoule / 1000);
+            if (secondes_restantes < 1) secondes_restantes = 1;
+
+            char texte_cuisson[64];
+            if (ecoule < 1000)
+                SDL_snprintf(texte_cuisson, sizeof(texte_cuisson), "Cuisson... [*  ] %ds", secondes_restantes);
+            else if (ecoule < 2000)
+                SDL_snprintf(texte_cuisson, sizeof(texte_cuisson), "Cuisson... [** ] %ds", secondes_restantes);
+            else
+                SDL_snprintf(texte_cuisson, sizeof(texte_cuisson), "Presque prêt ! [***] %ds", secondes_restantes);
+
+            TTF_Font *font_cuisson = TTF_OpenFont("assets/police.ttf", 22);
+            if (font_cuisson) {
+                SDL_Color orange = {255, 140, 0, 255};
+                SDL_Surface *surf = TTF_RenderText_Solid(font_cuisson, texte_cuisson, strlen(texte_cuisson), orange);
+                if (surf) {
+                    SDL_Texture *tex = SDL_CreateTextureFromSurface(renderer, surf);
+                    // Centré en haut de l'écran
+                    SDL_FRect rect = {
+                        (1000.0f - surf->w) / 2.0f,
+                        550.0f,
+                        (float)surf->w,
+                        (float)surf->h
+                    };
+                    SDL_RenderTexture(renderer, tex, NULL, &rect);
+                    SDL_DestroyTexture(tex);
+                    SDL_DestroySurface(surf);
+                }
+                TTF_CloseFont(font_cuisson);
             }
         }
 
@@ -497,7 +533,14 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
 
         afficher_hotbar(hotbar, renderer);
 
-        afficher_vie(renderer);
+        if ((maintenant - faim_timer) > 10000) {
+            if (perso.faim > 0) perso.faim--;
+            faim_timer = maintenant;
+        }
+        afficher_stat(renderer);
+        
+
+
 
         if(caisse_outils_ouvert) {
             afficher_inventaire(caisse_outils, renderer, 5, 5, 1);
