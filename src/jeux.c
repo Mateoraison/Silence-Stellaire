@@ -30,7 +30,6 @@ int index_item = 0;
 
 t_case * hotbar[HOTBAR_SIZE] = {NULL};
 t_case *inventaire[INVENTAIRE_SIZE] = {NULL};
-t_case *caisse_outils[3] = {NULL};
 t_case *caisse_outils[5] = {NULL};
 bool inventaire_ouvert = false;
 bool caisse_outils_ouvert = false;
@@ -169,6 +168,7 @@ static t_Cuisson cuisson = {0, -1, 0, NULL};
 int jeu_principal(SDL_Renderer *renderer, int planete) {
 
 
+
     perso = (Perso){-580.0f, -500.0f, NULL, 0, 10, 10, 10, 10, SDL_GetTicks()};
     srand(time(NULL));
 
@@ -210,12 +210,6 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
     SDL_Texture *texture_caisse_outils = IMG_LoadTexture(renderer, "assets/UI/caisse_outils.png");
 
 
-    t_Item *marteau = init_item(MARTEAU, renderer, 0.0f, 0.0f);
-    t_Item *soin = init_item(SOIN, renderer, 0.0f, 0.0f);
-    t_Item *piece = init_item(PIECE, renderer, 0.0f, 0.0f);
-    ajouter_item_inventaire(caisse_outils, marteau);
-    ajouter_item_inventaire(caisse_outils, soin);
-    ajouter_item_inventaire(caisse_outils, piece);
 
     Uint32 CYCLE_MS = 120000;
     Uint32 cycle_debut = SDL_GetTicks();
@@ -360,7 +354,6 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
             if (inventaire_ouvert)
                 gerer_clic_inventaire(inventaire, hotbar, &event, INVENTAIRE_SIZE, INVENTAIRE_COLS, INVENTAIRE_ROWS);
             if (caisse_outils_ouvert)
-                gerer_clic_inventaire(caisse_outils, hotbar, &event, 3, 3, 1);
                 gerer_clic_inventaire(caisse_outils, hotbar, &event, 5, 5, 1);
             gerer_combat(event);
         }
@@ -503,9 +496,9 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
 
         afficher_hotbar(hotbar, renderer);
 
+        afficher_vie(renderer);
 
         if(caisse_outils_ouvert) {
-            afficher_inventaire(caisse_outils, renderer, 3, 3, 1);
             afficher_inventaire(caisse_outils, renderer, 5, 5, 1);
         }
         
