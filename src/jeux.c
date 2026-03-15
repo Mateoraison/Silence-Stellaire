@@ -1,3 +1,4 @@
+// Variable globale pour l'argent du joueur
 int argent = 0;
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
