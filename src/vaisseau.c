@@ -3,17 +3,69 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include "headers/main.h"
+#include <SDL3_ttf/SDL_ttf.h>
 
 #define TILE_SIZE 64
 #define MAP_W 24
 #define MAP_H 19
+#define MAX_OBJETS 20
 
 int tile_map[MAP_H][MAP_W];
+int accessoire_map[MAP_H][MAP_W];
 
+// --- STRUCTURES ---
+
+// Référence pour une tuile dans le tileset
 typedef struct {
     int tileX;
     int tileY;
 } TileRef;
+
+// Position d'un objet dans le monde (en pixels)
+typedef struct {
+    int type;      // L'ID de la tuile 
+    float x, y;    // Sa position en pixels dans le monde
+} ObjetInteractif;
+
+ObjetInteractif liste_objets[MAX_OBJETS];
+int nb_objets = 0;
+
+// --- FONCTIONS DE LOCALISATION ---
+
+int est_proche(float x1, float y1, float x2, float y2, float seuil) {
+    float dx = x1 - x2;
+    float dy = y1 - y2;
+    return (dx * dx + dy * dy) <= (seuil * seuil);
+}
+
+// --- FONCTIONS D'INTERACTIONS ---
+
+void afficher_text(SDL_Renderer *renderer, TTF_Font *font, const char *text, float x, float y, bool centrer) {
+    if (!font || !text) return;
+
+    SDL_Color color = {255, 255, 255, 255};
+    SDL_Surface *surface = TTF_RenderText_Blended(font, text, 0, color);
+    if (!surface) return;
+
+    SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
+    if (texture) {
+        float finalX = x;
+        if (centrer) {
+            finalX = x - ((float)surface->w / 2.0f);
+        }
+
+        SDL_FRect dstRect = { finalX, y, (float)surface->w, (float)surface->h };
+        SDL_RenderTexture(renderer, texture, NULL, &dstRect);
+        SDL_DestroyTexture(texture);
+    }
+
+    SDL_DestroySurface(surface);
+}
+
+void soigner(){
+    perso.vie = perso.vie_max; 
+}
+
 
 // --- FONCTIONS DE COLLISION ---
 
@@ -76,40 +128,70 @@ void spawn_perso(int tileX, int tileY) {
     perso.y = -(tileY * DISPLAY_TILE_SIZE) + 400;
 }
 
-void charger_map(const char* filename) {
-    for (int y = 0; y < MAP_H; y++) {
-        for (int x = 0; x < MAP_W; x++) tile_map[y][x] = -1;
-    }
+void charger_map(const char* filename_map, const char* filename_accessoire) {
+    nb_objets = 0;
 
-    FILE *file = fopen(filename, "r");
-    if (!file) {
-        SDL_Log("ERREUR : Impossible d'ouvrir %s", filename);
-        return;
-    }
-
+    // Initialisation : on met tout à 0 (vide)
     for (int y = 0; y < MAP_H; y++) {
         for (int x = 0; x < MAP_W; x++) {
-            if (fscanf(file, " %d-", &tile_map[y][x]) == 1) {
-                // Spawn du perso quand on lit la tuile 36
-                if(tile_map[y][x] == 99){
-                    spawn_perso(x,y);
-                    tile_map[y][x] = 37; 
+            tile_map[y][x] = -1;
+            accessoire_map[y][x] = 0;
+        }
+    }
+
+    // --- LECTURE COUCHE 1 (Sols et Murs) ---
+    FILE *file_map = fopen(filename_map, "r");
+    if (!file_map){
+        SDL_Log("ERREUR CRITIQUE : Impossible d'ouvrir %s", filename_map);
+    } else {
+        for (int y = 0; y < MAP_H; y++) {
+            for (int x = 0; x < MAP_W; x++) {
+                if (fscanf(file_map, " %d-", &tile_map[y][x]) == 1) {
+                    if(tile_map[y][x] == 99) {
+                        spawn_perso(x, y);
+                        tile_map[y][x] = 12; // On remplace le spawn par du sol
+                    } 
+                    // On n'ajoute ici QUE les objets interactifs liés à la map de base (comme le soin 32)
+                    else if (tile_map[y][x] == 32) {
+                        if (nb_objets < MAX_OBJETS) {
+                            liste_objets[nb_objets].type = 32;
+                            liste_objets[nb_objets].x = (float)(x * DISPLAY_TILE_SIZE);
+                            liste_objets[nb_objets].y = (float)(y * DISPLAY_TILE_SIZE);
+                            nb_objets++;
+                        }
+                    }
                 }
             }
         }
+        fclose(file_map);
     }
-    fclose(file);
+
+    // --- LECTURE COUCHE 2 (Accessoires) ---
+    FILE *file_accessoire = fopen(filename_accessoire, "r");
+    if (!file_accessoire){
+        SDL_Log("ERREUR CRITIQUE : Impossible d'ouvrir %s", filename_accessoire);
+    } else {
+        for (int y = 0; y < MAP_H; y++) {
+            for (int x = 0; x < MAP_W; x++) {
+                if (fscanf(file_accessoire, " %d-", &accessoire_map[y][x]) != 1) {
+                    accessoire_map[y][x] = 0;
+                }
+
+                if (accessoire_map[y][x] == 46 || accessoire_map[y][x] == 47) {
+                    if (nb_objets < MAX_OBJETS) {
+                        liste_objets[nb_objets].type = accessoire_map[y][x];
+                        liste_objets[nb_objets].x = (float)(x * DISPLAY_TILE_SIZE);
+                        liste_objets[nb_objets].y = (float)(y * DISPLAY_TILE_SIZE);
+                        nb_objets++;
+                    }
+                }
+            }
+        }
+        fclose(file_accessoire);
+    }
 }
 
 void draw_map(SDL_Renderer *renderer, SDL_Texture *tileset) {
-    /*
-    Non obligatoire, mais si je veux faire du scaling pour que ça prenne toute la fenêtre :
-    SDL_Rect fenetre ;
-    SDL_GetRenderViewport(renderer, &fenetre);
-    float scaleX = (float)fenetre.w / (MAP_W * TILE_SIZE);
-    float scaleY = (float)fenetre.h / (MAP_H * TILE_SIZE);
-    */
-
     // Les coordonnées (X, Y) correspondent au nombre de cases de 64px 
     // en partant du haut à gauche du PNG.
     TileRef palette[] = {
@@ -192,18 +274,32 @@ void draw_map(SDL_Renderer *renderer, SDL_Texture *tileset) {
         {0, 0}, // [52] Caméra 1
         {0, 1}, // [53] Caméra 2
         {1, 0}, // [54] Caméra 3
-
     };
+
+    int palette_size = (int)(sizeof(palette)/sizeof(palette[0]));
 
     for (int y = 0; y < MAP_H; y++) {
         for (int x = 0; x < MAP_W; x++) {
-            int type = tile_map[y][x];
-            if (type < 0) continue; 
-            if (type >= (int)(sizeof(palette)/sizeof(palette[0]))) type = 0;
+            
+            // Calcul de la position de destination (commune aux deux couches)
+            float posX = (float)(x * DISPLAY_TILE_SIZE) + perso.x;
+            float posY = (float)(y * DISPLAY_TILE_SIZE) + perso.y;
+            SDL_FRect dst = { posX, posY, (float)DISPLAY_TILE_SIZE, (float)DISPLAY_TILE_SIZE };
 
-            SDL_FRect src = { (float)palette[type].tileX * TILE_SIZE, (float)palette[type].tileY * TILE_SIZE, TILE_SIZE, TILE_SIZE };
-            SDL_FRect dst = { (x * DISPLAY_TILE_SIZE + perso.x), (y * DISPLAY_TILE_SIZE + perso.y), (float)DISPLAY_TILE_SIZE, (float)DISPLAY_TILE_SIZE };
-            SDL_RenderTexture(renderer, tileset, &src, &dst);
+            // --- COUCHE 1 : SOL ET MURS ---
+            int base_type = tile_map[y][x];
+            if (base_type >= 0 && base_type < palette_size) { 
+                SDL_FRect src = { (float)palette[base_type].tileX * TILE_SIZE, (float)palette[base_type].tileY * TILE_SIZE, TILE_SIZE, TILE_SIZE };
+                SDL_RenderTexture(renderer, tileset, &src, &dst);
+            }
+
+            // --- COUCHE 2 : ACCESSOIRES ---
+            int acc_type = accessoire_map[y][x];
+            // CORRECTION : On ignore l'ID 0 car dans ton TXT c'est le vide
+            if (acc_type > 0 && acc_type < palette_size) {
+                SDL_FRect src_acc = { (float)palette[acc_type].tileX * TILE_SIZE, (float)palette[acc_type].tileY * TILE_SIZE, TILE_SIZE, TILE_SIZE };
+                SDL_RenderTexture(renderer, tileset, &src_acc, &dst);
+            }
         }
     }
 }
@@ -212,7 +308,8 @@ void draw_map(SDL_Renderer *renderer, SDL_Texture *tileset) {
 
 int vaisseau(SDL_Renderer *renderer) {
     int code_sortie = 0;
-    float old_x, old_y;
+    float old_offset_x, old_offset_y;
+    float world_x, world_y;
 
     int hitbox_x = 30 ;
     int hitbox_y = 60 ; 
@@ -220,13 +317,13 @@ int vaisseau(SDL_Renderer *renderer) {
     SDL_Texture *t_tiles = IMG_LoadTexture(renderer, "assets/tileset/V2/Interieur_Vaisseau/tileset_sf.png");
     SDL_Texture *t_bg = IMG_LoadTexture(renderer, "assets/tileset/V2/Interieur_Vaisseau/Grafika/bg.png"); 
 
-    if (!t_tiles) {
-        SDL_Log("Erreur Texture Tileset: %s", SDL_GetError());
-        return -1;
-    }
+    if (!t_tiles) return -1;
+
+    // Charge une police
+    TTF_Font *font = TTF_OpenFont("assets/police.ttf", 24); 
 
     SDL_SetTextureScaleMode(t_tiles, SDL_SCALEMODE_NEAREST);
-    charger_map("assets/map/vaisseau.txt");
+    charger_map("assets/map/vaisseau.txt", "assets/map/accessoires.txt");
 
     bool running = true;
     SDL_Event event;
@@ -249,27 +346,46 @@ int vaisseau(SDL_Renderer *renderer) {
         dernier_frame_dt = maintenant_dt;
 
         // On sauvegarde l'ancienne position
-        old_x = perso.x;
-        old_y = perso.y;
+        old_offset_x = perso.x;
+        old_offset_y = perso.y;
 
         // On tente le déplacement
         deplacer_perso(delta);
 
-        // On calcule la hitbox uniquement au niveau des PIEDS
-        // Le perso fait 64x64. On veut une zone de collision en bas.
-        SDL_FRect hitbox_pieds = {
-            .x = (500.0f - perso.x) + hitbox_x, // On centre la hitbox sur le personnage
-            .y = (400.0f - perso.y) + hitbox_y, // On descend vers les pieds
-            .w = 32.0f,                   // Largeur étroite pour passer partout
-            .h = 16.0f                    // Hauteur très fine (juste la semelle)
-        };
+        // Position du perso dans le monde
+        world_x = 500.0f - perso.x;
+        world_y = 400.0f - perso.y;
 
-        // Test de collision avec cette nouvelle zone
+        // Hitbox aux pieds
+        SDL_FRect hitbox_pieds = { world_x + hitbox_x, world_y + hitbox_y, 32.0f, 16.0f };
+
+        // Test de collision
         if (est_en_collision_rect(hitbox_pieds)) {
-            perso.x = old_x;
-            perso.y = old_y;
+            perso.x = old_offset_x ;
+            perso.y = old_offset_y;
+            world_x = 500.0f - perso.x;
+            world_y = 400.0f - perso.y;
         }
 
+        // Test de proximité et interaction
+        char message_interaction[128] = ""; 
+        bool afficher_message = false;
+
+        for (int i = 0; i < nb_objets; i++) {
+            if (est_proche(liste_objets[i].x, liste_objets[i].y, world_x, world_y, 60.0f)) {
+                if (liste_objets[i].type == 32) {
+                    snprintf(message_interaction, sizeof(message_interaction), "Appuyez sur E pour vous soigner");
+                    afficher_message = true;
+                    const bool *keys = SDL_GetKeyboardState(NULL);
+                    if (keys[SDL_SCANCODE_E]) soigner(); 
+                }else if (liste_objets[i].type == 46 || liste_objets[i].type == 47) {
+                    snprintf(message_interaction, sizeof(message_interaction), "Appuyez sur E pour voir la map");
+                    afficher_message = true;
+                    const bool *keys = SDL_GetKeyboardState(NULL);
+                    if (keys[SDL_SCANCODE_E]) afficher_map(renderer); 
+                }
+            }
+        }
 
         SDL_SetRenderDrawColor(renderer, 20, 20, 30, 255);
         SDL_RenderClear(renderer);
@@ -278,29 +394,26 @@ int vaisseau(SDL_Renderer *renderer) {
 
         draw_map(renderer, t_tiles);
         update_animation();
+        afficher_stat(renderer);
         afficher_perso(renderer);
 
+        /*
         // --- CODE DE DEBUG POUR VOIR LA HITBOX ---
-        // On choisit une couleur (Rouge : 255, 0, 0)
         SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-
-        // On définit le rectangle à l'écran (coordonnées fixes du perso)
-        // On utilise exactement les mêmes offsets (+16, +44) et tailles (32, 16)
-        SDL_FRect debug_rect = {
-            .x = 500.0f + hitbox_x, 
-            .y = 400.0f + hitbox_y, 
-            .w = 32.0f, 
-            .h = 16.0f
-        };
-
-        // On dessine le contour du rectangle
+        SDL_FRect debug_rect = { 500.0f + hitbox_x, 400.0f + hitbox_y, 32.0f, 16.0f };
         SDL_RenderRect(renderer, &debug_rect);
         // -----------------------------------------
+        */
+
+        if (afficher_message) {
+            afficher_text(renderer, font, message_interaction, 550.0f, 330.0f, true);
+        }
 
         SDL_RenderPresent(renderer);
     }
 
     SDL_DestroyTexture(t_tiles);
     SDL_DestroyTexture(t_bg);
+    if (font) TTF_CloseFont(font);
     return code_sortie;
 }
