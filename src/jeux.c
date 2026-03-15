@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-Perso  perso = {-580.0f, -500.0f, NULL, 0, 10, 10, 2000};
+Perso  perso;
 int animation_frame = 0;
 Uint32 animation_timer = 0;
 bool perso_bouge = false;
@@ -32,9 +32,6 @@ t_case *inventaire[INVENTAIRE_SIZE] = {NULL};
 t_case *caisse_outils[3] = {NULL};
 bool inventaire_ouvert = false;
 bool caisse_outils_ouvert = false;
-
-
-
 
 
 void remplir_tileset(t_tile map[W_MAP][H_MAP], char * map_txt){
@@ -147,7 +144,7 @@ void charger_tilemap(SDL_Renderer *renderer, SDL_Texture *tileset,
 int jeu_principal(SDL_Renderer *renderer, int planete) {
 
 
-    perso = (Perso){-580.0f, -500.0f, NULL, 0, 10, 10, SDL_GetTicks()};
+    perso = (Perso){-580.0f, -500.0f, NULL, 0, 10, 10, 10, 10, SDL_GetTicks()};
     srand(time(NULL));
 
 
@@ -194,6 +191,11 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
     ajouter_item_inventaire(caisse_outils, marteau);
     ajouter_item_inventaire(caisse_outils, soin);
     ajouter_item_inventaire(caisse_outils, piece);
+
+    Uint32 CYCLE_MS = 120000;
+    Uint32 cycle_debut = SDL_GetTicks();
+
+    Uint32 faim_timer = SDL_GetTicks();
 
 
     while (running){
@@ -317,9 +319,23 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
 
         afficher_combat(renderer);
         afficher_mob(renderer, mobs);
+
+        Uint32 cycle_etat = (SDL_GetTicks() - cycle_debut) % CYCLE_MS;
+        float phase = (float)cycle_etat / (float)CYCLE_MS;
+        float mod = (phase < 0.5f) ? (phase * 2.0f) : ((1.0f - phase) * 2.0f);
+
+        SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, (Uint8)(mod * 140.0f));
+        SDL_RenderFillRect(renderer, NULL);
+
         afficher_hotbar(hotbar, renderer);
 
-        afficher_vie(renderer);
+        if ((maintenant - faim_timer) > 10000) {
+            if (perso.faim > 0) perso.faim--;
+            faim_timer = maintenant;
+        }
+
+        afficher_stat(renderer);
 
         if(caisse_outils_ouvert) {
             afficher_inventaire(caisse_outils, renderer, 3, 3, 1);
@@ -340,9 +356,8 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
 
         if (est_animation_degat) {
             SDL_Texture *animation_degat = IMG_LoadTexture(renderer, "assets/UI/flash.png");
-            SDL_FRect src = {0, 0, 64, 64};
             SDL_FRect dest = {0.0f, 0.0f, 1000.0f, 800.0f};
-            SDL_RenderTexture(renderer, animation_degat, &src, &dest);
+            SDL_RenderTexture(renderer, animation_degat, NULL, &dest);
             SDL_DestroyTexture(animation_degat);
         }
 
@@ -362,6 +377,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
             }
             foam_timer = maintenant;
         }
+
         SDL_RenderPresent(renderer);
     }
 

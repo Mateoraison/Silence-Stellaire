@@ -41,6 +41,8 @@ typedef struct {
     int direction; // 0=south,1=north,2=west,3=east
     int vie;
     int vie_max;
+    int faim;
+    int faim_max;
     Uint32 invincibiliter_timer;
 } Perso;
 

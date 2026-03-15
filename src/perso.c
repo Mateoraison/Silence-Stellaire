@@ -139,37 +139,62 @@ int test_collision(int x, int y, t_tile map[W_MAP][H_MAP], int est_mob, SDL_Rect
 
 }
 
-int afficher_vie(SDL_Renderer *renderer) {
+int afficher_stat(SDL_Renderer *renderer) {
     /**
-     * Cette fonction affiche la vie du personnage à l'écran en utilisant des textures de coeur.
+     * Cette fonction affiche la vie et la faim du personnage à l'écran en utilisant des textures de coeur.
      */
 
-    SDL_FRect src = {0, 0, 64, 64};
-    SDL_FRect dest = {10.0f, 10.0f, 30, 30};
+    SDL_FRect srcC = {0, 0, 64, 64};
+    SDL_FRect destC = {10.0f, 10.0f, 30, 30};
+
+    SDL_FRect srcF = {0, 0, 64, 64};
+    SDL_FRect destF = {10.0f, 50.0f, 30, 30};
 
     SDL_Texture * coeurP_texture = IMG_LoadTexture(renderer, "assets/UI/coeurP.png");
     SDL_Texture * coeurPVide_texture = IMG_LoadTexture(renderer, "assets/UI/coeurPVide.png");
     SDL_Texture * coeurM_texture = IMG_LoadTexture(renderer, "assets/UI/coeurM.png");
+
+    SDL_Texture * faimP_texture = IMG_LoadTexture(renderer, "assets/UI/faimP.png");
+    SDL_Texture * faimPVide_texture = IMG_LoadTexture(renderer, "assets/UI/faimPVide.png");
+    SDL_Texture * faimM_texture = IMG_LoadTexture(renderer, "assets/UI/faimM.png");
     
     for (int i = 0; i < (perso.vie_max/2); i++) {
-        SDL_RenderTexture(renderer, coeurPVide_texture, &src, &dest);
-        dest.x += 35;
+        SDL_RenderTexture(renderer, coeurPVide_texture, &srcC, &destC);
+        destC.x += 35;
     }
 
-    dest = (SDL_FRect){10.0f , 10.0f, 30, 30};
+    for (int i = 0; i < (perso.faim_max/2); i++) {
+        SDL_RenderTexture(renderer, faimPVide_texture, &srcF, &destF);
+        destF.x += 35;
+    }
+
+    destC = (SDL_FRect){10.0f , 10.0f, 30, 30};
+    destF = (SDL_FRect){10.0f , 50.0f, 30, 30};
 
     for (int i = 0; i < (perso.vie/2); i++) {
-        SDL_RenderTexture(renderer, coeurP_texture, &src, &dest);
-        dest.x += 35; 
+        SDL_RenderTexture(renderer, coeurP_texture, &srcC, &destC);
+        destC.x += 35; 
+    }
+
+    for (int i = 0; i < (perso.faim/2); i++) {
+        SDL_RenderTexture(renderer, faimP_texture, &srcF, &destF);
+        destF.x += 35; 
     }
 
     if (perso.vie % 2 == 1) {
-        SDL_RenderTexture(renderer, coeurM_texture, &src, &dest);
+        SDL_RenderTexture(renderer, coeurM_texture, &srcC, &destC);
+    }
+
+    if (perso.faim % 2 == 1) {
+        SDL_RenderTexture(renderer, faimM_texture, &srcF, &destF);
     }
 
     SDL_DestroyTexture(coeurP_texture);
     SDL_DestroyTexture(coeurPVide_texture);
     SDL_DestroyTexture(coeurM_texture);
+    SDL_DestroyTexture(faimP_texture);
+    SDL_DestroyTexture(faimPVide_texture);
+    SDL_DestroyTexture(faimM_texture);
     return 0;
 }
 
