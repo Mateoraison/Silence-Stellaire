@@ -11,9 +11,10 @@ t_Item * init_item(typeItem type,SDL_Renderer * renderer,float x,float y){
     item->x = x;
     item->y = y;
     switch (type){
-        case PIECE: item->texture = IMG_LoadTexture(renderer,"assets/UI/piece.png"); break;
-        case VIANDE: item->texture = IMG_LoadTexture(renderer,"assets/UI/viande.png");
-        break;
+        case PIECE: item->texture = IMG_LoadTexture(renderer,"assets/UI/piece.png");if(item->texture == NULL){ SDL_Log("Erreur chargement piece : %s", SDL_GetError()); } break;
+        case VIANDE: item->texture = IMG_LoadTexture(renderer,"assets/UI/viande.png"); if(item->texture == NULL){ SDL_Log("Erreur chargement viande : %s", SDL_GetError()); } break;
+        case MARTEAU: item->texture = IMG_LoadTexture(renderer,"assets/UI/marteau.png"); if(item->texture == NULL){ SDL_Log("Erreur chargement marteau : %s", SDL_GetError()); } break;
+        case SOIN: item->texture = IMG_LoadTexture(renderer,"assets/UI/kit_soin.png"); if(item->texture == NULL){ SDL_Log("Erreur chargement kit_soin : %s", SDL_GetError()); } break;
     }
     if(item->texture == NULL){
         SDL_Log("init item fail ");
@@ -37,6 +38,14 @@ void detruire_item(t_Item ** item){
     SDL_DestroyTexture((*item)->texture);
     free(*item);
     *item = NULL;
+}
+
+void detruire_tout_item(t_Item * items[MAX_ITEMS]){
+    for(int i = 0; i < index_item; i++) {
+        if(items[i] != NULL) {
+            detruire_item(&items[i]);
+        }
+    }
 }
 
 void ramasser_item(t_Item * item, SDL_Renderer * renderer, t_case * hotbar[HOTBAR_SIZE]){

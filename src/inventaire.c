@@ -81,7 +81,7 @@ void ajouter_item_hotbar(t_case *hotbar[HOTBAR_SIZE], t_Item *item, SDL_Renderer
 }
 
 
-void afficher_inventaire(t_case *inventaire[INVENTAIRE_SIZE], SDL_Renderer *renderer) {
+void afficher_inventaire(t_case *inventaire[], SDL_Renderer *renderer, int inventaire_size, int inventaire_cols, int inventaire_rows) {
     TTF_Font *font = TTF_OpenFont("assets/police.ttf", 16);
 
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
@@ -90,8 +90,8 @@ void afficher_inventaire(t_case *inventaire[INVENTAIRE_SIZE], SDL_Renderer *rend
     SDL_RenderFillRect(renderer, &fond);
 
     // Panneau de l'inventaire centré
-    float panneaux_w = INVENTAIRE_COLS * 70.0f + 20.0f;
-    float panneaux_h = INVENTAIRE_ROWS * 70.0f + 60.0f;
+    float panneaux_w = inventaire_cols * 70.0f + 20.0f;
+    float panneaux_h = inventaire_rows * 70.0f + 60.0f;
     float panneau_x = (1000.0f - panneaux_w) / 2.0f;
     float panneau_y = (800.0f  - panneaux_h) / 2.0f;
 
@@ -123,9 +123,9 @@ void afficher_inventaire(t_case *inventaire[INVENTAIRE_SIZE], SDL_Renderer *rend
 
     SDL_Texture *slot_tex = IMG_LoadTexture(renderer, "assets/UI/slot_inventaire.png");
 
-    for (int row = 0; row < INVENTAIRE_ROWS; row++) {
-        for (int col = 0; col < INVENTAIRE_COLS; col++) {
-            int i = row * INVENTAIRE_COLS + col;
+    for (int row = 0; row < inventaire_rows; row++) {
+        for (int col = 0; col < inventaire_cols; col++) {
+            int i = row * inventaire_cols + col;
 
             float sx = panneau_x + 10.0f + col * 70.0f;
             float sy = panneau_y + 50.0f + row * 70.0f;
@@ -161,14 +161,6 @@ void afficher_inventaire(t_case *inventaire[INVENTAIRE_SIZE], SDL_Renderer *rend
                         SDL_RenderTexture(renderer, tex_qte, NULL, &rect_qte);
                         SDL_DestroyTexture(tex_qte);
                         SDL_DestroySurface(surf);
-                    }
-                }
-                if (inventaire[i] != NULL && inventaire[i]->verrouille) {
-                    SDL_Texture *lock_tex = IMG_LoadTexture(renderer, "assets/UI/lock.png");
-                    if (lock_tex) {
-                        SDL_FRect lock_rect = {sx + 2, sy + 2, 20, 20};
-                        SDL_RenderTexture(renderer, lock_tex, NULL, &lock_rect);
-                        SDL_DestroyTexture(lock_tex);
                     }
                 }
             }else{
@@ -216,8 +208,7 @@ void ajouter_item_inventaire(t_case *inventaire[INVENTAIRE_SIZE], t_Item *item) 
     }
 }
 
-void gerer_clic_inventaire(t_case *inventaire[INVENTAIRE_SIZE], t_case *hotbar[HOTBAR_SIZE], SDL_Event *event){
-
+void gerer_clic_inventaire(t_case **inventaire, t_case **hotbar, SDL_Event *event, int inventaire_size, int inventaire_cols, int inventaire_rows) {
     if (event->type != SDL_EVENT_MOUSE_BUTTON_DOWN || event->button.button != SDL_BUTTON_LEFT)
         return;
 
@@ -225,20 +216,22 @@ void gerer_clic_inventaire(t_case *inventaire[INVENTAIRE_SIZE], t_case *hotbar[H
     float my = event->button.y;
 
     // Calcul position panneau inventaire (même que afficher_inventaire)
-    float panneau_w = INVENTAIRE_COLS * 70.0f + 20.0f;
-    float panneau_h = INVENTAIRE_ROWS * 70.0f + 60.0f;
+    float panneau_w = inventaire_cols * 70.0f + 20.0f;
+    float panneau_h = inventaire_rows * 70.0f + 60.0f;
     float panneau_x = (1000.0f - panneau_w) / 2.0f;
     float panneau_y = (800.0f  - panneau_h) / 2.0f;
 
     int clic_slot = -1;
 
     // Vérifier clic sur inventaire
-    for (int row = 0; row < INVENTAIRE_ROWS; row++) {
-        for (int col = 0; col < INVENTAIRE_COLS; col++) {
+    for (int row = 0; row < inventaire_rows; row++) {
+        for (int col = 0; col < inventaire_cols; col++) {
+            int i = row * inventaire_cols + col;
+            if (i >= inventaire_size) continue;
             float sx = panneau_x + 10.0f + col * 70.0f;
             float sy = panneau_y + 50.0f + row * 70.0f;
             if (mx >= sx && mx <= sx + 60 && my >= sy && my <= sy + 60) {
-                clic_slot = row * INVENTAIRE_COLS + col;
+                clic_slot = i;
             }
         }
     }
@@ -248,7 +241,7 @@ void gerer_clic_inventaire(t_case *inventaire[INVENTAIRE_SIZE], t_case *hotbar[H
         float sx = 340.0f + i * 70;
         float sy = 720.0f;
         if (mx >= sx && mx <= sx + 60 && my >= sy && my <= sy + 60) {
-            clic_slot = INVENTAIRE_SIZE + i;
+            clic_slot = inventaire_size + i;
         }
     }
 
@@ -273,15 +266,15 @@ void gerer_clic_inventaire(t_case *inventaire[INVENTAIRE_SIZE], t_case *hotbar[H
     t_case **slot_a = NULL;
     t_case **slot_b = NULL;
 
-    if (slot_selectionne < INVENTAIRE_SIZE)
+    if (slot_selectionne < inventaire_size)
         slot_a = &inventaire[slot_selectionne];
     else
-        slot_a = &hotbar[slot_selectionne - INVENTAIRE_SIZE];
+        slot_a = &hotbar[slot_selectionne - inventaire_size];
 
-    if (clic_slot < INVENTAIRE_SIZE)
+    if (clic_slot < inventaire_size)
         slot_b = &inventaire[clic_slot];
     else
-        slot_b = &hotbar[clic_slot - INVENTAIRE_SIZE];
+        slot_b = &hotbar[clic_slot - inventaire_size];
 
     t_case *tmp = *slot_a;
     *slot_a = *slot_b;

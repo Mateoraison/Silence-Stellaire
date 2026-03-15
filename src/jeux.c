@@ -29,7 +29,13 @@ int index_item = 0;
 
 t_case * hotbar[HOTBAR_SIZE] = {NULL};
 t_case *inventaire[INVENTAIRE_SIZE] = {NULL};
+t_case *caisse_outils[3] = {NULL};
 bool inventaire_ouvert = false;
+bool caisse_outils_ouvert = false;
+
+
+
+
 
 void remplir_tileset(t_tile map[W_MAP][H_MAP], char * map_txt){
 
@@ -137,20 +143,14 @@ void charger_tilemap(SDL_Renderer *renderer, SDL_Texture *tileset,
 
 
 
-void afficher_init_caisse_outils(SDL_Renderer *renderer){
-    SDL_Texture * caisse_outils = IMG_LoadTexture(renderer, "assets/UI/caisse_outils.png");
-    SDL_FRect src = {0, 0, 64, 64};
-    SDL_FRect dest = {5*DISPLAY_TILE_SIZE + perso.x, 5*DISPLAY_TILE_SIZE + perso.y, DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE};
-    SDL_RenderTexture(renderer, caisse_outils, &src, &dest);
-    SDL_DestroyTexture(caisse_outils);
-}
-
-
-
 
 int jeu_principal(SDL_Renderer *renderer, int planete) {
+
+
     perso = (Perso){-580.0f, -500.0f, NULL, 0, 10, 10, SDL_GetTicks()};
     srand(time(NULL));
+
+
     SDL_Texture *tileset = IMG_LoadTexture(renderer, "assets/tileset/V2/Tilemap_color1.png");
     if (!tileset){
         SDL_Log("Erreur chargement tileset : %s", SDL_GetError());
@@ -185,7 +185,16 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
     int code_sortie = 0;
     SDL_Texture * exterieure = IMG_LoadTexture(renderer, "assets/tileset/V2/EXT_vaisseau/ext_vaisseau1.png");
 
-    
+    SDL_Texture *texture_caisse_outils = IMG_LoadTexture(renderer, "assets/UI/caisse_outils.png");
+
+
+    t_Item *marteau = init_item(MARTEAU, renderer, 0.0f, 0.0f);
+    t_Item *soin = init_item(SOIN, renderer, 0.0f, 0.0f);
+    t_Item *piece = init_item(PIECE, renderer, 0.0f, 0.0f);
+    ajouter_item_inventaire(caisse_outils, marteau);
+    ajouter_item_inventaire(caisse_outils, soin);
+    ajouter_item_inventaire(caisse_outils, piece);
+
 
     while (running){
         int vie_avant = perso.vie;
@@ -210,9 +219,18 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
                 if(event.key.key == SDLK_I){
                     inventaire_ouvert = !inventaire_ouvert;
                 }
-                    
+                if(event.key.key == SDLK_E) {
+                    SDL_Rect rect_perso_caisse = {500, 400, 40, 60};
+                    SDL_Rect rect_caisse = {10*DISPLAY_TILE_SIZE + perso.x, 11*DISPLAY_TILE_SIZE + perso.y, DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE};
+                    if (SDL_HasRectIntersection(&rect_perso_caisse, &rect_caisse)) {
+                        caisse_outils_ouvert = !caisse_outils_ouvert;
+                    }
+                }
             }
-            gerer_clic_inventaire(inventaire, hotbar, &event);
+            if (inventaire_ouvert)
+                gerer_clic_inventaire(inventaire, hotbar, &event, INVENTAIRE_SIZE, INVENTAIRE_COLS, INVENTAIRE_ROWS);
+            if (caisse_outils_ouvert)
+                gerer_clic_inventaire(caisse_outils, hotbar, &event, 3, 3, 1);
             gerer_combat(event);
         }
         Uint32 maintenant_dt = SDL_GetTicks();
@@ -283,6 +301,13 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
         update_combat(map, mobs, renderer, items);
         update_mobs(map, mobs);
         possible_ramasser_item(items, renderer, hotbar);
+
+
+        
+        SDL_FRect src_caisse_outils = {0, 0, 64, 64};
+        SDL_FRect dest_caisse_outils = {10*DISPLAY_TILE_SIZE + perso.x, 11*DISPLAY_TILE_SIZE + perso.y, DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE};
+        SDL_RenderTexture(renderer, texture_caisse_outils, &src_caisse_outils, &dest_caisse_outils);
+
         afficher_item(items, renderer);
         if (combat_en_cours == false) afficher_perso(renderer);
 
@@ -296,9 +321,12 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
 
         afficher_vie(renderer);
 
+        if(caisse_outils_ouvert) {
+            afficher_inventaire(caisse_outils, renderer, 3, 3, 1);
+        }
         
         if(inventaire_ouvert) {
-            afficher_inventaire(inventaire, renderer);
+            afficher_inventaire(inventaire, renderer, INVENTAIRE_SIZE, INVENTAIRE_COLS, INVENTAIRE_ROWS);
         }
 
         perso.x = perso_x_original;
@@ -336,7 +364,10 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
         }
         SDL_RenderPresent(renderer);
     }
+
+
     SDL_DestroyTexture(exterieure);
+    SDL_DestroyTexture(texture_caisse_outils);
     detruire_mobs(mobs);
     SDL_DestroyTexture(tileset);
     return code_sortie;

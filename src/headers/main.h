@@ -44,7 +44,7 @@ typedef struct {
     Uint32 invincibiliter_timer;
 } Perso;
 
-typedef enum {PIECE,VIANDE} typeItem;
+typedef enum {PIECE,VIANDE,MARTEAU,SOIN} typeItem;
 
 typedef struct item_ {
     typeItem type;
@@ -76,7 +76,6 @@ typedef struct {
     t_Item * item;
     int stackable;
     int quantiter;
-    int verrouille;
 }t_case;
 
 
@@ -91,6 +90,7 @@ typedef struct {
 #include "map.h"
 #include "item.h"
 #include "inventaire.h"
+#include "sauvegarde.h"
 
 
 extern Perso perso;
