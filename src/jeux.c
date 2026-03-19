@@ -32,6 +32,7 @@ t_case *inventaire[INVENTAIRE_SIZE] = {NULL};
 t_case *caisse_outils[CAISSE_OUTILS_SIZE] = {NULL};
 bool inventaire_ouvert = false;
 bool caisse_outils_ouvert = false;
+Uint32 faim_degat_timer = 0;
 int argent = 0;
 
 void remplir_tileset(t_tile map[W_MAP][H_MAP], char * map_txt){
@@ -557,6 +558,14 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
             if (perso.faim > 0) perso.faim--;
             faim_timer = maintenant;
         }
+
+        if(perso.faim == 0 && (maintenant-faim_degat_timer)>3000){
+            if((rand()%100<20)){
+                perso.vie--;
+            }
+            faim_degat_timer = maintenant;
+        }
+
         afficher_stat(renderer);
         
         TTF_Font *font_argent = TTF_OpenFont("assets/police.ttf", 22);
@@ -579,6 +588,9 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
                 }
                 TTF_CloseFont(font_argent);
         }
+
+        
+        
 
 
         if(caisse_outils_ouvert) {
@@ -623,6 +635,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
         }
 
         SDL_RenderPresent(renderer);
+        if(perso.vie == 0) running = game_over(renderer);
     }
 
 

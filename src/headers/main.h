@@ -83,6 +83,7 @@ typedef struct {
 
 
 #include "menu.h"
+#include "game_over.h"
 #include "jeux.h"
 #include "bouton.h"
 #include "option.h"
