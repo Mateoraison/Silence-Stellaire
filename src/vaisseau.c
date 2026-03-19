@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include "headers/main.h"
 #include <SDL3_ttf/SDL_ttf.h>
+#include "headers/arcade.h"
 
 #define TILE_SIZE 64
 #define MAP_W 24
@@ -73,9 +74,10 @@ int en_collision(int tileX, int tileY) {
     // Sécurité pour ne pas sortir du tableau
     if (tileX < 0 || tileX >= MAP_W || tileY < 0 || tileY >= MAP_H) return 1;
 
-    int type = tile_map[tileY][tileX];
+    int type_mur = tile_map[tileY][tileX];
+    int type_accessoires = accessoire_map[tileY][tileX];
 
-    switch(type) {
+    switch(type_mur) {
         // Contours du vaisseau 
         case 1: case 2: case 3: case 4: case 5: 
         case 6: case 7: case 8: case 9: 
@@ -86,10 +88,18 @@ int en_collision(int tileX, int tileY) {
         case 32: case 34: case 36: case 38: 
         case 40: case 42: case 44: 
             return 1;
-
-        default:
-            return 0;
     }
+
+    switch (type_accessoires){
+        // Borne d'arcade 
+        case 55: case 56: case 57:
+
+        // Le tableau
+        case 46: case 47:
+            return 1;
+    }
+
+    return 0; 
 }
 
 // Vérifie si un rectangle (hitbox) touche une tuile solide
@@ -177,13 +187,13 @@ void charger_map(const char* filename_map, const char* filename_accessoire) {
                     accessoire_map[y][x] = 0;
                 }
 
-                if (accessoire_map[y][x] == 46 || accessoire_map[y][x] == 47) {
+                if (accessoire_map[y][x] != 0 ) {
                     if (nb_objets < MAX_OBJETS) {
                         liste_objets[nb_objets].type = accessoire_map[y][x];
                         liste_objets[nb_objets].x = (float)(x * DISPLAY_TILE_SIZE);
                         liste_objets[nb_objets].y = (float)(y * DISPLAY_TILE_SIZE);
                         nb_objets++;
-                    }
+                    } 
                 }
             }
         }
@@ -274,6 +284,10 @@ void draw_map(SDL_Renderer *renderer, SDL_Texture *tileset) {
         {0, 0}, // [52] Caméra 1
         {0, 1}, // [53] Caméra 2
         {1, 0}, // [54] Caméra 3
+        {0,2}, // [55] Borne d'arcade pour le jeux 1
+        {0,2}, // [56] Borne d'arcade pour le jeux 2 
+        {0,2}, // [57] Borne d'arcade pour le jeux 3
+
     };
 
     int palette_size = (int)(sizeof(palette)/sizeof(palette[0]));
@@ -383,6 +397,13 @@ int vaisseau(SDL_Renderer *renderer) {
                     afficher_message = true;
                     const bool *keys = SDL_GetKeyboardState(NULL);
                     if (keys[SDL_SCANCODE_E]) afficher_map(renderer); 
+                }else if (liste_objets[i].type == 55 || liste_objets[i].type == 56 || liste_objets[i].type == 57 ) {
+                    snprintf(message_interaction, sizeof(message_interaction), "Appuyez sur E pour jouer");
+                    afficher_message = true ; 
+                    const bool *keys = SDL_GetKeyboardState(NULL);
+                    if (keys[SDL_SCANCODE_E] && liste_objets[i].type == 55) jouer_arcade1(renderer);
+                    if (keys[SDL_SCANCODE_E] && liste_objets[i].type == 56) jouer_arcade2(renderer);
+                    if (keys[SDL_SCANCODE_E] && liste_objets[i].type == 57) jouer_arcade3(renderer);
                 }
             }
         }
@@ -404,6 +425,7 @@ int vaisseau(SDL_Renderer *renderer) {
         SDL_RenderRect(renderer, &debug_rect);
         // -----------------------------------------
         */
+        
 
         if (afficher_message) {
             afficher_text(renderer, font, message_interaction, 550.0f, 330.0f, true);
