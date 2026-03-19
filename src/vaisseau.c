@@ -391,7 +391,10 @@ int vaisseau(SDL_Renderer *renderer) {
                     snprintf(message_interaction, sizeof(message_interaction), "Appuyez sur E pour vous soigner");
                     afficher_message = true;
                     const bool *keys = SDL_GetKeyboardState(NULL);
-                    if (keys[SDL_SCANCODE_E]) soigner(); 
+                    if (keys[SDL_SCANCODE_E]){
+                        jouer_son("assets/audio/halo-shield-recharge-sound.mp3", 0.01f);
+                        soigner(); 
+                    }
                 }else if (liste_objets[i].type == 46 || liste_objets[i].type == 47) {
                     snprintf(message_interaction, sizeof(message_interaction), "Appuyez sur E pour voir la map");
                     afficher_message = true;

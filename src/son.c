@@ -5,7 +5,7 @@
 #include "headers/main.h"
 
 
-MIX_Track *jouer_son(const char* chemin) {
+MIX_Track *jouer_son(const char* chemin, float volume) {
     MIX_Mixer *mixer = MIX_CreateMixerDevice(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, NULL);
     if(!mixer){
         SDL_Log("Erreur creation mixer : %s", SDL_GetError());
@@ -25,7 +25,7 @@ MIX_Track *jouer_son(const char* chemin) {
     }
 
     MIX_SetTrackAudio(track, son);
-    MIX_SetTrackGain(track, 0.3f);
+    MIX_SetTrackGain(track, volume);
     MIX_PlayTrack(track, -1);
     return track;
 }

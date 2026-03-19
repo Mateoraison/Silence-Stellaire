@@ -54,7 +54,7 @@ int main(int argc, char* argv[]) {
     SDL_SetWindowIcon(fenetre, IMG_Load("assets/logo_win.png"));
     init_caisse_outils(renderer);
     bool running = true; 
-    track_global = jouer_son("assets/audio/ambiance.wav");
+    track_global = jouer_son("assets/audio/ambiance.wav", 0.3f);
     while (running) {
         int action_menu = afficher_menu(renderer);
         if (action_menu == 1) {

@@ -5,7 +5,7 @@
 
 
 
-MIX_Track * jouer_son(const char* chemin);
+MIX_Track * jouer_son(const char* chemin, float volume);
 
 void pause_son(MIX_Track *track);
 
