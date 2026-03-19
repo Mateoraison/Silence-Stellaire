@@ -63,13 +63,13 @@ int game_over(SDL_Renderer *renderer){
         SDL_Surface *surface_game_over = TTF_RenderText_Solid(font_game_over, "Game Over", 0, rouge);
         if (!surface_game_over) {
             SDL_Log("TTF error: %s", SDL_GetError());
-            return;
+            return -1;
         }
         SDL_Texture *texte_game_over = SDL_CreateTextureFromSurface(renderer, surface_game_over);
         SDL_DestroySurface(surface_game_over);
         if (!texte_game_over) {
             SDL_Log("Texture error: %s", SDL_GetError());
-            return;
+            return -1;
         }
         SDL_FRect dest_game_over = {300.0f, 100.0f, 400.0f, 160.0f};
         SDL_RenderTexture(renderer, texte_game_over, NULL, &dest_game_over);
