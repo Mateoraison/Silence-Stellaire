@@ -35,6 +35,8 @@ t_case *caisse_outils[5] = {NULL};
 bool inventaire_ouvert = false;
 bool caisse_outils_ouvert = false;
 
+Uint32 faim_degat_timer = 0;
+
 
 void remplir_tileset(t_tile map[W_MAP][H_MAP], char * map_txt){
 
@@ -170,7 +172,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
 
 
 
-    perso = (Perso){-580.0f, -500.0f, NULL, 0, 10, 10, 10, 10, SDL_GetTicks()};
+    perso = (Perso){-580.0f, -500.0f, NULL, 0, 1, 10, 10, 10, SDL_GetTicks()};
     srand(time(NULL));
 
 
@@ -537,10 +539,15 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
             if (perso.faim > 0) perso.faim--;
             faim_timer = maintenant;
         }
+
+        if(perso.faim == 0 && (maintenant - faim_degat_timer) > 3000){
+            if((rand() % 100 < 20)){
+                perso.vie --;
+            }
+            faim_degat_timer = maintenant;
+        }
+
         afficher_stat(renderer);
-        
-
-
 
         if(caisse_outils_ouvert) {
             afficher_inventaire(caisse_outils, renderer, 5, 5, 1);
@@ -584,7 +591,10 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
         }
 
         SDL_RenderPresent(renderer);
+        if (perso.vie == 0) running = game_over(renderer);
     }
+
+    
 
 
     SDL_DestroyTexture(exterieure);
