@@ -70,6 +70,22 @@ typedef struct {
     int drop_chance;
 }Mob;
 
+typedef struct {
+    float x;
+    float y;
+    int est_battu;
+    int vie;
+    int vie_max;
+    int attaque;
+    Uint32 cooldown_attaque;
+    int animation_frame_idle;
+    int animation_frame_attack;
+    int animation_frame_death;
+    Uint32 animation_timer;
+    int phase;
+    SDL_Texture * texture;
+    int animation_state; // 0: idle, 1: attack, 2: death
+}boss_t;
 
 typedef struct {
     int x;
@@ -89,6 +105,7 @@ typedef struct {
 #include "option.h"
 #include "perso.h"
 #include "son.h"
+#include "boss.h"
 #include "mob.h"
 #include "vaisseau.h"
 #include "map.h"
