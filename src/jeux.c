@@ -2,6 +2,7 @@
 #include <SDL3_image/SDL_image.h>
 #include <SDL3_mixer/SDL_mixer.h>
 #include "headers/main.h"
+#include "headers/pause.h"
 #include <stdbool.h>
 #include <time.h>
 #include <stdlib.h>
@@ -167,7 +168,7 @@ static t_Cuisson cuisson = {0, -1, 0, NULL};
 
 
 
-int jeu_principal(SDL_Renderer *renderer, int planete) {
+int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global) {
 
 
 
@@ -219,6 +220,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
     Uint32 faim_timer = SDL_GetTicks();
 
 
+    bool reset_delta = false;
     while (running){
         int vie_avant = perso.vie;
 
@@ -228,8 +230,15 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
                 code_sortie = 1;
             } else if (event.type == SDL_EVENT_KEY_DOWN) {
                 if(event.key.key == SDLK_ESCAPE){
-                    running = false;
-                    code_sortie = 1; 
+                    // Ouvrir le menu pause SANS quitter la boucle
+                    int pause_result = afficher_pause(renderer, track_global);
+                    if (pause_result == PAUSE_MENU) {
+                        running = false;
+                        code_sortie = 1;
+                    }
+                    // PAUSE_REPRENDRE ou PAUSE_OPTIONS: on reprend simplement
+                    reset_delta = true;
+                    faim_timer = SDL_GetTicks();
                 }
                 if(event.key.key == SDLK_M){
                     running = false;
@@ -384,6 +393,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
         }
         Uint32 maintenant_dt = SDL_GetTicks();
         static Uint32 dernier_frame_dt = 0;
+        if (reset_delta) { dernier_frame_dt = maintenant_dt; reset_delta = false; }
         float delta = (dernier_frame_dt == 0) ? 0.016f : (maintenant_dt - dernier_frame_dt) / 1000.0f;
         dernier_frame_dt = maintenant_dt;
         
@@ -567,6 +577,67 @@ int jeu_principal(SDL_Renderer *renderer, int planete) {
         }
 
         afficher_stat(renderer);
+
+        //Horloge jour/nuit 
+        const float bar_x     = 430.0f;  // début de la barre
+        const float bar_w     = 140.0f;  // largeur totale
+        const float bar_y     = 18.0f;   // hauteur centre barre
+        const float bar_h     = 6.0f;    // épaisseur barre
+        const float icone_size  = 24.0f;   // taille icones
+        const float gap       = 6.0f;    // espace entre icone et barre
+
+        // Icone lune à gauche, soleil à droite
+        float soleil_x  = bar_x - gap - icone_size;
+        float lune_x= bar_x + bar_w + gap;
+        float icone_y  = bar_y - icone_size * 0.5f;
+
+        SDL_Texture *tex_lune   = IMG_LoadTexture(renderer, "assets/UI/moon.png");
+        SDL_Texture *tex_soleil = IMG_LoadTexture(renderer, "assets/UI/sun.png");
+
+        if (tex_lune) {
+            SDL_FRect dst = { lune_x, icone_y, icone_size, icone_size };
+            SDL_RenderTexture(renderer, tex_lune, NULL, &dst);
+            SDL_DestroyTexture(tex_lune);
+        }
+        if (tex_soleil) {
+            SDL_FRect dst = { soleil_x, icone_y, icone_size, icone_size };
+            SDL_RenderTexture(renderer, tex_soleil, NULL, &dst);
+            SDL_DestroyTexture(tex_soleil);
+        }
+
+        // Fond de la barre
+        SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+        SDL_SetRenderDrawColor(renderer, 60, 60, 80, 180);
+        SDL_FRect barre_fond = { bar_x, bar_y - bar_h * 0.5f, bar_w, bar_h };
+        SDL_RenderFillRect(renderer, &barre_fond);
+
+        // phase 0 = nuit (lune, gauche) ; phase 0.5 = jour (soleil, droite)
+        // phase 0->0.5 = nuit->jour  ; phase 0.5->1.0 = jour->nuit
+        float t = (phase < 0.5f) ? (phase * 2.0f) : ((1.0f - phase) * 2.0f);
+        // t=0 nuit, t=1 jour
+        SDL_SetRenderDrawColor(renderer, 255, 210, 60, 200);
+        SDL_FRect barre_jour = { bar_x, bar_y - bar_h * 0.5f, bar_w * t, bar_h };
+        SDL_RenderFillRect(renderer, &barre_jour);
+
+        // Bordure barre
+        SDL_SetRenderDrawColor(renderer, 150, 150, 180, 220);
+        SDL_RenderRect(renderer, &barre_fond);
+
+        // Curseur (cercle) qui glisse sur la barre
+        float curseur_x = bar_x + bar_w * t;
+        float cr = 7.0f;
+        // Couleur : jaune le jour, bleu la nuit
+        Uint8 cr_r = (Uint8)(255 * t + 100 * (1.0f - t));
+        Uint8 cr_g = (Uint8)(210 * t + 120 * (1.0f - t));
+        Uint8 cr_b = (Uint8)(60  * t + 220 * (1.0f - t));
+        SDL_SetRenderDrawColor(renderer, cr_r, cr_g, cr_b, 255);
+        for (float dy = -cr; dy <= cr; dy += 1.0f) {
+            float dx = sqrtf(cr * cr - dy * dy);
+            SDL_RenderLine(renderer, curseur_x - dx, bar_y + dy,
+                                        curseur_x + dx, bar_y + dy);
+        }
+
+
         
         TTF_Font *font_argent = TTF_OpenFont("assets/police.ttf", 22);
         char texte_argent[64];

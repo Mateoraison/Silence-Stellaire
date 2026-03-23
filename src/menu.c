@@ -38,19 +38,26 @@ int afficher_menu(SDL_Renderer *renderer) {
 
 
     Bouton bouton_game;
-    Bouton_Init(&bouton_game, 400.0f, 250.0f, 200.0f, 80.0f, BoutonText);
+    Bouton_Init(&bouton_game, 375.0f, 250.0f, 250.0f, 80.0f, BoutonText);
+
+    Bouton bouton_continuer;
+    Bouton_Init(&bouton_continuer, 375.0f, 350.0f, 250.0f, 80.0f, BoutonText);
 
     Bouton bouton_quitter;
-    Bouton_Init(&bouton_quitter, 400.0f, 350.0f, 200.0f, 80.0f, BoutonText);
+    Bouton_Init(&bouton_quitter, 375.0f, 450.0f, 250.0f, 80.0f, BoutonText);
 
     Bouton bouton_options;
-    Bouton_Init(&bouton_options, 400.0f, 450.0f, 200.0f, 80.0f, BoutonText);
+    Bouton_Init(&bouton_options, 375.0f, 550.0f, 250.0f, 80.0f, BoutonText);
 
     SDL_Color blanc = {255, 255, 255, 255};
 
-    SDL_Surface *surface_game = TTF_RenderText_Solid(font, "Game",strlen("Game"), blanc); 
+    SDL_Surface *surface_game = TTF_RenderText_Solid(font, "Nouvelle Partie",strlen("Nouvelle Partie"), blanc); 
     SDL_Texture *texte_game = SDL_CreateTextureFromSurface(renderer, surface_game); 
     SDL_DestroySurface(surface_game); 
+
+    SDL_Surface *surface_continuer = TTF_RenderText_Solid(font, "Continuer",strlen("Continuer"), blanc); 
+    SDL_Texture *texte_continuer = SDL_CreateTextureFromSurface(renderer, surface_continuer); 
+    SDL_DestroySurface(surface_continuer); 
 
     SDL_Surface *surface_options = TTF_RenderText_Solid(font, "Options",strlen("Options"), blanc); 
     SDL_Texture *texte_options = SDL_CreateTextureFromSurface(renderer, surface_options);
@@ -88,6 +95,9 @@ int afficher_menu(SDL_Renderer *renderer) {
                 action = 2;// option
                 running = 0;
             }
+            if(Bouton_GererEvenement(&bouton_continuer,&event)) {
+                printf("continuer");
+            }
         }
 
         SDL_RenderClear(renderer);
@@ -95,6 +105,9 @@ int afficher_menu(SDL_Renderer *renderer) {
         
         Bouton_Afficher(&bouton_game, renderer);
         afficher_texte_centre(renderer, texte_game, &bouton_game.rect);
+
+        Bouton_Afficher(&bouton_continuer, renderer);
+        afficher_texte_centre(renderer, texte_continuer,&bouton_continuer.rect);
         
         Bouton_Afficher(&bouton_quitter, renderer);
         afficher_texte_centre(renderer, texte_exit, &bouton_quitter.rect);
