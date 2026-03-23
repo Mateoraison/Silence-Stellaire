@@ -104,7 +104,7 @@ static bool gerer_interaction_objet(SDL_Renderer *renderer, int type_objet, int 
         case 36:
             snprintf(message_interaction, message_size, "Appuyez sur E pour sortir");
             if (e_pressed) {
-                jeu_principal(renderer, Planete_actuelle);
+                //jeu_principal(renderer, Planete_actuelle,track_global);
                 spawn_perso(spawn->tileX, spawn->tileY);
             }
             return true;

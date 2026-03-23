@@ -96,7 +96,7 @@ int main(int argc, char *argv[]) {
                 break;
             }
             case ETAT_VAISSEAU: {
-                int code = vaisseau(renderer);
+                int code = vaisseau(renderer,planete_actuelle);
                 switch (code) {
                     case 1:  etat = ETAT_MENU; break;
                     case 3:  etat = ETAT_MAP;  break;

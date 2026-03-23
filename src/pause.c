@@ -97,8 +97,8 @@ int afficher_pause(SDL_Renderer *renderer, MIX_Track *track_global) {
         SDL_RenderFillRect(renderer, &ecran);
 
         // Panneau
-        float pan_w = 310.0f;
-        float pan_h = btn_h * 4 + gap * 3 + 110.0f;
+        float pan_w = 400.0f;
+        float pan_h = btn_h * 4 + gap * 3 + 140.0f;
         float pan_x = 500.0f - pan_w * 0.5f;
         float pan_y = y0 - 85.0f;
 
