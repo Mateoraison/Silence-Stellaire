@@ -2,23 +2,27 @@
 
 int game_over(SDL_Renderer *renderer){
 
+    int result = 1;
+
     TTF_Font *font = TTF_OpenFont("assets/police.ttf", 24);
     if (!font) {
         SDL_Log("Erreur chargement police: %s", SDL_GetError());
-        return 1;
+        return result;
     }
 
     TTF_Font *font_game_over = TTF_OpenFont("assets/BiggerBook.ttf", 24);
     if (!font_game_over) {
         SDL_Log("Erreur chargement police: %s", SDL_GetError());
-        return 1;
+        TTF_CloseFont(font);
+        return result;
     }
 
     SDL_Texture *BoutonText = IMG_LoadTexture(renderer, "assets/menu/bouton.png");
     if(!BoutonText) {
         SDL_Log("erreur chargement texture bouton: %s", SDL_GetError());
         TTF_CloseFont(font);
-        return 1;
+        TTF_CloseFont(font_game_over);
+        return result;
     }
 
     Bouton bouton_game;
@@ -37,23 +41,33 @@ int game_over(SDL_Renderer *renderer){
     SDL_Texture *texte_exit = SDL_CreateTextureFromSurface(renderer, surface_exit); 
     SDL_DestroySurface(surface_exit);
 
+    if (!texte_game || !texte_exit) {
+        SDL_Log("Erreur creation texture texte game over: %s", SDL_GetError());
+        if (texte_game) SDL_DestroyTexture(texte_game);
+        if (texte_exit) SDL_DestroyTexture(texte_exit);
+        SDL_DestroyTexture(BoutonText);
+        TTF_CloseFont(font);
+        TTF_CloseFont(font_game_over);
+        return result;
+    }
+
     int continuer = 1;
     while (continuer) {
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
             if (Bouton_GererEvenement(&bouton_game, &event)) {
                 perso = (Perso){-580.0f, -500.0f, NULL, 0, 10, 10, 10, 10, SDL_GetTicks()};
-                TTF_CloseFont(font);
-                TTF_CloseFont(font_game_over);
-                SDL_DestroyTexture(BoutonText);
-                return 1;
+                result = 1;
+                continuer = 0;
             }
             if (Bouton_GererEvenement(&bouton_quitter, &event)) {
-                TTF_CloseFont(font);
-                TTF_CloseFont(font_game_over);
-                SDL_DestroyTexture(BoutonText);
-                return 0;
+                result = 0;
+                continuer = 0;
             }
+        }
+
+        if (!continuer) {
+            break;
         }
 
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
@@ -63,13 +77,15 @@ int game_over(SDL_Renderer *renderer){
         SDL_Surface *surface_game_over = TTF_RenderText_Solid(font_game_over, "Game Over", 0, rouge);
         if (!surface_game_over) {
             SDL_Log("TTF error: %s", SDL_GetError());
-            return -1;
+            result = -1;
+            break;
         }
         SDL_Texture *texte_game_over = SDL_CreateTextureFromSurface(renderer, surface_game_over);
         SDL_DestroySurface(surface_game_over);
         if (!texte_game_over) {
             SDL_Log("Texture error: %s", SDL_GetError());
-            return -1;
+            result = -1;
+            break;
         }
         SDL_FRect dest_game_over = {300.0f, 100.0f, 400.0f, 160.0f};
         SDL_RenderTexture(renderer, texte_game_over, NULL, &dest_game_over);
@@ -85,5 +101,12 @@ int game_over(SDL_Renderer *renderer){
         SDL_RenderPresent(renderer);
 
         SDL_Delay(100);
-    } 
+    }
+
+    SDL_DestroyTexture(texte_game);
+    SDL_DestroyTexture(texte_exit);
+    SDL_DestroyTexture(BoutonText);
+    TTF_CloseFont(font);
+    TTF_CloseFont(font_game_over);
+    return result;
 }

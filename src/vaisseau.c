@@ -16,6 +16,12 @@ int accessoire_map[MAP_H][MAP_W];
 
 // --- STRUCTURES ---
 
+// Pour le spawn du personnage après le retour dans la planette 
+typedef struct {
+    int tileX;
+    int tileY;
+} SpawnPoint;
+
 // Référence pour une tuile dans le tileset
 typedef struct {
     int tileX;
@@ -30,6 +36,7 @@ typedef struct {
 
 ObjetInteractif liste_objets[MAX_OBJETS];
 int nb_objets = 0;
+int index_objet_ecran_gauche = -1;
 
 // --- FONCTIONS DE LOCALISATION ---
 
@@ -65,6 +72,46 @@ void afficher_text(SDL_Renderer *renderer, TTF_Font *font, const char *text, flo
 
 void soigner(){
     perso.vie = perso.vie_max; 
+}
+
+static bool gerer_interaction_objet(SDL_Renderer *renderer, int type_objet, int Planete_actuelle, const SpawnPoint *spawn, bool e_pressed, char *message_interaction, size_t message_size) {
+    switch (type_objet) {
+        case 32:
+            snprintf(message_interaction, message_size, "Appuyez sur E pour vous soigner");
+            if (e_pressed) {
+                jouer_son("assets/audio/halo-shield-recharge-sound.mp3", 0.01f);
+                soigner();
+            }
+            return true;
+
+        case 46:
+        case 47:
+            snprintf(message_interaction, message_size, "Appuyez sur E pour voir la map");
+            if (e_pressed) afficher_map(renderer);
+            return true;
+
+        case 55:
+        case 56:
+        case 57:
+            snprintf(message_interaction, message_size, "Appuyez sur E pour jouer");
+            if (e_pressed) {
+                if (type_objet == 55) jouer_arcade1(renderer);
+                else if (type_objet == 56) jouer_arcade2(renderer);
+                else jouer_arcade3(renderer);
+            }
+            return true;
+
+        case 36:
+            snprintf(message_interaction, message_size, "Appuyez sur E pour sortir");
+            if (e_pressed) {
+                jeu_principal(renderer, Planete_actuelle);
+                spawn_perso(spawn->tileX, spawn->tileY);
+            }
+            return true;
+
+        default:
+            return false;
+    }
 }
 
 
@@ -104,6 +151,12 @@ int en_collision(int tileX, int tileY) {
 
 // Vérifie si un rectangle (hitbox) touche une tuile solide
 bool est_en_collision_rect(SDL_FRect hitbox) {
+    if (hitbox.x < 0.0f || hitbox.y < 0.0f ||
+        hitbox.x + hitbox.w > (float)(MAP_W * DISPLAY_TILE_SIZE) ||
+        hitbox.y + hitbox.h > (float)(MAP_H * DISPLAY_TILE_SIZE)) {
+        return true;
+    }
+
     // On calcule les tuiles qui sont couvertes par la hitbox
     int startX = (int)(hitbox.x / DISPLAY_TILE_SIZE);
     int startY = (int)(hitbox.y / DISPLAY_TILE_SIZE);
@@ -138,8 +191,10 @@ void spawn_perso(int tileX, int tileY) {
     perso.y = -(tileY * DISPLAY_TILE_SIZE) + 400;
 }
 
-void charger_map(const char* filename_map, const char* filename_accessoire) {
+SpawnPoint charger_map(const char* filename_map, const char* filename_accessoire) {
     nb_objets = 0;
+    index_objet_ecran_gauche = -1;
+    SpawnPoint spawn; 
 
     // Initialisation : on met tout à 0 (vide)
     for (int y = 0; y < MAP_H; y++) {
@@ -159,16 +214,18 @@ void charger_map(const char* filename_map, const char* filename_accessoire) {
                 if (fscanf(file_map, " %d-", &tile_map[y][x]) == 1) {
                     if(tile_map[y][x] == 99) {
                         spawn_perso(x, y);
+                        spawn.tileX = x;
+                        spawn.tileY = y;
                         tile_map[y][x] = 12; // On remplace le spawn par du sol
                     } 
-                    // On n'ajoute ici QUE les objets interactifs liés à la map de base (comme le soin 32)
-                    else if (tile_map[y][x] == 32) {
+                    // On n'ajoute ici QUE les objets interactifs liés à la map de base (comme le soin 32 et la sortie 36)
+                    else if (tile_map[y][x] == 32 ||tile_map[y][x] == 36) {
                         if (nb_objets < MAX_OBJETS) {
-                            liste_objets[nb_objets].type = 32;
+                            liste_objets[nb_objets].type = tile_map[y][x];
                             liste_objets[nb_objets].x = (float)(x * DISPLAY_TILE_SIZE);
                             liste_objets[nb_objets].y = (float)(y * DISPLAY_TILE_SIZE);
                             nb_objets++;
-                        }
+                        }else SDL_Log("Avertissement : Nombre maximum d'objets interactifs atteint, certains objets ne seront pas ajoutés à la liste.");
                     }
                 }
             }
@@ -192,6 +249,9 @@ void charger_map(const char* filename_map, const char* filename_accessoire) {
                         liste_objets[nb_objets].type = accessoire_map[y][x];
                         liste_objets[nb_objets].x = (float)(x * DISPLAY_TILE_SIZE);
                         liste_objets[nb_objets].y = (float)(y * DISPLAY_TILE_SIZE);
+                        if (accessoire_map[y][x] == 46 && index_objet_ecran_gauche == -1) {
+                            index_objet_ecran_gauche = nb_objets;
+                        }
                         nb_objets++;
                     } 
                 }
@@ -199,12 +259,13 @@ void charger_map(const char* filename_map, const char* filename_accessoire) {
         }
         fclose(file_accessoire);
     }
+    return spawn;
 }
 
 void draw_map(SDL_Renderer *renderer, SDL_Texture *tileset) {
     // Les coordonnées (X, Y) correspondent au nombre de cases de 64px 
     // en partant du haut à gauche du PNG.
-    TileRef palette[] = {
+    static const TileRef palette[] = {
 
         // Coutours & Extérieur 
         {10, 0},    // [0] Tuile vide
@@ -290,26 +351,28 @@ void draw_map(SDL_Renderer *renderer, SDL_Texture *tileset) {
 
     };
 
-    int palette_size = (int)(sizeof(palette)/sizeof(palette[0]));
+    const int palette_size = (int)(sizeof(palette)/sizeof(palette[0]));
 
     for (int y = 0; y < MAP_H; y++) {
+        float posY = (float)(y * DISPLAY_TILE_SIZE) + perso.y;
+        int *row_base = tile_map[y];
+        int *row_acc = accessoire_map[y];
+
         for (int x = 0; x < MAP_W; x++) {
             
-            // Calcul de la position de destination (commune aux deux couches)
+            // Calcul de la position de destination 
             float posX = (float)(x * DISPLAY_TILE_SIZE) + perso.x;
-            float posY = (float)(y * DISPLAY_TILE_SIZE) + perso.y;
             SDL_FRect dst = { posX, posY, (float)DISPLAY_TILE_SIZE, (float)DISPLAY_TILE_SIZE };
 
             // --- COUCHE 1 : SOL ET MURS ---
-            int base_type = tile_map[y][x];
+            int base_type = row_base[x];
             if (base_type >= 0 && base_type < palette_size) { 
                 SDL_FRect src = { (float)palette[base_type].tileX * TILE_SIZE, (float)palette[base_type].tileY * TILE_SIZE, TILE_SIZE, TILE_SIZE };
                 SDL_RenderTexture(renderer, tileset, &src, &dst);
             }
 
             // --- COUCHE 2 : ACCESSOIRES ---
-            int acc_type = accessoire_map[y][x];
-            // CORRECTION : On ignore l'ID 0 car dans ton TXT c'est le vide
+            int acc_type = row_acc[x];
             if (acc_type > 0 && acc_type < palette_size) {
                 SDL_FRect src_acc = { (float)palette[acc_type].tileX * TILE_SIZE, (float)palette[acc_type].tileY * TILE_SIZE, TILE_SIZE, TILE_SIZE };
                 SDL_RenderTexture(renderer, tileset, &src_acc, &dst);
@@ -320,16 +383,18 @@ void draw_map(SDL_Renderer *renderer, SDL_Texture *tileset) {
 
 // --- FONCTION PRINCIPALE ---
 
-int vaisseau(SDL_Renderer *renderer) {
+int vaisseau(SDL_Renderer *renderer, int Planete_actuelle) {
     int code_sortie = 0;
     float old_offset_x, old_offset_y;
     float world_x, world_y;
+    
 
     int hitbox_x = 30 ;
     int hitbox_y = 60 ; 
 
     SDL_Texture *t_tiles = IMG_LoadTexture(renderer, "assets/tileset/V2/Interieur_Vaisseau/tileset_sf.png");
     SDL_Texture *t_bg = IMG_LoadTexture(renderer, "assets/tileset/V2/Interieur_Vaisseau/Grafika/bg.png"); 
+    SDL_Texture *t_mini_map = IMG_LoadTexture(renderer, "assets/tileset/V2/Interieur_Vaisseau/mini_map.png");
 
     if (!t_tiles) return -1;
 
@@ -337,7 +402,8 @@ int vaisseau(SDL_Renderer *renderer) {
     TTF_Font *font = TTF_OpenFont("assets/police.ttf", 24); 
 
     SDL_SetTextureScaleMode(t_tiles, SDL_SCALEMODE_NEAREST);
-    charger_map("assets/map/vaisseau.txt", "assets/map/accessoires.txt");
+    if (t_mini_map) SDL_SetTextureScaleMode(t_mini_map, SDL_SCALEMODE_NEAREST);
+    SpawnPoint spawn = charger_map("assets/map/vaisseau.txt", "assets/map/accessoires.txt");
 
     bool running = true;
     SDL_Event event;
@@ -384,29 +450,15 @@ int vaisseau(SDL_Renderer *renderer) {
         // Test de proximité et interaction
         char message_interaction[128] = ""; 
         bool afficher_message = false;
+        const bool *keys = SDL_GetKeyboardState(NULL);
+        bool e_pressed = keys && keys[SDL_SCANCODE_E];
 
         for (int i = 0; i < nb_objets; i++) {
             if (est_proche(liste_objets[i].x, liste_objets[i].y, world_x, world_y, 60.0f)) {
-                if (liste_objets[i].type == 32) {
-                    snprintf(message_interaction, sizeof(message_interaction), "Appuyez sur E pour vous soigner");
+                bool est_interactif = gerer_interaction_objet(renderer, liste_objets[i].type, Planete_actuelle,
+                                                                &spawn, e_pressed, message_interaction, sizeof(message_interaction));
+                if (est_interactif) {
                     afficher_message = true;
-                    const bool *keys = SDL_GetKeyboardState(NULL);
-                    if (keys[SDL_SCANCODE_E]){
-                        jouer_son("assets/audio/halo-shield-recharge-sound.mp3", 0.01f);
-                        soigner(); 
-                    }
-                }else if (liste_objets[i].type == 46 || liste_objets[i].type == 47) {
-                    snprintf(message_interaction, sizeof(message_interaction), "Appuyez sur E pour voir la map");
-                    afficher_message = true;
-                    const bool *keys = SDL_GetKeyboardState(NULL);
-                    if (keys[SDL_SCANCODE_E]) afficher_map(renderer); 
-                }else if (liste_objets[i].type == 55 || liste_objets[i].type == 56 || liste_objets[i].type == 57 ) {
-                    snprintf(message_interaction, sizeof(message_interaction), "Appuyez sur E pour jouer");
-                    afficher_message = true ; 
-                    const bool *keys = SDL_GetKeyboardState(NULL);
-                    if (keys[SDL_SCANCODE_E] && liste_objets[i].type == 55) jouer_arcade1(renderer);
-                    if (keys[SDL_SCANCODE_E] && liste_objets[i].type == 56) jouer_arcade2(renderer);
-                    if (keys[SDL_SCANCODE_E] && liste_objets[i].type == 57) jouer_arcade3(renderer);
                 }
             }
         }
@@ -417,6 +469,21 @@ int vaisseau(SDL_Renderer *renderer) {
         if (t_bg) SDL_RenderTexture(renderer, t_bg, NULL, NULL);
 
         draw_map(renderer, t_tiles);
+
+        // On dessine l'aperçu de la carte DANS l'écran
+        if (t_mini_map && index_objet_ecran_gauche >= 0 && index_objet_ecran_gauche < nb_objets) {
+            ObjetInteractif *ecran = &liste_objets[index_objet_ecran_gauche];
+            SDL_FRect rect_ecran = {
+                ecran->x + perso.x + 6.0f,            // Position X (ajuster le +4 pour centrer)
+                ecran->y + perso.y + 11.0f,           // Position Y (ajuster le +12 pour descendre sous le bord)
+                (DISPLAY_TILE_SIZE * 2.0f) - 10.0f,             // Largeur (2 tuiles de large, moins les bords)
+                DISPLAY_TILE_SIZE - 35.0f                      // Hauteur (1 tuile de haut, moins les bords)
+            };
+
+            SDL_RenderTexture(renderer, t_mini_map, NULL, &rect_ecran);
+        }
+
+        // On dessine les entités par-dessus
         update_animation();
         afficher_stat(renderer);
         afficher_perso(renderer);
@@ -439,6 +506,7 @@ int vaisseau(SDL_Renderer *renderer) {
 
     SDL_DestroyTexture(t_tiles);
     SDL_DestroyTexture(t_bg);
+    SDL_DestroyTexture(t_mini_map);
     if (font) TTF_CloseFont(font);
     return code_sortie;
 }
