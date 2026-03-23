@@ -1,15 +1,79 @@
 #include "headers/main.h"
 #include <SDL3_ttf/SDL_ttf.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #define MAX_PROJECTILES 5
 #define MAX_ENNEMIS 8
 
 typedef struct { float x, y; bool actif; } Entite;
 
+#define ARCADE_SCREEN_X 300.0f
+#define ARCADE_SCREEN_Y 200.0f
+#define ARCADE_SCREEN_W 200.0f
+#define ARCADE_SCREEN_H 400.0f
+#define ARCADE_TEXT_PADDING 8.0f
+#define ARCADE_INFO_X ARCADE_SCREEN_X
+#define ARCADE_INFO_Y (ARCADE_SCREEN_Y + ARCADE_SCREEN_H + 10.0f)
+#define ARCADE_INFO_W ARCADE_SCREEN_W
+#define ARCADE_INFO_H 56.0f
+
+static TTF_Font *arcade_font = NULL;
+
+void arcade_draw_text(SDL_Renderer *r, const char* text, float x, float y, bool center);
+
+static TTF_Font *arcade_get_font(void) {
+    if (!arcade_font) {
+        arcade_font = TTF_OpenFont("assets/police.ttf", 18);
+    }
+    return arcade_font;
+}
+
+static void arcade_draw_frame(SDL_Renderer *renderer) {
+    SDL_SetRenderDrawColor(renderer, 10, 10, 15, 255);
+    SDL_FRect ecran = { ARCADE_SCREEN_X, ARCADE_SCREEN_Y, ARCADE_SCREEN_W, ARCADE_SCREEN_H };
+    SDL_RenderFillRect(renderer, &ecran);
+    SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
+    SDL_RenderRect(renderer, &ecran);
+}
+
+static void arcade_draw_hud(SDL_Renderer *renderer, const char *line1, const char *line2, int value, const char *label) {
+    char score_line[64];
+    snprintf(score_line, sizeof(score_line), "%s: %d", label, value);
+
+    SDL_SetRenderDrawColor(renderer, 10, 10, 15, 255);
+    SDL_FRect panneau = { ARCADE_INFO_X, ARCADE_INFO_Y, ARCADE_INFO_W, ARCADE_INFO_H };
+    SDL_RenderFillRect(renderer, &panneau);
+    SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
+    SDL_RenderRect(renderer, &panneau);
+
+    arcade_draw_text(renderer, score_line, 400, 210, true);
+    arcade_draw_text(renderer, line1, 400, ARCADE_INFO_Y + 8.0f, true);
+    arcade_draw_text(renderer, line2, 400, ARCADE_INFO_Y + 28.0f, true);
+}
+
+static void arcade_draw_info_panel(SDL_Renderer *renderer, const char *line1, const char *line2) {
+    SDL_SetRenderDrawColor(renderer, 10, 10, 15, 255);
+    SDL_FRect panneau = { ARCADE_INFO_X, ARCADE_INFO_Y, ARCADE_INFO_W, ARCADE_INFO_H };
+    SDL_RenderFillRect(renderer, &panneau);
+    SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
+    SDL_RenderRect(renderer, &panneau);
+
+    arcade_draw_text(renderer, line1, 400, ARCADE_INFO_Y + 8.0f, true);
+    arcade_draw_text(renderer, line2, 400, ARCADE_INFO_Y + 28.0f, true);
+}
+
+static void reset_projectiles(Entite *tirs) {
+    for (int i = 0; i < MAX_PROJECTILES; i++) tirs[i].actif = false;
+}
+
+static void reset_ennemis(Entite *ennemis) {
+    for (int i = 0; i < MAX_ENNEMIS; i++) ennemis[i].actif = false;
+}
+
 // --- PETIT HELPER LOCAL POUR LE TEXTE (Évite vaisseau.c) ---
 void arcade_draw_text(SDL_Renderer *r, const char* text, float x, float y, bool center) {
-    TTF_Font *f = TTF_OpenFont("assets/police.ttf", 18); // On ouvre la police localement
+    TTF_Font *f = arcade_get_font(); // On ouvre la police localement
     if (!f) return;
     
     SDL_Color blanc = {255, 255, 255, 255};
@@ -17,14 +81,21 @@ void arcade_draw_text(SDL_Renderer *r, const char* text, float x, float y, bool 
     if (surf) {
         SDL_Texture *tex = SDL_CreateTextureFromSurface(r, surf);
         if (tex) {
-            float finalX = center ? x - (surf->w / 2.0f) : x;
-            SDL_FRect dst = { finalX, y, (float)surf->w, (float)surf->h };
+            const float max_width = ARCADE_SCREEN_W - (ARCADE_TEXT_PADDING * 2.0f);
+            float scale = 1.0f;
+            if ((float)surf->w > max_width && surf->w > 0) {
+                scale = max_width / (float)surf->w;
+            }
+
+            float draw_w = (float)surf->w * scale;
+            float draw_h = (float)surf->h * scale;
+            float finalX = center ? x - (draw_w / 2.0f) : x;
+            SDL_FRect dst = { finalX, y, draw_w, draw_h };
             SDL_RenderTexture(r, tex, NULL, &dst);
             SDL_DestroyTexture(tex);
         }
         SDL_DestroySurface(surf);
     }
-    TTF_CloseFont(f);
 }
 
 // --- JEU 1 : STARSHIP DEFENDER (SHOOTER) ---
@@ -42,12 +113,12 @@ void jouer_arcade1(SDL_Renderer *renderer) {
         while (SDL_PollEvent(&ev)) {
             if (ev.type == SDL_EVENT_QUIT) running = false;
             if (ev.type == SDL_EVENT_KEY_DOWN) {
-                if (ev.key.key == SDLK_Q) running = false;
+                if (ev.key.key == SDLK_ESCAPE) running = false;
                 if (etat == 0 && ev.key.key == SDLK_SPACE) etat = 1;
                 if (etat == 2 && ev.key.key == SDLK_R) { // Reset
                     etat = 1; score = 0; j_x = 400;
-                    for(int i=0; i<MAX_PROJECTILES; i++) tirs[i].actif = false;
-                    for(int i=0; i<MAX_ENNEMIS; i++) ennemis[i].actif = false;
+                    reset_projectiles(tirs);
+                    reset_ennemis(ennemis);
                 }
                 if (etat == 1 && ev.key.key == SDLK_SPACE) {
                     for(int i=0; i<MAX_PROJECTILES; i++) if(!tirs[i].actif) {
@@ -59,13 +130,14 @@ void jouer_arcade1(SDL_Renderer *renderer) {
 
         if (etat == 1) {
             const bool *k = SDL_GetKeyboardState(NULL);
-            if (k[SDL_SCANCODE_LEFT] && j_x > 305) j_x -= 5;
-            if (k[SDL_SCANCODE_RIGHT] && j_x < 465) j_x += 5;
+            if ((k[SDL_SCANCODE_LEFT] || k[SDL_SCANCODE_Q] || k[SDL_SCANCODE_A]) && j_x > 305) j_x -= 5;
+            if ((k[SDL_SCANCODE_RIGHT] || k[SDL_SCANCODE_D]) && j_x < 465) j_x += 5;
 
-            if (SDL_GetTicks() - last_e > 1000) {
+            Uint32 now = SDL_GetTicks();
+            if (now - last_e > 1000) {
                 for(int i=0; i<MAX_ENNEMIS; i++) if(!ennemis[i].actif) {
                     ennemis[i].x = 310 + (rand() % 160); ennemis[i].y = 200;
-                    ennemis[i].actif = true; last_e = SDL_GetTicks(); break;
+                    ennemis[i].actif = true; last_e = now; break;
                 }
             }
             for(int i=0; i<MAX_PROJECTILES; i++) if(tirs[i].actif) {
@@ -83,24 +155,22 @@ void jouer_arcade1(SDL_Renderer *renderer) {
             }
         }
 
-        SDL_SetRenderDrawColor(renderer, 10, 10, 15, 255);
-        SDL_FRect ecran = { 300, 200, 200, 400 };
-        SDL_RenderFillRect(renderer, &ecran);
-        SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
-        SDL_RenderRect(renderer, &ecran);
+        arcade_draw_frame(renderer);
 
         if (etat == 0) {
             arcade_draw_text(renderer, "STAR DEFENDER", 400, 250, true);
-            arcade_draw_text(renderer, "FLECHES: BOUGER", 400, 320, true);
-            arcade_draw_text(renderer, "ESPACE: TIRER", 400, 350, true);
+            arcade_draw_text(renderer, "OBJECTIF: ELIMINER LES ENNEMIS", 400, 290, true);
+            arcade_draw_text(renderer, "FLECHES / A D : BOUGER", 400, 330, true);
+            arcade_draw_text(renderer, "ESPACE: TIRER", 400, 360, true);
             arcade_draw_text(renderer, "PRESSER ESPACE", 400, 450, true);
+            arcade_draw_info_panel(renderer, "ESPACE: COMMENCER", "ECHAP: QUITTER LA BORNE");
         } else if (etat == 2) {
             char res[32]; sprintf(res, "SCORE: %d", score);
             arcade_draw_text(renderer, "GAME OVER", 400, 250, true);
             arcade_draw_text(renderer, res, 400, 300, true);
-            arcade_draw_text(renderer, "R: REJOUER", 400, 400, true);
-            arcade_draw_text(renderer, "Q: QUITTER", 400, 430, true);
+            arcade_draw_info_panel(renderer, "R: REJOUER", "ECHAP: QUITTER");
         } else {
+            arcade_draw_hud(renderer, "FLECHES / Q D : BOUGER", "ESPACE: TIRER | ECHAP: QUITTER", score, "SCORE");
             SDL_SetRenderDrawColor(renderer, 0, 200, 255, 255);
             SDL_FRect rj = { j_x, 540, 30, 10 }; SDL_RenderFillRect(renderer, &rj);
             SDL_SetRenderDrawColor(renderer, 255, 50, 50, 255);
@@ -133,7 +203,7 @@ void jouer_arcade2(SDL_Renderer *renderer) {
         while (SDL_PollEvent(&ev)) {
             if (ev.type == SDL_EVENT_QUIT) running = false;
             if (ev.type == SDL_EVENT_KEY_DOWN) {
-                if (ev.key.key == SDLK_Q) running = false;
+                if (ev.key.key == SDLK_ESCAPE) running = false;
                 if (etat == 0 && ev.key.key == SDLK_SPACE) etat = 1;
                 if (etat == 2 && ev.key.key == SDLK_R) {
                     etat = 1; score = 0; j_x = 400; last = SDL_GetTicks();
@@ -144,13 +214,14 @@ void jouer_arcade2(SDL_Renderer *renderer) {
 
         if (etat == 1) {
             const bool *k = SDL_GetKeyboardState(NULL);
-            if (k[SDL_SCANCODE_LEFT] && j_x > 300) j_x -= 5;
-            if (k[SDL_SCANCODE_RIGHT] && j_x < 490) j_x += 5;
+            if ((k[SDL_SCANCODE_LEFT] || k[SDL_SCANCODE_Q] || k[SDL_SCANCODE_A]) && j_x > 300) j_x -= 5;
+            if ((k[SDL_SCANCODE_RIGHT] || k[SDL_SCANCODE_D]) && j_x < 490) j_x += 5;
 
-            if (SDL_GetTicks() - last > 1300) {
+            Uint32 now = SDL_GetTicks();
+            if (now - last > 1300) {
                 for(int i=0; i<4; i++) if(!b[i].a) {
                     b[i].y = 600; b[i].tx = 310 + (rand()%130);
-                    b[i].a = true; last = SDL_GetTicks(); break;
+                    b[i].a = true; last = now; break;
                 }
             }
             for(int i=0; i<4; i++) if(b[i].a) {
@@ -162,21 +233,21 @@ void jouer_arcade2(SDL_Renderer *renderer) {
             }
         }
 
-        SDL_SetRenderDrawColor(renderer, 5, 20, 5, 255);
-        SDL_FRect ecran = { 300, 200, 200, 400 };
-        SDL_RenderFillRect(renderer, &ecran);
+        arcade_draw_frame(renderer);
 
         if (etat == 0) {
             arcade_draw_text(renderer, "GRAVITY FALL", 400, 250, true);
-            arcade_draw_text(renderer, "ESQUIVE LES MURS", 400, 320, true);
+            arcade_draw_text(renderer, "OBJECTIF: PASSER LES BARRIERES", 400, 290, true);
+            arcade_draw_text(renderer, "FLECHES / Q D : BOUGER", 400, 330, true);
             arcade_draw_text(renderer, "PRESSER ESPACE", 400, 450, true);
+            arcade_draw_info_panel(renderer, "ESPACE: COMMENCER", "ECHAP: QUITTER LA BORNE");
         } else if (etat == 2) {
             char res[32]; sprintf(res, "PASSES: %d", score);
             arcade_draw_text(renderer, "BOUM !", 400, 250, true);
             arcade_draw_text(renderer, res, 400, 300, true);
-            arcade_draw_text(renderer, "R: REJOUER", 400, 400, true);
-            arcade_draw_text(renderer, "Q: QUITTER", 400, 430, true);
+            arcade_draw_info_panel(renderer, "R: REJOUER", "ECHAP: QUITTER");
         } else {
+            arcade_draw_hud(renderer, "FLECHES / Q D : BOUGER", "EVITE LES MURS", score, "PASSES");
             SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
             SDL_FRect p = { j_x, j_y, 10, 10 }; SDL_RenderFillRect(renderer, &p);
             SDL_SetRenderDrawColor(renderer, 0, 255, 100, 255);
@@ -206,7 +277,7 @@ void jouer_arcade3(SDL_Renderer *renderer) {
         while (SDL_PollEvent(&ev)) {
             if (ev.type == SDL_EVENT_QUIT) running = false;
             if (ev.type == SDL_EVENT_KEY_DOWN) {
-                if (ev.key.key == SDLK_Q) running = false;
+                if (ev.key.key == SDLK_ESCAPE) running = false;
                 if (etat == 0 && ev.key.key == SDLK_SPACE) etat = 1;
                 if (etat == 2 && ev.key.key == SDLK_R) {
                     etat = 1; rebonds = 0; bx = 400; by = 300; vx = 3; vy = 3;
@@ -216,8 +287,8 @@ void jouer_arcade3(SDL_Renderer *renderer) {
 
         if (etat == 1) {
             const bool *k = SDL_GetKeyboardState(NULL);
-            if (k[SDL_SCANCODE_LEFT] && rx > 300) rx -= 7;
-            if (k[SDL_SCANCODE_RIGHT] && rx < 440) rx += 7;
+            if ((k[SDL_SCANCODE_LEFT] || k[SDL_SCANCODE_Q] || k[SDL_SCANCODE_A]) && rx > 300) rx -= 7;
+            if ((k[SDL_SCANCODE_RIGHT] || k[SDL_SCANCODE_D]) && rx < 440) rx += 7;
             bx += vx; by += vy;
             if (bx < 300 || bx > 490) vx *= -1;
             if (by < 200) vy *= -1;
@@ -227,21 +298,22 @@ void jouer_arcade3(SDL_Renderer *renderer) {
             if (by > 600) etat = 2;
         }
 
-        SDL_SetRenderDrawColor(renderer, 20, 0, 20, 255);
-        SDL_FRect ecran = { 300, 200, 200, 400 };
-        SDL_RenderFillRect(renderer, &ecran);
+        arcade_draw_frame(renderer);
 
         if (etat == 0) {
             arcade_draw_text(renderer, "SPACE PADDLE", 400, 250, true);
-            arcade_draw_text(renderer, "NE LAISSE", 400, 320, true);
-            arcade_draw_text(renderer, "PAS TOMBER", 400, 350, true);
-            arcade_draw_text(renderer, "ESPACE : COMMENCER", 400, 450, true);
+            arcade_draw_text(renderer, "OBJECTIF: TENIR LE PLUS LONGTEMPS", 400, 290, true);
+            arcade_draw_text(renderer, "NE LAISSE PAS TOMBER", 400, 330, true);
+            arcade_draw_text(renderer, "FLECHES / Q D : BOUGER", 400, 360, true);
+            arcade_draw_text(renderer, "PRESSER ESPACE", 400, 450, true);
+            arcade_draw_info_panel(renderer, "ESPACE: COMMENCER", "ECHAP: QUITTER LA BORNE");
         } else if (etat == 2) {
             char res[32]; sprintf(res, "REBONDS: %d", rebonds);
             arcade_draw_text(renderer, "PERDU !", 400, 250, true);
             arcade_draw_text(renderer, res, 400, 300, true);
-            arcade_draw_text(renderer, "R: REESSAYER", 400, 400, true);
+            arcade_draw_info_panel(renderer, "R: REESSAYER", "ECHAP: QUITTER");
         } else {
+            arcade_draw_hud(renderer, "FLECHES / Q D : BOUGER", "GARDE LA BALLE EN JEU | ECHAP: QUITTER", rebonds, "REBONDS");
             SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
             SDL_FRect b = { bx, by, 10, 10 }; SDL_RenderFillRect(renderer, &b);
             SDL_SetRenderDrawColor(renderer, 255, 0, 255, 255);

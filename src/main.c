@@ -43,6 +43,7 @@ int main(int argc, char* argv[]) {
     }
 
 
+    SDL_SetHint(SDL_HINT_RENDER_VSYNC, "1");
     SDL_Renderer *renderer = SDL_CreateRenderer(fenetre, NULL);
     if (!renderer) {
         SDL_Log("erreur creation renderer: %s", SDL_GetError());
@@ -51,7 +52,11 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    SDL_SetWindowIcon(fenetre, IMG_Load("assets/logo_win.png"));
+    SDL_Surface *icon = IMG_Load("assets/logo_win.png");
+    if (icon) {
+        SDL_SetWindowIcon(fenetre, icon);
+        SDL_DestroySurface(icon);
+    }
     init_caisse_outils(renderer);
     bool running = true; 
     track_global = jouer_son("assets/audio/ambiance.wav", 0.3f);
@@ -64,7 +69,7 @@ int main(int argc, char* argv[]) {
                 int nouvelle_planete = afficher_map(renderer);
                 Planete_actuelle = nouvelle_planete;
             }
-            if (resultat_jeu == 4) vaisseau(renderer);
+            if (resultat_jeu == 4) vaisseau(renderer, Planete_actuelle);
         }else if(action_menu == 2){
             int resultat_option = afficher_option(renderer,track_global);
             if(resultat_option == 0) running = false;
@@ -79,6 +84,7 @@ int main(int argc, char* argv[]) {
 
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(fenetre);
+    TTF_Quit();
     MIX_Quit();
     SDL_Quit();
     return 0;
