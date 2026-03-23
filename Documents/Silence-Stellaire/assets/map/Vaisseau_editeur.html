@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Map Editor - Vaisseau PRO</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.container{
+    display:flex;
+    gap:20px;
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+}
+.sidebar{
+    width:260px;
+    height:80vh;
+    overflow-y:auto;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+.section{
+    background:#f5f5f5;
+    padding:10px;
+    border-radius:8px;
+}
+.section h3{
+    font-size:13px;
+    margin-bottom:8px;
+}
+.tile-button{
+    width:100%;
+    padding:6px;
+    margin-bottom:4px;
+    border-radius:6px;
+    border:2px solid #ccc;
+    cursor:pointer;
+    font-size:11px;
+    font-weight:bold;
+}
+.tile-button.active{
+    border:3px solid black;
+}
+button{
+    padding:6px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:12px;
+    font-weight:bold;
+    margin-top:5px;
+}
+.btn-primary{background:#2196F3;color:white;}
+.btn-danger{background:#f44336;color:white;}
+.btn-success{background:#4CAF50;color:white;}
+.file-label{
+    background:#9C27B0;
+    color:white;
+    padding:6px;
+    border-radius:6px;
+    text-align:center;
+    cursor:pointer;
+    display:block;
+    margin-top:5px;
+    font-size:12px;
+    font-weight:bold;
+}
+input[type=file]{display:none;}
+canvas{
+    border:2px solid #333;
+    border-radius:8px;
+}
+.info{
+    margin-top:10px;
+    font-size:12px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="sidebar" id="paletteContainer"></div>
+
+<div>
+<div class="section">
+<h3>⚙️ Contrôles</h3>
+<label>Largeur <input type="number" id="widthInput" value="24"></label>
+<label>Hauteur <input type="number" id="heightInput" value="19"></label>
+<button class="btn-primary" onclick="createNewMap()">Nouvelle</button>
+<button class="btn-danger" onclick="clearMap()">Effacer</button>
+<button class="btn-success" onclick="downloadMap()">Télécharger</button>
+<label class="file-label">
+Charger
+<input type="file" id="fileInput" accept=".txt">
+</label>
+</div>
+
+<canvas id="canvas"></canvas>
+<div class="info" id="infoText"></div>
+</div>
+
+</div>
+
+<script>
+const canvas=document.getElementById('canvas');
+const ctx=canvas.getContext('2d');
+
+let selectedTile=0;
+let gridWidth=24;
+let gridHeight=19;
+let tileSize=30;
+let mapData=[];
+
+/* =========================
+   TUILES ORGANISÉES
+========================= */
+
+const categories=[
+
+{
+name:"Contours & Extérieur",
+color:"#607D8B",
+tiles:[
+{ id:0,name:"Vide" },
+{ id:1,name:"Coin HG" },
+{ id:2,name:"Coin HD" },
+{ id:3,name:"Coin BG" },
+{ id:4,name:"Coin BD" },
+{ id:5,name:"Contour Vertical" },
+{ id:6,name:"Contour Horizontal Haut" },
+{ id:7,name:"Contour Horizontal Bas" },
+{ id:8,name:"Bout Couloir Gauche" },
+{ id:9,name:"Bout Couloir Droit" },
+{ id:10,name:"Réacteur 1" },
+{ id:11,name:"Réacteur 2" }
+]
+},
+
+{
+name:"Sols",
+color:"#B0BEC5",
+tiles:[
+    { id:12,name:"Sol Simple" },
+    { id:13,name:"Sol Grille" },
+    { id:14,name:"Sol Ventilation" },
+    { id:15,name:"Sol Motif 1" },
+    { id:16,name:"Sol Motif 2" },
+    { id:17,name:"Sol Motif 3" },
+    { id:18,name:"Sol Motif 4" }
+]
+},
+
+{
+name:"Murs & Ombres",
+color:"#455A64",
+tiles:[
+    { id:19,name:"Mur Simple" },
+    { id:20,name:"Sol Ombre" },
+    { id:21,name:"Mur LED Verte" },
+    { id:22,name:"Mur LED Bleu" },
+    { id:23,name:"Mur LED Jaune" },
+    { id:24,name:"Mur LED Rouge" },
+    { id:25,name:"Sol Ombre" },
+    { id:26,name:"Mur Fenêtre" },
+    { id:27,name:"Sol Ombre" },
+    { id:28,name:"Mur Poteau" },
+    { id:29,name:"Sol Ombre" },
+    { id:30,name:"Mur Chiffre" },
+    { id:31,name:"Sol Ombre" },
+    { id:32,name:"Mur Soin" },
+    { id:33,name:"Sol Ombre" },
+    { id:34,name:"Mur O3" },
+    { id:35,name:"Sol Ombre" },
+    { id:36,name:"Mur Ouvert Sombre" },
+    { id:37,name:"Sol Ombre" },
+    { id:38,name:"Mur Ouvert" },
+    { id:39,name:"Sol Ombre" },
+    { id:40,name:"Mur O2" },
+    { id:41,name:"Sol Ombre" },
+    { id:42,name:"Mur Câble" },
+    { id:43,name:"Sol Ombre" },
+    { id:44,name:"Mur Aération" },
+    { id:45,name:"Sol Ombre" }
+]
+},
+
+{
+name:"Accessoires",
+color:"#FF9800",
+tiles:[
+    { id:46,name:"Écran 1" },
+    { id:47,name:"Écran 2" },
+    { id:48,name:"Flèche Droite" },
+    { id:49,name:"Flèche Bas" },
+    { id:50,name:"Flèche Haut" },
+    { id:51,name:"Flèche Gauche" },
+    { id:52,name:"Caméra 1" },
+    { id:53,name:"Caméra 2" },
+    { id:54,name:"Caméra 3" }
+]
+}
+
+];
+
+/* ========================= */
+
+function initPalette(){
+const container=document.getElementById('paletteContainer');
+container.innerHTML='';
+categories.forEach(cat=>{
+const section=document.createElement('div');
+section.className='section';
+const title=document.createElement('h3');
+title.textContent=cat.name;
+title.style.color=cat.color;
+section.appendChild(title);
+
+cat.tiles.forEach(tile=>{
+const btn=document.createElement('button');
+btn.className='tile-button';
+btn.textContent=`[${tile.id}] ${tile.name}`;
+btn.style.background=cat.color;
+btn.style.color="white";
+if(tile.id===selectedTile)btn.classList.add('active');
+btn.onclick=()=>{selectedTile=tile.id;updateInfo();initPalette();};
+section.appendChild(btn);
+});
+container.appendChild(section);
+});
+}
+
+function updateInfo(){
+document.getElementById('infoText').textContent=
+`Tuile sélectionnée : ${selectedTile}`;
+}
+
+function createNewMap(){
+gridWidth=parseInt(widthInput.value);
+gridHeight=parseInt(heightInput.value);
+mapData=Array(gridHeight).fill().map(()=>Array(gridWidth).fill(0));
+resizeCanvas();
+draw();
+}
+
+function clearMap(){
+mapData=Array(gridHeight).fill().map(()=>Array(gridWidth).fill(0));
+draw();
+}
+
+function resizeCanvas(){
+tileSize=Math.max(18,Math.floor(800/Math.max(gridWidth,gridHeight)));
+canvas.width=gridWidth*tileSize;
+canvas.height=gridHeight*tileSize;
+}
+
+function draw(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+for(let y=0;y<gridHeight;y++){
+for(let x=0;x<gridWidth;x++){
+ctx.fillStyle=`hsl(${mapData[y][x]*15},60%,70%)`;
+ctx.fillRect(x*tileSize,y*tileSize,tileSize,tileSize);
+ctx.strokeRect(x*tileSize,y*tileSize,tileSize,tileSize);
+}
+}
+}
+
+canvas.addEventListener('mousedown',e=>{
+const rect=canvas.getBoundingClientRect();
+const x=Math.floor((e.clientX-rect.left)/tileSize);
+const y=Math.floor((e.clientY-rect.top)/tileSize);
+if(x>=0&&x<gridWidth&&y>=0&&y<gridHeight){
+mapData[y][x]=selectedTile;
+draw();
+}
+});
+
+function downloadMap(){
+const text=mapData.map(r=>r.join('-')).join('\n');
+const blob=new Blob([text],{type:'text/plain'});
+const a=document.createElement('a');
+a.href=URL.createObjectURL(blob);
+a.download='vaisseau.txt';
+a.click();
+}
+
+document.getElementById('fileInput').addEventListener('change',function(e){
+const file=e.target.files[0];
+if(!file)return;
+const reader=new FileReader();
+reader.onload=function(event){
+const rows=event.target.result.trim().split('\n')
+.map(r=>r.split('-').map(Number));
+gridHeight=rows.length;
+gridWidth=rows[0].length;
+widthInput.value=gridWidth;
+heightInput.value=gridHeight;
+mapData=rows;
+resizeCanvas();
+draw();
+};
+reader.readAsText(file);
+});
+
+createNewMap();
+initPalette();
+updateInfo();
+
+</script>
+</body>
+</html>
