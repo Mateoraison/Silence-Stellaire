@@ -8,6 +8,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+
+#define ENGRENAGES_MAX 1
+
+static int engrenages_poses = 0;
+static bool vaisseau_repare = false;
+
 Perso  perso;
 int animation_frame = 0;
 Uint32 animation_timer = 0;
@@ -206,6 +212,9 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global) 
     
 
     init_mobs(renderer,mobs,map,50,50);
+    
+    engrenages_poses = 0;
+    vaisseau_repare = false;
 
     bool running = true;
     SDL_Event event;
@@ -299,24 +308,30 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global) 
 
                             } else if (outil->type == MARTEAU) {
                                 SDL_Rect rect_perso_vaiseau = {500,400,40,60};
-                                SDL_Rect rect_vaisseau = {750.0f + perso.x, 550.0f + perso.y, 644.0f, 388.0f};
-                                int tout_engrenage = 0;
-                                int nb = 0;
-                                for(int i = 0 ; i<HOTBAR_SIZE;i++){
-                                    if(hotbar[i] != NULL){
-                                        printf("%d",tout_engrenage);
-                                        if(hotbar[i]->item->type == ENGRENAGE){
-                                            nb += hotbar[i]->quantiter--;
-                                            if (hotbar[i]->quantiter <= 0) { free(hotbar[i]->item); free(hotbar[i]); hotbar[i] = NULL; }
+                                SDL_Rect rect_vaisseau = {(int)(750.0f + perso.x), (int)(550.0f + perso.y), 644, 388};
+                                if (!vaisseau_repare && SDL_HasRectIntersection(&rect_perso_vaiseau, &rect_vaisseau)) {
+                                    // Chercher 1 engrenage dans la hotbar
+                                    int engrenage_slot = -1;
+                                    for (int i = 0; i < HOTBAR_SIZE; i++) {
+                                        if (hotbar[i] != NULL && hotbar[i]->item != NULL && hotbar[i]->item->type == ENGRENAGE) {
+                                            engrenage_slot = i;
+                                            break;
                                         }
-                                        if(nb == 1) tout_engrenage = 1;
                                     }
-                                }
-                                
-                                if(SDL_HasRectIntersection(&rect_perso_vaiseau,&rect_vaisseau)){
-                                    if(tout_engrenage){
-                                        SDL_DestroyTexture(exterieure);
-                                        exterieure = IMG_LoadTexture(renderer, "assets/tileset/V2/EXT_vaisseau/vaisseau_non_casser.png");
+                                    if (engrenage_slot >= 0) {
+                                        // Consommer 1 engrenage
+                                        hotbar[engrenage_slot]->quantiter--;
+                                        if (hotbar[engrenage_slot]->quantiter <= 0) {
+                                            free(hotbar[engrenage_slot]->item);
+                                            free(hotbar[engrenage_slot]);
+                                            hotbar[engrenage_slot] = NULL;
+                                        }
+                                        engrenages_poses++;
+                                        if (engrenages_poses >= ENGRENAGES_MAX) {
+                                            vaisseau_repare = true;
+                                            SDL_DestroyTexture(exterieure);
+                                            exterieure = IMG_LoadTexture(renderer, "assets/tileset/V2/EXT_vaisseau/vaisseau_non_casser.png");
+                                        }
                                     }
                                 }
                             } else if (outil->type == PIECE) {
@@ -555,8 +570,79 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global) 
         SDL_FRect dest_vaisseau = {750.0f + perso.x, 550.0f + perso.y, 644.0f, 388.0f};
         SDL_RenderTexture(renderer, exterieure, &src_vaiseaux, &dest_vaisseau);
 
-        afficher_combat(renderer);
+
         afficher_mob(renderer, mobs);
+
+
+        // Compteur d'engrenages au-dessus du vaisseau
+        TTF_Font *font_eng = TTF_OpenFont("assets/police.ttf", 20);
+        if (font_eng) {
+            char texte_eng[64];
+            SDL_Color couleur_eng;
+            if (vaisseau_repare) {
+                SDL_snprintf(texte_eng, sizeof(texte_eng), "Vaisseau repare !");
+                couleur_eng = (SDL_Color){0, 255, 100, 255};
+            } else {
+                SDL_snprintf(texte_eng, sizeof(texte_eng), "Vaisseau : %d/%d engrenages", engrenages_poses, ENGRENAGES_MAX);
+                couleur_eng = (SDL_Color){255, 200, 50, 255};
+            }
+            SDL_Surface *surf_eng = TTF_RenderText_Solid(font_eng, texte_eng, strlen(texte_eng), couleur_eng);
+            if (surf_eng) {
+                SDL_Texture *tex_eng = SDL_CreateTextureFromSurface(renderer, surf_eng);
+                float vx = 750.0f + perso.x + (644.0f - surf_eng->w) / 2.0f;
+                float vy = 550.0f + perso.y - 30.0f;
+                SDL_FRect rect_eng = { vx, vy, (float)surf_eng->w, (float)surf_eng->h };
+                SDL_RenderTexture(renderer, tex_eng, NULL, &rect_eng);
+                SDL_DestroyTexture(tex_eng);
+                SDL_DestroySurface(surf_eng);
+            }
+            TTF_CloseFont(font_eng);
+        }
+
+        //Message quand le joueur est proche du vaisseau
+        if (!vaisseau_repare) {
+            SDL_Rect rect_perso_vaisseau = {500, 400, 40, 60};
+            SDL_Rect rect_vaisseau = {(int)(750.0f + perso.x), (int)(550.0f + perso.y), 644, 388};
+            if (SDL_HasRectIntersection(&rect_perso_vaisseau, &rect_vaisseau)) {
+                bool un_marteau = false, un_engrenage = false;
+                for (int si = 0; si < HOTBAR_SIZE; si++) {
+                    if (hotbar[si] && hotbar[si]->item) {
+                        if (hotbar[si]->item->type == MARTEAU)   un_marteau   = true;
+                        if (hotbar[si]->item->type == ENGRENAGE) un_engrenage = true;
+                    }
+                }
+                TTF_Font *font_hint = TTF_OpenFont("assets/police.ttf", 20);
+                if (font_hint) {
+                    char hint[128];
+                    SDL_Color col_hint;
+                    if (un_marteau && un_engrenage) {
+                        SDL_snprintf(hint, sizeof(hint), "Appuyez sur la touche du marteau pour poser un engrenage");
+                        col_hint = (SDL_Color){255, 255, 100, 255};
+                    } else if (un_marteau) {
+                        SDL_snprintf(hint, sizeof(hint), "Il vous faut des engrenages (%d/%d poses)", engrenages_poses, ENGRENAGES_MAX);
+                        col_hint = (SDL_Color){255, 100, 100, 255};
+                    } else {
+                        SDL_snprintf(hint, sizeof(hint), "Equipez un marteau pour reparer le vaisseau");
+                        col_hint = (SDL_Color){200, 200, 200, 255};
+                    }
+                    SDL_Surface *surf_hint = TTF_RenderText_Solid(font_hint, hint, strlen(hint), col_hint);
+                    if (surf_hint) {
+                        SDL_Texture *tex_hint = SDL_CreateTextureFromSurface(renderer, surf_hint);
+                        SDL_FRect rect_hint = {
+                            (1000.0f - surf_hint->w) / 2.0f, 670.0f,
+                            (float)surf_hint->w, (float)surf_hint->h
+                        };
+                        SDL_RenderTexture(renderer, tex_hint, NULL, &rect_hint);
+                        SDL_DestroyTexture(tex_hint);
+                        SDL_DestroySurface(surf_hint);
+                    }
+                    TTF_CloseFont(font_hint);
+                }
+            }
+        }
+
+        afficher_combat(renderer);
+        
         afficher_boss(renderer, &boss);
         if (maintenant - boss.animation_timer > 125) {
             if(boss.animation_state == 0){
