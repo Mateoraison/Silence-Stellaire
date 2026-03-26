@@ -313,28 +313,26 @@ void tester_collision_combat(t_tile map[W_MAP][H_MAP], Mob * mobs[MAX_MOB], SDL_
                 mob_touche_lim--;
 
                 if (mobs[i]->vie <= 0) {
-                    if(mobs[i]->id == 1){ // Si c'est un mouton, drop du viande
-                        float x, y;
-                        x = mobs[i]->x;
-                        y = mobs[i]->y;
+                    if(mobs[i]->id == 1){
+                        float x = mobs[i]->x;
+                        float y = mobs[i]->y;
+                        int drop = mobs[i]->drop_chance;
+                        schedule_respawn(1, 5000);
                         detruire_un_mob(mobs[i]);
-                        if(index_item < MAX_ITEMS && rand()%100 < mobs[i]->drop_chance) {
+                        if(index_item < MAX_ITEMS && rand()%100 < drop) {
                             t_Item * item = init_item(VIANDE, renderer, x, y);
-                            if(item != NULL) {
-                                items[index_item++] = item;
-                            }
+                            if(item != NULL) items[index_item++] = item;
                         }
                     }
-                    else if(mobs[i]->id == 2){ // Si c'est un pawn, drop de la piece
-                        float x, y;
-                        x = mobs[i]->x;
-                        y = mobs[i]->y;
+                    else if(mobs[i]->id == 2){
+                        float x = mobs[i]->x;
+                        float y = mobs[i]->y;
+                        int drop = mobs[i]->drop_chance;
+                        schedule_respawn(2, 5000);
                         detruire_un_mob(mobs[i]);
-                        if(index_item < MAX_ITEMS && rand()%100 < mobs[i]->drop_chance) {
+                        if(index_item < MAX_ITEMS && rand()%100 < drop) {
                             t_Item * item = init_item(PIECE, renderer, x, y);
-                            if(item != NULL) {
-                                items[index_item++] = item;
-                            }
+                            if(item != NULL) items[index_item++] = item;
                         }
                     }
                     int j = i;

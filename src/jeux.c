@@ -211,7 +211,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global) 
     }
     
 
-    init_mobs(renderer,mobs,map,50,50);
+    init_mobs(renderer,mobs,map,100,100);
     
     engrenages_poses = 0;
     vaisseau_repare = false;

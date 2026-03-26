@@ -12,7 +12,7 @@
 #define SOURCE_TILE_SIZE 64
 #define DISPLAY_TILE_SIZE 90
 
-#define MAX_MOB 200
+#define MAX_MOB 1000
 #define MAX_ITEMS 200
 
 #define HOTBAR_SIZE 5
@@ -60,8 +60,11 @@ typedef struct {
     float x;
     float y;
     int direction;
-    int vitesse_x;
-    int vitesse_y;
+    float vx;
+    float vy;
+    float target_vx;
+    float target_vy;
+    float speed;
     float largeur,hauteur;
     Uint32 time_change_dir;
     SDL_Texture * texture;
