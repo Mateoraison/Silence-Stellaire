@@ -11,8 +11,8 @@
 
 #define ENGRENAGES_MAX 1
 
-static int engrenages_poses = 0;
-static bool vaisseau_repare = false;
+int engrenages_poses = 0;
+bool vaisseau_repare = false;
 
 Perso  perso;
 int animation_frame = 0;
@@ -41,8 +41,12 @@ bool inventaire_ouvert = false;
 bool caisse_outils_ouvert = false;
 Uint32 faim_degat_timer = 0;
 int argent = 0;
+float vitesse_bonus = 0.0f;
 
 boss_t boss1;
+
+t_objectifs objectifs_jeu;
+TTF_Font *font_objectifs = NULL;
 
 void remplir_tileset(t_tile map[W_MAP][H_MAP], char * map_txt){
 
@@ -156,12 +160,12 @@ void init_caisse_outils(SDL_Renderer *renderer) {
         t_Item *briquet = init_item(BRIQUET, renderer, 0.0f, 0.0f);
         t_Item *bois = init_item(BOIS, renderer, 0.0f, 0.0f);
         t_Item *engrenage = init_item(ENGRENAGE,renderer,0.0f,0.0f);
-        ajouter_item_inventaire(caisse_outils, marteau);
-        ajouter_item_inventaire(caisse_outils, soin);
-        ajouter_item_inventaire(caisse_outils, piece);
-        ajouter_item_inventaire(caisse_outils, briquet);
-        ajouter_item_inventaire(caisse_outils, bois);
-        ajouter_item_inventaire(caisse_outils,engrenage);
+        if (marteau) { ajouter_item_inventaire(caisse_outils, CAISSE_OUTILS_SIZE, marteau); free(marteau); }
+        if (soin) { ajouter_item_inventaire(caisse_outils, CAISSE_OUTILS_SIZE, soin); free(soin); }
+        if (piece) { ajouter_item_inventaire(caisse_outils, CAISSE_OUTILS_SIZE, piece); free(piece); }
+        if (briquet) { ajouter_item_inventaire(caisse_outils, CAISSE_OUTILS_SIZE, briquet); free(briquet); }
+        if (bois) { ajouter_item_inventaire(caisse_outils, CAISSE_OUTILS_SIZE, bois); free(bois); }
+        if (engrenage) { ajouter_item_inventaire(caisse_outils, CAISSE_OUTILS_SIZE, engrenage); free(engrenage); }
     }
 }
 
@@ -176,14 +180,53 @@ static t_Cuisson cuisson = {0, -1, 0, NULL};
 
 
 
-int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global) {
+int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, bool reprendre_partie) {
 
 
 
-    perso = (Perso){-580.0f, -500.0f, NULL, 0, 10, 10, 10, 10, SDL_GetTicks()};
-    srand(time(NULL));
+    if (!reprendre_partie) {
+        for (int i = 0; i < HOTBAR_SIZE; i++) {
+            if (hotbar[i]) {
+                if (hotbar[i]->item) free(hotbar[i]->item);
+                free(hotbar[i]);
+                hotbar[i] = NULL;
+            }
+        }
 
-    init_boss(renderer, &boss1, 500.0f, 13 * DISPLAY_TILE_SIZE, 100, 10);
+        for (int i = 0; i < INVENTAIRE_SIZE; i++) {
+            if (inventaire[i]) {
+                if (inventaire[i]->item) free(inventaire[i]->item);
+                free(inventaire[i]);
+                inventaire[i] = NULL;
+            }
+        }
+
+        for (int i = 0; i < CAISSE_OUTILS_SIZE; i++) {
+            if (caisse_outils[i]) {
+                if (caisse_outils[i]->item) free(caisse_outils[i]->item);
+                free(caisse_outils[i]);
+                caisse_outils[i] = NULL;
+            }
+        }
+
+        detruire_tout_item(items);
+        for (int i = 0; i < MAX_ITEMS; i++) items[i] = NULL;
+        index_item = 0;
+        argent = 0;
+        vitesse_bonus = 0.0f;
+        inventaire_ouvert = false;
+        caisse_outils_ouvert = false;
+        init_caisse_outils(renderer);
+
+        perso = (Perso){-580.0f, -500.0f, NULL, 0, 10, 10, 10, 10, SDL_GetTicks()};
+        srand(time(NULL));
+
+        init_boss(renderer, &boss1, 500.0f, 13 * DISPLAY_TILE_SIZE, 100, 10);
+
+        objectifs_init(&objectifs_jeu,planete);
+        font_objectifs = TTF_OpenFont("assets/police.ttf",14);
+    }
+
 
     SDL_Texture *tileset = IMG_LoadTexture(renderer, "assets/tileset/V2/Tilemap_color1.png");
     if (!tileset){
@@ -211,16 +254,22 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global) 
     }
     
 
-    init_mobs(renderer,mobs,map,100,100);
-    
-    engrenages_poses = 0;
-    vaisseau_repare = false;
+    if (!reprendre_partie) {
+        init_mobs(renderer,mobs,map,100,100);
+        engrenages_poses = 0;
+        vaisseau_repare = false;
+    }
+
+    sauvegarde_appliquer_si_disponible(renderer);
 
     bool running = true;
     SDL_Event event;
 
     int code_sortie = 0;
-    SDL_Texture * exterieure = IMG_LoadTexture(renderer, "assets/tileset/V2/EXT_vaisseau/vaisseau_casser.png");
+    SDL_Texture * exterieure = IMG_LoadTexture(renderer,
+        vaisseau_repare
+            ? "assets/tileset/V2/EXT_vaisseau/vaisseau_non_casser.png"
+            : "assets/tileset/V2/EXT_vaisseau/vaisseau_casser.png");
 
     SDL_Texture *texture_caisse_outils = IMG_LoadTexture(renderer, "assets/UI/caisse_outils.png");
 
@@ -256,14 +305,17 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global) 
                     running = false;
                     code_sortie = 3;
                 }
-                if(event.key.key == SDLK_V){
-                    running = false;
-                    code_sortie = 4;
-                }
                 if(event.key.key == SDLK_I){
                     inventaire_ouvert = !inventaire_ouvert;
                 }
                 if(event.key.key == SDLK_E) {
+                    SDL_Rect rect_perso_vaisseau = {500, 400, 40, 60};
+                    SDL_Rect rect_vaisseau = {(int)(750.0f + perso.x), (int)(550.0f + perso.y), 644, 388};
+                    if (vaisseau_repare && SDL_HasRectIntersection(&rect_perso_vaisseau, &rect_vaisseau)) {
+                        running = false;
+                        code_sortie = 4;
+                    }
+
                     SDL_Rect rect_perso_caisse = {500, 400, 40, 60};
                     SDL_Rect rect_caisse = {10*DISPLAY_TILE_SIZE + perso.x, 11*DISPLAY_TILE_SIZE + perso.y, DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE};
                     if (SDL_HasRectIntersection(&rect_perso_caisse, &rect_caisse)) {
@@ -599,32 +651,40 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global) 
             TTF_CloseFont(font_eng);
         }
 
-        //Message quand le joueur est proche du vaisseau
-        if (!vaisseau_repare) {
+        // Message quand le joueur est proche du vaisseau
+        {
             SDL_Rect rect_perso_vaisseau = {500, 400, 40, 60};
             SDL_Rect rect_vaisseau = {(int)(750.0f + perso.x), (int)(550.0f + perso.y), 644, 388};
             if (SDL_HasRectIntersection(&rect_perso_vaisseau, &rect_vaisseau)) {
-                bool un_marteau = false, un_engrenage = false;
-                for (int si = 0; si < HOTBAR_SIZE; si++) {
-                    if (hotbar[si] && hotbar[si]->item) {
-                        if (hotbar[si]->item->type == MARTEAU)   un_marteau   = true;
-                        if (hotbar[si]->item->type == ENGRENAGE) un_engrenage = true;
-                    }
-                }
                 TTF_Font *font_hint = TTF_OpenFont("assets/police.ttf", 20);
                 if (font_hint) {
                     char hint[128];
                     SDL_Color col_hint;
-                    if (un_marteau && un_engrenage) {
-                        SDL_snprintf(hint, sizeof(hint), "Appuyez sur la touche du marteau pour poser un engrenage");
-                        col_hint = (SDL_Color){255, 255, 100, 255};
-                    } else if (un_marteau) {
-                        SDL_snprintf(hint, sizeof(hint), "Il vous faut des engrenages (%d/%d poses)", engrenages_poses, ENGRENAGES_MAX);
-                        col_hint = (SDL_Color){255, 100, 100, 255};
+
+                    if (vaisseau_repare) {
+                        SDL_snprintf(hint, sizeof(hint), "Appuyez sur E pour entrer dans le vaisseau");
+                        col_hint = (SDL_Color){0, 255, 100, 255};
                     } else {
-                        SDL_snprintf(hint, sizeof(hint), "Equipez un marteau pour reparer le vaisseau");
-                        col_hint = (SDL_Color){200, 200, 200, 255};
+                        bool un_marteau = false, un_engrenage = false;
+                        for (int si = 0; si < HOTBAR_SIZE; si++) {
+                            if (hotbar[si] && hotbar[si]->item) {
+                                if (hotbar[si]->item->type == MARTEAU)   un_marteau   = true;
+                                if (hotbar[si]->item->type == ENGRENAGE) un_engrenage = true;
+                            }
+                        }
+
+                        if (un_marteau && un_engrenage) {
+                            SDL_snprintf(hint, sizeof(hint), "Appuyez sur la touche du marteau pour poser un engrenage");
+                            col_hint = (SDL_Color){255, 255, 100, 255};
+                        } else if (un_marteau) {
+                            SDL_snprintf(hint, sizeof(hint), "Il vous faut des engrenages (%d/%d poses)", engrenages_poses, ENGRENAGES_MAX);
+                            col_hint = (SDL_Color){255, 100, 100, 255};
+                        } else {
+                            SDL_snprintf(hint, sizeof(hint), "Equipez un marteau pour reparer le vaisseau");
+                            col_hint = (SDL_Color){200, 200, 200, 255};
+                        }
                     }
+
                     SDL_Surface *surf_hint = TTF_RenderText_Solid(font_hint, hint, strlen(hint), col_hint);
                     if (surf_hint) {
                         SDL_Texture *tex_hint = SDL_CreateTextureFromSurface(renderer, surf_hint);
@@ -687,6 +747,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global) 
         }
 
         afficher_stat(renderer);
+        objectifs_afficher(&objectifs_jeu,renderer,font_objectifs);
 
         //Horloge jour/nuit 
         const float bar_x     = 430.0f;  // début de la barre
@@ -819,11 +880,13 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global) 
         if(perso.vie == 0) running = game_over(renderer);
     }
 
-
+    if (code_sortie != 4 && font_objectifs) { TTF_CloseFont(font_objectifs); font_objectifs = NULL; }
     SDL_DestroyTexture(exterieure);
     SDL_DestroyTexture(texture_caisse_outils);
-    detruire_mobs(mobs);
-    Destroy_boss(&boss1);
+    if (code_sortie != 4) {
+        detruire_mobs(mobs);
+        Destroy_boss(&boss1);
+    }
     SDL_DestroyTexture(tileset);
     return code_sortie;
 }

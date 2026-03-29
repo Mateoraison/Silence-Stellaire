@@ -177,8 +177,8 @@ void afficher_inventaire(t_case *inventaire[], SDL_Renderer *renderer, int inven
 
 
 
-void ajouter_item_inventaire(t_case *inventaire[INVENTAIRE_SIZE], t_Item *item) {
-    for (int i = 0; i < INVENTAIRE_SIZE; i++) {
+void ajouter_item_inventaire(t_case **inventaire, int inventaire_size, t_Item *item) {
+    for (int i = 0; i < inventaire_size; i++) {
         if (inventaire[i] != NULL && inventaire[i]->item != NULL &&
             inventaire[i]->item->type == item->type) {
             inventaire[i]->quantiter++;
@@ -186,7 +186,7 @@ void ajouter_item_inventaire(t_case *inventaire[INVENTAIRE_SIZE], t_Item *item) 
         }
     }
 
-    for (int i = 0; i < INVENTAIRE_SIZE; i++) {
+    for (int i = 0; i < inventaire_size; i++) {
         if (inventaire[i] == NULL) {
             inventaire[i] = malloc(sizeof(t_case));
             if (!inventaire[i]) return;

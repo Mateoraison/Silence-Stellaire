@@ -96,7 +96,15 @@ int afficher_menu(SDL_Renderer *renderer) {
                 running = 0;
             }
             if(Bouton_GererEvenement(&bouton_continuer,&event)) {
-                printf("continuer");
+                int slot = sauvegarde_choisir_slot(renderer, "Charger une partie", true);
+                if (slot > 0) {
+                    int planete_chargee = Planete_actuelle;
+                    if (charger_partie_slot(slot, &planete_chargee) == 0) {
+                        Planete_actuelle = planete_chargee;
+                        action = 3; // continuer
+                        running = 0;
+                    }
+                }
             }
         }
 

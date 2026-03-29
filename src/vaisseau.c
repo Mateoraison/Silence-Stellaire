@@ -14,6 +14,10 @@
 int tile_map[MAP_H][MAP_W];
 int accessoire_map[MAP_H][MAP_W];
 
+static float retour_x_planete = 0.0f;
+static float retour_y_planete = 0.0f;
+static int planete_entree_vaisseau = 1;
+
 // --- STRUCTURES ---
 
 // Pour le spawn du personnage après le retour dans la planette 
@@ -74,20 +78,26 @@ void soigner(){
     perso.vie = perso.vie_max; 
 }
 
-static bool gerer_interaction_objet(SDL_Renderer *renderer, int type_objet, int Planete_actuelle, const SpawnPoint *spawn, bool e_pressed, char *message_interaction, size_t message_size) {
+static bool gerer_interaction_objet(SDL_Renderer *renderer, int planete_actuelle, int type_objet, const SpawnPoint *spawn, bool e_pressed, bool *running, int *code_sortie, bool *planete_changee, char *message_interaction, size_t message_size) {
+    (void)planete_actuelle;
     switch (type_objet) {
         case 32:
-            snprintf(message_interaction, message_size, "Appuyez sur E pour vous soigner");
+            snprintf(message_interaction, message_size, "Appuyez sur E pour ouvrir la boutique");
             if (e_pressed) {
-                jouer_son("assets/audio/halo-shield-recharge-sound.mp3", 0.01f);
-                soigner();
+                afficher_shop(renderer, hotbar);
             }
             return true;
 
         case 46:
         case 47:
             snprintf(message_interaction, message_size, "Appuyez sur E pour voir la map");
-            if (e_pressed) afficher_map(renderer);
+            if (e_pressed) {
+                int planete_choisie = afficher_map(renderer);
+                if (planete_choisie >= 1 && planete_choisie <= 3) {
+                    Planete_actuelle = planete_choisie;
+                    *planete_changee = true;
+                }
+            }
             return true;
 
         case 55:
@@ -104,8 +114,12 @@ static bool gerer_interaction_objet(SDL_Renderer *renderer, int type_objet, int 
         case 36:
             snprintf(message_interaction, message_size, "Appuyez sur E pour sortir");
             if (e_pressed) {
-                //jeu_principal(renderer, Planete_actuelle,track_global);
-                spawn_perso(spawn->tileX, spawn->tileY);
+                if (Planete_actuelle == planete_entree_vaisseau) {
+                    perso.x = retour_x_planete;
+                    perso.y = retour_y_planete;
+                }
+                *running = false;
+                *code_sortie = 0;
             }
             return true;
 
@@ -383,7 +397,7 @@ void draw_map(SDL_Renderer *renderer, SDL_Texture *tileset) {
 
 // --- FONCTION PRINCIPALE ---
 
-int vaisseau(SDL_Renderer *renderer, int Planete_actuelle) {
+int vaisseau(SDL_Renderer *renderer, int planete_actuelle) {
     int code_sortie = 0;
     float old_offset_x, old_offset_y;
     float world_x, world_y;
@@ -403,9 +417,15 @@ int vaisseau(SDL_Renderer *renderer, int Planete_actuelle) {
 
     SDL_SetTextureScaleMode(t_tiles, SDL_SCALEMODE_NEAREST);
     if (t_mini_map) SDL_SetTextureScaleMode(t_mini_map, SDL_SCALEMODE_NEAREST);
+
+    retour_x_planete = perso.x;
+    retour_y_planete = perso.y;
+    planete_entree_vaisseau = Planete_actuelle;
+
     SpawnPoint spawn = charger_map("assets/map/vaisseau.txt", "assets/map/accessoires.txt");
 
     bool running = true;
+    bool planete_changee = false;
     SDL_Event event;
 
     while (running) {
@@ -455,8 +475,8 @@ int vaisseau(SDL_Renderer *renderer, int Planete_actuelle) {
 
         for (int i = 0; i < nb_objets; i++) {
             if (est_proche(liste_objets[i].x, liste_objets[i].y, world_x, world_y, 60.0f)) {
-                bool est_interactif = gerer_interaction_objet(renderer, liste_objets[i].type, Planete_actuelle,
-                                                                &spawn, e_pressed, message_interaction, sizeof(message_interaction));
+                bool est_interactif = gerer_interaction_objet(renderer, planete_actuelle, liste_objets[i].type,
+                                                                &spawn, e_pressed, &running, &code_sortie, &planete_changee, message_interaction, sizeof(message_interaction));
                 if (est_interactif) {
                     afficher_message = true;
                 }

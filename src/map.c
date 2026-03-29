@@ -111,7 +111,7 @@ int afficher_map(SDL_Renderer *renderer) {
 
 
     int running = 1;
-    int planete_choisie = 1;
+    int planete_choisie = 0;
     while (running){
         SDL_Event event;
         while(SDL_PollEvent(&event)) {

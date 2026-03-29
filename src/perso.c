@@ -30,7 +30,7 @@ int afficher_perso(SDL_Renderer *renderer) {
 int deplacer_perso(float delta_time) {
     const bool *keys = SDL_GetKeyboardState(NULL);
 
-    float vitesse = 200.0f;
+    float vitesse = 200.0f + vitesse_bonus;
 
     perso_bouge = false;
 
@@ -399,7 +399,12 @@ void possible_ramasser_item(t_Item * items[MAX_ITEMS], SDL_Renderer * renderer, 
                 }
                 const bool *keys = SDL_GetKeyboardState(NULL);
                 if (keys[SDL_SCANCODE_E]) {
-                    ajouter_item_hotbar(hotbar, items[i], renderer);
+                    // Les pièces convertissent directement en argent
+                    if (items[i]->type == PIECE) {
+                        argent++;
+                    } else {
+                        ajouter_item_hotbar(hotbar, items[i], renderer);
+                    }
 
                     free(items[i]);
                     items[i] = NULL;

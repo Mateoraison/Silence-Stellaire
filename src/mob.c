@@ -329,6 +329,10 @@ void update_mobs(t_tile map[W_MAP][H_MAP], Mob * mobs[MAX_MOB]) {
 
 void afficher_mob(SDL_Renderer * renderer, Mob * mobs[MAX_MOB]){
     for(int i = 0; mobs[i] != NULL; i++){
+        if (mobs[i]->texture == NULL) {
+            SDL_Log("erreur mob : texture invalide (id=%d, index=%d)", mobs[i]->id, i);
+            continue;
+        }
         SDL_FRect dest = {
             .x = mobs[i]->x + perso.x,
             .y = mobs[i]->y + perso.y,

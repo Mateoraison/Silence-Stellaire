@@ -14,6 +14,8 @@ typedef enum {
     ETAT_QUITTER
 } EtatJeu;
 
+int Planete_actuelle = 1;
+
 static int init_sdl(SDL_Window **fenetre, SDL_Renderer **renderer) {
     if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO)) {
         SDL_Log("Erreur SDL_Init : %s", SDL_GetError());
@@ -67,10 +69,15 @@ int main(int argc, char *argv[]) {
     if (!init_sdl(&fenetre, &renderer))
         return 1;
 
+    if (jouer_cinematique_intro(renderer) == 1) {
+        quitter_sdl(fenetre, renderer);
+        return 0;
+    }
+
     init_caisse_outils(renderer);
     MIX_Track *track_global = jouer_son("assets/audio/ambiance.wav", 0.3f);
 
-    int     planete_actuelle = 1;
+    bool    reprendre_partie = false;
     EtatJeu etat             = ETAT_MENU;
 
     while (etat != ETAT_QUITTER) {
@@ -78,15 +85,17 @@ int main(int argc, char *argv[]) {
             case ETAT_MENU: {
                 int action = afficher_menu(renderer);
                 switch (action) {
-                    case 1:  etat = ETAT_JEU;     break; // Nouvelle partie
+                    case 1:  reprendre_partie = false; etat = ETAT_JEU;     break; // Nouvelle partie
                     case 2:  etat = ETAT_OPTIONS;  break; // Options
+                    case 3:  reprendre_partie = false; etat = ETAT_JEU; break; // Continuer
                     default: etat = ETAT_QUITTER;  break; // Quitter / Échap
                 }
                 break;
             }
             case ETAT_JEU: {
                 if (track_global) reprendre_son(track_global);
-                int code = jeu_principal(renderer, planete_actuelle, track_global);
+                int code = jeu_principal(renderer, Planete_actuelle, track_global, reprendre_partie);
+                reprendre_partie = false;
                 switch (code) {
                     case 1:  etat = ETAT_MENU;     break;
                     case 3:  etat = ETAT_MAP;       break;
@@ -96,18 +105,18 @@ int main(int argc, char *argv[]) {
                 break;
             }
             case ETAT_VAISSEAU: {
-                int code = vaisseau(renderer,planete_actuelle);
+                int code = vaisseau(renderer,Planete_actuelle);
                 switch (code) {
                     case 1:  etat = ETAT_MENU; break;
                     case 3:  etat = ETAT_MAP;  break;
-                    default: etat = ETAT_JEU;  break;
+                    default: reprendre_partie = true; etat = ETAT_JEU;  break;
                 }
                 break;
             }
             case ETAT_MAP: {
                 int planete_choisie = afficher_map(renderer);
                 if (planete_choisie >= 1 && planete_choisie <= 3)
-                    planete_actuelle = planete_choisie;
+                    Planete_actuelle = planete_choisie;
                 etat = ETAT_JEU;
                 break;
             }
