@@ -42,7 +42,7 @@ bool caisse_outils_ouvert = false;
 Uint32 faim_degat_timer = 0;
 int argent = 0;
 
-boss_t boss;
+boss_t boss1;
 
 void remplir_tileset(t_tile map[W_MAP][H_MAP], char * map_txt){
 
@@ -183,7 +183,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global) 
     perso = (Perso){-580.0f, -500.0f, NULL, 0, 10, 10, 10, 10, SDL_GetTicks()};
     srand(time(NULL));
 
-    init_boss(renderer, &boss, 500.0f, 500.0f, 100, 10);
+    init_boss(renderer, &boss1, 500.0f, 13 * DISPLAY_TILE_SIZE, 100, 10);
 
     SDL_Texture *tileset = IMG_LoadTexture(renderer, "assets/tileset/V2/Tilemap_color1.png");
     if (!tileset){
@@ -554,7 +554,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global) 
         
         update_combat(map, mobs, renderer, items);
         update_mobs(map, mobs);
-        update_boss(&boss);
+        update_boss(renderer, &boss1);
         possible_ramasser_item(items, renderer, hotbar);
 
 
@@ -643,17 +643,24 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global) 
 
         afficher_combat(renderer);
         
-        afficher_boss(renderer, &boss);
-        if (maintenant - boss.animation_timer > 125) {
-            if(boss.animation_state == 0){
-                boss.animation_frame_idle = (boss.animation_frame_idle + 1) % 6;
-                boss.animation_timer = maintenant;
-            } else if(boss.animation_state == 1){
-                boss.animation_frame_attack = (boss.animation_frame_attack + 1) % 15;
-                boss.animation_timer = maintenant;
-            } else if(boss.animation_state == 2){
-                boss.animation_frame_death = (boss.animation_frame_death + 1) % 16;
-                boss.animation_timer = maintenant;
+        afficher_boss(renderer, &boss1);
+        if (maintenant - boss1.animation_timer > 125) {
+            if(boss1.animation_state == 0){
+                boss1.animation_frame_idle = (boss1.animation_frame_idle + 1) % 6;
+                boss1.animation_timer = maintenant;
+            } else if(boss1.animation_state == 1){
+                if (boss1.animation_frame_attack < 14) {
+                    boss1.animation_frame_attack++;
+                } else {
+                    boss1.animation_state = 0;
+                    boss1.animation_frame_attack = 0;
+                }
+                boss1.animation_timer = maintenant;
+            } else if(boss1.animation_state == 2){
+                if (boss1.animation_frame_death < 15) {
+                    boss1.animation_frame_death++;
+                }
+                boss1.animation_timer = maintenant;
             }
         }
 
@@ -816,7 +823,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global) 
     SDL_DestroyTexture(exterieure);
     SDL_DestroyTexture(texture_caisse_outils);
     detruire_mobs(mobs);
-    Destroy_boss(&boss);
+    Destroy_boss(&boss1);
     SDL_DestroyTexture(tileset);
     return code_sortie;
 }

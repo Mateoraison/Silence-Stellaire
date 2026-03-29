@@ -81,6 +81,9 @@ typedef struct {
     int vie_max;
     int attaque;
     Uint32 cooldown_attaque;
+    Uint32 cooldown_zone;
+    Uint32 cooldown_invocation;
+    Uint32 fin_animation_attaque;
     int animation_frame_idle;
     int animation_frame_attack;
     int animation_frame_death;
@@ -88,6 +91,7 @@ typedef struct {
     int phase;
     SDL_Texture * texture;
     int animation_state; // 0: idle, 1: attack, 2: death
+    int drop_effectue;
 }boss_t;
 
 typedef struct {
@@ -131,6 +135,9 @@ extern MIX_Track *track_global;
 extern int Planete_actuelle;
 
 extern int index_item;
+extern t_Item * items[MAX_ITEMS];
+extern Mob * mobs[MAX_MOB];
+extern boss_t boss1;
 
 extern t_case *inventaire[INVENTAIRE_SIZE];
 extern bool inventaire_ouvert;

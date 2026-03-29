@@ -2,6 +2,9 @@
 
 static SDL_Texture * texture_pawns = NULL;
 static SDL_Texture * texture_mouton = NULL;
+static SDL_Texture * texture_minion_run = NULL;
+static SDL_Texture * texture_minion_attack = NULL;
+static Uint32 minion_attack_timer = 0;
 
 #define TAILLE_FILE_RESPAWN 256
 typedef struct { int id; Uint32 quand; } EntreeRespawn;
@@ -42,6 +45,13 @@ void init_mobs(SDL_Renderer * renderer, Mob * mobs[MAX_MOB], t_tile map[W_MAP][H
         if (texture_mouton == NULL) {
             SDL_Log("Erreur chargement texture mob: %s", SDL_GetError());
         }
+    }
+
+    if (texture_minion_run == NULL) {
+        texture_minion_run = IMG_LoadTexture(renderer, "assets/personnage/boss1/minions/Warrior_Run.png");
+    }
+    if (texture_minion_attack == NULL) {
+        texture_minion_attack = IMG_LoadTexture(renderer, "assets/personnage/boss1/minions/Warrior_Attack.png");
     }
 
     int index = 0;
@@ -225,7 +235,32 @@ void update_mobs(t_tile map[W_MAP][H_MAP], Mob * mobs[MAX_MOB]) {
         Mob *m = mobs[i];
         Uint32 timer = now;
 
-        if (timer >= m->time_change_dir) {
+        if (m->id == 3) {
+            float joueur_x = -perso.x + 520.0f;
+            float joueur_y = -perso.y + 430.0f;
+            float minion_x = m->x + (m->largeur * DISPLAY_TILE_SIZE * 0.5f);
+            float minion_y = m->y + (m->hauteur * DISPLAY_TILE_SIZE * 0.5f);
+            float dx = joueur_x - minion_x;
+            float dy = joueur_y - minion_y;
+            float dist = sqrtf(dx * dx + dy * dy);
+
+            if (dist > 95.0f) {
+                if (dist < 0.001f) dist = 1.0f;
+                m->target_vx = (dx / dist) * m->speed;
+                m->target_vy = (dy / dist) * m->speed;
+            } else {
+                m->target_vx = 0.0f;
+                m->target_vy = 0.0f;
+
+                if (perso.vie > 0 && perso.invincibiliter_timer == 0 && (timer - minion_attack_timer) > 850) {
+                    perso.vie -= 1;
+                    if (perso.vie < 0) perso.vie = 0;
+                    perso.invincibiliter_timer = SDL_GetTicks();
+                    minion_attack_timer = timer;
+                }
+            }
+            m->time_change_dir = timer + 120;
+        } else if (timer >= m->time_change_dir) {
             float angle = (rand() % 360) * (3.14159265f / 180.0f);
             int change_ms = (m->id == 1) ? 2000 + (rand() % 2000) : 800 + (rand() % 1200);
             m->target_vx = cosf(angle) * m->speed;
@@ -233,7 +268,7 @@ void update_mobs(t_tile map[W_MAP][H_MAP], Mob * mobs[MAX_MOB]) {
             m->time_change_dir = timer + change_ms;
         }
 
-        float steer_strength = (m->id == 1) ? 200.0f : 400.0f; /* px/s^2 */
+        float steer_strength = (m->id == 1) ? 200.0f : ((m->id == 3) ? 650.0f : 400.0f); /* px/s^2 */
         float ax = (m->target_vx - m->vx) * fminf(1.0f, steer_strength * dt / fmaxf(1.0f, m->speed));
         float ay = (m->target_vy - m->vy) * fminf(1.0f, steer_strength * dt / fmaxf(1.0f, m->speed));
         m->vx += ax;
@@ -263,9 +298,14 @@ void update_mobs(t_tile map[W_MAP][H_MAP], Mob * mobs[MAX_MOB]) {
                 m->x = nouvelle_x;
                 m->y = nouvelle_y;
             } else {
-                float angle = (rand() % 360) * (3.14159265f / 180.0f);
-                m->target_vx = cosf(angle) * m->speed;
-                m->target_vy = sinf(angle) * m->speed;
+                if (m->id != 3) {
+                    float angle = (rand() % 360) * (3.14159265f / 180.0f);
+                    m->target_vx = cosf(angle) * m->speed;
+                    m->target_vy = sinf(angle) * m->speed;
+                } else {
+                    m->target_vx = 0.0f;
+                    m->target_vy = 0.0f;
+                }
                 m->vx *= 0.3f;
                 m->vy *= 0.3f;
                 m->time_change_dir = timer + 300 + (rand() % 400);
@@ -307,8 +347,43 @@ void afficher_mob(SDL_Renderer * renderer, Mob * mobs[MAX_MOB]){
             .w = 128,
             .h = 128
         };
-        if (mobs[i]->texture == NULL) SDL_Log("erreur mob : %s", SDL_GetError());
-        SDL_RenderTexture(renderer, mobs[i]->texture, mobs[i]->texture == texture_pawns ? &src_pawn : &src_mouton, &dest);
+        if (mobs[i]->id == 3 && (texture_minion_run != NULL || texture_minion_attack != NULL)) {
+            float joueur_x = -perso.x + 520.0f;
+            float joueur_y = -perso.y + 430.0f;
+            float minion_x = mobs[i]->x + (mobs[i]->largeur * DISPLAY_TILE_SIZE * 0.5f);
+            float minion_y = mobs[i]->y + (mobs[i]->hauteur * DISPLAY_TILE_SIZE * 0.5f);
+            float dx = joueur_x - minion_x;
+            float dy = joueur_y - minion_y;
+            float dist = sqrtf(dx * dx + dy * dy);
+
+            int is_attack = (dist <= 100.0f);
+            SDL_Texture *tex = is_attack ? texture_minion_attack : texture_minion_run;
+            int frames = is_attack ? 4 : 6;
+            if (tex == NULL) {
+                tex = texture_minion_run;
+                frames = 6;
+            }
+            if (tex == NULL) {
+                tex = mobs[i]->texture;
+                frames = 1;
+            }
+
+            float tw = 192.0f;
+            float th = 192.0f;
+            SDL_GetTextureSize(tex, &tw, &th);
+
+            int frame = (int)((SDL_GetTicks() / 110) % (Uint32)frames);
+            SDL_FRect src_minion = {
+                .x = (tw / (float)frames) * (float)frame,
+                .y = 0,
+                .w = (tw / (float)frames),
+                .h = th
+            };
+            SDL_RenderTexture(renderer, tex, &src_minion, &dest);
+        } else {
+            if (mobs[i]->texture == NULL) SDL_Log("erreur mob : %s", SDL_GetError());
+            SDL_RenderTexture(renderer, mobs[i]->texture, mobs[i]->texture == texture_pawns ? &src_pawn : &src_mouton, &dest);
+        }
     }
 }
 
@@ -320,6 +395,14 @@ void detruire_mobs(Mob * mobs[MAX_MOB]) {
     if (texture_mouton != NULL) {
         SDL_DestroyTexture(texture_mouton);
         texture_mouton = NULL;
+    }
+    if (texture_minion_run != NULL) {
+        SDL_DestroyTexture(texture_minion_run);
+        texture_minion_run = NULL;
+    }
+    if (texture_minion_attack != NULL) {
+        SDL_DestroyTexture(texture_minion_attack);
+        texture_minion_attack = NULL;
     }
     for (int i = 0; mobs[i] != NULL; i++) {
         mobs[i]->texture = NULL;
