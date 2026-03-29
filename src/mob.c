@@ -289,6 +289,10 @@ void update_mobs(t_tile map[W_MAP][H_MAP], Mob * mobs[MAX_MOB]) {
 
 void afficher_mob(SDL_Renderer * renderer, Mob * mobs[MAX_MOB]){
     for(int i = 0; mobs[i] != NULL; i++){
+        if (mobs[i]->texture == NULL) {
+            SDL_Log("erreur mob : texture invalide (id=%d, index=%d)", mobs[i]->id, i);
+            continue;
+        }
         SDL_FRect dest = {
             .x = mobs[i]->x + perso.x,
             .y = mobs[i]->y + perso.y,
@@ -307,7 +311,6 @@ void afficher_mob(SDL_Renderer * renderer, Mob * mobs[MAX_MOB]){
             .w = 128,
             .h = 128
         };
-        if (mobs[i]->texture == NULL) SDL_Log("erreur mob : %s", SDL_GetError());
         SDL_RenderTexture(renderer, mobs[i]->texture, mobs[i]->texture == texture_pawns ? &src_pawn : &src_mouton, &dest);
     }
 }
@@ -321,8 +324,11 @@ void detruire_mobs(Mob * mobs[MAX_MOB]) {
         SDL_DestroyTexture(texture_mouton);
         texture_mouton = NULL;
     }
-    for (int i = 0; mobs[i] != NULL; i++) {
-        mobs[i]->texture = NULL;
+    for (int i = 0; i < MAX_MOB; i++) {
+        if (mobs[i] != NULL) {
+            free(mobs[i]);
+            mobs[i] = NULL;
+        }
     }
 }
 

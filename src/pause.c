@@ -56,6 +56,7 @@ int afficher_pause(SDL_Renderer *renderer, MIX_Track *track_global) {
 
     bool   notif_sav  = false;
     Uint32 notif_time = 0;
+    char   notif_msg[96] = "";
 
     int  resultat = PAUSE_REPRENDRE;
     bool running  = true;
@@ -77,7 +78,14 @@ int afficher_pause(SDL_Renderer *renderer, MIX_Track *track_global) {
                 resultat = PAUSE_MENU; running = false;
             }
             if (Bouton_GererEvenement(&btn_sauvegarder, &ev)) {
-                // Non fonctionnel : juste une notif
+                int slot = sauvegarde_choisir_slot(renderer, "Sauvegarder la partie", false);
+                if (slot > 0 && sauvegarder_partie_slot(slot, Planete_actuelle) == 0) {
+                    SDL_snprintf(notif_msg, sizeof(notif_msg), "Sauvegarde effectuee (slot %d)", slot);
+                } else if (slot > 0) {
+                    SDL_snprintf(notif_msg, sizeof(notif_msg), "Erreur de sauvegarde (slot %d)", slot);
+                } else {
+                    SDL_snprintf(notif_msg, sizeof(notif_msg), "Sauvegarde annulee");
+                }
                 notif_sav  = true;
                 notif_time = SDL_GetTicks();
             }
@@ -139,8 +147,8 @@ int afficher_pause(SDL_Renderer *renderer, MIX_Track *track_global) {
         if (notif_sav && SDL_GetTicks() - notif_time < 2500) {
             SDL_Color jaune = {255, 210, 50, 255};
             SDL_Surface *s = TTF_RenderText_Solid(font,
-                "Sauvegarde non disponible",
-                strlen("Sauvegarde non disponible"), jaune);
+                notif_msg,
+                strlen(notif_msg), jaune);
             if (s) {
                 SDL_Texture *t = SDL_CreateTextureFromSurface(renderer, s);
                 SDL_FRect dst = {500.0f - s->w * 0.5f,

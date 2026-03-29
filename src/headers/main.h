@@ -115,6 +115,9 @@ typedef struct {
 #include "item.h"
 #include "inventaire.h"
 #include "sauvegarde.h"
+#include "objectifs.h"
+#include "cinematique.h"
+#include "shop.h"
 
 
 extern Perso perso;
@@ -131,6 +134,11 @@ extern MIX_Track *track_global;
 extern int Planete_actuelle;
 
 extern int index_item;
+extern int argent;
+extern float vitesse_bonus;
+
+extern t_case *hotbar[HOTBAR_SIZE];
+extern t_case *caisse_outils[CAISSE_OUTILS_SIZE];
 
 extern t_case *inventaire[INVENTAIRE_SIZE];
 extern bool inventaire_ouvert;
