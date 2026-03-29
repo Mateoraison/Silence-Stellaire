@@ -218,7 +218,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         caisse_outils_ouvert = false;
         init_caisse_outils(renderer);
 
-        perso = (Perso){-580.0f, -500.0f, NULL, 0, 10, 10, 10, 10, SDL_GetTicks()};
+        perso = (Perso){screen_center_x() - 1080.0f, screen_center_y() - 900.0f, NULL, 0, 10, 10, 10, 10, SDL_GetTicks()};
         srand(time(NULL));
 
         init_boss(renderer, &boss1, 500.0f, 13 * DISPLAY_TILE_SIZE, 100, 10);
@@ -283,9 +283,21 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
 
     bool reset_delta = false;
     while (running){
+        update_screen_metrics(renderer);
+        float cx = screen_center_x();
+        float cy = screen_center_y();
+        float sw = screen_widthf();
+        float sh = screen_heightf();
+
         int vie_avant = perso.vie;
 
         while (SDL_PollEvent(&event)){
+            if (event.type == SDL_EVENT_MOUSE_MOTION ||
+                event.type == SDL_EVENT_MOUSE_BUTTON_DOWN ||
+                event.type == SDL_EVENT_MOUSE_BUTTON_UP) {
+                SDL_ConvertEventToRenderCoordinates(renderer, &event);
+            }
+
             if (event.type == SDL_EVENT_QUIT){
                 running = false;
                 code_sortie = 1;
@@ -309,14 +321,14 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
                     inventaire_ouvert = !inventaire_ouvert;
                 }
                 if(event.key.key == SDLK_E) {
-                    SDL_Rect rect_perso_vaisseau = {500, 400, 40, 60};
-                    SDL_Rect rect_vaisseau = {(int)(750.0f + perso.x), (int)(550.0f + perso.y), 644, 388};
-                    if (vaisseau_repare && SDL_HasRectIntersection(&rect_perso_vaisseau, &rect_vaisseau)) {
+                    SDL_FRect rect_perso_vaisseau = {cx - perso.x, cy - perso.y, 40.0f, 60.0f};
+                    SDL_FRect rect_vaisseau = {VAISSEAU_COLLISION_X, VAISSEAU_COLLISION_Y, VAISSEAU_COLLISION_W, VAISSEAU_COLLISION_H};
+                    if (vaisseau_repare && SDL_HasRectIntersectionFloat(&rect_perso_vaisseau, &rect_vaisseau)) {
                         running = false;
                         code_sortie = 4;
                     }
 
-                    SDL_Rect rect_perso_caisse = {500, 400, 40, 60};
+                    SDL_Rect rect_perso_caisse = {(int)cx, (int)cy, 40, 60};
                     SDL_Rect rect_caisse = {10*DISPLAY_TILE_SIZE + perso.x, 11*DISPLAY_TILE_SIZE + perso.y, DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE};
                     if (SDL_HasRectIntersection(&rect_perso_caisse, &rect_caisse)) {
                         caisse_outils_ouvert = !caisse_outils_ouvert;
@@ -331,8 +343,8 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
                                     t_Item *drop = malloc(sizeof(t_Item));
                                     if (drop) {
                                         *drop = *(hotbar[slot_drop]->item);
-                                        drop->x = -perso.x + 500.0f;
-                                        drop->y = -perso.y + 400.0f;
+                                        drop->x = -perso.x + cx;
+                                        drop->y = -perso.y + cy;
                                         items[index_item++] = drop;
                                     }
                                 }
@@ -359,9 +371,9 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
                                 if (hotbar[k]->quantiter <= 0) { free(hotbar[k]->item); free(hotbar[k]); hotbar[k] = NULL; }
 
                             } else if (outil->type == MARTEAU) {
-                                SDL_Rect rect_perso_vaiseau = {500,400,40,60};
-                                SDL_Rect rect_vaisseau = {(int)(750.0f + perso.x), (int)(550.0f + perso.y), 644, 388};
-                                if (!vaisseau_repare && SDL_HasRectIntersection(&rect_perso_vaiseau, &rect_vaisseau)) {
+                                SDL_FRect rect_perso_vaiseau = {cx - perso.x, cy - perso.y, 40.0f, 60.0f};
+                                SDL_FRect rect_vaisseau = {VAISSEAU_COLLISION_X, VAISSEAU_COLLISION_Y, VAISSEAU_COLLISION_W, VAISSEAU_COLLISION_H};
+                                if (!vaisseau_repare && SDL_HasRectIntersectionFloat(&rect_perso_vaiseau, &rect_vaisseau)) {
                                     // Chercher 1 engrenage dans la hotbar
                                     int engrenage_slot = -1;
                                     for (int i = 0; i < HOTBAR_SIZE; i++) {
@@ -392,8 +404,8 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
                                 if (hotbar[k]->quantiter <= 0) { free(hotbar[k]->item); free(hotbar[k]); hotbar[k] = NULL; }
                                 
                             }else if(outil->type == BRIQUET){
-                                float perso_monde_x = -perso.x + 500.0f;
-                                float perso_monde_y = -perso.y + 400.0f;
+                                float perso_monde_x = -perso.x + cx;
+                                float perso_monde_y = -perso.y + cy;
                                 float rayon = 120.0f;
 
                                 for (int b = 0; b < index_item; b++) {
@@ -418,8 +430,8 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
                                     }
                                 }
                             }else if(outil->type == VIANDE){
-                                float perso_monde_x = -perso.x + 500.0f;
-                                float perso_monde_y = -perso.y + 400.0f;
+                                float perso_monde_x = -perso.x + cx;
+                                float perso_monde_y = -perso.y + cy;
                                 float rayon = 120.0f;
 
                                 for (int b = 0; b < index_item; b++) {
@@ -473,8 +485,8 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         deplacer_perso(delta);
 
         SDL_Rect hitbox = {
-            .x = (500 - perso.x) + 30, 
-            .y = (400 - perso.y) + 60, 
+            .x = (int)(cx - perso.x) + 30,
+            .y = (int)(cy - perso.y) + 60,
             .w = 32,                   
             .h = 16                    
         };
@@ -503,7 +515,20 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
             perso.x = old_x;
             perso.y = old_y;
         }
+
+        SDL_FRect rect_vaisseau_collision = {
+            VAISSEAU_COLLISION_X,
+            VAISSEAU_COLLISION_Y,
+            VAISSEAU_COLLISION_W,
+            VAISSEAU_COLLISION_H
+        };
+        SDL_FRect hitbox_float = {(float)hitbox.x, (float)hitbox.y, (float)hitbox.w, (float)hitbox.h};
+        if (SDL_HasRectIntersectionFloat(&hitbox_float, &rect_vaisseau_collision)) {
+            perso.x = old_x;
+            perso.y = old_y;
+        }
         
+        SDL_SetRenderDrawColor(renderer, 71, 171, 169, 255);
         SDL_RenderClear(renderer);
         
         Uint32 maintenant = SDL_GetTicks();
@@ -569,6 +594,30 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
                 SDL_Log("Hotbar pleine, viande cuite perdue !");
             }
         }
+
+        
+        update_combat(map, mobs, renderer, items);
+        update_mobs(map, mobs);
+        update_boss(renderer, &boss1);
+        possible_ramasser_item(items, renderer, hotbar);
+
+
+        
+        SDL_FRect src_caisse_outils = {0, 0, 64, 64};
+        SDL_FRect dest_caisse_outils = {10*DISPLAY_TILE_SIZE + perso.x, 11*DISPLAY_TILE_SIZE + perso.y, DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE};
+        SDL_RenderTexture(renderer, texture_caisse_outils, &src_caisse_outils, &dest_caisse_outils);
+
+        afficher_item(items, renderer);
+
+        SDL_FRect src_vaiseaux = {0, 0, VAISSEAU_WIDTH, VAISSEAU_HEIGHT};
+        SDL_FRect dest_vaisseau = {VAISSEAU_WORLD_X + perso.x, VAISSEAU_WORLD_Y + perso.y, VAISSEAU_WIDTH, VAISSEAU_HEIGHT};
+        SDL_RenderTexture(renderer, exterieure, &src_vaiseaux, &dest_vaisseau);
+
+        if (combat_en_cours == false) afficher_perso(renderer);
+
+
+        afficher_mob(renderer, mobs);
+
         if (cuisson.actif) {
             Uint32 ecoule = SDL_GetTicks() - cuisson.debut_cuisson;
             int secondes_restantes = 3 - (int)(ecoule / 1000);
@@ -590,8 +639,8 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
                     SDL_Texture *tex = SDL_CreateTextureFromSurface(renderer, surf);
                     // Centré en haut de l'écran
                     SDL_FRect rect = {
-                        (1000.0f - surf->w) / 2.0f,
-                        550.0f,
+                        (sw - surf->w) / 2.0f,
+                        400.0f,
                         (float)surf->w,
                         (float)surf->h
                     };
@@ -602,28 +651,6 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
                 TTF_CloseFont(font_cuisson);
             }
         }
-
-        
-        update_combat(map, mobs, renderer, items);
-        update_mobs(map, mobs);
-        update_boss(renderer, &boss1);
-        possible_ramasser_item(items, renderer, hotbar);
-
-
-        
-        SDL_FRect src_caisse_outils = {0, 0, 64, 64};
-        SDL_FRect dest_caisse_outils = {10*DISPLAY_TILE_SIZE + perso.x, 11*DISPLAY_TILE_SIZE + perso.y, DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE};
-        SDL_RenderTexture(renderer, texture_caisse_outils, &src_caisse_outils, &dest_caisse_outils);
-
-        afficher_item(items, renderer);
-        if (combat_en_cours == false) afficher_perso(renderer);
-
-        SDL_FRect src_vaiseaux = {0, 0, 644, 388};
-        SDL_FRect dest_vaisseau = {750.0f + perso.x, 550.0f + perso.y, 644.0f, 388.0f};
-        SDL_RenderTexture(renderer, exterieure, &src_vaiseaux, &dest_vaisseau);
-
-
-        afficher_mob(renderer, mobs);
 
 
         // Compteur d'engrenages au-dessus du vaisseau
@@ -641,8 +668,8 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
             SDL_Surface *surf_eng = TTF_RenderText_Solid(font_eng, texte_eng, strlen(texte_eng), couleur_eng);
             if (surf_eng) {
                 SDL_Texture *tex_eng = SDL_CreateTextureFromSurface(renderer, surf_eng);
-                float vx = 750.0f + perso.x + (644.0f - surf_eng->w) / 2.0f;
-                float vy = 550.0f + perso.y - 30.0f;
+                float vx = VAISSEAU_WORLD_X + perso.x + (VAISSEAU_WIDTH - surf_eng->w) / 2.0f;
+                float vy = VAISSEAU_WORLD_Y + perso.y - 30.0f;
                 SDL_FRect rect_eng = { vx, vy, (float)surf_eng->w, (float)surf_eng->h };
                 SDL_RenderTexture(renderer, tex_eng, NULL, &rect_eng);
                 SDL_DestroyTexture(tex_eng);
@@ -653,9 +680,9 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
 
         // Message quand le joueur est proche du vaisseau
         {
-            SDL_Rect rect_perso_vaisseau = {500, 400, 40, 60};
-            SDL_Rect rect_vaisseau = {(int)(750.0f + perso.x), (int)(550.0f + perso.y), 644, 388};
-            if (SDL_HasRectIntersection(&rect_perso_vaisseau, &rect_vaisseau)) {
+            SDL_FRect rect_perso_vaisseau = {cx - perso.x, cy - perso.y, 40.0f, 60.0f};
+            SDL_FRect rect_vaisseau = {VAISSEAU_COLLISION_X, VAISSEAU_COLLISION_Y, VAISSEAU_COLLISION_W, VAISSEAU_COLLISION_H};
+            if (SDL_HasRectIntersectionFloat(&rect_perso_vaisseau, &rect_vaisseau)) {
                 TTF_Font *font_hint = TTF_OpenFont("assets/police.ttf", 20);
                 if (font_hint) {
                     char hint[128];
@@ -689,7 +716,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
                     if (surf_hint) {
                         SDL_Texture *tex_hint = SDL_CreateTextureFromSurface(renderer, surf_hint);
                         SDL_FRect rect_hint = {
-                            (1000.0f - surf_hint->w) / 2.0f, 670.0f,
+                            (sw - surf_hint->w) / 2.0f, sh - 130.0f,
                             (float)surf_hint->w, (float)surf_hint->h
                         };
                         SDL_RenderTexture(renderer, tex_hint, NULL, &rect_hint);
@@ -819,7 +846,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
                 if (surf) {
                     SDL_Texture *tex = SDL_CreateTextureFromSurface(renderer, surf);
                     SDL_FRect rect = {
-                        800.0f,
+                        sw - 220.0f,
                         30.0f,
                         (float)surf->w,
                         (float)surf->h
@@ -854,7 +881,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
 
         if (est_animation_degat) {
             SDL_Texture *animation_degat = IMG_LoadTexture(renderer, "assets/UI/flash.png");
-            SDL_FRect dest = {0.0f, 0.0f, 1000.0f, 800.0f};
+            SDL_FRect dest = {0.0f, 0.0f, sw, sh};
             SDL_RenderTexture(renderer, animation_degat, NULL, &dest);
             SDL_DestroyTexture(animation_degat);
         }

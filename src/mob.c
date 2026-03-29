@@ -6,12 +6,28 @@ static SDL_Texture * texture_minion_run = NULL;
 static SDL_Texture * texture_minion_attack = NULL;
 static Uint32 minion_attack_timer = 0;
 
+static inline void get_player_world_center(float *x, float *y) {
+    // Match gameplay hitbox center: player hitbox is 40x60 at (screen_center_x, screen_center_y).
+    if (x) *x = -perso.x + screen_center_x() + 20.0f;
+    if (y) *y = -perso.y + screen_center_y() + 30.0f;
+}
+
 #define TAILLE_FILE_RESPAWN 256
 typedef struct { int id; Uint32 quand; } EntreeRespawn;
 
 static EntreeRespawn file_respawn[TAILLE_FILE_RESPAWN];
 static int tete_file = 0;
 static int queue_file = 0;
+
+static SDL_FRect get_vaisseau_collision_rect(void) {
+    SDL_FRect rect = {
+        VAISSEAU_COLLISION_X,
+        VAISSEAU_COLLISION_Y,
+        VAISSEAU_COLLISION_W,
+        VAISSEAU_COLLISION_H
+    };
+    return rect;
+}
 
 void schedule_respawn(int id, Uint32 delay_ms) {
     int suivant = (queue_file + 1) % TAILLE_FILE_RESPAWN;
@@ -56,8 +72,8 @@ void init_mobs(SDL_Renderer * renderer, Mob * mobs[MAX_MOB], t_tile map[W_MAP][H
 
     int index = 0;
     int rayon_app = 2;
-    float joueur_monde_x = -perso.x + 500.0f;
-    float joueur_monde_y = -perso.y + 400.0f;
+    float joueur_monde_x = -perso.x + screen_center_x();
+    float joueur_monde_y = -perso.y + screen_center_y();
     int tuile_joueur_x = (int)(joueur_monde_x / DISPLAY_TILE_SIZE);
     int tuile_joueur_y = (int)(joueur_monde_y / DISPLAY_TILE_SIZE);
 
@@ -65,6 +81,7 @@ void init_mobs(SDL_Renderer * renderer, Mob * mobs[MAX_MOB], t_tile map[W_MAP][H
     typedef struct { int x; int y; } PositionTuile;
     PositionTuile *candidats = malloc(sizeof(PositionTuile) * capacite);
     int nb_candidats = 0;
+    SDL_FRect rect_vaisseau = get_vaisseau_collision_rect();
 
     for (int tx = 0; tx < W_MAP; tx++) {
         for (int ty = 0; ty < H_MAP; ty++) {
@@ -73,6 +90,8 @@ void init_mobs(SDL_Renderer * renderer, Mob * mobs[MAX_MOB], t_tile map[W_MAP][H
             if (!est_terre) continue;
             SDL_Rect r = { tx * DISPLAY_TILE_SIZE, ty * DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE };
             if (!test_collision(tx, ty, map, 1, r)) {
+                SDL_FRect r_f = {(float)r.x, (float)r.y, (float)r.w, (float)r.h};
+                if (SDL_HasRectIntersectionFloat(&r_f, &rect_vaisseau)) continue;
                 candidats[nb_candidats].x = tx;
                 candidats[nb_candidats].y = ty;
                 nb_candidats++;
@@ -148,6 +167,8 @@ void init_mobs(SDL_Renderer * renderer, Mob * mobs[MAX_MOB], t_tile map[W_MAP][H
         int ty = miny + (rand() % (maxy - miny + 1));
         SDL_Rect r = { tx * DISPLAY_TILE_SIZE, ty * DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE };
         if (test_collision(tx, ty, map, 1, r)) continue;
+        SDL_FRect r_f = {(float)r.x, (float)r.y, (float)r.w, (float)r.h};
+        if (SDL_HasRectIntersectionFloat(&r_f, &rect_vaisseau)) continue;
         int utilise = 0;
         for (int m_i = 0; m_i < index; m_i++) {
             int mx_tile = (int)((mobs[m_i]->x + mobs[m_i]->largeur * DISPLAY_TILE_SIZE / 2) / DISPLAY_TILE_SIZE);
@@ -184,6 +205,7 @@ void init_mobs(SDL_Renderer * renderer, Mob * mobs[MAX_MOB], t_tile map[W_MAP][H
 /* Spawn a single mob of given type id at a random valid ground tile anywhere on the map.
    Returns 0 on success, -1 on failure. */
 static int spawn_one_mob_of_type(Mob * mobs[MAX_MOB], t_tile map[W_MAP][H_MAP], int type_id) {
+    SDL_FRect rect_vaisseau = get_vaisseau_collision_rect();
     /* try a number of random attempts */
     for (int attempt = 0; attempt < 200; attempt++) {
         int tx = rand() % W_MAP;
@@ -193,6 +215,8 @@ static int spawn_one_mob_of_type(Mob * mobs[MAX_MOB], t_tile map[W_MAP][H_MAP], 
         if (!est_terre) continue;
         SDL_Rect r = { tx * DISPLAY_TILE_SIZE, ty * DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE };
         if (test_collision(tx, ty, map, 1, r)) continue;
+        SDL_FRect r_f = {(float)r.x, (float)r.y, (float)r.w, (float)r.h};
+        if (SDL_HasRectIntersectionFloat(&r_f, &rect_vaisseau)) continue;
 
         /* find empty slot in mobs[] */
         int idx = 0;
@@ -230,14 +254,16 @@ void update_mobs(t_tile map[W_MAP][H_MAP], Mob * mobs[MAX_MOB]) {
     if (last_time == 0) last_time = now;
     float dt = (now - last_time) / 1000.0f; /* seconds */
     if (dt <= 0) dt = 0.001f;
+    SDL_FRect rect_vaisseau = get_vaisseau_collision_rect();
 
     for (int i = 0; mobs[i] != NULL; i++) {
         Mob *m = mobs[i];
         Uint32 timer = now;
 
         if (m->id == 3) {
-            float joueur_x = -perso.x + 520.0f;
-            float joueur_y = -perso.y + 430.0f;
+            float joueur_x = 0.0f;
+            float joueur_y = 0.0f;
+            get_player_world_center(&joueur_x, &joueur_y);
             float minion_x = m->x + (m->largeur * DISPLAY_TILE_SIZE * 0.5f);
             float minion_y = m->y + (m->hauteur * DISPLAY_TILE_SIZE * 0.5f);
             float dx = joueur_x - minion_x;
@@ -289,12 +315,13 @@ void update_mobs(t_tile map[W_MAP][H_MAP], Mob * mobs[MAX_MOB]) {
             (int)(m->largeur * DISPLAY_TILE_SIZE),
             (int)(m->hauteur * DISPLAY_TILE_SIZE)
         };
+        SDL_FRect proj_f = {(float)proj.x, (float)proj.y, (float)proj.w, (float)proj.h};
 
         int tile_x = (int)((nouvelle_x + m->largeur * DISPLAY_TILE_SIZE / 2) / DISPLAY_TILE_SIZE);
         int tile_y = (int)((nouvelle_y + m->hauteur * DISPLAY_TILE_SIZE / 2) / DISPLAY_TILE_SIZE);
 
         if (tile_x >= 0 && tile_x < W_MAP && tile_y >= 0 && tile_y < H_MAP) {
-            if (!test_collision(tile_x, tile_y, map, 1, proj)) {
+            if (!test_collision(tile_x, tile_y, map, 1, proj) && !SDL_HasRectIntersectionFloat(&proj_f, &rect_vaisseau)) {
                 m->x = nouvelle_x;
                 m->y = nouvelle_y;
             } else {
@@ -302,13 +329,63 @@ void update_mobs(t_tile map[W_MAP][H_MAP], Mob * mobs[MAX_MOB]) {
                     float angle = (rand() % 360) * (3.14159265f / 180.0f);
                     m->target_vx = cosf(angle) * m->speed;
                     m->target_vy = sinf(angle) * m->speed;
+                    m->vx *= 0.3f;
+                    m->vy *= 0.3f;
+                    m->time_change_dir = timer + 300 + (rand() % 400);
                 } else {
-                    m->target_vx = 0.0f;
-                    m->target_vy = 0.0f;
+                    SDL_Rect proj_x = {
+                        (int)nouvelle_x,
+                        (int)m->y,
+                        (int)(m->largeur * DISPLAY_TILE_SIZE),
+                        (int)(m->hauteur * DISPLAY_TILE_SIZE)
+                    };
+                    SDL_FRect proj_x_f = {(float)proj_x.x, (float)proj_x.y, (float)proj_x.w, (float)proj_x.h};
+                    int tile_x_only = (int)((nouvelle_x + m->largeur * DISPLAY_TILE_SIZE / 2) / DISPLAY_TILE_SIZE);
+
+                    SDL_Rect proj_y = {
+                        (int)m->x,
+                        (int)nouvelle_y,
+                        (int)(m->largeur * DISPLAY_TILE_SIZE),
+                        (int)(m->hauteur * DISPLAY_TILE_SIZE)
+                    };
+                    SDL_FRect proj_y_f = {(float)proj_y.x, (float)proj_y.y, (float)proj_y.w, (float)proj_y.h};
+                    int tile_y_only = (int)((nouvelle_y + m->hauteur * DISPLAY_TILE_SIZE / 2) / DISPLAY_TILE_SIZE);
+
+                    int move_x_ok = (tile_x_only >= 0 && tile_x_only < W_MAP) &&
+                                    !test_collision(tile_x_only, (int)((m->y + m->hauteur * DISPLAY_TILE_SIZE / 2) / DISPLAY_TILE_SIZE), map, 1, proj_x) &&
+                                    !SDL_HasRectIntersectionFloat(&proj_x_f, &rect_vaisseau);
+                    int move_y_ok = (tile_y_only >= 0 && tile_y_only < H_MAP) &&
+                                    !test_collision((int)((m->x + m->largeur * DISPLAY_TILE_SIZE / 2) / DISPLAY_TILE_SIZE), tile_y_only, map, 1, proj_y) &&
+                                    !SDL_HasRectIntersectionFloat(&proj_y_f, &rect_vaisseau);
+
+                    if (move_x_ok) {
+                        m->x = nouvelle_x;
+                        m->vy *= 0.5f;
+                    }
+                    if (move_y_ok) {
+                        m->y = nouvelle_y;
+                        m->vx *= 0.5f;
+                    }
+
+                    if (!move_x_ok && !move_y_ok) {
+                        float joueur_x = 0.0f;
+                        float joueur_y = 0.0f;
+                        float minion_x = m->x + (m->largeur * DISPLAY_TILE_SIZE * 0.5f);
+                        float minion_y = m->y + (m->hauteur * DISPLAY_TILE_SIZE * 0.5f);
+                        get_player_world_center(&joueur_x, &joueur_y);
+                        float dx = joueur_x - minion_x;
+                        float dy = joueur_y - minion_y;
+                        float dist = sqrtf(dx * dx + dy * dy);
+                        if (dist < 0.001f) dist = 1.0f;
+                        float nx = dx / dist;
+                        float ny = dy / dist;
+                        float s = (rand() % 2 == 0) ? 1.0f : -1.0f;
+                        m->target_vx = -ny * m->speed * s;
+                        m->target_vy =  nx * m->speed * s;
+                        m->vx *= 0.3f;
+                        m->vy *= 0.3f;
+                    }
                 }
-                m->vx *= 0.3f;
-                m->vy *= 0.3f;
-                m->time_change_dir = timer + 300 + (rand() % 400);
             }
         } else {
             float center_x = (W_MAP * DISPLAY_TILE_SIZE) / 2.0f;
@@ -352,8 +429,9 @@ void afficher_mob(SDL_Renderer * renderer, Mob * mobs[MAX_MOB]){
             .h = 128
         };
         if (mobs[i]->id == 3 && (texture_minion_run != NULL || texture_minion_attack != NULL)) {
-            float joueur_x = -perso.x + 520.0f;
-            float joueur_y = -perso.y + 430.0f;
+            float joueur_x = 0.0f;
+            float joueur_y = 0.0f;
+            get_player_world_center(&joueur_x, &joueur_y);
             float minion_x = mobs[i]->x + (mobs[i]->largeur * DISPLAY_TILE_SIZE * 0.5f);
             float minion_y = mobs[i]->y + (mobs[i]->hauteur * DISPLAY_TILE_SIZE * 0.5f);
             float dx = joueur_x - minion_x;

@@ -112,19 +112,61 @@ int afficher_shop(SDL_Renderer *renderer, t_case *hotbar[HOTBAR_SIZE]) {
     }
 
     Bouton btn_kit, btn_vie, btn_faim, btn_vit, btn_fermer;
-    Bouton_Init(&btn_kit, 175.0f, 260.0f, 650.0f, 52.0f, btn_tex);
-    Bouton_Init(&btn_vie, 175.0f, 320.0f, 650.0f, 52.0f, btn_tex);
-    Bouton_Init(&btn_faim, 175.0f, 380.0f, 650.0f, 52.0f, btn_tex);
-    Bouton_Init(&btn_vit, 175.0f, 440.0f, 650.0f, 52.0f, btn_tex);
-    Bouton_Init(&btn_fermer, 345.0f, 510.0f, 310.0f, 52.0f, btn_tex);
+    Bouton_Init(&btn_kit, 0.0f, 0.0f, 650.0f, 52.0f, btn_tex);
+    Bouton_Init(&btn_vie, 0.0f, 0.0f, 650.0f, 52.0f, btn_tex);
+    Bouton_Init(&btn_faim, 0.0f, 0.0f, 650.0f, 52.0f, btn_tex);
+    Bouton_Init(&btn_vit, 0.0f, 0.0f, 650.0f, 52.0f, btn_tex);
+    Bouton_Init(&btn_fermer, 0.0f, 0.0f, 310.0f, 52.0f, btn_tex);
 
     char notif[96] = "";
     Uint32 notif_time = 0;
 
     int running = 1;
     while (running) {
+        update_screen_metrics(renderer);
+        float panel_w = 780.0f;
+        float panel_h = 560.0f;
+        float panel_x = (screen_widthf() - panel_w) * 0.5f;
+        float panel_y = (screen_heightf() - panel_h) * 0.5f;
+
+        float row_x = panel_x + 65.0f;
+        float row_w = panel_w - 130.0f;
+        float first_row_y = panel_y + 150.0f;
+        float row_gap = 60.0f;
+
+        btn_kit.rect.x = row_x;
+        btn_kit.rect.y = first_row_y;
+        btn_kit.rect.w = row_w;
+        btn_kit.rect.h = 52.0f;
+
+        btn_vie.rect.x = row_x;
+        btn_vie.rect.y = first_row_y + row_gap;
+        btn_vie.rect.w = row_w;
+        btn_vie.rect.h = 52.0f;
+
+        btn_faim.rect.x = row_x;
+        btn_faim.rect.y = first_row_y + row_gap * 2.0f;
+        btn_faim.rect.w = row_w;
+        btn_faim.rect.h = 52.0f;
+
+        btn_vit.rect.x = row_x;
+        btn_vit.rect.y = first_row_y + row_gap * 3.0f;
+        btn_vit.rect.w = row_w;
+        btn_vit.rect.h = 52.0f;
+
+        btn_fermer.rect.x = panel_x + (panel_w - 310.0f) * 0.5f;
+        btn_fermer.rect.y = panel_y + 400.0f;
+        btn_fermer.rect.w = 310.0f;
+        btn_fermer.rect.h = 52.0f;
+
         SDL_Event ev;
         while (SDL_PollEvent(&ev)) {
+            if (ev.type == SDL_EVENT_MOUSE_MOTION ||
+                ev.type == SDL_EVENT_MOUSE_BUTTON_DOWN ||
+                ev.type == SDL_EVENT_MOUSE_BUTTON_UP) {
+                SDL_ConvertEventToRenderCoordinates(renderer, &ev);
+            }
+
             if (ev.type == SDL_EVENT_QUIT) {
                 if (font_title != font) TTF_CloseFont(font_title);
                 TTF_CloseFont(font);
@@ -172,20 +214,20 @@ int afficher_shop(SDL_Renderer *renderer, t_case *hotbar[HOTBAR_SIZE]) {
 
         SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 190);
-        SDL_FRect full = {0, 0, 1000, 800};
+        SDL_FRect full = {0.0f, 0.0f, screen_widthf(), screen_heightf()};
         SDL_RenderFillRect(renderer, &full);
 
         SDL_SetRenderDrawColor(renderer, 20, 24, 40, 240);
-        SDL_FRect panel = {110.0f, 110.0f, 780.0f, 560.0f};
+        SDL_FRect panel = {panel_x, panel_y, panel_w, panel_h};
         SDL_RenderFillRect(renderer, &panel);
         SDL_SetRenderDrawColor(renderer, 100, 150, 220, 255);
         SDL_RenderRect(renderer, &panel);
 
-        draw_line(renderer, font_title, "Boutique du Vaisseau", 320.0f, 145.0f, white);
+        draw_line(renderer, font_title, "Boutique du Vaisseau", panel_x + 210.0f, panel_y + 35.0f, white);
 
         char stats[128];
         SDL_snprintf(stats, sizeof(stats), "Argent: %d$ | Vie max: %d | Faim max: %d | Bonus vitesse: +%.0f", argent, perso.vie_max, perso.faim_max, vitesse_bonus);
-        draw_line(renderer, font, stats, 145.0f, 205.0f, soft);
+        draw_line(renderer, font, stats, panel_x + 35.0f, panel_y + 95.0f, soft);
 
         Bouton_Afficher(&btn_kit, renderer);
         Bouton_Afficher(&btn_vie, renderer);
@@ -193,15 +235,15 @@ int afficher_shop(SDL_Renderer *renderer, t_case *hotbar[HOTBAR_SIZE]) {
         Bouton_Afficher(&btn_vit, renderer);
         Bouton_Afficher(&btn_fermer, renderer);
 
-        draw_line(renderer, font, "[1] Kit de soin (+1 en hotbar) - 3$", 210.0f, 276.0f, white);
-        draw_line(renderer, font, "[2] Amelioration vie max (+2) - 5$", 210.0f, 336.0f, white);
-        draw_line(renderer, font, "[3] Amelioration faim max (+2) - 4$", 210.0f, 396.0f, white);
-        draw_line(renderer, font, "[4] Amelioration vitesse (+20) - 6$", 210.0f, 456.0f, white);
-        draw_line(renderer, font, "Fermer la boutique", 420.0f, 526.0f, soft);
-        draw_line(renderer, font, "(Souris: cliquez sur un bouton)  |  (Clavier: 1,2,3,4)", 220.0f, 595.0f, soft);
+        draw_line(renderer, font, "[1] Kit de soin (+1 en hotbar) - 3$", panel_x + 100.0f, first_row_y + 16.0f, white);
+        draw_line(renderer, font, "[2] Amelioration vie max (+2) - 5$", panel_x + 100.0f, first_row_y + row_gap + 16.0f, white);
+        draw_line(renderer, font, "[3] Amelioration faim max (+2) - 4$", panel_x + 100.0f, first_row_y + row_gap * 2.0f + 16.0f, white);
+        draw_line(renderer, font, "[4] Amelioration vitesse (+20) - 6$", panel_x + 100.0f, first_row_y + row_gap * 3.0f + 16.0f, white);
+        draw_line(renderer, font, "Fermer la boutique", btn_fermer.rect.x + 75.0f, btn_fermer.rect.y + 16.0f, soft);
+        draw_line(renderer, font, "(Souris: cliquez sur un bouton)  |  (Clavier: 1,2,3,4)", panel_x + 110.0f, panel_y + panel_h - 75.0f, soft);
 
         if (notif[0] != '\0' && SDL_GetTicks() - notif_time < 1800) {
-            draw_line(renderer, font, notif, 155.0f, 555.0f,
+            draw_line(renderer, font, notif, panel_x + 45.0f, panel_y + panel_h - 115.0f,
                       (SDL_strstr(notif, "Pas assez") || SDL_strstr(notif, "maximum") || SDL_strstr(notif, "Erreur")) ? ko : ok);
         }
 

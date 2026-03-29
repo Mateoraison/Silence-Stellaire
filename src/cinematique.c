@@ -114,25 +114,25 @@ int jouer_cinematique_intro(SDL_Renderer *renderer) {
         if (logo) {
             Uint8 a = (Uint8)(255.0f * alpha_mul);
             SDL_SetTextureAlphaMod(logo, a);
-            render_texture_centered(renderer, logo, 500.0f, 300.0f, 260.0f, 260.0f);
+            render_texture_centered(renderer, logo, screen_center_x(), screen_center_y() - 100.0f, 260.0f, 260.0f);
         }
 
         if (tex_titre) {
             Uint8 a = (Uint8)(255.0f * alpha_mul);
             SDL_SetTextureAlphaMod(tex_titre, a);
-            render_texture_centered_native(renderer, tex_titre, 500.0f, 520.0f);
+            render_texture_centered_native(renderer, tex_titre, screen_center_x(), screen_center_y() + 120.0f);
         }
 
         if (tex_info && t > 1600) {
             Uint8 a = (Uint8)(220.0f * alpha_mul);
             SDL_SetTextureAlphaMod(tex_info, a);
-            render_texture_centered_native(renderer, tex_info, 500.0f, 575.0f);
+            render_texture_centered_native(renderer, tex_info, screen_center_x(), screen_center_y() + 175.0f);
         }
 
         if (tex_skip) {
             Uint8 a = (Uint8)(150.0f * alpha_mul);
             SDL_SetTextureAlphaMod(tex_skip, a);
-            render_texture_centered_native(renderer, tex_skip, 500.0f, 740.0f);
+            render_texture_centered_native(renderer, tex_skip, screen_center_x(), screen_heightf() - 60.0f);
         }
 
         SDL_RenderPresent(renderer);

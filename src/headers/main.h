@@ -12,6 +12,23 @@
 #define SOURCE_TILE_SIZE 64
 #define DISPLAY_TILE_SIZE 90
 
+#define VAISSEAU_WORLD_X 750.0f
+#define VAISSEAU_WORLD_Y 550.0f
+#define VAISSEAU_WIDTH 644.0f
+#define VAISSEAU_HEIGHT 388.0f
+
+#define VAISSEAU_SPRITE_SRC_W 192.0f
+#define VAISSEAU_SPRITE_SRC_H 128.0f
+#define VAISSEAU_SOLID_SRC_X 28.0f
+#define VAISSEAU_SOLID_SRC_Y 22.0f
+#define VAISSEAU_SOLID_SRC_W 148.0f
+#define VAISSEAU_SOLID_SRC_H 94.0f
+
+#define VAISSEAU_COLLISION_X (VAISSEAU_WORLD_X + (VAISSEAU_SOLID_SRC_X * (VAISSEAU_WIDTH / VAISSEAU_SPRITE_SRC_W)))
+#define VAISSEAU_COLLISION_Y (VAISSEAU_WORLD_Y + (VAISSEAU_SOLID_SRC_Y * (VAISSEAU_HEIGHT / VAISSEAU_SPRITE_SRC_H)))
+#define VAISSEAU_COLLISION_W (VAISSEAU_SOLID_SRC_W * (VAISSEAU_WIDTH / VAISSEAU_SPRITE_SRC_W))
+#define VAISSEAU_COLLISION_H (VAISSEAU_SOLID_SRC_H * (VAISSEAU_HEIGHT / VAISSEAU_SPRITE_SRC_H))
+
 #define MAX_MOB 1000
 #define MAX_ITEMS 200
 
@@ -136,6 +153,27 @@ extern Uint32 combat_timer;
 extern MIX_Track *track_global;
 
 extern int Planete_actuelle;
+
+extern int g_screen_w;
+extern int g_screen_h;
+
+void update_screen_metrics(SDL_Renderer *renderer);
+
+static inline float screen_widthf(void) {
+    return (float)g_screen_w;
+}
+
+static inline float screen_heightf(void) {
+    return (float)g_screen_h;
+}
+
+static inline float screen_center_x(void) {
+    return screen_widthf() * 0.5f;
+}
+
+static inline float screen_center_y(void) {
+    return screen_heightf() * 0.5f;
+}
 
 extern int index_item;
 extern int argent;

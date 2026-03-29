@@ -30,7 +30,7 @@ int afficher_pause(SDL_Renderer *renderer, MIX_Track *track_global) {
     }
 
     float btn_w = 250.0f, btn_h = 65.0f, gap = 10.0f;
-    float cx  = 500.0f - btn_w * 0.5f;
+    float cx  = screen_center_x() - btn_w * 0.5f;
     float y0  = 290.0f;
 
     Bouton btn_reprendre, btn_sauvegarder, btn_options, btn_menu;
@@ -64,6 +64,12 @@ int afficher_pause(SDL_Renderer *renderer, MIX_Track *track_global) {
     while (running) {
         SDL_Event ev;
         while (SDL_PollEvent(&ev)) {
+            if (ev.type == SDL_EVENT_MOUSE_MOTION ||
+                ev.type == SDL_EVENT_MOUSE_BUTTON_DOWN ||
+                ev.type == SDL_EVENT_MOUSE_BUTTON_UP) {
+                SDL_ConvertEventToRenderCoordinates(renderer, &ev);
+            }
+
             if (ev.type == SDL_EVENT_QUIT) {
                 resultat = PAUSE_MENU; running = false; break;
             }
@@ -101,13 +107,13 @@ int afficher_pause(SDL_Renderer *renderer, MIX_Track *track_global) {
         // Fond semi-transparent 
         SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 160);
-        SDL_FRect ecran = {0, 0, 1000, 800};
+        SDL_FRect ecran = {0.0f, 0.0f, screen_widthf(), screen_heightf()};
         SDL_RenderFillRect(renderer, &ecran);
 
         // Panneau
         float pan_w = 400.0f;
         float pan_h = btn_h * 4 + gap * 3 + 140.0f;
-        float pan_x = 500.0f - pan_w * 0.5f;
+        float pan_x = screen_center_x() - pan_w * 0.5f;
         float pan_y = y0 - 85.0f;
 
         SDL_SetRenderDrawColor(renderer, 20, 20, 35, 220);
@@ -120,7 +126,7 @@ int afficher_pause(SDL_Renderer *renderer, MIX_Track *track_global) {
         SDL_Surface *surf_titre = TTF_RenderText_Blended(font_titre, "PAUSE", 0, blanc);
         if (surf_titre) {
             SDL_Texture *tex_titre = SDL_CreateTextureFromSurface(renderer, surf_titre);
-            SDL_FRect dst = {500.0f - surf_titre->w * 0.5f, pan_y + 15.0f,
+            SDL_FRect dst = {screen_center_x() - surf_titre->w * 0.5f, pan_y + 15.0f,
                              (float)surf_titre->w, (float)surf_titre->h};
             SDL_RenderTexture(renderer, tex_titre, NULL, &dst);
             SDL_DestroyTexture(tex_titre);
@@ -151,7 +157,7 @@ int afficher_pause(SDL_Renderer *renderer, MIX_Track *track_global) {
                 strlen(notif_msg), jaune);
             if (s) {
                 SDL_Texture *t = SDL_CreateTextureFromSurface(renderer, s);
-                SDL_FRect dst = {500.0f - s->w * 0.5f,
+                SDL_FRect dst = {screen_center_x() - s->w * 0.5f,
                                  btn_sauvegarder.rect.y + btn_h + 4.0f,
                                  (float)s->w, (float)s->h};
                 SDL_RenderTexture(renderer, t, NULL, &dst);
@@ -169,7 +175,7 @@ int afficher_pause(SDL_Renderer *renderer, MIX_Track *track_global) {
             strlen("[ Echap ] pour reprendre"), gris_hint);
         if (s_hint) {
             SDL_Texture *t_hint = SDL_CreateTextureFromSurface(renderer, s_hint);
-            SDL_FRect dst = {500.0f - s_hint->w * 0.5f,
+            SDL_FRect dst = {screen_center_x() - s_hint->w * 0.5f,
                              pan_y + pan_h - s_hint->h - 8.0f,
                              (float)s_hint->w, (float)s_hint->h};
             SDL_RenderTexture(renderer, t_hint, NULL, &dst);

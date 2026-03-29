@@ -32,7 +32,7 @@ int afficher_option(SDL_Renderer *renderer, MIX_Track *track_global) {
     
     
     Bouton bouton_son;
-    Bouton_Init(&bouton_son, 350, 600, 300, 60, bouton_texture);
+    Bouton_Init(&bouton_son, 0.0f, 0.0f, 300.0f, 60.0f, bouton_texture);
     
     while (running) {
         
@@ -43,6 +43,14 @@ int afficher_option(SDL_Renderer *renderer, MIX_Track *track_global) {
         SDL_GetRenderViewport(renderer, &fenetre_rect);
         float w = fenetre_rect.w;
         float h = fenetre_rect.h;
+
+        float panel_w = (w > 900.0f) ? 800.0f : (w - 100.0f);
+        if (panel_w < 320.0f) panel_w = 320.0f;
+        float panel_x = (w - panel_w) * 0.5f;
+        float text_x = panel_x + 20.0f;
+
+        bouton_son.rect.x = (w - bouton_son.rect.w) * 0.5f;
+        bouton_son.rect.y = h - 180.0f;
 
         
         SDL_Surface *surface_titre = TTF_RenderText_Solid(font, "Commandes", strlen("Commandes"), blanc);
@@ -74,9 +82,9 @@ int afficher_option(SDL_Renderer *renderer, MIX_Track *track_global) {
         float ligne_hauteur = 40;
         for (int i = 0; commandes[i] != NULL; i++) {
             SDL_FRect fond_ligne = {
-                .x = 100,
+                .x = panel_x,
                 .y = y_start + i * ligne_hauteur,
-                .w = w - 200,
+                .w = panel_w,
                 .h = ligne_hauteur - 5
             };
             SDL_SetRenderDrawColor(renderer, gris_fonce.r, gris_fonce.g, gris_fonce.b, 200);
@@ -85,7 +93,7 @@ int afficher_option(SDL_Renderer *renderer, MIX_Track *track_global) {
             SDL_Surface *surface_cmd = TTF_RenderText_Solid(font, commandes[i], strlen(commandes[i]), blanc);
             SDL_Texture *texture_cmd = SDL_CreateTextureFromSurface(renderer, surface_cmd);
             SDL_FRect rect_cmd = {
-                .x = 120,
+                .x = text_x,
                 .y = y_start + i * ligne_hauteur + 5,
                 .w = surface_cmd->w,
                 .h = surface_cmd->h
@@ -125,6 +133,12 @@ int afficher_option(SDL_Renderer *renderer, MIX_Track *track_global) {
         SDL_RenderPresent(renderer);
 
         while (SDL_PollEvent(&event)) {
+            if (event.type == SDL_EVENT_MOUSE_MOTION ||
+                event.type == SDL_EVENT_MOUSE_BUTTON_DOWN ||
+                event.type == SDL_EVENT_MOUSE_BUTTON_UP) {
+                SDL_ConvertEventToRenderCoordinates(renderer, &event);
+            }
+
             if (Bouton_GererEvenement(&bouton_son, &event)) {
                 son_active = !son_active;
                 if (track_global != NULL) { 

@@ -26,10 +26,10 @@ int game_over(SDL_Renderer *renderer){
     }
 
     Bouton bouton_game;
-    Bouton_Init(&bouton_game, 400.0f, 350.0f, 200.0f, 80.0f, BoutonText);
+    Bouton_Init(&bouton_game, screen_center_x() - 100.0f, screen_center_y() - 50.0f, 200.0f, 80.0f, BoutonText);
 
     Bouton bouton_quitter;
-    Bouton_Init(&bouton_quitter, 400.0f, 450.0f, 200.0f, 80.0f, BoutonText);
+    Bouton_Init(&bouton_quitter, screen_center_x() - 100.0f, screen_center_y() + 50.0f, 200.0f, 80.0f, BoutonText);
 
     SDL_Color blanc = {255, 255, 255, 255};
 
@@ -55,8 +55,14 @@ int game_over(SDL_Renderer *renderer){
     while (continuer) {
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
+            if (event.type == SDL_EVENT_MOUSE_MOTION ||
+                event.type == SDL_EVENT_MOUSE_BUTTON_DOWN ||
+                event.type == SDL_EVENT_MOUSE_BUTTON_UP) {
+                SDL_ConvertEventToRenderCoordinates(renderer, &event);
+            }
+
             if (Bouton_GererEvenement(&bouton_game, &event)) {
-                perso = (Perso){-580.0f, -500.0f, NULL, 0, 10, 10, 10, 10, SDL_GetTicks()};
+                perso = (Perso){screen_center_x() - 1080.0f, screen_center_y() - 900.0f, NULL, 0, 10, 10, 10, 10, SDL_GetTicks()};
                 result = 1;
                 continuer = 0;
             }
@@ -87,7 +93,7 @@ int game_over(SDL_Renderer *renderer){
             result = -1;
             break;
         }
-        SDL_FRect dest_game_over = {300.0f, 100.0f, 400.0f, 160.0f};
+        SDL_FRect dest_game_over = {screen_center_x() - 200.0f, 100.0f, 400.0f, 160.0f};
         SDL_RenderTexture(renderer, texte_game_over, NULL, &dest_game_over);
         SDL_DestroyTexture(texte_game_over);
 

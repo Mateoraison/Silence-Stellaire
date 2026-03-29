@@ -258,11 +258,13 @@ int sauvegarde_choisir_slot(SDL_Renderer *renderer, const char *titre, bool mode
 	}
 
 	Bouton slots[NB_SLOTS_SAUVEGARDE];
+	float base_x = screen_center_x() - 170.0f;
+	float base_y = screen_center_y() - ((NB_SLOTS_SAUVEGARDE + 1) * 95.0f) * 0.5f;
 	for (int i = 0; i < NB_SLOTS_SAUVEGARDE; i++) {
-		Bouton_Init(&slots[i], 330.0f, 230.0f + i * 95.0f, 340.0f, 72.0f, btn_tex);
+		Bouton_Init(&slots[i], base_x, base_y + i * 95.0f, 340.0f, 72.0f, btn_tex);
 	}
 	Bouton btn_retour;
-	Bouton_Init(&btn_retour, 330.0f, 230.0f + NB_SLOTS_SAUVEGARDE * 95.0f, 340.0f, 72.0f, btn_tex);
+	Bouton_Init(&btn_retour, base_x, base_y + NB_SLOTS_SAUVEGARDE * 95.0f, 340.0f, 72.0f, btn_tex);
 
 	SDL_Color blanc = {255, 255, 255, 255};
 	SDL_Color gris = {180, 180, 180, 255};
@@ -285,8 +287,24 @@ int sauvegarde_choisir_slot(SDL_Renderer *renderer, const char *titre, bool mode
 	int slot_choisi = 0;
 	bool running = true;
 	while (running) {
+		update_screen_metrics(renderer);
+		base_x = screen_center_x() - 170.0f;
+		base_y = screen_center_y() - ((NB_SLOTS_SAUVEGARDE + 1) * 95.0f) * 0.5f;
+		for (int i = 0; i < NB_SLOTS_SAUVEGARDE; i++) {
+			slots[i].rect.x = base_x;
+			slots[i].rect.y = base_y + i * 95.0f;
+		}
+		btn_retour.rect.x = base_x;
+		btn_retour.rect.y = base_y + NB_SLOTS_SAUVEGARDE * 95.0f;
+
 		SDL_Event ev;
 		while (SDL_PollEvent(&ev)) {
+			if (ev.type == SDL_EVENT_MOUSE_MOTION ||
+			    ev.type == SDL_EVENT_MOUSE_BUTTON_DOWN ||
+			    ev.type == SDL_EVENT_MOUSE_BUTTON_UP) {
+				SDL_ConvertEventToRenderCoordinates(renderer, &ev);
+			}
+
 			if (ev.type == SDL_EVENT_QUIT) { running = false; break; }
 			if (ev.type == SDL_EVENT_KEY_DOWN && ev.key.key == SDLK_ESCAPE) { running = false; break; }
 
@@ -314,7 +332,7 @@ int sauvegarde_choisir_slot(SDL_Renderer *renderer, const char *titre, bool mode
 		if (fond) SDL_RenderTexture(renderer, fond, NULL, NULL);
 
 		if (tex_titre) {
-			SDL_FRect r = {500.0f - 170.0f, 140.0f, 340.0f, 40.0f};
+			SDL_FRect r = {screen_center_x() - 170.0f, base_y - 70.0f, 340.0f, 40.0f};
 			SDL_RenderTexture(renderer, tex_titre, NULL, &r);
 		}
 
@@ -328,7 +346,7 @@ int sauvegarde_choisir_slot(SDL_Renderer *renderer, const char *titre, bool mode
 		if (notif[0] != '\0' && SDL_GetTicks() - notif_debut < 1800) {
 			SDL_Texture *tex_notif = creer_texte(renderer, font, notif, jaune);
 			if (tex_notif) {
-				SDL_FRect r = {500.0f - 140.0f, 640.0f, 280.0f, 30.0f};
+				SDL_FRect r = {screen_center_x() - 140.0f, btn_retour.rect.y + btn_retour.rect.h + 14.0f, 280.0f, 30.0f};
 				SDL_RenderTexture(renderer, tex_notif, NULL, &r);
 				SDL_DestroyTexture(tex_notif);
 			}

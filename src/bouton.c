@@ -29,7 +29,6 @@ int Bouton_GererEvenement(Bouton *b, const SDL_Event *e) {
         b->survole = pointDansRect(mx, my, &b->rect);
 
     } else if (e->type == SDL_EVENT_MOUSE_BUTTON_DOWN && e->button.button == SDL_BUTTON_LEFT) {
-
         float mx = e->button.x;
         float my = e->button.y;
         if (pointDansRect(mx, my, &b->rect)) {
@@ -37,7 +36,6 @@ int Bouton_GererEvenement(Bouton *b, const SDL_Event *e) {
         }
 
     } else if (e->type == SDL_EVENT_MOUSE_BUTTON_UP && e->button.button == SDL_BUTTON_LEFT) {
-
         float mx = e->button.x;
         float my = e->button.y;
         if (b->appuye && pointDansRect(mx, my, &b->rect)) {

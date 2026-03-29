@@ -60,6 +60,10 @@ void detruire_animation(t_Animation * a){
 
 
 int afficher_map(SDL_Renderer *renderer) {
+    update_screen_metrics(renderer);
+    float offx = screen_center_x() - 500.0f;
+    float offy = screen_center_y() - 400.0f;
+
     TTF_Font *font = TTF_OpenFont("assets/police.ttf", 24);
     if (!font) {
         SDL_Log("Erreur chargement police %s, %s", "assets/police.ttf", SDL_GetError());
@@ -85,10 +89,10 @@ int afficher_map(SDL_Renderer *renderer) {
     SDL_Color blanc = {255, 255, 255, 255};
     
 
-    t_Animation planete1 = animation_init("assets/carte_espace/planete1_map.gif",100,200,1.5f);
-    t_Animation planete2 = animation_init("assets/carte_espace/planete2_map.gif",300,500,1.5f);
-    t_Animation planete3 = animation_init("assets/carte_espace/planete3_map.gif",500,200,1.5f);
-    t_Animation planete4 = animation_init("assets/carte_espace/planete4_map.gif",700,500,1.5f);
+    t_Animation planete1 = animation_init("assets/carte_espace/planete1_map.gif",100 + offx,200 + offy,1.5f);
+    t_Animation planete2 = animation_init("assets/carte_espace/planete2_map.gif",300 + offx,500 + offy,1.5f);
+    t_Animation planete3 = animation_init("assets/carte_espace/planete3_map.gif",500 + offx,200 + offy,1.5f);
+    t_Animation planete4 = animation_init("assets/carte_espace/planete4_map.gif",700 + offx,500 + offy,1.5f);
     Bouton P1;
     Bouton P2;
     Bouton P3;
@@ -101,13 +105,13 @@ int afficher_map(SDL_Renderer *renderer) {
 
 
     SDL_Texture * asteroid1 = IMG_LoadTexture(renderer,"assets/carte_espace/asteroid1.png");
-    SDL_FRect dest_asteroid1 = {100,700,100,100};
+    SDL_FRect dest_asteroid1 = {100 + offx,700 + offy,100,100};
     SDL_Texture * asteroid2 = IMG_LoadTexture(renderer,"assets/carte_espace/asteroid2.png");
-    SDL_FRect dest_asteroid2 = {300,200,100,100};
+    SDL_FRect dest_asteroid2 = {300 + offx,200 + offy,100,100};
     SDL_Texture * asteroid3 = IMG_LoadTexture(renderer,"assets/carte_espace/asteroid3.png");
-    SDL_FRect dest_asteroid3 = {800,300,100,100};
+    SDL_FRect dest_asteroid3 = {800 + offx,300 + offy,100,100};
     SDL_Texture * asteroid4 = IMG_LoadTexture(renderer,"assets/carte_espace/asteroid4.png");
-    SDL_FRect dest_asteroid4 = {600,600,100,100};
+    SDL_FRect dest_asteroid4 = {600 + offx,600 + offy,100,100};
 
 
     int running = 1;
@@ -115,6 +119,12 @@ int afficher_map(SDL_Renderer *renderer) {
     while (running){
         SDL_Event event;
         while(SDL_PollEvent(&event)) {
+            if (event.type == SDL_EVENT_MOUSE_MOTION ||
+                event.type == SDL_EVENT_MOUSE_BUTTON_DOWN ||
+                event.type == SDL_EVENT_MOUSE_BUTTON_UP) {
+                SDL_ConvertEventToRenderCoordinates(renderer, &event);
+            }
+
             if(event.type == SDL_EVENT_QUIT){
                 running = 0;
             }
@@ -151,7 +161,7 @@ int afficher_map(SDL_Renderer *renderer) {
         if (!surface_titre) SDL_Log("Erreur texte: %s", SDL_GetError());
         SDL_Texture *texture_titre = SDL_CreateTextureFromSurface(renderer, surface_titre);
         if (!texture_titre) SDL_Log("Erreur texture: %s", SDL_GetError());
-        SDL_FRect rect_titre = {.x = 500 - surface_titre->w/2,.y = 50,.w = surface_titre->w,.h = surface_titre->h};
+        SDL_FRect rect_titre = {.x = screen_center_x() - surface_titre->w/2,.y = 50,.w = surface_titre->w,.h = surface_titre->h};
         
 
         SDL_Surface * nom_P1 = TTF_RenderText_Solid(font,"Planete du crash", strlen("Planete du crash"),blanc);

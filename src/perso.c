@@ -18,7 +18,7 @@ int afficher_perso(SDL_Renderer *renderer) {
     }
 
     SDL_FRect src = {0, 0, 64, 64};
-    SDL_FRect dest = {500.0f , 400.0f, 90, 90};
+    SDL_FRect dest = {screen_center_x(), screen_center_y(), 90, 90};
 
     SDL_RenderTexture(renderer, perso_texture, &src, &dest);
     SDL_DestroyTexture(perso_texture);
@@ -78,6 +78,7 @@ int test_collision(int x, int y, t_tile map[W_MAP][H_MAP], int est_mob, SDL_Rect
 
     switch (map[x][y].type)
     {
+            case vide:
             case eau: {
                 SDL_Rect hitbox_eau = {x*DISPLAY_TILE_SIZE, y*DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE};
                 if(SDL_HasRectIntersection(&hitbox_eau, &hitbox)) {
@@ -232,7 +233,7 @@ void afficher_combat(SDL_Renderer *renderer) {
     }
 
     SDL_FRect src = {0, 0, 64, 64};
-    SDL_FRect dest = {500.0f , 400.0f, 90, 90};
+    SDL_FRect dest = {screen_center_x(), screen_center_y(), 90, 90};
 
     SDL_RenderTexture(renderer, combat_texture, &src, &dest);
     SDL_DestroyTexture(combat_texture);
@@ -266,8 +267,8 @@ void tester_collision_combat(t_tile map[W_MAP][H_MAP], Mob * mobs[MAX_MOB], SDL_
      * La zone d'attaque dépend de la direction du personnage.
      */
 
-    const float char_screen_x = 500.0f;
-    const float char_screen_y = 400.0f;
+    const float char_screen_x = screen_center_x();
+    const float char_screen_y = screen_center_y();
     const float char_w = DISPLAY_TILE_SIZE;
     const float char_h = DISPLAY_TILE_SIZE;
 
@@ -374,7 +375,7 @@ void tester_collision_combat(t_tile map[W_MAP][H_MAP], Mob * mobs[MAX_MOB], SDL_
 
 
 void possible_ramasser_item(t_Item * items[MAX_ITEMS], SDL_Renderer * renderer, t_case * hotbar[HOTBAR_SIZE]) {
-    SDL_Rect rect_perso = {500, 400, 40, 60};
+    SDL_Rect rect_perso = {(int)screen_center_x(), (int)screen_center_y(), 40, 60};
 
     for (int i = 0; i < index_item; i++) {
         if (items[i] != NULL && items[i]->type != FEUDECAMP) {
@@ -390,7 +391,12 @@ void possible_ramasser_item(t_Item * items[MAX_ITEMS], SDL_Renderer * renderer, 
                     SDL_Surface *surf_text = TTF_RenderText_Solid(font_text, text_touche, strlen(text_touche), blanc);
                     if (surf_text) {
                         SDL_Texture *tex_text = SDL_CreateTextureFromSurface(renderer, surf_text);
-                        SDL_FRect rect_text = {400.0f, 350.0f, (float)surf_text->w, (float)surf_text->h};
+                        SDL_FRect rect_text = {
+                            screen_center_x() - ((float)surf_text->w * 0.5f),
+                            screen_center_y() - 50.0f,
+                            (float)surf_text->w,
+                            (float)surf_text->h
+                        };
                         SDL_RenderTexture(renderer, tex_text, NULL, &rect_text);
                         SDL_DestroyTexture(tex_text);
                         SDL_DestroySurface(surf_text);

@@ -10,13 +10,15 @@ static int slot_selectionne = -1;
 void afficher_hotbar(t_case * hotbar[HOTBAR_SIZE], SDL_Renderer *renderer) {
     TTF_Font *font = TTF_OpenFont("assets/police.ttf", 16);
     SDL_Texture * texture = IMG_LoadTexture(renderer, "assets/UI/slot_inventaire.png");
+    float hotbar_x = screen_center_x() - ((HOTBAR_SIZE * 70.0f - 10.0f) * 0.5f);
+    float hotbar_y = screen_heightf() - 80.0f;
 
     for (int i = 0; i < HOTBAR_SIZE; i++) {
-        SDL_FRect dest = {340.0f + i * 70, 720, 60, 60};
+        SDL_FRect dest = {hotbar_x + i * 70.0f, hotbar_y, 60, 60};
         SDL_RenderTexture(renderer, texture, NULL, &dest);
 
         if (hotbar[i] != NULL && hotbar[i]->item != NULL) {
-            SDL_FRect item_dest = {340.0f + i * 70 + (60 - 35) / 2.0f, 720 + (60 - 35) / 2.0f, 35, 35};
+            SDL_FRect item_dest = {hotbar_x + i * 70.0f + (60.0f - 35.0f) / 2.0f, hotbar_y + (60.0f - 35.0f) / 2.0f, 35, 35};
             SDL_RenderTexture(renderer, hotbar[i]->item->texture, NULL, &item_dest);
 
             if (font && hotbar[i]->quantiter > 0) {
@@ -27,8 +29,8 @@ void afficher_hotbar(t_case * hotbar[HOTBAR_SIZE], SDL_Renderer *renderer) {
                 if (surf) {
                     SDL_Texture *tex_qte = SDL_CreateTextureFromSurface(renderer, surf);
                     SDL_FRect rect_qte = {
-                        340.0f + i * 70 + 60 - surf->w - 2,
-                        720 + 60 - surf->h - 2,
+                        hotbar_x + i * 70.0f + 60.0f - surf->w - 2.0f,
+                        hotbar_y + 60.0f - surf->h - 2.0f,
                         (float)surf->w,
                         (float)surf->h
                     };
@@ -86,14 +88,14 @@ void afficher_inventaire(t_case *inventaire[], SDL_Renderer *renderer, int inven
 
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 150);
-    SDL_FRect fond = {0, 0, 1000, 810};
+    SDL_FRect fond = {0.0f, 0.0f, screen_widthf(), screen_heightf()};
     SDL_RenderFillRect(renderer, &fond);
 
     // Panneau de l'inventaire centré
     float panneaux_w = inventaire_cols * 70.0f + 20.0f;
     float panneaux_h = inventaire_rows * 70.0f + 60.0f;
-    float panneau_x = (1000.0f - panneaux_w) / 2.0f;
-    float panneau_y = (800.0f  - panneaux_h) / 2.0f;
+    float panneau_x = (screen_widthf() - panneaux_w) / 2.0f;
+    float panneau_y = (screen_heightf() - panneaux_h) / 2.0f;
 
     SDL_SetRenderDrawColor(renderer, 40, 40, 60, 240);
     SDL_FRect panneau = {panneau_x, panneau_y, panneaux_w, panneaux_h};
@@ -218,8 +220,10 @@ void gerer_clic_inventaire(t_case **inventaire, t_case **hotbar, SDL_Event *even
     // Calcul position panneau inventaire (même que afficher_inventaire)
     float panneau_w = inventaire_cols * 70.0f + 20.0f;
     float panneau_h = inventaire_rows * 70.0f + 60.0f;
-    float panneau_x = (1000.0f - panneau_w) / 2.0f;
-    float panneau_y = (800.0f  - panneau_h) / 2.0f;
+    float panneau_x = (screen_widthf() - panneau_w) / 2.0f;
+    float panneau_y = (screen_heightf() - panneau_h) / 2.0f;
+    float hotbar_x = screen_center_x() - ((HOTBAR_SIZE * 70.0f - 10.0f) * 0.5f);
+    float hotbar_y = screen_heightf() - 80.0f;
 
     int clic_slot = -1;
 
@@ -238,8 +242,8 @@ void gerer_clic_inventaire(t_case **inventaire, t_case **hotbar, SDL_Event *even
 
     // Vérifier clic sur hotbar
     for (int i = 0; i < HOTBAR_SIZE; i++) {
-        float sx = 340.0f + i * 70;
-        float sy = 720.0f;
+        float sx = hotbar_x + i * 70.0f;
+        float sy = hotbar_y;
         if (mx >= sx && mx <= sx + 60 && my >= sy && my <= sy + 60) {
             clic_slot = inventaire_size + i;
         }

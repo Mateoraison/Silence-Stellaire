@@ -200,9 +200,9 @@ bool est_en_collision_rect(SDL_FRect hitbox) {
 // --- GESTION DE LA MAP ---
 
 void spawn_perso(int tileX, int tileY) {
-    // Centre le spawn (500, 400 étant le centre de l'écran)
-    perso.x = -(tileX * DISPLAY_TILE_SIZE) + 500;
-    perso.y = -(tileY * DISPLAY_TILE_SIZE) + 400;
+    // Centre le spawn sur le centre ecran actuel.
+    perso.x = -(tileX * DISPLAY_TILE_SIZE) + screen_center_x();
+    perso.y = -(tileY * DISPLAY_TILE_SIZE) + screen_center_y();
 }
 
 SpawnPoint charger_map(const char* filename_map, const char* filename_accessoire) {
@@ -453,8 +453,8 @@ int vaisseau(SDL_Renderer *renderer, int planete_actuelle) {
         deplacer_perso(delta);
 
         // Position du perso dans le monde
-        world_x = 500.0f - perso.x;
-        world_y = 400.0f - perso.y;
+        world_x = screen_center_x() - perso.x;
+        world_y = screen_center_y() - perso.y;
 
         // Hitbox aux pieds
         SDL_FRect hitbox_pieds = { world_x + hitbox_x, world_y + hitbox_y, 32.0f, 16.0f };
@@ -463,8 +463,8 @@ int vaisseau(SDL_Renderer *renderer, int planete_actuelle) {
         if (est_en_collision_rect(hitbox_pieds)) {
             perso.x = old_offset_x ;
             perso.y = old_offset_y;
-            world_x = 500.0f - perso.x;
-            world_y = 400.0f - perso.y;
+            world_x = screen_center_x() - perso.x;
+            world_y = screen_center_y() - perso.y;
         }
 
         // Test de proximité et interaction
@@ -518,7 +518,7 @@ int vaisseau(SDL_Renderer *renderer, int planete_actuelle) {
         
 
         if (afficher_message) {
-            afficher_text(renderer, font, message_interaction, 550.0f, 330.0f, true);
+            afficher_text(renderer, font, message_interaction, screen_center_x() + 50.0f, screen_center_y() - 70.0f, true);
         }
 
         SDL_RenderPresent(renderer);

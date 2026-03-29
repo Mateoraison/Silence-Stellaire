@@ -37,17 +37,19 @@ int afficher_menu(SDL_Renderer *renderer) {
     }
 
 
+    float menu_x = screen_center_x() - 125.0f;
+
     Bouton bouton_game;
-    Bouton_Init(&bouton_game, 375.0f, 250.0f, 250.0f, 80.0f, BoutonText);
+    Bouton_Init(&bouton_game, menu_x, 250.0f, 250.0f, 80.0f, BoutonText);
 
     Bouton bouton_continuer;
-    Bouton_Init(&bouton_continuer, 375.0f, 350.0f, 250.0f, 80.0f, BoutonText);
+    Bouton_Init(&bouton_continuer, menu_x, 350.0f, 250.0f, 80.0f, BoutonText);
 
     Bouton bouton_quitter;
-    Bouton_Init(&bouton_quitter, 375.0f, 450.0f, 250.0f, 80.0f, BoutonText);
+    Bouton_Init(&bouton_quitter, menu_x, 450.0f, 250.0f, 80.0f, BoutonText);
 
     Bouton bouton_options;
-    Bouton_Init(&bouton_options, 375.0f, 550.0f, 250.0f, 80.0f, BoutonText);
+    Bouton_Init(&bouton_options, menu_x, 550.0f, 250.0f, 80.0f, BoutonText);
 
     SDL_Color blanc = {255, 255, 255, 255};
 
@@ -73,6 +75,12 @@ int afficher_menu(SDL_Renderer *renderer) {
     while(running) {
         SDL_Event event;
         while(SDL_PollEvent(&event)) {
+            if (event.type == SDL_EVENT_MOUSE_MOTION ||
+                event.type == SDL_EVENT_MOUSE_BUTTON_DOWN ||
+                event.type == SDL_EVENT_MOUSE_BUTTON_UP) {
+                SDL_ConvertEventToRenderCoordinates(renderer, &event);
+            }
+
             if(event.type == SDL_EVENT_QUIT) {
                 action = 0;
                 running = 0;

@@ -94,7 +94,6 @@ void objectif_valider(t_objectifs *obj, int index) {
 
 
 
-#define PANNEAU_X      760.0f
 #define PANNEAU_Y       80.0f
 #define PANNEAU_W      230.0f
 #define LIGNE_H         28.0f
@@ -106,6 +105,10 @@ void objectif_valider(t_objectifs *obj, int index) {
 
 void objectifs_afficher(t_objectifs *obj, SDL_Renderer *renderer, TTF_Font *font) {
     if (!obj->visible || !font) return;
+
+    float panneau_x = screen_widthf() - PANNEAU_W - 20.0f;
+    if (panneau_x < 10.0f) panneau_x = 10.0f;
+    float panneau_y = PANNEAU_Y;
  
     Uint32 maintenant = SDL_GetTicks();
 
@@ -126,7 +129,7 @@ void objectifs_afficher(t_objectifs *obj, SDL_Renderer *renderer, TTF_Font *font
     /*  Fond semi-transparent */
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
     SDL_SetRenderDrawColor(renderer, 10, 10, 30, 200);
-    SDL_FRect fond = { PANNEAU_X, PANNEAU_Y, PANNEAU_W, hauteur };
+    SDL_FRect fond = { panneau_x, panneau_y, PANNEAU_W, hauteur };
     SDL_RenderFillRect(renderer, &fond);
  
     /* Bordure */
@@ -139,8 +142,8 @@ void objectifs_afficher(t_objectifs *obj, SDL_Renderer *renderer, TTF_Font *font
     if (s_titre) {
         SDL_Texture *t = SDL_CreateTextureFromSurface(renderer, s_titre);
         SDL_FRect dst = {
-            PANNEAU_X + (PANNEAU_W - s_titre->w) / 2.0f,
-            PANNEAU_Y + PADDING,
+            panneau_x + (PANNEAU_W - s_titre->w) / 2.0f,
+            panneau_y + PADDING,
             (float)s_titre->w, (float)s_titre->h
         };
         SDL_RenderTexture(renderer, t, NULL, &dst);
@@ -150,11 +153,11 @@ void objectifs_afficher(t_objectifs *obj, SDL_Renderer *renderer, TTF_Font *font
  
     /* Séparateur sous le titre */
     SDL_SetRenderDrawColor(renderer, 80, 130, 200, 150);
-    SDL_FRect sep = { PANNEAU_X + PADDING, PANNEAU_Y + PADDING + 22.0f, PANNEAU_W - PADDING * 2, 1.0f };
+    SDL_FRect sep = { panneau_x + PADDING, panneau_y + PADDING + 22.0f, PANNEAU_W - PADDING * 2, 1.0f };
     SDL_RenderFillRect(renderer, &sep);
  
     /*  Lignes d'objectifs  */
-    float y = PANNEAU_Y + PADDING + 24.0f + PADDING;
+    float y = panneau_y + PADDING + 24.0f + PADDING;
  
     for (int i = 0; i < obj->nb; i++) {
         bool en_anim = (obj->anim_slot == i) &&
@@ -165,12 +168,12 @@ void objectifs_afficher(t_objectifs *obj, SDL_Renderer *renderer, TTF_Font *font
             float alpha_f = 1.0f - (float)(maintenant - obj->anim_debut) / (float)ANIM_DUREE;
             SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
             SDL_SetRenderDrawColor(renderer, 50, 220, 80, (Uint8)(alpha_f * 160));
-            SDL_FRect hl = { PANNEAU_X + 2, y - 2, PANNEAU_W - 4, LIGNE_H };
+            SDL_FRect hl = { panneau_x + 2, y - 2, PANNEAU_W - 4, LIGNE_H };
             SDL_RenderFillRect(renderer, &hl);
         }
  
         /* Case à cocher */
-        SDL_FRect case_rect = { PANNEAU_X + PADDING, y + 5.0f, 14.0f, 14.0f };
+        SDL_FRect case_rect = { panneau_x + PADDING, y + 5.0f, 14.0f, 14.0f };
         SDL_SetRenderDrawColor(renderer, 80, 130, 200, 255);
         SDL_RenderRect(renderer, &case_rect);
  
@@ -197,7 +200,7 @@ void objectifs_afficher(t_objectifs *obj, SDL_Renderer *renderer, TTF_Font *font
         if (s) {
             float max_w = PANNEAU_W - PADDING * 2 - 20.0f;
             float draw_w = (s->w > max_w) ? max_w : (float)s->w;
-            SDL_FRect dst_txt = { PANNEAU_X + PADDING + 20.0f, y + 2.0f, draw_w, (float)s->h };
+            SDL_FRect dst_txt = { panneau_x + PADDING + 20.0f, y + 2.0f, draw_w, (float)s->h };
  
             SDL_Texture *t = SDL_CreateTextureFromSurface(renderer, s);
             SDL_FRect full_src = { 0, 0, (float)s->w, (float)s->h };
@@ -211,8 +214,8 @@ void objectifs_afficher(t_objectifs *obj, SDL_Renderer *renderer, TTF_Font *font
             SDL_SetRenderDrawColor(renderer, 80, 180, 80, 200);
             float mid_y = y + LIGNE_H / 2.0f;
             SDL_RenderLine(renderer,
-                PANNEAU_X + PADDING + 20.0f, mid_y,
-                PANNEAU_X + PANNEAU_W - PADDING, mid_y);
+                panneau_x + PADDING + 20.0f, mid_y,
+                panneau_x + PANNEAU_W - PADDING, mid_y);
         }
  
         y += LIGNE_H;
@@ -229,8 +232,8 @@ void objectifs_afficher(t_objectifs *obj, SDL_Renderer *renderer, TTF_Font *font
     if (s_prog) {
         SDL_Texture *t = SDL_CreateTextureFromSurface(renderer, s_prog);
         SDL_FRect dst = {
-            PANNEAU_X + (PANNEAU_W - s_prog->w) / 2.0f,
-            PANNEAU_Y + hauteur - s_prog->h - PADDING / 2.0f,
+            panneau_x + (PANNEAU_W - s_prog->w) / 2.0f,
+            panneau_y + hauteur - s_prog->h - PADDING / 2.0f,
             (float)s_prog->w, (float)s_prog->h
         };
         SDL_RenderTexture(renderer, t, NULL, &dst);

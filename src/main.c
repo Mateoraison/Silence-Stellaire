@@ -15,6 +15,17 @@ typedef enum {
 } EtatJeu;
 
 int Planete_actuelle = 1;
+int g_screen_w = 1000;
+int g_screen_h = 800;
+
+void update_screen_metrics(SDL_Renderer *renderer) {
+    int w = 0;
+    int h = 0;
+    if (renderer && SDL_GetRenderOutputSize(renderer, &w, &h) && w > 0 && h > 0) {
+        g_screen_w = w;
+        g_screen_h = h;
+    }
+}
 
 static int init_sdl(SDL_Window **fenetre, SDL_Renderer **renderer) {
     if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO)) {
@@ -32,7 +43,7 @@ static int init_sdl(SDL_Window **fenetre, SDL_Renderer **renderer) {
         return 0;
     }
 
-    *fenetre = SDL_CreateWindow("Silence Stellaire", 1000, 800, SDL_WINDOW_MAXIMIZED);
+    *fenetre = SDL_CreateWindow("Silence Stellaire", 1000, 800, SDL_WINDOW_FULLSCREEN);
     if (!*fenetre) {
         SDL_Log("Erreur création fenêtre : %s", SDL_GetError());
         MIX_Quit(); TTF_Quit(); SDL_Quit();
@@ -45,6 +56,13 @@ static int init_sdl(SDL_Window **fenetre, SDL_Renderer **renderer) {
         SDL_DestroyWindow(*fenetre);
         MIX_Quit(); TTF_Quit(); SDL_Quit();
         return 0;
+    }
+
+    update_screen_metrics(*renderer);
+
+    // Native fullscreen: no bars, no stretch, no crop from forced logical presentation.
+    if (!SDL_SetRenderLogicalPresentation(*renderer, g_screen_w, g_screen_h, SDL_LOGICAL_PRESENTATION_DISABLED)) {
+        SDL_Log("Avertissement: presentation logique non appliquee : %s", SDL_GetError());
     }
 
     SDL_SetWindowIcon(*fenetre, IMG_Load("assets/logo_win.png"));

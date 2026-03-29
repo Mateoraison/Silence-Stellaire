@@ -39,6 +39,12 @@ static SDL_Texture *g_texture_pawn_invoke = NULL;
 static TTF_Font *g_boss_name_font = NULL;
 static SDL_Texture *g_texture_projectile = NULL;
 
+static void get_player_world_center(float *x, float *y) {
+    // Match gameplay hitbox center: player hitbox is 40x60 at (screen_center_x, screen_center_y).
+    if (x) *x = -perso.x + screen_center_x() + 20.0f;
+    if (y) *y = -perso.y + screen_center_y() + 30.0f;
+}
+
 static int compter_minions_boss(void) {
     int count = 0;
     for (int i = 0; i < MAX_MOB && mobs[i] != NULL; i++) {
@@ -88,8 +94,8 @@ static void charger_texture_projectile(SDL_Renderer *renderer) {
 }
 
 static void get_zone_attaque_joueur(SDL_FRect *zone) {
-    const float char_screen_x = 500.0f;
-    const float char_screen_y = 400.0f;
+    const float char_screen_x = screen_center_x();
+    const float char_screen_y = screen_center_y();
     const float char_w = DISPLAY_TILE_SIZE;
     const float char_h = DISPLAY_TILE_SIZE;
     float zone_attaque_w = DISPLAY_TILE_SIZE * 0.6f;
@@ -163,8 +169,9 @@ static void invoquer_minions_autour_boss(SDL_Renderer *renderer, const boss_t *b
     float centre_y = 0.0f;
     get_boss_centre_monde(boss_ref, &centre_x, &centre_y);
 
-    float joueur_x = -perso.x + 520.0f;
-    float joueur_y = -perso.y + 430.0f;
+    float joueur_x = 0.0f;
+    float joueur_y = 0.0f;
+    get_player_world_center(&joueur_x, &joueur_y);
     float dir_x = joueur_x - centre_x;
     float dir_y = joueur_y - centre_y;
     float dir_len = sqrtf(dir_x * dir_x + dir_y * dir_y);
@@ -229,8 +236,9 @@ static void spawn_projectile_vers_joueur(boss_t *boss_ref) {
     float boss_cx = 0.0f;
     float boss_cy = 0.0f;
     get_boss_centre_monde(boss_ref, &boss_cx, &boss_cy);
-    float joueur_cx = -perso.x + 520.0f;
-    float joueur_cy = -perso.y + 430.0f;
+    float joueur_cx = 0.0f;
+    float joueur_cy = 0.0f;
+    get_player_world_center(&joueur_cx, &joueur_cy);
 
     float dx = joueur_cx - boss_cx;
     float dy = joueur_cy - boss_cy;
@@ -255,7 +263,7 @@ static void spawn_projectile_vers_joueur(boss_t *boss_ref) {
 
 static void update_projectiles(float dt) {
     Uint32 now = SDL_GetTicks();
-    SDL_FRect hitbox_perso = {500.0f, 400.0f, 40.0f, 60.0f};
+    SDL_FRect hitbox_perso = {screen_center_x(), screen_center_y(), 40.0f, 60.0f};
     SDL_FRect boss_hitbox = get_boss_hitbox_ecran(&boss1);
 
     for (int i = 0; i < BOSS_PROJECTILE_MAX; i++) {
@@ -272,10 +280,10 @@ static void update_projectiles(float dt) {
         }
 
         SDL_FRect rect_proj = {
-            g_projectiles[i].x + perso.x - 8.0f,
-            g_projectiles[i].y + perso.y - 8.0f,
-            16.0f,
-            16.0f
+            g_projectiles[i].x + perso.x - 16.0f,
+            g_projectiles[i].y + perso.y - 16.0f,
+            32.0f,
+            32.0f
         };
 
         if (!g_projectiles[i].renvoye && SDL_HasRectIntersectionFloat(&rect_proj, &hitbox_perso)) {
@@ -313,10 +321,10 @@ static void renvoyer_projectiles_touches(boss_t *boss_ref) {
         }
 
         SDL_FRect rect_proj = {
-            g_projectiles[i].x + perso.x - 8.0f,
-            g_projectiles[i].y + perso.y - 8.0f,
-            16.0f,
-            16.0f
+            g_projectiles[i].x + perso.x - 16.0f,
+            g_projectiles[i].y + perso.y - 16.0f,
+            32.0f,
+            32.0f
         };
 
         if (SDL_HasRectIntersectionFloat(&rect_proj, &zone_attaque)) {
@@ -421,8 +429,8 @@ static void afficher_barre_vie_boss(SDL_Renderer *renderer, const boss_t *boss_r
     if (ratio < 0.0f) ratio = 0.0f;
     if (ratio > 1.0f) ratio = 1.0f;
 
-    SDL_FRect fond = {250.0f, BOSS_HEALTHBAR_Y, 500.0f, 24.0f};
-    SDL_FRect vie = {252.0f, BOSS_HEALTHBAR_Y + 2.0f, 496.0f * ratio, 20.0f};
+    SDL_FRect fond = {screen_center_x() - 250.0f, BOSS_HEALTHBAR_Y, 500.0f, 24.0f};
+    SDL_FRect vie = {fond.x + 2.0f, BOSS_HEALTHBAR_Y + 2.0f, (fond.w - 4.0f) * ratio, 20.0f};
 
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
     SDL_SetRenderDrawColor(renderer, 35, 35, 35, 210);
@@ -479,7 +487,7 @@ static void appliquer_degats_contact(boss_t *boss_ref) {
         return;
     }
 
-    SDL_FRect rect_perso = {500.0f, 400.0f, 40.0f, 60.0f};
+    SDL_FRect rect_perso = {screen_center_x(), screen_center_y(), 40.0f, 60.0f};
     SDL_FRect rect_boss = get_boss_hitbox_ecran(boss_ref);
 
     if (SDL_HasRectIntersectionFloat(&rect_perso, &rect_boss)) {
@@ -579,8 +587,9 @@ void update_boss(SDL_Renderer *renderer, boss_t *boss_ref) {
     appliquer_degats_contact(boss_ref);
 
     if (g_zone_impact_pending && now >= g_zone_impact_tick) {
-        float joueur_cx = -perso.x + 520.0f;
-        float joueur_cy = -perso.y + 430.0f;
+        float joueur_cx = 0.0f;
+        float joueur_cy = 0.0f;
+        get_player_world_center(&joueur_cx, &joueur_cy);
         float dx = joueur_cx - g_zone_center_x;
         float dy = joueur_cy - g_zone_center_y;
         float dist = sqrtf(dx * dx + dy * dy);
