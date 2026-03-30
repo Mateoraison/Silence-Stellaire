@@ -104,7 +104,7 @@ Silence-Stellaire/
 
 Le suivi du projet et le diagramme de Gantt sont disponibles sur Google Sheets :
 
-🔗 [Diagramme de Gantt du projet](https://docs.google.com/spreadsheets/d/1nhEIKJEQFC_p0bhr-RSHRnsxeiCNj1qGXCWOt2GKiK8/edit?usp=sharing)
+🔗 [Diagramme de Gantt du projet](https://docs.google.com/spreadsheets/d/1Crgyg5-aRagyHwb9pbF1vICBsLmRDF0shIkXx3tQi3M/edit?usp=sharing)
 
 ## 📝 Licence
 
