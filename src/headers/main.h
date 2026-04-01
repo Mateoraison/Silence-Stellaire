@@ -87,12 +87,37 @@ typedef struct {
     SDL_Texture * texture;
     int vie;
     int id; //1 = mouton, 2 = pawns
+    int type_boss_proprietaire; // -1 pour les mobs neutres, sinon type de boss proprietaire
     int drop_chance;
 }Mob;
+
+typedef enum {
+    TYPE_BOSS_DEMON_DE_FEU = 0,
+    TYPE_BOSS_SENTINELLE = 1,
+    TYPE_BOSS_MINOTAURE = 2
+} type_boss_t;
+
+typedef struct {
+    type_boss_t type;
+    const char *nom_affiche;
+    const char *chemin_sprite;
+    const char *chemin_projectile;
+    const char *chemin_minion_course;
+    int vie_max;
+    int attaque_contact;
+    Uint32 cooldown_projectile_ms;
+    Uint32 cooldown_zone_ms;
+    Uint32 cooldown_invocation_ms;
+    int active_projectile;
+    int active_zone;
+    int active_invocation;
+} boss_config_t;
 
 typedef struct {
     float x;
     float y;
+    type_boss_t type;
+    const boss_config_t *config_boss;
     int est_battu;
     int vie;
     int vie_max;
@@ -101,14 +126,25 @@ typedef struct {
     Uint32 cooldown_zone;
     Uint32 cooldown_invocation;
     Uint32 fin_animation_attaque;
-    int animation_frame_idle;
-    int animation_frame_attack;
-    int animation_frame_death;
+    int frame_anim_repos;
+    int frame_anim_attaque;
+    int frame_anim_mort;
     Uint32 animation_timer;
     int phase;
     SDL_Texture * texture;
-    int animation_state; // 0: idle, 1: attack, 2: death
+    int etat_anim; // 0: repos, 1: attaque, 2: mort
     int drop_effectue;
+    int est_agro;
+    float rayon_detection;
+    float spawn_x;
+    float spawn_y;
+    float patrouille_cible_x;
+    float patrouille_cible_y;
+    int a_cible_patrouille;
+    int degats_melee_appliques;
+    int minotaure_regarde_droite;
+    Uint32 stun_jusqua;
+    Uint32 stun_recharge_jusqua;
 }boss_t;
 
 typedef struct {
@@ -184,6 +220,7 @@ extern t_case *caisse_outils[CAISSE_OUTILS_SIZE];
 extern t_Item * items[MAX_ITEMS];
 extern Mob * mobs[MAX_MOB];
 extern boss_t boss1;
+extern boss_t boss3;
 
 extern t_case *inventaire[INVENTAIRE_SIZE];
 extern bool inventaire_ouvert;

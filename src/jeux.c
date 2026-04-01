@@ -44,6 +44,7 @@ int argent = 0;
 float vitesse_bonus = 0.0f;
 
 boss_t boss1;
+boss_t boss3;
 
 t_objectifs objectifs_jeu;
 TTF_Font *font_objectifs = NULL;
@@ -221,7 +222,9 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         perso = (Perso){screen_center_x() - 1080.0f, screen_center_y() - 900.0f, NULL, 0, 10, 10, 10, 10, SDL_GetTicks()};
         srand(time(NULL));
 
-        init_boss(renderer, &boss1, 500.0f, 13 * DISPLAY_TILE_SIZE, 100, 10);
+        
+        init_boss(renderer, &boss1, TYPE_BOSS_DEMON_DE_FEU, 700.0f, 20 * DISPLAY_TILE_SIZE);
+        init_boss(renderer, &boss3, TYPE_BOSS_MINOTAURE, 700.0f, 20 * DISPLAY_TILE_SIZE);
 
         objectifs_init(&objectifs_jeu,planete);
         font_objectifs = TTF_OpenFont("assets/police.ttf",14);
@@ -244,6 +247,10 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
     case 3: remplir_tileset(map,"map3.txt");break;
     default: break;
     }
+
+    boss_set_navigation_map(map);
+
+    boss_t *boss_actif = (planete == 3) ? &boss3 : &boss1;
     
 
     for (int x = 0; x < W_MAP; x++) {
@@ -598,7 +605,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         
         update_combat(map, mobs, renderer, items);
         update_mobs(map, mobs);
-        update_boss(renderer, &boss1);
+        mettre_a_jour_boss(renderer, boss_actif);
         possible_ramasser_item(items, renderer, hotbar);
 
 
@@ -612,6 +619,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         SDL_FRect src_vaiseaux = {0, 0, VAISSEAU_WIDTH, VAISSEAU_HEIGHT};
         SDL_FRect dest_vaisseau = {VAISSEAU_WORLD_X + perso.x, VAISSEAU_WORLD_Y + perso.y, VAISSEAU_WIDTH, VAISSEAU_HEIGHT};
         SDL_RenderTexture(renderer, exterieure, &src_vaiseaux, &dest_vaisseau);
+        afficher_boss(renderer, boss_actif);
 
         if (combat_en_cours == false) afficher_perso(renderer);
 
@@ -730,27 +738,6 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
 
         afficher_combat(renderer);
         
-        afficher_boss(renderer, &boss1);
-        if (maintenant - boss1.animation_timer > 125) {
-            if(boss1.animation_state == 0){
-                boss1.animation_frame_idle = (boss1.animation_frame_idle + 1) % 6;
-                boss1.animation_timer = maintenant;
-            } else if(boss1.animation_state == 1){
-                if (boss1.animation_frame_attack < 14) {
-                    boss1.animation_frame_attack++;
-                } else {
-                    boss1.animation_state = 0;
-                    boss1.animation_frame_attack = 0;
-                }
-                boss1.animation_timer = maintenant;
-            } else if(boss1.animation_state == 2){
-                if (boss1.animation_frame_death < 15) {
-                    boss1.animation_frame_death++;
-                }
-                boss1.animation_timer = maintenant;
-            }
-        }
-
         Uint32 cycle_etat = (SDL_GetTicks() - cycle_debut) % CYCLE_MS;
         float phase = (float)cycle_etat / (float)CYCLE_MS;
         float mod = (phase < 0.5f) ? (phase * 2.0f) : ((1.0f - phase) * 2.0f);
@@ -912,8 +899,9 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
     SDL_DestroyTexture(texture_caisse_outils);
     if (code_sortie != 4) {
         detruire_mobs(mobs);
-        Destroy_boss(&boss1);
+        detruire_boss(boss_actif);
     }
     SDL_DestroyTexture(tileset);
     return code_sortie;
 }
+

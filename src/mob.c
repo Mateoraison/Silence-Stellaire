@@ -136,6 +136,7 @@ void init_mobs(SDL_Renderer * renderer, Mob * mobs[MAX_MOB], t_tile map[W_MAP][H
     mobs[index]->target_vy = 0.0f;
     mobs[index]->time_change_dir = 0;
     mobs[index]->vie = 3;
+    mobs[index]->type_boss_proprietaire = -1;
     mobs[index]->drop_chance = 100;
 
         if (veut_mouton) {
@@ -193,7 +194,7 @@ void init_mobs(SDL_Renderer * renderer, Mob * mobs[MAX_MOB], t_tile map[W_MAP][H
         mobs[index]->vx = 0.0f; mobs[index]->vy = 0.0f;
         mobs[index]->target_vx = 0.0f; mobs[index]->target_vy = 0.0f;
         mobs[index]->time_change_dir = 0;
-        mobs[index]->vie = 3; mobs[index]->drop_chance = 100;
+        mobs[index]->vie = 3; mobs[index]->type_boss_proprietaire = -1; mobs[index]->drop_chance = 100;
         index++;
     }
 
@@ -235,6 +236,7 @@ static int spawn_one_mob_of_type(Mob * mobs[MAX_MOB], t_tile map[W_MAP][H_MAP], 
         mobs[idx]->target_vx = 0.0f; mobs[idx]->target_vy = 0.0f;
         mobs[idx]->time_change_dir = 0;
         mobs[idx]->vie = 3;
+        mobs[idx]->type_boss_proprietaire = -1;
         mobs[idx]->drop_chance = 100;
         if (type_id == 1) { mobs[idx]->speed = 30.0f; mobs[idx]->texture = texture_mouton; mobs[idx]->id = 1; }
         else { mobs[idx]->speed = 70.0f; mobs[idx]->texture = texture_pawns; mobs[idx]->id = 2; }
