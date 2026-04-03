@@ -1,3 +1,6 @@
+#ifndef MAIN_H
+#define MAIN_H
+
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
 #include <math.h>
@@ -11,6 +14,12 @@
 #define H_MAP 40
 #define SOURCE_TILE_SIZE 64
 #define DISPLAY_TILE_SIZE 90
+
+#define PLANETE3_TILE_SIZE 16
+#define PLANETE3_ROOM_W 10
+#define PLANETE3_ROOM_H 7
+#define PLANETE3_END_W 5
+#define PLANETE3_END_H 5
 
 #define VAISSEAU_WORLD_X 750.0f
 #define VAISSEAU_WORLD_Y 550.0f
@@ -224,3 +233,8 @@ extern boss_t boss3;
 
 extern t_case *inventaire[INVENTAIRE_SIZE];
 extern bool inventaire_ouvert;
+
+extern bool g_planete3_engrenage_recupere;
+extern bool g_planete3_boss_spawned;
+
+#endif

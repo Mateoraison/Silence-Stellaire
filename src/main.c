@@ -14,7 +14,7 @@ typedef enum {
     ETAT_QUITTER
 } EtatJeu;
 
-int Planete_actuelle = 3;
+int Planete_actuelle = 1;
 int g_screen_w = 1000;
 int g_screen_h = 800;
 

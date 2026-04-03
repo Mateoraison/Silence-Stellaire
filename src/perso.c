@@ -409,6 +409,9 @@ void possible_ramasser_item(t_Item * items[MAX_ITEMS], SDL_Renderer * renderer, 
                     if (items[i]->type == PIECE) {
                         argent++;
                     } else {
+                        if (Planete_actuelle == 3 && items[i]->type == ENGRENAGE) {
+                            g_planete3_engrenage_recupere = true;
+                        }
                         ajouter_item_hotbar(hotbar, items[i], renderer);
                     }
 
