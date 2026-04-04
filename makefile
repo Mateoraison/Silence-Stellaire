@@ -89,12 +89,25 @@ run: all
 clean:
 ifeq ($(OS_NAME),Windows)
 	@cmd /C "if exist \"$(BIN)\" del /F /Q \"$(BIN)\""
+	@cmd /C "if exist \"$(BIN_DIR)\\test_collision.exe\" del /F /Q \"$(BIN_DIR)\\test_collision.exe\""
 	@if exist "$(OBJ_DIR)" rmdir /S /Q "$(OBJ_DIR)"
 else
 	rm -rf $(OBJ_DIR)
 	rm -f $(BIN)
+	rm -f $(BIN_DIR)/test_collision
+endif
+
+test_collision:
+ifeq ($(OS_NAME),Windows)
+	if not exist $(BIN_DIR) mkdir $(BIN_DIR)
+	$(CC) test/test_collision.c src/perso.c -I$(HDR_DIR) -I$(INC_DIR) -L$(LIB_DIR) -lSDL3 -lSDL3_image -lSDL3_ttf -lSDL3_mixer -lm -lssp -o $(BIN_DIR)/test_collision.exe
+	./$(BIN_DIR)/test_collision.exe
+else
+	mkdir -p $(BIN_DIR)
+	$(CC) test/test_collision.c src/perso.c -I$(HDR_DIR) -I$(INC_DIR) -L$(LIB_DIR) -lSDL3 -lSDL3_image -lSDL3_ttf -lSDL3_mixer -lm $(RPATH_FLAG) -o $(BIN_DIR)/test_collision
+	./$(BIN_DIR)/test_collision
 endif
 
 re: clean all
 
-.PHONY: all run clean re
+.PHONY: all run clean re test_collision
