@@ -9,4 +9,6 @@
  */
 int jouer_cinematique_intro(SDL_Renderer *renderer);
 
+int jouer_cinematique_crash(SDL_Renderer *renderer);
+
 #endif

@@ -105,7 +105,7 @@ int main(int argc, char *argv[]) {
                 switch (action) {
                     case 1:  reprendre_partie = false; etat = ETAT_JEU;     break; // Nouvelle partie
                     case 2:  etat = ETAT_OPTIONS;  break; // Options
-                    case 3:  reprendre_partie = false; etat = ETAT_JEU; break; // Continuer
+                    case 3:  reprendre_partie = true; etat = ETAT_JEU; break; // Continuer
                     default: etat = ETAT_QUITTER;  break; // Quitter / Échap
                 }
                 break;

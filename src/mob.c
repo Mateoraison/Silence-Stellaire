@@ -48,6 +48,11 @@ static int pop_respawn_prevu(EntreeRespawn *out) {
     return -1;
 }
 
+void reset_mob_respawn_queue(void) {
+    tete_file = 0;
+    queue_file = 0;
+}
+
 void init_mobs(SDL_Renderer * renderer, Mob * mobs[MAX_MOB], t_tile map[W_MAP][H_MAP], int nb_pawns, int nb_moutons) {
     if (texture_pawns == NULL) {
         texture_pawns = IMG_LoadTexture(renderer, "assets/tileset/V2/Tiny_Swords/Units/BlackUnits/Pawn/Pawn.png");
@@ -488,9 +493,13 @@ void detruire_mobs(Mob * mobs[MAX_MOB]) {
         SDL_DestroyTexture(texture_minion_attack);
         texture_minion_attack = NULL;
     }
-    for (int i = 0; mobs[i] != NULL; i++) {
-        mobs[i]->texture = NULL;
+    for (int i = 0; i < MAX_MOB; i++) {
+        if (mobs[i] != NULL) {
+            free(mobs[i]);
+            mobs[i] = NULL;
+        }
     }
+    reset_mob_respawn_queue();
 }
 
 

@@ -238,6 +238,19 @@ static t_Cuisson cuisson = {0, -1, 0, NULL};
 
 int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, bool reprendre_partie) {
 
+    if (font_objectifs) {
+        TTF_CloseFont(font_objectifs);
+        font_objectifs = NULL;
+    }
+    detruire_tout_item(items);
+    for (int i = 0; i < MAX_ITEMS; i++) items[i] = NULL;
+    index_item = 0;
+    detruire_mobs(mobs);
+    reset_mob_respawn_queue();
+
+    init_boss(renderer, &boss1, TYPE_BOSS_DEMON_DE_FEU, 700.0f, 20 * DISPLAY_TILE_SIZE);
+    init_boss(renderer, &boss3, TYPE_BOSS_MINOTAURE, 500.0f, 250.0f);
+
 
 
     if (!reprendre_partie) {
@@ -265,9 +278,6 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
             }
         }
 
-        detruire_tout_item(items);
-        for (int i = 0; i < MAX_ITEMS; i++) items[i] = NULL;
-        index_item = 0;
         argent = 0;
         vitesse_bonus = 0.0f;
         inventaire_ouvert = false;
@@ -276,10 +286,6 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
 
         perso = (Perso){screen_center_x() - 1080.0f, screen_center_y() - 900.0f, NULL, 0, 10, 10, 10, 10, SDL_GetTicks()};
         srand(time(NULL));
-
-        
-        init_boss(renderer, &boss1, TYPE_BOSS_DEMON_DE_FEU, 700.0f, 20 * DISPLAY_TILE_SIZE);
-        init_boss(renderer, &boss3, TYPE_BOSS_MINOTAURE, 500.0f, 250.0f);
         g_planete3_engrenage_recupere = false;
         g_planete3_boss_spawned = false;
 
@@ -288,9 +294,12 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
             boss3.est_agro = 0;
             retirer_item_type_depuis_caisse(caisse_outils, CAISSE_OUTILS_SIZE, ENGRENAGE);
         }
-
-        objectifs_init(&objectifs_jeu,planete);
-        font_objectifs = TTF_OpenFont("assets/police.ttf",14);
+        if (planete == 1) {
+            int code_cinematique = jouer_cinematique_crash(renderer);
+            if (code_cinematique == 1) {
+                return 1;
+            }
+        }
     }
 
 
@@ -349,6 +358,13 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
     }
 
     sauvegarde_appliquer_si_disponible(renderer);
+
+    if (reprendre_partie) {
+        init_mobs(renderer, mobs, map, 100, 100);
+    }
+
+    objectifs_init(&objectifs_jeu, planete);
+    font_objectifs = TTF_OpenFont("assets/police.ttf", 14);
 
     bool running = true;
     SDL_Event event;
