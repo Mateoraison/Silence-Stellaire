@@ -55,8 +55,8 @@ cd Silence-Stellaire
 
 2. **Compiler le projet**
 ```bash
-make all                                                                                                        # Linux et Mac
-gcc src/*.c -Iinclude -Llib -lSDL3 -lSDL3_image -lSDL3_ttf -lSDL3_mixer -lm -Wall -o bin/Silence-Stellaire.exe  # Windows
+make all        # Linux, Mac et Windows
+build_run.bat   # Windows
 ```
 
 3. **Lancer le jeu**
