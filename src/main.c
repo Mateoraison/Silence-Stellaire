@@ -103,7 +103,7 @@ int main(int argc, char *argv[]) {
             case ETAT_MENU: {
                 int action = afficher_menu(renderer);
                 switch (action) {
-                    case 1:  reprendre_partie = false; etat = ETAT_JEU;     break; // Nouvelle partie
+                    case 1:  Planete_actuelle = 1; reprendre_partie = false; etat = ETAT_JEU;     break; // Nouvelle partie
                     case 2:  etat = ETAT_OPTIONS;  break; // Options
                     case 3:  reprendre_partie = true; etat = ETAT_JEU; break; // Continuer
                     default: etat = ETAT_QUITTER;  break; // Quitter / Échap
@@ -133,7 +133,7 @@ int main(int argc, char *argv[]) {
             }
             case ETAT_MAP: {
                 int planete_choisie = afficher_map(renderer);
-                if (planete_choisie >= 1 && planete_choisie <= 3)
+                if (planete_choisie >= 1 && planete_choisie <= 4)
                     Planete_actuelle = planete_choisie;
                 etat = ETAT_JEU;
                 break;

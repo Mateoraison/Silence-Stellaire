@@ -8,6 +8,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 
 #define ENGRENAGES_MAX 1
@@ -234,6 +235,200 @@ typedef struct {
 
 static t_Cuisson cuisson = {0, -1, 0, NULL};
 
+typedef struct {
+    int ouvert;
+    char saisie[128];
+    char message[160];
+    Uint32 message_expire;
+    TTF_Font *font;
+} t_console_cmd;
+
+static t_console_cmd console_cmd = {0};
+static int console_god_mode = 0;
+
+static void console_set_message(const char *msg) {
+    SDL_snprintf(console_cmd.message, sizeof(console_cmd.message), "%s", msg ? msg : "");
+    console_cmd.message_expire = SDL_GetTicks() + 4000;
+}
+
+static int console_ajouter_item(typeItem type, int quantite, SDL_Renderer *renderer) {
+    int ajoutes = 0;
+    for (int i = 0; i < quantite; i++) {
+        t_Item *item = init_item(type, renderer, 0.0f, 0.0f);
+        if (!item) {
+            break;
+        }
+        ajouter_item_hotbar(hotbar, item, renderer);
+        free(item);
+        ajoutes++;
+    }
+    return ajoutes;
+}
+
+static void console_executer_commande(const char *commande, SDL_Renderer *renderer) {
+    if (!commande || commande[0] == '\0') {
+        return;
+    }
+
+    while (*commande == ' ' || *commande == '\t') {
+        commande++;
+    }
+
+    while (*commande == '/') {
+        commande++;
+    }
+
+    if (*commande == '\0') {
+        console_set_message("Commande vide. Tape /help");
+        return;
+    }
+
+    if (SDL_strcasecmp(commande, "help") == 0) {
+        console_set_message("/give engrenage|piece [q], /heal, /tp x y, /god on|off, /repare");
+        return;
+    }
+
+    if (SDL_strcasecmp(commande, "repare") == 0 || SDL_strcasecmp(commande, "repair") == 0) {
+        vaisseau_repare = true;
+        engrenages_poses = ENGRENAGES_MAX;
+        console_set_message("Vaisseau repare");
+        return;
+    }
+
+    if (SDL_strcasecmp(commande, "heal") == 0) {
+        perso.vie = perso.vie_max;
+        perso.faim = perso.faim_max;
+        console_set_message("Soin applique: vie et faim remplies");
+        return;
+    }
+
+    int tx = 0;
+    int ty = 0;
+    if (sscanf(commande, "tp %d %d", &tx, &ty) == 2) {
+        if (tx < 0) tx = 0;
+        if (ty < 0) ty = 0;
+        if (tx >= W_MAP) tx = W_MAP - 1;
+        if (ty >= H_MAP) ty = H_MAP - 1;
+
+        update_screen_metrics(renderer);
+        perso.x = -(tx * DISPLAY_TILE_SIZE) + screen_center_x();
+        perso.y = -(ty * DISPLAY_TILE_SIZE) + screen_center_y();
+
+        char msg[160];
+        SDL_snprintf(msg, sizeof(msg), "Teleportation: tuile (%d, %d)", tx, ty);
+        console_set_message(msg);
+        return;
+    }
+
+    char etat[16] = {0};
+    if (sscanf(commande, "god %15s", etat) == 1) {
+        if (SDL_strcasecmp(etat, "on") == 0 || SDL_strcasecmp(etat, "1") == 0) {
+            console_god_mode = 1;
+            perso.vie = perso.vie_max;
+            perso.faim = perso.faim_max;
+            console_set_message("God mode active");
+            return;
+        }
+        if (SDL_strcasecmp(etat, "off") == 0 || SDL_strcasecmp(etat, "0") == 0) {
+            console_god_mode = 0;
+            console_set_message("God mode desactive");
+            return;
+        }
+        console_set_message("Usage: /god on|off");
+        return;
+    }
+
+    char objet[32] = {0};
+    int quantite = 1;
+    int lus = sscanf(commande, "give %31s %d", objet, &quantite);
+    if (lus >= 1) {
+        if (quantite < 1) {
+            quantite = 1;
+        }
+
+        if (SDL_strcasecmp(objet, "engrenage") == 0 || SDL_strcasecmp(objet, "gear") == 0) {
+            int ajoutes = console_ajouter_item(ENGRENAGE, quantite, renderer);
+            if (ajoutes > 0) {
+                char msg[160];
+                SDL_snprintf(msg, sizeof(msg), "Ajout: %d engrenage(s)", ajoutes);
+                console_set_message(msg);
+            } else {
+                console_set_message("Echec: impossible d'ajouter l'item");
+            }
+            return;
+        }
+
+        if (SDL_strcasecmp(objet, "piece") == 0 || SDL_strcasecmp(objet, "pieces") == 0) {
+            int ajoutes = console_ajouter_item(PIECE, quantite, renderer);
+            if (ajoutes > 0) {
+                char msg[160];
+                SDL_snprintf(msg, sizeof(msg), "Ajout: %d piece(s)", ajoutes);
+                console_set_message(msg);
+            } else {
+                console_set_message("Echec: impossible d'ajouter l'item");
+            }
+            return;
+        }
+
+        console_set_message("Item inconnu. Exemple: /give engrenage 2");
+        return;
+    }
+
+    console_set_message("Commande inconnue. Tape /help");
+}
+
+static void console_afficher(SDL_Renderer *renderer) {
+    if (!console_cmd.font) {
+        return;
+    }
+
+    const float panel_w = screen_widthf() * 0.8f;
+    const float panel_h = 122.0f;
+    const float panel_x = (screen_widthf() - panel_w) * 0.5f;
+    const float panel_y = screen_heightf() - panel_h - 20.0f;
+
+    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+    SDL_SetRenderDrawColor(renderer, 12, 18, 30, 220);
+    SDL_FRect panel = {panel_x, panel_y, panel_w, panel_h};
+    SDL_RenderFillRect(renderer, &panel);
+    SDL_SetRenderDrawColor(renderer, 120, 180, 230, 220);
+    SDL_RenderRect(renderer, &panel);
+
+    SDL_Color col = {230, 230, 230, 255};
+    const char *hint = "Terminal (F1 pour fermer) - /help pour commandes";
+    SDL_Surface *s_hint = TTF_RenderText_Solid(console_cmd.font, hint, strlen(hint), col);
+    if (s_hint) {
+        SDL_Texture *t_hint = SDL_CreateTextureFromSurface(renderer, s_hint);
+        SDL_FRect r_hint = {panel_x + 10.0f, panel_y + 8.0f, (float)s_hint->w, (float)s_hint->h};
+        SDL_RenderTexture(renderer, t_hint, NULL, &r_hint);
+        SDL_DestroyTexture(t_hint);
+        SDL_DestroySurface(s_hint);
+    }
+
+    char ligne[160];
+    SDL_snprintf(ligne, sizeof(ligne), "> %s", console_cmd.saisie);
+    SDL_Surface *s_cmd = TTF_RenderText_Solid(console_cmd.font, ligne, strlen(ligne), col);
+    if (s_cmd) {
+        SDL_Texture *t_cmd = SDL_CreateTextureFromSurface(renderer, s_cmd);
+        SDL_FRect r_cmd = {panel_x + 10.0f, panel_y + 34.0f, (float)s_cmd->w, (float)s_cmd->h};
+        SDL_RenderTexture(renderer, t_cmd, NULL, &r_cmd);
+        SDL_DestroyTexture(t_cmd);
+        SDL_DestroySurface(s_cmd);
+    }
+
+    if (console_cmd.message[0] != '\0') {
+        SDL_Color out_col = {170, 220, 255, 255};
+        SDL_Surface *s_out = TTF_RenderText_Solid(console_cmd.font, console_cmd.message, strlen(console_cmd.message), out_col);
+        if (s_out) {
+            SDL_Texture *t_out = SDL_CreateTextureFromSurface(renderer, s_out);
+            SDL_FRect r_out = {panel_x + 10.0f, panel_y + 62.0f, (float)s_out->w, (float)s_out->h};
+            SDL_RenderTexture(renderer, t_out, NULL, &r_out);
+            SDL_DestroyTexture(t_out);
+            SDL_DestroySurface(s_out);
+        }
+    }
+}
+
 
 
 int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, bool reprendre_partie) {
@@ -335,6 +530,9 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
             }
         }
         break;
+    case 4:
+        remplir_tileset(map,"map2.txt");
+        break;
     default: break;
     }
 
@@ -368,12 +566,18 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
 
     bool running = true;
     SDL_Event event;
+    console_cmd.ouvert = 0;
+    console_cmd.saisie[0] = '\0';
+    console_cmd.message[0] = '\0';
+    console_cmd.message_expire = 0;
+    console_cmd.font = TTF_OpenFont("assets/police.ttf", 18);
 
     int code_sortie = 0;
     SDL_Texture * exterieure = IMG_LoadTexture(renderer,
         vaisseau_repare
             ? "assets/tileset/V2/EXT_vaisseau/vaisseau_non_casser.png"
             : "assets/tileset/V2/EXT_vaisseau/vaisseau_casser.png");
+    int exterieure_reparee = vaisseau_repare ? 1 : 0;
 
     SDL_Texture *texture_caisse_outils = IMG_LoadTexture(renderer, "assets/UI/caisse_outils.png");
 
@@ -416,10 +620,61 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
                 SDL_ConvertEventToRenderCoordinates(renderer, &event);
             }
 
+            if (console_cmd.ouvert && event.type == SDL_EVENT_TEXT_INPUT) {
+                size_t len = strlen(console_cmd.saisie);
+                size_t remain = sizeof(console_cmd.saisie) - len - 1;
+                if (remain > 0) {
+                    strncat(console_cmd.saisie, event.text.text, remain);
+                }
+                continue;
+            }
+
             if (event.type == SDL_EVENT_QUIT){
                 running = false;
                 code_sortie = 1;
             } else if (event.type == SDL_EVENT_KEY_DOWN) {
+                SDL_Window *window = SDL_GetRenderWindow(renderer);
+
+                if (event.key.key == SDLK_F1) {
+                    console_cmd.ouvert = !console_cmd.ouvert;
+                    if (window) {
+                        if (console_cmd.ouvert) SDL_StartTextInput(window);
+                        else SDL_StopTextInput(window);
+                    }
+                    continue;
+                }
+
+                if (!console_cmd.ouvert && event.key.key == SDLK_SLASH) {
+                    console_cmd.ouvert = 1;
+                    SDL_snprintf(console_cmd.saisie, sizeof(console_cmd.saisie), "/");
+                    if (window) SDL_StartTextInput(window);
+                    continue;
+                }
+
+                if (console_cmd.ouvert) {
+                    if (event.key.key == SDLK_ESCAPE) {
+                        console_cmd.ouvert = 0;
+                        if (window) SDL_StopTextInput(window);
+                        continue;
+                    }
+
+                    if (event.key.key == SDLK_BACKSPACE) {
+                        size_t len = strlen(console_cmd.saisie);
+                        if (len > 0) {
+                            console_cmd.saisie[len - 1] = '\0';
+                        }
+                        continue;
+                    }
+
+                    if (event.key.key == SDLK_RETURN || event.key.key == SDLK_KP_ENTER) {
+                        console_executer_commande(console_cmd.saisie, renderer);
+                        console_cmd.saisie[0] = '\0';
+                        continue;
+                    }
+
+                    continue;
+                }
+
                 if(event.key.key == SDLK_ESCAPE){
                     // Ouvrir le menu pause SANS quitter la boucle
                     int pause_result = afficher_pause(renderer, track_global);
@@ -513,6 +768,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
                                             vaisseau_repare = true;
                                             SDL_DestroyTexture(exterieure);
                                             exterieure = IMG_LoadTexture(renderer, "assets/tileset/V2/EXT_vaisseau/vaisseau_non_casser.png");
+                                            exterieure_reparee = 1;
                                         }
                                     }
                                 }
@@ -600,7 +856,9 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         float old_x = perso.x;
         float old_y = perso.y;
 
-        deplacer_perso(delta);
+        if (!console_cmd.ouvert) {
+            deplacer_perso(delta);
+        }
 
         SDL_Rect hitbox = {
             .x = (int)(cx - perso.x) + 30,
@@ -717,6 +975,12 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         update_combat(map, mobs, renderer, items);
         update_mobs(map, mobs);
 
+        if (vaisseau_repare && !exterieure_reparee) {
+            SDL_DestroyTexture(exterieure);
+            exterieure = IMG_LoadTexture(renderer, "assets/tileset/V2/EXT_vaisseau/vaisseau_non_casser.png");
+            exterieure_reparee = 1;
+        }
+
         if (planete == 3 && g_planete3_engrenage_recupere && !g_planete3_boss_spawned) {
             float spawn_x = 0.0f;
             float spawn_y = 0.0f;
@@ -735,7 +999,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         
         SDL_FRect src_caisse_outils = {0, 0, 64, 64};
         SDL_FRect dest_caisse_outils = {10*DISPLAY_TILE_SIZE + perso.x, 11*DISPLAY_TILE_SIZE + perso.y, DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE};
-        SDL_RenderTexture(renderer, texture_caisse_outils, &src_caisse_outils, &dest_caisse_outils);
+        if(planete == 1)SDL_RenderTexture(renderer, texture_caisse_outils, &src_caisse_outils, &dest_caisse_outils);
 
         afficher_item(items, renderer);
 
@@ -877,12 +1141,12 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
 
         afficher_hotbar(hotbar, renderer);
 
-        if ((maintenant - faim_timer) > 10000) {
+        if (!console_god_mode && (maintenant - faim_timer) > 10000) {
             if (perso.faim > 0) perso.faim--;
             faim_timer = maintenant;
         }
 
-        if(perso.faim == 0 && (maintenant-faim_degat_timer)>3000){
+        if(!console_god_mode && perso.faim == 0 && (maintenant-faim_degat_timer)>3000){
             if((rand()%100<20)){
                 perso.vie--;
             }
@@ -891,6 +1155,20 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
 
         afficher_stat(renderer);
         objectifs_afficher(&objectifs_jeu,renderer,font_objectifs);
+
+        if (console_cmd.ouvert) {
+            console_afficher(renderer);
+        } else if (console_cmd.message[0] != '\0' && SDL_GetTicks() < console_cmd.message_expire && console_cmd.font) {
+            SDL_Color info_col = {220, 240, 255, 255};
+            SDL_Surface *s_info = TTF_RenderText_Solid(console_cmd.font, console_cmd.message, strlen(console_cmd.message), info_col);
+            if (s_info) {
+                SDL_Texture *t_info = SDL_CreateTextureFromSurface(renderer, s_info);
+                SDL_FRect r_info = {20.0f, sh - 38.0f, (float)s_info->w, (float)s_info->h};
+                SDL_RenderTexture(renderer, t_info, NULL, &r_info);
+                SDL_DestroyTexture(t_info);
+                SDL_DestroySurface(s_info);
+            }
+        }
 
         //Horloge jour/nuit 
         const float bar_x     = 430.0f;  // début de la barre
@@ -986,6 +1264,11 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
             afficher_inventaire(inventaire, renderer, INVENTAIRE_SIZE, INVENTAIRE_COLS, INVENTAIRE_ROWS);
         }
 
+        if (console_god_mode) {
+            perso.vie = perso.vie_max;
+            perso.faim = perso.faim_max;
+        }
+
         perso.x = perso_x_original;
         perso.y = perso_y_original;
         if (vie_avant > perso.vie) {
@@ -1024,6 +1307,15 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
     }
 
     if (code_sortie != 4 && font_objectifs) { TTF_CloseFont(font_objectifs); font_objectifs = NULL; }
+    if (console_cmd.ouvert) {
+        SDL_Window *window = SDL_GetRenderWindow(renderer);
+        if (window) SDL_StopTextInput(window);
+        console_cmd.ouvert = 0;
+    }
+    if (console_cmd.font) {
+        TTF_CloseFont(console_cmd.font);
+        console_cmd.font = NULL;
+    }
     SDL_DestroyTexture(exterieure);
     SDL_DestroyTexture(texture_caisse_outils);
     if (code_sortie != 4) {

@@ -93,7 +93,7 @@ static bool gerer_interaction_objet(SDL_Renderer *renderer, int planete_actuelle
             snprintf(message_interaction, message_size, "Appuyez sur E pour voir la map");
             if (e_pressed) {
                 int planete_choisie = afficher_map(renderer);
-                if (planete_choisie >= 1 && planete_choisie <= 3) {
+                if (planete_choisie >= 1 && planete_choisie <= 4) {
                     Planete_actuelle = planete_choisie;
                     *planete_changee = true;
                 }
@@ -117,6 +117,9 @@ static bool gerer_interaction_objet(SDL_Renderer *renderer, int planete_actuelle
                 if (Planete_actuelle == planete_entree_vaisseau) {
                     perso.x = retour_x_planete;
                     perso.y = retour_y_planete;
+                } else if (Planete_actuelle == 3) {
+                    // Spawn dans la salle de depart du labyrinthe 
+                    spawn_perso(5, 5);
                 }
                 *running = false;
                 *code_sortie = 0;
