@@ -1292,6 +1292,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
 
         if(!console_god_mode && perso.faim == 0 && (maintenant-faim_degat_timer)>3000){
             if((rand()%100<20)){
+                jouer_son("assets/audio/dammage.mp3", 0.2f);
                 perso.vie--;
             }
             faim_degat_timer = maintenant;
@@ -1447,7 +1448,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         }
 
         SDL_RenderPresent(renderer);
-        if(perso.vie == 0) running = game_over(renderer, planete);
+        if(perso.vie == 0) {jouer_son("assets/audio/death.mp3", 0.2f); running = game_over(renderer, planete);}
     }
 
     if (code_sortie != 4 && font_objectifs) { TTF_CloseFont(font_objectifs); font_objectifs = NULL; }
@@ -1469,3 +1470,4 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
     SDL_DestroyTexture(tileset);
     return code_sortie;
 }
+ 

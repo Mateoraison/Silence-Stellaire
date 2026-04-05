@@ -92,18 +92,22 @@ int afficher_menu(SDL_Renderer *renderer) {
                 }
             }
             if (Bouton_GererEvenement(&bouton_game, &event)) {
+                jouer_son("assets/audio/click.mp3", 0.5f);
                 action = 1; // commencer le jeu
-                running = 0;
+                running = 0;  
             }
             if (Bouton_GererEvenement(&bouton_quitter, &event)) {
+                jouer_son("assets/audio/click.mp3", 0.5f);
                 action = 0; // quitter
                 running = 0;
             }
             if (Bouton_GererEvenement(&bouton_options, &event)) {
+                jouer_son("assets/audio/click.mp3", 0.5f);
                 action = 2;// option
                 running = 0;
             }
             if(Bouton_GererEvenement(&bouton_continuer,&event)) {
+                jouer_son("assets/audio/click.mp3", 0.5f);
                 int slot = sauvegarde_choisir_slot(renderer, "Charger une partie", true);
                 if (slot > 0) {
                     int planete_chargee = Planete_actuelle;

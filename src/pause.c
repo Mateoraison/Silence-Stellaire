@@ -196,7 +196,7 @@ int afficher_pause(SDL_Renderer *renderer, MIX_Track *track_global) {
     TTF_CloseFont(font);
 
     // Reprendre la musique uniquement si on retourne en jeu
-    if (resultat == PAUSE_REPRENDRE && track_global)
+    if (resultat == PAUSE_REPRENDRE && track_global && son_est_actif())
         reprendre_son(track_global);
 
     return resultat;

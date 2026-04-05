@@ -36,6 +36,7 @@ static float acceleration_decroissance(float valeur) {
     return valeur * valeur * (3.0f - 2.0f * valeur);
 }
 
+
 int jouer_cinematique_intro(SDL_Renderer *renderer) {
     SDL_Texture *fond_ecran = IMG_LoadTexture(renderer, "assets/menu/menu.png");
     SDL_Texture *logo = IMG_LoadTexture(renderer, "assets/logo_win.png");
@@ -48,6 +49,7 @@ int jouer_cinematique_intro(SDL_Renderer *renderer) {
     SDL_Texture *texture_titre = NULL;
     SDL_Texture *texture_info = NULL;
     SDL_Texture *texture_passage = NULL;
+
 
     if (police_titre) {
         SDL_Surface *surface = TTF_RenderText_Solid(police_titre, "Silence Stellaire", 16, blanc);
@@ -168,6 +170,8 @@ int jouer_cinematique_intro(SDL_Renderer *renderer) {
 }
 
 int jouer_cinematique_crash(SDL_Renderer *renderer) {
+    int sfx = 1; 
+
     TTF_Font *police_cinematique = TTF_OpenFont("assets/police.ttf", 40);
     SDL_Texture *fond_map = IMG_LoadTexture(renderer, "assets/carte_espace/fond_map.png");
     SDL_Texture *vaisseau_integre = IMG_LoadTexture(renderer, "assets/tileset/V2/EXT_vaisseau/vaisseau_non_casser.png");
@@ -422,6 +426,10 @@ int jouer_cinematique_crash(SDL_Renderer *renderer) {
             Uint8 alpha = (Uint8)(255.0f * borner01((phase - 0.58f) / 0.10f));
             SDL_SetTextureAlphaMod(texte_crash, alpha);
             rendre_texture_centre_natif(renderer, texte_crash, centre_x, hauteur_ecran * 0.18f);
+            if (sfx){
+                jouer_son("assets/audio/crash.mp3", 0.2f);
+                sfx = 0;
+            }
         }
 
         SDL_RenderPresent(renderer);

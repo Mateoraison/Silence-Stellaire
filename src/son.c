@@ -16,6 +16,10 @@ typedef struct {
 static MIX_Mixer *g_mixer = NULL;
 static SonCache g_sons[MAX_SONS_CACHE];
 static int g_nb_sons = 0;
+static int g_son_actif = 1;
+static MIX_Track *g_ambiance_track = NULL;
+static int g_ambiance_active = 1;
+static int g_sfx_active = 1;
 
 static MIX_Mixer *recuperer_mixer(void) {
     if (!g_mixer) {
@@ -80,9 +84,23 @@ MIX_Track *jouer_son(const char* chemin, float volume) {
 
     MIX_SetTrackGain(son->track, volume);
 
+    if (!g_son_actif) {
+        return son->track;
+    }
+
+    // Vérifier si c'est une ambiance (musique) ou un SFX
+    int est_ambiance = (strstr(chemin, "ambiance") != NULL);
+    if (est_ambiance && !g_ambiance_active) {
+        return son->track;
+    }
+    if (!est_ambiance && !g_sfx_active) {
+        return son->track;
+    }
+
     int loops = 0;
     if (strcmp(chemin, "assets/audio/ambiance.wav") == 0) {
         loops = -1;
+        g_ambiance_track = son->track;
     }
 
     if (!MIX_PlayTrack(son->track, loops)) {
@@ -98,5 +116,70 @@ void pause_son(MIX_Track *track) {
 }
 
 void reprendre_son(MIX_Track *track) {
-    if (track) MIX_ResumeTrack(track);
+    if (!track || !g_son_actif) return;
+    
+    // Si c'est la piste d'ambiance, vérifier son état
+    if (track == g_ambiance_track && !g_ambiance_active) {
+        return;
+    }
+    
+    MIX_ResumeTrack(track);
+}
+
+int son_est_actif(void) {
+    return g_son_actif;
+}
+
+void son_definir_actif(int actif) {
+    g_son_actif = actif ? 1 : 0;
+
+    for (int i = 0; i < g_nb_sons; i++) {
+        if (!g_sons[i].track) {
+            continue;
+        }
+
+        if (g_son_actif) {
+            MIX_ResumeTrack(g_sons[i].track);
+        } else {
+            MIX_PauseTrack(g_sons[i].track);
+        }
+    }
+}
+
+int son_ambiance_est_active(void) {
+    return g_ambiance_active;
+}
+
+void son_definir_ambiance_active(int actif) {
+    g_ambiance_active = actif ? 1 : 0;
+    
+    if (g_ambiance_track) {
+        if (g_ambiance_active && g_son_actif) {
+            MIX_ResumeTrack(g_ambiance_track);
+        } else {
+            MIX_PauseTrack(g_ambiance_track);
+        }
+    }
+}
+
+int son_sfx_est_actif(void) {
+    return g_sfx_active;
+}
+
+void son_definir_sfx_active(int actif) {
+    g_sfx_active = actif ? 1 : 0;
+}
+
+void son_precharger_sfx(void) {
+    recuperer_son("assets/audio/click.mp3");
+    SDL_Log("SFX prechargé: click.mp3");
+
+    recuperer_son("assets/audio/dammage.mp3");
+    SDL_Log("SFX prechargé: dammage.mp3");
+
+    recuperer_son("assets/audio/death.mp3");
+    SDL_Log("SFX prechargé: death.mp3");
+
+    recuperer_son("assets/audio/crash.mp3");
+    SDL_Log("SFX prechargé: crash.mp3");
 }

@@ -11,7 +11,8 @@
 int afficher_option(SDL_Renderer *renderer, MIX_Track *track_global) {
     bool running = true;
     SDL_Event event;
-    bool son_active = true;
+    bool ambiance_active = son_ambiance_est_active() != 0;
+    bool sfx_active = son_sfx_est_actif() != 0;
 
     SDL_Color blanc = {255, 255, 255, 255};
     SDL_Color gris_fonce = {50, 50, 50, 255};
@@ -31,8 +32,10 @@ int afficher_option(SDL_Renderer *renderer, MIX_Track *track_global) {
     }
     
     
-    Bouton bouton_son;
-    Bouton_Init(&bouton_son, 0.0f, 0.0f, 300.0f, 60.0f, bouton_texture);
+    Bouton bouton_ambiance;
+    Bouton bouton_sfx;
+    Bouton_Init(&bouton_ambiance, 0.0f, 0.0f, 280.0f, 60.0f, bouton_texture);
+    Bouton_Init(&bouton_sfx, 0.0f, 0.0f, 280.0f, 60.0f, bouton_texture);
     
     while (running) {
         
@@ -49,8 +52,16 @@ int afficher_option(SDL_Renderer *renderer, MIX_Track *track_global) {
         float panel_x = (w - panel_w) * 0.5f;
         float text_x = panel_x + 20.0f;
 
-        bouton_son.rect.x = (w - bouton_son.rect.w) * 0.5f;
-        bouton_son.rect.y = h - 180.0f;
+        float gap_boutons = 20.0f;
+        float largeur_total = bouton_ambiance.rect.w + bouton_sfx.rect.w + gap_boutons;
+        float debut_x = (w - largeur_total) * 0.5f;
+        
+        bouton_ambiance.rect.x = debut_x;
+        bouton_ambiance.rect.y = h - 180.0f;
+        
+        bouton_sfx.rect.x = debut_x + bouton_ambiance.rect.w + gap_boutons;
+        bouton_sfx.rect.y = h - 180.0f;
+
 
         
         SDL_Surface *surface_titre = TTF_RenderText_Solid(font, "Commandes", strlen("Commandes"), blanc);
@@ -103,19 +114,32 @@ int afficher_option(SDL_Renderer *renderer, MIX_Track *track_global) {
             SDL_DestroySurface(surface_cmd);
         }
 
-        Bouton_Afficher(&bouton_son, renderer);
+        Bouton_Afficher(&bouton_ambiance, renderer);
+        Bouton_Afficher(&bouton_sfx, renderer);
         
-        const char* texte_son;
-        if(son_active) {
-            texte_son = "Son: Activé";
+        const char* texte_ambiance;
+        if(ambiance_active) {
+            texte_ambiance = "Musique: Activé";
         } else {
-            texte_son = "Son: Désactivé";
+            texte_ambiance = "Musique: Désactivé";
         }
-        SDL_Surface *surface_son = TTF_RenderText_Solid(font, texte_son, strlen(texte_son), blanc);
-        SDL_Texture *texture_son = SDL_CreateTextureFromSurface(renderer, surface_son);
-        afficher_texte_centre(renderer, texture_son, &bouton_son.rect);
-        SDL_DestroyTexture(texture_son);
-        SDL_DestroySurface(surface_son);
+        SDL_Surface *surface_ambiance = TTF_RenderText_Solid(font, texte_ambiance, strlen(texte_ambiance), blanc);
+        SDL_Texture *texture_ambiance = SDL_CreateTextureFromSurface(renderer, surface_ambiance);
+        afficher_texte_centre(renderer, texture_ambiance, &bouton_ambiance.rect);
+        SDL_DestroyTexture(texture_ambiance);
+        SDL_DestroySurface(surface_ambiance);
+        
+        const char* texte_sfx;
+        if(sfx_active) {
+            texte_sfx = "SFX: Activé";
+        } else {
+            texte_sfx = "SFX: Désactivé";
+        }
+        SDL_Surface *surface_sfx = TTF_RenderText_Solid(font, texte_sfx, strlen(texte_sfx), blanc);
+        SDL_Texture *texture_sfx = SDL_CreateTextureFromSurface(renderer, surface_sfx);
+        afficher_texte_centre(renderer, texture_sfx, &bouton_sfx.rect);
+        SDL_DestroyTexture(texture_sfx);
+        SDL_DestroySurface(surface_sfx);
 
         
         SDL_Surface *surface_quit = TTF_RenderText_Solid(font, "Appuyez sur Echap pour revenir au menu", strlen("Appuyez sur Echap pour revenir au menu"), blanc);
@@ -139,15 +163,14 @@ int afficher_option(SDL_Renderer *renderer, MIX_Track *track_global) {
                 SDL_ConvertEventToRenderCoordinates(renderer, &event);
             }
 
-            if (Bouton_GererEvenement(&bouton_son, &event)) {
-                son_active = !son_active;
-                if (track_global != NULL) { 
-                    if (son_active) {
-                        reprendre_son(track_global);
-                    } else {
-                        pause_son(track_global);
-                    }
-                }
+            if (Bouton_GererEvenement(&bouton_ambiance, &event)) {
+                ambiance_active = !ambiance_active;
+                son_definir_ambiance_active(ambiance_active ? 1 : 0);
+            }
+            
+            if (Bouton_GererEvenement(&bouton_sfx, &event)) {
+                sfx_active = !sfx_active;
+                son_definir_sfx_active(sfx_active ? 1 : 0);
             }
 
 

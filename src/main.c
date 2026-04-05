@@ -87,6 +87,9 @@ int main(int argc, char *argv[]) {
     if (!init_sdl(&fenetre, &renderer))
         return 1;
 
+    son_precharger_sfx();
+
+    
     if (jouer_cinematique_intro(renderer) == 1) {
         quitter_sdl(fenetre, renderer);
         return 0;
@@ -112,7 +115,7 @@ int main(int argc, char *argv[]) {
                 break;
             }
             case ETAT_JEU: {
-                if (track_global) reprendre_son(track_global);
+                if (track_global && son_est_actif()) reprendre_son(track_global);
                 int code = jeu_principal(renderer, Planete_actuelle, track_global, reprendre_partie);
                 reprendre_partie = false;
                 switch (code) {
