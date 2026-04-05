@@ -1344,12 +1344,12 @@ void boss_attaque(SDL_Renderer *renderer, boss_t *boss_ref) {
 }
 
 void detruire_boss(boss_t *boss_ref) {
-    if (boss_ref->texture) {
+    if (boss_ref != NULL && boss_ref->texture) {
         SDL_DestroyTexture(boss_ref->texture);
         boss_ref->texture = NULL;
     }
     clear_projectiles();
-    supprimer_minions_boss(boss_ref);
+    if (boss_ref != NULL) supprimer_minions_boss(boss_ref);
     g_zone_warning_actif = 0;
     g_zone_impact_pending = 0;
     g_zone_impact_tick = 0;
