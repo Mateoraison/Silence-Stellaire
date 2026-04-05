@@ -76,6 +76,78 @@ int test_collision(int x, int y, t_tile map[W_MAP][H_MAP], int est_mob, SDL_Rect
      * Cette fonction teste si la tile à la position (x, y) est une tile d'un type avec collision.
      */
 
+    if(Planete_actuelle == 2) {
+        switch (map[x][y].type){
+            case terreB : {
+                SDL_Rect hitbox_eau = {x*DISPLAY_TILE_SIZE , y*DISPLAY_TILE_SIZE + 20, DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE};
+                if(SDL_HasRectIntersection(&hitbox_eau, &hitbox)) {
+                    return 1;
+                }
+                break;
+            }
+            case terreH : {
+                SDL_Rect hitbox_eau = {x*DISPLAY_TILE_SIZE, y*DISPLAY_TILE_SIZE - 20, DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE};
+                if(SDL_HasRectIntersection(&hitbox_eau, &hitbox)) {
+                    return 1;
+                }
+                break;
+            }
+            case terreG : {
+                SDL_Rect hitbox_eau = {x*DISPLAY_TILE_SIZE - 20, y*DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE};
+                if(SDL_HasRectIntersection(&hitbox_eau, &hitbox)) {
+                    return 1;
+                }
+                break;
+            }
+            case terreD : {
+                SDL_Rect hitbox_eau = {x*DISPLAY_TILE_SIZE + 20, y*DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE};
+                if(SDL_HasRectIntersection(&hitbox_eau, &hitbox)) {
+                    return 1;
+                }
+                break;
+            }
+            case terreCBD :
+            case terreCBG :
+            case terreCHD :
+            case terreCHG : {
+                SDL_Rect hitbox_terre = {x*DISPLAY_TILE_SIZE, y*DISPLAY_TILE_SIZE, 80, 80};
+                if(SDL_HasRectIntersection(&hitbox_terre, &hitbox)) {
+                    return 1;
+                }
+                break;
+            }
+            case cterreHBG : {
+                SDL_Rect hitbox_terre = {x*DISPLAY_TILE_SIZE, y*DISPLAY_TILE_SIZE, 50, 50};
+                if(SDL_HasRectIntersection(&hitbox_terre, &hitbox)) {
+                    return 1;
+                }
+                break;
+            }
+            case cterreBBG : {
+                SDL_Rect hitbox_terre = {x*DISPLAY_TILE_SIZE , y*DISPLAY_TILE_SIZE + 20, 80, 90};
+                if(SDL_HasRectIntersection(&hitbox_terre, &hitbox)) {
+                    return 1;
+                }
+                break;
+            }
+            case cterreHHD : {
+                SDL_Rect hitbox_terre = {x*DISPLAY_TILE_SIZE + 20, y*DISPLAY_TILE_SIZE, 50, 50};
+                if(SDL_HasRectIntersection(&hitbox_terre, &hitbox)) {
+                    return 1;
+                }
+                break;
+            }
+            case cterrBHD : {
+                SDL_Rect hitbox_terre = {x*DISPLAY_TILE_SIZE + 20, y*DISPLAY_TILE_SIZE, 50, 90};
+                if(SDL_HasRectIntersection(&hitbox_terre, &hitbox)) {
+                    return 1;
+                }
+                break;
+            }
+            default: break;
+        }
+    }
+
     switch (map[x][y].type)
     {
             case vide:

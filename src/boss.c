@@ -9,13 +9,13 @@
 #define BOSS_PROJECTILE_FRAME_MS 70
 #define BOSS_ZONE_COOLDOWN_MS 3200
 #define BOSS_SUMMON_COOLDOWN_MS 5200
-#define BOSS_ZONE_RADIUS 190.0f
+#define BOSS_ZONE_RADIUS 260.0f
 #define BOSS_ZONE_WARNING_MS 900
 #define BOSS_REFLECTED_PROJECTILE_SPEED 420.0f
 #define BOSS_REFLECTED_PROJECTILE_DAMAGE 8
 #define BOSS_HEALTHBAR_Y 62.0f
 #define BOSS_MINION_MAX 6
-#define BOSS_AGGRO_RADIUS 520.0f
+#define BOSS_AGGRO_RADIUS 800.0f
 #define BOSS_MINOTAURE_AGGRO_RADIUS 620.0f
 #define BOSS_MINOTAURE_MOVE_SPEED 155.0f
 #define BOSS_MINOTAURE_MELEE_RANGE 118.0f
@@ -972,7 +972,22 @@ static void attaque_demon_de_feu(SDL_Renderer *renderer, boss_t *boss_ref) {
         g_zone_warning_start = now;
         g_zone_impact_pending = 1;
         g_zone_impact_tick = now + BOSS_ZONE_WARNING_MS;
+        
+        // Calculer la direction vers le joueur pour avancer la zone AOE devant le boss
         get_boss_centre_monde(boss_ref, &g_zone_center_x, &g_zone_center_y);
+        float joueur_x = 0.0f, joueur_y = 0.0f;
+        get_player_world_center(&joueur_x, &joueur_y);
+        float dx = joueur_x - g_zone_center_x;
+        float dy = joueur_y - g_zone_center_y;
+        float dist = sqrtf(dx*dx + dy*dy);
+        if (dist > 0.001f) {
+            dx /= dist;
+            dy /= dist;
+            // Decaler la zone environ 280 pixels devant le boss
+            g_zone_center_x += dx * 280.0f;
+            g_zone_center_y += dy * 280.0f;
+        }
+        
         declencher_animation_attaque(boss_ref);
     }
 
@@ -1281,6 +1296,35 @@ void mettre_a_jour_boss(SDL_Renderer *renderer, boss_t *boss_ref) {
 
     mettre_a_jour_animation_boss(boss_ref);
     g_last_combat_en_cours = combat_en_cours;
+}
+
+void reset_boss_for_retry(boss_t *boss_ref) {
+    /**
+     * Réinitialise le boss après un retry du joueur après sa mort.
+     * - Supprime les minions du boss
+     * - Réinitialise la vie et l'état du boss
+     */
+    supprimer_minions_boss(boss_ref);
+    
+    boss_ref->vie = boss_ref->vie_max;
+    boss_ref->est_battu = 0;
+    boss_ref->est_agro = 0;
+    boss_ref->phase = 1;
+    boss_ref->drop_effectue = 0;
+    
+    Uint32 now = SDL_GetTicks();
+    boss_ref->cooldown_attaque = now;
+    boss_ref->cooldown_zone = now;
+    boss_ref->cooldown_invocation = now;
+    
+    boss_ref->etat_anim = 0;
+    boss_ref->frame_anim_repos = 0;
+    boss_ref->frame_anim_attaque = 0;
+    boss_ref->frame_anim_mort = 0;
+    
+    clear_projectiles();
+    g_zone_warning_actif = 0;
+    g_zone_impact_pending = 0;
 }
 
 void boss_attaque(SDL_Renderer *renderer, boss_t *boss_ref) {

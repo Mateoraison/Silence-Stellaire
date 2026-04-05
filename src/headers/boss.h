@@ -8,3 +8,5 @@ void boss_attaque(SDL_Renderer *renderer, boss_t *boss);
 void mettre_a_jour_animation_boss(boss_t *boss);
 void detruire_boss(boss_t *boss);
 void boss_set_navigation_map(t_tile map[W_MAP][H_MAP]);
+void reset_boss_for_retry(boss_t *boss_ref);
+

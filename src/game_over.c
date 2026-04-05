@@ -1,6 +1,6 @@
 #include "headers/main.h"
 
-int game_over(SDL_Renderer *renderer){
+int game_over(SDL_Renderer *renderer, int planete) {
 
     int result = 1;
 
@@ -62,7 +62,24 @@ int game_over(SDL_Renderer *renderer){
             }
 
             if (Bouton_GererEvenement(&bouton_game, &event)) {
-                perso = (Perso){screen_center_x() - 1080.0f, screen_center_y() - 900.0f, NULL, 0, 10, 10, 10, 10, SDL_GetTicks()};
+                perso.vie = perso.vie_max;
+                perso.faim = perso.faim_max;
+                if (planete == 2 && boss1.est_agro) {
+                    // Repositionner devant la salle du boss 2550.0f, -100.0f
+                    perso.y = -500.0f;
+                    perso.x = -1830.0f;
+                    perso.direction = 1;
+                    // Réinitialiser le boss et supprimer les minions
+                    reset_boss_for_retry(&boss1);
+                } else if (planete == 3 ) {
+                    perso.x = 160.0f;
+                    perso.y = -250.0f;
+                    perso.direction = 0;
+                } else if (planete == 1 ) {
+                    perso.x = -100.0f;
+                    perso.y = -350.0f;
+                    perso.direction = 0;
+                }
                 result = 1;
                 continuer = 0;
             }

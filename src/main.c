@@ -97,6 +97,7 @@ int main(int argc, char *argv[]) {
 
     bool    reprendre_partie = false;
     EtatJeu etat             = ETAT_MENU;
+    sortie_vaisseau = false;
 
     while (etat != ETAT_QUITTER) {
         switch (etat) {
@@ -120,6 +121,7 @@ int main(int argc, char *argv[]) {
                     case 4:  etat = ETAT_VAISSEAU;  break;
                     default: etat = ETAT_MENU;      break;
                 }
+                sortie_vaisseau = false ;
                 break;
             }
             case ETAT_VAISSEAU: {
@@ -127,7 +129,7 @@ int main(int argc, char *argv[]) {
                 switch (code) {
                     case 1:  etat = ETAT_MENU; break;
                     case 3:  etat = ETAT_MAP;  break;
-                    default: reprendre_partie = true; etat = ETAT_JEU;  break;
+                    default: reprendre_partie = true; sortie_vaisseau = true ; etat = ETAT_JEU;  break;
                 }
                 break;
             }

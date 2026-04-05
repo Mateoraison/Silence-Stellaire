@@ -46,6 +46,7 @@ bool caisse_outils_ouvert = false;
 Uint32 faim_degat_timer = 0;
 int argent = 0;
 float vitesse_bonus = 0.0f;
+bool sortie_vaisseau = false;
 
 boss_t boss1;
 boss_t boss3;
@@ -94,16 +95,36 @@ void charger_tilemap(SDL_Renderer *renderer, SDL_Texture *tileset,
     (void)foam;
 
 
-    SDL_Color bleu_eau = {71, 171, 169, 255};
+    SDL_Color bleu_eau = (planete == 2) ? (SDL_Color){13, 25, 24, 255} : (SDL_Color){71, 171, 169, 255};
     SDL_SetRenderDrawColor(renderer, bleu_eau.r, bleu_eau.g, bleu_eau.b, bleu_eau.a);
-    
+
     if (!tileset){
         SDL_Log("Erreur chargement tileset : %s", SDL_GetError());
         SDL_Delay(2000);
         return;
     }
 
+    // Background tileset pour Planet 2, ancre a la camera avec repetition continue.
+    if (planete == 2) {
+        float src_size = PLANETE3_TILE_SIZE;
+        SDL_FRect src_lave = (SDL_FRect){48, 304, src_size, src_size};
+        const float bg_y_shift = 18.0f;
 
+        float screen_w = screen_widthf();
+        float screen_h = screen_heightf();
+        float offset_x = fmodf(perso.x, DISPLAY_TILE_SIZE);
+        float offset_y = fmodf(perso.y, DISPLAY_TILE_SIZE);
+
+        if (offset_x > 0.0f) offset_x -= DISPLAY_TILE_SIZE;
+        if (offset_y > 0.0f) offset_y -= DISPLAY_TILE_SIZE;
+
+        for (float bx = -DISPLAY_TILE_SIZE; bx < screen_w + DISPLAY_TILE_SIZE; bx += DISPLAY_TILE_SIZE) {
+            for (float by = -DISPLAY_TILE_SIZE; by < screen_h + DISPLAY_TILE_SIZE; by += DISPLAY_TILE_SIZE) {
+                SDL_FRect dest_bg = {bx + offset_x, by + offset_y + bg_y_shift, DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE};
+                SDL_RenderTexture(renderer, tileset, &src_lave, &dest_bg);
+            }
+        }
+    }
 
     for(int x = 0; x < W_MAP; x++){
         for(int y = 0; y < H_MAP; y++){
@@ -121,26 +142,130 @@ void charger_tilemap(SDL_Renderer *renderer, SDL_Texture *tileset,
             SDL_FRect src3 = (SDL_FRect){64, 64, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};
             float src_size = SOURCE_TILE_SIZE;
             bool est_planete3 = (planete == 3);
+            bool est_planete2 = (planete == 2);
 
-            if (est_planete3) {
+            if (est_planete3 || est_planete2) {
                 src_size = PLANETE3_TILE_SIZE;
                 src3 = (SDL_FRect){16, 16, src_size, src_size};
             }
 
 
-            if (est_planete3) {
+            if (est_planete3 || est_planete2) {
                 switch(map[x][y].type) {
                     case vide:
-                    case terreP:   src = (SDL_FRect){16, 16, src_size, src_size}; src_remplit = true; break;
-                    case terreCHG: src = (SDL_FRect){0, 0, src_size, src_size}; src_remplit = true; break;
-                    case terreH:   src = (SDL_FRect){16, 0, src_size, src_size}; src_remplit = true; break;
-                    case terreCHD: src = (SDL_FRect){32, 0, src_size, src_size}; src_remplit = true; break;
-                    case terreG:   src = (SDL_FRect){0, 16, src_size, src_size}; src_remplit = true; break;
-                    case terreD:   src = (SDL_FRect){32, 16, src_size, src_size}; src_remplit = true; break;
-                    case terreCBG: src = (SDL_FRect){0, 32, src_size, src_size}; src_remplit = true; break;
-                    case terreB:   src = (SDL_FRect){16, 32, src_size, src_size}; src_remplit = true; break;
-                    case terreCBD: src = (SDL_FRect){32, 32, src_size, src_size}; src_remplit = true; break;
-                    case pierre:   src = (SDL_FRect){16, 16, src_size, src_size}; src_remplit = true; break;
+                        if (est_planete2) {
+                            src = (SDL_FRect){48, 304, src_size, src_size};
+                            src_remplit = true;
+                        } else {
+                            src = (SDL_FRect){16, 16, src_size, src_size};
+                            src_remplit = true;
+                        }
+                        break;
+                    case terreP:
+                        if (est_planete2) {
+                            src = (SDL_FRect){16, 192, src_size, src_size};
+                        } else {
+                            src = (SDL_FRect){16, 16, src_size, src_size};
+                        }
+                        src_remplit = true;
+                        break;
+                    case terreCHG:
+                        if (est_planete2) {
+                            src = (SDL_FRect){0, 176, src_size, src_size};
+                        } else {
+                            src = (SDL_FRect){0, 0, src_size, src_size};
+                        }
+                        src_remplit = true;
+                        break;
+                    case terreH:
+                        if (est_planete2) {
+                            src = (SDL_FRect){16, 176, src_size, src_size};
+                        } else {
+                            src = (SDL_FRect){16, 0, src_size, src_size};
+                        }
+                        src_remplit = true;
+                        break;
+                    case terreCHD:
+                        if (est_planete2) {
+                            src = (SDL_FRect){32, 176, src_size, src_size};
+                        } else {
+                            src = (SDL_FRect){32, 0, src_size, src_size};
+                        }
+                        src_remplit = true;
+                        break;
+                    case terreG:
+                        if (est_planete2) {
+                            src = (SDL_FRect){0, 192, src_size, src_size};
+                        } else {
+                            src = (SDL_FRect){0, 16, src_size, src_size};
+                        }
+                        src_remplit = true;
+                        break;
+                    case terreD:
+                        if (est_planete2) {
+                            src = (SDL_FRect){32, 192, src_size, src_size};
+                        } else {
+                            src = (SDL_FRect){32, 16, src_size, src_size};
+                        }
+                        src_remplit = true;
+                        break;
+                    case terreCBG:
+                        if (est_planete2) {
+                            src = (SDL_FRect){0, 208, src_size, src_size};
+                        } else {
+                            src = (SDL_FRect){0, 32, src_size, src_size};
+                        }
+                        src_remplit = true;
+                        break;
+                    case terreB:
+                        if (est_planete2) {
+                            src = (SDL_FRect){16, 208, src_size, src_size};
+                        } else {
+                            src = (SDL_FRect){16, 32, src_size, src_size};
+                        }
+                        src_remplit = true;
+                        break;
+                    case terreCBD:
+                        if (est_planete2) {
+                            src = (SDL_FRect){32, 208, src_size, src_size};
+                        } else {
+                            src = (SDL_FRect){32, 32, src_size, src_size};
+                        }
+                        src_remplit = true;
+                        break;
+                    case pierre:
+                        if (est_planete2) {
+                            src = (SDL_FRect){48, 304, src_size, src_size};
+                            src_remplit = true;
+                        } else {
+                            src = (SDL_FRect){16, 16, src_size, src_size};
+                            src_remplit = true;
+                        }
+                        break;
+                    case cterreHBG:
+                        if (est_planete2) {
+                            src = (SDL_FRect){0, 224, src_size, src_size};
+                            src_remplit = true;
+                        }
+                        break;
+                    case cterreBBG:
+                        if (est_planete2) {
+                            src = (SDL_FRect){0, 240, src_size, src_size};
+                            src_remplit = true;
+                        }
+                        break;
+                    case cterreHHD:
+                        if (est_planete2) {
+                            src = (SDL_FRect){16, 224, src_size, src_size};
+                            src_remplit = true;
+                        }
+                        break;
+                    case cterrBHD:
+                        if (est_planete2) {
+                            src = (SDL_FRect){16, 240, src_size, src_size};
+                            src_remplit = true;
+                        }
+                        break;
                     case eau:
                         SDL_SetRenderDrawColor(renderer, 13, 25, 24, 255);
                         SDL_RenderFillRect(renderer, &dest);
@@ -153,6 +278,10 @@ void charger_tilemap(SDL_Renderer *renderer, SDL_Texture *tileset,
             } else {
                 switch(map[x][y].type) {
                     case vide:
+                    case cterreHBG:
+                    case cterreBBG:
+                    case cterreHHD:
+                    case cterrBHD:
                     case terreP:   src = (SDL_FRect){64, 64, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};src_remplit = true; break;
                     case terreCHG: src = (SDL_FRect){0, 0, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};src_remplit = true;break;
                     case terreCHD: src = (SDL_FRect){128,0, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};src_remplit = true;break;
@@ -175,16 +304,16 @@ void charger_tilemap(SDL_Renderer *renderer, SDL_Texture *tileset,
                         break;
                 }
             }
-            if(!est_planete3 && map[x][y].type != vide && src_remplit != false){
+            if(!est_planete3 && !est_planete2 && map[x][y].type != vide && src_remplit != false){
                 SDL_FRect src2 = (SDL_FRect){125, 265, SOURCE_TILE_SIZE, SOURCE_TILE_SIZE};
                 SDL_RenderTexture(renderer, tileset, &src2, &dest);
             }
             bool pierre_vers_terre = (x + 1 < W_MAP && map[x][y].type == pierre && map[x+1][y].type == terreP);
-            if(!est_planete3 && (pierre_vers_terre || map[x][y].type == feu || map[x][y].type == arbrecoupe)){
+            if(!est_planete3 && !est_planete2 && (pierre_vers_terre || map[x][y].type == feu || map[x][y].type == arbrecoupe)){
                 SDL_RenderTexture(renderer, tileset, &src3, &dest);
                 SDL_RenderTexture(renderer, tileset, &src,&dest);
             }
-            else if(!est_planete3 && map[x][y].type == arbreEntier && src_remplit != false){
+            else if(!est_planete3 && !est_planete2 && map[x][y].type == arbreEntier && src_remplit != false){
                 SDL_RenderTexture(renderer, tileset, &src3, &dest);
                 dest.y = (y+1)*DISPLAY_TILE_SIZE + perso.y;
                 SDL_RenderTexture(renderer, tileset, &src3, &dest);
@@ -199,8 +328,8 @@ void charger_tilemap(SDL_Renderer *renderer, SDL_Texture *tileset,
                 dest.x = x*DISPLAY_TILE_SIZE + perso.x;
                 SDL_RenderTexture(renderer, tileset, &src3, &dest);
                 SDL_RenderTexture(renderer, tileset, &src, &dest2);
-            } else if(est_planete3 && map[x][y].type == eau) {
-                src = (SDL_FRect){0, 128, src_size, src_size};
+            } else if((est_planete3 || est_planete2) && map[x][y].type == eau) {
+                src = est_planete3 ? (SDL_FRect){0, 128, src_size, src_size} : (SDL_FRect){48, 304, src_size, src_size};
                 SDL_RenderTexture(renderer, tileset, &src, &dest);
             } else if(src_remplit != false){
                 SDL_RenderTexture(renderer, tileset, &src, &dest);
@@ -228,7 +357,7 @@ void init_caisse_outils(SDL_Renderer *renderer) {
 
 typedef struct {
     int actif;
-    int slot_hotbar;  
+    int slot_hotbar;
     Uint32 debut_cuisson;
     SDL_Renderer *renderer;
 } t_Cuisson;
@@ -443,9 +572,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
     detruire_mobs(mobs);
     reset_mob_respawn_queue();
 
-    init_boss(renderer, &boss1, TYPE_BOSS_DEMON_DE_FEU, 700.0f, 20 * DISPLAY_TILE_SIZE);
-    init_boss(renderer, &boss3, TYPE_BOSS_MINOTAURE, 500.0f, 250.0f);
-
+    init_boss(renderer, &boss1, TYPE_BOSS_DEMON_DE_FEU, 2550.0f, -100.0f);
 
 
     if (!reprendre_partie) {
@@ -498,7 +625,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
     }
 
 
-    const char *tileset_path = (planete == 3)
+    const char *tileset_path = (planete == 2 || planete == 3)
         ? "assets/map/tileset_P2_P3.png"
         : "assets/tileset/V2/Tilemap_color1.png";
 
@@ -510,7 +637,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
     }
     SDL_SetTextureScaleMode(tileset, SDL_SCALEMODE_NEAREST);
 
-    
+
     t_tile map[W_MAP][H_MAP];
     int foam[W_MAP][H_MAP];
     int engrenage_tile_x = -1;
@@ -538,8 +665,8 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
 
     boss_set_navigation_map(map);
 
-    boss_t *boss_actif = (planete == 3) ? &boss3 : &boss1;
-    
+    boss_t *boss_actif = (planete == 3) ? &boss3 : (planete == 2 ? &boss1 : NULL);
+
 
     for (int x = 0; x < W_MAP; x++) {
         for (int y = 0; y < H_MAP; y++) {
@@ -547,7 +674,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
             else foam[x][y] = 100 ;
         }
     }
-    
+
 
     if (!reprendre_partie) {
         init_mobs(renderer,mobs,map,100,100);
@@ -559,6 +686,20 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
 
     if (reprendre_partie) {
         init_mobs(renderer, mobs, map, 100, 100);
+        if (planete == 2 && sortie_vaisseau) {
+            perso.x = 180.0f ;
+            perso.y = -(28 * DISPLAY_TILE_SIZE) ;
+            perso.direction = 0;
+        } else if (planete == 3 && sortie_vaisseau) {
+            perso.x = 160.0f;
+            perso.y = -250.0f;
+            perso.direction = 0;
+        } else if (planete == 1 && sortie_vaisseau) {
+            perso.x = -100.0f;
+            perso.y = -350.0f;
+            perso.direction = 0;
+        }
+        
     }
 
     objectifs_init(&objectifs_jeu, planete);
@@ -583,7 +724,10 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
 
     float vaisseau_world_x = VAISSEAU_WORLD_X;
     float vaisseau_world_y = VAISSEAU_WORLD_Y;
-    if (planete == 3) {
+    if (planete == 2) {
+        vaisseau_world_y = 2750.0f;
+        vaisseau_world_x = 500.0f;
+    } else if (planete == 3) {
         vaisseau_world_x = 488.0f;
         vaisseau_world_y = 481.0f;
     }
@@ -707,7 +851,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
                         caisse_outils_ouvert = !caisse_outils_ouvert;
                     }
                 }
-                
+
                 if ((event.key.mod & SDL_KMOD_CTRL) != 0) {
                     for (int slot_drop = 0; slot_drop < HOTBAR_SIZE; ++slot_drop) {
                         if (event.key.key == SDLK_1 + slot_drop) {
@@ -732,7 +876,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
                     }
                 }
 
-                
+
                 for (int k = 0; k < 5; ++k) {
                     if (event.key.key == SDLK_1 + k) {
                         if (hotbar[k] && hotbar[k]->item) {
@@ -776,7 +920,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
                                 argent += 1;
                                 hotbar[k]->quantiter--;
                                 if (hotbar[k]->quantiter <= 0) { free(hotbar[k]->item); free(hotbar[k]); hotbar[k] = NULL; }
-                                
+
                             }else if(outil->type == BRIQUET){
                                 float perso_monde_x = -perso.x + cx;
                                 float perso_monde_y = -perso.y + cy;
@@ -852,19 +996,19 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         if (reset_delta) { dernier_frame_dt = maintenant_dt; reset_delta = false; }
         float delta = (dernier_frame_dt == 0) ? 0.016f : (maintenant_dt - dernier_frame_dt) / 1000.0f;
         dernier_frame_dt = maintenant_dt;
-        
+
         float old_x = perso.x;
         float old_y = perso.y;
 
-        if (!console_cmd.ouvert) {
+        if (!console_cmd.ouvert && !caisse_outils_ouvert && !inventaire_ouvert) {
             deplacer_perso(delta);
         }
 
         SDL_Rect hitbox = {
             .x = (int)(cx - perso.x) + 30,
             .y = (int)(cy - perso.y) + 60,
-            .w = 32,                   
-            .h = 16                    
+            .w = 32,
+            .h = 16
         };
 
         int tx0 = hitbox.x / DISPLAY_TILE_SIZE;
@@ -903,10 +1047,10 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
             perso.x = old_x;
             perso.y = old_y;
         }
-        
+
         SDL_SetRenderDrawColor(renderer, 71, 171, 169, 255);
         SDL_RenderClear(renderer);
-        
+
         Uint32 maintenant = SDL_GetTicks();
 
         float perso_x_original = perso.x;
@@ -924,7 +1068,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         }
 
 
-        
+
 
         charger_tilemap(renderer, tileset, map, foam, planete);
         update_animation();
@@ -971,7 +1115,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
             }
         }
 
-        
+
         update_combat(map, mobs, renderer, items);
         update_mobs(map, mobs);
 
@@ -990,13 +1134,13 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
             g_planete3_boss_spawned = true;
         }
 
-        if (!(planete == 3 && !g_planete3_boss_spawned)) {
+        if (boss_actif && !(planete == 3 && !g_planete3_boss_spawned)) {
             mettre_a_jour_boss(renderer, boss_actif);
         }
         possible_ramasser_item(items, renderer, hotbar);
 
 
-        
+
         SDL_FRect src_caisse_outils = {0, 0, 64, 64};
         SDL_FRect dest_caisse_outils = {10*DISPLAY_TILE_SIZE + perso.x, 11*DISPLAY_TILE_SIZE + perso.y, DISPLAY_TILE_SIZE, DISPLAY_TILE_SIZE};
         if(planete == 1)SDL_RenderTexture(renderer, texture_caisse_outils, &src_caisse_outils, &dest_caisse_outils);
@@ -1006,7 +1150,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         SDL_FRect src_vaiseaux = {0, 0, VAISSEAU_WIDTH, VAISSEAU_HEIGHT};
         SDL_FRect dest_vaisseau = {vaisseau_world_x + perso.x, vaisseau_world_y + perso.y, VAISSEAU_WIDTH, VAISSEAU_HEIGHT};
         SDL_RenderTexture(renderer, exterieure, &src_vaiseaux, &dest_vaisseau);
-        if (!(planete == 3 && !g_planete3_boss_spawned)) {
+        if (boss_actif && !(planete == 3 && !g_planete3_boss_spawned)) {
             afficher_boss(renderer, boss_actif);
         }
 
@@ -1130,7 +1274,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         }
 
         afficher_combat(renderer);
-        
+
         Uint32 cycle_etat = (SDL_GetTicks() - cycle_debut) % CYCLE_MS;
         float phase = (float)cycle_etat / (float)CYCLE_MS;
         float mod = (phase < 0.5f) ? (phase * 2.0f) : ((1.0f - phase) * 2.0f);
@@ -1170,7 +1314,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
             }
         }
 
-        //Horloge jour/nuit 
+        //Horloge jour/nuit
         const float bar_x     = 430.0f;  // début de la barre
         const float bar_w     = 140.0f;  // largeur totale
         const float bar_y     = 18.0f;   // hauteur centre barre
@@ -1230,7 +1374,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         }
 
 
-        
+
         TTF_Font *font_argent = TTF_OpenFont("assets/police.ttf", 22);
         char texte_argent[64];
         SDL_snprintf(texte_argent, sizeof(texte_argent), "Argent : %d$", argent);
@@ -1252,14 +1396,14 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
                 TTF_CloseFont(font_argent);
         }
 
-        
-        
+
+
 
 
         if(caisse_outils_ouvert) {
             afficher_inventaire(caisse_outils, renderer, CAISSE_OUTILS_SIZE, CAISSE_OUTILS_SIZE, 1);
         }
-        
+
         if(inventaire_ouvert) {
             afficher_inventaire(inventaire, renderer, INVENTAIRE_SIZE, INVENTAIRE_COLS, INVENTAIRE_ROWS);
         }
@@ -1290,10 +1434,10 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         }
 
         perso.invincibiliter_timer = (maintenant - perso.invincibiliter_timer > 2000) ? 0 : perso.invincibiliter_timer;
-        
+
         static Uint32 foam_timer = 0;
-        
-        if (maintenant - foam_timer > 800) {  
+
+        if (maintenant - foam_timer > 800) {
             for (int x = 0; x < W_MAP; x++) {
                 for (int y = 0; y < H_MAP; y++) {
                     if(map[x][y].type == eau) foam[x][y] = (foam[x][y] + 1) % 3;
@@ -1303,7 +1447,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         }
 
         SDL_RenderPresent(renderer);
-        if(perso.vie == 0) running = game_over(renderer);
+        if(perso.vie == 0) running = game_over(renderer, planete);
     }
 
     if (code_sortie != 4 && font_objectifs) { TTF_CloseFont(font_objectifs); font_objectifs = NULL; }
@@ -1325,4 +1469,3 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
     SDL_DestroyTexture(tileset);
     return code_sortie;
 }
-

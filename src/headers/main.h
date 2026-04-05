@@ -47,7 +47,7 @@
 #define INVENTAIRE_SIZE (INVENTAIRE_COLS * INVENTAIRE_ROWS)
 #define CAISSE_OUTILS_SIZE 6
 
-typedef enum {vide, terreP, eau, terreCHG, terreCHD, terreCBG, terreCBD, terreH, terreB, terreG, terreD, feu, pierre, arbrecoupe, arbreEntier} type_t;
+typedef enum {vide, terreP, eau, terreCHG, terreCHD, terreCBG, terreCBD, terreH, terreB, terreG, terreD, feu, pierre, arbrecoupe, arbreEntier, cterreHBG, cterreBBG, cterreHHD, cterrBHD} type_t;
 
 typedef struct tile_{
     type_t type;
@@ -187,8 +187,8 @@ typedef struct {
 
 
 extern Perso perso;
-extern int animation_frame;   
-extern Uint32 animation_timer; 
+extern int animation_frame;
+extern Uint32 animation_timer;
 extern Uint32 bouge_timer;
 extern bool perso_bouge;
 extern bool combat_en_cours;
@@ -223,6 +223,7 @@ static inline float screen_center_y(void) {
 extern int index_item;
 extern int argent;
 extern float vitesse_bonus;
+extern bool sortie_vaisseau;
 
 extern t_case *hotbar[HOTBAR_SIZE];
 extern t_case *caisse_outils[CAISSE_OUTILS_SIZE];
