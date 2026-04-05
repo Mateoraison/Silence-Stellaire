@@ -138,7 +138,7 @@ int afficher_map(SDL_Renderer *renderer) {
 
     t_Animation planete1 = animation_init("assets/carte_espace/planete1_map.gif",100 + offx,200 + offy,1.5f);
     t_Animation planete2 = animation_init("assets/carte_espace/planete2_map.gif",300 + offx,500 + offy,1.5f);
-    t_Animation planete3 = animation_init("assets/carte_espace/planete3_map.gif",500 + offx,200 + offy,1.5f);
+    t_Animation planete3 = animation_init("assets/carte_espace/planete3_map.gif",400 + offx,20 + offy,1.5f);
     t_Animation planete4 = animation_init("assets/carte_espace/planete4_map.gif",700 + offx,500 + offy,1.5f);
     if (!planete1.anim || !planete2.anim || !planete3.anim || !planete4.anim) {
         detruire_animation(&planete1);
@@ -248,7 +248,7 @@ int afficher_map(SDL_Renderer *renderer) {
         SDL_Texture *nom_P2_tex = SDL_CreateTextureFromSurface(renderer, nom_P2);
         SDL_FRect rect_nom_P2 = {.x = planete2.x-30 ,.y = planete2.y + 150,.w = nom_P2->w,.h = nom_P2->h};
 
-        SDL_Surface * nom_P3 = TTF_RenderText_Solid(font,"Planete de Glace", strlen("Planete de Glace"),blanc);
+        SDL_Surface * nom_P3 = TTF_RenderText_Solid(font,"Planete du Minautor", strlen("Planete du Minautore"),blanc);
         SDL_Texture *nom_P3_tex = SDL_CreateTextureFromSurface(renderer, nom_P3);
         SDL_FRect rect_nom_P3 = {.x = planete3.x + 150 ,.y = planete3.y,.w = nom_P3->w,.h = nom_P3->h};
 
@@ -261,12 +261,12 @@ int afficher_map(SDL_Renderer *renderer) {
         SDL_Color couleur_requis = (nb_engrenages >= 2) ? vert : rouge;
 
         char texte_regle_23[80];
-        snprintf(texte_regle_23, sizeof(texte_regle_23), "Planete de Lave -> Planete de Glace");
+        snprintf(texte_regle_23, sizeof(texte_regle_23), "Planete de Lave -> Planete du Minautor");
         SDL_Surface *regle_23 = TTF_RenderText_Solid(font, texte_regle_23, strlen(texte_regle_23), couleur_requis);
         SDL_Texture *regle_23_tex = SDL_CreateTextureFromSurface(renderer, regle_23);
 
         char texte_regle_34[80];
-        snprintf(texte_regle_34, sizeof(texte_regle_34), "Planete de Glace -> Galaxie");
+        snprintf(texte_regle_34, sizeof(texte_regle_34), "Planete du Minautor -> Galaxie");
         SDL_Surface *regle_34 = TTF_RenderText_Solid(font, texte_regle_34, strlen(texte_regle_34), couleur_requis);
         SDL_Texture *regle_34_tex = SDL_CreateTextureFromSurface(renderer, regle_34);
 
@@ -325,8 +325,8 @@ int afficher_map(SDL_Renderer *renderer) {
 
         SDL_SetRenderDrawColor(renderer, 255, 255, 200, 200);
         SDL_RenderLine(renderer, planete1.x + planete1.anim->w/2, planete1.y + planete1.anim->h/2,planete2.x + planete2.anim->w/2, planete2.y + planete2.anim->h/2);
-        SDL_RenderLine(renderer, planete2.x + planete2.anim->w/2, planete2.y + planete2.anim->h/2,planete3.x + planete3.anim->w/2, planete3.y + planete3.anim->h/2);
-        SDL_RenderLine(renderer, planete3.x + planete3.anim->w/2, planete3.y + planete3.anim->h/2,planete4.x + planete3.anim->w/2, planete4.y + planete4.anim->h/2);
+        SDL_RenderLine(renderer, planete2.x + planete2.anim->w/2, planete2.y + planete2.anim->h/2,planete3.x + planete3.anim->w/2+100, planete3.y+100 + planete3.anim->h/2);
+        SDL_RenderLine(renderer, planete3.x+20 + planete3.anim->w/2, planete3.y+100 + planete3.anim->h/2,planete4.x + planete4.anim->w/2, planete4.y + planete4.anim->h/2);
 
 
         animation_update(&planete1);
