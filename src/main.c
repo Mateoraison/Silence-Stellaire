@@ -43,7 +43,7 @@ static int init_sdl(SDL_Window **fenetre, SDL_Renderer **renderer) {
         return 0;
     }
 
-    *fenetre = SDL_CreateWindow("Silence Stellaire", 1000, 800, SDL_WINDOW_FULLSCREEN);
+    *fenetre = SDL_CreateWindow("Silence Stellaire", 1920,1080, SDL_WINDOW_FULLSCREEN);
     if (!*fenetre) {
         SDL_Log("Erreur création fenêtre : %s", SDL_GetError());
         MIX_Quit(); TTF_Quit(); SDL_Quit();
@@ -58,12 +58,11 @@ static int init_sdl(SDL_Window **fenetre, SDL_Renderer **renderer) {
         return 0;
     }
 
-    update_screen_metrics(*renderer);
-
-    // Native fullscreen: no bars, no stretch, no crop from forced logical presentation.
     if (!SDL_SetRenderLogicalPresentation(*renderer, g_screen_w, g_screen_h, SDL_LOGICAL_PRESENTATION_DISABLED)) {
         SDL_Log("Avertissement: presentation logique non appliquee : %s", SDL_GetError());
     }
+    
+    update_screen_metrics(*renderer);
 
     SDL_SetWindowIcon(*fenetre, IMG_Load("assets/logo_win.png"));
     return 1;

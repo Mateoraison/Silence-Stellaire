@@ -360,7 +360,7 @@ static void appliquer_degats_joueur(int degats) {
     }
 
     if (perso.vie > 0 && perso.invincibiliter_timer == 0) {
-        jouer_son("assets/audio/dammage.mp3", 0.2f);
+        jouer_son("assets/audio/dammage.wav", 0.5f);
         perso.vie -= degats;
         if (perso.vie < 0) {
             perso.vie = 0;
@@ -1222,6 +1222,7 @@ void mettre_a_jour_boss(SDL_Renderer *renderer, boss_t *boss_ref) {
 
     if (boss_ref->est_battu) {
         mettre_a_jour_animation_boss(boss_ref);
+        boss_ref->est_agro = 0;
         g_last_combat_en_cours = combat_en_cours;
         return;
     }
