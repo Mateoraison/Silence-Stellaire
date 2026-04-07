@@ -137,9 +137,13 @@ int main(int argc, char *argv[]) {
             }
             case ETAT_MAP: {
                 int planete_choisie = afficher_map(renderer);
-                if (planete_choisie >= 1 && planete_choisie <= 4)
-                    Planete_actuelle = planete_choisie;
-                etat = ETAT_JEU;
+                if (planete_choisie == -1) {
+                    etat = ETAT_MENU; // retour au menu principal apres credits
+                } else {
+                    if (planete_choisie >= 1 && planete_choisie <= 3)
+                        Planete_actuelle = planete_choisie;
+                    etat = ETAT_JEU;
+                }
                 break;
             }
             case ETAT_OPTIONS: {

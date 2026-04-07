@@ -444,3 +444,288 @@ int jouer_cinematique_crash(SDL_Renderer *renderer) {
     if (police_cinematique) TTF_CloseFont(police_cinematique);
     return 0;
 }
+
+int jouer_cinematique_fin(SDL_Renderer *renderer) {
+    // Ressources
+    TTF_Font *police_titre = TTF_OpenFont("assets/police_titre.ttf", 56);
+    TTF_Font *police_msg = TTF_OpenFont("assets/police.ttf", 22);
+    SDL_Texture *fond = IMG_LoadTexture(renderer, "assets/carte_espace/fond_map.png");
+    SDL_Texture *vaisseau = IMG_LoadTexture(renderer, "assets/tileset/V2/EXT_vaisseau/vaisseau_non_casser.png");
+
+    // Texte final
+    SDL_Texture *txt_title = NULL;
+    SDL_Texture *txt_sub = NULL;
+    if (police_titre) {
+        SDL_Color col = {255, 230, 200, 255};
+        SDL_Surface *s = TTF_RenderText_Solid(police_titre, "Fin du voyage", strlen("Fin du voyage"), col);
+        if (s) { txt_title = SDL_CreateTextureFromSurface(renderer, s); SDL_DestroySurface(s); }
+    }
+    if (police_msg) {
+        SDL_Color col = {200, 220, 255, 255};
+        SDL_Surface *s = TTF_RenderText_Solid(police_msg, "Le vaisseau traverse la galaxie...", strlen("Le vaisseau traverse la galaxie..."), col);
+        if (s) { txt_sub = SDL_CreateTextureFromSurface(renderer, s); SDL_DestroySurface(s); }
+    }
+
+    // Particules simples pour la traînée
+    #define MAX_PART 80
+    typedef struct { float x,y,vx,vy,life; int layer; } Part; // layer: 0=behind, 1=front (draw over ship)
+    Part parts[MAX_PART];
+    for (int i=0;i<MAX_PART;i++) parts[i].life = 0.0f;
+
+    Uint32 debut = SDL_GetTicks();
+    const Uint32 duree_traverse = 6500;
+    const Uint32 duree_fade = 1400;
+    int sfx_played = 0;
+
+    while (1) {
+        SDL_Event ev;
+        while (SDL_PollEvent(&ev)) {
+            if (ev.type == SDL_EVENT_QUIT) {
+                // cleanup
+                if (fond) SDL_DestroyTexture(fond);
+                if (vaisseau) SDL_DestroyTexture(vaisseau);
+                if (txt_title) SDL_DestroyTexture(txt_title);
+                if (txt_sub) SDL_DestroyTexture(txt_sub);
+                if (police_titre) TTF_CloseFont(police_titre);
+                if (police_msg) TTF_CloseFont(police_msg);
+                return 1;
+            }
+            if (ev.type == SDL_EVENT_MOUSE_BUTTON_DOWN || ev.type == SDL_EVENT_KEY_DOWN) {
+                // skip cinematic
+                if (fond) SDL_DestroyTexture(fond);
+                if (vaisseau) SDL_DestroyTexture(vaisseau);
+                if (txt_title) SDL_DestroyTexture(txt_title);
+                if (txt_sub) SDL_DestroyTexture(txt_sub);
+                if (police_titre) TTF_CloseFont(police_titre);
+                if (police_msg) TTF_CloseFont(police_msg);
+                return 0;
+            }
+        }
+
+        Uint32 now = SDL_GetTicks();
+        Uint32 elapsed = now - debut;
+
+        // Phase 1: traversée
+        if (elapsed <= duree_traverse) {
+            float t = (float)elapsed / (float)duree_traverse; // 0..1
+            // position vaisseau : de gauche vers droite, légère sin pour la courbe
+            float sw = screen_widthf();
+            float sh = screen_heightf();
+            float ship_w = 340.0f, ship_h = 218.0f;
+            float x = -ship_w + (sw + ship_w) * t;
+            float y = screen_center_y() - 40.0f + sinf(t * 3.14159f * 1.8f) * 80.0f - t * 40.0f;
+            float angle = (sinf(t * 3.14159f * 2.0f) * 18.0f) + t * 40.0f;
+
+            // alpha du vaisseau pour fondu aux bords (évite coupures visibles)
+            float alpha_ship = 1.0f;
+            float fade_margin = ship_w * 0.25f; // marge pour fondu
+            if (x < -fade_margin) alpha_ship = 0.0f;
+            else if (x < 0.0f) alpha_ship = (x + fade_margin) / fade_margin;
+            else if (x + ship_w > sw + fade_margin) alpha_ship = 0.0f;
+            else if (x + ship_w > sw) alpha_ship = (sw + fade_margin - (x + ship_w)) / fade_margin;
+            alpha_ship = borner01(alpha_ship);
+
+            // Emission particules depuis l'arrière du vaisseau seulement si vaisseau visible
+                    if (alpha_ship > 0.25f) {
+                        for (int i=0;i<MAX_PART;i++) {
+                            if (parts[i].life <= 0.0f) {
+                                parts[i].life = 0.6f + ((float)(rand() % 100) / 200.0f);
+                                float behind_x = x - 24.0f;
+                                float behind_y = y + ship_h * 0.5f - 20.0f + ((rand()%40)-20);
+                                parts[i].x = behind_x;
+                                parts[i].y = behind_y;
+                                parts[i].vx = -60.0f - (rand()%80);
+                                parts[i].vy = ((rand()%60)-30) * 0.3f;
+                                // random layer: most behind, some front
+                                parts[i].layer = (rand() % 100) < 30 ? 1 : 0;
+                                break;
+                            }
+                        }
+                    }
+
+            // update particles
+            for (int i=0;i<MAX_PART;i++) {
+                if (parts[i].life > 0.0f) {
+                    float dt = 0.016f;
+                    parts[i].x += parts[i].vx * dt;
+                    parts[i].y += parts[i].vy * dt;
+                    parts[i].life -= dt;
+                }
+            }
+
+            // render background
+            SDL_SetRenderDrawColor(renderer, 0,0,8,255);
+            SDL_RenderClear(renderer);
+            if (fond) SDL_RenderTexture(renderer, fond, NULL, NULL);
+
+            // draw particles behind ship; only draw if inside screen bounds and layer==0
+            SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_ADD);
+            for (int i=0;i<MAX_PART;i++) {
+                if (parts[i].life > 0.0f && parts[i].layer == 0) {
+                    if (parts[i].x < -8.0f || parts[i].x > sw + 8.0f) continue;
+                    if (parts[i].y < -8.0f || parts[i].y > sh + 8.0f) continue;
+                    float life = parts[i].life / 1.0f;
+                    Uint8 alpha = (Uint8)(255.0f * borner01(life) * alpha_ship);
+                    SDL_SetRenderDrawColor(renderer, 255, 180, 90, alpha);
+                    SDL_FRect r = { parts[i].x, parts[i].y, 4.0f, 4.0f };
+                    SDL_RenderFillRect(renderer, &r);
+                }
+            }
+            SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+
+            // draw vaisseau with alpha
+            if (vaisseau && alpha_ship > 0.0f) {
+                SDL_SetTextureAlphaMod(vaisseau, (Uint8)(255.0f * alpha_ship));
+                SDL_FRect dst = { x, y, ship_w, ship_h };
+                SDL_FPoint centre = { ship_w * 0.5f, ship_h * 0.5f };
+                SDL_RenderTextureRotated(renderer, vaisseau, NULL, &dst, angle, &centre, SDL_FLIP_NONE);
+                SDL_SetTextureAlphaMod(vaisseau, 255);
+            }
+
+            // draw particles in front of ship (layer==1)
+            SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_ADD);
+            for (int i=0;i<MAX_PART;i++) {
+                if (parts[i].life > 0.0f && parts[i].layer == 1) {
+                    if (parts[i].x < -8.0f || parts[i].x > sw + 8.0f) continue;
+                    if (parts[i].y < -8.0f || parts[i].y > sh + 8.0f) continue;
+                    float life = parts[i].life / 1.0f;
+                    Uint8 alpha = (Uint8)(255.0f * borner01(life) * alpha_ship);
+                    SDL_SetRenderDrawColor(renderer, 255, 200, 120, alpha);
+                    // draw slightly larger for front
+                    SDL_FRect r = { parts[i].x, parts[i].y, 6.0f, 6.0f };
+                    SDL_RenderFillRect(renderer, &r);
+                }
+            }
+            SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+
+            
+
+            // small overlay text
+            if (txt_sub) {
+                SDL_SetTextureAlphaMod(txt_sub, (Uint8)(220.0f));
+                rendre_texture_centre_natif(renderer, txt_sub, screen_center_x(), 60.0f);
+            }
+
+            if (!sfx_played) {
+                jouer_son("assets/audio/ambiance.wav", 0.25f);
+                sfx_played = 1;
+            }
+
+            SDL_RenderPresent(renderer);
+            SDL_Delay(16);
+            continue;
+        }
+
+        // Phase 2: fondu et affiche message final
+        Uint32 after = elapsed - duree_traverse;
+        float tf = (float)after / (float)duree_fade; // 0..1
+        if (tf > 1.0f) tf = 1.0f;
+
+        SDL_SetRenderDrawColor(renderer, 0,0,0,255);
+        SDL_RenderClear(renderer);
+        if (fond) SDL_RenderTexture(renderer, fond, NULL, NULL);
+
+        // fondu sombre
+        SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, (Uint8)(200.0f * tf));
+        SDL_FRect rect = {0,0, screen_widthf(), screen_heightf()};
+        SDL_RenderFillRect(renderer, &rect);
+
+        // affiche texte final centré
+        if (txt_title) {
+            SDL_SetTextureAlphaMod(txt_title, (Uint8)(255.0f * tf));
+            rendre_texture_centre_natif(renderer, txt_title, screen_center_x(), screen_center_y() - 20.0f);
+        }
+        if (txt_sub) {
+            SDL_SetTextureAlphaMod(txt_sub, (Uint8)(200.0f * tf));
+            rendre_texture_centre_natif(renderer, txt_sub, screen_center_x(), screen_center_y() + 48.0f);
+        }
+
+        if (tf >= 1.0f) {
+            // jouer son de victoire une fois
+            static int win_played = 0;
+            if (!win_played) { jouer_son("assets/audio/win.mp3", 0.5f); win_played = 1; }
+        }
+
+        SDL_RenderPresent(renderer);
+        if (after >= duree_fade + 2200) break; // laisser le message quelques instants
+        SDL_Delay(16);
+    }
+
+    // cleanup
+    if (fond) SDL_DestroyTexture(fond);
+    if (vaisseau) SDL_DestroyTexture(vaisseau);
+    if (txt_title) SDL_DestroyTexture(txt_title);
+    if (txt_sub) SDL_DestroyTexture(txt_sub);
+    if (police_titre) TTF_CloseFont(police_titre);
+    if (police_msg) TTF_CloseFont(police_msg);
+    return 0;
+}
+
+int jouer_credits(SDL_Renderer *renderer) {
+TTF_Font *font = TTF_OpenFont("assets/police.ttf", 22);
+if (!font) return 0;
+
+const char *lines[] = {
+    "Merci d'avoir joue",
+    "",
+    "Developpeurs:",
+    " - Raison Matéo",
+    " - Donné Joshua",
+    " - Leroux Maxime",
+    "",
+    "Musique: Musicien",
+    "Sons: Effets sonores",
+    "",
+    "Retour au menu dans quelques instants...",
+};
+const int n = sizeof(lines)/sizeof(lines[0]);
+
+Uint32 start = SDL_GetTicks();
+const Uint32 duration = 22000; // plus long pour ralentir le defilement
+
+while (1) {
+    SDL_Event ev;
+    while (SDL_PollEvent(&ev)) {
+        if (ev.type == SDL_EVENT_QUIT) {
+            TTF_CloseFont(font);
+            return 1;
+        }
+        if (ev.type == SDL_EVENT_MOUSE_BUTTON_DOWN || ev.type == SDL_EVENT_KEY_DOWN) {
+            TTF_CloseFont(font);
+            return 0;
+        }
+    }
+
+    Uint32 now = SDL_GetTicks();
+    Uint32 elapsed = now - start;
+    if (elapsed >= duration) break;
+
+float t = (float)elapsed / (float)duration;
+float sh = screen_heightf();
+const float line_h = 48.0f; // espacement plus grand pour lisibilite
+const float total_h = (float)n * line_h;
+
+    SDL_SetRenderDrawColor(renderer, 0,0,0,255);
+    SDL_RenderClear(renderer);
+
+    for (int i=0;i<n;i++) {
+        float y = sh + (i * line_h) - t * (total_h + sh + 120.0f);
+        SDL_Color col = {230,230,230,255};
+        SDL_Surface *s = TTF_RenderText_Solid(font, lines[i], strlen(lines[i]), col);
+        if (s) {
+            SDL_Texture *tx = SDL_CreateTextureFromSurface(renderer, s);
+            SDL_FRect dst = { screen_center_x() - s->w/2.0f, y, (float)s->w, (float)s->h };
+            SDL_RenderTexture(renderer, tx, NULL, &dst);
+            SDL_DestroyTexture(tx);
+            SDL_DestroySurface(s);
+        }
+    }
+
+    SDL_RenderPresent(renderer);
+    SDL_Delay(16);
+}
+
+TTF_CloseFont(font);
+return 0;
+}

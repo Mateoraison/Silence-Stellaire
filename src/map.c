@@ -220,7 +220,13 @@ int afficher_map(SDL_Renderer *renderer) {
             if(Bouton_GererEvenement(&P4,&event)){
                 SDL_Log("planete 4 cliquer");
                 if (transition_planete_autorisee(Planete_actuelle, 4, nb_engrenages)) {
-                    planete_choisie = 4;
+                    // Jouer la cinematique de fin puis les credits, puis retourner au menu principal
+                    int code = jouer_cinematique_fin(renderer);
+                    if (code == 1) { running = 0; break; }
+                    // si la cinematique s'est terminee, afficher les credits
+                    int code_credits = jouer_credits(renderer);
+                    // signaler au main de retourner au menu principal
+                    planete_choisie = -1;
                     running = 0;
                 } else {
                     snprintf(message_info, sizeof(message_info), "%s", message_transition_bloquee(Planete_actuelle, 4));
