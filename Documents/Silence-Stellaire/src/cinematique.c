@@ -673,7 +673,7 @@ int jouer_credits(SDL_Renderer *renderer) {
         "",
         "Developpeurs:",
         " - Raison Matéo",
-        " - Donne Joshua",
+        " - Donné Joshua",
         " - Leroux Maxime",
         "",
         "Musique: Musicien",
