@@ -174,8 +174,8 @@ void son_precharger_sfx(void) {
     recuperer_son("assets/audio/click.mp3");
     SDL_Log("SFX prechargé: click.mp3");
 
-    recuperer_son("assets/audio/dammage.mp3");
-    SDL_Log("SFX prechargé: dammage.mp3");
+    recuperer_son("assets/audio/dammage.wav");
+    SDL_Log("SFX prechargé: dammage.wav");
 
     recuperer_son("assets/audio/death.mp3");
     SDL_Log("SFX prechargé: death.mp3");

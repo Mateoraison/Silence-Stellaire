@@ -201,7 +201,7 @@ int test_collision(int x, int y, t_tile map[W_MAP][H_MAP], int est_mob, SDL_Rect
             break;
         case feu:
             if (est_mob == 0 && perso.vie > 0 && perso.invincibiliter_timer == 0){
-                jouer_son("assets/audio/dammage.mp3", 0.5f);
+                jouer_son("assets/audio/dammage.wav", 0.5f);
                 perso.vie -= 1;
                 perso.invincibiliter_timer = SDL_GetTicks();
             }

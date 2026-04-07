@@ -360,7 +360,7 @@ static void appliquer_degats_joueur(int degats) {
     }
 
     if (perso.vie > 0 && perso.invincibiliter_timer == 0) {
-        jouer_son("assets/audio/dammage.mp3", 0.2f);
+        jouer_son("assets/audio/dammage.wav", 0.5f);
         perso.vie -= degats;
         if (perso.vie < 0) {
             perso.vie = 0;
