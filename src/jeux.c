@@ -4,6 +4,7 @@
 #include "headers/main.h"
 #include "headers/planete.h"
 #include "headers/pause.h"
+#include "headers/arcade.h"
 #include <stdbool.h>
 #include <time.h>
 #include <stdlib.h>
@@ -836,6 +837,14 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
                 }
                 if(event.key.key == SDLK_I){
                     inventaire_ouvert = !inventaire_ouvert;
+                }
+                if(event.key.key == SDLK_P){
+                    // Test Mastermind
+                    mastermind(renderer);
+                }
+                if(event.key.key == SDLK_O){
+                    // Test Simon
+                    simon(renderer);
                 }
                 if(event.key.key == SDLK_E) {
                     SDL_FRect rect_perso_vaisseau = {cx - perso.x, cy - perso.y, 40.0f, 60.0f};

@@ -6,5 +6,7 @@
 void jouer_arcade1(SDL_Renderer *renderer) ;
 void jouer_arcade2(SDL_Renderer *renderer) ;
 void jouer_arcade3(SDL_Renderer *renderer) ;
+void mastermind(SDL_Renderer *renderer);
+void simon(SDL_Renderer *renderer);
 
 #endif // ARCADE_H
