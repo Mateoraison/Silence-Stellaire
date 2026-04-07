@@ -212,7 +212,7 @@ void objectifs_afficher(t_objectifs *obj, SDL_Renderer *renderer, TTF_Font *font
         /* Trait de barrage sur texte validé */
         if (obj->objectifs[i].valide) {
             SDL_SetRenderDrawColor(renderer, 80, 180, 80, 200);
-            float mid_y = y + LIGNE_H / 2.0f;
+            float mid_y = y + LIGNE_H / 2.5f;
             SDL_RenderLine(renderer,
                 panneau_x + PADDING + 20.0f, mid_y,
                 panneau_x + PANNEAU_W - PADDING, mid_y);
