@@ -1285,7 +1285,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
 
         afficher_hotbar(hotbar, renderer);
 
-        if (!console_god_mode && (maintenant - faim_timer) > 10000) {
+        if (!console_god_mode && (maintenant - faim_timer) > 20000) {
             if (perso.faim > 0) perso.faim--;
             faim_timer = maintenant;
         }

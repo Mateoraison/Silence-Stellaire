@@ -1222,6 +1222,7 @@ void mettre_a_jour_boss(SDL_Renderer *renderer, boss_t *boss_ref) {
 
     if (boss_ref->est_battu) {
         mettre_a_jour_animation_boss(boss_ref);
+        boss_ref->est_agro = 0;
         g_last_combat_en_cours = combat_en_cours;
         return;
     }

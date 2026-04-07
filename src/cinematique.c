@@ -359,8 +359,7 @@ int jouer_cinematique_crash(SDL_Renderer *renderer) {
         if (alpha_flash > 0.0f) {
             SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
             SDL_SetRenderDrawColor(renderer, 255, 248, 235, (Uint8)(255.0f * alpha_flash));
-            SDL_FRect rectangle_flash = {0.0f, 0.0f, largeur_ecran, hauteur_ecran};
-            SDL_RenderFillRect(renderer, &rectangle_flash);
+            SDL_RenderFillRect(renderer, NULL);
         }
 
         if (phase >= 0.60f) {
@@ -406,8 +405,7 @@ int jouer_cinematique_crash(SDL_Renderer *renderer) {
         if (phase > 0.62f) {
             SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
             SDL_SetRenderDrawColor(renderer, 0, 0, 0, (Uint8)(220.0f * alpha_fondu));
-            SDL_FRect rectangle_fondu = {0.0f, 0.0f, largeur_ecran, hauteur_ecran};
-            SDL_RenderFillRect(renderer, &rectangle_fondu);
+            SDL_RenderFillRect(renderer, NULL);
         }
 
         if (texte_depart && phase < 0.30f) {
