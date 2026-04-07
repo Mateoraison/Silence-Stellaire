@@ -1,0 +1,72 @@
+[
+  {
+    "name": "TerreP",
+    "color": "#8B4513",
+    "border": "#654321"
+  },
+  {
+    "name": "Eau",
+    "color": "#1E90FF",
+    "border": "#1873cc"
+  },
+  {
+    "name": "TerreCHG",
+    "color": "#A0522D",
+    "border": "#8B4513"
+  },
+  {
+    "name": "TerreCHD",
+    "color": "#A0522D",
+    "border": "#8B4513"
+  },
+  {
+    "name": "TerreCBG",
+    "color": "#A0522D",
+    "border": "#8B4513"
+  },
+  {
+    "name": "TerreCBD",
+    "color": "#A0522D",
+    "border": "#8B4513"
+  },
+  {
+    "name": "TerreH",
+    "color": "#A0522D",
+    "border": "#8B4513"
+  },
+  {
+    "name": "TerreB",
+    "color": "#A0522D",
+    "border": "#8B4513"
+  },
+  {
+    "name": "TerreG",
+    "color": "#A0522D",
+    "border": "#8B4513"
+  },
+  {
+    "name": "TerreD",
+    "color": "#A0522D",
+    "border": "#8B4513"
+  },
+  {
+    "name": "feu",
+    "color": "#FF2900",
+    "border": "#B30000"
+  },
+  {
+    "name": "Pierre",
+    "color": "#807B6C",
+    "border": "#342F20"
+  },
+  {
+    "name": "ArbreCoupe",
+    "color": "#229119",
+    "border": "#004500"
+  },
+  {
+    "name": "ArbreEntier",
+    "color": "#0D5C21",
+    "border": "#001000"
+  }
+]

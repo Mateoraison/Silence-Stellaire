@@ -1,0 +1,247 @@
+\doxysection{main.\+h}
+\hypertarget{main_8h_source}{}\label{main_8h_source}\index{/info/etu/l2info/s2401251/Documents/Silence-\/Stellaire/src/headers/main.h@{/info/etu/l2info/s2401251/Documents/Silence-\/Stellaire/src/headers/main.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MAIN\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MAIN\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <SDL3/SDL.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <SDL3\_image/SDL\_image.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <SDL3\_mixer/SDL\_mixer.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ FRAME\_DUREE\ 50}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ W\_MAP\ 40}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ H\_MAP\ 40}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ SOURCE\_TILE\_SIZE\ 64}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ DISPLAY\_TILE\_SIZE\ 90}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ PLANETE3\_TILE\_SIZE\ 16}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ PLANETE3\_ROOM\_W\ 10}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ PLANETE3\_ROOM\_H\ 7}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ PLANETE3\_END\_W\ 5}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ PLANETE3\_END\_H\ 5}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ VAISSEAU\_WORLD\_X\ 750.0f}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ VAISSEAU\_WORLD\_Y\ 550.0f}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ VAISSEAU\_WIDTH\ 644.0f}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ VAISSEAU\_HEIGHT\ 388.0f}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ VAISSEAU\_SPRITE\_SRC\_W\ 192.0f}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ VAISSEAU\_SPRITE\_SRC\_H\ 128.0f}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ VAISSEAU\_SOLID\_SRC\_X\ 28.0f}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ VAISSEAU\_SOLID\_SRC\_Y\ 22.0f}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ VAISSEAU\_SOLID\_SRC\_W\ 148.0f}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ VAISSEAU\_SOLID\_SRC\_H\ 94.0f}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ VAISSEAU\_COLLISION\_X\ (VAISSEAU\_WORLD\_X\ +\ (VAISSEAU\_SOLID\_SRC\_X\ *\ (VAISSEAU\_WIDTH\ /\ VAISSEAU\_SPRITE\_SRC\_W)))}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ VAISSEAU\_COLLISION\_Y\ (VAISSEAU\_WORLD\_Y\ +\ (VAISSEAU\_SOLID\_SRC\_Y\ *\ (VAISSEAU\_HEIGHT\ /\ VAISSEAU\_SPRITE\_SRC\_H)))}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ VAISSEAU\_COLLISION\_W\ (VAISSEAU\_SOLID\_SRC\_W\ *\ (VAISSEAU\_WIDTH\ /\ VAISSEAU\_SPRITE\_SRC\_W))}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ VAISSEAU\_COLLISION\_H\ (VAISSEAU\_SOLID\_SRC\_H\ *\ (VAISSEAU\_HEIGHT\ /\ VAISSEAU\_SPRITE\_SRC\_H))}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ MAX\_MOB\ 1000}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ MAX\_ITEMS\ 200}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ HOTBAR\_SIZE\ 5}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ INVENTAIRE\_COLS\ 5}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ INVENTAIRE\_ROWS\ 4}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ INVENTAIRE\_SIZE\ (INVENTAIRE\_COLS\ *\ INVENTAIRE\_ROWS)}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ CAISSE\_OUTILS\_SIZE\ 6}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{vide,\ terreP,\ eau,\ terreCHG,\ terreCHD,\ terreCBG,\ terreCBD,\ terreH,\ terreB,\ terreG,\ terreD,\ feu,\ pierre,\ arbrecoupe,\ arbreEntier,\ cterreHBG,\ cterreBBG,\ cterreHHD,\ cterrBHD\}\ type\_t;}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtile__}{tile\_}}\{}
+\DoxyCodeLine{00053\ \ \ \ \ type\_t\ type;}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{int}\ width;}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{int}\ height;}
+\DoxyCodeLine{00056\ \}t\_tile;}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtileset__}{tileset\_}}\{}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{int}\ width;}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{int}\ height;}
+\DoxyCodeLine{00061\ \ \ \ \ t\_tile\ tab[W\_MAP][H\_MAP];}
+\DoxyCodeLine{00062\ \}t\_tileset;}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{float}\ x;}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{float}\ y;}
+\DoxyCodeLine{00067\ \ \ \ \ SDL\_Texture\ *texture;}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{int}\ direction;\ \textcolor{comment}{//\ 0=south,1=north,2=west,3=east}}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{int}\ vie;}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{int}\ vie\_max;}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{int}\ faim;}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{int}\ faim\_max;}
+\DoxyCodeLine{00073\ \ \ \ \ Uint32\ invincibiliter\_timer;}
+\DoxyCodeLine{00074\ \}\ \mbox{\hyperlink{structPerso}{Perso}};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{PIECE,VIANDE,MARTEAU,SOIN,BRIQUET,BOIS,FEUDECAMP,VIANDECUITE,ENGRENAGE\}\ typeItem;}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structitem__}{item\_}}\ \{}
+\DoxyCodeLine{00079\ \ \ \ \ typeItem\ type;}
+\DoxyCodeLine{00080\ \ \ \ \ SDL\_Texture\ *\ texture;}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{float}\ x;}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{float}\ y;}
+\DoxyCodeLine{00083\ \}t\_Item;}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{float}\ x;}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{float}\ y;}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{int}\ direction;}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{float}\ vx;}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{float}\ vy;}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{float}\ target\_vx;}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{float}\ target\_vy;}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{float}\ speed;}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{float}\ largeur,hauteur;}
+\DoxyCodeLine{00095\ \ \ \ \ Uint32\ time\_change\_dir;}
+\DoxyCodeLine{00096\ \ \ \ \ SDL\_Texture\ *\ texture;}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{int}\ vie;}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{int}\ id;\ \textcolor{comment}{//1\ =\ mouton,\ 2\ =\ pawns}}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{int}\ type\_boss\_proprietaire;\ \textcolor{comment}{//\ -\/1\ pour\ les\ mobs\ neutres,\ sinon\ type\ de\ boss\ proprietaire}}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordtype}{int}\ drop\_chance;}
+\DoxyCodeLine{00101\ \}\mbox{\hyperlink{structMob}{Mob}};}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00104\ \ \ \ \ TYPE\_BOSS\_DEMON\_DE\_FEU\ =\ 0,}
+\DoxyCodeLine{00105\ \ \ \ \ TYPE\_BOSS\_SENTINELLE\ =\ 1,}
+\DoxyCodeLine{00106\ \ \ \ \ TYPE\_BOSS\_MINOTAURE\ =\ 2}
+\DoxyCodeLine{00107\ \}\ type\_boss\_t;}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00110\ \ \ \ \ type\_boss\_t\ type;}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *nom\_affiche;}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *chemin\_sprite;}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *chemin\_projectile;}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *chemin\_minion\_course;}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{int}\ vie\_max;}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordtype}{int}\ attaque\_contact;}
+\DoxyCodeLine{00117\ \ \ \ \ Uint32\ cooldown\_projectile\_ms;}
+\DoxyCodeLine{00118\ \ \ \ \ Uint32\ cooldown\_zone\_ms;}
+\DoxyCodeLine{00119\ \ \ \ \ Uint32\ cooldown\_invocation\_ms;}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordtype}{int}\ active\_projectile;}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{int}\ active\_zone;}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{int}\ active\_invocation;}
+\DoxyCodeLine{00123\ \}\ \mbox{\hyperlink{structboss__config__t}{boss\_config\_t}};}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordtype}{float}\ x;}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordtype}{float}\ y;}
+\DoxyCodeLine{00128\ \ \ \ \ type\_boss\_t\ type;}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structboss__config__t}{boss\_config\_t}}\ *config\_boss;}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordtype}{int}\ est\_battu;}
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keywordtype}{int}\ vie;}
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordtype}{int}\ vie\_max;}
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordtype}{int}\ attaque;}
+\DoxyCodeLine{00134\ \ \ \ \ Uint32\ cooldown\_attaque;}
+\DoxyCodeLine{00135\ \ \ \ \ Uint32\ cooldown\_zone;}
+\DoxyCodeLine{00136\ \ \ \ \ Uint32\ cooldown\_invocation;}
+\DoxyCodeLine{00137\ \ \ \ \ Uint32\ fin\_animation\_attaque;}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keywordtype}{int}\ frame\_anim\_repos;}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordtype}{int}\ frame\_anim\_attaque;}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordtype}{int}\ frame\_anim\_mort;}
+\DoxyCodeLine{00141\ \ \ \ \ Uint32\ animation\_timer;}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordtype}{int}\ phase;}
+\DoxyCodeLine{00143\ \ \ \ \ SDL\_Texture\ *\ texture;}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keywordtype}{int}\ etat\_anim;\ \textcolor{comment}{//\ 0:\ repos,\ 1:\ attaque,\ 2:\ mort}}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordtype}{int}\ drop\_effectue;}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordtype}{int}\ est\_agro;}
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keywordtype}{float}\ rayon\_detection;}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordtype}{float}\ spawn\_x;}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keywordtype}{float}\ spawn\_y;}
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keywordtype}{float}\ patrouille\_cible\_x;}
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keywordtype}{float}\ patrouille\_cible\_y;}
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keywordtype}{int}\ a\_cible\_patrouille;}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordtype}{int}\ degats\_melee\_appliques;}
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keywordtype}{int}\ minotaure\_regarde\_droite;}
+\DoxyCodeLine{00155\ \ \ \ \ Uint32\ stun\_jusqua;}
+\DoxyCodeLine{00156\ \ \ \ \ Uint32\ stun\_recharge\_jusqua;}
+\DoxyCodeLine{00157\ \}\mbox{\hyperlink{structboss__t}{boss\_t}};}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keywordtype}{int}\ x;}
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordtype}{int}\ y;}
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{keywordtype}{int}\ w;}
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keywordtype}{int}\ h;}
+\DoxyCodeLine{00164\ \ \ \ \ t\_Item\ *\ item;}
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keywordtype}{int}\ stackable;}
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keywordtype}{int}\ quantiter;}
+\DoxyCodeLine{00167\ \}\mbox{\hyperlink{structt__case}{t\_case}};}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \textcolor{preprocessor}{\#include\ "{}menu.h"{}}}
+\DoxyCodeLine{00171\ \textcolor{preprocessor}{\#include\ "{}game\_over.h"{}}}
+\DoxyCodeLine{00172\ \textcolor{preprocessor}{\#include\ "{}jeux.h"{}}}
+\DoxyCodeLine{00173\ \textcolor{preprocessor}{\#include\ "{}bouton.h"{}}}
+\DoxyCodeLine{00174\ \textcolor{preprocessor}{\#include\ "{}option.h"{}}}
+\DoxyCodeLine{00175\ \textcolor{preprocessor}{\#include\ "{}perso.h"{}}}
+\DoxyCodeLine{00176\ \textcolor{preprocessor}{\#include\ "{}son.h"{}}}
+\DoxyCodeLine{00177\ \textcolor{preprocessor}{\#include\ "{}boss.h"{}}}
+\DoxyCodeLine{00178\ \textcolor{preprocessor}{\#include\ "{}mob.h"{}}}
+\DoxyCodeLine{00179\ \textcolor{preprocessor}{\#include\ "{}vaisseau.h"{}}}
+\DoxyCodeLine{00180\ \textcolor{preprocessor}{\#include\ "{}map.h"{}}}
+\DoxyCodeLine{00181\ \textcolor{preprocessor}{\#include\ "{}item.h"{}}}
+\DoxyCodeLine{00182\ \textcolor{preprocessor}{\#include\ "{}inventaire.h"{}}}
+\DoxyCodeLine{00183\ \textcolor{preprocessor}{\#include\ "{}sauvegarde.h"{}}}
+\DoxyCodeLine{00184\ \textcolor{preprocessor}{\#include\ "{}objectifs.h"{}}}
+\DoxyCodeLine{00185\ \textcolor{preprocessor}{\#include\ "{}cinematique.h"{}}}
+\DoxyCodeLine{00186\ \textcolor{preprocessor}{\#include\ "{}shop.h"{}}}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00189\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structPerso}{Perso}}\ perso;}
+\DoxyCodeLine{00190\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ animation\_frame;}
+\DoxyCodeLine{00191\ \textcolor{keyword}{extern}\ Uint32\ animation\_timer;}
+\DoxyCodeLine{00192\ \textcolor{keyword}{extern}\ Uint32\ bouge\_timer;}
+\DoxyCodeLine{00193\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ perso\_bouge;}
+\DoxyCodeLine{00194\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ combat\_en\_cours;}
+\DoxyCodeLine{00195\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ combat\_frame;}
+\DoxyCodeLine{00196\ \textcolor{keyword}{extern}\ Uint32\ combat\_timer;}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00198\ \textcolor{keyword}{extern}\ MIX\_Track\ *track\_global;}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00200\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ Planete\_actuelle;}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00202\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ g\_screen\_w;}
+\DoxyCodeLine{00203\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ g\_screen\_h;}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00205\ \textcolor{keywordtype}{void}\ update\_screen\_metrics(SDL\_Renderer\ *renderer);}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00207\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{float}\ screen\_widthf(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{float})g\_screen\_w;}
+\DoxyCodeLine{00209\ \}}
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00211\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{float}\ screen\_heightf(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{00212\ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{float})g\_screen\_h;}
+\DoxyCodeLine{00213\ \}}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00215\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{float}\ screen\_center\_x(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{keywordflow}{return}\ screen\_widthf()\ *\ 0.5f;}
+\DoxyCodeLine{00217\ \}}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{float}\ screen\_center\_y(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{00220\ \ \ \ \ \textcolor{keywordflow}{return}\ screen\_heightf()\ *\ 0.5f;}
+\DoxyCodeLine{00221\ \}}
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00223\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ index\_item;}
+\DoxyCodeLine{00224\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ argent;}
+\DoxyCodeLine{00225\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{float}\ vitesse\_bonus;}
+\DoxyCodeLine{00226\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ sortie\_vaisseau;}
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00228\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structt__case}{t\_case}}\ *hotbar[HOTBAR\_SIZE];}
+\DoxyCodeLine{00229\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structt__case}{t\_case}}\ *caisse\_outils[CAISSE\_OUTILS\_SIZE];}
+\DoxyCodeLine{00230\ \textcolor{keyword}{extern}\ t\_Item\ *\ items[MAX\_ITEMS];}
+\DoxyCodeLine{00231\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structMob}{Mob}}\ *\ mobs[MAX\_MOB];}
+\DoxyCodeLine{00232\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structboss__t}{boss\_t}}\ boss1;}
+\DoxyCodeLine{00233\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structboss__t}{boss\_t}}\ boss3;}
+\DoxyCodeLine{00234\ }
+\DoxyCodeLine{00235\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structt__case}{t\_case}}\ *inventaire[INVENTAIRE\_SIZE];}
+\DoxyCodeLine{00236\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ inventaire\_ouvert;}
+\DoxyCodeLine{00237\ }
+\DoxyCodeLine{00238\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ g\_planete3\_engrenage\_recupere;}
+\DoxyCodeLine{00239\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ g\_planete3\_boss\_spawned;}
+\DoxyCodeLine{00240\ }
+\DoxyCodeLine{00241\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

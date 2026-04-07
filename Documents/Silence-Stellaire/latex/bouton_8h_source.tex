@@ -1,0 +1,31 @@
+\doxysection{bouton.\+h}
+\hypertarget{bouton_8h_source}{}\label{bouton_8h_source}\index{/info/etu/l2info/s2401251/Documents/Silence-\/Stellaire/src/headers/bouton.h@{/info/etu/l2info/s2401251/Documents/Silence-\/Stellaire/src/headers/bouton.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <SDL3/SDL.h>}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <SDL3\_image/SDL\_image.h>}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ BOUTON\_H}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <SDL3/SDL.h>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00009\ \ \ \ \ SDL\_FRect\ rect;\ \ \ \ \ \ \ }
+\DoxyCodeLine{00010\ \ \ \ \ SDL\_Texture\ *texture;}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordtype}{int}\ survole;}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{int}\ appuye;}
+\DoxyCodeLine{00013\ \}\ \mbox{\hyperlink{structBouton}{Bouton}};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ x,\ y,\ w,\ h\ =\ position/taille\ à\ l'écran}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ texture\ =\ image\ déjà\ chargée\ (SDL\_Texture*)}}
+\DoxyCodeLine{00017\ \textcolor{keywordtype}{void}\ Bouton\_Init(\mbox{\hyperlink{structBouton}{Bouton}}\ *b,\ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y,\ \textcolor{keywordtype}{float}\ w,\ \textcolor{keywordtype}{float}\ h,\ SDL\_Texture\ *texture);}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ retourne\ 1\ si\ le\ bouton\ a\ été\ cliqué\ à\ ce\ frame,\ sinon\ 0}}
+\DoxyCodeLine{00020\ \textcolor{keywordtype}{int}\ Bouton\_GererEvenement(\mbox{\hyperlink{structBouton}{Bouton}}\ *b,\ \textcolor{keyword}{const}\ SDL\_Event\ *e);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ dessine\ l'image\ du\ bouton\ dans\ son\ rect}}
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{void}\ Bouton\_Afficher(\mbox{\hyperlink{structBouton}{Bouton}}\ *b,\ SDL\_Renderer\ *renderer);}
+\DoxyCodeLine{00024\ \textcolor{keywordtype}{void}\ afficher\_texte\_centre(SDL\_Renderer\ *renderer,\ SDL\_Texture\ *texture,\ SDL\_FRect\ *rect\_bouton);}
+\DoxyCodeLine{00025\ }
+
+\end{DoxyCode}

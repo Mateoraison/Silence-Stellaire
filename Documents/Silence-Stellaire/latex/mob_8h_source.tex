@@ -1,0 +1,16 @@
+\doxysection{mob.\+h}
+\hypertarget{mob_8h_source}{}\label{mob_8h_source}\index{/info/etu/l2info/s2401251/Documents/Silence-\/Stellaire/src/headers/mob.h@{/info/etu/l2info/s2401251/Documents/Silence-\/Stellaire/src/headers/mob.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <SDL3/SDL.h>}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <SDL3\_image/SDL\_image.h>}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keywordtype}{void}\ init\_mobs(SDL\_Renderer\ *\ renderer,\ \mbox{\hyperlink{structMob}{Mob}}\ *\ mobs[MAX\_MOB],\ t\_tile\ map[W\_MAP][H\_MAP],\ \textcolor{keywordtype}{int}\ nb\_pawns,\ \textcolor{keywordtype}{int}\ nb\_moutons);}
+\DoxyCodeLine{00005\ \textcolor{keywordtype}{void}\ update\_mobs(t\_tile\ map[W\_MAP][H\_MAP],\ \mbox{\hyperlink{structMob}{Mob}}\ *\ mobs[MAX\_MOB]);}
+\DoxyCodeLine{00006\ \textcolor{keywordtype}{void}\ afficher\_mob(SDL\_Renderer\ *\ renderer,\ \mbox{\hyperlink{structMob}{Mob}}\ *\ mobs[MAX\_MOB]);}
+\DoxyCodeLine{00007\ \textcolor{keywordtype}{void}\ detruire\_mobs(\mbox{\hyperlink{structMob}{Mob}}\ *\ mobs[MAX\_MOB]);}
+\DoxyCodeLine{00008\ \textcolor{keywordtype}{void}\ detruire\_un\_mob(\mbox{\hyperlink{structMob}{Mob}}\ *\ mob);}
+\DoxyCodeLine{00009\ \textcolor{keywordtype}{void}\ reset\_mob\_respawn\_queue(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00010\ \textcolor{keywordtype}{void}\ schedule\_respawn(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id},\ Uint32\ delay\_ms);}
+
+\end{DoxyCode}
