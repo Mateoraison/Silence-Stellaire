@@ -79,7 +79,10 @@ void soigner(){
 }
 
 static bool gerer_interaction_objet(SDL_Renderer *renderer, int planete_actuelle, int type_objet, const SpawnPoint *spawn, bool e_pressed, bool *running, int *code_sortie, bool *planete_changee, char *message_interaction, size_t message_size) {
+    // Eviter les warnings 
     (void)planete_actuelle;
+    (void)spawn;
+
     switch (type_objet) {
         case 32:
             snprintf(message_interaction, message_size, "Appuyez sur E pour ouvrir la boutique");

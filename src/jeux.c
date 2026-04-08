@@ -18,6 +18,8 @@ int engrenages_poses = 0;
 bool vaisseau_repare = false;
 bool g_planete3_engrenage_recupere = false;
 bool g_planete3_boss_spawned = false;
+static bool g_planete2_mastermind_engrenage_donne = false;
+static bool g_planete2_simon_termine = false;
 
 Perso  perso;
 int animation_frame = 0;
@@ -559,6 +561,33 @@ static void console_afficher(SDL_Renderer *renderer) {
     }
 }
 
+static void afficher_message_interaction(SDL_Renderer *renderer, const char *message, float x, float y) {
+    TTF_Font *font = TTF_OpenFont("assets/police.ttf", 20);
+    if (!font || !message || message[0] == '\0') {
+        if (font) TTF_CloseFont(font);
+        return;
+    }
+
+    SDL_Color blanc = {255, 255, 255, 255};
+    SDL_Surface *surface = TTF_RenderText_Solid(font, message, strlen(message), blanc);
+    if (surface) {
+        SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surface);
+        if (texture) {
+            SDL_FRect rect = {
+                x - (float)surface->w / 2.0f,
+                y,
+                (float)surface->w,
+                (float)surface->h
+            };
+            SDL_RenderTexture(renderer, texture, NULL, &rect);
+            SDL_DestroyTexture(texture);
+        }
+        SDL_DestroySurface(surface);
+    }
+
+    TTF_CloseFont(font);
+}
+
 
 
 int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, bool reprendre_partie) {
@@ -611,6 +640,8 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         srand(time(NULL));
         g_planete3_engrenage_recupere = false;
         g_planete3_boss_spawned = false;
+        g_planete2_mastermind_engrenage_donne = false;
+        g_planete2_simon_termine = false;
 
         if (planete == 3) {
             boss3.est_battu = 1;
@@ -637,6 +668,29 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         return 1;
     }
     SDL_SetTextureScaleMode(tileset, SDL_SCALEMODE_NEAREST);
+
+    SDL_Texture *texture_alien_planete2 = NULL;
+    const float alien_planete2_x_1 = 760.2f;
+    const float alien_planete2_y_1 = 1935.4f;
+    const float alien_planete2_x_2 = 36.0f * DISPLAY_TILE_SIZE;
+    const float alien_planete2_y_2 = 36.0f * DISPLAY_TILE_SIZE;
+    const float alien_planete2_w = DISPLAY_TILE_SIZE * 0.85f;
+    const float alien_planete2_h = DISPLAY_TILE_SIZE * 0.85f;
+
+    // Alternative possible position:
+    // const float alien_planete2_x = 3320.8f;
+    // const float alien_planete2_y = 3309.5f;
+
+    if (planete == 2) {
+        texture_alien_planete2 = IMG_LoadTexture(renderer, "assets/tileset/V2/alien/PNG/alien_gray/gray__0000_idle_1.png");
+
+        if (!texture_alien_planete2) {
+            SDL_Log("Erreur chargement alien planete 2 : %s", SDL_GetError());
+        } else {
+            SDL_SetTextureScaleMode(texture_alien_planete2, SDL_SCALEMODE_NEAREST);
+        }
+        
+    }
 
 
     t_tile map[W_MAP][H_MAP];
@@ -757,6 +811,8 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         float sh = screen_heightf();
 
         int vie_avant = perso.vie;
+        char message_interaction[128] = "";
+        bool afficher_message = false;
 
         while (SDL_PollEvent(&event)){
             if (event.type == SDL_EVENT_MOUSE_MOTION ||
@@ -847,6 +903,35 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
                     simon(renderer);
                 }
                 if(event.key.key == SDLK_E) {
+                    if (planete == 2 && texture_alien_planete2 && !g_planete2_simon_termine) {
+                        float alien_planete2_x = g_planete2_mastermind_engrenage_donne ? alien_planete2_x_2 : alien_planete2_x_1;
+                        float alien_planete2_y = g_planete2_mastermind_engrenage_donne ? alien_planete2_y_2 : alien_planete2_y_1;
+                        SDL_FRect rect_perso_alien = {cx - perso.x, cy - perso.y, 40.0f, 60.0f};
+                        SDL_FRect rect_alien = {alien_planete2_x, alien_planete2_y, alien_planete2_w, alien_planete2_h};
+                        if (SDL_HasRectIntersectionFloat(&rect_perso_alien, &rect_alien)) {
+                            if (!g_planete2_mastermind_engrenage_donne) {
+                                mastermind(renderer);
+                                if (g_mastermind_reussi && index_item < MAX_ITEMS) {
+                                    t_Item *engrenage_recompense = init_item(ENGRENAGE, renderer, alien_planete2_x + 8.0f, alien_planete2_y + 8.0f);
+                                    if (engrenage_recompense != NULL) {
+                                        items[index_item++] = engrenage_recompense;
+                                        g_planete2_mastermind_engrenage_donne = true;
+                                    }
+                                }
+                            } else {
+                                simon(renderer);
+                                if (g_simon_reussi && index_item < MAX_ITEMS) {
+                                    t_Item *engrenage_recompense = init_item(ENGRENAGE, renderer, alien_planete2_x + 8.0f, alien_planete2_y + 8.0f);
+                                    if (engrenage_recompense != NULL) {
+                                        items[index_item++] = engrenage_recompense;
+                                    }
+                                    g_planete2_simon_termine = true;
+                                }
+                            }
+                            continue;
+                        }
+                    }
+
                     SDL_FRect rect_perso_vaisseau = {cx - perso.x, cy - perso.y, 40.0f, 60.0f};
                     SDL_FRect rect_vaisseau = {vaisseau_collision_x, vaisseau_collision_y, vaisseau_collision_w, vaisseau_collision_h};
                     if (vaisseau_repare && SDL_HasRectIntersectionFloat(&rect_perso_vaisseau, &rect_vaisseau)) {
@@ -1057,6 +1142,21 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
             perso.y = old_y;
         }
 
+        if (planete == 2 && texture_alien_planete2 && !g_planete2_simon_termine) {
+            float alien_planete2_x = g_planete2_mastermind_engrenage_donne ? alien_planete2_x_2 : alien_planete2_x_1;
+            float alien_planete2_y = g_planete2_mastermind_engrenage_donne ? alien_planete2_y_2 : alien_planete2_y_1;
+            SDL_FRect rect_alien_collision = {
+                alien_planete2_x + 4.0f,
+                alien_planete2_y + 4.0f,
+                alien_planete2_w - 8.0f,
+                alien_planete2_h - 8.0f
+            };
+            if (SDL_HasRectIntersectionFloat(&hitbox_float, &rect_alien_collision)) {
+                perso.x = old_x;
+                perso.y = old_y;
+            }
+        }
+
         SDL_SetRenderDrawColor(renderer, 71, 171, 169, 255);
         SDL_RenderClear(renderer);
 
@@ -1080,6 +1180,19 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
 
 
         charger_tilemap(renderer, tileset, map, foam, planete);
+
+        if (planete == 2 && texture_alien_planete2 && !g_planete2_simon_termine) {
+            float alien_planete2_x = g_planete2_mastermind_engrenage_donne ? alien_planete2_x_2 : alien_planete2_x_1;
+            float alien_planete2_y = g_planete2_mastermind_engrenage_donne ? alien_planete2_y_2 : alien_planete2_y_1;
+            SDL_FRect dest_alien = {
+                alien_planete2_x + perso.x,
+                alien_planete2_y + perso.y,
+                DISPLAY_TILE_SIZE * 0.85f,
+                DISPLAY_TILE_SIZE * 0.85f
+            };
+            SDL_RenderTexture(renderer, texture_alien_planete2, NULL, &dest_alien);
+        }
+
         update_animation();
         if (cuisson.actif && SDL_GetTicks() - cuisson.debut_cuisson >= 3000) {
             cuisson.actif = 0;
@@ -1310,6 +1423,35 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         afficher_stat(renderer);
         objectifs_afficher(&objectifs_jeu,renderer,font_objectifs);
 
+        if (planete == 2 && texture_alien_planete2 && !g_planete2_simon_termine && !console_cmd.ouvert) {
+            float alien_planete2_x = g_planete2_mastermind_engrenage_donne ? alien_planete2_x_2 : alien_planete2_x_1;
+            float alien_planete2_y = g_planete2_mastermind_engrenage_donne ? alien_planete2_y_2 : alien_planete2_y_1;
+            SDL_FRect rect_perso_alien = {cx - perso.x, cy - perso.y, 40.0f, 60.0f};
+            SDL_FRect rect_alien_zone = {
+                alien_planete2_x - 24.0f,
+                alien_planete2_y - 24.0f,
+                alien_planete2_w + 48.0f,
+                alien_planete2_h + 48.0f
+            };
+            if (SDL_HasRectIntersectionFloat(&rect_perso_alien, &rect_alien_zone)) {
+                if (!g_planete2_mastermind_engrenage_donne) {
+                    SDL_snprintf(message_interaction, sizeof(message_interaction), "Appuyez sur E pour lancer la premiere epreuve");
+                } else {
+                    SDL_snprintf(message_interaction, sizeof(message_interaction), "Appuyez sur E pour lancer la derniere epreuve");
+                }
+                afficher_message = true;
+            }
+        }
+
+        if (afficher_message) {
+            float alien_planete2_x = g_planete2_mastermind_engrenage_donne ? alien_planete2_x_2 : alien_planete2_x_1;
+            float alien_planete2_y = g_planete2_mastermind_engrenage_donne ? alien_planete2_y_2 : alien_planete2_y_1;
+            afficher_message_interaction(renderer,
+                                         message_interaction,
+                                         alien_planete2_x + perso.x + (alien_planete2_w * 0.5f),
+                                         alien_planete2_y + perso.y - 28.0f);
+        }
+
         if (console_cmd.ouvert) {
             console_afficher(renderer);
         } else if (console_cmd.message[0] != '\0' && SDL_GetTicks() < console_cmd.message_expire && console_cmd.font) {
@@ -1457,7 +1599,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         }
 
         SDL_RenderPresent(renderer);
-        if(perso.vie == 0) {jouer_son("assets/audio/death.mp3", 0.2f); running = game_over(renderer, planete);}
+        if(perso.vie == 0) {jouer_son("assets/audio/game_over.mp3", 0.2f); running = game_over(renderer, planete);}
     }
 
     if (code_sortie != 4 && font_objectifs) { TTF_CloseFont(font_objectifs); font_objectifs = NULL; }
@@ -1472,6 +1614,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
     }
     SDL_DestroyTexture(exterieure);
     SDL_DestroyTexture(texture_caisse_outils);
+    if (texture_alien_planete2) SDL_DestroyTexture(texture_alien_planete2);
     if (code_sortie != 4) {
         detruire_mobs(mobs);
         detruire_boss(boss_actif);

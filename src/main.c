@@ -96,6 +96,7 @@ int main(int argc, char *argv[]) {
 
     init_caisse_outils(renderer);
     MIX_Track *track_global = jouer_son("assets/audio/ambiance.wav", 0.3f);
+    MIX_Track *track_vaisseau = NULL;
 
     bool    reprendre_partie = false;
     EtatJeu etat             = ETAT_MENU;
@@ -127,11 +128,22 @@ int main(int argc, char *argv[]) {
                 break;
             }
             case ETAT_VAISSEAU: {
+                if (track_global && son_est_actif()) pause_son(track_global);
+                track_vaisseau = jouer_son("assets/audio/vaisseau.wav", 0.3f);
                 int code = vaisseau(renderer,Planete_actuelle);
+                if (track_vaisseau) {
+                    pause_son(track_vaisseau);
+                    track_vaisseau = NULL;
+                }
                 switch (code) {
                     case 1:  etat = ETAT_MENU; break;
                     case 3:  etat = ETAT_MAP;  break;
-                    default: reprendre_partie = true; sortie_vaisseau = true ; etat = ETAT_JEU;  break;
+                    default:
+                        if (track_global && son_est_actif()) reprendre_son(track_global);
+                        reprendre_partie = true;
+                        sortie_vaisseau = true;
+                        etat = ETAT_JEU;
+                        break;
                 }
                 break;
             }

@@ -231,6 +231,8 @@ extern t_Item * items[MAX_ITEMS];
 extern Mob * mobs[MAX_MOB];
 extern boss_t boss1;
 extern boss_t boss3;
+extern bool g_mastermind_reussi;
+extern bool g_simon_reussi;
 
 extern t_case *inventaire[INVENTAIRE_SIZE];
 extern bool inventaire_ouvert;

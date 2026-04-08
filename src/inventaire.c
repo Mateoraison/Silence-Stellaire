@@ -47,6 +47,9 @@ void afficher_hotbar(t_case * hotbar[HOTBAR_SIZE], SDL_Renderer *renderer) {
 
 
 void ajouter_item_hotbar(t_case *hotbar[HOTBAR_SIZE], t_Item *item, SDL_Renderer *renderer) {
+    // Evite le warning
+    (void)renderer;
+
     //ajouter +1 a quantiter quands il est deja dans la hotbar
     for (int i = 0; i < HOTBAR_SIZE; i++) {
         if(hotbar[i] != NULL && hotbar[i]->item != NULL && hotbar[i]->item->type == item->type && hotbar[i]->stackable) {
@@ -59,7 +62,7 @@ void ajouter_item_hotbar(t_case *hotbar[HOTBAR_SIZE], t_Item *item, SDL_Renderer
         if (hotbar[i] == NULL) {
             hotbar[i] = malloc(sizeof(t_case));
             if (!hotbar[i]) return;
-
+  
             
             t_Item *copie = malloc(sizeof(t_Item));
             if (!copie) { 
@@ -84,6 +87,9 @@ void ajouter_item_hotbar(t_case *hotbar[HOTBAR_SIZE], t_Item *item, SDL_Renderer
 
 
 void afficher_inventaire(t_case *inventaire[], SDL_Renderer *renderer, int inventaire_size, int inventaire_cols, int inventaire_rows) {
+    // Evite les warnings
+    (void)inventaire_size;
+
     TTF_Font *font = TTF_OpenFont("assets/police.ttf", 16);
 
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);

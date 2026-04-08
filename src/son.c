@@ -98,7 +98,7 @@ MIX_Track *jouer_son(const char* chemin, float volume) {
     }
 
     int loops = 0;
-    if (strcmp(chemin, "assets/audio/ambiance.wav") == 0) {
+    if (strcmp(chemin, "assets/audio/ambiance.wav") == 0 || strcmp(chemin, "assets/audio/vaisseau.wav") == 0) {
         loops = -1;
         g_ambiance_track = son->track;
     }
@@ -177,9 +177,16 @@ void son_precharger_sfx(void) {
     recuperer_son("assets/audio/dammage.wav");
     SDL_Log("SFX prechargé: dammage.wav");
 
-    recuperer_son("assets/audio/death.mp3");
-    SDL_Log("SFX prechargé: death.mp3");
-
     recuperer_son("assets/audio/crash.mp3");
     SDL_Log("SFX prechargé: crash.mp3");
+
+    recuperer_son("assets/audio/kick.mp3");
+    SDL_Log("SFX prechargé: kick.mp3");
+
+    recuperer_son("assets/audio/credit.mp3");
+    SDL_Log("SFX prechargé: credit.mp3");
+
+    recuperer_son("assets/audio/game_over.mp3");
+    SDL_Log("SFX prechargé: game_over.mp3");
+
 }

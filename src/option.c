@@ -9,6 +9,9 @@
 
 
 int afficher_option(SDL_Renderer *renderer, MIX_Track *track_global) {
+    // Evite le warning
+    (void)track_global;
+
     bool running = true;
     SDL_Event event;
     bool ambiance_active = son_ambiance_est_active() != 0;

@@ -24,6 +24,8 @@ typedef struct { float x, y; bool actif; } Entite;
 #define ARCADE_INFO_H 56.0f
 
 static TTF_Font *arcade_font = NULL;
+bool g_mastermind_reussi = false;
+bool g_simon_reussi = false;
 
 void arcade_draw_text(SDL_Renderer *r, const char* text, float x, float y, bool center);
 
@@ -199,7 +201,7 @@ void jouer_arcade1(SDL_Renderer *renderer) {
         if (etat == 0) {
             arcade_draw_text(renderer, "STAR DEFENDER", 400, 250, true);
             arcade_draw_text(renderer, "OBJECTIF: ELIMINER LES ENNEMIS", 400, 290, true);
-            arcade_draw_text(renderer, "FLECHES / A D : BOUGER", 400, 330, true);
+            arcade_draw_text(renderer, "← → / A D : BOUGER", 400, 330, true);
             arcade_draw_text(renderer, "ESPACE: TIRER", 400, 360, true);
             arcade_draw_text(renderer, "PRESSER ESPACE", 400, 450, true);
             arcade_draw_info_panel(renderer, "ESPACE: COMMENCER", "ECHAP: QUITTER LA BORNE");
@@ -209,7 +211,7 @@ void jouer_arcade1(SDL_Renderer *renderer) {
             arcade_draw_text(renderer, res, 400, 300, true);
             arcade_draw_info_panel(renderer, "R: REJOUER", "ECHAP: QUITTER");
         } else {
-            arcade_draw_hud(renderer, "FLECHES / Q D : BOUGER", "ESPACE: TIRER | ECHAP: QUITTER", score, "SCORE");
+            arcade_draw_hud(renderer, "← → / Q D : BOUGER", "ESPACE: TIRER | ECHAP: QUITTER", score, "SCORE");
             SDL_SetRenderDrawColor(renderer, 0, 200, 255, 255);
             SDL_FRect rj = { j_x, 540, 30, 10 }; SDL_RenderFillRect(renderer, &rj);
             SDL_SetRenderDrawColor(renderer, 255, 50, 50, 255);
@@ -277,7 +279,7 @@ void jouer_arcade2(SDL_Renderer *renderer) {
         if (etat == 0) {
             arcade_draw_text(renderer, "GRAVITY FALL", 400, 250, true);
             arcade_draw_text(renderer, "OBJECTIF: PASSER LES BARRIERES", 400, 290, true);
-            arcade_draw_text(renderer, "FLECHES / Q D : BOUGER", 400, 330, true);
+            arcade_draw_text(renderer, "← → / Q D : BOUGER", 400, 330, true);
             arcade_draw_text(renderer, "PRESSER ESPACE", 400, 450, true);
             arcade_draw_info_panel(renderer, "ESPACE: COMMENCER", "ECHAP: QUITTER LA BORNE");
         } else if (etat == 2) {
@@ -286,7 +288,7 @@ void jouer_arcade2(SDL_Renderer *renderer) {
             arcade_draw_text(renderer, res, 400, 300, true);
             arcade_draw_info_panel(renderer, "R: REJOUER", "ECHAP: QUITTER");
         } else {
-            arcade_draw_hud(renderer, "FLECHES / Q D : BOUGER", "EVITE LES MURS", score, "PASSES");
+            arcade_draw_hud(renderer, "← → / Q D : BOUGER", "EVITE LES MURS", score, "PASSES");
             SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
             SDL_FRect p = { j_x, j_y, 10, 10 }; SDL_RenderFillRect(renderer, &p);
             SDL_SetRenderDrawColor(renderer, 0, 255, 100, 255);
@@ -343,7 +345,7 @@ void jouer_arcade3(SDL_Renderer *renderer) {
             arcade_draw_text(renderer, "SPACE PADDLE", 400, 250, true);
             arcade_draw_text(renderer, "OBJECTIF: TENIR LE PLUS LONGTEMPS", 400, 290, true);
             arcade_draw_text(renderer, "NE LAISSE PAS TOMBER", 400, 330, true);
-            arcade_draw_text(renderer, "FLECHES / Q D : BOUGER", 400, 360, true);
+            arcade_draw_text(renderer, "← → / Q D : BOUGER", 400, 360, true);
             arcade_draw_text(renderer, "PRESSER ESPACE", 400, 450, true);
             arcade_draw_info_panel(renderer, "ESPACE: COMMENCER", "ECHAP: QUITTER LA BORNE");
         } else if (etat == 2) {
@@ -352,7 +354,7 @@ void jouer_arcade3(SDL_Renderer *renderer) {
             arcade_draw_text(renderer, res, 400, 300, true);
             arcade_draw_info_panel(renderer, "R: REESSAYER", "ECHAP: QUITTER");
         } else {
-            arcade_draw_hud(renderer, "FLECHES / Q D : BOUGER", "GARDE LA BALLE EN JEU | ECHAP: QUITTER", rebonds, "REBONDS");
+            arcade_draw_hud(renderer, "← → / Q D : BOUGER", "GARDE LA BALLE EN JEU | ECHAP: QUITTER", rebonds, "REBONDS");
             SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
             SDL_FRect b = { bx, by, 10, 10 }; SDL_RenderFillRect(renderer, &b);
             SDL_SetRenderDrawColor(renderer, 255, 0, 255, 255);
@@ -369,6 +371,7 @@ void jouer_arcade3(SDL_Renderer *renderer) {
 void mastermind(SDL_Renderer *renderer) {
     bool running = true;
     int etat = 0; // 0: Menu, 1: Jeu, 2: Gagné, 3: Perdu
+    g_mastermind_reussi = false;
     
     // 6 couleurs pour Mastermind
     SDL_Color mm_colors[6] = {
@@ -379,7 +382,6 @@ void mastermind(SDL_Renderer *renderer) {
         {255, 100, 0, 255},    // Orange
         {255, 0, 255, 255}     // Magenta
     };
-    const char *color_names[6] = {"ROUGE", "BLEU", "VERT", "JAUNE", "ORANGE", "MAGENTA"};
     
     // Générateur de code secret (4 couleurs de 0-5)
     int secret[4];
@@ -392,7 +394,7 @@ void mastermind(SDL_Renderer *renderer) {
     int score = 0;
     
     // Historique des tentatives
-    typedef struct { int guess[4]; int bien_place; int mal_place; } Tentative;
+    typedef struct { int guess[4]; char feedback[4]; } Tentative;
     Tentative historique[12];
     int nb_tentatives = 0;
     
@@ -424,24 +426,46 @@ void mastermind(SDL_Renderer *renderer) {
                         guess[current_pos] = 0;
                     }
                     if (ev.key.key == SDLK_RETURN && current_pos == 4) {
-                        // Vérifier la tentative
-                        int bien_place = 0, mal_place = 0;
+                        // Vérifier la tentative avec un verdict par position
+                        bool secret_used[4] = {false};
+                        bool guess_used[4] = {false};
+
                         for (int i = 0; i < 4; i++) {
-                            if (guess[i] == secret[i]) bien_place++;
+                            historique[nb_tentatives].guess[i] = guess[i];
+                            historique[nb_tentatives].feedback[i] = 'X';
                         }
+
+                        // Première passe: bien placés
                         for (int i = 0; i < 4; i++) {
-                            for (int j = 0; j < 4; j++) {
-                                if (i != j && guess[i] == secret[j] && guess[i] != secret[i]) mal_place++;
+                            if (guess[i] == secret[i]) {
+                                historique[nb_tentatives].feedback[i] = 'V';
+                                secret_used[i] = true;
+                                guess_used[i] = true;
                             }
                         }
-                        
-                        historique[nb_tentatives].bien_place = bien_place;
-                        historique[nb_tentatives].mal_place = mal_place;
-                        for (int i = 0; i < 4; i++) historique[nb_tentatives].guess[i] = guess[i];
+
+                        // Deuxième passe: bonne couleur mais mal placée
+                        for (int i = 0; i < 4; i++) {
+                            if (!guess_used[i]) {
+                                for (int j = 0; j < 4; j++) {
+                                    if (!secret_used[j] && guess[i] == secret[j]) {
+                                        historique[nb_tentatives].feedback[i] = 'O';
+                                        secret_used[j] = true;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+
+                        int bien_place = 0;
+                        for (int i = 0; i < 4; i++) {
+                            if (historique[nb_tentatives].feedback[i] == 'V') bien_place++;
+                        }
                         nb_tentatives++;
                         
                         if (bien_place == 4) {
                             etat = 2; // Gagné
+                            g_mastermind_reussi = true;
                             score = (max_tentatives - tentatives) * 100;
                         } else if (tentatives >= max_tentatives - 1) {
                             etat = 3; // Perdu
@@ -470,22 +494,35 @@ void mastermind(SDL_Renderer *renderer) {
             minijeu_draw_text(renderer, "TROUVEZ LE CODE SECRET", 450, 260, true);
             minijeu_draw_text(renderer, "6 COULEURS, 4 POSITIONS", 450, 295, true);
             minijeu_draw_text(renderer, "VOUS AVEZ 12 TENTATIVES", 450, 330, true);
-            minijeu_draw_text(renderer, "1=R  2=B  3=V  4=J  5=O  6=M", 450, 375, true);
+            minijeu_draw_text(renderer, "1=Rouge  2=Bleu  3=Vert ", 450, 375, true);
+            minijeu_draw_text(renderer, "4=Jaune  5=Orange  6=Magenta", 450, 400, true);
             minijeu_draw_text(renderer, "PRESSER ESPACE", 450, 450, true);
             arcade_draw_info_panel(renderer, "ESPACE: COMMENCER", "ECHAP: QUITTER");
         } else if (etat == 2) {
             char res[32]; sprintf(res, "BRAVO! SCORE: %d", score);
             minijeu_draw_text(renderer, "TROUVE!", 450, 250, true);
             minijeu_draw_text(renderer, res, 450, 300, true);
-            arcade_draw_info_panel(renderer, "R: REJOUER", "ECHAP: QUITTER");
+            minijeu_draw_text(renderer, "R: REJOUER   |   ECHAP: QUITTER", 450, 510, true);
         } else if (etat == 3) {
             minijeu_draw_text(renderer, "PERDU!", 450, 250, true);
             minijeu_draw_text(renderer, "TENTATIVES EPUISEES", 450, 300, true);
-            arcade_draw_info_panel(renderer, "R: REJOUER", "ECHAP: QUITTER");
+            minijeu_draw_text(renderer, "R: REJOUER   |   ECHAP: QUITTER", 450, 510, true);
         } else {
             char info[64];
             sprintf(info, "TENTATIVE: %d/%d", tentatives + 1, max_tentatives);
-            arcade_draw_hud(renderer, info, "1-6: COULEUR | ENTER: VALIDER", tentatives, "ESSAIS");
+            
+            // Affichage personnalisé 4 lignes pour Mastermind
+            SDL_SetRenderDrawColor(renderer, 10, 10, 15, 255);
+            SDL_FRect panneau = { ARCADE_INFO_X, ARCADE_INFO_Y, ARCADE_INFO_W + 100.0f, ARCADE_INFO_H + 60.0f };
+            SDL_RenderFillRect(renderer, &panneau);
+            SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
+            SDL_RenderRect(renderer, &panneau);
+            
+            minijeu_draw_text(renderer, info, 450, ARCADE_INFO_Y + 8.0f, true);
+            minijeu_draw_text(renderer, "1=Rouge  2=Bleu  3=Vert", 450, ARCADE_INFO_Y + 30.0f, true);
+            minijeu_draw_text(renderer, "4=Jaune  5=Orange  6=Magenta", 450, ARCADE_INFO_Y + 50.0f, true);
+            minijeu_draw_text(renderer, "V: Bien place | O: Mal place | X: Absent", 450, ARCADE_INFO_Y + 80.0f, true);
+            minijeu_draw_text(renderer, "BACKSPACE: EFFACER  |  ENTER: VALIDER", 450, ARCADE_INFO_Y + 100.0f, true);
             
             // Afficher les anciennes tentatives (dernières 5)
             float y = 450;
@@ -503,9 +540,13 @@ void mastermind(SDL_Renderer *renderer) {
                     SDL_RenderRect(renderer, &sq);
                 }
                 
-                // Afficher les résultats à droite des pions
+                // Afficher le verdict de chaque position
                 char result[16];
-                sprintf(result, "+%d =%d", historique[i].bien_place, historique[i].mal_place);
+                snprintf(result, sizeof(result), "%c %c %c %c",
+                         historique[i].feedback[0],
+                         historique[i].feedback[1],
+                         historique[i].feedback[2],
+                         historique[i].feedback[3]);
                 minijeu_draw_text(renderer, result, 430, y - 2, false);
 
                 y -= 22;
@@ -537,11 +578,12 @@ void mastermind(SDL_Renderer *renderer) {
 // --- JEU 5 : SIMON (MEMORY GAME) ---
 void simon(SDL_Renderer *renderer) {
     bool running = true;
-    int etat = 0; // 0: Menu, 1: Jeu, 2: Perdu
+    int etat = 0; // 0: Menu, 1: Jeu, 2: Perdu, 3: Gagne
+    const int objectif_sequences = 2; // Seuil temporaire pour tests
+    g_simon_reussi = false;
     
     int sequence[100] = {0};
     int sequence_len = 0;
-    int player_seq[100] = {0};
     int player_idx = 0;
     int score = 0;
     Uint32 last_flash = 0;
@@ -557,7 +599,8 @@ void simon(SDL_Renderer *renderer) {
         {100, 255, 0, 255},    // Vert
         {255, 200, 0, 255}     // Jaune
     };
-    const char *color_labels[4] = {"1/Q", "2/W", "3/E", "4/R"};
+
+    const char *color_labels[4] = {"1 ou ▲", "2 ou ▼", "3 ou <", "4 ou >"};
     
     // Positions en cercle (centre de la zone minijeu)
     float circle_x = 450.0f;
@@ -580,12 +623,12 @@ void simon(SDL_Renderer *renderer) {
                     sequence_idx = 0;
                     sequence_start = SDL_GetTicks();
                 }
-                if (etat == 2 && ev.key.key == SDLK_R) {
+                if ((etat == 2 || etat == 3) && ev.key.key == SDLK_R) {
                     etat = 1;
                     sequence_len = 1;
                     player_idx = 0;
                     score = 0;
-                    for (int i = 0; i < 100; i++) { sequence[i] = 0; player_seq[i] = 0; }
+                    for (int i = 0; i < 100; i++) { sequence[i] = 0; }
                     sequence[0] = rand() % 4;
                     playing_sequence = true;
                     sequence_idx = 0;
@@ -594,13 +637,12 @@ void simon(SDL_Renderer *renderer) {
                 
                 if (etat == 1 && !playing_sequence) {
                     int color_pressed = -1;
-                    if (ev.key.key == SDLK_1 || ev.key.key == SDLK_Q || ev.key.key == SDLK_UP) color_pressed = 0;
-                    else if (ev.key.key == SDLK_2 || ev.key.key == SDLK_W || ev.key.key == SDLK_DOWN) color_pressed = 1;
-                    else if (ev.key.key == SDLK_3 || ev.key.key == SDLK_E || ev.key.key == SDLK_LEFT) color_pressed = 2;
-                    else if (ev.key.key == SDLK_4 || ev.key.key == SDLK_R || ev.key.key == SDLK_RIGHT) color_pressed = 3;
+                    if (ev.key.key == SDLK_1 || ev.key.key == SDLK_UP) color_pressed = 0;
+                    else if (ev.key.key == SDLK_2 || ev.key.key == SDLK_DOWN) color_pressed = 1;
+                    else if (ev.key.key == SDLK_3 || ev.key.key == SDLK_LEFT) color_pressed = 2;
+                    else if (ev.key.key == SDLK_4 || ev.key.key == SDLK_RIGHT) color_pressed = 3;
 
                     if (color_pressed >= 0 && player_idx < sequence_len) {
-                        player_seq[player_idx] = color_pressed;
                         flash_color = color_pressed;
                         last_flash = SDL_GetTicks();
                         
@@ -609,6 +651,13 @@ void simon(SDL_Renderer *renderer) {
                             if (player_idx == sequence_len) {
                                 // Correct! Ajouter une couleur
                                 score++;
+                                if (score >= objectif_sequences) {
+                                    etat = 3; // Gagne
+                                    g_simon_reussi = true;
+                                    playing_sequence = false;
+                                    flash_color = -1;
+                                    continue;
+                                }
                                 if (sequence_len < 100) {
                                     sequence[sequence_len] = rand() % 4;
                                     sequence_len++;
@@ -659,13 +708,18 @@ void simon(SDL_Renderer *renderer) {
             minijeu_draw_text(renderer, "SIMON", 450, 220, true);
             minijeu_draw_text(renderer, "REPRODUISEZ LA SEQUENCE", 450, 260, true);
             minijeu_draw_text(renderer, "DE COULEURS", 450, 290, true);
-            minijeu_draw_text(renderer, "1/Q BLEU (HAUT)  3/E VERT (GAUCHE)", 450, 340, true);
-            minijeu_draw_text(renderer, "2/W ROUGE (BAS)  4/R JAUNE (DROITE)", 450, 365, true);
+            minijeu_draw_text(renderer, "1 ou ▲ BLEU  3 ou < VERT", 450, 340, true);
+            minijeu_draw_text(renderer, "2 ou ▼ ROUGE  4 ou > JAUNE", 450, 365, true);
             minijeu_draw_text(renderer, "PRESSER ESPACE", 450, 450, true);
             arcade_draw_info_panel(renderer, "ESPACE: COMMENCER", "ECHAP: QUITTER");
         } else if (etat == 2) {
             char res[32]; sprintf(res, "SCORE: %d", score);
             minijeu_draw_text(renderer, "GAME OVER!", 450, 250, true);
+            minijeu_draw_text(renderer, res, 450, 300, true);
+            arcade_draw_info_panel(renderer, "R: REJOUER", "ECHAP: QUITTER");
+        } else if (etat == 3) {
+            char res[32]; sprintf(res, "SEQUENCES: %d", score);
+            minijeu_draw_text(renderer, "VICTOIRE!", 450, 250, true);
             minijeu_draw_text(renderer, res, 450, 300, true);
             arcade_draw_info_panel(renderer, "R: REJOUER", "ECHAP: QUITTER");
         } else {

@@ -320,6 +320,8 @@ void update_combat(t_tile map[W_MAP][H_MAP], Mob * mobs[MAX_MOB], SDL_Renderer *
         return;
     }
 
+    jouer_son("assets/audio/kick.mp3", 0.2f);
+
     Uint32 maintenant = SDL_GetTicks();
 
     if (maintenant - combat_timer >= FRAME_DUREE) {
