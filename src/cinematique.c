@@ -667,7 +667,7 @@ TTF_Font *font = TTF_OpenFont("assets/police.ttf", 22);
 if (!font) return 0;
 
 const char *lines[] = {
-    "Merci d'avoir joue",
+    "Merci d'avoir joué !",
     "",
     "Developpeurs:",
     " - Raison Matéo",
