@@ -159,8 +159,9 @@ static void supprimer_minions_boss(const boss_t *boss_ref) {
 
 static void get_boss_centre_monde(const boss_t *boss_ref, float *cx, float *cy) {
     if (boss_ref->type == TYPE_BOSS_MINOTAURE) {
-        *cx = boss_ref->x + 150.0f;
-        *cy = boss_ref->y + 175.0f;
+    /* Centre base sur la hitbox minotaure reduite (voir get_boss_hitbox_ecran) */
+    *cx = boss_ref->x + 155.0f;
+    *cy = boss_ref->y + 192.5f;
         return;
     }
 
@@ -247,10 +248,11 @@ static void get_zone_attaque_joueur(SDL_FRect *zone) {
 static SDL_FRect get_boss_hitbox_ecran(const boss_t *boss_ref) {
     if (boss_ref->type == TYPE_BOSS_MINOTAURE) {
         SDL_FRect rect_boss = {
-            boss_ref->x + perso.x + 95.0f,
-            boss_ref->y + perso.y + 118.0f,
-            120.0f,
-            150.0f
+            /* Hitbox reduite pour naviguer dans le labyrinthe */
+            boss_ref->x + perso.x + 120.0f,
+            boss_ref->y + perso.y + 145.0f,
+            70.0f,
+            95.0f
         };
         return rect_boss;
     }
@@ -825,18 +827,22 @@ static void deplacer_minotaure_vers(boss_t *boss_ref, float target_x, float targ
     float vx = (dx / dist) * BOSS_MINOTAURE_MOVE_SPEED * dt;
     float vy = (dy / dist) * BOSS_MINOTAURE_MOVE_SPEED * dt;
 
+    /* Offsets inverse de get_boss_centre_monde() */
+    const float off_x = 155.0f;
+    const float off_y = 192.5f;
+
     float new_cx = boss_cx + vx;
     float new_cy = boss_cy;
     if (minotaure_position_libre_centre(new_cx, new_cy)) {
-        boss_ref->x = new_cx - 150.0f;
-        boss_ref->y = new_cy - 175.0f;
+        boss_ref->x = new_cx - off_x;
+        boss_ref->y = new_cy - off_y;
     }
 
     new_cx = boss_cx;
     new_cy = boss_cy + vy;
     if (minotaure_position_libre_centre(new_cx, new_cy)) {
-        boss_ref->x = new_cx - 150.0f;
-        boss_ref->y = new_cy - 175.0f;
+        boss_ref->x = new_cx - off_x;
+        boss_ref->y = new_cy - off_y;
     }
 }
 

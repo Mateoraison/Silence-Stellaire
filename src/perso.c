@@ -480,7 +480,7 @@ void possible_ramasser_item(t_Item * items[MAX_ITEMS], SDL_Renderer * renderer, 
                 }
                 const bool *keys = SDL_GetKeyboardState(NULL);
                 if (keys[SDL_SCANCODE_E]) {
-                    // Les pièces convertissent directement en argent
+            // Les pièces convertissent directement en argent
                     if (items[i]->type == PIECE) {
                         argent++;
                     } else {

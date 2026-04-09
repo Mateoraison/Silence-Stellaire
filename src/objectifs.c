@@ -5,6 +5,11 @@ extern bool vaisseau_repare;
 extern int  argent;
 extern int  index_item;
 extern t_case *hotbar[HOTBAR_SIZE];
+extern boss_t boss3;
+
+static int verif_boss3_tue(void) {
+    return boss3.est_battu ? 1 : 0;
+}
 
 
 
@@ -68,9 +73,8 @@ void objectifs_init(t_objectifs *obj, int planete) {
             AJOUTER("Accumuler 5 pièces",              verif_cinq_pieces);
             break;
         case 3:
-            AJOUTER("Ramasser un engrenage",           verif_ramasser_engrenage);
-            AJOUTER("Réparer le vaisseau",             verif_reparer_vaisseau);
-            AJOUTER("Manger de la viande cuite",       verif_viande_cuite);
+            AJOUTER("Trouver l'engrenage dans le labyrinthe", verif_ramasser_engrenage);
+            AJOUTER("Vaincre le Minotaure",                    verif_boss3_tue);
             break;
         default:
             AJOUTER("Ramasser un engrenage",           verif_ramasser_engrenage);

@@ -23,6 +23,16 @@ static bool planete2_simon_termine = false;
 static bool planete1_engrenage_objectifs_donne = false;
 int nb_engrenages_requis = ENGRENAGES_MAX;
 
+/* Petit systeme de message global a l'ecran (HUD) */
+static char g_message_hud[128] = "";
+static Uint32 g_message_hud_expire = 0;
+
+static void hud_set_message(const char *msg, Uint32 duree_ms) {
+    if (!msg) return;
+    SDL_strlcpy(g_message_hud, msg, sizeof(g_message_hud));
+    g_message_hud_expire = SDL_GetTicks() + duree_ms;
+}
+
 Perso  perso;
 int animation_frame = 0;
 Uint32 animation_timer = 0;
@@ -668,6 +678,12 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
     retirer_engrenages_joueur();
 
     init_boss(renderer, &boss1, TYPE_BOSS_DEMON_DE_FEU, 2550.0f, -100.0f);
+    /*
+     * Boss3 (minotaure) sera re-initialise a son vrai point de spawn
+     * au moment ou il apparait sur la planete 3.
+     */
+    init_boss(renderer, &boss3, TYPE_BOSS_MINOTAURE, -10000.0f, -10000.0f);
+
 
 
     if (!reprendre_partie) {
@@ -710,7 +726,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         planete1_engrenage_objectifs_donne = false;
 
         if (planete == 3) {
-            boss3.est_battu = 1;
+            boss3.est_battu = 0;
             boss3.est_agro = 0;
             retirer_item_type_depuis_caisse(caisse_outils, CAISSE_OUTILS_SIZE, ENGRENAGE);
         }
@@ -761,8 +777,8 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
 
     t_tile map[W_MAP][H_MAP];
     int foam[W_MAP][H_MAP];
-    int engrenage_tile_x = -1;
-    int engrenage_tile_y = -1;
+    int engrenage_case_x = -1;
+    int engrenage_case_y = -1;
     switch (planete){
     case 1:
         remplir_tileset(map,"map.txt");
@@ -798,10 +814,18 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
     case 2: remplir_tileset(map,"map2.txt");break;
     case 3:
         remplir_tileset(map,"map3.txt");
-        generer_labyrinthe_planete3(map, &engrenage_tile_x, &engrenage_tile_y);
-        if (!reprendre_partie && index_item < MAX_ITEMS && engrenage_tile_x >= 0 && engrenage_tile_y >= 0) {
-            float ix = engrenage_tile_x * DISPLAY_TILE_SIZE + (DISPLAY_TILE_SIZE - 32.0f) * 0.5f;
-            float iy = engrenage_tile_y * DISPLAY_TILE_SIZE + (DISPLAY_TILE_SIZE - 32.0f) * 0.5f;
+        generer_labyrinthe_planete3(map, &engrenage_case_x, &engrenage_case_y);
+
+        if (engrenage_case_x < 0 || engrenage_case_x >= W_MAP ||
+            engrenage_case_y < 0 || engrenage_case_y >= H_MAP) {
+            engrenage_case_x = W_MAP - 8;
+            engrenage_case_y = H_MAP - 8;
+        }
+
+        if (sortie_vaisseau && reprendre_partie && index_item < MAX_ITEMS &&
+            engrenage_case_x >= 0 && engrenage_case_y >= 0) {
+            float ix = engrenage_case_x * DISPLAY_TILE_SIZE + (DISPLAY_TILE_SIZE - 32.0f) * 0.5f;
+            float iy = engrenage_case_y * DISPLAY_TILE_SIZE + (DISPLAY_TILE_SIZE - 32.0f) * 0.5f;
             t_Item *engrenage_sol = init_item(ENGRENAGE, renderer, ix, iy);
             if (engrenage_sol != NULL) {
                 items[index_item++] = engrenage_sol;
@@ -878,7 +902,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
 
     SDL_Texture *texture_caisse_outils = IMG_LoadTexture(renderer, "assets/UI/caisse_outils.png");
 
-    float vaisseau_world_x = VAISSEAU_WORLD_X;
+    float  vaisseau_world_x = VAISSEAU_WORLD_X;
     float vaisseau_world_y = VAISSEAU_WORLD_Y;
     if (planete == 2) {
         vaisseau_world_y = 2750.0f;
@@ -1279,7 +1303,6 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
 
 
 
-
         charger_tilemap(renderer, tileset, map, foam, planete);
 
         if (planete == 2 && texture_alien_planete2 && !planete2_simon_termine) {
@@ -1293,6 +1316,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
             };
             SDL_RenderTexture(renderer, texture_alien_planete2, NULL, &dest_alien);
         }
+       
 
         update_animation();
         if (cuisson.actif && SDL_GetTicks() - cuisson.debut_cuisson >= 3000) {
@@ -1349,12 +1373,14 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         }
 
         if (planete == 3 && g_planete3_engrenage_recupere && !g_planete3_boss_spawned) {
-            float spawn_x = 0.0f;
-            float spawn_y = 0.0f;
-            choisir_spawn_boss_planete3(map, &spawn_x, &spawn_y);
-            init_boss(renderer, &boss3, TYPE_BOSS_MINOTAURE, spawn_x, spawn_y);
             boss_set_navigation_map(map);
+            /* Spawn legerement en dessous du vaisseau pour eviter d'etre coince dans sa hitbox */
+            float spawn_boss_x = 488 + (VAISSEAU_WIDTH * 0.8f) ;
+            float spawn_boss_y = 481 ;
+            init_boss(renderer, &boss3, TYPE_BOSS_MINOTAURE,
+                      spawn_boss_x, spawn_boss_y);
             g_planete3_boss_spawned = true;
+            hud_set_message("Un boss est apparu pres du vaisseau !", 2500);
         }
 
         if (boss_actif && !(planete == 3 && !g_planete3_boss_spawned)) {
@@ -1373,9 +1399,6 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         SDL_FRect src_vaiseaux = {0, 0, VAISSEAU_WIDTH, VAISSEAU_HEIGHT};
         SDL_FRect dest_vaisseau = {vaisseau_world_x + perso.x, vaisseau_world_y + perso.y, VAISSEAU_WIDTH, VAISSEAU_HEIGHT};
         SDL_RenderTexture(renderer, exterieure, &src_vaiseaux, &dest_vaisseau);
-        if (boss_actif && !(planete == 3 && !g_planete3_boss_spawned)) {
-            afficher_boss(renderer, boss_actif);
-        }
 
         if (combat_en_cours == false) afficher_perso(renderer);
 
@@ -1384,6 +1407,35 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
 
         if (planete == 3) {
             appliquer_vision_reduite_planete3(renderer, cx, cy, sw, sh);
+        }
+
+        if (boss_actif && !(planete == 3 && !g_planete3_boss_spawned)) {
+            afficher_boss(renderer, boss_actif);
+        }
+
+        /* Affichage d'un message HUD temporaire (2-3 secondes) */
+        if (g_message_hud[0] != '\0' && SDL_GetTicks() < g_message_hud_expire) {
+            TTF_Font *font_msg = TTF_OpenFont("assets/police.ttf", 26);
+            if (font_msg) {
+                SDL_Color jaune = {255, 230, 80, 255};
+                const char *txt = g_message_hud;
+                SDL_Surface *surf = TTF_RenderText_Solid(font_msg, txt, (int)SDL_strlen(txt), jaune);
+                if (surf) {
+                    SDL_Texture *tex = SDL_CreateTextureFromSurface(renderer, surf);
+                    if (tex) {
+                        SDL_FRect rect = {
+                            screen_center_x() - ((float)surf->w * 0.5f),
+                            screen_center_y() - 120.0f,
+                            (float)surf->w,
+                            (float)surf->h
+                        };
+                        SDL_RenderTexture(renderer, tex, NULL, &rect);
+                        SDL_DestroyTexture(tex);
+                    }
+                    SDL_DestroySurface(surf);
+                }
+                TTF_CloseFont(font_msg);
+            }
         }
 
         if (cuisson.actif) {
