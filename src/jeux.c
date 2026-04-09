@@ -656,7 +656,16 @@ static void afficher_message_interaction(SDL_Renderer *renderer, const char *mes
     TTF_CloseFont(font);
 }
 
-
+/* Compte le nombre de clés dans la hotbar */
+static int compter_cles(void) {
+    int nombre_cles = 0;
+    for (int i = 0; i < HOTBAR_SIZE; i++) {
+        if (hotbar[i] != NULL && hotbar[i]->item != NULL && hotbar[i]->item->type == CLE) {
+            nombre_cles += hotbar[i]->quantiter;
+        }
+    }
+    return nombre_cles;
+}
 
 int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, bool reprendre_partie) {
 
@@ -751,25 +760,52 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
     }
     SDL_SetTextureScaleMode(tileset, SDL_SCALEMODE_NEAREST);
 
+
     SDL_Texture *texture_alien_planete2 = NULL;
+    SDL_Texture *texture_rocher = NULL;
     const float alien_planete2_x_1 = 760.2f;
     const float alien_planete2_y_1 = 1935.4f;
-    const float alien_planete2_x_2 = 36.0f * DISPLAY_TILE_SIZE;
-    const float alien_planete2_y_2 = 36.0f * DISPLAY_TILE_SIZE;
+    const float alien_planete2_x_2 = alien_planete2_x_1 + (13.0f * DISPLAY_TILE_SIZE);
+    const float alien_planete2_y_2 = alien_planete2_y_1;
     const float alien_planete2_w = DISPLAY_TILE_SIZE * 0.85f;
     const float alien_planete2_h = DISPLAY_TILE_SIZE * 0.85f;
+    // Première barrière : 1er epreuve
+    const float rock_center_x_base = alien_planete2_x_1; 
+    const float rock_center_y_base = alien_planete2_y_1 - (4.0f * DISPLAY_TILE_SIZE);
+    // seconde barrière : 1er epreuve
+    const float rock2_center_x_base = alien_planete2_x_1 + (5.0f * DISPLAY_TILE_SIZE);
+    const float rock2_center_y_base = alien_planete2_y_1;
+    // troisième barrière : 2eme epreuve (bloque le second alien) - disparaît quand simon_termine
+    const float rock3_center_x_base = alien_planete2_x_2 + (4.0f * DISPLAY_TILE_SIZE);
+    const float rock3_center_y_base = alien_planete2_y_2;
+    // quatrième barrière : permanente jusqu'à avoir 2 clés (décalée de 3 tuiles à droite)
+    const float rock4_center_x_base = rock3_center_x_base + (5.0f * DISPLAY_TILE_SIZE);
+    const float rock4_center_y_base = alien_planete2_y_2;
+    // variable pour tracker si la barrière 4 est ouverte (si joueur a 2 clés et presse E)
+    static bool barriere_4_ouverte = false;
 
-    // Alternative possible position:
-    // const float alien_planete2_x = 3320.8f;
-    // const float alien_planete2_y = 3309.5f;
+
 
     if (planete == 2) {
-        texture_alien_planete2 = IMG_LoadTexture(renderer, "assets/tileset/V2/alien/PNG/alien_gray/gray__0000_idle_1.png");
+        texture_alien_planete2 = IMG_LoadTexture(renderer, "assets/tileset/V2/alien/PNG/alien_red/red__0000_idle_1.png");
 
         if (!texture_alien_planete2) {
             SDL_Log("Erreur chargement alien planete 2 : %s", SDL_GetError());
         } else {
             SDL_SetTextureScaleMode(texture_alien_planete2, SDL_SCALEMODE_NEAREST);
+        }
+
+        /* charger texture rocher pour barrière (apparaît tant que la 1ere épreuve n'est pas réussie)
+           essayer la casse correcte V2 puis v2 en fallback (Linux sensible à la casse)
+        */
+        texture_rocher = IMG_LoadTexture(renderer, "assets/tileset/V2/rocher.png");
+        if (!texture_rocher) {
+            texture_rocher = IMG_LoadTexture(renderer, "assets/tileset/v2/rocher.png");
+        }
+        if (texture_rocher) {
+            SDL_SetTextureScaleMode(texture_rocher, SDL_SCALEMODE_NEAREST);
+        } else {
+            SDL_Log("Erreur chargement texture rocher (assets/tileset/V2|v2/rocher.png) : %s", SDL_GetError());
         }
         
     }
@@ -842,6 +878,30 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
 
     boss_t *boss_actif = (planete == 3) ? &boss3 : (planete == 2 ? &boss1 : NULL);
 
+    /* Ajouter les items pré-placés sur la map (clés et engrenage) */
+    if (planete == 2) {
+        // Engrenage à position spécifiée
+        if (index_item < MAX_ITEMS) {
+            t_Item *engrenage_map = init_item(ENGRENAGE, renderer, 1798.564941f, 3187.787109f);
+            if (engrenage_map != NULL) {
+                items[index_item++] = engrenage_map;
+            }
+        }
+        // Clé 1 à position spécifiée
+        if (index_item < MAX_ITEMS) {
+            t_Item *cle1_map = init_item(CLE, renderer, 3326.389160f, 3278.864258f);
+            if (cle1_map != NULL) {
+                items[index_item++] = cle1_map;
+            }
+        }
+        // Clé 2 à position spécifiée
+        if (index_item < MAX_ITEMS) {
+            t_Item *cle2_map = init_item(CLE, renderer, 780.847900f, 419.043213f);
+            if (cle2_map != NULL) {
+                items[index_item++] = cle2_map;
+            }
+        }
+    }
 
     for (int x = 0; x < W_MAP; x++) {
         for (int y = 0; y < H_MAP; y++) {
@@ -1036,20 +1096,12 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
                         if (SDL_HasRectIntersectionFloat(&rect_perso_alien, &rect_alien)) {
                             if (!planete2_mastermind_engrenage_donne) {
                                 mastermind(renderer);
-                                if (g_mastermind_reussi && index_item < MAX_ITEMS) {
-                                    t_Item *engrenage_recompense = init_item(ENGRENAGE, renderer, alien_planete2_x + 8.0f, alien_planete2_y + 8.0f);
-                                    if (engrenage_recompense != NULL) {
-                                        items[index_item++] = engrenage_recompense;
-                                        planete2_mastermind_engrenage_donne = true;
-                                    }
+                                if (g_mastermind_reussi) {
+                                    planete2_mastermind_engrenage_donne = true;
                                 }
                             } else {
                                 simon(renderer);
-                                if (g_simon_reussi && index_item < MAX_ITEMS) {
-                                    t_Item *engrenage_recompense = init_item(ENGRENAGE, renderer, alien_planete2_x + 8.0f, alien_planete2_y + 8.0f);
-                                    if (engrenage_recompense != NULL) {
-                                        items[index_item++] = engrenage_recompense;
-                                    }
+                                if (g_simon_reussi) {
                                     planete2_simon_termine = true;
                                 }
                             }
@@ -1062,6 +1114,40 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
                     if (vaisseau_repare && SDL_HasRectIntersectionFloat(&rect_perso_vaisseau, &rect_vaisseau)) {
                         running = false;
                         code_sortie = 4;
+                    }
+
+                    /* Gestion barrière 4 : ouvrir si joueur a 2+ clés */
+                    if (planete == 2 && !barriere_4_ouverte) {
+                        float rock4_center_x = rock4_center_x_base;
+                        float rock4_center_y = rock4_center_y_base;
+                        // Convertir les coordonnées écran du joueur en coordonnées monde
+                        float perso_world_x = cx - perso.x;
+                        float perso_world_y = cy - perso.y;
+                        SDL_FRect rect_perso_barrier = {perso_world_x - 20.0f, perso_world_y - 20.0f, 80.0f, 100.0f};
+                        // Barrière 4 : centre + dessous (2 tuiles)
+                        SDL_FRect rect_barrier4 = {rock4_center_x - 45.0f, rock4_center_y - 45.0f, DISPLAY_TILE_SIZE * 3.0f, DISPLAY_TILE_SIZE * 3.0f};
+                        if (SDL_HasRectIntersectionFloat(&rect_perso_barrier, &rect_barrier4)) {
+                            int cles = compter_cles();
+                            if (cles >= 2) {
+                                barriere_4_ouverte = true;
+                                // Retirer 2 clés de l'inventaire
+                                int cles_a_retirer = 2;
+                                for (int i = 0; i < HOTBAR_SIZE && cles_a_retirer > 0; i++) {
+                                    if (hotbar[i] != NULL && hotbar[i]->item != NULL && hotbar[i]->item->type == CLE) {
+                                        if (hotbar[i]->quantiter >= cles_a_retirer) {
+                                            hotbar[i]->quantiter -= cles_a_retirer;
+                                            cles_a_retirer = 0;
+                                        } else {
+                                            cles_a_retirer -= hotbar[i]->quantiter;
+                                            hotbar[i]->quantiter = 0;
+                                            free(hotbar[i]->item);
+                                            free(hotbar[i]);
+                                            hotbar[i] = NULL;
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
 
                     SDL_Rect rect_perso_caisse = {(int)cx, (int)cy, 40, 60};
@@ -1250,6 +1336,62 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
             }
         }
 
+        /* Trois rochers (planète 2) : centre au-dessus du premier alien + un à gauche et un à droite
+           Tous bloquent tant que la première épreuve (mastermind) n'est pas réussie
+        */
+        if (!collision_trouve && planete == 2 && !planete2_mastermind_engrenage_donne && texture_rocher) {
+            float rock_center_x = rock_center_x_base;
+            float rock_center_y = rock_center_y_base;
+            float rock_left_x = rock_center_x - (1.0f * DISPLAY_TILE_SIZE);
+            float rock_right_x = rock_center_x + (1.0f * DISPLAY_TILE_SIZE);
+
+            /* Collision en coordonnées monde (comme rect_alien_collision) : ne pas ajouter perso.x/perso.y */
+            SDL_Rect rock_center_i = {(int)rock_center_x, (int)rock_center_y, (int)DISPLAY_TILE_SIZE, (int)DISPLAY_TILE_SIZE};
+            SDL_Rect rock_left_i = {(int)rock_left_x, (int)rock_center_y, (int)DISPLAY_TILE_SIZE, (int)DISPLAY_TILE_SIZE};
+            SDL_Rect rock_right_i = {(int)rock_right_x, (int)rock_center_y, (int)DISPLAY_TILE_SIZE, (int)DISPLAY_TILE_SIZE};
+            if (SDL_HasRectIntersection(&hitbox, &rock_center_i) || SDL_HasRectIntersection(&hitbox, &rock_left_i) || SDL_HasRectIntersection(&hitbox, &rock_right_i)) {
+                collision_trouve = true;
+            }
+
+            /* seconde barrière : centre + haut + bas */
+            float rock2_center_x = rock2_center_x_base;
+            float rock2_center_y = rock2_center_y_base;
+            float rock2_up_y = rock2_center_y - (1.0f * DISPLAY_TILE_SIZE);
+            float rock2_down_y = rock2_center_y + (1.0f * DISPLAY_TILE_SIZE);
+            float rock2_down2_y = rock2_center_y + (2.0f * DISPLAY_TILE_SIZE);
+            SDL_Rect rock2_center_i = {(int)rock2_center_x, (int)rock2_center_y, (int)DISPLAY_TILE_SIZE, (int)DISPLAY_TILE_SIZE};
+            SDL_Rect rock2_up_i = {(int)rock2_center_x, (int)rock2_up_y, (int)DISPLAY_TILE_SIZE, (int)DISPLAY_TILE_SIZE};
+            SDL_Rect rock2_down_i = {(int)rock2_center_x, (int)rock2_down_y, (int)DISPLAY_TILE_SIZE, (int)DISPLAY_TILE_SIZE};
+            SDL_Rect rock2_down2_i = {(int)rock2_center_x, (int)rock2_down2_y, (int)DISPLAY_TILE_SIZE, (int)DISPLAY_TILE_SIZE};
+            if (SDL_HasRectIntersection(&hitbox, &rock2_center_i) || SDL_HasRectIntersection(&hitbox, &rock2_up_i) || SDL_HasRectIntersection(&hitbox, &rock2_down_i) || SDL_HasRectIntersection(&hitbox, &rock2_down2_i)) {
+                collision_trouve = true;
+            }
+        }
+
+        /* troisième barrière : bloque le second alien tant que simon n'est pas terminé */
+        if (!collision_trouve && planete == 2 && !planete2_simon_termine && texture_rocher) {
+            float rock3_center_x = rock3_center_x_base;
+            float rock3_center_y = rock3_center_y_base;
+            float rock3_below_y = rock3_center_y + (1.0f * DISPLAY_TILE_SIZE);
+            SDL_Rect rock3_center_i = {(int)rock3_center_x, (int)rock3_center_y, (int)DISPLAY_TILE_SIZE, (int)DISPLAY_TILE_SIZE};
+            SDL_Rect rock3_below_i = {(int)rock3_center_x, (int)rock3_below_y, (int)DISPLAY_TILE_SIZE, (int)DISPLAY_TILE_SIZE};
+            if (SDL_HasRectIntersection(&hitbox, &rock3_center_i) || SDL_HasRectIntersection(&hitbox, &rock3_below_i)) {
+                collision_trouve = true;
+            }
+        }
+
+        /* quatrième barrière : permanente, bloque jusqu'à avoir 2 clés et ouvrir */
+        if (!collision_trouve && planete == 2 && !barriere_4_ouverte && texture_rocher) {
+            float rock4_center_x = rock4_center_x_base;
+            float rock4_center_y = rock4_center_y_base;
+            float rock4_below_y = rock4_center_y + (1.0f * DISPLAY_TILE_SIZE);
+            SDL_Rect rock4_center_i = {(int)rock4_center_x, (int)rock4_center_y, (int)DISPLAY_TILE_SIZE, (int)DISPLAY_TILE_SIZE};
+            SDL_Rect rock4_below_i = {(int)rock4_center_x, (int)rock4_below_y, (int)DISPLAY_TILE_SIZE, (int)DISPLAY_TILE_SIZE};
+            if (SDL_HasRectIntersection(&hitbox, &rock4_center_i) || SDL_HasRectIntersection(&hitbox, &rock4_below_i)) {
+                collision_trouve = true;
+            }
+        }
+
         if (collision_trouve) {
             perso.x = old_x;
             perso.y = old_y;
@@ -1304,6 +1446,85 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
 
 
         charger_tilemap(renderer, tileset, map, foam, planete);
+
+        /* Dessiner la barrière de rochers (si active) */
+        if (planete == 2 && texture_rocher && !planete2_mastermind_engrenage_donne) {
+            float rock_center_x = rock_center_x_base;
+            float rock_center_y = rock_center_y_base;
+            float rock_left_x = rock_center_x - (1.0f * DISPLAY_TILE_SIZE);
+            float rock_right_x = rock_center_x + (1.0f * DISPLAY_TILE_SIZE);
+
+            SDL_FRect dest_center = { rock_center_x + perso.x, rock_center_y + perso.y, (float)DISPLAY_TILE_SIZE, (float)DISPLAY_TILE_SIZE };
+            SDL_FRect dest_left = { rock_left_x + perso.x, rock_center_y + perso.y, (float)DISPLAY_TILE_SIZE, (float)DISPLAY_TILE_SIZE };
+            SDL_FRect dest_right = { rock_right_x + perso.x, rock_center_y + perso.y, (float)DISPLAY_TILE_SIZE, (float)DISPLAY_TILE_SIZE };
+
+            SDL_RenderTexture(renderer, texture_rocher, NULL, &dest_left);
+            SDL_RenderTexture(renderer, texture_rocher, NULL, &dest_center);
+            SDL_RenderTexture(renderer, texture_rocher, NULL, &dest_right);
+            /* dessiner seconde barrière : centre + haut + bas */
+            float rock2_center_x = rock2_center_x_base;
+            float rock2_center_y = rock2_center_y_base;
+            float rock2_up_y = rock2_center_y - (1.0f * DISPLAY_TILE_SIZE);
+            float rock2_down_y = rock2_center_y + (1.0f * DISPLAY_TILE_SIZE);
+            float rock2_down2_y = rock2_center_y + (2.0f * DISPLAY_TILE_SIZE);
+            SDL_FRect dest2_center = { rock2_center_x + perso.x, rock2_center_y + perso.y, (float)DISPLAY_TILE_SIZE, (float)DISPLAY_TILE_SIZE };
+            SDL_FRect dest2_up = { rock2_center_x + perso.x, rock2_up_y + perso.y, (float)DISPLAY_TILE_SIZE, (float)DISPLAY_TILE_SIZE };
+            SDL_FRect dest2_down = { rock2_center_x + perso.x, rock2_down_y + perso.y, (float)DISPLAY_TILE_SIZE, (float)DISPLAY_TILE_SIZE };
+            SDL_FRect dest2_down2 = { rock2_center_x + perso.x, rock2_down2_y + perso.y, (float)DISPLAY_TILE_SIZE, (float)DISPLAY_TILE_SIZE };
+            SDL_RenderTexture(renderer, texture_rocher, NULL, &dest2_up);
+            SDL_RenderTexture(renderer, texture_rocher, NULL, &dest2_center);
+            SDL_RenderTexture(renderer, texture_rocher, NULL, &dest2_down);
+            SDL_RenderTexture(renderer, texture_rocher, NULL, &dest2_down2);
+        }
+
+        /* Dessiner la troisième barrière pour le second alien (disparaît quand simon est terminé) */
+        if (planete == 2 && texture_rocher && !planete2_simon_termine) {
+            float rock3_center_x = rock3_center_x_base;
+            float rock3_center_y = rock3_center_y_base;
+            float rock3_below_y = rock3_center_y + (1.0f * DISPLAY_TILE_SIZE);
+            SDL_FRect dest3_center = { rock3_center_x + perso.x, rock3_center_y + perso.y, (float)DISPLAY_TILE_SIZE, (float)DISPLAY_TILE_SIZE };
+            SDL_FRect dest3_below = { rock3_center_x + perso.x, rock3_below_y + perso.y, (float)DISPLAY_TILE_SIZE, (float)DISPLAY_TILE_SIZE };
+            SDL_RenderTexture(renderer, texture_rocher, NULL, &dest3_center);
+            SDL_RenderTexture(renderer, texture_rocher, NULL, &dest3_below);
+        }
+
+        /* Dessiner la quatrième barrière (permanente jusqu'à ouvrir avec 2 clés) */
+        if (planete == 2 && texture_rocher && !barriere_4_ouverte) {
+            float rock4_center_x = rock4_center_x_base;
+            float rock4_center_y = rock4_center_y_base;
+            float rock4_below_y = rock4_center_y + (1.0f * DISPLAY_TILE_SIZE);
+            SDL_FRect dest4_center = { rock4_center_x + perso.x, rock4_center_y + perso.y, (float)DISPLAY_TILE_SIZE, (float)DISPLAY_TILE_SIZE };
+            SDL_FRect dest4_below = { rock4_center_x + perso.x, rock4_below_y + perso.y, (float)DISPLAY_TILE_SIZE, (float)DISPLAY_TILE_SIZE };
+            SDL_RenderTexture(renderer, texture_rocher, NULL, &dest4_center);
+            SDL_RenderTexture(renderer, texture_rocher, NULL, &dest4_below);
+
+            /* Afficher le message seulement si le joueur est proche (distance < 150 pixels) */
+            float dx = (cx - perso.x) - rock4_center_x;
+            float dy = (cy - perso.y) - rock4_center_y;
+            float distance = SDL_sqrtf(dx * dx + dy * dy);
+            if (distance < 150.0f) {
+                int cles = compter_cles();
+                const char *msg_barrier4 = cles >= 2 ? "Appuyer sur E pour ouvrir le passage" : "Vous avez besoin de deux cles pour ouvrir";
+                TTF_Font *font_barrier = TTF_OpenFont("assets/police.ttf", 18);
+                if (font_barrier) {
+                    SDL_Color couleur_texte = {255, 255, 255, 255};
+                    SDL_Surface *surf = TTF_RenderText_Solid(font_barrier, msg_barrier4, strlen(msg_barrier4), couleur_texte);
+                    if (surf) {
+                        SDL_Texture *tex = SDL_CreateTextureFromSurface(renderer, surf);
+                        SDL_FRect rect_msg = {
+                            rock4_center_x + perso.x - (float)surf->w / 2.0f,
+                            rock4_center_y + perso.y - 40.0f,
+                            (float)surf->w,
+                            (float)surf->h
+                        };
+                        SDL_RenderTexture(renderer, tex, NULL, &rect_msg);
+                        SDL_DestroyTexture(tex);
+                        SDL_DestroySurface(surf);
+                    }
+                    TTF_CloseFont(font_barrier);
+                }
+            }
+        }
 
         if (planete == 2 && texture_alien_planete2 && !planete2_simon_termine) {
             float alien_planete2_x = planete2_mastermind_engrenage_donne ? alien_planete2_x_2 : alien_planete2_x_1;
@@ -1567,7 +1788,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
 
         if(!console_god_mode && perso.faim == 0 && (maintenant-faim_degat_timer)>3000){
             if((rand()%100<20)){
-                jouer_son("assets/audio/dammage.mp3", 0.2f);
+                jouer_son("assets/audio/dammage.wav", 0.2f);
                 perso.vie--;
             }
             faim_degat_timer = maintenant;
@@ -1786,6 +2007,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
     SDL_DestroyTexture(exterieure);
     SDL_DestroyTexture(texture_caisse_outils);
     if (texture_alien_planete2) SDL_DestroyTexture(texture_alien_planete2);
+    if (texture_rocher) SDL_DestroyTexture(texture_rocher);
     if (code_sortie != 4) {
         detruire_mobs(mobs);
         detruire_boss(boss_actif);

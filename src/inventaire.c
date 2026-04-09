@@ -17,7 +17,7 @@ void afficher_hotbar(t_case * hotbar[HOTBAR_SIZE], SDL_Renderer *renderer) {
         SDL_FRect dest = {hotbar_x + i * 70.0f, hotbar_y, 60, 60};
         SDL_RenderTexture(renderer, texture, NULL, &dest);
 
-        if (hotbar[i] != NULL && hotbar[i]->item != NULL) {
+        if (hotbar[i] != NULL && hotbar[i]->item != NULL && hotbar[i]->quantiter > 0) {
             SDL_FRect item_dest = {hotbar_x + i * 70.0f + (60.0f - 35.0f) / 2.0f, hotbar_y + (60.0f - 35.0f) / 2.0f, 35, 35};
             SDL_RenderTexture(renderer, hotbar[i]->item->texture, NULL, &item_dest);
 

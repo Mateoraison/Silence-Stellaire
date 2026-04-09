@@ -116,7 +116,7 @@ int main(int argc, char *argv[]) {
                 break;
             }
             case ETAT_JEU: {
-                if (track_global && son_est_actif()) reprendre_son(track_global);
+                if (track_global && son_est_actif() && son_ambiance_est_active()) reprendre_son(track_global);
                 int code = jeu_principal(renderer, Planete_actuelle, track_global, reprendre_partie);
                 reprendre_partie = false;
                 switch (code) {
@@ -140,7 +140,7 @@ int main(int argc, char *argv[]) {
                     case 1:  etat = ETAT_MENU; break;
                     case 3:  etat = ETAT_MAP;  break;
                     default:
-                        if (track_global && son_est_actif()) reprendre_son(track_global);
+                        if (track_global && son_est_actif() && son_ambiance_est_active()) reprendre_son(track_global);
                         reprendre_partie = true;
                         sortie_vaisseau = true;
                         etat = ETAT_JEU;

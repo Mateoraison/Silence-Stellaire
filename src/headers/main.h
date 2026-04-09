@@ -73,7 +73,7 @@ typedef struct {
     Uint32 invincibiliter_timer;
 } Perso;
 
-typedef enum {PIECE,VIANDE,MARTEAU,SOIN,BRIQUET,BOIS,FEUDECAMP,VIANDECUITE,ENGRENAGE} typeItem;
+typedef enum {PIECE,VIANDE,MARTEAU,SOIN,BRIQUET,BOIS,FEUDECAMP,VIANDECUITE,ENGRENAGE, CLE} typeItem;
 
 typedef struct item_ {
     typeItem type;

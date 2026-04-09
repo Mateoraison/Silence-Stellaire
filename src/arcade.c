@@ -579,7 +579,7 @@ void mastermind(SDL_Renderer *renderer) {
 void simon(SDL_Renderer *renderer) {
     bool running = true;
     int etat = 0; // 0: Menu, 1: Jeu, 2: Perdu, 3: Gagne
-    const int objectif_sequences = 2; // Seuil temporaire pour tests
+    const int objectif_sequences = 10; // Nombre de séquences à réussir pour gagner
     g_simon_reussi = false;
     
     int sequence[100] = {0};

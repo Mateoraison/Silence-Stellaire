@@ -18,6 +18,8 @@ static SonCache g_sons[MAX_SONS_CACHE];
 static int g_nb_sons = 0;
 static int g_son_actif = 1;
 static MIX_Track *g_ambiance_track = NULL;
+// piste spécifique pour le son du vaisseau (ne doit pas écraser la piste d'ambiance globale)
+static MIX_Track *g_vaisseau_track = NULL;
 static int g_ambiance_active = 1;
 static int g_sfx_active = 1;
 
@@ -89,7 +91,7 @@ MIX_Track *jouer_son(const char* chemin, float volume) {
     }
 
     // Vérifier si c'est une ambiance (musique) ou un SFX
-    int est_ambiance = (strstr(chemin, "ambiance") != NULL);
+    int est_ambiance = (strstr(chemin, "ambiance") != NULL || strstr(chemin, "vaisseau") != NULL);
     if (est_ambiance && !g_ambiance_active) {
         return son->track;
     }
@@ -98,9 +100,13 @@ MIX_Track *jouer_son(const char* chemin, float volume) {
     }
 
     int loops = 0;
-    if (strcmp(chemin, "assets/audio/ambiance.wav") == 0 || strcmp(chemin, "assets/audio/vaisseau.wav") == 0) {
+    if (strcmp(chemin, "assets/audio/ambiance.wav") == 0) {
         loops = -1;
         g_ambiance_track = son->track;
+    } else if (strcmp(chemin, "assets/audio/vaisseau.wav") == 0) {
+        // vaisseau est joué en boucle mais ne doit pas écraser la piste d'ambiance principale
+        loops = -1;
+        g_vaisseau_track = son->track;
     }
 
     if (!MIX_PlayTrack(son->track, loops)) {
@@ -117,12 +123,13 @@ void pause_son(MIX_Track *track) {
 
 void reprendre_son(MIX_Track *track) {
     if (!track || !g_son_actif) return;
-    
-    // Si c'est la piste d'ambiance, vérifier son état
-    if (track == g_ambiance_track && !g_ambiance_active) {
+
+    // Si c'est une piste d'ambiance (ambiance principale ou vaisseau) et que les ambiances sont désactivées,
+    // ne pas la reprendre.
+    if ((track == g_ambiance_track || track == g_vaisseau_track) && !g_ambiance_active) {
         return;
     }
-    
+
     MIX_ResumeTrack(track);
 }
 

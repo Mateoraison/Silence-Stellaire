@@ -19,7 +19,8 @@ t_Item * init_item(typeItem type,SDL_Renderer * renderer,float x,float y){
         case BOIS: item->texture = IMG_LoadTexture(renderer,"assets/UI/bois.png"); if(item->texture == NULL){ SDL_Log("Erreur chargement bois : %s", SDL_GetError()); } break;
         case FEUDECAMP: item->texture = IMG_LoadTexture(renderer,"assets/UI/feu_de_camp.png"); if(item->texture == NULL){ SDL_Log("Erreur chargement feu de camp : %s", SDL_GetError()); } break;
         case VIANDECUITE: item->texture = IMG_LoadTexture(renderer,"assets/UI/viande_cuite.png"); if(item->texture == NULL){ SDL_Log("Erreur chargement viande cuite : %s", SDL_GetError()); } break;
-        case ENGRENAGE: item->texture = IMG_LoadTexture(renderer,"assets/UI/engrenage.png"); if(item->texture == NULL){ SDL_Log("Erreur chargement engrenage : %s", SDL_GetError()); } break;
+    case ENGRENAGE: item->texture = IMG_LoadTexture(renderer,"assets/UI/engrenage.png"); if(item->texture == NULL){ SDL_Log("Erreur chargement engrenage : %s", SDL_GetError()); } break;
+    case CLE: item->texture = IMG_LoadTexture(renderer,"assets/tileset/V2/key.png"); if(item->texture == NULL){ SDL_Log("Erreur chargement cle : %s", SDL_GetError()); } break;
         default: SDL_Log("Type d'item inconnu : %d", type); break;
     }
     if(item->texture == NULL){
@@ -33,7 +34,7 @@ t_Item * init_item(typeItem type,SDL_Renderer * renderer,float x,float y){
 void afficher_item(t_Item * items[MAX_ITEMS],SDL_Renderer * renderer){
     for(int i = 0; i < index_item; i++) {
         if(items[i] != NULL) {
-            if(items[i]->type == FEUDECAMP){
+            if(items[i]->type == FEUDECAMP || items[i]->type == CLE){
                 SDL_FRect dest = {(items[i]->x)+perso.x,(items[i]->y)+perso.y,64,64};
                 SDL_RenderTexture(renderer, items[i]->texture, NULL, &dest);
                 continue;
