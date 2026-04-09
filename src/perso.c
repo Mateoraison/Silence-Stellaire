@@ -486,6 +486,9 @@ void possible_ramasser_item(t_Item * items[MAX_ITEMS], SDL_Renderer * renderer, 
                     } else {
                         if (Planete_actuelle == 3 && items[i]->type == ENGRENAGE) {
                             g_planete3_engrenage_recupere = true;
+                            g_planete3_spawn_engrenage_defini = true;
+                            g_planete3_spawn_engrenage_x = perso.x;
+                            g_planete3_spawn_engrenage_y = perso.y;
                         }
                         ajouter_item_hotbar(hotbar, items[i], renderer);
                     }

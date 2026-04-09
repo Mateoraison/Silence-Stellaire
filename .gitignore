@@ -1,13 +1,9 @@
 # macOS
 *.DS_Store
 
-#Windows
-*.bat
-
-# Objets 
+# Objets
 obj/*.o
 
-# Executable 
+# Executable
 Silence-Stellaire.exe
 silenceStellaire
-

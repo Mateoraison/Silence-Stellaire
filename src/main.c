@@ -106,9 +106,12 @@ int main(int argc, char *argv[]) {
     while (etat != ETAT_QUITTER) {
         switch (etat) {
             case ETAT_MENU: {
+                if (track_global && son_est_actif() && son_ambiance_est_active()) {
+                    reprendre_son(track_global);
+                }
                 int action = afficher_menu(renderer);
                 switch (action) {
-                    case 1:  Planete_actuelle = 1; reprendre_partie = false; etat = ETAT_JEU;     break; // Nouvelle partie
+                    case 1:  Planete_actuelle = 3; reprendre_partie = false; etat = ETAT_JEU;     break; // Nouvelle partie
                     case 2:  etat = ETAT_OPTIONS;  break; // Options
                     case 3:  reprendre_partie = true; etat = ETAT_JEU; break; // Continuer
                     default: etat = ETAT_QUITTER;  break; // Quitter / Échap

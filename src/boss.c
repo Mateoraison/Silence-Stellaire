@@ -20,7 +20,6 @@
 #define BOSS_MINOTAURE_AGGRO_RADIUS 620.0f
 #define BOSS_MINOTAURE_MOVE_SPEED 155.0f
 #define BOSS_MINOTAURE_MELEE_RANGE 118.0f
-#define BOSS_MINOTAURE_PATROL_RADIUS 260.0f
 #define BOSS_MINOTAURE_STUN_MS 700
 #define BOSS_MINOTAURE_STUN_RECHARGE_MS 2200
 
@@ -34,6 +33,10 @@
 #define BOSS_MINOTAURE_DEATH_Y 1840.0f
 #define BOSS_MINOTAURE_FRAME_W 96.0f
 #define BOSS_MINOTAURE_FRAME_H 96.0f
+#define BOSS_MINOTAURE_HITBOX_OFFSET_X 128.0f
+#define BOSS_MINOTAURE_HITBOX_OFFSET_Y 154.5f
+#define BOSS_MINOTAURE_HITBOX_W 54.0f
+#define BOSS_MINOTAURE_HITBOX_H 76.0f
 
 typedef void (*fonction_attaque_boss_t)(SDL_Renderer *renderer, boss_t *boss_ref);
 
@@ -159,9 +162,9 @@ static void supprimer_minions_boss(const boss_t *boss_ref) {
 
 static void get_boss_centre_monde(const boss_t *boss_ref, float *cx, float *cy) {
     if (boss_ref->type == TYPE_BOSS_MINOTAURE) {
-    /* Centre base sur la hitbox minotaure reduite (voir get_boss_hitbox_ecran) */
-    *cx = boss_ref->x + 155.0f;
-    *cy = boss_ref->y + 192.5f;
+    /* Centre base sur la hitbox minotaure reduite (voir get_boss_hitbox_ecran). */
+    *cx = boss_ref->x + BOSS_MINOTAURE_HITBOX_OFFSET_X + (BOSS_MINOTAURE_HITBOX_W * 0.5f);
+    *cy = boss_ref->y + BOSS_MINOTAURE_HITBOX_OFFSET_Y + (BOSS_MINOTAURE_HITBOX_H * 0.5f);
         return;
     }
 
@@ -249,10 +252,10 @@ static SDL_FRect get_boss_hitbox_ecran(const boss_t *boss_ref) {
     if (boss_ref->type == TYPE_BOSS_MINOTAURE) {
         SDL_FRect rect_boss = {
             /* Hitbox reduite pour naviguer dans le labyrinthe */
-            boss_ref->x + perso.x + 120.0f,
-            boss_ref->y + perso.y + 145.0f,
-            70.0f,
-            95.0f
+            boss_ref->x + perso.x + BOSS_MINOTAURE_HITBOX_OFFSET_X,
+            boss_ref->y + perso.y + BOSS_MINOTAURE_HITBOX_OFFSET_Y,
+            BOSS_MINOTAURE_HITBOX_W,
+            BOSS_MINOTAURE_HITBOX_H
         };
         return rect_boss;
     }
@@ -693,122 +696,33 @@ static int minotaure_position_libre_centre(float centre_x, float centre_y) {
         return 1;
     }
 
-    int tx = (int)(centre_x / DISPLAY_TILE_SIZE);
-    int ty = (int)(centre_y / DISPLAY_TILE_SIZE);
-    if (tx < 0 || ty < 0 || tx >= W_MAP || ty >= H_MAP) {
+    float min_x = centre_x - (BOSS_MINOTAURE_HITBOX_W * 0.5f);
+    float min_y = centre_y - (BOSS_MINOTAURE_HITBOX_H * 0.5f);
+    float max_x = min_x + BOSS_MINOTAURE_HITBOX_W;
+    float max_y = min_y + BOSS_MINOTAURE_HITBOX_H;
+
+    int tx0 = (int)(min_x / DISPLAY_TILE_SIZE);
+    int ty0 = (int)(min_y / DISPLAY_TILE_SIZE);
+    int tx1 = (int)(max_x / DISPLAY_TILE_SIZE);
+    int ty1 = (int)(max_y / DISPLAY_TILE_SIZE);
+
+    if (tx0 < 0 || ty0 < 0 || tx1 >= W_MAP || ty1 >= H_MAP) {
         return 0;
     }
 
-    return g_map_navigation[tx][ty].type == terreP;
-}
-
-static int minotaure_trouver_prochaine_case(const boss_t *boss_ref, float target_x, float target_y,
-                                            float *next_x, float *next_y) {
-    if (g_map_navigation == NULL || boss_ref == NULL) {
-        return 0;
-    }
-
-    float boss_cx = 0.0f;
-    float boss_cy = 0.0f;
-    get_boss_centre_monde(boss_ref, &boss_cx, &boss_cy);
-
-    int start_tx = (int)(boss_cx / DISPLAY_TILE_SIZE);
-    int start_ty = (int)(boss_cy / DISPLAY_TILE_SIZE);
-    int goal_tx = (int)(target_x / DISPLAY_TILE_SIZE);
-    int goal_ty = (int)(target_y / DISPLAY_TILE_SIZE);
-
-    if (start_tx < 0 || start_ty < 0 || start_tx >= W_MAP || start_ty >= H_MAP) {
-        return 0;
-    }
-    if (goal_tx < 0 || goal_ty < 0 || goal_tx >= W_MAP || goal_ty >= H_MAP) {
-        return 0;
-    }
-
-    if (g_map_navigation[start_tx][start_ty].type != terreP || g_map_navigation[goal_tx][goal_ty].type != terreP) {
-        return 0;
-    }
-
-    int file_x[W_MAP * H_MAP];
-    int file_y[W_MAP * H_MAP];
-    int parent_x[W_MAP][H_MAP];
-    int parent_y[W_MAP][H_MAP];
-    unsigned char visited[W_MAP][H_MAP];
-
-    for (int x = 0; x < W_MAP; x++) {
-        for (int y = 0; y < H_MAP; y++) {
-            parent_x[x][y] = -1;
-            parent_y[x][y] = -1;
-            visited[x][y] = 0;
-        }
-    }
-
-    int front = 0;
-    int rear = 0;
-    file_x[rear] = start_tx;
-    file_y[rear] = start_ty;
-    rear++;
-    visited[start_tx][start_ty] = 1;
-
-    const int dirs[4][2] = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
-
-    while (front < rear) {
-        int cx = file_x[front];
-        int cy = file_y[front];
-        front++;
-
-        if (cx == goal_tx && cy == goal_ty) {
-            break;
-        }
-
-        for (int i = 0; i < 4; i++) {
-            int nx = cx + dirs[i][0];
-            int ny = cy + dirs[i][1];
-            if (nx < 0 || ny < 0 || nx >= W_MAP || ny >= H_MAP) {
-                continue;
+    for (int tx = tx0; tx <= tx1; tx++) {
+        for (int ty = ty0; ty <= ty1; ty++) {
+            if (g_map_navigation[tx][ty].type != terreP) {
+                return 0;
             }
-            if (visited[nx][ny] || g_map_navigation[nx][ny].type != terreP) {
-                continue;
-            }
-
-            visited[nx][ny] = 1;
-            parent_x[nx][ny] = cx;
-            parent_y[nx][ny] = cy;
-            file_x[rear] = nx;
-            file_y[rear] = ny;
-            rear++;
         }
     }
 
-    if (!visited[goal_tx][goal_ty]) {
-        return 0;
-    }
-
-    int step_x = goal_tx;
-    int step_y = goal_ty;
-    while (parent_x[step_x][step_y] != start_tx || parent_y[step_x][step_y] != start_ty) {
-        int px = parent_x[step_x][step_y];
-        int py = parent_y[step_x][step_y];
-        if (px < 0 || py < 0) {
-            return 0;
-        }
-        step_x = px;
-        step_y = py;
-    }
-
-    if (next_x) *next_x = (float)step_x * DISPLAY_TILE_SIZE + (DISPLAY_TILE_SIZE * 0.5f);
-    if (next_y) *next_y = (float)step_y * DISPLAY_TILE_SIZE + (DISPLAY_TILE_SIZE * 0.5f);
     return 1;
 }
 
-static int minotaure_joueur_visible(const boss_t *boss_ref) {
-    if (g_map_navigation == NULL) {
-        return joueur_dans_zone_agro(boss_ref);
-    }
 
-    return joueur_dans_zone_agro(boss_ref);
-}
-
-static void deplacer_minotaure_vers(boss_t *boss_ref, float target_x, float target_y, float dt) {
+static int deplacer_minotaure_vers(boss_t *boss_ref, float target_x, float target_y, float dt) {
     float boss_cx = 0.0f;
     float boss_cy = 0.0f;
     get_boss_centre_monde(boss_ref, &boss_cx, &boss_cy);
@@ -817,7 +731,7 @@ static void deplacer_minotaure_vers(boss_t *boss_ref, float target_x, float targ
     float dy = target_y - boss_cy;
     float dist = sqrtf(dx * dx + dy * dy);
     if (dist < 1.0f) {
-        return;
+        return 0;
     }
 
     if (fabsf(dx) > 3.0f) {
@@ -828,14 +742,18 @@ static void deplacer_minotaure_vers(boss_t *boss_ref, float target_x, float targ
     float vy = (dy / dist) * BOSS_MINOTAURE_MOVE_SPEED * dt;
 
     /* Offsets inverse de get_boss_centre_monde() */
-    const float off_x = 155.0f;
-    const float off_y = 192.5f;
+    const float off_x = BOSS_MINOTAURE_HITBOX_OFFSET_X + (BOSS_MINOTAURE_HITBOX_W * 0.5f);
+    const float off_y = BOSS_MINOTAURE_HITBOX_OFFSET_Y + (BOSS_MINOTAURE_HITBOX_H * 0.5f);
+    int moved = 0;
 
     float new_cx = boss_cx + vx;
     float new_cy = boss_cy;
     if (minotaure_position_libre_centre(new_cx, new_cy)) {
         boss_ref->x = new_cx - off_x;
         boss_ref->y = new_cy - off_y;
+        moved = 1;
+        boss_cx = new_cx;
+        boss_cy = new_cy;
     }
 
     new_cx = boss_cx;
@@ -843,30 +761,10 @@ static void deplacer_minotaure_vers(boss_t *boss_ref, float target_x, float targ
     if (minotaure_position_libre_centre(new_cx, new_cy)) {
         boss_ref->x = new_cx - off_x;
         boss_ref->y = new_cy - off_y;
-    }
-}
-
-static void choisir_cible_patrouille_minotaure(boss_t *boss_ref) {
-    for (int essais = 0; essais < 18; essais++) {
-        float angle = ((float)(rand() % 360)) * (3.14159265f / 180.0f);
-        float rayon = 70.0f + (float)(rand() % (int)BOSS_MINOTAURE_PATROL_RADIUS);
-        float boss_cx = 0.0f;
-        float boss_cy = 0.0f;
-        get_boss_centre_monde(boss_ref, &boss_cx, &boss_cy);
-        float cx = boss_cx + cosf(angle) * rayon;
-        float cy = boss_cy + sinf(angle) * rayon;
-
-        if (minotaure_position_libre_centre(cx, cy)) {
-            boss_ref->patrouille_cible_x = cx;
-            boss_ref->patrouille_cible_y = cy;
-            boss_ref->a_cible_patrouille = 1;
-            return;
-        }
+        moved = 1;
     }
 
-    boss_ref->patrouille_cible_x = boss_ref->spawn_x + 150.0f;
-    boss_ref->patrouille_cible_y = boss_ref->spawn_y + 175.0f;
-    boss_ref->a_cible_patrouille = 1;
+    return moved;
 }
 
 static void appliquer_degats_hache_minotaure(boss_t *boss_ref) {
@@ -921,10 +819,10 @@ static void attaque_minotaure(SDL_Renderer *renderer, boss_t *boss_ref) {
     get_boss_centre_monde(boss_ref, &boss_cx, &boss_cy);
     boss_ref->minotaure_regarde_droite = (joueur_x > boss_cx) ? 1 : 0;
 
-    int visible = minotaure_joueur_visible(boss_ref);
-    boss_ref->est_agro = visible;
+    boss_ref->est_agro = 1;
+    boss_ref->a_cible_patrouille = 0;
 
-    if (visible && boss_ref->etat_anim != 1) {
+    if (boss_ref->etat_anim != 1) {
         float dx = joueur_x - boss_cx;
         float dy = joueur_y - boss_cy;
         float dist = sqrtf(dx * dx + dy * dy);
@@ -933,35 +831,15 @@ static void attaque_minotaure(SDL_Renderer *renderer, boss_t *boss_ref) {
         if (dist <= BOSS_MINOTAURE_MELEE_RANGE && now - boss_ref->cooldown_attaque >= boss_ref->config_boss->cooldown_projectile_ms) {
             boss_ref->cooldown_attaque = now;
             declencher_animation_attaque(boss_ref);
-            boss_ref->a_cible_patrouille = 0;
             return;
         }
 
-        float prochaine_x = 0.0f;
-        float prochaine_y = 0.0f;
-        if (minotaure_trouver_prochaine_case(boss_ref, joueur_x, joueur_y, &prochaine_x, &prochaine_y)) {
-            deplacer_minotaure_vers(boss_ref, prochaine_x, prochaine_y, g_boss_dt);
+        if (deplacer_minotaure_vers(boss_ref, joueur_x, joueur_y, g_boss_dt)) {
+            boss_ref->etat_anim = 3;
         } else {
-            deplacer_minotaure_vers(boss_ref, joueur_x, joueur_y, g_boss_dt);
+            /* Bloque par un mur: il attend le joueur au lieu de courir sur place. */
+            boss_ref->etat_anim = 0;
         }
-        boss_ref->etat_anim = 3;
-        boss_ref->a_cible_patrouille = 0;
-        return;
-    }
-
-    if (!boss_ref->a_cible_patrouille) {
-        choisir_cible_patrouille_minotaure(boss_ref);
-    }
-
-    float pdx = boss_ref->patrouille_cible_x - boss_cx;
-    float pdy = boss_ref->patrouille_cible_y - boss_cy;
-    float pdist = sqrtf(pdx * pdx + pdy * pdy);
-    if (pdist < 14.0f) {
-        boss_ref->a_cible_patrouille = 0;
-        boss_ref->etat_anim = 0;
-    } else {
-        deplacer_minotaure_vers(boss_ref, boss_ref->patrouille_cible_x, boss_ref->patrouille_cible_y, g_boss_dt * 0.65f);
-        boss_ref->etat_anim = 3;
     }
 }
 
@@ -1237,7 +1115,7 @@ void mettre_a_jour_boss(SDL_Renderer *renderer, boss_t *boss_ref) {
     boss_ref->est_agro = joueur_dans_zone_agro(boss_ref);
 
     if (boss_ref->type == TYPE_BOSS_MINOTAURE) {
-        boss_ref->est_agro = minotaure_joueur_visible(boss_ref);
+        boss_ref->est_agro = 1;
     }
 
     if (!boss_ref->est_agro) {

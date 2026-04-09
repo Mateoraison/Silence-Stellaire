@@ -18,9 +18,14 @@ int engrenages_poses = 0;
 bool vaisseau_repare = false;
 bool g_planete3_engrenage_recupere = false;
 bool g_planete3_boss_spawned = false;
+bool g_planete3_spawn_engrenage_defini = false;
+float g_planete3_spawn_engrenage_x = 0.0f;
+float g_planete3_spawn_engrenage_y = 0.0f;
 static bool planete2_mastermind_engrenage_donne = false;
 static bool planete2_simon_termine = false;
 static bool planete1_engrenage_objectifs_donne = false;
+static bool planete2_engrenage_objectifs_donne = false;
+static bool planete3_engrenage_objectifs_donne = false;
 int nb_engrenages_requis = ENGRENAGES_MAX;
 
 /* Petit systeme de message global a l'ecran (HUD) */
@@ -733,6 +738,8 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         planete2_mastermind_engrenage_donne = false;
         planete2_simon_termine = false;
         planete1_engrenage_objectifs_donne = false;
+        planete2_engrenage_objectifs_donne = false;
+        planete3_engrenage_objectifs_donne = false;
 
         if (planete == 3) {
             boss3.est_battu = 0;
@@ -858,6 +865,17 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
             engrenage_case_y = H_MAP - 8;
         }
 
+        if (engrenage_case_x >= 0 && engrenage_case_y >= 0) {
+            float spawn_world_x = (engrenage_case_x * DISPLAY_TILE_SIZE) + (DISPLAY_TILE_SIZE * 0.5f);
+            float spawn_world_y = (engrenage_case_y * DISPLAY_TILE_SIZE) + (DISPLAY_TILE_SIZE * 0.5f);
+            g_planete3_spawn_engrenage_x = screen_center_x() - spawn_world_x;
+            g_planete3_spawn_engrenage_y = screen_center_y() - spawn_world_y;
+            g_planete3_spawn_engrenage_defini = true;
+        }
+    g_planete3_spawn_engrenage_defini = false;
+    g_planete3_spawn_engrenage_x = 0.0f;
+    g_planete3_spawn_engrenage_y = 0.0f;
+
         if (sortie_vaisseau && reprendre_partie && index_item < MAX_ITEMS &&
             engrenage_case_x >= 0 && engrenage_case_y >= 0) {
             float ix = engrenage_case_x * DISPLAY_TILE_SIZE + (DISPLAY_TILE_SIZE - 32.0f) * 0.5f;
@@ -924,6 +942,10 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         if (planete == 2 && sortie_vaisseau) {
             perso.x = 180.0f ;
             perso.y = -(28 * DISPLAY_TILE_SIZE) ;
+            perso.direction = 0;
+        } else if (planete == 3 && g_planete3_engrenage_recupere && g_planete3_spawn_engrenage_defini) {
+            perso.x = g_planete3_spawn_engrenage_x;
+            perso.y = g_planete3_spawn_engrenage_y;
             perso.direction = 0;
         } else if (planete == 3 && sortie_vaisseau) {
             perso.x = 160.0f;
@@ -1811,6 +1833,40 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
                         }
                     }
                     planete1_engrenage_objectifs_donne = true;
+                }
+            }
+
+            /* Meme logique pour la planete 2: 1 engrenage quand tous les objectifs sont completes. */
+            if (planete == 2 && !planete2_engrenage_objectifs_donne) {
+                int valides = 0;
+                for (int i = 0; i < objectifs_jeu.nb; ++i) if (objectifs_jeu.objectifs[i].valide) ++valides;
+                if (valides >= objectifs_jeu.nb) {
+                    if (index_item < MAX_ITEMS) {
+                        float give_x = -perso.x + screen_center_x();
+                        float give_y = -perso.y + screen_center_y();
+                        t_Item *engrenage_obj = init_item(ENGRENAGE, renderer, give_x, give_y);
+                        if (engrenage_obj != NULL) {
+                            items[index_item++] = engrenage_obj;
+                        }
+                    }
+                    planete2_engrenage_objectifs_donne = true;
+                }
+            }
+
+            /* Meme logique pour la planete 3: 1 engrenage quand tous les objectifs sont completes. */
+            if (planete == 3 && !planete3_engrenage_objectifs_donne) {
+                int valides = 0;
+                for (int i = 0; i < objectifs_jeu.nb; ++i) if (objectifs_jeu.objectifs[i].valide) ++valides;
+                if (valides >= objectifs_jeu.nb) {
+                    if (index_item < MAX_ITEMS) {
+                        float give_x = -perso.x + screen_center_x();
+                        float give_y = -perso.y + screen_center_y();
+                        t_Item *engrenage_obj = init_item(ENGRENAGE, renderer, give_x, give_y);
+                        if (engrenage_obj != NULL) {
+                            items[index_item++] = engrenage_obj;
+                        }
+                    }
+                    planete3_engrenage_objectifs_donne = true;
                 }
             }
 

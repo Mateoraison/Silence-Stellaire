@@ -72,8 +72,13 @@ int game_over(SDL_Renderer *renderer, int planete) {
                     // Réinitialiser le boss et supprimer les minions
                     reset_boss_for_retry(&boss1);
                 } else if (planete == 3 ) {
-                    perso.x = 160.0f;
-                    perso.y = -250.0f;
+                    if (g_planete3_engrenage_recupere && g_planete3_spawn_engrenage_defini) {
+                        perso.x = g_planete3_spawn_engrenage_x;
+                        perso.y = g_planete3_spawn_engrenage_y;
+                    } else {
+                        perso.x = 160.0f;
+                        perso.y = -250.0f;
+                    }
                     perso.direction = 0;
                 } else if (planete == 1 ) {
                     perso.x = -100.0f;

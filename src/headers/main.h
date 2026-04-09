@@ -242,5 +242,8 @@ extern bool inventaire_ouvert;
 
 extern bool g_planete3_engrenage_recupere;
 extern bool g_planete3_boss_spawned;
+extern bool g_planete3_spawn_engrenage_defini;
+extern float g_planete3_spawn_engrenage_x;
+extern float g_planete3_spawn_engrenage_y;
 
 #endif

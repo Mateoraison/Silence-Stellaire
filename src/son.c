@@ -197,3 +197,11 @@ void son_precharger_sfx(void) {
     SDL_Log("SFX prechargé: game_over.mp3");
 
 }
+
+void son_pause_tout(void) {
+    for (int i = 0; i < g_nb_sons; i++) {
+        if (g_sons[i].track) {
+            MIX_PauseTrack(g_sons[i].track);
+        }
+    }
+}

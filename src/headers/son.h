@@ -24,3 +24,5 @@ int son_sfx_est_actif(void);
 void son_definir_sfx_active(int actif);
 
 void son_precharger_sfx(void);
+
+void son_pause_tout(void);

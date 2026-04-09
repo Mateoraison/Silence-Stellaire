@@ -34,9 +34,12 @@ static int transition_planete_autorisee(int planete_depart, int planete_arrivee,
         return 0;
     }
 
-    if ((planete_depart == 2 && planete_arrivee == 3) ||
-        (planete_depart == 3 && planete_arrivee == 4)) {
-        return nb_engrenages >= 2;
+    if (planete_depart == 2 && planete_arrivee == 3) {
+        return nb_engrenages >= 3;
+    }
+
+    if (planete_depart == 3 && planete_arrivee == 4) {
+        return nb_engrenages >= 3;
     }
     return 1;
 }
@@ -46,10 +49,10 @@ static const char *message_transition_bloquee(int planete_depart, int planete_ar
         return "Passe d'abord par la planete précédente";
     }
     if (planete_depart == 2 && planete_arrivee == 3) {
-        return "Il faut 2 engrenages pour passer a la planete suivante";
+        return "Il faut 3 engrenages pour passer a la planete suivante";
     }
     if (planete_depart == 3 && planete_arrivee == 4) {
-        return "Il faut 2 engrenages pour passer a la planete suivante";
+        return "Il faut 3 engrenages pour passer a la planete suivante";
     }
     return "Transition non autorisee";
 }
@@ -220,18 +223,16 @@ int afficher_map(SDL_Renderer *renderer, MIX_Track *track_global) {
             if(Bouton_GererEvenement(&P4,&event)){
                 SDL_Log("planete 4 cliquer");
                 if (transition_planete_autorisee(Planete_actuelle, 4, nb_engrenages)) {
-                    if (son_est_actif()) {
-                        pause_son(track_global);
-                    }
+                    (void)track_global;
+                    son_pause_tout();
                     // Jouer la cinematique de fin puis les credits, puis retourner au menu principal
                     int code = jouer_cinematique_fin(renderer);
                     if (code == 1) { running = 0; break; }
+                    son_pause_tout();
                     // si la cinematique s'est terminee, afficher les credits
                     jouer_son("assets/audio/credit.mp3", 0.2f);
                     jouer_credits(renderer);
-                    if (son_est_actif()) {
-                        reprendre_son(track_global);
-                    }
+                    son_pause_tout();
                     // signaler au main de retourner au menu principal
                     planete_choisie = -1;
                     running = 0;
@@ -271,21 +272,25 @@ int afficher_map(SDL_Renderer *renderer, MIX_Track *track_global) {
 
         SDL_Color vert = {120, 230, 140, 255};
         SDL_Color rouge = {235, 100, 100, 255};
-        SDL_Color couleur_requis = (nb_engrenages >= 2) ? vert : rouge;
+        const int requis_23 = 3;
+        const int requis_34 = 3;
+        SDL_Color couleur_requis_23 = (nb_engrenages >= requis_23) ? vert : rouge;
+        SDL_Color couleur_requis_34 = (nb_engrenages >= requis_34) ? vert : rouge;
+        SDL_Color couleur_stock = (nb_engrenages >= requis_23) ? vert : rouge;
 
         char texte_regle_23[80];
         snprintf(texte_regle_23, sizeof(texte_regle_23), "Planete de Lave -> Planete du Minautor");
-        SDL_Surface *regle_23 = TTF_RenderText_Solid(font, texte_regle_23, strlen(texte_regle_23), couleur_requis);
+        SDL_Surface *regle_23 = TTF_RenderText_Solid(font, texte_regle_23, strlen(texte_regle_23), couleur_requis_23);
         SDL_Texture *regle_23_tex = SDL_CreateTextureFromSurface(renderer, regle_23);
 
         char texte_regle_34[80];
         snprintf(texte_regle_34, sizeof(texte_regle_34), "Planete du Minautor -> Galaxie");
-        SDL_Surface *regle_34 = TTF_RenderText_Solid(font, texte_regle_34, strlen(texte_regle_34), couleur_requis);
+        SDL_Surface *regle_34 = TTF_RenderText_Solid(font, texte_regle_34, strlen(texte_regle_34), couleur_requis_34);
         SDL_Texture *regle_34_tex = SDL_CreateTextureFromSurface(renderer, regle_34);
 
         char texte_stock[80];
         snprintf(texte_stock, sizeof(texte_stock), "Engrenages en stock: %d", nb_engrenages);
-        SDL_Surface *stock = TTF_RenderText_Solid(font, texte_stock, strlen(texte_stock), couleur_requis);
+        SDL_Surface *stock = TTF_RenderText_Solid(font, texte_stock, strlen(texte_stock), couleur_stock);
         SDL_Texture *stock_tex = SDL_CreateTextureFromSurface(renderer, stock);
 
         const float panneau_x = 12.0f;
@@ -294,13 +299,13 @@ int afficher_map(SDL_Renderer *renderer, MIX_Track *track_global) {
         const float ligne_h = 30.0f;
         const float engrenage_size = 20.0f;
         const float engrenage_gap = 6.0f;
-        const float groupe_2_engrenages_w = (engrenage_size * 2.0f) + engrenage_gap;
+        const float groupe_3_engrenages_w = (engrenage_size * 3.0f) + (engrenage_gap * 2.0f);
 
         float largeur_texte_max = (float)regle_23->w;
         if ((float)regle_34->w > largeur_texte_max) largeur_texte_max = (float)regle_34->w;
         if ((float)stock->w > largeur_texte_max) largeur_texte_max = (float)stock->w;
 
-        float panneau_w = panneau_padding + largeur_texte_max + 14.0f + groupe_2_engrenages_w + panneau_padding;
+        float panneau_w = panneau_padding + largeur_texte_max + 14.0f + groupe_3_engrenages_w + panneau_padding;
         float panneau_h = panneau_padding + (ligne_h * 3.0f) + panneau_padding;
 
         SDL_FRect panneau_regles = {panneau_x, panneau_y, panneau_w, panneau_h};
@@ -324,12 +329,14 @@ int afficher_map(SDL_Renderer *renderer, MIX_Track *track_global) {
             .h = (float)stock->h
         };
 
-        float engrenages_x = panneau_x + panneau_w - panneau_padding - groupe_2_engrenages_w;
+        float engrenages_x = panneau_x + panneau_w - panneau_padding - groupe_3_engrenages_w;
         SDL_FRect g23_1 = {engrenages_x, rect_regle_23.y - 1.0f, engrenage_size, engrenage_size};
         SDL_FRect g23_2 = {engrenages_x + engrenage_size + engrenage_gap, rect_regle_23.y - 1.0f, engrenage_size, engrenage_size};
+        SDL_FRect g23_3 = {engrenages_x + ((engrenage_size + engrenage_gap) * 2.0f), rect_regle_23.y - 1.0f, engrenage_size, engrenage_size};
         SDL_FRect g34_1 = {engrenages_x, rect_regle_34.y - 1.0f, engrenage_size, engrenage_size};
         SDL_FRect g34_2 = {engrenages_x + engrenage_size + engrenage_gap, rect_regle_34.y - 1.0f, engrenage_size, engrenage_size};
-        SDL_FRect g_stock = {engrenages_x + engrenage_size + (engrenage_gap * 0.5f), rect_stock.y - 1.0f, engrenage_size, engrenage_size};
+        SDL_FRect g34_3 = {engrenages_x + ((engrenage_size + engrenage_gap) * 2.0f), rect_regle_34.y - 1.0f, engrenage_size, engrenage_size};
+        SDL_FRect g_stock = {engrenages_x + engrenage_size + engrenage_gap, rect_stock.y - 1.0f, engrenage_size, engrenage_size};
         SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
         SDL_SetRenderDrawColor(renderer, 8, 18, 30, 180);
         SDL_RenderFillRect(renderer, &panneau_regles);
@@ -386,6 +393,7 @@ int afficher_map(SDL_Renderer *renderer, MIX_Track *track_global) {
         if (engrenage_tex) {
             SDL_RenderTexture(renderer, engrenage_tex, NULL, &g23_1);
             SDL_RenderTexture(renderer, engrenage_tex, NULL, &g23_2);
+            SDL_RenderTexture(renderer, engrenage_tex, NULL, &g23_3);
         }
 
         SDL_RenderTexture(renderer, regle_34_tex, NULL, &rect_regle_34);
@@ -395,6 +403,7 @@ int afficher_map(SDL_Renderer *renderer, MIX_Track *track_global) {
         if (engrenage_tex) {
             SDL_RenderTexture(renderer, engrenage_tex, NULL, &g34_1);
             SDL_RenderTexture(renderer, engrenage_tex, NULL, &g34_2);
+            SDL_RenderTexture(renderer, engrenage_tex, NULL, &g34_3);
         }
 
         SDL_RenderTexture(renderer, stock_tex, NULL, &rect_stock);

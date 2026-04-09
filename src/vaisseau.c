@@ -96,6 +96,12 @@ static bool gerer_interaction_objet(SDL_Renderer *renderer, int planete_actuelle
             snprintf(message_interaction, message_size, "Appuyez sur E pour voir la map");
             if (e_pressed) {
                 int planete_choisie = afficher_map(renderer, track_global);
+                if (planete_choisie == -1) {
+                    /* Fin de jeu terminee depuis la map: remonter au menu principal. */
+                    *running = false;
+                    *code_sortie = 1;
+                    return true;
+                }
                 if (planete_choisie >= 1 && planete_choisie <= 4) {
                     Planete_actuelle = planete_choisie;
                     *planete_changee = true;
