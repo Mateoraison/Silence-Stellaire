@@ -107,7 +107,7 @@ void detruire_animation(t_Animation * a){
 }
 
 
-int afficher_map(SDL_Renderer *renderer) {
+int afficher_map(SDL_Renderer *renderer, MIX_Track *track_global) {
     update_screen_metrics(renderer);
     float offx = screen_center_x() - 500.0f;
     float offy = screen_center_y() - 400.0f;

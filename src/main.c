@@ -17,6 +17,7 @@ typedef enum {
 int Planete_actuelle = 1;
 int g_screen_w = 1000;
 int g_screen_h = 800;
+MIX_Track *track_global = NULL;
 
 void update_screen_metrics(SDL_Renderer *renderer) {
     int w = 0;
@@ -95,7 +96,7 @@ int main(int argc, char *argv[]) {
     }
 
     init_caisse_outils(renderer);
-    MIX_Track *track_global = jouer_son("assets/audio/ambiance.wav", 0.3f);
+    track_global = jouer_son("assets/audio/ambiance.wav", 0.3f);
     MIX_Track *track_vaisseau = NULL;
 
     bool    reprendre_partie = false;
@@ -148,7 +149,7 @@ int main(int argc, char *argv[]) {
                 break;
             }
             case ETAT_MAP: {
-                int planete_choisie = afficher_map(renderer);
+                int planete_choisie = afficher_map(renderer, track_global);
                 if (planete_choisie == -1) {
                     etat = ETAT_MENU; // retour au menu principal apres credits
                 } else {
