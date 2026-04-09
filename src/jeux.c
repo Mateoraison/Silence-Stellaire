@@ -12,14 +12,16 @@
 #include <string.h>
 
 
-#define ENGRENAGES_MAX 1
+#define ENGRENAGES_MAX 3
 
 int engrenages_poses = 0;
 bool vaisseau_repare = false;
 bool g_planete3_engrenage_recupere = false;
 bool g_planete3_boss_spawned = false;
-static bool g_planete2_mastermind_engrenage_donne = false;
-static bool g_planete2_simon_termine = false;
+static bool planete2_mastermind_engrenage_donne = false;
+static bool planete2_simon_termine = false;
+static bool planete1_engrenage_objectifs_donne = false;
+int nb_engrenages_requis = ENGRENAGES_MAX;
 
 Perso  perso;
 int animation_frame = 0;
@@ -80,6 +82,37 @@ void remplir_tileset(t_tile map[W_MAP][H_MAP], char * map_txt){
     fclose(file);
 }
 
+/* Supprime tous les ENGRENAGE du joueur (hotbar, inventaire, caisse outils)
+   pour simuler la consommation entre planètes */
+void retirer_engrenages_joueur(void) {
+    /* Hotbar */
+    for (int i = 0; i < HOTBAR_SIZE; ++i) {
+        if (hotbar[i] && hotbar[i]->item && hotbar[i]->item->type == ENGRENAGE) {
+            free(hotbar[i]->item);
+            free(hotbar[i]);
+            hotbar[i] = NULL;
+        }
+    }
+
+    /* Inventaire */
+    for (int i = 0; i < INVENTAIRE_SIZE; ++i) {
+        if (inventaire[i] && inventaire[i]->item && inventaire[i]->item->type == ENGRENAGE) {
+            free(inventaire[i]->item);
+            free(inventaire[i]);
+            inventaire[i] = NULL;
+        }
+    }
+
+    /* Caisse d'outils */
+    for (int i = 0; i < CAISSE_OUTILS_SIZE; ++i) {
+        if (caisse_outils[i] && caisse_outils[i]->item && caisse_outils[i]->item->type == ENGRENAGE) {
+            free(caisse_outils[i]->item);
+            free(caisse_outils[i]);
+            caisse_outils[i] = NULL;
+        }
+    }
+}
+
 static void retirer_item_type_depuis_caisse(t_case *inv[], int size, typeItem type) {
     for (int i = 0; i < size; i++) {
         if (inv[i] != NULL && inv[i]->item != NULL && inv[i]->item->type == type) {
@@ -107,7 +140,7 @@ void charger_tilemap(SDL_Renderer *renderer, SDL_Texture *tileset,
         return;
     }
 
-    // Background tileset pour Planet 2, ancre a la camera avec repetition continue.
+    // Background tileset pour Planet 2, fix a la camera avec repetition continue.
     if (planete == 2) {
         float src_size = PLANETE3_TILE_SIZE;
         SDL_FRect src_lave = (SDL_FRect){48, 304, src_size, src_size};
@@ -422,7 +455,7 @@ static void console_executer_commande(const char *commande, SDL_Renderer *render
 
     if (SDL_strcasecmp(commande, "repare") == 0 || SDL_strcasecmp(commande, "repair") == 0) {
         vaisseau_repare = true;
-        engrenages_poses = ENGRENAGES_MAX;
+    engrenages_poses = nb_engrenages_requis;
         console_set_message("Vaisseau repare");
         return;
     }
@@ -559,6 +592,31 @@ static void console_afficher(SDL_Renderer *renderer) {
             SDL_DestroySurface(s_out);
         }
     }
+
+    /* Afficher le message de console au centre de l'ecran si non expire */
+    if (console_cmd.message[0] != '\0' && console_cmd.message_expire > SDL_GetTicks()) {
+        SDL_Color center_col = {255, 255, 255, 255};
+        SDL_Surface *s_center = TTF_RenderText_Solid(console_cmd.font, console_cmd.message, strlen(console_cmd.message), center_col);
+        if (s_center) {
+            SDL_Texture *t_center = SDL_CreateTextureFromSurface(renderer, s_center);
+            float cx = screen_center_x();
+            float cy = screen_center_y();
+            float w = (float)s_center->w;
+            float h = (float)s_center->h;
+            /* Fond semi-transparent pour lisibilite */
+            SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+            SDL_SetRenderDrawColor(renderer, 10, 10, 30, 200);
+            SDL_FRect bg = {cx - w * 0.5f - 10.0f, cy - h * 0.5f - 6.0f, w + 20.0f, h + 12.0f};
+            SDL_RenderFillRect(renderer, &bg);
+            SDL_SetRenderDrawColor(renderer, 120, 180, 230, 220);
+            SDL_RenderRect(renderer, &bg);
+
+            SDL_FRect dst = {cx - w * 0.5f, cy - h * 0.5f, w, h};
+            SDL_RenderTexture(renderer, t_center, NULL, &dst);
+            SDL_DestroyTexture(t_center);
+            SDL_DestroySurface(s_center);
+        }
+    }
 }
 
 static void afficher_message_interaction(SDL_Renderer *renderer, const char *message, float x, float y) {
@@ -602,6 +660,13 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
     detruire_mobs(mobs);
     reset_mob_respawn_queue();
 
+    /* Initialiser le nombre d'engrenages requis selon la planete */
+    if (planete == 1) nb_engrenages_requis = 3;
+    else nb_engrenages_requis = 1;
+
+    /* Consommer les engrenages du joueur lors de l'arrivee sur cette planete */
+    retirer_engrenages_joueur();
+
     init_boss(renderer, &boss1, TYPE_BOSS_DEMON_DE_FEU, 2550.0f, -100.0f);
 
 
@@ -636,12 +701,13 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         caisse_outils_ouvert = false;
         init_caisse_outils(renderer);
 
-        perso = (Perso){screen_center_x() - 1080.0f, screen_center_y() - 900.0f, NULL, 0, 10, 10, 10, 10, SDL_GetTicks()};
+        perso = (Perso){screen_center_x() - 1080.0f, screen_center_y() - 900.0f, NULL, 0, 9, 10, 10, 10, SDL_GetTicks()};
         srand(time(NULL));
-        g_planete3_engrenage_recupere = false;
-        g_planete3_boss_spawned = false;
-        g_planete2_mastermind_engrenage_donne = false;
-        g_planete2_simon_termine = false;
+    g_planete3_engrenage_recupere = false;
+    g_planete3_boss_spawned = false;
+        planete2_mastermind_engrenage_donne = false;
+        planete2_simon_termine = false;
+        planete1_engrenage_objectifs_donne = false;
 
         if (planete == 3) {
             boss3.est_battu = 1;
@@ -698,7 +764,37 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
     int engrenage_tile_x = -1;
     int engrenage_tile_y = -1;
     switch (planete){
-    case 1: remplir_tileset(map,"map.txt");break;
+    case 1:
+        remplir_tileset(map,"map.txt");
+        /* Placer un engrenage dans la map de la planete 1 (nouvelle partie seulement) */
+        if (!reprendre_partie && index_item < MAX_ITEMS) {
+            /* Collecter toutes les tuiles praticables, puis en choisir une au hasard */
+            int coords_x[W_MAP * H_MAP];
+            int coords_y[W_MAP * H_MAP];
+            int found = 0;
+            for (int y = 0; y < H_MAP; ++y) {
+                for (int x = 0; x < W_MAP; ++x) {
+                    type_t tt = map[x][y].type;
+                    if (tt != eau && tt != pierre && tt != arbreEntier) {
+                        coords_x[found] = x;
+                        coords_y[found] = y;
+                        found++;
+                    }
+                }
+            }
+            if (found > 0) {
+                int pick = rand() % found;
+                int fx = coords_x[pick];
+                int fy = coords_y[pick];
+                float ix = fx * DISPLAY_TILE_SIZE + (DISPLAY_TILE_SIZE - 32.0f) * 0.5f;
+                float iy = fy * DISPLAY_TILE_SIZE + (DISPLAY_TILE_SIZE - 32.0f) * 0.5f;
+                t_Item *engrenage_map = init_item(ENGRENAGE, renderer, ix, iy);
+                if (engrenage_map != NULL) {
+                    items[index_item++] = engrenage_map;
+                }
+            }
+        }
+        break;
     case 2: remplir_tileset(map,"map2.txt");break;
     case 3:
         remplir_tileset(map,"map3.txt");
@@ -759,6 +855,11 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
 
     objectifs_init(&objectifs_jeu, planete);
     font_objectifs = TTF_OpenFont("assets/police.ttf", 14);
+
+    /* Message d'introduction sur ce qu'il faut faire en arrivant sur la planete */
+        if (!reprendre_partie) {
+            /* pas de message centre a l'arrivee */
+        }
 
     bool running = true;
     SDL_Event event;
@@ -903,19 +1004,19 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
                     simon(renderer);
                 }
                 if(event.key.key == SDLK_E) {
-                    if (planete == 2 && texture_alien_planete2 && !g_planete2_simon_termine) {
-                        float alien_planete2_x = g_planete2_mastermind_engrenage_donne ? alien_planete2_x_2 : alien_planete2_x_1;
-                        float alien_planete2_y = g_planete2_mastermind_engrenage_donne ? alien_planete2_y_2 : alien_planete2_y_1;
+                    if (planete == 2 && texture_alien_planete2 && !planete2_simon_termine) {
+                        float alien_planete2_x = planete2_mastermind_engrenage_donne ? alien_planete2_x_2 : alien_planete2_x_1;
+                        float alien_planete2_y = planete2_mastermind_engrenage_donne ? alien_planete2_y_2 : alien_planete2_y_1;
                         SDL_FRect rect_perso_alien = {cx - perso.x, cy - perso.y, 40.0f, 60.0f};
                         SDL_FRect rect_alien = {alien_planete2_x, alien_planete2_y, alien_planete2_w, alien_planete2_h};
                         if (SDL_HasRectIntersectionFloat(&rect_perso_alien, &rect_alien)) {
-                            if (!g_planete2_mastermind_engrenage_donne) {
+                            if (!planete2_mastermind_engrenage_donne) {
                                 mastermind(renderer);
                                 if (g_mastermind_reussi && index_item < MAX_ITEMS) {
                                     t_Item *engrenage_recompense = init_item(ENGRENAGE, renderer, alien_planete2_x + 8.0f, alien_planete2_y + 8.0f);
                                     if (engrenage_recompense != NULL) {
                                         items[index_item++] = engrenage_recompense;
-                                        g_planete2_mastermind_engrenage_donne = true;
+                                        planete2_mastermind_engrenage_donne = true;
                                     }
                                 }
                             } else {
@@ -925,7 +1026,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
                                     if (engrenage_recompense != NULL) {
                                         items[index_item++] = engrenage_recompense;
                                     }
-                                    g_planete2_simon_termine = true;
+                                    planete2_simon_termine = true;
                                 }
                             }
                             continue;
@@ -1002,7 +1103,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
                                             hotbar[engrenage_slot] = NULL;
                                         }
                                         engrenages_poses++;
-                                        if (engrenages_poses >= ENGRENAGES_MAX) {
+                                        if (engrenages_poses >= nb_engrenages_requis) {
                                             vaisseau_repare = true;
                                             SDL_DestroyTexture(exterieure);
                                             exterieure = IMG_LoadTexture(renderer, "assets/tileset/V2/EXT_vaisseau/vaisseau_non_casser.png");
@@ -1142,9 +1243,9 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
             perso.y = old_y;
         }
 
-        if (planete == 2 && texture_alien_planete2 && !g_planete2_simon_termine) {
-            float alien_planete2_x = g_planete2_mastermind_engrenage_donne ? alien_planete2_x_2 : alien_planete2_x_1;
-            float alien_planete2_y = g_planete2_mastermind_engrenage_donne ? alien_planete2_y_2 : alien_planete2_y_1;
+        if (planete == 2 && texture_alien_planete2 && !planete2_simon_termine) {
+            float alien_planete2_x = planete2_mastermind_engrenage_donne ? alien_planete2_x_2 : alien_planete2_x_1;
+            float alien_planete2_y = planete2_mastermind_engrenage_donne ? alien_planete2_y_2 : alien_planete2_y_1;
             SDL_FRect rect_alien_collision = {
                 alien_planete2_x + 4.0f,
                 alien_planete2_y + 4.0f,
@@ -1181,9 +1282,9 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
 
         charger_tilemap(renderer, tileset, map, foam, planete);
 
-        if (planete == 2 && texture_alien_planete2 && !g_planete2_simon_termine) {
-            float alien_planete2_x = g_planete2_mastermind_engrenage_donne ? alien_planete2_x_2 : alien_planete2_x_1;
-            float alien_planete2_y = g_planete2_mastermind_engrenage_donne ? alien_planete2_y_2 : alien_planete2_y_1;
+        if (planete == 2 && texture_alien_planete2 && !planete2_simon_termine) {
+            float alien_planete2_x = planete2_mastermind_engrenage_donne ? alien_planete2_x_2 : alien_planete2_x_1;
+            float alien_planete2_y = planete2_mastermind_engrenage_donne ? alien_planete2_y_2 : alien_planete2_y_1;
             SDL_FRect dest_alien = {
                 alien_planete2_x + perso.x,
                 alien_planete2_y + perso.y,
@@ -1329,7 +1430,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
                 SDL_snprintf(texte_eng, sizeof(texte_eng), "Vaisseau repare !");
                 couleur_eng = (SDL_Color){0, 255, 100, 255};
             } else {
-                SDL_snprintf(texte_eng, sizeof(texte_eng), "Vaisseau : %d/%d engrenages", engrenages_poses, ENGRENAGES_MAX);
+                SDL_snprintf(texte_eng, sizeof(texte_eng), "Vaisseau : %d/%d engrenages", engrenages_poses, nb_engrenages_requis);
                 couleur_eng = (SDL_Color){255, 200, 50, 255};
             }
             SDL_Surface *surf_eng = TTF_RenderText_Solid(font_eng, texte_eng, strlen(texte_eng), couleur_eng);
@@ -1371,7 +1472,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
                             SDL_snprintf(hint, sizeof(hint), "Appuyez sur la touche du marteau pour poser un engrenage");
                             col_hint = (SDL_Color){255, 255, 100, 255};
                         } else if (un_marteau) {
-                            SDL_snprintf(hint, sizeof(hint), "Il vous faut des engrenages (%d/%d poses)", engrenages_poses, ENGRENAGES_MAX);
+                            SDL_snprintf(hint, sizeof(hint), "Il vous faut des engrenages (%d/%d poses)", engrenages_poses, nb_engrenages_requis);
                             col_hint = (SDL_Color){255, 100, 100, 255};
                         } else {
                             SDL_snprintf(hint, sizeof(hint), "Equipez un marteau pour reparer le vaisseau");
@@ -1421,11 +1522,28 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         }
 
         afficher_stat(renderer);
-        objectifs_afficher(&objectifs_jeu,renderer,font_objectifs);
+            objectifs_afficher(&objectifs_jeu,renderer,font_objectifs);
+            /* Donner un engrenage si tous les objectifs de la planete 1 sont completes (une seule fois) */
+            if (planete == 1 && !planete1_engrenage_objectifs_donne) {
+                int valides = 0;
+                for (int i = 0; i < objectifs_jeu.nb; ++i) if (objectifs_jeu.objectifs[i].valide) ++valides;
+                if (valides >= objectifs_jeu.nb) {
+                    if (index_item < MAX_ITEMS) {
+                        float give_x = -perso.x + screen_center_x();
+                        float give_y = -perso.y + screen_center_y();
+                        t_Item *engrenage_obj = init_item(ENGRENAGE, renderer, give_x, give_y);
+                        if (engrenage_obj != NULL) {
+                            items[index_item++] = engrenage_obj;
+                            /* recompense eng: pas de message centre */
+                        }
+                    }
+                    planete1_engrenage_objectifs_donne = true;
+                }
+            }
 
-        if (planete == 2 && texture_alien_planete2 && !g_planete2_simon_termine && !console_cmd.ouvert) {
-            float alien_planete2_x = g_planete2_mastermind_engrenage_donne ? alien_planete2_x_2 : alien_planete2_x_1;
-            float alien_planete2_y = g_planete2_mastermind_engrenage_donne ? alien_planete2_y_2 : alien_planete2_y_1;
+        if (planete == 2 && texture_alien_planete2 && !planete2_simon_termine && !console_cmd.ouvert) {
+            float alien_planete2_x = planete2_mastermind_engrenage_donne ? alien_planete2_x_2 : alien_planete2_x_1;
+            float alien_planete2_y = planete2_mastermind_engrenage_donne ? alien_planete2_y_2 : alien_planete2_y_1;
             SDL_FRect rect_perso_alien = {cx - perso.x, cy - perso.y, 40.0f, 60.0f};
             SDL_FRect rect_alien_zone = {
                 alien_planete2_x - 24.0f,
@@ -1434,7 +1552,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
                 alien_planete2_h + 48.0f
             };
             if (SDL_HasRectIntersectionFloat(&rect_perso_alien, &rect_alien_zone)) {
-                if (!g_planete2_mastermind_engrenage_donne) {
+                if (!planete2_mastermind_engrenage_donne) {
                     SDL_snprintf(message_interaction, sizeof(message_interaction), "Appuyez sur E pour lancer la premiere epreuve");
                 } else {
                     SDL_snprintf(message_interaction, sizeof(message_interaction), "Appuyez sur E pour lancer la derniere epreuve");
@@ -1444,8 +1562,8 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         }
 
         if (afficher_message) {
-            float alien_planete2_x = g_planete2_mastermind_engrenage_donne ? alien_planete2_x_2 : alien_planete2_x_1;
-            float alien_planete2_y = g_planete2_mastermind_engrenage_donne ? alien_planete2_y_2 : alien_planete2_y_1;
+            float alien_planete2_x = planete2_mastermind_engrenage_donne ? alien_planete2_x_2 : alien_planete2_x_1;
+            float alien_planete2_y = planete2_mastermind_engrenage_donne ? alien_planete2_y_2 : alien_planete2_y_1;
             afficher_message_interaction(renderer,
                                          message_interaction,
                                          alien_planete2_x + perso.x + (alien_planete2_w * 0.5f),
@@ -1598,7 +1716,8 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
             foam_timer = maintenant;
         }
 
-        SDL_RenderPresent(renderer);
+    
+    SDL_RenderPresent(renderer);
         if(perso.vie == 0) {jouer_son("assets/audio/game_over.mp3", 0.2f); running = game_over(renderer, planete);}
     }
 

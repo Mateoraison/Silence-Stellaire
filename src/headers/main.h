@@ -204,6 +204,9 @@ extern int g_screen_h;
 
 void update_screen_metrics(SDL_Renderer *renderer);
 
+/* Retire les engrenages du joueur lors d'un changement de planete */
+void retirer_engrenages_joueur(void);
+
 static inline float screen_widthf(void) {
     return (float)g_screen_w;
 }

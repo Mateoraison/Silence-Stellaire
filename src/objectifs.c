@@ -58,7 +58,6 @@ void objectifs_init(t_objectifs *obj, int planete) {
         switch (planete) {
         case 1:
             AJOUTER("Ramasser un engrenage",          verif_ramasser_engrenage);
-            AJOUTER("Réparer le vaisseau",             verif_reparer_vaisseau);
             AJOUTER("Manger de la viande cuite",       verif_viande_cuite);
             AJOUTER("Accumuler 5 pièces",              verif_cinq_pieces);
             AJOUTER("Se soigner à pleine vie",         verif_pleine_vie);
