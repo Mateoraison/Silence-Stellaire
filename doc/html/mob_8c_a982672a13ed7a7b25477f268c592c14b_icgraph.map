@@ -1,24 +1,11 @@
 <map id="detruire_un_mob" name="detruire_un_mob">
-<area shape="rect" id="Node000001" title="Libere un mob et nettoie les ressources associees." alt="" coords="829,107,946,133"/>
-<area shape="rect" id="Node000002" href="$boss_8c.html#a06fdb2e8e1170b4f3dbdea1b5d3ee5e9" title=" " alt="" coords="616,69,781,96"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="811,105,769,99,770,94,817,106"/>
-<area shape="rect" id="Node000009" href="$perso_8c.html#a8ed2806e634464929c59457d470b930b" title="Evalue les collisions de combat (joueur/mobs/items) pour la frame courante." alt="" coords="619,132,778,159"/>
-<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="816,130,778,137,778,132,811,130"/>
-<area shape="rect" id="Node000003" href="$boss_8c.html#a236f706845850941c512c45d6e52d55b" title="Libere boss et nettoie les ressources associees." alt="" coords="262,5,361,32"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="611,66,567,60,362,28,362,23,568,55,616,66"/>
-<area shape="rect" id="Node000006" href="$boss_8c.html#abbb99b844a32a59c50228b7d6dcb888b" title="Met a jour boss en fonction de l&#39;etat courant du jeu." alt="" coords="244,56,379,83"/>
-<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="597,80,380,74,379,69,602,78"/>
-<area shape="rect" id="Node000007" href="$boss_8c.html#a6ebb70c1cce9efe2e97dfee86382e964" title="Reinitialise boss for retry pour repartir d&#39;un etat propre." alt="" coords="427,107,568,133"/>
-<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="611,99,569,110,568,104,606,100"/>
-<area shape="rect" id="Node000004" href="$jeux_8c.html#a2d7491d04e8c2bdb52bb6ed7d75e4d78" title="Execute la boucle principale de gameplay pour la planete courante." alt="" coords="103,81,196,108"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="255,39,245,46,175,83,173,79,243,42,260,37"/>
-<area shape="rect" id="Node000005" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,81,55,108"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="85,96,56,97,54,92,89,93"/>
-<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="226,83,197,90,196,85,231,81"/>
-<area shape="rect" id="Node000008" href="$game__over_8c.html#a37d3fac8300008a434af7c66a4e695d0" title="Affiche l&#39;ecran de game over et traite le choix du joueur." alt="" coords="269,107,354,133"/>
-<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="409,120,355,123,355,117,415,120"/>
-<area shape="poly" id="edge9_Node000008_Node000004" title=" " alt="" coords="251,112,196,105,196,99,256,110"/>
-<area shape="rect" id="Node000010" href="$perso_8c.html#a13de525da0f522f0738bde93c1d62255" title="Met a jour combat en fonction de l&#39;etat courant du jeu." alt="" coords="442,157,553,184"/>
-<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="606,157,553,166,553,161,601,157"/>
-<area shape="poly" id="edge12_Node000010_Node000004" title=" " alt="" coords="424,171,338,167,290,160,243,148,203,131,170,111,171,106,205,126,245,143,291,154,339,162,429,171"/>
+<area shape="rect" id="Node000001" title="Libere un mob et nettoie les ressources associees." alt="" coords="609,5,726,32"/>
+<area shape="rect" id="Node000002" href="$perso_8c.html#a8ed2806e634464929c59457d470b930b" title="Evalue les collisions de combat (joueur/mobs/items) pour la frame courante." alt="" coords="402,5,561,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="590,19,561,21,561,16,596,19"/>
+<area shape="rect" id="Node000003" href="$perso_8c.html#a13de525da0f522f0738bde93c1d62255" title="Met a jour combat en fonction de l&#39;etat courant du jeu." alt="" coords="244,5,354,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="384,19,355,21,355,16,389,19"/>
+<area shape="rect" id="Node000004" href="$jeux_8c.html#a2d7491d04e8c2bdb52bb6ed7d75e4d78" title="Execute la boucle principale de gameplay pour la planete courante." alt="" coords="103,5,196,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="226,19,197,21,197,16,231,19"/>
+<area shape="rect" id="Node000005" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,55,32"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="84,19,55,21,55,16,89,18"/>
 </map>

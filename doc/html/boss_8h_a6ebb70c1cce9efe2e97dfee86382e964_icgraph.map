@@ -1,5 +1,5 @@
 <map id="reset_boss_for_retry" name="reset_boss_for_retry">
-<area shape="rect" id="Node000001" title="Reinitialise boss for retry pour repartir d&#39;un etat propre." alt="" coords="377,5,518,32"/>
+<area shape="rect" id="Node000001" title="Reinitialise un boss pour relancer un combat apres echec joueur." alt="" coords="377,5,518,32"/>
 <area shape="rect" id="Node000002" href="$game__over_8c.html#a37d3fac8300008a434af7c66a4e695d0" title="Affiche l&#39;ecran de game over et traite le choix du joueur." alt="" coords="244,5,329,32"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="359,19,330,21,330,16,364,19"/>
 <area shape="rect" id="Node000003" href="$jeux_8c.html#a2d7491d04e8c2bdb52bb6ed7d75e4d78" title="Execute la boucle principale de gameplay pour la planete courante." alt="" coords="103,5,196,32"/>

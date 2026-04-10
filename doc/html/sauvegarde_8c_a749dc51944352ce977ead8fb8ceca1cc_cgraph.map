@@ -1,9 +1,0 @@
-<map id="sauvegarde_appliquer_si_disponible" name="sauvegarde_appliquer_si_disponible">
-<area shape="rect" id="Node000001" title="Applique a l&#39;etat global les donnees precedemment chargees si presentes." alt="" coords="5,23,153,65"/>
-<area shape="rect" id="Node000002" href="$sauvegarde_8c.html#a4315a4b9ba87a34c26921be907a041ac" title=" " alt="" coords="217,5,344,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="152,32,204,28,199,29,153,37"/>
-<area shape="rect" id="Node000003" href="$sauvegarde_8c.html#a0f767253f223388fe1d131a28fc01d10" title=" " alt="" coords="201,56,361,83"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="153,51,188,57,182,58,153,56"/>
-<area shape="rect" id="Node000004" href="$item_8c.html#ac066d9bc77b421f23ca66756b7ff4a33" title="Initialise item et prepare les ressources necessaires." alt="" coords="409,56,479,83"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="362,67,396,69,391,69,362,72"/>
-</map>

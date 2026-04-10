@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title=" ">
+<g id="a_Node000001"><a xlink:title="Animation image etatisee (frame courante, echelle et position).">
 <polygon fill="#999999" stroke="none" points="81.75,-132 0,-132 0,0 81.75,0 81.75,-132"/>
 <text xml:space="preserve" text-anchor="start" x="15" y="-118.25" font-family="Helvetica,sans-Serif" font-size="10.00">t_Animation</text>
 <text xml:space="preserve" text-anchor="start" x="4" y="-102.25" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>

@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title=" ">
+<g id="a_Node000001"><a xlink:title="Reference d&#39;une tuile dans le tileset (colonne, ligne).">
 <polygon fill="#999999" stroke="none" points="39.5,-68 0,-68 0,0 39.5,0 39.5,-68"/>
 <text xml:space="preserve" text-anchor="start" x="4" y="-54.25" font-family="Helvetica,sans-Serif" font-size="10.00">TileRef</text>
 <text xml:space="preserve" text-anchor="start" x="4.5" y="-38.25" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>

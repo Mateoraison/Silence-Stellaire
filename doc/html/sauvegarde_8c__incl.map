@@ -38,7 +38,7 @@
 <area shape="poly" id="edge24_Node000002_Node000014" title=" " alt="" coords="861,104,744,127,595,157,594,152,743,121,866,103"/>
 <area shape="rect" id="Node000015" href="$son_8h.html" title="Fichier audio: musique, effets sonores et etats d&#39;activation." alt="" coords="770,155,823,181"/>
 <area shape="poly" id="edge27_Node000002_Node000015" title=" " alt="" coords="900,106,832,149,830,144,895,108"/>
-<area shape="rect" id="Node000017" href="$boss_8h.html" title="API de gestion des boss, de leurs phases et de leurs comportements de combat." alt="" coords="604,155,664,181"/>
+<area shape="rect" id="Node000017" href="$boss_8h.html" title="Fichier du module boss (declarations publiques)." alt="" coords="604,155,664,181"/>
 <area shape="poly" id="edge32_Node000002_Node000017" title=" " alt="" coords="868,107,680,156,678,151,863,108"/>
 <area shape="rect" id="Node000018" href="$mob_8h.html" title="Fichier des mobs: creation, mise a jour, rendu et file de respawn." alt="" coords="688,155,745,181"/>
 <area shape="poly" id="edge35_Node000002_Node000018" title=" " alt="" coords="886,107,760,154,759,149,881,108"/>

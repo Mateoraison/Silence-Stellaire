@@ -1,29 +1,7 @@
 <map id="update_mobs" name="update_mobs">
-<area shape="rect" id="Node000001" title="Met a jour mobs en fonction de l&#39;etat courant du jeu." alt="" coords="5,132,105,159"/>
-<area shape="rect" id="Node000002" href="$mob_8c.html#a1d5fd526db9bbc3f5b70491cfc645818" title=" " alt="" coords="156,31,318,57"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="71,129,107,102,151,74,181,62,177,65,154,78,110,106,75,133"/>
-<area shape="rect" id="Node000007" href="$mob_8c.html#af87428c098eeb520a5ae73c472e6f56d" title=" " alt="" coords="370,119,551,145"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="98,129,152,117,256,112,357,118,352,120,256,117,153,123,101,134"/>
-<area shape="rect" id="Node000008" href="$mob_8c.html#a6d9cf118a455f327d2d151281260aafd" title=" " alt="" coords="169,132,306,159"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="104,143,155,144,151,147,106,148"/>
-<area shape="rect" id="Node000009" href="$mob_8c.html#ad937d045795912d2cc7b363b7d2d19b8" title=" " alt="" coords="153,183,322,209"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="105,156,175,177,170,179,105,162"/>
-<area shape="rect" id="Node000010" href="$perso_8c.html#a2a53403cf290bb65fb010b095c4843cf" title="Verifie collision et retourne le resultat du test." alt="" coords="412,208,509,235"/>
-<area shape="poly" id="edge14_Node000001_Node000010" title=" " alt="" coords="69,156,105,190,128,207,154,219,216,234,281,238,343,236,394,233,399,233,343,242,281,244,215,239,152,224,125,211,101,194,67,161"/>
-<area shape="rect" id="Node000003" href="$main_8h.html#a6c672075bc554c92548a916c9501bdb5" title=" " alt="" coords="402,5,519,32"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="318,32,389,26,384,28,320,37"/>
-<area shape="rect" id="Node000005" href="$main_8h.html#a6456affd0d0a21e911b531a5ba25676d" title=" " alt="" coords="402,56,519,83"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="319,51,389,60,384,62,319,56"/>
-<area shape="rect" id="Node000004" href="$main_8h.html#aaaa1e9fcb86ff8e60b297faa7815ad1d" title=" " alt="" coords="601,5,704,32"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="519,16,588,18,583,19,520,21"/>
-<area shape="rect" id="Node000006" href="$main_8h.html#a9b4aefc63ea00e60ec88da19e24e8236" title=" " alt="" coords="599,56,706,83"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="519,67,587,69,581,70,520,72"/>
-<area shape="poly" id="edge9_Node000009_Node000007" title=" " alt="" coords="286,180,394,151,399,150,287,185"/>
-<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="322,203,400,214,394,214,322,208"/>
-<area shape="rect" id="Node000011" href="$son_8c.html#ae145ae699cc1eecf0684bdd530bd26f0" title="Charge (ou recupere du cache) puis joue une piste audio." alt="" coords="614,208,691,235"/>
-<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="510,219,601,221,596,221,510,224"/>
-<area shape="rect" id="Node000012" href="$son_8c.html#ad0d6e981433bdc8e4291e672fa8c039b" title=" " alt="" coords="754,208,857,235"/>
-<area shape="poly" id="edge12_Node000011_Node000012" title=" " alt="" coords="692,219,741,221,735,221,692,224"/>
-<area shape="rect" id="Node000013" href="$son_8c.html#aad43af6485e6418e4f26007ec64dba14" title=" " alt="" coords="905,208,1019,235"/>
-<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="858,219,892,221,887,221,858,224"/>
+<area shape="rect" id="Node000001" title="Met a jour mobs en fonction de l&#39;etat courant du jeu." alt="" coords="5,5,105,32"/>
+<area shape="rect" id="Node000002" href="$perso_8c.html#a2a53403cf290bb65fb010b095c4843cf" title="Verifie collision et retourne le resultat du test." alt="" coords="153,5,250,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,16,140,18,135,19,105,21"/>
+<area shape="rect" id="Node000003" href="$son_8c.html#ae145ae699cc1eecf0684bdd530bd26f0" title="Charge (ou recupere du cache) puis joue une piste audio." alt="" coords="298,5,375,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="251,16,285,19,280,19,251,21"/>
 </map>

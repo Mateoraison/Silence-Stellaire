@@ -1,13 +1,5 @@
 <map id="afficher_map" name="afficher_map">
-<area shape="rect" id="Node000001" title="Affiche la carte et met a jour les elements visuels associes." alt="" coords="522,43,618,69"/>
-<area shape="rect" id="Node000002" href="$vaisseau_8c.html#ace614afc8df3a40bd5ea0771044ff217" title=" " alt="" coords="322,43,474,69"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="504,56,475,59,475,53,509,56"/>
-<area shape="rect" id="Node000005" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="54,5,104,32"/>
-<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="508,38,474,33,366,22,260,18,104,20,104,15,260,13,367,17,475,28,513,38"/>
-<area shape="rect" id="Node000003" href="$vaisseau_8c.html#a8ea9afc9440149ddd36e96b97d8ed6c5" title="Lance la scene interieure du vaisseau (deplacement, interactions, mini&#45;jeux, sortie)." alt="" coords="201,43,274,69"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="303,56,275,59,274,53,309,56"/>
-<area shape="rect" id="Node000004" href="$cinematique_8c.html#a418cc3e727578f4cd509ad27cd6a2a31" title="Lance cinematique fin et gere son deroulement complet." alt="" coords="5,68,153,95"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="183,65,153,72,152,67,188,64"/>
-<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="183,45,104,27,104,22,188,42"/>
-<area shape="poly" id="edge4_Node000004_Node000001" title=" " alt="" coords="168,85,312,89,394,86,474,79,524,70,529,70,475,84,394,91,312,94,168,91"/>
+<area shape="rect" id="Node000001" title="Affiche la carte et met a jour les elements visuels associes." alt="" coords="103,5,198,32"/>
+<area shape="rect" id="Node000002" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,55,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="85,20,55,21,55,16,90,18"/>
 </map>

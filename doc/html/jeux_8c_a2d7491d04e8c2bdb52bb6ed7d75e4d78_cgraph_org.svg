@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="boss_8c.html#a659832e02de0bcb2ab0a339f981809ad" target="_top" xlink:title="Affiche boss et met a jour les elements visuels associes.">
+<g id="a_Node000002"><a xlink:href="boss_8c.html#a659832e02de0bcb2ab0a339f981809ad" target="_top" xlink:title="Affiche le boss, ses indicateurs visuels et ses effets actifs.">
 <polygon fill="white" stroke="#666666" points="207.5,-1588 133.75,-1588 133.75,-1568 207.5,-1568 207.5,-1588"/>
 <text xml:space="preserve" text-anchor="middle" x="170.62" y="-1574.5" font-family="Helvetica,sans-Serif" font-size="10.00">afficher_boss</text>
 </a>
@@ -219,7 +219,7 @@
 <!-- Node29 -->
 <g id="Node000029" class="node">
 <title>Node29</title>
-<g id="a_Node000029"><a xlink:href="boss_8c.html#a51cd354a45226c77472ca20b4caf045f" target="_top" xlink:title="Definit la carte de navigation exploitee par l&#39;IA des boss.">
+<g id="a_Node000029"><a xlink:href="boss_8c.html#a51cd354a45226c77472ca20b4caf045f" target="_top" xlink:title="Definit la carte de navigation utilisee par l&#39;IA des boss.">
 <polygon fill="white" stroke="#666666" points="235.25,-1120 106,-1120 106,-1100 235.25,-1100 235.25,-1120"/>
 <text xml:space="preserve" text-anchor="middle" x="170.62" y="-1106.5" font-family="Helvetica,sans-Serif" font-size="10.00">boss_set_navigation_map</text>
 </a>
@@ -273,7 +273,7 @@
 <!-- Node32 -->
 <g id="Node000032" class="node">
 <title>Node32</title>
-<g id="a_Node000032"><a xlink:href="boss_8c.html#a236f706845850941c512c45d6e52d55b" target="_top" xlink:title="Libere boss et nettoie les ressources associees.">
+<g id="a_Node000032"><a xlink:href="boss_8c.html#a236f706845850941c512c45d6e52d55b" target="_top" xlink:title="Detruit le boss et libere toutes les ressources associees.">
 <polygon fill="white" stroke="#666666" points="207.88,-1006 133.38,-1006 133.38,-986 207.88,-986 207.88,-1006"/>
 <text xml:space="preserve" text-anchor="middle" x="170.62" y="-992.5" font-family="Helvetica,sans-Serif" font-size="10.00">detruire_boss</text>
 </a>
@@ -418,7 +418,7 @@
 <!-- Node42 -->
 <g id="Node000042" class="node">
 <title>Node42</title>
-<g id="a_Node000042"><a xlink:href="boss_8c.html#af1c8aca032a751db8821bf8b9f592cf9" target="_top" xlink:title="Initialise boss et prepare les ressources necessaires.">
+<g id="a_Node000042"><a xlink:href="boss_8c.html#af1c8aca032a751db8821bf8b9f592cf9" target="_top" xlink:title="Initialise un boss avec ses ressources graphiques et son etat de combat.">
 <polygon fill="white" stroke="#666666" points="198.12,-728 143.12,-728 143.12,-708 198.12,-708 198.12,-728"/>
 <text xml:space="preserve" text-anchor="middle" x="170.62" y="-714.5" font-family="Helvetica,sans-Serif" font-size="10.00">init_boss</text>
 </a>
@@ -562,7 +562,7 @@
 <!-- Node52 -->
 <g id="Node000052" class="node">
 <title>Node52</title>
-<g id="a_Node000052"><a xlink:href="boss_8c.html#abbb99b844a32a59c50228b7d6dcb888b" target="_top" xlink:title="Met a jour boss en fonction de l&#39;etat courant du jeu.">
+<g id="a_Node000052"><a xlink:href="boss_8c.html#abbb99b844a32a59c50228b7d6dcb888b" target="_top" xlink:title="Met a jour la logique du boss pour une frame de jeu.">
 <polygon fill="#fff0f0" stroke="red" points="221.38,-614 119.88,-614 119.88,-594 221.38,-594 221.38,-614"/>
 <text xml:space="preserve" text-anchor="middle" x="170.62" y="-600.5" font-family="Helvetica,sans-Serif" font-size="10.00">mettre_a_jour_boss</text>
 </a>

@@ -1,9 +1,0 @@
-<map id="appliquer_degats_joueur" name="appliquer_degats_joueur">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,167,32"/>
-<area shape="rect" id="Node000002" href="$son_8c.html#ae145ae699cc1eecf0684bdd530bd26f0" title="Charge (ou recupere du cache) puis joue une piste audio." alt="" coords="215,5,292,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="167,16,202,19,196,19,167,21"/>
-<area shape="rect" id="Node000003" href="$son_8c.html#ad0d6e981433bdc8e4291e672fa8c039b" title=" " alt="" coords="340,5,443,32"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="292,16,327,19,322,19,293,21"/>
-<area shape="rect" id="Node000004" href="$son_8c.html#aad43af6485e6418e4f26007ec64dba14" title=" " alt="" coords="491,5,606,32"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="444,16,479,19,473,19,444,21"/>
-</map>

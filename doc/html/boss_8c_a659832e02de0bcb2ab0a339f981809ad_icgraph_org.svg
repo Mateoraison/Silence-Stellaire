@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="Affiche boss et met a jour les elements visuels associes.">
+<g id="a_Node000001"><a xlink:title="Affiche le boss, ses indicateurs visuels et ses effets actifs.">
 <polygon fill="#999999" stroke="#666666" points="252.75,-20 179,-20 179,0 252.75,0 252.75,-20"/>
 <text xml:space="preserve" text-anchor="middle" x="215.88" y="-6.5" font-family="Helvetica,sans-Serif" font-size="10.00">afficher_boss</text>
 </a>

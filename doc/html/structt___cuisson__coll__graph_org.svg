@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title=" ">
+<g id="a_Node000001"><a xlink:title="Etat de cuisson d&#39;un item dans la hotbar.">
 <polygon fill="#999999" stroke="none" points="81,-100 0,-100 0,0 81,0 81,-100"/>
 <text xml:space="preserve" text-anchor="start" x="18.38" y="-86.25" font-family="Helvetica,sans-Serif" font-size="10.00">t_Cuisson</text>
 <text xml:space="preserve" text-anchor="start" x="4" y="-70.25" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>

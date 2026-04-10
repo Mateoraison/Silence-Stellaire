@@ -6,12 +6,23 @@
 <!-- Title: src/headers/boss.h Pages: 1 -->
 <svg width="232pt" height="84pt"
  viewBox="0.00 0.00 232.00 84.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+<svg id="main" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
+
+<style type="text/css"><![CDATA[
+.node, .edge {opacity: 0.7;}
+.node.selected, .edge.selected {opacity: 1;}
+.edge:hover path { stroke: red; }
+.edge:hover polygon { stroke: red; fill: red; }
+]]></style>
+<script type="application/ecmascript" xlink:href="svg.min.js"/>
+<svg id="graph" class="graph">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 80)">
 <title>src/headers/boss.h</title>
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="API de gestion des boss, de leurs phases et de leurs comportements de combat.">
+<g id="a_Node000001"><a xlink:title="Fichier du module boss (declarations publiques).">
 <polygon fill="#999999" stroke="#666666" points="145.38,-76 46.12,-76 46.12,-56 145.38,-56 145.38,-76"/>
 <text xml:space="preserve" text-anchor="middle" x="95.75" y="-62.5" font-family="Helvetica,sans-Serif" font-size="10.00">src/headers/boss.h</text>
 </a>
@@ -54,4 +65,19 @@
 </g>
 </g>
 </g>
+</svg>
+</svg>
+
+<style type='text/css'>
+<![CDATA[
+[data-mouse-over-selected='false'] { opacity: 0.7; }
+[data-mouse-over-selected='true']  { opacity: 1.0; }
+]]>
+</style>
+<script type="application/ecmascript"><![CDATA[
+document.addEventListener('DOMContentLoaded', (event) => {
+  highlightEdges();
+  highlightAdjacentNodes();
+});
+]]></script>
 </svg>

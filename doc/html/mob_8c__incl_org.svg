@@ -272,7 +272,7 @@
 <!-- Node17 -->
 <g id="Node000017" class="node">
 <title>Node17</title>
-<g id="a_Node000017"><a xlink:href="boss_8h.html" target="_top" xlink:title="API de gestion des boss, de leurs phases et de leurs comportements de combat.">
+<g id="a_Node000017"><a xlink:href="boss_8h.html" target="_top" xlink:title="Fichier du module boss (declarations publiques).">
 <polygon fill="white" stroke="#666666" points="413.77,-76 368.52,-76 368.52,-56 413.77,-56 413.77,-76"/>
 <text xml:space="preserve" text-anchor="middle" x="391.14" y="-62.5" font-family="Helvetica,sans-Serif" font-size="10.00">boss.h</text>
 </a>

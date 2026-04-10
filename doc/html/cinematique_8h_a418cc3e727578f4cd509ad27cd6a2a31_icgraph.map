@@ -1,13 +1,7 @@
 <map id="jouer_cinematique_fin" name="jouer_cinematique_fin">
-<area shape="rect" id="Node000001" title="Lance cinematique fin et gere son deroulement complet." alt="" coords="568,56,715,83"/>
-<area shape="rect" id="Node000002" href="$map_8c.html#ad462ccdd50801fb085dc8134fc3765d1" title="Affiche la carte et met a jour les elements visuels associes." alt="" coords="424,31,520,57"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="550,56,520,54,520,48,555,56"/>
-<area shape="rect" id="Node000003" href="$vaisseau_8c.html#ace614afc8df3a40bd5ea0771044ff217" title=" " alt="" coords="224,31,376,57"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="406,44,377,47,376,41,411,44"/>
-<area shape="rect" id="Node000005" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,55,32"/>
-<area shape="poly" id="edge6_Node000002_Node000005" title=" " alt="" coords="411,26,376,21,283,14,192,13,56,19,55,14,192,7,284,8,377,16,417,26"/>
-<area shape="rect" id="Node000004" href="$vaisseau_8c.html#a8ea9afc9440149ddd36e96b97d8ed6c5" title="Lance la scene interieure du vaisseau (deplacement, interactions, mini&#45;jeux, sortie)." alt="" coords="103,31,176,57"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="205,44,177,47,176,41,211,44"/>
-<area shape="poly" id="edge4_Node000004_Node000001" title=" " alt="" coords="191,59,224,67,316,76,409,79,564,76,570,76,409,84,316,81,224,72,191,65"/>
-<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="86,33,55,27,55,22,90,31"/>
+<area shape="rect" id="Node000001" title="Lance cinematique fin et gere son deroulement complet." alt="" coords="246,5,393,32"/>
+<area shape="rect" id="Node000002" href="$map_8c.html#ad462ccdd50801fb085dc8134fc3765d1" title="Affiche la carte et met a jour les elements visuels associes." alt="" coords="103,5,198,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="228,19,199,21,199,16,233,19"/>
+<area shape="rect" id="Node000003" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,55,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="85,20,55,21,55,16,90,18"/>
 </map>

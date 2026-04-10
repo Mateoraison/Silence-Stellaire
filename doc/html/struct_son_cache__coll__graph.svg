@@ -22,7 +22,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title=" ">
+<g id="a_Node000001"><a xlink:title="Entree de cache audio associant chemin, audio charge et piste de lecture.">
 <polygon fill="#999999" stroke="none" points="53.75,-84 0,-84 0,0 53.75,0 53.75,-84"/>
 <text xml:space="preserve" text-anchor="start" x="4" y="-70.25" font-family="Helvetica,sans-Serif" font-size="10.00">SonCache</text>
 <text xml:space="preserve" text-anchor="start" x="5.06" y="-54.25" font-family="Helvetica,sans-Serif" font-size="10.00">+</text>

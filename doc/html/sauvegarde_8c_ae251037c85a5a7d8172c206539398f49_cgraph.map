@@ -1,29 +1,17 @@
 <map id="sauvegarde_choisir_slot" name="sauvegarde_choisir_slot">
-<area shape="rect" id="Node000001" title="Affiche l&#39;interface de selection de slot (chargement ou sauvegarde)." alt="" coords="5,208,167,235"/>
+<area shape="rect" id="Node000001" title="Affiche l&#39;interface de selection de slot (chargement ou sauvegarde)." alt="" coords="5,132,167,159"/>
 <area shape="rect" id="Node000002" href="$bouton_8c.html#af33c1c08b52d3d015ff6f7039a9734ee" title="Affiche texte centre et met a jour les elements visuels associes." alt="" coords="227,5,370,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,206,108,173,134,129,170,82,213,42,224,37,220,41,216,46,173,86,139,132,112,175,96,209"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,130,147,87,179,63,213,42,229,36,225,40,216,46,182,67,151,91,103,133"/>
 <area shape="rect" id="Node000003" href="$bouton_8c.html#a11f55905044ef2518b8c38311df3c48d" title="Dessine la texture du bouton dans son rectangle d&#39;affichage." alt="" coords="242,56,355,83"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="95,206,142,151,176,120,213,92,229,86,225,90,216,97,179,124,146,155,99,209"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="119,129,214,92,237,86,233,89,216,97,121,134"/>
 <area shape="rect" id="Node000004" href="$bouton_8c.html#ab4862740c43f8a9abb996fff0aba5ca1" title="Met a jour l&#39;etat du bouton a partir d&#39;un evenement SDL." alt="" coords="215,107,382,133"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="105,205,154,174,214,143,233,137,228,141,216,148,156,179,109,209"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="166,133,202,131,197,133,168,138"/>
 <area shape="rect" id="Node000006" href="$bouton_8c.html#a482b1feb9004901d0544e64b1c44051c" title="Initialise un bouton (zone, texture et etat d&#39;interaction)." alt="" coords="255,157,342,184"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="144,205,242,183,238,186,146,210"/>
-<area shape="rect" id="Node000007" href="$sauvegarde_8c.html#aeb4954bdff741edc886abc066b4d9b49" title=" " alt="" coords="255,208,342,235"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="166,219,242,220,238,223,168,224"/>
-<area shape="rect" id="Node000008" href="$sauvegarde_8c.html#a590205a1d58df634530e608349c8dc6f" title="Verifie si un fichier de sauvegarde existe pour un slot donne." alt="" coords="219,259,378,285"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="145,233,227,253,222,256,146,238"/>
-<area shape="rect" id="Node000010" href="$main_8h.html#a6c672075bc554c92548a916c9501bdb5" title=" " alt="" coords="240,309,357,336"/>
-<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="107,233,156,264,216,295,233,303,228,304,214,300,154,268,107,238"/>
-<area shape="rect" id="Node000012" href="$main_8h.html#a6456affd0d0a21e911b531a5ba25676d" title=" " alt="" coords="240,360,357,387"/>
-<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="98,232,146,288,179,319,216,346,228,354,223,354,213,350,176,323,142,291,97,238"/>
-<area shape="rect" id="Node000014" href="$main_8c.html#a82958224f33fa21d40f4f7965f8396bc" title="Met a jour screen metrics en fonction de l&#39;etat courant du jeu." alt="" coords="220,411,376,437"/>
-<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="94,233,112,267,139,311,173,357,216,397,225,404,219,403,213,401,170,361,134,314,108,270,93,238"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="167,152,242,163,237,165,168,158"/>
+<area shape="rect" id="Node000007" href="$sauvegarde_8c.html#a590205a1d58df634530e608349c8dc6f" title="Verifie si un fichier de sauvegarde existe pour un slot donne." alt="" coords="219,208,378,235"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="120,157,216,193,238,203,233,203,214,199,120,162"/>
+<area shape="rect" id="Node000008" href="$main_8c.html#a82958224f33fa21d40f4f7965f8396bc" title="Met a jour screen metrics en fonction de l&#39;etat courant du jeu." alt="" coords="220,259,376,285"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="102,157,151,200,182,224,216,244,230,253,225,252,213,249,179,228,147,204,100,162"/>
 <area shape="rect" id="Node000005" href="$bouton_8c.html#a273a0b22067678e17b3e6b4be36e3641" title=" " alt="" coords="430,107,538,133"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="381,117,417,119,412,121,383,123"/>
-<area shape="rect" id="Node000009" href="$sauvegarde_8c.html#ab305de40501185a8bfc008354c2d0f15" title=" " alt="" coords="438,259,530,285"/>
-<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="377,269,426,271,420,273,378,275"/>
-<area shape="rect" id="Node000011" href="$main_8h.html#aaaa1e9fcb86ff8e60b297faa7815ad1d" title=" " alt="" coords="433,309,535,336"/>
-<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="357,320,420,322,415,323,358,325"/>
-<area shape="rect" id="Node000013" href="$main_8h.html#a9b4aefc63ea00e60ec88da19e24e8236" title=" " alt="" coords="431,360,537,387"/>
-<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="357,371,419,373,413,374,358,376"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="382,117,417,119,412,121,383,123"/>
 </map>

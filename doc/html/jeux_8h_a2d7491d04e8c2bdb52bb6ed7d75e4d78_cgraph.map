@@ -1,6 +1,6 @@
 <map id="jeu_principal" name="jeu_principal">
 <area shape="rect" id="Node000001" title="Execute la boucle principale de gameplay pour la planete courante." alt="" coords="5,1051,99,1077"/>
-<area shape="rect" id="Node000002" href="$boss_8c.html#a659832e02de0bcb2ab0a339f981809ad" title="Affiche boss et met a jour les elements visuels associes." alt="" coords="184,5,282,32"/>
+<area shape="rect" id="Node000002" href="$boss_8c.html#a659832e02de0bcb2ab0a339f981809ad" title="Affiche le boss, ses indicateurs visuels et ses effets actifs." alt="" coords="184,5,282,32"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="51,1050,57,855,74,534,86,367,102,219,121,105,132,67,145,42,170,25,168,30,149,46,137,68,126,107,107,220,91,368,79,534,63,855,56,1050"/>
 <area shape="rect" id="Node000003" href="$perso_8c.html#a21f79a8c0c93416ec42034684f673522" title="Affiche combat et met a jour les elements visuels associes." alt="" coords="176,56,290,83"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="51,1050,58,864,75,559,88,401,103,260,122,153,133,116,145,93,163,80,161,84,149,96,138,118,127,154,108,261,93,401,80,559,63,864,56,1050"/>
@@ -22,13 +22,13 @@
 <area shape="poly" id="edge26_Node000001_Node000027" title=" " alt="" coords="51,1050,58,952,73,801,85,723,101,650,121,590,145,549,173,532,170,536,149,552,125,592,106,652,91,724,78,802,63,952,57,1050"/>
 <area shape="rect" id="Node000028" href="$planete_8c.html#ac2d1eb983f59ec8c4b9643cce9631c0f" title="Applique un masque de vision reduite autour du joueur sur la planete 3." alt="" coords="153,563,313,605"/>
 <area shape="poly" id="edge27_Node000001_Node000028" title=" " alt="" coords="52,1050,61,963,78,834,106,704,124,652,144,616,149,613,147,618,149,619,129,654,111,705,84,835,66,964,57,1051"/>
-<area shape="rect" id="Node000029" href="$boss_8c.html#a51cd354a45226c77472ca20b4caf045f" title="Definit la carte de navigation exploitee par l&#39;IA des boss." alt="" coords="147,629,319,656"/>
+<area shape="rect" id="Node000029" href="$boss_8c.html#a51cd354a45226c77472ca20b4caf045f" title="Definit la carte de navigation utilisee par l&#39;IA des boss." alt="" coords="147,629,319,656"/>
 <area shape="poly" id="edge28_Node000001_Node000029" title=" " alt="" coords="52,1050,62,971,80,856,108,742,125,697,145,666,150,663,148,668,149,670,130,700,113,744,85,857,67,972,57,1050"/>
 <area shape="rect" id="Node000030" href="$jeux_8c.html#a1e508a3ee2634b7b8d747311fd55c860" title=" " alt="" coords="176,680,290,707"/>
 <area shape="poly" id="edge29_Node000001_Node000030" title=" " alt="" coords="50,1050,51,990,61,901,72,852,89,803,113,757,145,717,163,705,161,710,149,721,118,760,94,805,77,853,66,902,56,991,55,1050"/>
 <area shape="rect" id="Node000031" href="$perso_8c.html#ac17ff910702e240707df1bb1443a3411" title="Met a jour la position du joueur selon les entrees clavier et le delta temps." alt="" coords="178,731,288,757"/>
 <area shape="poly" id="edge30_Node000001_Node000031" title=" " alt="" coords="51,1050,54,998,67,923,79,881,95,840,117,801,145,767,165,755,162,760,148,771,121,804,100,842,84,883,72,924,59,999,56,1051"/>
-<area shape="rect" id="Node000032" href="$boss_8c.html#a236f706845850941c512c45d6e52d55b" title="Libere boss et nettoie les ressources associees." alt="" coords="183,781,282,808"/>
+<area shape="rect" id="Node000032" href="$boss_8c.html#a236f706845850941c512c45d6e52d55b" title="Detruit le boss et libere toutes les ressources associees." alt="" coords="183,781,282,808"/>
 <area shape="poly" id="edge31_Node000001_Node000032" title=" " alt="" coords="52,1050,58,1005,73,943,101,876,121,845,145,818,170,804,167,808,148,822,125,848,106,879,78,945,63,1006,57,1050"/>
 <area shape="rect" id="Node000033" href="$mob_8c.html#ac1404d83610b06ad915d669824ab42c3" title="Libere mobs et nettoie les ressources associees." alt="" coords="181,832,284,859"/>
 <area shape="poly" id="edge32_Node000001_Node000033" title=" " alt="" coords="54,1050,64,1015,82,968,108,919,145,875,169,861,166,866,148,879,113,922,87,971,69,1017,59,1051"/>
@@ -44,7 +44,7 @@
 <area shape="poly" id="edge41_Node000001_Node000040" title=" " alt="" coords="98,1062,149,1062,145,1066,101,1066"/>
 <area shape="rect" id="Node000041" href="$perso_8c.html#a27a7f2b104972dc84653a7abaf2cedfc" title="Gere combat a partir des entrees utilisateur et des evenements." alt="" coords="183,1101,283,1128"/>
 <area shape="poly" id="edge42_Node000001_Node000041" title=" " alt="" coords="98,1075,170,1095,166,1098,101,1079"/>
-<area shape="rect" id="Node000042" href="$boss_8c.html#af1c8aca032a751db8821bf8b9f592cf9" title="Initialise boss et prepare les ressources necessaires." alt="" coords="196,1152,270,1179"/>
+<area shape="rect" id="Node000042" href="$boss_8c.html#af1c8aca032a751db8821bf8b9f592cf9" title="Initialise un boss avec ses ressources graphiques et son etat de combat." alt="" coords="196,1152,270,1179"/>
 <area shape="poly" id="edge43_Node000001_Node000042" title=" " alt="" coords="66,1075,103,1107,148,1138,183,1152,179,1155,145,1142,99,1111,68,1080"/>
 <area shape="rect" id="Node000043" href="$jeux_8c.html#ae8e5f9cd970d438c5fd8cda2b7286bfd" title="Initialise la caisse a outils et prepare les ressources necessaires." alt="" coords="172,1253,294,1280"/>
 <area shape="poly" id="edge44_Node000001_Node000043" title=" " alt="" coords="57,1075,70,1108,89,1150,114,1194,148,1233,166,1245,161,1247,145,1237,110,1197,84,1153,66,1110,58,1080"/>
@@ -60,7 +60,7 @@
 <area shape="poly" id="edge50_Node000001_Node000049" title=" " alt="" coords="54,1075,62,1172,76,1315,88,1388,104,1455,124,1509,136,1529,148,1543,176,1562,207,1574,240,1581,273,1584,340,1579,401,1568,397,1572,341,1585,273,1589,239,1586,205,1579,174,1566,145,1547,131,1532,119,1511,99,1457,83,1389,71,1315,56,1173,54,1080"/>
 <area shape="rect" id="Node000050" href="$arcade_8c.html#a9be93ac88e97809a94f0ae9b48152aa9" title="Lance le mini&#45;jeu Mastermind utilise dans la progression." alt="" coords="188,1659,278,1685"/>
 <area shape="poly" id="edge53_Node000001_Node000050" title=" " alt="" coords="54,1075,62,1186,76,1354,88,1443,104,1525,124,1592,136,1618,149,1638,161,1649,176,1659,171,1661,157,1653,145,1642,131,1621,119,1594,99,1526,83,1444,71,1355,56,1186,54,1080"/>
-<area shape="rect" id="Node000052" href="$boss_8c.html#abbb99b844a32a59c50228b7d6dcb888b" title="Met a jour boss en fonction de l&#39;etat courant du jeu." alt="" coords="165,1304,300,1331"/>
+<area shape="rect" id="Node000052" href="$boss_8c.html#abbb99b844a32a59c50228b7d6dcb888b" title="Met a jour la logique du boss pour une frame de jeu." alt="" coords="165,1304,300,1331"/>
 <area shape="poly" id="edge54_Node000001_Node000052" title=" " alt="" coords="55,1075,65,1119,80,1176,107,1237,126,1265,148,1290,154,1295,149,1297,145,1294,122,1269,103,1240,75,1178,59,1120,55,1080"/>
 <area shape="rect" id="Node000055" href="$objectifs_8c.html#a9f4b4e261f3bafb3c91a12cbe3408043" title="Affiche le panneau des objectifs et met a jour leur etat de validation." alt="" coords="173,1709,292,1736"/>
 <area shape="poly" id="edge56_Node000001_Node000055" title=" " alt="" coords="53,1075,59,1196,71,1382,83,1480,99,1571,121,1645,134,1674,149,1696,161,1707,156,1708,145,1699,129,1677,116,1647,94,1572,78,1481,66,1382,54,1196,53,1080"/>

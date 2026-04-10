@@ -1,7 +1,0 @@
-<map id="deplacer_minotaure_vers" name="deplacer_minotaure_vers">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,35,172,61"/>
-<area shape="rect" id="Node000002" href="$boss_8c.html#afb0b61469efd6dce1e15a516cb9e4115" title=" " alt="" coords="220,5,383,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="172,34,207,31,202,33,173,39"/>
-<area shape="rect" id="Node000003" href="$boss_8c.html#ae7410e9e2b5e0ca0b415b422f2da9c79" title=" " alt="" coords="236,56,366,99"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="172,57,224,66,218,67,172,62"/>
-</map>

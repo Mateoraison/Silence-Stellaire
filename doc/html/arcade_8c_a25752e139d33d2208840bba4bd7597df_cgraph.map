@@ -1,7 +1,0 @@
-<map id="arcade_draw_hud" name="arcade_draw_hud">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,129,32"/>
-<area shape="rect" id="Node000002" href="$arcade_8c.html#adcd100b7250411e655a98a61dace3f5a" title=" " alt="" coords="177,5,301,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,16,164,18,158,19,129,21"/>
-<area shape="rect" id="Node000003" href="$arcade_8c.html#aef73159add1b6705e8ecc9411076a194" title=" " alt="" coords="349,5,463,32"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="301,16,336,19,330,19,302,21"/>
-</map>

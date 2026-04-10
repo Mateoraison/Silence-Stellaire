@@ -1,9 +1,0 @@
-<map id="verif_viande_cuite" name="verif_viande_cuite">
-<area shape="rect" id="Node000001" title=" " alt="" coords="386,5,513,32"/>
-<area shape="rect" id="Node000002" href="$objectifs_8c.html#a844bf7cfff25edd874a95fb5f4d9e4a8" title="Initialise la liste des objectifs selon la planete en cours." alt="" coords="244,5,338,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="368,19,339,21,339,16,373,19"/>
-<area shape="rect" id="Node000003" href="$jeux_8c.html#a2d7491d04e8c2bdb52bb6ed7d75e4d78" title="Execute la boucle principale de gameplay pour la planete courante." alt="" coords="103,5,196,32"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="226,19,196,21,196,16,231,19"/>
-<area shape="rect" id="Node000004" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,55,32"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="84,19,55,21,55,16,89,18"/>
-</map>

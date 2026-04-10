@@ -1,5 +1,5 @@
 <map id="src/headers/boss.h" name="src/headers/boss.h">
-<area shape="rect" id="Node000001" title="API de gestion des boss, de leurs phases et de leurs comportements de combat." alt="" coords="67,5,199,32"/>
+<area shape="rect" id="Node000001" title="Fichier du module boss (declarations publiques)." alt="" coords="67,5,199,32"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,80,101,107"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="122,32,79,72,76,68,117,33"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="125,80,304,107"/>

@@ -1,9 +1,0 @@
-<map id="p3_connect_isolated_regions" name="p3_connect_isolated_regions">
-<area shape="rect" id="Node000001" title=" " alt="" coords="419,5,560,48"/>
-<area shape="rect" id="Node000002" href="$planete_8c.html#a590f905501246ac7649bbc45bc6677c5" title="Genere le labyrinthe procedural de la planete 3 et place l&#39;engrenage objectif." alt="" coords="244,5,371,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="401,27,372,29,372,24,406,27"/>
-<area shape="rect" id="Node000003" href="$jeux_8c.html#a2d7491d04e8c2bdb52bb6ed7d75e4d78" title="Execute la boucle principale de gameplay pour la planete courante." alt="" coords="103,13,196,40"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="226,27,197,29,196,24,231,26"/>
-<area shape="rect" id="Node000004" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,13,55,40"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="84,28,55,29,55,24,89,26"/>
-</map>

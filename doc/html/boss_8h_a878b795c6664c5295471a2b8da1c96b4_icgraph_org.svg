@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="Met a jour boss en fonction de l&#39;etat courant du jeu.">
+<g id="a_Node000001"><a xlink:title="Met a jour la logique du boss pour une frame de jeu.">
 <polygon fill="#999999" stroke="#666666" points="280.5,-20 179,-20 179,0 280.5,0 280.5,-20"/>
 <text xml:space="preserve" text-anchor="middle" x="229.75" y="-6.5" font-family="Helvetica,sans-Serif" font-size="10.00">mettre_a_jour_boss</text>
 </a>

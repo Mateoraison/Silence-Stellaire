@@ -1,7 +1,0 @@
-<map id="console_ajouter_item" name="console_ajouter_item">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,150,57"/>
-<area shape="rect" id="Node000002" href="$inventaire_8c.html#af0bb60f5edfe743f3132d027eaf1bcbb" title="Ajoute un item dans la hotbar (slot libre ou pile compatible)." alt="" coords="198,5,333,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="149,32,185,29,180,31,150,37"/>
-<area shape="rect" id="Node000003" href="$item_8c.html#ac066d9bc77b421f23ca66756b7ff4a33" title="Initialise item et prepare les ressources necessaires." alt="" coords="230,56,300,83"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="150,51,217,62,212,63,150,56"/>
-</map>

@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title="Reinitialise boss for retry pour repartir d&#39;un etat propre.">
+<g id="a_Node000001"><a xlink:title="Reinitialise un boss pour relancer un combat apres echec joueur.">
 <polygon fill="#999999" stroke="#666666" points="384.25,-20 279,-20 279,0 384.25,0 384.25,-20"/>
 <text xml:space="preserve" text-anchor="middle" x="331.62" y="-6.5" font-family="Helvetica,sans-Serif" font-size="10.00">reset_boss_for_retry</text>
 </a>

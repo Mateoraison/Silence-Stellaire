@@ -1,28 +1,16 @@
 <map id="update_combat" name="update_combat">
-<area shape="rect" id="Node000001" title="Met a jour combat en fonction de l&#39;etat courant du jeu." alt="" coords="5,62,116,89"/>
-<area shape="rect" id="Node000002" href="$son_8c.html#ae145ae699cc1eecf0684bdd530bd26f0" title="Charge (ou recupere du cache) puis joue une piste audio." alt="" coords="562,87,639,114"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,59,170,34,272,12,328,5,386,3,444,8,500,22,544,45,580,77,574,76,541,50,498,27,443,14,386,9,329,10,273,17,172,39,98,64"/>
-<area shape="rect" id="Node000005" href="$perso_8c.html#a8ed2806e634464929c59457d470b930b" title="Evalue les collisions de combat (joueur/mobs/items) pour la frame courante." alt="" coords="164,138,322,165"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="95,86,197,130,192,133,95,92"/>
-<area shape="rect" id="Node000003" href="$son_8c.html#ad0d6e981433bdc8e4291e672fa8c039b" title=" " alt="" coords="702,87,805,114"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="639,98,689,100,683,101,640,103"/>
-<area shape="rect" id="Node000004" href="$son_8c.html#aad43af6485e6418e4f26007ec64dba14" title=" " alt="" coords="853,87,967,114"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="805,98,840,100,835,101,806,103"/>
-<area shape="rect" id="Node000006" href="$mob_8c.html#a982672a13ed7a7b25477f268c592c14b" title="Libere un mob et nettoie les ressources associees." alt="" coords="376,37,493,63"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="263,135,311,105,369,73,384,68,380,71,371,78,314,110,266,139"/>
-<area shape="rect" id="Node000007" href="$item_8c.html#ac066d9bc77b421f23ca66756b7ff4a33" title="Initialise item et prepare les ressources necessaires." alt="" coords="400,87,470,114"/>
-<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="295,135,387,112,382,115,297,140"/>
-<area shape="rect" id="Node000008" href="$mob_8c.html#a30dd485a00ed194617f87517eb3e07f5" title="Programme la reapparition differee d&#39;un mob dans la file de respawn." alt="" coords="370,138,499,165"/>
-<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="322,149,357,150,352,152,323,154"/>
-<area shape="rect" id="Node000009" href="$main_8h.html#a6c672075bc554c92548a916c9501bdb5" title=" " alt="" coords="376,239,493,266"/>
-<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="265,163,314,193,371,225,385,233,379,233,369,230,311,197,265,168"/>
-<area shape="rect" id="Node000011" href="$main_8h.html#a6456affd0d0a21e911b531a5ba25676d" title=" " alt="" coords="376,290,493,317"/>
-<area shape="poly" id="edge10_Node000005_Node000011" title=" " alt="" coords="255,162,303,217,336,248,372,276,381,283,375,282,368,280,332,252,299,220,254,167"/>
-<area shape="rect" id="Node000013" href="$perso_8c.html#a2a53403cf290bb65fb010b095c4843cf" title="Verifie collision et retourne le resultat du test." alt="" coords="386,189,483,215"/>
-<area shape="poly" id="edge12_Node000005_Node000013" title=" " alt="" coords="296,162,374,185,369,186,296,168"/>
-<area shape="rect" id="Node000010" href="$main_8h.html#aaaa1e9fcb86ff8e60b297faa7815ad1d" title=" " alt="" coords="549,239,652,266"/>
-<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="494,250,536,252,531,253,494,255"/>
-<area shape="rect" id="Node000012" href="$main_8h.html#a9b4aefc63ea00e60ec88da19e24e8236" title=" " alt="" coords="547,290,654,317"/>
-<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="494,301,534,303,529,303,494,306"/>
-<area shape="poly" id="edge13_Node000013_Node000002" title=" " alt="" coords="475,185,498,174,537,149,570,125,575,123,540,153,501,179,477,190"/>
+<area shape="rect" id="Node000001" title="Met a jour combat en fonction de l&#39;etat courant du jeu." alt="" coords="5,43,116,70"/>
+<area shape="rect" id="Node000002" href="$son_8c.html#ae145ae699cc1eecf0684bdd530bd26f0" title="Charge (ou recupere du cache) puis joue une piste audio." alt="" coords="547,94,625,120"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="104,40,181,21,281,6,336,3,392,5,447,13,500,28,538,51,568,82,562,81,535,55,498,33,446,18,391,10,336,8,282,11,182,26,106,45"/>
+<area shape="rect" id="Node000003" href="$perso_8c.html#a8ed2806e634464929c59457d470b930b" title="Evalue les collisions de combat (joueur/mobs/items) pour la frame courante." alt="" coords="164,94,322,120"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="111,68,180,87,175,90,112,73"/>
+<area shape="rect" id="Node000004" href="$mob_8c.html#a982672a13ed7a7b25477f268c592c14b" title="Libere un mob et nettoie les ressources associees." alt="" coords="376,43,493,70"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="296,90,369,73,364,75,297,95"/>
+<area shape="rect" id="Node000005" href="$item_8c.html#ac066d9bc77b421f23ca66756b7ff4a33" title="Initialise item et prepare les ressources necessaires." alt="" coords="400,94,470,120"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="322,104,387,106,382,107,323,110"/>
+<area shape="rect" id="Node000006" href="$mob_8c.html#a30dd485a00ed194617f87517eb3e07f5" title="Programme la reapparition differee d&#39;un mob dans la file de respawn." alt="" coords="370,144,499,171"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="297,118,369,139,364,140,296,124"/>
+<area shape="rect" id="Node000007" href="$perso_8c.html#a2a53403cf290bb65fb010b095c4843cf" title="Verifie collision et retourne le resultat du test." alt="" coords="386,195,483,222"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="266,118,314,148,371,181,385,189,379,188,369,185,311,153,264,123"/>
+<area shape="poly" id="edge7_Node000007_Node000002" title=" " alt="" coords="476,192,498,181,531,156,559,133,564,131,535,160,501,185,478,197"/>
 </map>
