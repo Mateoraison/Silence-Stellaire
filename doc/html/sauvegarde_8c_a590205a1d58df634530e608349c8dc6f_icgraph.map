@@ -1,0 +1,14 @@
+<map id="sauvegarde_slot_existe" name="sauvegarde_slot_existe">
+<area shape="rect" id="Node000001" title="Verifie si un fichier de sauvegarde existe pour un slot donne." alt="" coords="616,31,774,57"/>
+<area shape="rect" id="Node000002" href="$sauvegarde_8c.html#ae251037c85a5a7d8172c206539398f49" title="Affiche l&#39;interface de selection de slot (chargement ou sauvegarde)." alt="" coords="406,31,568,57"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="598,44,568,47,568,41,603,44"/>
+<area shape="rect" id="Node000003" href="$menu_8c.html#a55097e0b77b0fabc6cae44137b9a839a" title="Affiche menu et met a jour les elements visuels associes." alt="" coords="103,5,205,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="389,38,205,25,205,20,393,35"/>
+<area shape="rect" id="Node000005" href="$pause_8c.html#abc45a9e3a6a57d6f0f44706bd52e556d" title="Affiche pause et met a jour les elements visuels associes." alt="" coords="253,56,358,83"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="393,57,359,65,358,59,388,58"/>
+<area shape="rect" id="Node000004" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,31,55,57"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="85,34,56,42,54,37,90,31"/>
+<area shape="rect" id="Node000006" href="$jeux_8c.html#a2d7491d04e8c2bdb52bb6ed7d75e4d78" title="Execute la boucle principale de gameplay pour la planete courante." alt="" coords="107,56,200,83"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="235,69,201,72,201,67,240,69"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="90,58,55,52,55,46,94,55"/>
+</map>

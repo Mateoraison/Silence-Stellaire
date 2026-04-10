@@ -1,3 +1,8 @@
+/**
+ * @file pause.c
+ * @brief Menu pause et actions disponibles pendant une partie.
+ */
+
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
 #include <SDL3_ttf/SDL_ttf.h>
@@ -96,21 +101,21 @@ int afficher_pause(SDL_Renderer *renderer, MIX_Track *track_global) {
                 notif_time = SDL_GetTicks();
             }
             if (Bouton_GererEvenement(&btn_options, &ev)) {
-                // Ouvrir les options EN INTERNE — la pause reste active en dessous
-                // La musique reste en pause pendant les options
+                // Ouvrir le menu des options sans quitter l'ecran de pause.
+                // La musique reste coupee tant que le menu options est ouvert.
                 afficher_option(renderer, track_global);
-                // On revient ici directement, rien n'a changé dans l'état du jeu
+                // On revient ici une fois les options fermees, sans changer l'etat du jeu.
             }
         }
 
         
-        // Fond semi-transparent 
+        // Assombrir l'ecran derriere le panneau de pause.
         SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 160);
         SDL_FRect ecran = {0.0f, 0.0f, screen_widthf(), screen_heightf()};
         SDL_RenderFillRect(renderer, &ecran);
 
-        // Panneau
+        // Panneau central de pause.
         float pan_w = 400.0f;
         float pan_h = btn_h * 4 + gap * 3 + 140.0f;
         float pan_x = screen_center_x() - pan_w * 0.5f;
@@ -122,7 +127,7 @@ int afficher_pause(SDL_Renderer *renderer, MIX_Track *track_global) {
         SDL_SetRenderDrawColor(renderer, 80, 120, 180, 255);
         SDL_RenderRect(renderer, &panneau);
 
-        // Titre
+        // Titre principal du menu pause.
         SDL_Surface *surf_titre = TTF_RenderText_Blended(font_titre, "PAUSE", 0, blanc);
         if (surf_titre) {
             SDL_Texture *tex_titre = SDL_CreateTextureFromSurface(renderer, surf_titre);
@@ -133,12 +138,12 @@ int afficher_pause(SDL_Renderer *renderer, MIX_Track *track_global) {
             SDL_DestroySurface(surf_titre);
         }
 
-        // Ligne pour separer
+        // Separation visuelle sous le titre.
         SDL_SetRenderDrawColor(renderer, 80, 120, 180, 150);
         SDL_FRect ligne = {pan_x + 20, y0 - 15, pan_w - 40, 2};
         SDL_RenderFillRect(renderer, &ligne);
 
-        // Boutons + labels
+        // Boutons d'action et leurs libelles.
         Bouton_Afficher(&btn_reprendre,   renderer);
         Bouton_Afficher(&btn_sauvegarder, renderer);
         Bouton_Afficher(&btn_options,     renderer);
@@ -149,7 +154,7 @@ int afficher_pause(SDL_Renderer *renderer, MIX_Track *track_global) {
         if (t_opt) afficher_texte_centre(renderer, t_opt, &btn_options.rect);
         if (t_men) afficher_texte_centre(renderer, t_men, &btn_menu.rect);
 
-        // Notif sauvegarde
+        // Message temporaire apres une sauvegarde.
         if (notif_sav && SDL_GetTicks() - notif_time < 2500) {
             SDL_Color jaune = {255, 210, 50, 255};
             SDL_Surface *s = TTF_RenderText_Solid(font,
@@ -168,7 +173,7 @@ int afficher_pause(SDL_Renderer *renderer, MIX_Track *track_global) {
             notif_sav = false;
         }
 
-        //Échap
+        // Rappel de la touche pour reprendre rapidement.
         SDL_Color gris_hint = {120, 130, 150, 200};
         SDL_Surface *s_hint = TTF_RenderText_Solid(font,
             "[ Echap ] pour reprendre",
@@ -195,7 +200,7 @@ int afficher_pause(SDL_Renderer *renderer, MIX_Track *track_global) {
     if (font_titre != font) TTF_CloseFont(font_titre);
     TTF_CloseFont(font);
 
-    // Reprendre la musique uniquement si on retourne en jeu
+    // Reprendre la musique uniquement si on retourne en jeu.
     if (resultat == PAUSE_REPRENDRE && track_global && son_est_actif())
         reprendre_son(track_global);
 

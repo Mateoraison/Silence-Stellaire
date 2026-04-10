@@ -1,0 +1,11 @@
+<map id="assurer_dossier_saves" name="assurer_dossier_saves">
+<area shape="rect" id="Node000001" title=" " alt="" coords="605,5,760,32"/>
+<area shape="rect" id="Node000002" href="$sauvegarde_8c.html#af41024137aa5cec5baf4cef86ae63bd8" title="Serialize l&#39;etat de partie courant dans le slot cible." alt="" coords="397,5,557,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="587,19,557,21,557,16,592,19"/>
+<area shape="rect" id="Node000003" href="$pause_8c.html#abc45a9e3a6a57d6f0f44706bd52e556d" title="Affiche pause et met a jour les elements visuels associes." alt="" coords="244,5,349,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="379,19,350,21,350,16,384,19"/>
+<area shape="rect" id="Node000004" href="$jeux_8c.html#a2d7491d04e8c2bdb52bb6ed7d75e4d78" title="Execute la boucle principale de gameplay pour la planete courante." alt="" coords="103,5,196,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="226,19,196,21,196,16,231,19"/>
+<area shape="rect" id="Node000005" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,55,32"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="84,19,55,21,55,16,89,18"/>
+</map>

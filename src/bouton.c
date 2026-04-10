@@ -1,3 +1,8 @@
+/**
+ * @file bouton.c
+ * @brief Gestion des boutons reutilisables de l'interface.
+ */
+
 #include "headers/bouton.h"
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>

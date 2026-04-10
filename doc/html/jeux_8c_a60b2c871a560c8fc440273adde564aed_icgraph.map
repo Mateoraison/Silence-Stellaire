@@ -1,0 +1,9 @@
+<map id="console_ajouter_item" name="console_ajouter_item">
+<area shape="rect" id="Node000001" title=" " alt="" coords="486,5,631,32"/>
+<area shape="rect" id="Node000002" href="$jeux_8c.html#adf6e0b25032f317217a43d1d4a47e08a" title=" " alt="" coords="244,5,438,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="468,19,439,21,439,16,473,19"/>
+<area shape="rect" id="Node000003" href="$jeux_8c.html#a2d7491d04e8c2bdb52bb6ed7d75e4d78" title="Execute la boucle principale de gameplay pour la planete courante." alt="" coords="103,5,196,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="226,19,197,21,196,16,231,19"/>
+<area shape="rect" id="Node000004" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,55,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="84,19,55,21,55,16,89,18"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="init_caisse_outils" name="init_caisse_outils">
+<area shape="rect" id="Node000001" title="Initialise la caisse a outils et prepare les ressources necessaires." alt="" coords="244,31,365,57"/>
+<area shape="rect" id="Node000002" href="$jeux_8c.html#a2d7491d04e8c2bdb52bb6ed7d75e4d78" title="Execute la boucle principale de gameplay pour la planete courante." alt="" coords="103,5,196,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="226,32,196,29,196,24,231,32"/>
+<area shape="rect" id="Node000003" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,31,55,57"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="228,47,55,47,55,41,229,41"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="85,33,56,41,55,36,90,31"/>
+</map>

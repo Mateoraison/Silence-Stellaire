@@ -1,0 +1,20 @@
+<map id="clear_projectiles" name="clear_projectiles">
+<area shape="rect" id="Node000001" title=" " alt="" coords="616,81,731,108"/>
+<area shape="rect" id="Node000002" href="$boss_8c.html#a236f706845850941c512c45d6e52d55b" title="Libere boss et nettoie les ressources associees." alt="" coords="448,5,547,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="624,75,530,35,531,30,629,75"/>
+<area shape="rect" id="Node000005" href="$boss_8c.html#af1c8aca032a751db8821bf8b9f592cf9" title="Initialise boss et prepare les ressources necessaires." alt="" coords="275,56,348,83"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="598,91,349,75,349,69,602,88"/>
+<area shape="rect" id="Node000006" href="$boss_8c.html#abbb99b844a32a59c50228b7d6dcb888b" title="Met a jour boss en fonction de l&#39;etat courant du jeu." alt="" coords="244,107,379,133"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="597,100,380,118,379,113,602,99"/>
+<area shape="rect" id="Node000007" href="$boss_8c.html#a6ebb70c1cce9efe2e97dfee86382e964" title="Reinitialise boss for retry pour repartir d&#39;un etat propre." alt="" coords="427,157,568,184"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="629,114,531,159,530,154,624,115"/>
+<area shape="rect" id="Node000003" href="$jeux_8c.html#a2d7491d04e8c2bdb52bb6ed7d75e4d78" title="Execute la boucle principale de gameplay pour la planete courante." alt="" coords="103,81,196,108"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="429,19,342,27,293,35,245,47,205,63,172,83,169,78,203,59,243,41,292,29,341,22,434,17"/>
+<area shape="rect" id="Node000004" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,81,55,108"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="85,96,56,97,54,92,89,93"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="257,78,197,90,195,85,262,76"/>
+<area shape="poly" id="edge7_Node000006_Node000003" title=" " alt="" coords="226,107,197,105,196,99,231,107"/>
+<area shape="rect" id="Node000008" href="$game__over_8c.html#a37d3fac8300008a434af7c66a4e695d0" title="Affiche l&#39;ecran de game over et traite le choix du joueur." alt="" coords="269,157,354,184"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="409,171,355,173,355,168,415,171"/>
+<area shape="poly" id="edge10_Node000008_Node000003" title=" " alt="" coords="255,151,243,148,173,111,175,106,245,143,260,152"/>
+</map>

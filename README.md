@@ -7,14 +7,14 @@
 
 ## 📋 Table des matières
 
-- [À propos](#à-propos)
-- [Fonctionnalités](#fonctionnalités)
-- [Installation](#installation)
-- [Utilisation](#utilisation)
-- [Architecture du projet](#architecture-du-projet)
-- [Équipe](#équipe)
-- [Planification](#planification)
-- [Licence](#licence)
+- À propos
+- Fonctionnalités
+- Installation
+- Utilisation
+- Architecture du projet
+- Équipe
+- Planification
+- Licence
 
 ## 🎮 À propos
 
@@ -87,7 +87,6 @@ Silence-Stellaire/
 ├── obj/              # Fichiers .o
 ├── test/             # Jeux de test
 ├── assets/           # Ressources graphiques et sonores
-├── doc/              # Documentation technique
 ├── Makefile          # Script de compilation
 └── README.md         # Ce fichier
 ```
@@ -96,9 +95,9 @@ Silence-Stellaire/
 
 | Nom | Rôle | GitHub |
 |-----|------|--------|
-| **Raison Matéo** | Chef de projet / Développeur | [@Mateoraison](https://github.com/Mateoraison) |
-| **Joshua Donné** | Développeur | [@joshuadonne](https://github.com/joshuadonne) |
-| **Leroux Maxime** | Développeur | [@OniZurKa](https://github.com/OniZurKa) |
+| **Raison Matéo** | Chef de projet / Développeur | [Mateoraison](https://github.com/Mateoraison) |
+| **Joshua Donné** | Développeur | [joshuadonne](https://github.com/joshuadonne) |
+| **Leroux Maxime** | Développeur | [OniZurKa](https://github.com/OniZurKa) |
 
 ## 📊 Planification
 

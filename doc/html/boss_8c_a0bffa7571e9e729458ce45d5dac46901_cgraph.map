@@ -1,0 +1,20 @@
+<map id="attaque_sentinelle" name="attaque_sentinelle">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,72,132,99"/>
+<area shape="rect" id="Node000002" href="$boss_8c.html#a7a2624259975aba5659ef69da7dd85ac" title=" " alt="" coords="181,5,328,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,69,173,52,168,55,114,74"/>
+<area shape="rect" id="Node000003" href="$boss_8c.html#a1d5fd526db9bbc3f5b70491cfc645818" title=" " alt="" coords="378,76,541,103"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="132,83,364,86,362,91,132,89"/>
+<area shape="rect" id="Node000008" href="$boss_8c.html#a848bc8291aee689be886bcc6a8c68456" title=" " alt="" coords="180,123,330,165"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="114,97,173,117,168,118,113,102"/>
+<area shape="rect" id="Node000004" href="$main_8h.html#a6c672075bc554c92548a916c9501bdb5" title=" " alt="" coords="589,51,707,77"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="541,76,577,73,572,74,542,81"/>
+<area shape="rect" id="Node000006" href="$main_8h.html#a6456affd0d0a21e911b531a5ba25676d" title=" " alt="" coords="589,101,707,128"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="541,98,577,105,572,105,541,103"/>
+<area shape="rect" id="Node000005" href="$main_8h.html#aaaa1e9fcb86ff8e60b297faa7815ad1d" title=" " alt="" coords="757,51,859,77"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="707,61,744,64,738,64,707,67"/>
+<area shape="rect" id="Node000007" href="$main_8h.html#a9b4aefc63ea00e60ec88da19e24e8236" title=" " alt="" coords="755,101,861,128"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="707,112,741,115,736,115,707,117"/>
+<area shape="poly" id="edge9_Node000008_Node000003" title=" " alt="" coords="330,121,390,108,395,107,331,127"/>
+<area shape="rect" id="Node000009" href="$boss_8c.html#afb0b61469efd6dce1e15a516cb9e4115" title=" " alt="" coords="378,131,541,157"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="330,141,365,144,360,144,330,147"/>
+</map>

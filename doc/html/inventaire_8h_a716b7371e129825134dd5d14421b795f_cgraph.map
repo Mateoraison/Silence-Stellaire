@@ -1,0 +1,7 @@
+<map id="afficher_inventaire" name="afficher_inventaire">
+<area shape="rect" id="Node000001" title="Affiche inventaire et met a jour les elements visuels associes." alt="" coords="5,31,132,57"/>
+<area shape="rect" id="Node000002" href="$main_8h.html#a9b4aefc63ea00e60ec88da19e24e8236" title=" " alt="" coords="180,5,286,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="131,32,167,28,162,30,132,37"/>
+<area shape="rect" id="Node000003" href="$main_8h.html#aaaa1e9fcb86ff8e60b297faa7815ad1d" title=" " alt="" coords="182,56,284,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="132,51,169,59,164,59,132,56"/>
+</map>

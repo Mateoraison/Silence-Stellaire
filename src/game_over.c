@@ -1,3 +1,8 @@
+/**
+ * @file game_over.c
+ * @brief Affichage de l'ecran de fin de partie et retour au menu.
+ */
+
 #include "headers/main.h"
 
 int game_over(SDL_Renderer *renderer, int planete) {

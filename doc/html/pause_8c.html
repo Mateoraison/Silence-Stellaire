@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Silence Stellaire: Référence du fichier src/pause.c</title>
+<link rel="icon" href="logo_win.png" type="image/x-icon" />
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-theme.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="logo_win.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">Silence Stellaire<span id="projectnumber">&#160;2025-2026</span>
+   </div>
+   <div id="projectbrief">Silence Stellaire, documentation technique de projet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('pause_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Référence du fichier pause.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Menu pause et actions disponibles pendant une partie.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;SDL3/SDL.h&gt;</code><br />
+<code>#include &lt;SDL3_image/SDL_image.h&gt;</code><br />
+<code>#include &lt;SDL3_ttf/SDL_ttf.h&gt;</code><br />
+<code>#include &lt;SDL3_mixer/SDL_mixer.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="main_8h_source.html">headers/main.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="pause_8h_source.html">headers/pause.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de pause.c:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="pause_8c__incl.svg" width="2268" height="262"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<p><a href="pause_8c_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:aff224d10a0d0788146635c844a2943e4" id="r_aff224d10a0d0788146635c844a2943e4"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#aff224d10a0d0788146635c844a2943e4">MAKE_TEX</a>(font_,  text_,  color_)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:abc45a9e3a6a57d6f0f44706bd52e556d" id="r_abc45a9e3a6a57d6f0f44706bd52e556d"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#abc45a9e3a6a57d6f0f44706bd52e556d">afficher_pause</a> (SDL_Renderer *renderer, MIX_Track *<a class="el" href="main_8h.html#a84af9ed84c11a72dd7515a42f42af710">track_global</a>)</td></tr>
+<tr class="memdesc:abc45a9e3a6a57d6f0f44706bd52e556d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche pause et met a jour les elements visuels associes.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Menu pause et actions disponibles pendant une partie. </p>
+
+<p class="definition">Définition dans le fichier <a class="el" href="pause_8c_source.html">pause.c</a>.</p>
+</div><a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Documentation des macros</h2>
+<a id="aff224d10a0d0788146635c844a2943e4" name="aff224d10a0d0788146635c844a2943e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff224d10a0d0788146635c844a2943e4">&#9670;&#160;</a></span>MAKE_TEX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAKE_TEX</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>font_</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>text_</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>color_</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Valeur :</b><div class="fragment"><div class="line">({ \</div>
+<div class="line">SDL_Surface *_s = TTF_RenderText_Solid(font_, text_, strlen(text_), color_); \</div>
+<div class="line">SDL_Texture *_t = _s ? SDL_CreateTextureFromSurface(renderer, _s) : NULL; \</div>
+<div class="line">if (_s) SDL_DestroySurface(_s); \</div>
+<div class="line">_t; })</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<a id="abc45a9e3a6a57d6f0f44706bd52e556d" name="abc45a9e3a6a57d6f0f44706bd52e556d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc45a9e3a6a57d6f0f44706bd52e556d">&#9670;&#160;</a></span>afficher_pause()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int afficher_pause </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">MIX_Track *</td>          <td class="paramname"><span class="paramname"><em>track_global</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche pause et met a jour les elements visuels associes. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>Contexte SDL utilise pour dessiner les elements 2D et l'interface. </td></tr>
+    <tr><td class="paramname"><a class="el" href="main_8h.html#a84af9ed84c11a72dd7515a42f42af710">track_global</a></td><td>Piste audio globale (musique d'ambiance) partagee entre ecrans. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Code parmi PAUSE_REPRENDRE, PAUSE_MENU, PAUSE_OPTIONS ou PAUSE_SAUVEGARDE. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="pause_8c_source.html#l00015">15</a> du fichier <a class="el" href="pause_8c_source.html">pause.c</a>.</p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="pause_8c_abc45a9e3a6a57d6f0f44706bd52e556d_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="pause_8c_abc45a9e3a6a57d6f0f44706bd52e556d_icgraph.svg" width="355" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="pause_8c.html">pause.c</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

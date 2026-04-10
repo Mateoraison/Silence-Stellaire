@@ -1,0 +1,1064 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Silence Stellaire: Référence du fichier src/boss.c</title>
+<link rel="icon" href="logo_win.png" type="image/x-icon" />
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-theme.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="logo_win.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">Silence Stellaire<span id="projectnumber">&#160;2025-2026</span>
+   </div>
+   <div id="projectbrief">Silence Stellaire, documentation technique de projet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('boss_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Référence du fichier boss.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Gestion du boss, de ses phases et de ses attaques.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="main_8h_source.html">headers/main.h</a>&quot;</code><br />
+<code>#include &lt;SDL3_ttf/SDL_ttf.h&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de boss.c:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="boss_8c__incl.svg" width="2023" height="262"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<p><a href="boss_8c_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:boss_5Fprojectile_5Ft" id="r_boss_5Fprojectile_5Ft"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structboss__projectile__t.html">boss_projectile_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Projectile gere par le systeme d'attaque du boss.  <a href="structboss__projectile__t.html#details">Plus de détails...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a64a418229ea3df08fb21688a3df32976" id="r_a64a418229ea3df08fb21688a3df32976"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a64a418229ea3df08fb21688a3df32976">BOSS_PROJECTILE_MAX</a>&#160;&#160;&#160;32</td></tr>
+<tr class="memitem:a9b13622b05fd5f2e39c7a332e078e1f9" id="r_a9b13622b05fd5f2e39c7a332e078e1f9"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a9b13622b05fd5f2e39c7a332e078e1f9">BOSS_PROJECTILE_SPEED</a>&#160;&#160;&#160;300.0f</td></tr>
+<tr class="memitem:a006ce0c386c1d06d77f74d4de58bb123" id="r_a006ce0c386c1d06d77f74d4de58bb123"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a006ce0c386c1d06d77f74d4de58bb123">BOSS_PROJECTILE_LIFETIME_MS</a>&#160;&#160;&#160;3000</td></tr>
+<tr class="memitem:ae78c714e7fc44742c62726b40d9962a6" id="r_ae78c714e7fc44742c62726b40d9962a6"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ae78c714e7fc44742c62726b40d9962a6">BOSS_PROJECTILE_COOLDOWN_MS</a>&#160;&#160;&#160;1200</td></tr>
+<tr class="memitem:a379573452d4bb65e40566db28ddb97c7" id="r_a379573452d4bb65e40566db28ddb97c7"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a379573452d4bb65e40566db28ddb97c7">BOSS_PROJECTILE_FRAME_COUNT</a>&#160;&#160;&#160;13</td></tr>
+<tr class="memitem:a259f060eba122e7925abefef741c10c9" id="r_a259f060eba122e7925abefef741c10c9"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a259f060eba122e7925abefef741c10c9">BOSS_PROJECTILE_FRAME_MS</a>&#160;&#160;&#160;70</td></tr>
+<tr class="memitem:a3a3e87f53e0d1780a923b8f020ecec52" id="r_a3a3e87f53e0d1780a923b8f020ecec52"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a3a3e87f53e0d1780a923b8f020ecec52">BOSS_ZONE_COOLDOWN_MS</a>&#160;&#160;&#160;3200</td></tr>
+<tr class="memitem:ab94803c24f83c5d45d9032839016378d" id="r_ab94803c24f83c5d45d9032839016378d"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ab94803c24f83c5d45d9032839016378d">BOSS_SUMMON_COOLDOWN_MS</a>&#160;&#160;&#160;5200</td></tr>
+<tr class="memitem:a1480953b2230c63a2b5a1da09986d60a" id="r_a1480953b2230c63a2b5a1da09986d60a"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a1480953b2230c63a2b5a1da09986d60a">BOSS_ZONE_RADIUS</a>&#160;&#160;&#160;260.0f</td></tr>
+<tr class="memitem:aa98d0b2d908646e453dbc65ab963e928" id="r_aa98d0b2d908646e453dbc65ab963e928"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#aa98d0b2d908646e453dbc65ab963e928">BOSS_ZONE_WARNING_MS</a>&#160;&#160;&#160;900</td></tr>
+<tr class="memitem:a225a075bbaf009ddbfd0ee1be32b076a" id="r_a225a075bbaf009ddbfd0ee1be32b076a"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a225a075bbaf009ddbfd0ee1be32b076a">BOSS_REFLECTED_PROJECTILE_SPEED</a>&#160;&#160;&#160;420.0f</td></tr>
+<tr class="memitem:ad8230cc0536cd485681348d0fa335f10" id="r_ad8230cc0536cd485681348d0fa335f10"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ad8230cc0536cd485681348d0fa335f10">BOSS_REFLECTED_PROJECTILE_DAMAGE</a>&#160;&#160;&#160;8</td></tr>
+<tr class="memitem:add173aed5736ed3253440d45a4764131" id="r_add173aed5736ed3253440d45a4764131"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#add173aed5736ed3253440d45a4764131">BOSS_HEALTHBAR_Y</a>&#160;&#160;&#160;62.0f</td></tr>
+<tr class="memitem:a3039e17925e2a5a67a1f2ada339d2ea5" id="r_a3039e17925e2a5a67a1f2ada339d2ea5"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a3039e17925e2a5a67a1f2ada339d2ea5">BOSS_MINION_MAX</a>&#160;&#160;&#160;6</td></tr>
+<tr class="memitem:a6a22ffb6b46d5174358f0775e09c6063" id="r_a6a22ffb6b46d5174358f0775e09c6063"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a6a22ffb6b46d5174358f0775e09c6063">BOSS_AGGRO_RADIUS</a>&#160;&#160;&#160;800.0f</td></tr>
+<tr class="memitem:a65b07f2a59aece3925c0b8c4308eecc7" id="r_a65b07f2a59aece3925c0b8c4308eecc7"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a65b07f2a59aece3925c0b8c4308eecc7">BOSS_MINOTAURE_AGGRO_RADIUS</a>&#160;&#160;&#160;620.0f</td></tr>
+<tr class="memitem:af04c226aa49c66148d49581a325238aa" id="r_af04c226aa49c66148d49581a325238aa"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#af04c226aa49c66148d49581a325238aa">BOSS_MINOTAURE_MOVE_SPEED</a>&#160;&#160;&#160;155.0f</td></tr>
+<tr class="memitem:a999d351543371b4859d6237d30ebc4c2" id="r_a999d351543371b4859d6237d30ebc4c2"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a999d351543371b4859d6237d30ebc4c2">BOSS_MINOTAURE_MELEE_RANGE</a>&#160;&#160;&#160;118.0f</td></tr>
+<tr class="memitem:a8aa076ba158e293a618e51630bcbc99f" id="r_a8aa076ba158e293a618e51630bcbc99f"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a8aa076ba158e293a618e51630bcbc99f">BOSS_MINOTAURE_STUN_MS</a>&#160;&#160;&#160;700</td></tr>
+<tr class="memitem:ad312eaf3a6e9de972cb3a79b8b39941d" id="r_ad312eaf3a6e9de972cb3a79b8b39941d"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ad312eaf3a6e9de972cb3a79b8b39941d">BOSS_MINOTAURE_STUN_RECHARGE_MS</a>&#160;&#160;&#160;2200</td></tr>
+<tr class="memitem:a0442f6a93947c73ddcf220fb75a76628" id="r_a0442f6a93947c73ddcf220fb75a76628"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a0442f6a93947c73ddcf220fb75a76628">BOSS_MINOTAURE_IDLE_FRAMES</a>&#160;&#160;&#160;5</td></tr>
+<tr class="memitem:a598d851f2831a25b4e0ad74b07c522fd" id="r_a598d851f2831a25b4e0ad74b07c522fd"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a598d851f2831a25b4e0ad74b07c522fd">BOSS_MINOTAURE_WALK_FRAMES</a>&#160;&#160;&#160;8</td></tr>
+<tr class="memitem:a2c76b3c3ac597fec6bc482be11d16d99" id="r_a2c76b3c3ac597fec6bc482be11d16d99"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a2c76b3c3ac597fec6bc482be11d16d99">BOSS_MINOTAURE_ATTACK_FRAMES</a>&#160;&#160;&#160;9</td></tr>
+<tr class="memitem:aaeeb3d4f92161cf1c7ca047171f99bae" id="r_aaeeb3d4f92161cf1c7ca047171f99bae"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#aaeeb3d4f92161cf1c7ca047171f99bae">BOSS_MINOTAURE_DEATH_FRAMES</a>&#160;&#160;&#160;9</td></tr>
+<tr class="memitem:a43f297ee6f6e83c3afa64322bf42d0b5" id="r_a43f297ee6f6e83c3afa64322bf42d0b5"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a43f297ee6f6e83c3afa64322bf42d0b5">BOSS_MINOTAURE_IDLE_Y</a>&#160;&#160;&#160;960.0f</td></tr>
+<tr class="memitem:abe6eede3af76f7ecfd82cde221320bbd" id="r_abe6eede3af76f7ecfd82cde221320bbd"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#abe6eede3af76f7ecfd82cde221320bbd">BOSS_MINOTAURE_WALK_Y</a>&#160;&#160;&#160;1072.0f</td></tr>
+<tr class="memitem:a16bdf574dcb7f6c75a83cf19a69857ed" id="r_a16bdf574dcb7f6c75a83cf19a69857ed"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a16bdf574dcb7f6c75a83cf19a69857ed">BOSS_MINOTAURE_ATTACK_Y</a>&#160;&#160;&#160;1248.0f</td></tr>
+<tr class="memitem:a55becf810323ce92b573a40f745a7a98" id="r_a55becf810323ce92b573a40f745a7a98"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a55becf810323ce92b573a40f745a7a98">BOSS_MINOTAURE_DEATH_Y</a>&#160;&#160;&#160;1840.0f</td></tr>
+<tr class="memitem:af6894ac38fd8f4c5ec50056b9f749e30" id="r_af6894ac38fd8f4c5ec50056b9f749e30"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#af6894ac38fd8f4c5ec50056b9f749e30">BOSS_MINOTAURE_FRAME_W</a>&#160;&#160;&#160;96.0f</td></tr>
+<tr class="memitem:ae6a92ead1350cc1b5f82482d3c2b8857" id="r_ae6a92ead1350cc1b5f82482d3c2b8857"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ae6a92ead1350cc1b5f82482d3c2b8857">BOSS_MINOTAURE_FRAME_H</a>&#160;&#160;&#160;96.0f</td></tr>
+<tr class="memitem:af1408e439c33c9689874856e61f4f01d" id="r_af1408e439c33c9689874856e61f4f01d"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#af1408e439c33c9689874856e61f4f01d">BOSS_MINOTAURE_HITBOX_OFFSET_X</a>&#160;&#160;&#160;128.0f</td></tr>
+<tr class="memitem:a2f5bab63bcf5b8f63b99d8dac4c840c0" id="r_a2f5bab63bcf5b8f63b99d8dac4c840c0"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a2f5bab63bcf5b8f63b99d8dac4c840c0">BOSS_MINOTAURE_HITBOX_OFFSET_Y</a>&#160;&#160;&#160;154.5f</td></tr>
+<tr class="memitem:a5ee700f7864a245e862d99cb4e919e6c" id="r_a5ee700f7864a245e862d99cb4e919e6c"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a5ee700f7864a245e862d99cb4e919e6c">BOSS_MINOTAURE_HITBOX_W</a>&#160;&#160;&#160;54.0f</td></tr>
+<tr class="memitem:afaa7307a1f615c0ceb2e462e7e1ddcfa" id="r_afaa7307a1f615c0ceb2e462e7e1ddcfa"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#afaa7307a1f615c0ceb2e462e7e1ddcfa">BOSS_MINOTAURE_HITBOX_H</a>&#160;&#160;&#160;76.0f</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:ab71b82760f0b15e4ebcff2a618f760c7" id="r_ab71b82760f0b15e4ebcff2a618f760c7"><td class="memItemLeft">typedef void(*&#160;</td><td class="memItemRight"><a class="el" href="#ab71b82760f0b15e4ebcff2a618f760c7">fonction_attaque_boss_t</a>) (SDL_Renderer *renderer, <a class="el" href="structboss__t.html">boss_t</a> *boss_ref)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a51cd354a45226c77472ca20b4caf045f" id="r_a51cd354a45226c77472ca20b4caf045f"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a51cd354a45226c77472ca20b4caf045f">boss_set_navigation_map</a> (<a class="el" href="structt__tile.html">t_tile</a> map[<a class="el" href="main_8h.html#a3799224504478f1beebf6b4207c3d8a9">W_MAP</a>][<a class="el" href="main_8h.html#aa6456846603a55a96519da275aa6bf34">H_MAP</a>])</td></tr>
+<tr class="memdesc:a51cd354a45226c77472ca20b4caf045f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definit la carte de navigation exploitee par l'IA des boss.  <br /></td></tr>
+<tr class="memitem:af1c8aca032a751db8821bf8b9f592cf9" id="r_af1c8aca032a751db8821bf8b9f592cf9"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af1c8aca032a751db8821bf8b9f592cf9">init_boss</a> (SDL_Renderer *renderer, <a class="el" href="structboss__t.html">boss_t</a> *boss_ref, <a class="el" href="main_8h.html#abc2faef89d875ddc4eb4e42c328b14f5">type_boss_t</a> type, float x, float y)</td></tr>
+<tr class="memdesc:af1c8aca032a751db8821bf8b9f592cf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise boss et prepare les ressources necessaires.  <br /></td></tr>
+<tr class="memitem:a659832e02de0bcb2ab0a339f981809ad" id="r_a659832e02de0bcb2ab0a339f981809ad"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a659832e02de0bcb2ab0a339f981809ad">afficher_boss</a> (SDL_Renderer *renderer, <a class="el" href="structboss__t.html">boss_t</a> *boss_ref)</td></tr>
+<tr class="memdesc:a659832e02de0bcb2ab0a339f981809ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche boss et met a jour les elements visuels associes.  <br /></td></tr>
+<tr class="memitem:a8a9d4e5c21c4c9d2fb0b71f9334688af" id="r_a8a9d4e5c21c4c9d2fb0b71f9334688af"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a8a9d4e5c21c4c9d2fb0b71f9334688af">mettre_a_jour_animation_boss</a> (<a class="el" href="structboss__t.html">boss_t</a> *boss_ref)</td></tr>
+<tr class="memdesc:a8a9d4e5c21c4c9d2fb0b71f9334688af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Met a jour animation boss en fonction de l'etat courant du jeu.  <br /></td></tr>
+<tr class="memitem:abbb99b844a32a59c50228b7d6dcb888b" id="r_abbb99b844a32a59c50228b7d6dcb888b"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#abbb99b844a32a59c50228b7d6dcb888b">mettre_a_jour_boss</a> (SDL_Renderer *renderer, <a class="el" href="structboss__t.html">boss_t</a> *boss_ref)</td></tr>
+<tr class="memdesc:abbb99b844a32a59c50228b7d6dcb888b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Met a jour boss en fonction de l'etat courant du jeu.  <br /></td></tr>
+<tr class="memitem:a6ebb70c1cce9efe2e97dfee86382e964" id="r_a6ebb70c1cce9efe2e97dfee86382e964"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a6ebb70c1cce9efe2e97dfee86382e964">reset_boss_for_retry</a> (<a class="el" href="structboss__t.html">boss_t</a> *boss_ref)</td></tr>
+<tr class="memdesc:a6ebb70c1cce9efe2e97dfee86382e964"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reinitialise boss for retry pour repartir d'un etat propre.  <br /></td></tr>
+<tr class="memitem:aea78d389dc05993b72aebb218a4768de" id="r_aea78d389dc05993b72aebb218a4768de"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aea78d389dc05993b72aebb218a4768de">boss_attaque</a> (SDL_Renderer *renderer, <a class="el" href="structboss__t.html">boss_t</a> *boss_ref)</td></tr>
+<tr class="memdesc:aea78d389dc05993b72aebb218a4768de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute la logique d'attaque du boss en tenant compte des cooldowns et de la phase active.  <br /></td></tr>
+<tr class="memitem:a236f706845850941c512c45d6e52d55b" id="r_a236f706845850941c512c45d6e52d55b"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a236f706845850941c512c45d6e52d55b">detruire_boss</a> (<a class="el" href="structboss__t.html">boss_t</a> *boss_ref)</td></tr>
+<tr class="memdesc:a236f706845850941c512c45d6e52d55b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libere boss et nettoie les ressources associees.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Gestion du boss, de ses phases et de ses attaques. </p>
+
+<p class="definition">Définition dans le fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+</div><a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Documentation des macros</h2>
+<a id="a6a22ffb6b46d5174358f0775e09c6063" name="a6a22ffb6b46d5174358f0775e09c6063"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a22ffb6b46d5174358f0775e09c6063">&#9670;&#160;</a></span>BOSS_AGGRO_RADIUS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_AGGRO_RADIUS&#160;&#160;&#160;800.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00023">23</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="add173aed5736ed3253440d45a4764131" name="add173aed5736ed3253440d45a4764131"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add173aed5736ed3253440d45a4764131">&#9670;&#160;</a></span>BOSS_HEALTHBAR_Y</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_HEALTHBAR_Y&#160;&#160;&#160;62.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00021">21</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="a3039e17925e2a5a67a1f2ada339d2ea5" name="a3039e17925e2a5a67a1f2ada339d2ea5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3039e17925e2a5a67a1f2ada339d2ea5">&#9670;&#160;</a></span>BOSS_MINION_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_MINION_MAX&#160;&#160;&#160;6</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00022">22</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="a65b07f2a59aece3925c0b8c4308eecc7" name="a65b07f2a59aece3925c0b8c4308eecc7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65b07f2a59aece3925c0b8c4308eecc7">&#9670;&#160;</a></span>BOSS_MINOTAURE_AGGRO_RADIUS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_MINOTAURE_AGGRO_RADIUS&#160;&#160;&#160;620.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00025">25</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="a2c76b3c3ac597fec6bc482be11d16d99" name="a2c76b3c3ac597fec6bc482be11d16d99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c76b3c3ac597fec6bc482be11d16d99">&#9670;&#160;</a></span>BOSS_MINOTAURE_ATTACK_FRAMES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_MINOTAURE_ATTACK_FRAMES&#160;&#160;&#160;9</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00033">33</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="a16bdf574dcb7f6c75a83cf19a69857ed" name="a16bdf574dcb7f6c75a83cf19a69857ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16bdf574dcb7f6c75a83cf19a69857ed">&#9670;&#160;</a></span>BOSS_MINOTAURE_ATTACK_Y</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_MINOTAURE_ATTACK_Y&#160;&#160;&#160;1248.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00037">37</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="aaeeb3d4f92161cf1c7ca047171f99bae" name="aaeeb3d4f92161cf1c7ca047171f99bae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaeeb3d4f92161cf1c7ca047171f99bae">&#9670;&#160;</a></span>BOSS_MINOTAURE_DEATH_FRAMES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_MINOTAURE_DEATH_FRAMES&#160;&#160;&#160;9</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00034">34</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="a55becf810323ce92b573a40f745a7a98" name="a55becf810323ce92b573a40f745a7a98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55becf810323ce92b573a40f745a7a98">&#9670;&#160;</a></span>BOSS_MINOTAURE_DEATH_Y</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_MINOTAURE_DEATH_Y&#160;&#160;&#160;1840.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00038">38</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="ae6a92ead1350cc1b5f82482d3c2b8857" name="ae6a92ead1350cc1b5f82482d3c2b8857"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6a92ead1350cc1b5f82482d3c2b8857">&#9670;&#160;</a></span>BOSS_MINOTAURE_FRAME_H</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_MINOTAURE_FRAME_H&#160;&#160;&#160;96.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00040">40</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="af6894ac38fd8f4c5ec50056b9f749e30" name="af6894ac38fd8f4c5ec50056b9f749e30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6894ac38fd8f4c5ec50056b9f749e30">&#9670;&#160;</a></span>BOSS_MINOTAURE_FRAME_W</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_MINOTAURE_FRAME_W&#160;&#160;&#160;96.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00039">39</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="afaa7307a1f615c0ceb2e462e7e1ddcfa" name="afaa7307a1f615c0ceb2e462e7e1ddcfa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afaa7307a1f615c0ceb2e462e7e1ddcfa">&#9670;&#160;</a></span>BOSS_MINOTAURE_HITBOX_H</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_MINOTAURE_HITBOX_H&#160;&#160;&#160;76.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00044">44</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="af1408e439c33c9689874856e61f4f01d" name="af1408e439c33c9689874856e61f4f01d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1408e439c33c9689874856e61f4f01d">&#9670;&#160;</a></span>BOSS_MINOTAURE_HITBOX_OFFSET_X</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_MINOTAURE_HITBOX_OFFSET_X&#160;&#160;&#160;128.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00041">41</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="a2f5bab63bcf5b8f63b99d8dac4c840c0" name="a2f5bab63bcf5b8f63b99d8dac4c840c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f5bab63bcf5b8f63b99d8dac4c840c0">&#9670;&#160;</a></span>BOSS_MINOTAURE_HITBOX_OFFSET_Y</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_MINOTAURE_HITBOX_OFFSET_Y&#160;&#160;&#160;154.5f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00042">42</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="a5ee700f7864a245e862d99cb4e919e6c" name="a5ee700f7864a245e862d99cb4e919e6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ee700f7864a245e862d99cb4e919e6c">&#9670;&#160;</a></span>BOSS_MINOTAURE_HITBOX_W</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_MINOTAURE_HITBOX_W&#160;&#160;&#160;54.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00043">43</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="a0442f6a93947c73ddcf220fb75a76628" name="a0442f6a93947c73ddcf220fb75a76628"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0442f6a93947c73ddcf220fb75a76628">&#9670;&#160;</a></span>BOSS_MINOTAURE_IDLE_FRAMES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_MINOTAURE_IDLE_FRAMES&#160;&#160;&#160;5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00031">31</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="a43f297ee6f6e83c3afa64322bf42d0b5" name="a43f297ee6f6e83c3afa64322bf42d0b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43f297ee6f6e83c3afa64322bf42d0b5">&#9670;&#160;</a></span>BOSS_MINOTAURE_IDLE_Y</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_MINOTAURE_IDLE_Y&#160;&#160;&#160;960.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00035">35</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="a999d351543371b4859d6237d30ebc4c2" name="a999d351543371b4859d6237d30ebc4c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a999d351543371b4859d6237d30ebc4c2">&#9670;&#160;</a></span>BOSS_MINOTAURE_MELEE_RANGE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_MINOTAURE_MELEE_RANGE&#160;&#160;&#160;118.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00027">27</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="af04c226aa49c66148d49581a325238aa" name="af04c226aa49c66148d49581a325238aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af04c226aa49c66148d49581a325238aa">&#9670;&#160;</a></span>BOSS_MINOTAURE_MOVE_SPEED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_MINOTAURE_MOVE_SPEED&#160;&#160;&#160;155.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00026">26</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="a8aa076ba158e293a618e51630bcbc99f" name="a8aa076ba158e293a618e51630bcbc99f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8aa076ba158e293a618e51630bcbc99f">&#9670;&#160;</a></span>BOSS_MINOTAURE_STUN_MS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_MINOTAURE_STUN_MS&#160;&#160;&#160;700</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00028">28</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="ad312eaf3a6e9de972cb3a79b8b39941d" name="ad312eaf3a6e9de972cb3a79b8b39941d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad312eaf3a6e9de972cb3a79b8b39941d">&#9670;&#160;</a></span>BOSS_MINOTAURE_STUN_RECHARGE_MS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_MINOTAURE_STUN_RECHARGE_MS&#160;&#160;&#160;2200</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00029">29</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="a598d851f2831a25b4e0ad74b07c522fd" name="a598d851f2831a25b4e0ad74b07c522fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a598d851f2831a25b4e0ad74b07c522fd">&#9670;&#160;</a></span>BOSS_MINOTAURE_WALK_FRAMES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_MINOTAURE_WALK_FRAMES&#160;&#160;&#160;8</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00032">32</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="abe6eede3af76f7ecfd82cde221320bbd" name="abe6eede3af76f7ecfd82cde221320bbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe6eede3af76f7ecfd82cde221320bbd">&#9670;&#160;</a></span>BOSS_MINOTAURE_WALK_Y</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_MINOTAURE_WALK_Y&#160;&#160;&#160;1072.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00036">36</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="ae78c714e7fc44742c62726b40d9962a6" name="ae78c714e7fc44742c62726b40d9962a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae78c714e7fc44742c62726b40d9962a6">&#9670;&#160;</a></span>BOSS_PROJECTILE_COOLDOWN_MS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_PROJECTILE_COOLDOWN_MS&#160;&#160;&#160;1200</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00012">12</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="a379573452d4bb65e40566db28ddb97c7" name="a379573452d4bb65e40566db28ddb97c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a379573452d4bb65e40566db28ddb97c7">&#9670;&#160;</a></span>BOSS_PROJECTILE_FRAME_COUNT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_PROJECTILE_FRAME_COUNT&#160;&#160;&#160;13</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00013">13</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="a259f060eba122e7925abefef741c10c9" name="a259f060eba122e7925abefef741c10c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a259f060eba122e7925abefef741c10c9">&#9670;&#160;</a></span>BOSS_PROJECTILE_FRAME_MS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_PROJECTILE_FRAME_MS&#160;&#160;&#160;70</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00014">14</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="a006ce0c386c1d06d77f74d4de58bb123" name="a006ce0c386c1d06d77f74d4de58bb123"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a006ce0c386c1d06d77f74d4de58bb123">&#9670;&#160;</a></span>BOSS_PROJECTILE_LIFETIME_MS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_PROJECTILE_LIFETIME_MS&#160;&#160;&#160;3000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00011">11</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="a64a418229ea3df08fb21688a3df32976" name="a64a418229ea3df08fb21688a3df32976"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64a418229ea3df08fb21688a3df32976">&#9670;&#160;</a></span>BOSS_PROJECTILE_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_PROJECTILE_MAX&#160;&#160;&#160;32</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00009">9</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="a9b13622b05fd5f2e39c7a332e078e1f9" name="a9b13622b05fd5f2e39c7a332e078e1f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b13622b05fd5f2e39c7a332e078e1f9">&#9670;&#160;</a></span>BOSS_PROJECTILE_SPEED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_PROJECTILE_SPEED&#160;&#160;&#160;300.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00010">10</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="ad8230cc0536cd485681348d0fa335f10" name="ad8230cc0536cd485681348d0fa335f10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8230cc0536cd485681348d0fa335f10">&#9670;&#160;</a></span>BOSS_REFLECTED_PROJECTILE_DAMAGE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_REFLECTED_PROJECTILE_DAMAGE&#160;&#160;&#160;8</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00020">20</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="a225a075bbaf009ddbfd0ee1be32b076a" name="a225a075bbaf009ddbfd0ee1be32b076a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a225a075bbaf009ddbfd0ee1be32b076a">&#9670;&#160;</a></span>BOSS_REFLECTED_PROJECTILE_SPEED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_REFLECTED_PROJECTILE_SPEED&#160;&#160;&#160;420.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00019">19</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="ab94803c24f83c5d45d9032839016378d" name="ab94803c24f83c5d45d9032839016378d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab94803c24f83c5d45d9032839016378d">&#9670;&#160;</a></span>BOSS_SUMMON_COOLDOWN_MS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_SUMMON_COOLDOWN_MS&#160;&#160;&#160;5200</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00016">16</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="a3a3e87f53e0d1780a923b8f020ecec52" name="a3a3e87f53e0d1780a923b8f020ecec52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a3e87f53e0d1780a923b8f020ecec52">&#9670;&#160;</a></span>BOSS_ZONE_COOLDOWN_MS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_ZONE_COOLDOWN_MS&#160;&#160;&#160;3200</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00015">15</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="a1480953b2230c63a2b5a1da09986d60a" name="a1480953b2230c63a2b5a1da09986d60a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1480953b2230c63a2b5a1da09986d60a">&#9670;&#160;</a></span>BOSS_ZONE_RADIUS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_ZONE_RADIUS&#160;&#160;&#160;260.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00017">17</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a id="aa98d0b2d908646e453dbc65ab963e928" name="aa98d0b2d908646e453dbc65ab963e928"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa98d0b2d908646e453dbc65ab963e928">&#9670;&#160;</a></span>BOSS_ZONE_WARNING_MS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BOSS_ZONE_WARNING_MS&#160;&#160;&#160;900</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00018">18</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Documentation des définitions de type</h2>
+<a id="ab71b82760f0b15e4ebcff2a618f760c7" name="ab71b82760f0b15e4ebcff2a618f760c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab71b82760f0b15e4ebcff2a618f760c7">&#9670;&#160;</a></span>fonction_attaque_boss_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(* fonction_attaque_boss_t) (SDL_Renderer *renderer, <a class="el" href="structboss__t.html">boss_t</a> *boss_ref)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00046">46</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<a id="a659832e02de0bcb2ab0a339f981809ad" name="a659832e02de0bcb2ab0a339f981809ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a659832e02de0bcb2ab0a339f981809ad">&#9670;&#160;</a></span>afficher_boss()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void afficher_boss </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structboss__t.html">boss_t</a> *</td>          <td class="paramname"><span class="paramname"><em>boss</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche boss et met a jour les elements visuels associes. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>Contexte SDL utilise pour dessiner les elements 2D et l'interface. </td></tr>
+    <tr><td class="paramname">boss</td><td>Structure boss cible dont l'etat est consulte ou modifie. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00997">997</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="boss_8c_a659832e02de0bcb2ab0a339f981809ad_icgraph.svg" width="348" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="aea78d389dc05993b72aebb218a4768de" name="aea78d389dc05993b72aebb218a4768de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea78d389dc05993b72aebb218a4768de">&#9670;&#160;</a></span>boss_attaque()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void boss_attaque </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structboss__t.html">boss_t</a> *</td>          <td class="paramname"><span class="paramname"><em>boss</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Execute la logique d'attaque du boss en tenant compte des cooldowns et de la phase active. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>Contexte SDL utilise pour dessiner les elements 2D et l'interface. </td></tr>
+    <tr><td class="paramname">boss</td><td>Structure boss cible dont l'etat est consulte ou modifie. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l01223">1223</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="boss_8c_aea78d389dc05993b72aebb218a4768de_icgraph.svg" width="532" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a51cd354a45226c77472ca20b4caf045f" name="a51cd354a45226c77472ca20b4caf045f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51cd354a45226c77472ca20b4caf045f">&#9670;&#160;</a></span>boss_set_navigation_map()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void boss_set_navigation_map </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__tile.html">t_tile</a></td>          <td class="paramname"><span class="paramname"><em>map</em></span>[W_MAP][H_MAP]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definit la carte de navigation exploitee par l'IA des boss. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map</td><td>Grille de tuiles utilisee pour collisions, navigation et rendu contextuel. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00123">123</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="boss_8c_a51cd354a45226c77472ca20b4caf045f_icgraph.svg" width="422" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a236f706845850941c512c45d6e52d55b" name="a236f706845850941c512c45d6e52d55b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a236f706845850941c512c45d6e52d55b">&#9670;&#160;</a></span>detruire_boss()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void detruire_boss </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structboss__t.html">boss_t</a> *</td>          <td class="paramname"><span class="paramname"><em>boss</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Libere boss et nettoie les ressources associees. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">boss</td><td>Structure boss cible dont l'etat est consulte ou modifie. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l01238">1238</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="boss_8c_a236f706845850941c512c45d6e52d55b_icgraph.svg" width="350" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="af1c8aca032a751db8821bf8b9f592cf9" name="af1c8aca032a751db8821bf8b9f592cf9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1c8aca032a751db8821bf8b9f592cf9">&#9670;&#160;</a></span>init_boss()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_boss </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structboss__t.html">boss_t</a> *</td>          <td class="paramname"><span class="paramname"><em>boss</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="main_8h.html#abc2faef89d875ddc4eb4e42c328b14f5">type_boss_t</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>y</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise boss et prepare les ressources necessaires. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>Contexte SDL utilise pour dessiner les elements 2D et l'interface. </td></tr>
+    <tr><td class="paramname">boss</td><td>Structure boss cible dont l'etat est consulte ou modifie. </td></tr>
+    <tr><td class="paramname">type</td><td>Type logique de l'entite ou de l'operation a traiter. </td></tr>
+    <tr><td class="paramname">x</td><td>Coordonnee X de reference (monde ou ecran selon le contexte). </td></tr>
+    <tr><td class="paramname">y</td><td>Coordonnee Y de reference (monde ou ecran selon le contexte). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l00950">950</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="boss_8c_af1c8aca032a751db8821bf8b9f592cf9_icgraph.svg" width="323" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a8a9d4e5c21c4c9d2fb0b71f9334688af" name="a8a9d4e5c21c4c9d2fb0b71f9334688af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a9d4e5c21c4c9d2fb0b71f9334688af">&#9670;&#160;</a></span>mettre_a_jour_animation_boss()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mettre_a_jour_animation_boss </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structboss__t.html">boss_t</a> *</td>          <td class="paramname"><span class="paramname"><em>boss</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Met a jour animation boss en fonction de l'etat courant du jeu. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">boss</td><td>Structure boss cible dont l'etat est consulte ou modifie. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l01054">1054</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="boss_8c_a8a9d4e5c21c4c9d2fb0b71f9334688af_icgraph.svg" width="631" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="abbb99b844a32a59c50228b7d6dcb888b" name="abbb99b844a32a59c50228b7d6dcb888b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbb99b844a32a59c50228b7d6dcb888b">&#9670;&#160;</a></span>mettre_a_jour_boss()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mettre_a_jour_boss </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structboss__t.html">boss_t</a> *</td>          <td class="paramname"><span class="paramname"><em>boss</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Met a jour boss en fonction de l'etat courant du jeu. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>Contexte SDL utilise pour dessiner les elements 2D et l'interface. </td></tr>
+    <tr><td class="paramname">boss</td><td>Structure boss cible dont l'etat est consulte ou modifie. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l01101">1101</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="boss_8c_abbb99b844a32a59c50228b7d6dcb888b_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="boss_8c_abbb99b844a32a59c50228b7d6dcb888b_icgraph.svg" width="386" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a6ebb70c1cce9efe2e97dfee86382e964" name="a6ebb70c1cce9efe2e97dfee86382e964"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ebb70c1cce9efe2e97dfee86382e964">&#9670;&#160;</a></span>reset_boss_for_retry()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void reset_boss_for_retry </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structboss__t.html">boss_t</a> *</td>          <td class="paramname"><span class="paramname"><em>boss_ref</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reinitialise boss for retry pour repartir d'un etat propre. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">boss_ref</td><td>Reference du boss a reinitialiser pour une nouvelle tentative. </td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Réinitialise le boss après un retry du joueur après sa mort.</p><ul>
+<li>Supprime les minions du boss</li>
+<li>Réinitialise la vie et l'état du boss</li>
+</ul>
+
+<p class="definition">Définition à la ligne <a class="el" href="boss_8c_source.html#l01194">1194</a> du fichier <a class="el" href="boss_8c_source.html">boss.c</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="boss_8c_a6ebb70c1cce9efe2e97dfee86382e964_icgraph.svg" width="523" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="boss_8c.html">boss.c</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

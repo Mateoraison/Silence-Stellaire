@@ -1,0 +1,448 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Silence Stellaire: Référence du fichier src/mob.c</title>
+<link rel="icon" href="logo_win.png" type="image/x-icon" />
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-theme.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="logo_win.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">Silence Stellaire<span id="projectnumber">&#160;2025-2026</span>
+   </div>
+   <div id="projectbrief">Silence Stellaire, documentation technique de projet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('mob_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Référence du fichier mob.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Gestion des ennemis, de leur deplacement et de leur apparition.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="main_8h_source.html">headers/main.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de mob.c:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="mob_8c__incl.svg" width="1996" height="262"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<p><a href="mob_8c_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:EntreeRespawn" id="r_EntreeRespawn"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="struct_entree_respawn.html">EntreeRespawn</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entree de file pour un respawn planifie de mob.  <a href="struct_entree_respawn.html#details">Plus de détails...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ac5d2821634d3119a6e7098a3639d196d" id="r_ac5d2821634d3119a6e7098a3639d196d"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ac5d2821634d3119a6e7098a3639d196d">TAILLE_FILE_RESPAWN</a>&#160;&#160;&#160;256</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a30dd485a00ed194617f87517eb3e07f5" id="r_a30dd485a00ed194617f87517eb3e07f5"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a30dd485a00ed194617f87517eb3e07f5">schedule_respawn</a> (int id, Uint32 delay_ms)</td></tr>
+<tr class="memdesc:a30dd485a00ed194617f87517eb3e07f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Programme la reapparition differee d'un mob dans la file de respawn.  <br /></td></tr>
+<tr class="memitem:a91cbc6442abe5bba7eeeaf19fb5e8811" id="r_a91cbc6442abe5bba7eeeaf19fb5e8811"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a91cbc6442abe5bba7eeeaf19fb5e8811">reset_mob_respawn_queue</a> (void)</td></tr>
+<tr class="memdesc:a91cbc6442abe5bba7eeeaf19fb5e8811"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reinitialise mob respawn queue pour repartir d'un etat propre.  <br /></td></tr>
+<tr class="memitem:af2bb33cec05837a53c00e0f901d38c68" id="r_af2bb33cec05837a53c00e0f901d38c68"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af2bb33cec05837a53c00e0f901d38c68">init_mobs</a> (SDL_Renderer *renderer, <a class="el" href="struct_mob.html">Mob</a> *<a class="el" href="main_8h.html#a3585292bb8a85d7e8e1e9d0505836d49">mobs</a>[<a class="el" href="main_8h.html#a71a42c4ea136b65af73f3e930fafc7c4">MAX_MOB</a>], <a class="el" href="structt__tile.html">t_tile</a> map[<a class="el" href="main_8h.html#a3799224504478f1beebf6b4207c3d8a9">W_MAP</a>][<a class="el" href="main_8h.html#aa6456846603a55a96519da275aa6bf34">H_MAP</a>], int nb_pawns, int nb_moutons)</td></tr>
+<tr class="memdesc:af2bb33cec05837a53c00e0f901d38c68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise mobs et prepare les ressources necessaires.  <br /></td></tr>
+<tr class="memitem:a1f766d8b9a9348d960e6f211fce5d558" id="r_a1f766d8b9a9348d960e6f211fce5d558"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a1f766d8b9a9348d960e6f211fce5d558">update_mobs</a> (<a class="el" href="structt__tile.html">t_tile</a> map[<a class="el" href="main_8h.html#a3799224504478f1beebf6b4207c3d8a9">W_MAP</a>][<a class="el" href="main_8h.html#aa6456846603a55a96519da275aa6bf34">H_MAP</a>], <a class="el" href="struct_mob.html">Mob</a> *<a class="el" href="main_8h.html#a3585292bb8a85d7e8e1e9d0505836d49">mobs</a>[<a class="el" href="main_8h.html#a71a42c4ea136b65af73f3e930fafc7c4">MAX_MOB</a>])</td></tr>
+<tr class="memdesc:a1f766d8b9a9348d960e6f211fce5d558"><td class="mdescLeft">&#160;</td><td class="mdescRight">Met a jour mobs en fonction de l'etat courant du jeu.  <br /></td></tr>
+<tr class="memitem:aa1ffa891e170487c45dd0bb0fd1c32c8" id="r_aa1ffa891e170487c45dd0bb0fd1c32c8"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aa1ffa891e170487c45dd0bb0fd1c32c8">afficher_mob</a> (SDL_Renderer *renderer, <a class="el" href="struct_mob.html">Mob</a> *<a class="el" href="main_8h.html#a3585292bb8a85d7e8e1e9d0505836d49">mobs</a>[<a class="el" href="main_8h.html#a71a42c4ea136b65af73f3e930fafc7c4">MAX_MOB</a>])</td></tr>
+<tr class="memdesc:aa1ffa891e170487c45dd0bb0fd1c32c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche mob et met a jour les elements visuels associes.  <br /></td></tr>
+<tr class="memitem:ac1404d83610b06ad915d669824ab42c3" id="r_ac1404d83610b06ad915d669824ab42c3"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ac1404d83610b06ad915d669824ab42c3">detruire_mobs</a> (<a class="el" href="struct_mob.html">Mob</a> *<a class="el" href="main_8h.html#a3585292bb8a85d7e8e1e9d0505836d49">mobs</a>[<a class="el" href="main_8h.html#a71a42c4ea136b65af73f3e930fafc7c4">MAX_MOB</a>])</td></tr>
+<tr class="memdesc:ac1404d83610b06ad915d669824ab42c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libere mobs et nettoie les ressources associees.  <br /></td></tr>
+<tr class="memitem:a982672a13ed7a7b25477f268c592c14b" id="r_a982672a13ed7a7b25477f268c592c14b"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a982672a13ed7a7b25477f268c592c14b">detruire_un_mob</a> (<a class="el" href="struct_mob.html">Mob</a> *mob)</td></tr>
+<tr class="memdesc:a982672a13ed7a7b25477f268c592c14b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libere un mob et nettoie les ressources associees.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Gestion des ennemis, de leur deplacement et de leur apparition. </p>
+
+<p class="definition">Définition dans le fichier <a class="el" href="mob_8c_source.html">mob.c</a>.</p>
+</div><a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Documentation des macros</h2>
+<a id="ac5d2821634d3119a6e7098a3639d196d" name="ac5d2821634d3119a6e7098a3639d196d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5d2821634d3119a6e7098a3639d196d">&#9670;&#160;</a></span>TAILLE_FILE_RESPAWN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TAILLE_FILE_RESPAWN&#160;&#160;&#160;256</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="mob_8c_source.html#l00020">20</a> du fichier <a class="el" href="mob_8c_source.html">mob.c</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<a id="aa1ffa891e170487c45dd0bb0fd1c32c8" name="aa1ffa891e170487c45dd0bb0fd1c32c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1ffa891e170487c45dd0bb0fd1c32c8">&#9670;&#160;</a></span>afficher_mob()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void afficher_mob </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_mob.html">Mob</a> *</td>          <td class="paramname"><span class="paramname"><em>mobs</em></span>[MAX_MOB]&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche mob et met a jour les elements visuels associes. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>Contexte SDL utilise pour dessiner les elements 2D et l'interface. </td></tr>
+    <tr><td class="paramname"><a class="el" href="main_8h.html#a3585292bb8a85d7e8e1e9d0505836d49">mobs</a></td><td>Tableau des mobs actifs manipules par la fonction. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="mob_8c_source.html#l00421">421</a> du fichier <a class="el" href="mob_8c_source.html">mob.c</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="mob_8c_aa1ffa891e170487c45dd0bb0fd1c32c8_icgraph.svg" width="346" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="ac1404d83610b06ad915d669824ab42c3" name="ac1404d83610b06ad915d669824ab42c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1404d83610b06ad915d669824ab42c3">&#9670;&#160;</a></span>detruire_mobs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void detruire_mobs </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_mob.html">Mob</a> *</td>          <td class="paramname"><span class="paramname"><em>mobs</em></span>[MAX_MOB]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Libere mobs et nettoie les ressources associees. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="main_8h.html#a3585292bb8a85d7e8e1e9d0505836d49">mobs</a></td><td>Tableau des mobs actifs manipules par la fonction. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="mob_8c_source.html#l00486">486</a> du fichier <a class="el" href="mob_8c_source.html">mob.c</a>.</p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="mob_8c_ac1404d83610b06ad915d669824ab42c3_cgraph.svg" width="343" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="mob_8c_ac1404d83610b06ad915d669824ab42c3_icgraph.svg" width="354" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a982672a13ed7a7b25477f268c592c14b" name="a982672a13ed7a7b25477f268c592c14b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a982672a13ed7a7b25477f268c592c14b">&#9670;&#160;</a></span>detruire_un_mob()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void detruire_un_mob </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_mob.html">Mob</a> *</td>          <td class="paramname"><span class="paramname"><em>mob</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Libere un mob et nettoie les ressources associees. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mob</td><td>Pointeur vers le mob cible a traiter. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="mob_8c_source.html#l00513">513</a> du fichier <a class="el" href="mob_8c_source.html">mob.c</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="mob_8c_a982672a13ed7a7b25477f268c592c14b_icgraph.svg" width="100%" height="442"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="af2bb33cec05837a53c00e0f901d38c68" name="af2bb33cec05837a53c00e0f901d38c68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2bb33cec05837a53c00e0f901d38c68">&#9670;&#160;</a></span>init_mobs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_mobs </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_mob.html">Mob</a> *</td>          <td class="paramname"><span class="paramname"><em>mobs</em></span>[MAX_MOB], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structt__tile.html">t_tile</a></td>          <td class="paramname"><span class="paramname"><em>map</em></span>[W_MAP][H_MAP], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>nb_pawns</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>nb_moutons</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise mobs et prepare les ressources necessaires. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>Contexte SDL utilise pour dessiner les elements 2D et l'interface. </td></tr>
+    <tr><td class="paramname"><a class="el" href="main_8h.html#a3585292bb8a85d7e8e1e9d0505836d49">mobs</a></td><td>Tableau des mobs actifs manipules par la fonction. </td></tr>
+    <tr><td class="paramname">map</td><td>Grille de tuiles utilisee pour collisions, navigation et rendu contextuel. </td></tr>
+    <tr><td class="paramname">nb_pawns</td><td>Nombre de pawns a instancier durant l'initialisation. </td></tr>
+    <tr><td class="paramname">nb_moutons</td><td>Nombre de moutons a instancier durant l'initialisation. </td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Coordonnees de tuile candidate pour un spawn.</p>
+
+<p class="definition">Définition à la ligne <a class="el" href="mob_8c_source.html#l00062">62</a> du fichier <a class="el" href="mob_8c_source.html">mob.c</a>.</p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="mob_8c_af2bb33cec05837a53c00e0f901d38c68_cgraph.svg" width="100%" height="442"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="mob_8c_af2bb33cec05837a53c00e0f901d38c68_icgraph.svg" width="327" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a91cbc6442abe5bba7eeeaf19fb5e8811" name="a91cbc6442abe5bba7eeeaf19fb5e8811"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91cbc6442abe5bba7eeeaf19fb5e8811">&#9670;&#160;</a></span>reset_mob_respawn_queue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void reset_mob_respawn_queue </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reinitialise mob respawn queue pour repartir d'un etat propre. </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="mob_8c_source.html#l00057">57</a> du fichier <a class="el" href="mob_8c_source.html">mob.c</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="mob_8c_a91cbc6442abe5bba7eeeaf19fb5e8811_icgraph.svg" width="582" height="63"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a30dd485a00ed194617f87517eb3e07f5" name="a30dd485a00ed194617f87517eb3e07f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30dd485a00ed194617f87517eb3e07f5">&#9670;&#160;</a></span>schedule_respawn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void schedule_respawn </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Uint32</td>          <td class="paramname"><span class="paramname"><em>delay_ms</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Programme la reapparition differee d'un mob dans la file de respawn. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Identifiant du type d'entite a manipuler. </td></tr>
+    <tr><td class="paramname">delay_ms</td><td>Delai (en millisecondes) avant execution de l'action planifiee. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="mob_8c_source.html#l00038">38</a> du fichier <a class="el" href="mob_8c_source.html">mob.c</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="mob_8c_a30dd485a00ed194617f87517eb3e07f5_icgraph.svg" width="744" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a1f766d8b9a9348d960e6f211fce5d558" name="a1f766d8b9a9348d960e6f211fce5d558"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f766d8b9a9348d960e6f211fce5d558">&#9670;&#160;</a></span>update_mobs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void update_mobs </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__tile.html">t_tile</a></td>          <td class="paramname"><span class="paramname"><em>map</em></span>[W_MAP][H_MAP], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_mob.html">Mob</a> *</td>          <td class="paramname"><span class="paramname"><em>mobs</em></span>[MAX_MOB]&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Met a jour mobs en fonction de l'etat courant du jeu. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map</td><td>Grille de tuiles utilisee pour collisions, navigation et rendu contextuel. </td></tr>
+    <tr><td class="paramname"><a class="el" href="main_8h.html#a3585292bb8a85d7e8e1e9d0505836d49">mobs</a></td><td>Tableau des mobs actifs manipules par la fonction. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="mob_8c_source.html#l00260">260</a> du fichier <a class="el" href="mob_8c_source.html">mob.c</a>.</p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="mob_8c_a1f766d8b9a9348d960e6f211fce5d558_cgraph.svg" width="100%" height="485"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="mob_8c_a1f766d8b9a9348d960e6f211fce5d558_icgraph.svg" width="350" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="mob_8c.html">mob.c</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

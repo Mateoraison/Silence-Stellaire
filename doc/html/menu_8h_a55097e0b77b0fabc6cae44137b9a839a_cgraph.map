@@ -1,0 +1,45 @@
+<map id="afficher_menu" name="afficher_menu">
+<area shape="rect" id="Node000001" title="Affiche menu et met a jour les elements visuels associes." alt="" coords="5,272,108,299"/>
+<area shape="rect" id="Node000002" href="$bouton_8c.html#af33c1c08b52d3d015ff6f7039a9734ee" title="Affiche texte centre et met a jour les elements visuels associes." alt="" coords="378,5,520,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="60,271,71,239,91,197,118,154,154,115,203,83,257,58,311,40,364,29,360,32,313,45,259,63,205,87,157,119,123,157,96,200,76,241,65,272"/>
+<area shape="rect" id="Node000003" href="$bouton_8c.html#a11f55905044ef2518b8c38311df3c48d" title="Dessine la texture du bouton dans son rectangle d&#39;affichage." alt="" coords="392,56,505,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="64,270,100,222,125,194,154,170,209,138,267,113,325,94,379,81,375,85,326,99,269,118,211,143,157,174,129,198,104,225,69,273"/>
+<area shape="rect" id="Node000004" href="$bouton_8c.html#ab4862740c43f8a9abb996fff0aba5ca1" title="Met a jour l&#39;etat du bouton a partir d&#39;un evenement SDL." alt="" coords="365,107,532,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="74,270,111,244,154,219,212,193,272,170,382,136,378,140,274,175,214,198,157,224,114,249,78,273"/>
+<area shape="rect" id="Node000006" href="$bouton_8c.html#a482b1feb9004901d0544e64b1c44051c" title="Initialise un bouton (zone, texture et etat d&#39;interaction)." alt="" coords="405,360,492,387"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="108,294,391,358,388,362,108,299"/>
+<area shape="rect" id="Node000007" href="$sauvegarde_8c.html#aadcfca2e129355799bc39cbf1ca30390" title="Charge les donnees brutes d&#39;un slot et les place en attente d&#39;application." alt="" coords="171,436,302,463"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="65,297,101,354,127,387,157,415,177,429,172,429,154,419,123,390,97,357,64,302"/>
+<area shape="rect" id="Node000009" href="$son_8c.html#ae145ae699cc1eecf0684bdd530bd26f0" title="Charge (ou recupere du cache) puis joue une piste audio." alt="" coords="198,487,275,513"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="61,296,74,333,92,380,120,430,137,453,157,473,185,490,180,490,154,477,133,456,115,433,88,383,69,335,61,302"/>
+<area shape="rect" id="Node000012" href="$sauvegarde_8c.html#ae251037c85a5a7d8172c206539398f49" title="Affiche l&#39;interface de selection de slot (chargement ou sauvegarde)." alt="" coords="156,233,317,260"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="107,272,158,262,155,266,110,277"/>
+<area shape="rect" id="Node000015" href="$main_8h.html#a6c672075bc554c92548a916c9501bdb5" title=" " alt="" coords="390,411,507,437"/>
+<area shape="poly" id="edge24_Node000001_Node000015" title=" " alt="" coords="75,297,113,322,157,346,213,367,270,385,377,411,372,413,269,390,211,372,155,350,110,326,76,302"/>
+<area shape="rect" id="Node000005" href="$bouton_8c.html#a273a0b22067678e17b3e6b4be36e3641" title=" " alt="" coords="583,107,692,133"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="532,117,570,119,565,121,534,123"/>
+<area shape="rect" id="Node000008" href="$sauvegarde_8c.html#ab305de40501185a8bfc008354c2d0f15" title=" " alt="" coords="592,284,683,311"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="290,461,344,470,406,474,470,468,502,460,531,447,552,428,576,395,620,326,624,323,581,398,556,431,534,452,503,465,471,473,406,479,343,475,290,466"/>
+<area shape="rect" id="Node000010" href="$son_8c.html#ad0d6e981433bdc8e4291e672fa8c039b" title=" " alt="" coords="397,512,500,539"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="276,502,384,517,379,518,275,507"/>
+<area shape="rect" id="Node000011" href="$son_8c.html#aad43af6485e6418e4f26007ec64dba14" title=" " alt="" coords="580,512,695,539"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="501,523,568,525,562,525,501,528"/>
+<area shape="poly" id="edge12_Node000012_Node000002" title=" " alt="" coords="240,232,255,194,281,143,317,89,339,64,363,42,373,38,369,41,367,46,343,68,321,92,285,146,260,197,245,234"/>
+<area shape="poly" id="edge13_Node000012_Node000003" title=" " alt="" coords="243,231,288,165,323,126,363,92,380,86,376,89,367,97,327,130,292,169,247,235"/>
+<area shape="poly" id="edge14_Node000012_Node000004" title=" " alt="" coords="252,231,309,182,364,143,380,138,375,141,366,148,313,187,255,235"/>
+<area shape="poly" id="edge15_Node000012_Node000006" title=" " alt="" coords="252,258,301,301,332,325,366,346,393,359,388,359,364,350,329,329,297,305,251,263"/>
+<area shape="rect" id="Node000013" href="$sauvegarde_8c.html#aeb4954bdff741edc886abc066b4d9b49" title=" " alt="" coords="406,309,492,336"/>
+<area shape="poly" id="edge16_Node000012_Node000013" title=" " alt="" coords="270,258,366,295,393,306,388,306,364,300,270,263"/>
+<area shape="rect" id="Node000014" href="$sauvegarde_8c.html#a590205a1d58df634530e608349c8dc6f" title="Verifie si un fichier de sauvegarde existe pour un slot donne." alt="" coords="370,208,528,235"/>
+<area shape="poly" id="edge17_Node000012_Node000014" title=" " alt="" coords="316,235,356,231,351,234,319,239"/>
+<area shape="poly" id="edge19_Node000012_Node000015" title=" " alt="" coords="246,258,292,325,327,363,367,396,378,405,373,405,363,401,323,367,288,328,245,263"/>
+<area shape="rect" id="Node000017" href="$main_8h.html#a6456affd0d0a21e911b531a5ba25676d" title=" " alt="" coords="390,157,507,184"/>
+<area shape="poly" id="edge21_Node000012_Node000017" title=" " alt="" coords="269,231,364,193,388,188,383,190,366,199,272,235"/>
+<area shape="rect" id="Node000019" href="$main_8c.html#a82958224f33fa21d40f4f7965f8396bc" title="Met a jour screen metrics en fonction de l&#39;etat courant du jeu." alt="" coords="370,259,527,285"/>
+<area shape="poly" id="edge23_Node000012_Node000019" title=" " alt="" coords="317,254,358,260,353,262,318,259"/>
+<area shape="poly" id="edge18_Node000014_Node000008" title=" " alt="" coords="499,233,533,244,600,276,595,277,531,249,500,238"/>
+<area shape="rect" id="Node000016" href="$main_8h.html#aaaa1e9fcb86ff8e60b297faa7815ad1d" title=" " alt="" coords="586,411,689,437"/>
+<area shape="poly" id="edge20_Node000015_Node000016" title=" " alt="" coords="508,421,573,424,568,424,508,427"/>
+<area shape="rect" id="Node000018" href="$main_8h.html#a9b4aefc63ea00e60ec88da19e24e8236" title=" " alt="" coords="584,157,691,184"/>
+<area shape="poly" id="edge22_Node000017_Node000018" title=" " alt="" coords="507,168,572,170,567,172,509,173"/>
+</map>

@@ -1,3 +1,8 @@
+/**
+ * @file inventaire.c
+ * @brief Gestion de l'inventaire, de la hotbar et des objets ramassables.
+ */
+
 #include "headers/main.h"
 
 // -1 = rien de sélectionné
@@ -47,10 +52,10 @@ void afficher_hotbar(t_case * hotbar[HOTBAR_SIZE], SDL_Renderer *renderer) {
 
 
 void ajouter_item_hotbar(t_case *hotbar[HOTBAR_SIZE], t_Item *item, SDL_Renderer *renderer) {
-    // Evite le warning
+    // Le rendu n'intervient pas ici, mais la signature reste alignee avec les autres appels.
     (void)renderer;
 
-    //ajouter +1 a quantiter quands il est deja dans la hotbar
+    // Si l'objet est deja present et empilable, on augmente simplement sa quantite.
     for (int i = 0; i < HOTBAR_SIZE; i++) {
         if(hotbar[i] != NULL && hotbar[i]->item != NULL && hotbar[i]->item->type == item->type && hotbar[i]->stackable) {
             hotbar[i]->quantiter++;

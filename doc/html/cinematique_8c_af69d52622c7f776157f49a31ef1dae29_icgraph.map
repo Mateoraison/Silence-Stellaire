@@ -1,0 +1,5 @@
+<map id="jouer_cinematique_intro" name="jouer_cinematique_intro">
+<area shape="rect" id="Node000001" title="Lance cinematique intro et gere son deroulement complet." alt="" coords="103,5,261,32"/>
+<area shape="rect" id="Node000002" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,55,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="85,20,55,21,55,16,90,18"/>
+</map>

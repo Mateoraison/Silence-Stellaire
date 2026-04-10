@@ -1,3 +1,8 @@
+/**
+ * @file son.c
+ * @brief Gestion des musiques, des effets sonores et de leur etat.
+ */
+
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
 #include <SDL3_ttf/SDL_ttf.h>
@@ -7,6 +12,7 @@
 
 #define MAX_SONS_CACHE 16
 
+/** @brief Entree de cache audio associant chemin, audio charge et piste de lecture. */
 typedef struct {
     char chemin[256];
     MIX_Audio *audio;

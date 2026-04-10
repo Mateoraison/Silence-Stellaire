@@ -1,0 +1,7 @@
+<map id="src/headers/pause.h" name="src/headers/pause.h">
+<area shape="rect" id="Node000001" title="Fichier du menu pause et des actions de reprise/sauvegarde." alt="" coords="28,5,168,32"/>
+<area shape="rect" id="Node000002" href="$jeux_8c.html" title="Boucle principale et orchestration des etats de jeu." alt="" coords="5,80,84,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="82,44,56,81,52,78,77,46"/>
+<area shape="rect" id="Node000003" href="$pause_8c.html" title="Menu pause et actions disponibles pendant une partie." alt="" coords="108,80,197,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="118,42,146,80,140,80,115,47"/>
+</map>

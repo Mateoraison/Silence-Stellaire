@@ -1,0 +1,31 @@
+<map id="p3_dans_limites" name="p3_dans_limites">
+<area shape="rect" id="Node000001" title=" " alt="" coords="990,97,1106,124"/>
+<area shape="rect" id="Node000002" href="$planete_8c.html#a129cf07069dec538f2301ced259a2c40" title=" " alt="" coords="795,21,942,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="998,91,902,51,903,46,1003,91"/>
+<area shape="rect" id="Node000007" href="$planete_8c.html#a8c37dd522d6e0ffa090fdab9bd983d00" title=" " alt="" coords="826,123,911,149"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="972,121,912,133,911,127,978,120"/>
+<area shape="rect" id="Node000003" href="$planete_8c.html#a96ef0aa842e5726f9da8593fa9a403d9" title=" " alt="" coords="436,5,576,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="796,18,747,12,658,10,577,18,576,13,658,5,747,7,801,17"/>
+<area shape="rect" id="Node000004" href="$planete_8c.html#a590f905501246ac7649bbc45bc6677c5" title="Genere le labyrinthe procedural de la planete 3 et place l&#39;engrenage objectif." alt="" coords="244,140,371,183"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="441,54,421,69,372,105,332,142,329,137,369,101,418,64,436,57"/>
+<area shape="rect" id="Node000005" href="$jeux_8c.html#a2d7491d04e8c2bdb52bb6ed7d75e4d78" title="Execute la boucle principale de gameplay pour la planete courante." alt="" coords="103,148,196,175"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="226,162,197,164,196,159,231,160"/>
+<area shape="rect" id="Node000006" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,148,55,175"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="85,163,56,164,54,159,89,160"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="808,123,733,112,635,102,527,100,473,104,420,113,382,126,347,142,345,137,380,121,419,108,472,99,527,95,635,96,733,107,814,123"/>
+<area shape="rect" id="Node000008" href="$planete_8c.html#a991604c564c4a18d508c8e5651478b23" title=" " alt="" coords="442,123,570,149"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="808,137,570,139,570,133,813,135"/>
+<area shape="rect" id="Node000009" href="$planete_8c.html#aff3e59c99281abac9fcd5d9f212eb69f" title=" " alt="" coords="643,21,744,48"/>
+<area shape="poly" id="edge10_Node000007_Node000009" title=" " alt="" coords="828,114,718,51,719,46,833,114"/>
+<area shape="rect" id="Node000010" href="$planete_8c.html#a3dd7bf6192e5f47152f22df2dcd93d5e" title=" " alt="" coords="650,173,738,200"/>
+<area shape="poly" id="edge12_Node000007_Node000010" title=" " alt="" coords="814,152,738,177,737,172,809,153"/>
+<area shape="rect" id="Node000011" href="$planete_8c.html#ac4473ac7be5b628972e38290ef52a7ce" title=" " alt="" coords="419,224,593,251"/>
+<area shape="poly" id="edge14_Node000007_Node000011" title=" " alt="" coords="842,158,799,190,748,215,670,233,593,240,593,235,669,228,746,209,796,185,837,160"/>
+<area shape="rect" id="Node000012" href="$planete_8c.html#a702036ba0db73b0b01556deb574d5788" title=" " alt="" coords="641,275,747,301"/>
+<area shape="poly" id="edge16_Node000007_Node000012" title=" " alt="" coords="848,160,804,209,749,258,721,277,719,272,745,254,800,205,843,162"/>
+<area shape="poly" id="edge9_Node000008_Node000004" title=" " alt="" coords="424,147,372,156,371,151,429,145"/>
+<area shape="poly" id="edge11_Node000009_Node000003" title=" " alt="" coords="625,32,577,32,576,27,631,31"/>
+<area shape="poly" id="edge13_Node000010_Node000004" title=" " alt="" coords="632,184,372,168,372,163,637,182"/>
+<area shape="poly" id="edge15_Node000011_Node000004" title=" " alt="" coords="450,218,418,208,363,186,364,181,420,203,456,218"/>
+<area shape="poly" id="edge17_Node000012_Node000004" title=" " alt="" coords="622,293,578,296,525,292,470,283,418,265,389,248,363,227,324,186,326,181,367,223,392,244,420,260,472,277,526,287,578,291,628,293"/>
+</map>

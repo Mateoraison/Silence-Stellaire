@@ -1,0 +1,385 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Silence Stellaire: Référence du fichier src/inventaire.c</title>
+<link rel="icon" href="logo_win.png" type="image/x-icon" />
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-theme.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="logo_win.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">Silence Stellaire<span id="projectnumber">&#160;2025-2026</span>
+   </div>
+   <div id="projectbrief">Silence Stellaire, documentation technique de projet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('inventaire_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Référence du fichier inventaire.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Gestion de l'inventaire, de la hotbar et des objets ramassables.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="main_8h_source.html">headers/main.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de inventaire.c:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="inventaire_8c__incl.svg" width="1996" height="262"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<p><a href="inventaire_8c_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a9c8bafaebb0a92c5aca9147972ca6db5" id="r_a9c8bafaebb0a92c5aca9147972ca6db5"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a9c8bafaebb0a92c5aca9147972ca6db5">afficher_hotbar</a> (<a class="el" href="structt__case.html">t_case</a> *<a class="el" href="main_8h.html#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a>[<a class="el" href="main_8h.html#a8503e5db31d779209111bf7ea2dba16e">HOTBAR_SIZE</a>], SDL_Renderer *renderer)</td></tr>
+<tr class="memdesc:a9c8bafaebb0a92c5aca9147972ca6db5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche hotbar et met a jour les elements visuels associes.  <br /></td></tr>
+<tr class="memitem:af0bb60f5edfe743f3132d027eaf1bcbb" id="r_af0bb60f5edfe743f3132d027eaf1bcbb"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af0bb60f5edfe743f3132d027eaf1bcbb">ajouter_item_hotbar</a> (<a class="el" href="structt__case.html">t_case</a> *<a class="el" href="main_8h.html#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a>[<a class="el" href="main_8h.html#a8503e5db31d779209111bf7ea2dba16e">HOTBAR_SIZE</a>], <a class="el" href="structt___item.html">t_Item</a> *item, SDL_Renderer *renderer)</td></tr>
+<tr class="memdesc:af0bb60f5edfe743f3132d027eaf1bcbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute un item dans la hotbar (slot libre ou pile compatible).  <br /></td></tr>
+<tr class="memitem:a716b7371e129825134dd5d14421b795f" id="r_a716b7371e129825134dd5d14421b795f"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a716b7371e129825134dd5d14421b795f">afficher_inventaire</a> (<a class="el" href="structt__case.html">t_case</a> *<a class="el" href="main_8h.html#a8dcd03ba0e2ea187818f82f341ab2b5f">inventaire</a>[], SDL_Renderer *renderer, int inventaire_size, int inventaire_cols, int inventaire_rows)</td></tr>
+<tr class="memdesc:a716b7371e129825134dd5d14421b795f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche inventaire et met a jour les elements visuels associes.  <br /></td></tr>
+<tr class="memitem:aaa9a799e47ee7f10a1d1ef1bc3ad559b" id="r_aaa9a799e47ee7f10a1d1ef1bc3ad559b"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aaa9a799e47ee7f10a1d1ef1bc3ad559b">ajouter_item_inventaire</a> (<a class="el" href="structt__case.html">t_case</a> **<a class="el" href="main_8h.html#a8dcd03ba0e2ea187818f82f341ab2b5f">inventaire</a>, int inventaire_size, <a class="el" href="structt___item.html">t_Item</a> *item)</td></tr>
+<tr class="memdesc:aaa9a799e47ee7f10a1d1ef1bc3ad559b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute un item dans l'inventaire principal (slot libre ou pile compatible).  <br /></td></tr>
+<tr class="memitem:a27d35e407cd81c7cbe1cc7f8e0c7ff17" id="r_a27d35e407cd81c7cbe1cc7f8e0c7ff17"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a27d35e407cd81c7cbe1cc7f8e0c7ff17">gerer_clic_inventaire</a> (<a class="el" href="structt__case.html">t_case</a> **<a class="el" href="main_8h.html#a8dcd03ba0e2ea187818f82f341ab2b5f">inventaire</a>, <a class="el" href="structt__case.html">t_case</a> **<a class="el" href="main_8h.html#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a>, SDL_Event *event, int inventaire_size, int inventaire_cols, int inventaire_rows)</td></tr>
+<tr class="memdesc:a27d35e407cd81c7cbe1cc7f8e0c7ff17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gere clic inventaire a partir des entrees utilisateur et des evenements.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Gestion de l'inventaire, de la hotbar et des objets ramassables. </p>
+
+<p class="definition">Définition dans le fichier <a class="el" href="inventaire_8c_source.html">inventaire.c</a>.</p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<a id="a9c8bafaebb0a92c5aca9147972ca6db5" name="a9c8bafaebb0a92c5aca9147972ca6db5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c8bafaebb0a92c5aca9147972ca6db5">&#9670;&#160;</a></span>afficher_hotbar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void afficher_hotbar </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__case.html">t_case</a> *</td>          <td class="paramname"><span class="paramname"><em>hotbar</em></span>[HOTBAR_SIZE], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche hotbar et met a jour les elements visuels associes. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="main_8h.html#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a></td><td>Tableau des slots de raccourcis equipables du joueur. </td></tr>
+    <tr><td class="paramname">renderer</td><td>Contexte SDL utilise pour dessiner les elements 2D et l'interface. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="inventaire_8c_source.html#l00015">15</a> du fichier <a class="el" href="inventaire_8c_source.html">inventaire.c</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="inventaire_8c_a9c8bafaebb0a92c5aca9147972ca6db5_icgraph.svg" width="356" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a716b7371e129825134dd5d14421b795f" name="a716b7371e129825134dd5d14421b795f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a716b7371e129825134dd5d14421b795f">&#9670;&#160;</a></span>afficher_inventaire()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void afficher_inventaire </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__case.html">t_case</a> *</td>          <td class="paramname"><span class="paramname"><em>inventaire</em></span>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>inventaire_size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>inventaire_cols</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>inventaire_rows</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche inventaire et met a jour les elements visuels associes. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="main_8h.html#a8dcd03ba0e2ea187818f82f341ab2b5f">inventaire</a></td><td>Tableau des cases d'inventaire a lire ou modifier. </td></tr>
+    <tr><td class="paramname">renderer</td><td>Contexte SDL utilise pour dessiner les elements 2D et l'interface. </td></tr>
+    <tr><td class="paramname">inventaire_size</td><td>Nombre total de cases prises en compte dans l'inventaire. </td></tr>
+    <tr><td class="paramname">inventaire_cols</td><td>Nombre de colonnes utilisees pour afficher la grille d'inventaire. </td></tr>
+    <tr><td class="paramname">inventaire_rows</td><td>Nombre de lignes utilisees pour afficher la grille d'inventaire. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="inventaire_8c_source.html#l00094">94</a> du fichier <a class="el" href="inventaire_8c_source.html">inventaire.c</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="inventaire_8c_a716b7371e129825134dd5d14421b795f_icgraph.svg" width="376" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="af0bb60f5edfe743f3132d027eaf1bcbb" name="af0bb60f5edfe743f3132d027eaf1bcbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0bb60f5edfe743f3132d027eaf1bcbb">&#9670;&#160;</a></span>ajouter_item_hotbar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ajouter_item_hotbar </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__case.html">t_case</a> *</td>          <td class="paramname"><span class="paramname"><em>hotbar</em></span>[HOTBAR_SIZE], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structt___item.html">t_Item</a> *</td>          <td class="paramname"><span class="paramname"><em>item</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ajoute un item dans la hotbar (slot libre ou pile compatible). </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="main_8h.html#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a></td><td>Tableau des slots de raccourcis equipables du joueur. </td></tr>
+    <tr><td class="paramname">item</td><td>Item a inserer dans la hotbar. </td></tr>
+    <tr><td class="paramname">renderer</td><td>Contexte SDL utilise pour dessiner les elements 2D et l'interface. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="inventaire_8c_source.html#l00054">54</a> du fichier <a class="el" href="inventaire_8c_source.html">inventaire.c</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="inventaire_8c_af0bb60f5edfe743f3132d027eaf1bcbb_icgraph.svg" width="100%" height="477"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="aaa9a799e47ee7f10a1d1ef1bc3ad559b" name="aaa9a799e47ee7f10a1d1ef1bc3ad559b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa9a799e47ee7f10a1d1ef1bc3ad559b">&#9670;&#160;</a></span>ajouter_item_inventaire()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ajouter_item_inventaire </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__case.html">t_case</a> **</td>          <td class="paramname"><span class="paramname"><em>inventaire</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>inventaire_size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structt___item.html">t_Item</a> *</td>          <td class="paramname"><span class="paramname"><em>item</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ajoute un item dans l'inventaire principal (slot libre ou pile compatible). </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="main_8h.html#a8dcd03ba0e2ea187818f82f341ab2b5f">inventaire</a></td><td>Tableau des cases d'inventaire a lire ou modifier. </td></tr>
+    <tr><td class="paramname">inventaire_size</td><td>Nombre total de cases prises en compte dans l'inventaire. </td></tr>
+    <tr><td class="paramname">item</td><td>Item a inserer dans l'inventaire. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="inventaire_8c_source.html#l00193">193</a> du fichier <a class="el" href="inventaire_8c_source.html">inventaire.c</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="inventaire_8c_aaa9a799e47ee7f10a1d1ef1bc3ad559b_icgraph.svg" width="575" height="63"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a27d35e407cd81c7cbe1cc7f8e0c7ff17" name="a27d35e407cd81c7cbe1cc7f8e0c7ff17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27d35e407cd81c7cbe1cc7f8e0c7ff17">&#9670;&#160;</a></span>gerer_clic_inventaire()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gerer_clic_inventaire </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__case.html">t_case</a> **</td>          <td class="paramname"><span class="paramname"><em>inventaire</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structt__case.html">t_case</a> **</td>          <td class="paramname"><span class="paramname"><em>hotbar</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Event *</td>          <td class="paramname"><span class="paramname"><em>event</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>inventaire_size</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>inventaire_cols</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>inventaire_rows</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gere clic inventaire a partir des entrees utilisateur et des evenements. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="main_8h.html#a8dcd03ba0e2ea187818f82f341ab2b5f">inventaire</a></td><td>Tableau des cases d'inventaire a lire ou modifier. </td></tr>
+    <tr><td class="paramname"><a class="el" href="main_8h.html#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a></td><td>Tableau des slots de raccourcis equipables du joueur. </td></tr>
+    <tr><td class="paramname">event</td><td>Evenement SDL recu, interprete par la logique de traitement. </td></tr>
+    <tr><td class="paramname">inventaire_size</td><td>Nombre total de cases prises en compte dans l'inventaire. </td></tr>
+    <tr><td class="paramname">inventaire_cols</td><td>Nombre de colonnes utilisees pour afficher la grille d'inventaire. </td></tr>
+    <tr><td class="paramname">inventaire_rows</td><td>Nombre de lignes utilisees pour afficher la grille d'inventaire. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="inventaire_8c_source.html#l00224">224</a> du fichier <a class="el" href="inventaire_8c_source.html">inventaire.c</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="inventaire_8c_a27d35e407cd81c7cbe1cc7f8e0c7ff17_icgraph.svg" width="390" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="inventaire_8c.html">inventaire.c</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

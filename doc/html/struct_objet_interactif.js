@@ -1,0 +1,6 @@
+var struct_objet_interactif =
+[
+    [ "type", "struct_objet_interactif.html#ac82efb75b70a01309b64238fb2947b98", null ],
+    [ "x", "struct_objet_interactif.html#a1c7a6bce8a3e432073cd83d18e6a796a", null ],
+    [ "y", "struct_objet_interactif.html#af05f8c82c360c9ab66b8ceca7f684a7e", null ]
+];

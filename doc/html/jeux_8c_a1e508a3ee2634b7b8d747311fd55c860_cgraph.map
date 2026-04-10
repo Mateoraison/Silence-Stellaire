@@ -1,0 +1,7 @@
+<map id="charger_tilemap" name="charger_tilemap">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,119,57"/>
+<area shape="rect" id="Node000002" href="$main_8h.html#a9b4aefc63ea00e60ec88da19e24e8236" title=" " alt="" coords="167,5,273,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="118,32,154,29,149,30,120,38"/>
+<area shape="rect" id="Node000003" href="$main_8h.html#aaaa1e9fcb86ff8e60b297faa7815ad1d" title=" " alt="" coords="169,56,271,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="119,50,156,58,151,59,119,56"/>
+</map>

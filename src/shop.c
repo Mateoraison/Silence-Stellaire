@@ -1,3 +1,8 @@
+/**
+ * @file shop.c
+ * @brief Interface de boutique du vaisseau et achats du joueur.
+ */
+
 #include "headers/main.h"
 
 #include <SDL3_ttf/SDL_ttf.h>

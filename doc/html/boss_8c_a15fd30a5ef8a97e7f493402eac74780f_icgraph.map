@@ -1,0 +1,13 @@
+<map id="attaque_demon_de_feu" name="attaque_demon_de_feu">
+<area shape="rect" id="Node000001" title=" " alt="" coords="821,5,977,32"/>
+<area shape="rect" id="Node000002" href="$boss_8c.html#a5f817e3b267c2b327de8c2d9251477f4" title=" " alt="" coords="575,5,773,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="803,19,773,21,773,16,808,19"/>
+<area shape="rect" id="Node000003" href="$boss_8c.html#aea78d389dc05993b72aebb218a4768de" title="Execute la logique d&#39;attaque du boss en tenant compte des cooldowns et de la phase active." alt="" coords="427,5,527,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="556,19,527,21,527,16,562,19"/>
+<area shape="rect" id="Node000004" href="$boss_8c.html#abbb99b844a32a59c50228b7d6dcb888b" title="Met a jour boss en fonction de l&#39;etat courant du jeu." alt="" coords="244,5,379,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="409,19,380,21,380,16,415,19"/>
+<area shape="rect" id="Node000005" href="$jeux_8c.html#a2d7491d04e8c2bdb52bb6ed7d75e4d78" title="Execute la boucle principale de gameplay pour la planete courante." alt="" coords="103,5,196,32"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="226,19,196,21,196,16,231,19"/>
+<area shape="rect" id="Node000006" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,55,32"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="84,19,55,21,55,16,89,18"/>
+</map>

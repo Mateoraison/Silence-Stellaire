@@ -1,0 +1,5 @@
+<map id="tileset_" name="tileset_">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,189,64,280"/>
+<area shape="rect" id="Node000002" href="$structtile__.html" title=" " alt="" coords="5,5,64,117"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="36,115,37,172,32,172,34,120"/>
+</map>

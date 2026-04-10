@@ -1,3 +1,8 @@
+/**
+ * @file option.c
+ * @brief Menu des options audio et aide aux commandes.
+ */
+
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
 #include <math.h>
@@ -9,7 +14,7 @@
 
 
 int afficher_option(SDL_Renderer *renderer, MIX_Track *track_global) {
-    // Evite le warning
+    // Le parametre reste present pour garder une signature commune avec les autres ecrans.
     (void)track_global;
 
     bool running = true;

@@ -1,0 +1,17 @@
+<map id="achat_faim_max" name="achat_faim_max">
+<area shape="rect" id="Node000001" title=" " alt="" coords="909,56,1027,83"/>
+<area shape="rect" id="Node000002" href="$shop_8c.html#ad1ea096e4fe280946f862273fc94eb30" title="Affiche shop et met a jour les elements visuels associes." alt="" coords="763,56,861,83"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="891,69,862,72,862,67,896,69"/>
+<area shape="rect" id="Node000003" href="$vaisseau_8c.html#ace614afc8df3a40bd5ea0771044ff217" title=" " alt="" coords="563,56,715,83"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="745,69,716,72,716,67,750,69"/>
+<area shape="rect" id="Node000004" href="$vaisseau_8c.html#a8ea9afc9440149ddd36e96b97d8ed6c5" title="Lance la scene interieure du vaisseau (deplacement, interactions, mini&#45;jeux, sortie)." alt="" coords="441,31,515,57"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="544,55,515,52,515,47,550,55"/>
+<area shape="rect" id="Node000005" href="$cinematique_8c.html#a418cc3e727578f4cd509ad27cd6a2a31" title="Lance cinematique fin et gere son deroulement complet." alt="" coords="246,31,393,57"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="423,44,394,47,393,41,429,44"/>
+<area shape="rect" id="Node000007" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,55,32"/>
+<area shape="poly" id="edge8_Node000004_Node000007" title=" " alt="" coords="423,26,393,21,295,12,199,11,56,19,55,14,199,6,296,7,394,16,429,26"/>
+<area shape="rect" id="Node000006" href="$map_8c.html#ad462ccdd50801fb085dc8134fc3765d1" title="Affiche la carte et met a jour les elements visuels associes." alt="" coords="103,31,198,57"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="228,44,199,47,198,41,233,44"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="209,59,246,67,330,74,415,77,559,75,565,75,415,82,330,80,246,72,208,64"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="85,32,55,26,55,21,89,29"/>
+</map>

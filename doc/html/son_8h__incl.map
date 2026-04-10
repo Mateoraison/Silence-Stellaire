@@ -1,0 +1,11 @@
+<map id="src/headers/son.h" name="src/headers/son.h">
+<area shape="rect" id="Node000001" title="Fichier audio: musique, effets sonores et etats d&#39;activation." alt="" coords="241,5,366,32"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,80,101,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="261,35,112,78,111,73,259,30"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="125,80,304,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="291,32,243,72,240,68,286,33"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="328,80,461,107"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="320,30,370,71,365,70,319,35"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="485,80,658,107"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="351,30,513,75,508,76,350,35"/>
+</map>

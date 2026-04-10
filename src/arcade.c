@@ -1,3 +1,8 @@
+/**
+ * @file arcade.c
+ * @brief Gestion de la séquence d'arcade et de ses ecrans associes.
+ */
+
 #include "headers/main.h"
 #include <SDL3_ttf/SDL_ttf.h>
 #include <stdio.h>
@@ -11,6 +16,7 @@
 #define MAX_PROJECTILES 5
 #define MAX_ENNEMIS 8
 
+/** @brief Entite simple utilisee pour les mini-jeux d'arcade. */
 typedef struct { float x, y; bool actif; } Entite;
 
 #define ARCADE_SCREEN_X 300.0f
@@ -235,6 +241,7 @@ void jouer_arcade2(SDL_Renderer *renderer) {
     bool running = true;
     int etat = 0; 
     float j_x = 400.0f, j_y = 250.0f;
+    /** @brief Obstacle mobile de Gravity Fall (barriere avec ouverture). */
     typedef struct { float y, tx; bool a; } Br;
     Br b[4] = {0};
     int score = 0; Uint32 last = 0;
@@ -394,6 +401,7 @@ void mastermind(SDL_Renderer *renderer) {
     int score = 0;
     
     // Historique des tentatives
+    /** @brief Tentative de Mastermind avec proposition et feedback. */
     typedef struct { int guess[4]; char feedback[4]; } Tentative;
     Tentative historique[12];
     int nb_tentatives = 0;

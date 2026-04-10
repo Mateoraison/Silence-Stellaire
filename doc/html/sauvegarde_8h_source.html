@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Silence Stellaire:  Fichier source de src/headers/sauvegarde.h</title>
+<link rel="icon" href="logo_win.png" type="image/x-icon" />
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-theme.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="logo_win.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">Silence Stellaire<span id="projectnumber">&#160;2025-2026</span>
+   </div>
+   <div id="projectbrief">Silence Stellaire, documentation technique de projet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('sauvegarde_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">sauvegarde.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="sauvegarde_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#ifndef SAUVEGARDE_H</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#define SAUVEGARDE_H</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;SDL3/SDL.h&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="sauvegarde_8h.html#aa0c3c8074ee87ca9fab15f72c761a6ae">   12</a></span><span class="preprocessor">#define NB_SLOTS_SAUVEGARDE 3</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keywordtype">int</span> <a class="code hl_function" href="sauvegarde_8h.html#a590205a1d58df634530e608349c8dc6f">sauvegarde_slot_existe</a>(<span class="keywordtype">int</span> slot);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keywordtype">int</span> <a class="code hl_function" href="sauvegarde_8h.html#ae251037c85a5a7d8172c206539398f49">sauvegarde_choisir_slot</a>(SDL_Renderer *renderer, <span class="keyword">const</span> <span class="keywordtype">char</span> *titre, <span class="keywordtype">bool</span> mode_chargement);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keywordtype">int</span> <a class="code hl_function" href="sauvegarde_8h.html#af41024137aa5cec5baf4cef86ae63bd8">sauvegarder_partie_slot</a>(<span class="keywordtype">int</span> slot, <span class="keywordtype">int</span> planete);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keywordtype">int</span> <a class="code hl_function" href="sauvegarde_8h.html#aadcfca2e129355799bc39cbf1ca30390">charger_partie_slot</a>(<span class="keywordtype">int</span> slot, <span class="keywordtype">int</span> *planete_out);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keywordtype">int</span> <a class="code hl_function" href="sauvegarde_8h.html#a37cdab70aee73a7ba5b6ba7bcfc920c6">sauvegarde_get_slot_actif</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keywordtype">void</span> <a class="code hl_function" href="sauvegarde_8h.html#a8011b5d73a5247c42d0d7ea574b54e3a">sauvegarde_set_slot_actif</a>(<span class="keywordtype">int</span> slot);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">/* Applique une sauvegarde chargee en attente sur l&#39;etat global du jeu. */</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keywordtype">int</span> <a class="code hl_function" href="sauvegarde_8h.html#a749dc51944352ce977ead8fb8ceca1cc">sauvegarde_appliquer_si_disponible</a>(SDL_Renderer *renderer);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="asauvegarde_8h_html_a37cdab70aee73a7ba5b6ba7bcfc920c6"><div class="ttname"><a href="sauvegarde_8h.html#a37cdab70aee73a7ba5b6ba7bcfc920c6">sauvegarde_get_slot_actif</a></div><div class="ttdeci">int sauvegarde_get_slot_actif(void)</div><div class="ttdoc">Retourne le slot marque comme actif dans la session courante.</div><div class="ttdef"><b>Definition</b> <a href="sauvegarde_8c_source.html#l00137">sauvegarde.c:137</a></div></div>
+<div class="ttc" id="asauvegarde_8h_html_a590205a1d58df634530e608349c8dc6f"><div class="ttname"><a href="sauvegarde_8h.html#a590205a1d58df634530e608349c8dc6f">sauvegarde_slot_existe</a></div><div class="ttdeci">int sauvegarde_slot_existe(int slot)</div><div class="ttdoc">Verifie si un fichier de sauvegarde existe pour un slot donne.</div><div class="ttdef"><b>Definition</b> <a href="sauvegarde_8c_source.html#l00127">sauvegarde.c:127</a></div></div>
+<div class="ttc" id="asauvegarde_8h_html_a749dc51944352ce977ead8fb8ceca1cc"><div class="ttname"><a href="sauvegarde_8h.html#a749dc51944352ce977ead8fb8ceca1cc">sauvegarde_appliquer_si_disponible</a></div><div class="ttdeci">int sauvegarde_appliquer_si_disponible(SDL_Renderer *renderer)</div><div class="ttdoc">Applique a l&#39;etat global les donnees precedemment chargees si presentes.</div><div class="ttdef"><b>Definition</b> <a href="sauvegarde_8c_source.html#l00228">sauvegarde.c:228</a></div></div>
+<div class="ttc" id="asauvegarde_8h_html_a8011b5d73a5247c42d0d7ea574b54e3a"><div class="ttname"><a href="sauvegarde_8h.html#a8011b5d73a5247c42d0d7ea574b54e3a">sauvegarde_set_slot_actif</a></div><div class="ttdeci">void sauvegarde_set_slot_actif(int slot)</div><div class="ttdoc">Definit le slot actif pour les operations ulterieures.</div><div class="ttdef"><b>Definition</b> <a href="sauvegarde_8c_source.html#l00141">sauvegarde.c:141</a></div></div>
+<div class="ttc" id="asauvegarde_8h_html_aadcfca2e129355799bc39cbf1ca30390"><div class="ttname"><a href="sauvegarde_8h.html#aadcfca2e129355799bc39cbf1ca30390">charger_partie_slot</a></div><div class="ttdeci">int charger_partie_slot(int slot, int *planete_out)</div><div class="ttdoc">Charge les donnees brutes d&#39;un slot et les place en attente d&#39;application.</div><div class="ttdef"><b>Definition</b> <a href="sauvegarde_8c_source.html#l00207">sauvegarde.c:207</a></div></div>
+<div class="ttc" id="asauvegarde_8h_html_ae251037c85a5a7d8172c206539398f49"><div class="ttname"><a href="sauvegarde_8h.html#ae251037c85a5a7d8172c206539398f49">sauvegarde_choisir_slot</a></div><div class="ttdeci">int sauvegarde_choisir_slot(SDL_Renderer *renderer, const char *titre, bool mode_chargement)</div><div class="ttdoc">Affiche l&#39;interface de selection de slot (chargement ou sauvegarde).</div><div class="ttdef"><b>Definition</b> <a href="sauvegarde_8c_source.html#l00254">sauvegarde.c:254</a></div></div>
+<div class="ttc" id="asauvegarde_8h_html_af41024137aa5cec5baf4cef86ae63bd8"><div class="ttname"><a href="sauvegarde_8h.html#af41024137aa5cec5baf4cef86ae63bd8">sauvegarder_partie_slot</a></div><div class="ttdeci">int sauvegarder_partie_slot(int slot, int planete)</div><div class="ttdoc">Serialize l&#39;etat de partie courant dans le slot cible.</div><div class="ttdef"><b>Definition</b> <a href="sauvegarde_8c_source.html#l00147">sauvegarde.c:147</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dir_d0381950fc41278198232cb047ffc1f9.html">headers</a></li><li class="navelem"><a href="sauvegarde_8h.html">sauvegarde.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

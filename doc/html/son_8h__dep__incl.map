@@ -1,0 +1,48 @@
+<map id="src/headers/son.h" name="src/headers/son.h">
+<area shape="rect" id="Node000001" title="Fichier audio: musique, effets sonores et etats d&#39;activation." alt="" coords="1116,5,1241,32"/>
+<area shape="rect" id="Node000002" href="$main_8h.html" title="Declarations globales et utilitaires partages entre les modules du jeu." alt="" coords="1112,80,1245,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1180,46,1181,81,1177,78,1177,50"/>
+<area shape="rect" id="Node000003" href="$arcade_8c.html" title="Gestion de la séquence d&#39;arcade et de ses ecrans associes." alt="" coords="5,155,99,181"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1094,96,919,101,674,111,394,128,111,157,100,159,98,154,110,152,394,123,674,105,919,96,1100,95"/>
+<area shape="rect" id="Node000004" href="$boss_8c.html" title="Gestion du boss, de ses phases et de ses attaques." alt="" coords="123,155,205,181"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="1094,96,935,102,716,111,468,129,218,157,207,159,205,154,217,152,468,124,716,106,935,97,1100,95"/>
+<area shape="rect" id="Node000005" href="$cinematique_8c.html" title="Lecture des cinematics et enchainement des sequences narratives." alt="" coords="230,155,354,181"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="1095,99,777,120,573,136,367,157,355,159,354,154,366,152,572,131,777,115,1100,98"/>
+<area shape="rect" id="Node000006" href="$game__over_8c.html" title="Affichage de l&#39;ecran de fin de partie et retour au menu." alt="" coords="378,155,496,181"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="1094,101,838,124,515,157,497,160,496,154,514,152,837,119,1100,100"/>
+<area shape="rect" id="Node000007" href="$planete_8h.html" title="Fichier des ecrans de planetes et transitions d&#39;environnement." alt="" coords="571,155,717,181"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="1094,106,730,157,718,159,717,154,729,152,1100,105"/>
+<area shape="rect" id="Node000008" href="$jeux_8c.html" title="Boucle principale et orchestration des etats de jeu." alt="" coords="494,229,572,256"/>
+<area shape="poly" id="edge11_Node000002_Node000008" title=" " alt="" coords="1094,98,951,107,784,119,638,135,588,145,560,157,548,173,540,192,535,231,531,227,535,191,543,170,557,153,586,140,637,130,783,113,951,102,1099,97"/>
+<area shape="rect" id="Node000010" href="$inventaire_8c.html" title="Gestion de l&#39;inventaire, de la hotbar et des objets ramassables." alt="" coords="741,155,851,181"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="1100,110,852,159,851,154,1095,110"/>
+<area shape="rect" id="Node000011" href="$item_8c.html" title="Creation, affichage et ramassage des objets du monde." alt="" coords="875,155,954,181"/>
+<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="1121,111,955,158,954,153,1116,112"/>
+<area shape="rect" id="Node000012" href="$main_8c.html" title="Point d&#39;entree du jeu et orchestration globale des ecrans." alt="" coords="979,155,1061,181"/>
+<area shape="poly" id="edge12_Node000002_Node000012" title=" " alt="" coords="1140,113,1049,157,1047,151,1135,114"/>
+<area shape="rect" id="Node000013" href="$map_8c.html" title="Chargement, rendu et interactions de la carte du monde." alt="" coords="1086,155,1165,181"/>
+<area shape="poly" id="edge13_Node000002_Node000013" title=" " alt="" coords="1163,118,1136,157,1133,152,1158,121"/>
+<area shape="rect" id="Node000014" href="$menu_8c.html" title="Menu principal et navigation entre les ecrans." alt="" coords="1189,155,1275,181"/>
+<area shape="poly" id="edge14_Node000002_Node000014" title=" " alt="" coords="1198,117,1225,155,1220,153,1196,122"/>
+<area shape="rect" id="Node000015" href="$mob_8c.html" title="Gestion des ennemis, de leur deplacement et de leur apparition." alt="" coords="1299,155,1378,181"/>
+<area shape="poly" id="edge15_Node000002_Node000015" title=" " alt="" coords="1221,111,1313,154,1308,154,1220,116"/>
+<area shape="rect" id="Node000016" href="$objectifs_8c.html" title="Gestion des objectifs de progression et de leur affichage." alt="" coords="1403,155,1506,181"/>
+<area shape="poly" id="edge16_Node000002_Node000016" title=" " alt="" coords="1241,108,1409,154,1404,154,1241,114"/>
+<area shape="rect" id="Node000017" href="$option_8c.html" title="Menu des options audio et aide aux commandes." alt="" coords="1530,155,1619,181"/>
+<area shape="poly" id="edge17_Node000002_Node000017" title=" " alt="" coords="1261,106,1519,152,1532,157,1527,157,1518,157,1260,111"/>
+<area shape="rect" id="Node000018" href="$pause_8c.html" title="Menu pause et actions disponibles pendant une partie." alt="" coords="1643,155,1733,181"/>
+<area shape="poly" id="edge18_Node000002_Node000018" title=" " alt="" coords="1261,101,1432,122,1632,152,1645,157,1640,157,1632,157,1432,127,1260,106"/>
+<area shape="rect" id="Node000019" href="$perso_8c.html" title="Deplacement, animation, combat et collecte du personnage." alt="" coords="1757,155,1843,181"/>
+<area shape="poly" id="edge19_Node000002_Node000019" title=" " alt="" coords="1261,98,1480,118,1613,133,1746,152,1759,157,1754,157,1745,157,1612,138,1480,123,1261,103"/>
+<area shape="rect" id="Node000020" href="$sauvegarde_8c.html" title="Gestion des sauvegardes, des chargements et des emplacements." alt="" coords="1867,155,1989,181"/>
+<area shape="poly" id="edge20_Node000002_Node000020" title=" " alt="" coords="1260,97,1525,118,1855,152,1869,156,1864,156,1854,157,1525,123,1260,103"/>
+<area shape="rect" id="Node000021" href="$shop_8c.html" title="Interface de boutique du vaisseau et achats du joueur." alt="" coords="2012,155,2094,181"/>
+<area shape="poly" id="edge21_Node000002_Node000021" title=" " alt="" coords="1260,94,1586,109,1793,126,2002,152,2015,157,2009,156,2001,157,1792,132,1585,115,1260,99"/>
+<area shape="rect" id="Node000022" href="$son_8c.html" title="Gestion des musiques, des effets sonores et de leur etat." alt="" coords="2118,155,2194,181"/>
+<area shape="poly" id="edge22_Node000002_Node000022" title=" " alt="" coords="1260,93,1418,96,1628,105,1867,123,2107,152,2121,157,2115,157,2106,157,1866,128,1628,111,1418,101,1261,98"/>
+<area shape="rect" id="Node000023" href="$vaisseau_8c.html" title="Exploration du vaisseau, interactions et retour vers la planete." alt="" coords="2218,155,2324,181"/>
+<area shape="poly" id="edge23_Node000002_Node000023" title=" " alt="" coords="1260,93,1432,98,1667,108,1935,126,2206,152,2220,156,2214,156,2205,157,1934,131,1667,114,1432,103,1260,99"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="615,189,554,231,552,226,610,191"/>
+<area shape="rect" id="Node000009" href="$planete_8c.html" title="Gestion des planetes et des transitions d&#39;exploration." alt="" coords="597,229,694,256"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="646,195,647,231,643,227,643,199"/>
+</map>

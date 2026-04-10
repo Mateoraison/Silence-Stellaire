@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Silence Stellaire:  Fichier source de src/headers/boss.h</title>
+<link rel="icon" href="logo_win.png" type="image/x-icon" />
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-theme.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="logo_win.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">Silence Stellaire<span id="projectnumber">&#160;2025-2026</span>
+   </div>
+   <div id="projectbrief">Silence Stellaire, documentation technique de projet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('boss_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">boss.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="boss_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;SDL3/SDL.h&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;SDL3_image/SDL_image.h&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keywordtype">void</span> <a class="code hl_function" href="boss_8h.html#a6eec57eb8ce16b0359a037e265063291">init_boss</a>(SDL_Renderer *renderer, <a class="code hl_struct" href="structboss__t.html">boss_t</a> *boss, <a class="code hl_enumeration" href="main_8h.html#abc2faef89d875ddc4eb4e42c328b14f5">type_boss_t</a> type, <span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keywordtype">void</span> <a class="code hl_function" href="boss_8h.html#af4e6ce4ad87f3d1f47bcfec24f0348dd">afficher_boss</a>(SDL_Renderer *renderer, <a class="code hl_struct" href="structboss__t.html">boss_t</a> *boss);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keywordtype">void</span> <a class="code hl_function" href="boss_8h.html#a878b795c6664c5295471a2b8da1c96b4">mettre_a_jour_boss</a>(SDL_Renderer *renderer, <a class="code hl_struct" href="structboss__t.html">boss_t</a> *boss);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keywordtype">void</span> <a class="code hl_function" href="boss_8h.html#aef7f13109d134d4e699ba31b88d6f1a1">boss_attaque</a>(SDL_Renderer *renderer, <a class="code hl_struct" href="structboss__t.html">boss_t</a> *boss);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keywordtype">void</span> <a class="code hl_function" href="boss_8h.html#a93190e75fd9a5b2e0ac843374f30c5fe">mettre_a_jour_animation_boss</a>(<a class="code hl_struct" href="structboss__t.html">boss_t</a> *boss);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keywordtype">void</span> <a class="code hl_function" href="boss_8h.html#a63f7d824e2fc6afa5b0fdfb437a76c05">detruire_boss</a>(<a class="code hl_struct" href="structboss__t.html">boss_t</a> *boss);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keywordtype">void</span> <a class="code hl_function" href="boss_8h.html#a51cd354a45226c77472ca20b4caf045f">boss_set_navigation_map</a>(<a class="code hl_struct" href="structt__tile.html">t_tile</a> map[<a class="code hl_define" href="main_8h.html#a3799224504478f1beebf6b4207c3d8a9">W_MAP</a>][<a class="code hl_define" href="main_8h.html#aa6456846603a55a96519da275aa6bf34">H_MAP</a>]);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keywordtype">void</span> <a class="code hl_function" href="boss_8h.html#a6ebb70c1cce9efe2e97dfee86382e964">reset_boss_for_retry</a>(<a class="code hl_struct" href="structboss__t.html">boss_t</a> *boss_ref);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="ttc" id="aboss_8h_html_a51cd354a45226c77472ca20b4caf045f"><div class="ttname"><a href="boss_8h.html#a51cd354a45226c77472ca20b4caf045f">boss_set_navigation_map</a></div><div class="ttdeci">void boss_set_navigation_map(t_tile map[W_MAP][H_MAP])</div><div class="ttdoc">Definit la carte de navigation exploitee par l&#39;IA des boss.</div><div class="ttdef"><b>Definition</b> <a href="boss_8c_source.html#l00123">boss.c:123</a></div></div>
+<div class="ttc" id="aboss_8h_html_a63f7d824e2fc6afa5b0fdfb437a76c05"><div class="ttname"><a href="boss_8h.html#a63f7d824e2fc6afa5b0fdfb437a76c05">detruire_boss</a></div><div class="ttdeci">void detruire_boss(boss_t *boss)</div><div class="ttdoc">Libere boss et nettoie les ressources associees.</div><div class="ttdef"><b>Definition</b> <a href="boss_8c_source.html#l01238">boss.c:1238</a></div></div>
+<div class="ttc" id="aboss_8h_html_a6ebb70c1cce9efe2e97dfee86382e964"><div class="ttname"><a href="boss_8h.html#a6ebb70c1cce9efe2e97dfee86382e964">reset_boss_for_retry</a></div><div class="ttdeci">void reset_boss_for_retry(boss_t *boss_ref)</div><div class="ttdoc">Reinitialise boss for retry pour repartir d&#39;un etat propre.</div><div class="ttdef"><b>Definition</b> <a href="boss_8c_source.html#l01194">boss.c:1194</a></div></div>
+<div class="ttc" id="aboss_8h_html_a6eec57eb8ce16b0359a037e265063291"><div class="ttname"><a href="boss_8h.html#a6eec57eb8ce16b0359a037e265063291">init_boss</a></div><div class="ttdeci">void init_boss(SDL_Renderer *renderer, boss_t *boss, type_boss_t type, float x, float y)</div><div class="ttdoc">Initialise boss et prepare les ressources necessaires.</div><div class="ttdef"><b>Definition</b> <a href="boss_8c_source.html#l00950">boss.c:950</a></div></div>
+<div class="ttc" id="aboss_8h_html_a878b795c6664c5295471a2b8da1c96b4"><div class="ttname"><a href="boss_8h.html#a878b795c6664c5295471a2b8da1c96b4">mettre_a_jour_boss</a></div><div class="ttdeci">void mettre_a_jour_boss(SDL_Renderer *renderer, boss_t *boss)</div><div class="ttdoc">Met a jour boss en fonction de l&#39;etat courant du jeu.</div><div class="ttdef"><b>Definition</b> <a href="boss_8c_source.html#l01101">boss.c:1101</a></div></div>
+<div class="ttc" id="aboss_8h_html_a93190e75fd9a5b2e0ac843374f30c5fe"><div class="ttname"><a href="boss_8h.html#a93190e75fd9a5b2e0ac843374f30c5fe">mettre_a_jour_animation_boss</a></div><div class="ttdeci">void mettre_a_jour_animation_boss(boss_t *boss)</div><div class="ttdoc">Met a jour animation boss en fonction de l&#39;etat courant du jeu.</div><div class="ttdef"><b>Definition</b> <a href="boss_8c_source.html#l01054">boss.c:1054</a></div></div>
+<div class="ttc" id="aboss_8h_html_aef7f13109d134d4e699ba31b88d6f1a1"><div class="ttname"><a href="boss_8h.html#aef7f13109d134d4e699ba31b88d6f1a1">boss_attaque</a></div><div class="ttdeci">void boss_attaque(SDL_Renderer *renderer, boss_t *boss)</div><div class="ttdoc">Execute la logique d&#39;attaque du boss en tenant compte des cooldowns et de la phase active.</div><div class="ttdef"><b>Definition</b> <a href="boss_8c_source.html#l01223">boss.c:1223</a></div></div>
+<div class="ttc" id="aboss_8h_html_af4e6ce4ad87f3d1f47bcfec24f0348dd"><div class="ttname"><a href="boss_8h.html#af4e6ce4ad87f3d1f47bcfec24f0348dd">afficher_boss</a></div><div class="ttdeci">void afficher_boss(SDL_Renderer *renderer, boss_t *boss)</div><div class="ttdoc">Affiche boss et met a jour les elements visuels associes.</div><div class="ttdef"><b>Definition</b> <a href="boss_8c_source.html#l00997">boss.c:997</a></div></div>
+<div class="ttc" id="amain_8h_html_a3799224504478f1beebf6b4207c3d8a9"><div class="ttname"><a href="main_8h.html#a3799224504478f1beebf6b4207c3d8a9">W_MAP</a></div><div class="ttdeci">#define W_MAP</div><div class="ttdef"><b>Definition</b> <a href="main_8h_source.html#l00018">main.h:18</a></div></div>
+<div class="ttc" id="amain_8h_html_aa6456846603a55a96519da275aa6bf34"><div class="ttname"><a href="main_8h.html#aa6456846603a55a96519da275aa6bf34">H_MAP</a></div><div class="ttdeci">#define H_MAP</div><div class="ttdef"><b>Definition</b> <a href="main_8h_source.html#l00019">main.h:19</a></div></div>
+<div class="ttc" id="amain_8h_html_abc2faef89d875ddc4eb4e42c328b14f5"><div class="ttname"><a href="main_8h.html#abc2faef89d875ddc4eb4e42c328b14f5">type_boss_t</a></div><div class="ttdeci">type_boss_t</div><div class="ttdoc">Identifiants des variantes de boss disponibles dans le jeu.</div><div class="ttdef"><b>Definition</b> <a href="main_8h_source.html#l00140">main.h:140</a></div></div>
+<div class="ttc" id="astructboss__t_html"><div class="ttname"><a href="structboss__t.html">boss_t</a></div><div class="ttdoc">Etat dynamique d&#39;un boss en combat (position, phases, animations, cooldowns et IA).</div><div class="ttdef"><b>Definition</b> <a href="main_8h_source.html#l00170">main.h:170</a></div></div>
+<div class="ttc" id="astructt__tile_html"><div class="ttname"><a href="structt__tile.html">t_tile</a></div><div class="ttdoc">Representation d&#39;une tuile logique de carte (type + dimensions de rendu).</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dir_d0381950fc41278198232cb047ffc1f9.html">headers</a></li><li class="navelem"><a href="boss_8h.html">boss.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<map id="son_ambiance_est_active" name="son_ambiance_est_active">
+<area shape="rect" id="Node000001" title="Indique si la categorie ambiance/musique est active." alt="" coords="551,81,723,108"/>
+<area shape="rect" id="Node000002" href="$option_8c.html#ac77b6b0f042469d82d75b270f5193806" title="Affiche option et met a jour les elements visuels associes." alt="" coords="397,56,503,83"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="533,81,503,79,503,74,538,81"/>
+<area shape="rect" id="Node000005" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,56,55,83"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="532,96,397,97,250,89,102,77,55,74,55,68,103,72,250,84,397,92,537,96"/>
+<area shape="rect" id="Node000003" href="$pause_8c.html#abc45a9e3a6a57d6f0f44706bd52e556d" title="Affiche pause et met a jour les elements visuels associes." alt="" coords="244,5,349,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="390,51,339,35,340,30,395,51"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="382,72,55,72,55,67,382,67"/>
+<area shape="rect" id="Node000004" href="$jeux_8c.html#a2d7491d04e8c2bdb52bb6ed7d75e4d78" title="Execute la boucle principale de gameplay pour la planete courante." alt="" coords="103,5,196,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="226,19,197,21,196,16,231,18"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="101,41,56,61,54,57,104,36"/>
+</map>

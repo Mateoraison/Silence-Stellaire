@@ -1,0 +1,7 @@
+<map id="p3_open_room" name="p3_open_room">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,112,32"/>
+<area shape="rect" id="Node000002" href="$planete_8c.html#a8c37dd522d6e0ffa090fdab9bd983d00" title=" " alt="" coords="160,5,244,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,16,147,18,141,19,112,21"/>
+<area shape="rect" id="Node000003" href="$planete_8c.html#a2b20ed1c4c5ba18a8bec6bf243e42393" title=" " alt="" coords="292,5,407,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="244,16,279,19,274,19,244,21"/>
+</map>

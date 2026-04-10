@@ -1,3 +1,8 @@
+/**
+ * @file boss.c
+ * @brief Gestion du boss, de ses phases et de ses attaques.
+ */
+
 #include "headers/main.h"
 #include <SDL3_ttf/SDL_ttf.h>
 
@@ -40,6 +45,7 @@
 
 typedef void (*fonction_attaque_boss_t)(SDL_Renderer *renderer, boss_t *boss_ref);
 
+/** @brief Projectile gere par le systeme d'attaque du boss. */
 typedef struct {
     int actif;
     int renvoye;

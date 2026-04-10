@@ -1,3 +1,8 @@
+/**
+ * @file sauvegarde.c
+ * @brief Gestion des sauvegardes, des chargements et des emplacements.
+ */
+
 #include "headers/main.h"
 #include "headers/sauvegarde.h"
 
@@ -16,6 +21,7 @@
 extern int engrenages_poses;
 extern bool vaisseau_repare;
 
+/** @brief Format binaire de donnees persistees pour un slot de sauvegarde. */
 typedef struct {
 	int magic;
 	int version;

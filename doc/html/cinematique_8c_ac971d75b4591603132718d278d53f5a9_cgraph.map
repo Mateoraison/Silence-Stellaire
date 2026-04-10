@@ -1,0 +1,9 @@
+<map id="jouer_credits" name="jouer_credits">
+<area shape="rect" id="Node000001" title="Lance credits et gere son deroulement complet." alt="" coords="5,31,101,57"/>
+<area shape="rect" id="Node000002" href="$main_8h.html#a6c672075bc554c92548a916c9501bdb5" title=" " alt="" coords="149,5,266,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,34,136,30,131,32,102,39"/>
+<area shape="rect" id="Node000004" href="$main_8h.html#a9b4aefc63ea00e60ec88da19e24e8236" title=" " alt="" coords="154,56,260,83"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="101,49,142,58,136,59,101,54"/>
+<area shape="rect" id="Node000003" href="$main_8h.html#aaaa1e9fcb86ff8e60b297faa7815ad1d" title=" " alt="" coords="314,5,416,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="266,16,301,18,296,19,267,21"/>
+</map>

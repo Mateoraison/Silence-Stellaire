@@ -1,3 +1,8 @@
+/**
+ * @file item.c
+ * @brief Creation, affichage et ramassage des objets du monde.
+ */
+
 #include "headers/main.h"
 
 

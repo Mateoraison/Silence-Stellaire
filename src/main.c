@@ -1,3 +1,8 @@
+/**
+ * @file main.c
+ * @brief Point d'entree du jeu et orchestration globale des ecrans.
+ */
+
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
 #include <SDL3_image/SDL_image.h>
@@ -114,7 +119,7 @@ int main(int argc, char *argv[]) {
                     case 1:  Planete_actuelle = 3; reprendre_partie = false; etat = ETAT_JEU;     break; // Nouvelle partie
                     case 2:  etat = ETAT_OPTIONS;  break; // Options
                     case 3:  reprendre_partie = true; etat = ETAT_JEU; break; // Continuer
-                    default: etat = ETAT_QUITTER;  break; // Quitter / Échap
+                    default: etat = ETAT_QUITTER;  break; // Quitter l'application ou appuyer sur Echap
                 }
                 break;
             }

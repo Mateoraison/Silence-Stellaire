@@ -1,0 +1,31 @@
+<map id="arcade_draw_info_panel" name="arcade_draw_info_panel">
+<area shape="rect" id="Node000001" title=" " alt="" coords="913,107,1075,133"/>
+<area shape="rect" id="Node000002" href="$arcade_8c.html#ac90ef500e15768a0d93b6e4d0c324a5c" title="Lance arcade1 et gere son deroulement complet." alt="" coords="763,107,865,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="895,120,866,123,866,117,901,120"/>
+<area shape="rect" id="Node000008" href="$arcade_8c.html#a97cf0885563c96f017c3408ca0cb0670" title="Lance arcade2 et gere son deroulement complet." alt="" coords="763,5,865,32"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="955,98,864,46,843,35,844,30,867,42,960,98"/>
+<area shape="rect" id="Node000009" href="$arcade_8c.html#a4d835eb6e2ce82e2c147bbc29a36a3ce" title="Lance arcade3 et gere son deroulement complet." alt="" coords="763,56,865,83"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="927,102,864,86,864,81,932,102"/>
+<area shape="rect" id="Node000010" href="$arcade_8c.html#a9be93ac88e97809a94f0ae9b48152aa9" title="Lance le mini&#45;jeu Mastermind utilise dans la progression." alt="" coords="770,208,859,235"/>
+<area shape="poly" id="edge13_Node000001_Node000010" title=" " alt="" coords="960,141,867,198,844,210,843,205,864,194,955,143"/>
+<area shape="rect" id="Node000012" href="$arcade_8c.html#a60b12154cf6385b2392e62c0fb9c4e8a" title="Lance le mini&#45;jeu Simon utilise dans la progression." alt="" coords="786,157,842,184"/>
+<area shape="poly" id="edge16_Node000001_Node000012" title=" " alt="" coords="932,138,843,165,842,160,927,139"/>
+<area shape="rect" id="Node000003" href="$vaisseau_8c.html#ace614afc8df3a40bd5ea0771044ff217" title=" " alt="" coords="563,56,715,83"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="748,102,687,86,688,81,753,102"/>
+<area shape="rect" id="Node000004" href="$vaisseau_8c.html#a8ea9afc9440149ddd36e96b97d8ed6c5" title="Lance la scene interieure du vaisseau (deplacement, interactions, mini&#45;jeux, sortie)." alt="" coords="441,56,515,83"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="544,70,516,72,515,67,549,69"/>
+<area shape="rect" id="Node000005" href="$cinematique_8c.html#a418cc3e727578f4cd509ad27cd6a2a31" title="Lance cinematique fin et gere son deroulement complet." alt="" coords="246,56,393,83"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="423,70,394,72,393,67,428,69"/>
+<area shape="rect" id="Node000007" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,81,55,108"/>
+<area shape="poly" id="edge8_Node000004_Node000007" title=" " alt="" coords="423,52,393,47,311,38,247,40,184,51,103,72,56,87,53,83,102,67,182,46,247,34,312,33,394,41,429,51"/>
+<area shape="rect" id="Node000006" href="$map_8c.html#ad462ccdd50801fb085dc8134fc3765d1" title="Affiche la carte et met a jour les elements visuels associes." alt="" coords="103,81,198,108"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="228,84,200,90,198,85,233,82"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="213,96,352,99,433,98,514,92,585,83,580,84,515,97,433,103,352,105,214,101"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="85,96,56,97,54,92,89,93"/>
+<area shape="poly" id="edge10_Node000008_Node000003" title=" " alt="" coords="753,36,688,58,687,53,748,38"/>
+<area shape="poly" id="edge12_Node000009_Node000003" title=" " alt="" coords="744,70,716,72,715,67,750,69"/>
+<area shape="rect" id="Node000011" href="$jeux_8c.html#a2d7491d04e8c2bdb52bb6ed7d75e4d78" title="Execute la boucle principale de gameplay pour la planete courante." alt="" coords="592,157,686,184"/>
+<area shape="poly" id="edge14_Node000010_Node000011" title=" " alt="" coords="752,204,686,187,687,182,758,205"/>
+<area shape="poly" id="edge15_Node000011_Node000007" title=" " alt="" coords="574,170,484,169,365,161,234,146,102,123,56,107,55,102,103,117,234,141,366,155,484,164,579,170"/>
+<area shape="poly" id="edge17_Node000012_Node000011" title=" " alt="" coords="768,171,686,173,686,168,773,171"/>
+</map>

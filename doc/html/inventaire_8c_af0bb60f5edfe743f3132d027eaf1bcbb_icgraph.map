@@ -1,0 +1,31 @@
+<map id="ajouter_item_hotbar" name="ajouter_item_hotbar">
+<area shape="rect" id="Node000001" title="Ajoute un item dans la hotbar (slot libre ou pile compatible)." alt="" coords="1198,129,1333,155"/>
+<area shape="rect" id="Node000002" href="$shop_8c.html#a39103a3471c9d17e017aa8f676c074b8" title=" " alt="" coords="1025,53,1130,79"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1213,122,1112,82,1113,77,1219,122"/>
+<area shape="rect" id="Node000009" href="$jeux_8c.html#a60b2c871a560c8fc440273adde564aed" title=" " alt="" coords="1005,154,1150,181"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="1185,153,1150,160,1150,155,1180,153"/>
+<area shape="rect" id="Node000012" href="$perso_8c.html#ab64bb2370b34b1c0bd7a21a4cce2462b" title="Evalue ramasser item puis applique l&#39;action autorisee si les conditions sont reunies." alt="" coords="779,103,941,130"/>
+<area shape="poly" id="edge14_Node000001_Node000012" title=" " alt="" coords="1179,137,942,124,942,119,1185,137"/>
+<area shape="rect" id="Node000013" href="$item_8c.html#a161aa23dc24b7a6f3c5ff3c0d690e442" title="Tente de transferer un item du sol vers la hotbar du joueur." alt="" coords="1024,205,1131,231"/>
+<area shape="poly" id="edge16_Node000001_Node000013" title=" " alt="" coords="1223,162,1151,195,1120,206,1119,201,1149,190,1218,163"/>
+<area shape="rect" id="Node000003" href="$shop_8c.html#ad1ea096e4fe280946f862273fc94eb30" title="Affiche shop et met a jour les elements visuels associes." alt="" coords="811,53,909,79"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1006,66,910,69,909,63,1012,66"/>
+<area shape="rect" id="Node000004" href="$vaisseau_8c.html#ace614afc8df3a40bd5ea0771044ff217" title=" " alt="" coords="563,53,715,79"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="793,66,716,68,715,63,798,66"/>
+<area shape="rect" id="Node000005" href="$vaisseau_8c.html#a8ea9afc9440149ddd36e96b97d8ed6c5" title="Lance la scene interieure du vaisseau (deplacement, interactions, mini&#45;jeux, sortie)." alt="" coords="441,27,515,54"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="545,52,515,49,515,44,550,51"/>
+<area shape="rect" id="Node000006" href="$cinematique_8c.html#a418cc3e727578f4cd509ad27cd6a2a31" title="Lance cinematique fin et gere son deroulement complet." alt="" coords="246,27,393,54"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="423,41,394,43,393,38,428,40"/>
+<area shape="rect" id="Node000008" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,53,55,79"/>
+<area shape="poly" id="edge9_Node000005_Node000008" title=" " alt="" coords="423,23,393,18,311,9,247,11,184,23,103,43,56,59,53,54,102,38,182,17,247,6,312,4,394,13,429,22"/>
+<area shape="rect" id="Node000007" href="$map_8c.html#ad462ccdd50801fb085dc8134fc3765d1" title="Affiche la carte et met a jour les elements visuels associes." alt="" coords="103,53,198,79"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="228,55,200,61,198,56,233,53"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="214,63,563,63,561,68,214,68"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="85,68,56,68,54,63,89,64"/>
+<area shape="rect" id="Node000010" href="$jeux_8c.html#adf6e0b25032f317217a43d1d4a47e08a" title=" " alt="" coords="763,154,957,181"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="987,167,958,170,958,165,992,167"/>
+<area shape="rect" id="Node000011" href="$jeux_8c.html#a2d7491d04e8c2bdb52bb6ed7d75e4d78" title="Execute la boucle principale de gameplay pour la planete courante." alt="" coords="592,129,686,155"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="745,154,686,150,686,144,750,154"/>
+<area shape="poly" id="edge13_Node000011_Node000008" title=" " alt="" coords="574,141,484,140,365,132,234,117,102,94,56,79,55,73,103,89,234,112,366,126,484,135,579,141"/>
+<area shape="poly" id="edge15_Node000012_Node000011" title=" " alt="" coords="761,128,686,139,686,134,766,127"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="init_caisse_outils" name="init_caisse_outils">
+<area shape="rect" id="Node000001" title="Initialise la caisse a outils et prepare les ressources necessaires." alt="" coords="5,31,127,57"/>
+<area shape="rect" id="Node000002" href="$inventaire_8c.html#aaa9a799e47ee7f10a1d1ef1bc3ad559b" title="Ajoute un item dans l&#39;inventaire principal (slot libre ou pile compatible)." alt="" coords="175,5,330,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,33,162,31,157,32,128,38"/>
+<area shape="rect" id="Node000003" href="$item_8c.html#ac066d9bc77b421f23ca66756b7ff4a33" title="Initialise item et prepare les ressources necessaires." alt="" coords="217,56,288,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="127,50,204,62,199,63,127,55"/>
+</map>

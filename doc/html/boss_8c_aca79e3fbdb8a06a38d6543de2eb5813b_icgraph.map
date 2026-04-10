@@ -1,0 +1,17 @@
+<map id="get_boss_hitbox_ecran" name="get_boss_hitbox_ecran">
+<area shape="rect" id="Node000001" title=" " alt="" coords="645,64,800,91"/>
+<area shape="rect" id="Node000002" href="$boss_8c.html#af427d4c0d85f6029c589ec2c599df015" title=" " alt="" coords="427,5,597,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="655,59,562,35,563,30,660,59"/>
+<area shape="rect" id="Node000006" href="$boss_8c.html#a56b46a265edb06c19ab33048f07c26e9" title=" " alt="" coords="431,56,593,99"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="627,78,593,80,593,75,632,77"/>
+<area shape="rect" id="Node000007" href="$boss_8c.html#a0bba4ecad554b4cae0f277f1c11459d5" title=" " alt="" coords="449,123,575,149"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="660,95,563,125,562,119,655,96"/>
+<area shape="rect" id="Node000003" href="$boss_8c.html#abbb99b844a32a59c50228b7d6dcb888b" title="Met a jour boss en fonction de l&#39;etat courant du jeu." alt="" coords="244,64,379,91"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="452,36,361,66,359,61,447,38"/>
+<area shape="rect" id="Node000004" href="$jeux_8c.html#a2d7491d04e8c2bdb52bb6ed7d75e4d78" title="Execute la boucle principale de gameplay pour la planete courante." alt="" coords="103,64,196,91"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="226,78,197,80,196,75,231,77"/>
+<area shape="rect" id="Node000005" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,64,55,91"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="85,79,56,80,54,75,89,76"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="413,78,380,80,380,75,418,77"/>
+<area shape="poly" id="edge8_Node000007_Node000003" title=" " alt="" coords="447,118,359,94,360,89,452,118"/>
+</map>

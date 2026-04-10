@@ -1,0 +1,634 @@
+
+/* Silence Stellaire Doxygen theme */
+
+
+body {
+    background:
+        radial-gradient(circle at top, rgba(70, 130, 180, 0.25), transparent 34%),
+        radial-gradient(circle at 80% 10%, rgba(120, 220, 255, 0.14), transparent 22%),
+        linear-gradient(180deg, #07111f 0%, #09172a 42%, #04070d 100%);
+    color: #eef5ff;
+    font-family: "Segoe UI", "Trebuchet MS", Arial, sans-serif;
+    margin: 0;
+}
+
+
+body,
+body table,
+body td,
+body th,
+body p,
+body li,
+body dt,
+body dd,
+body span,
+body div {
+    color: #eaf3ff;
+}
+
+
+#top,
+#titlearea,
+#nav-path,
+#side-nav,
+#container,
+#doc-content,
+.contents,
+.memitem,
+.fragment,
+.header,
+.directory,
+.memproto,
+.memdoc {
+    background-color: transparent;
+}
+
+
+#top,
+#titlearea,
+#titlearea table,
+#titlearea tbody,
+#titlearea tr,
+#projectrow,
+#projectrow td {
+    width: 100%;
+}
+
+
+#titlearea {
+    margin: 0;
+    border-radius: 0;
+    text-align: center;
+}
+
+
+#titlearea {
+    background: linear-gradient(90deg, rgba(7, 16, 30, 0.96), rgba(11, 32, 54, 0.92));
+    border-bottom: 1px solid rgba(118, 205, 255, 0.18);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+
+#titlearea table {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+
+#projectlogo img {
+    max-width: 220px;
+    max-height: 220px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+
+#projectlogo {
+    padding: 0.75rem 1rem;
+    width: 1%;
+    white-space: nowrap;
+}
+
+
+#projectname {
+    color: #ffffff;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+
+#projectbrief {
+    color: #9ac7e8;
+}
+
+
+#projectnumber {
+    color: #9adbf7;
+}
+
+
+#projectalign {
+    padding: 0.9rem 1rem 0.85rem 0.25rem;
+    text-align: center;
+}
+
+
+#projectrow {
+    text-align: center;
+}
+
+
+#nav-tree,
+#side-nav {
+    background: rgba(5, 11, 22, 0.92);
+    border-right: 1px solid rgba(118, 205, 255, 0.12);
+}
+
+
+#nav-tree-contents,
+#nav-tree-contents li,
+#nav-tree-contents span,
+#nav-tree-contents a,
+#side-nav .title,
+#side-nav .label {
+    color: #dceeff;
+}
+
+
+#nav-tree-contents a,
+a.el,
+a {
+    color: #7fd6ff;
+}
+
+
+a:hover,
+a.el:hover {
+    color: #c7f0ff;
+}
+
+
+.tabs,
+.tabs2,
+.tabs3,
+.tablist,
+.tablist li,
+.tablist li.current,
+.tablist li a {
+    background: transparent;
+}
+
+
+.tablist li a {
+    border-radius: 999px;
+    border: 1px solid rgba(127, 214, 255, 0.18);
+    background: rgba(255, 255, 255, 0.04);
+    color: #e7f2ff;
+    padding: 0.55rem 0.9rem;
+    transition: background 0.22s cubic-bezier(0.2, 0.7, 0.2, 1),
+                color 0.22s cubic-bezier(0.2, 0.7, 0.2, 1),
+                border-color 0.22s cubic-bezier(0.2, 0.7, 0.2, 1),
+                box-shadow 0.22s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+
+.tablist li a:hover,
+.tablist li.current a {
+    background: linear-gradient(135deg, #65dbff 0%, #7d8bff 100%);
+    color: #04111e;
+    border-color: rgba(180, 235, 255, 0.6);
+    box-shadow: 0 6px 18px rgba(45, 114, 173, 0.35);
+}
+
+
+.contents,
+.memitem,
+.fragment,
+.memproto,
+.memdoc,
+.header,
+.directory,
+div.contents table,
+table.memberdecls,
+table.params,
+table.directory,
+table.fieldtable {
+    border-radius: 16px;
+}
+
+
+table,
+th,
+td {
+    background-color: rgba(6, 13, 24, 0.9);
+    color: #eaf3ff;
+}
+
+
+th {
+    color: #f7fbff;
+}
+
+
+td.memItemLeft,
+td.memItemRight,
+td.memTemplItemLeft,
+td.memTemplItemRight,
+td.memname,
+td.paramtype,
+td.paramname,
+td.paramkey {
+    color: #eaf3ff;
+}
+
+
+.contents,
+.memitem,
+.fragment,
+.memproto,
+.memdoc,
+.header {
+    border: 1px solid rgba(127, 214, 255, 0.12);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+
+.contents {
+    backdrop-filter: blur(8px);
+    padding: 1rem 1.1rem;
+}
+
+
+.header {
+    margin-bottom: 0.9rem;
+    padding: 0.85rem 1rem;
+    background: linear-gradient(135deg, rgba(8, 19, 36, 0.95), rgba(15, 36, 60, 0.88));
+}
+
+
+.memitem {
+    margin-bottom: 1rem;
+    overflow: hidden;
+    background: rgba(8, 18, 33, 0.78);
+}
+
+
+.memproto {
+    background: rgba(14, 28, 48, 0.92);
+    border-bottom: 1px solid rgba(127, 214, 255, 0.12);
+}
+
+
+.memdoc,
+.fragment {
+    background: rgba(6, 13, 24, 0.86);
+}
+
+
+.memdoc p,
+.memdoc li,
+.memdoc dd,
+.memdoc dt,
+.memdoc .textblock,
+.memdoc .definition,
+.memdoc .reference,
+.memdoc .paramname {
+    color: #eaf3ff;
+}
+
+
+.memdoc .paramname {
+    font-weight: 600;
+}
+
+
+.memtitle,
+.groupheader,
+.title {
+    color: #f8fbff;
+}
+
+
+h1.groupheader,
+h2.groupheader,
+h3.groupheader,
+td h2.groupheader {
+    box-shadow: none;
+    width: auto;
+    margin: 1.2rem 0 0.6rem 0;
+    padding: 0.55rem 0.85rem;
+    border: 1px solid rgba(127, 214, 255, 0.2);
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(20, 41, 66, 0.92), rgba(14, 31, 54, 0.9));
+}
+
+
+.contents h1.groupheader,
+.contents h2.groupheader,
+.contents h3.groupheader,
+.contents td h2.groupheader {
+    box-shadow: none;
+    background: linear-gradient(135deg, rgba(22, 44, 70, 0.94), rgba(14, 31, 54, 0.9));
+    border: 1px solid rgba(127, 214, 255, 0.22);
+    border-radius: 12px;
+    margin: 1.1rem 0 0.55rem 0;
+    padding: 0.58rem 0.9rem;
+}
+
+
+table.fieldtable,
+table.fieldtable tbody,
+table.fieldtable tr,
+table.fieldtable td,
+table.fieldtable th {
+    background: transparent;
+}
+
+
+table.fieldtable {
+    border: 1px solid rgba(127, 214, 255, 0.16);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
+}
+
+
+table.fieldtable tr {
+    transition: background-color 0.24s ease, border-color 0.24s ease;
+}
+
+
+table.fieldtable tr + tr td {
+    border-top: 1px solid rgba(127, 214, 255, 0.08);
+}
+
+
+table.fieldtable td.fieldname {
+    background: rgba(19, 38, 60, 0.94);
+    color: #e7f3ff;
+    border-right: 1px solid rgba(127, 214, 255, 0.15);
+    white-space: nowrap;
+}
+
+
+table.fieldtable td.fielddoc {
+    background: rgba(8, 17, 30, 0.92);
+}
+
+
+.memitem {
+    display: block;
+    margin-right: 0;
+    border-radius: 12px;
+    transition: border-color 0.26s ease, box-shadow 0.26s ease, background-color 0.26s ease;
+}
+
+
+.memitem + .memitem {
+    margin-top: 0.72rem;
+}
+
+
+.memitem:hover {
+    border-color: rgba(127, 214, 255, 0.28);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.22);
+}
+
+
+.memtitle {
+    float: none;
+    display: block;
+    margin: 0;
+    padding: 0.65rem 0.9rem;
+    border: 1px solid rgba(127, 214, 255, 0.18);
+    border-bottom: none;
+    border-radius: 12px 12px 0 0;
+    box-shadow: none;
+    background: rgba(18, 37, 60, 0.95);
+}
+
+
+.memtitle:after {
+    content: none;
+    display: none;
+}
+
+
+.memproto {
+    border: 1px solid rgba(127, 214, 255, 0.16);
+    border-bottom: none;
+    border-radius: 12px 12px 0 0;
+    background: linear-gradient(135deg, rgba(22, 43, 69, 0.95), rgba(14, 31, 54, 0.92));
+    transition: background-color 0.24s ease, border-color 0.24s ease;
+}
+
+
+.memproto table,
+.memproto tbody,
+.memproto tr,
+.memproto td,
+.memname,
+.memname td,
+.memname a,
+.memname .el,
+.permalink {
+    background: transparent;
+    box-shadow: none;
+    border: 0;
+    border-radius: 0;
+}
+
+
+.memproto td {
+    padding-top: 0.35rem;
+    padding-bottom: 0.35rem;
+}
+
+
+.memname {
+    margin-left: 0;
+    font-size: 0.98rem;
+    line-height: 1.45;
+    color: #ecf6ff;
+}
+
+
+.memname .el,
+.memname a,
+.permalink {
+    color: #9edfff;
+    text-decoration: none;
+}
+
+
+.memname a:hover,
+.memname .el:hover,
+.permalink:hover {
+    color: #d7f2ff;
+}
+
+
+.memdoc {
+    border: 1px solid rgba(127, 214, 255, 0.16);
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    transition: background-color 0.24s ease, border-color 0.24s ease;
+}
+
+
+table.memberdecls tr.heading,
+table.params tr.heading,
+table.directory tr.heading,
+table.fieldtable tr.heading {
+    background: rgba(20, 41, 66, 0.9);
+    color: #f1f7ff;
+}
+
+
+table.memberdecls tr.heading td,
+table.params tr.heading td,
+table.directory tr.heading td,
+table.fieldtable tr.heading td {
+    color: #f1f7ff;
+    background: transparent;
+}
+
+
+tr.memitem:hover,
+table.memberdecls tr:hover,
+table.directory tr:hover {
+    background: rgba(127, 214, 255, 0.06);
+}
+
+
+code,
+pre,
+.fragment .line,
+.ttc .ttdeci {
+    font-family: Consolas, "Cascadia Mono", "Courier New", monospace;
+}
+
+
+.fragment {
+    color: #deebff;
+}
+
+
+.fragment .line,
+.fragment .lineno,
+.fragment .code,
+.fragment .preprocessor {
+    color: #eaf3ff;
+}
+
+
+.fragment .keyword,
+.fragment .keywordtype,
+.fragment .keywordflow {
+    color: #72d6ff;
+}
+
+
+.fragment .stringliteral {
+    color: #ffd479;
+}
+
+
+.fragment .comment,
+.fragment .comment.* {
+    color: #7ca5be;
+}
+
+
+.fragment .keyword,
+.fragment .keywordtype,
+.fragment .keywordflow,
+.fragment .stringliteral,
+.fragment .preprocessor {
+    font-weight: 600;
+}
+
+
+.footer {
+    color: #8fb5d6;
+}
+
+
+#searchBox {
+    border-radius: 999px;
+    border: 1px solid rgba(127, 214, 255, 0.22);
+    background: rgba(255, 255, 255, 0.08);
+    color: #eef5ff;
+}
+
+
+#searchBox::placeholder {
+    color: rgba(234, 243, 255, 0.65);
+}
+
+
+#MSearchResultsWindow,
+#MSearchSelectWindow {
+    border-radius: 14px;
+    border: 1px solid rgba(127, 214, 255, 0.16);
+    background: rgba(6, 13, 24, 0.98);
+}
+
+
+img,
+svg {
+    border-radius: 10px;
+}
+
+
+.navpath,
+.navpath a,
+.navpath li,
+.footer,
+.footer a {
+    color: #b9d8f0;
+}
+
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+
+::-webkit-scrollbar-track {
+    background: #06101d;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #68d8ff, #7688ff);
+    border-radius: 999px;
+}
+
+.memitem td,
+.memitem th,
+.memdoc table td,
+.fieldtable td,
+.paramtype,
+.paramname,
+.memname {
+    background: transparent !important;
+    border-radius: 8px !important;
+    border: none !important;
+}
+
+td.paramkey,
+td.paramtype,
+td.paramname,
+td.paramkey + td {
+    background: rgba(8, 18, 33, 0.6) !important;
+    border: 1px solid rgba(127, 214, 255, 0.15) !important;
+    border-radius: 8px !important;
+    padding: 0.4rem 0.6rem !important;
+    margin: 0.2rem !important;
+    overflow: hidden !important;
+}
+
+.memdoc table,
+.memproto table,
+.fieldtable {
+    background: transparent !important;
+}
+
+.memitem:hover td {
+    background: rgba(127, 214, 255, 0.08) !important;
+}
+
+td:empty,
+.paramtype:empty,
+.paramname:empty {
+    background: transparent !important;
+    border: none !important;
+    min-height: 1.2em;
+}
+
+table.params td {
+    border-radius: 6px !important;
+}

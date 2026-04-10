@@ -1,13 +1,14 @@
+/**
+ * @file test_collision.c
+ * @brief Tests unitaires des collisions personnage/tuiles.
+ */
+
 #include <SDL3/SDL.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 #include "main.h"
 
-/*
- * Definitions required by extern declarations in src/headers/main.h.
- * Only the values used by src/perso.c tests are initialized here.
- */
 Perso perso = {0};
 int animation_frame = 0;
 Uint32 animation_timer = 0;
@@ -34,7 +35,6 @@ bool inventaire_ouvert = false;
 bool g_planete3_engrenage_recupere = false;
 bool g_planete3_boss_spawned = false;
 
-/* Stubs for project-level dependencies referenced by src/perso.c. */
 void schedule_respawn(int type_mob, Uint32 delai_ms) {
 	(void)type_mob;
 	(void)delai_ms;

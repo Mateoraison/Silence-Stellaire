@@ -1,0 +1,5 @@
+<map id="ramasser_item" name="ramasser_item">
+<area shape="rect" id="Node000001" title="Tente de transferer un item du sol vers la hotbar du joueur." alt="" coords="5,5,113,32"/>
+<area shape="rect" id="Node000002" href="$inventaire_8c.html#af0bb60f5edfe743f3132d027eaf1bcbb" title="Ajoute un item dans la hotbar (slot libre ou pile compatible)." alt="" coords="161,5,296,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,16,148,18,143,19,113,21"/>
+</map>

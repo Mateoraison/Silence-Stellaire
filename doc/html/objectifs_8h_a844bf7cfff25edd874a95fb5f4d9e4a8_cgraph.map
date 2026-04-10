@@ -1,0 +1,15 @@
+<map id="objectifs_init" name="objectifs_init">
+<area shape="rect" id="Node000001" title="Initialise la liste des objectifs selon la planete en cours." alt="" coords="5,132,100,159"/>
+<area shape="rect" id="Node000002" href="$objectifs_8c.html#afb5db08343ca8f41f20bf268ed4e9640" title=" " alt="" coords="178,5,292,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="61,130,95,87,119,62,146,42,165,34,162,38,149,46,122,67,99,90,65,133"/>
+<area shape="rect" id="Node000003" href="$objectifs_8c.html#a8e9a7a0e6797416005b6a89976702573" title=" " alt="" coords="174,56,296,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="75,129,147,92,168,86,163,90,149,97,78,134"/>
+<area shape="rect" id="Node000004" href="$objectifs_8c.html#a5780079dd165a4168ad15240f3207596" title=" " alt="" coords="179,107,290,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="99,136,166,128,163,132,101,141"/>
+<area shape="rect" id="Node000005" href="$objectifs_8c.html#a27d55a948e07ef12c5bcdba1696b486b" title=" " alt="" coords="148,157,322,184"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="99,149,135,155,130,158,101,154"/>
+<area shape="rect" id="Node000006" href="$objectifs_8c.html#ad54fbecd8ebe7f7156fb63ff156cfe32" title=" " alt="" coords="159,208,311,235"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="77,157,149,194,168,202,163,203,147,198,76,162"/>
+<area shape="rect" id="Node000007" href="$objectifs_8c.html#a09a479742af03c7e138174bb26eca53b" title=" " alt="" coords="172,259,298,285"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="64,156,99,200,122,224,149,244,160,252,155,252,146,249,119,228,95,204,62,162"/>
+</map>

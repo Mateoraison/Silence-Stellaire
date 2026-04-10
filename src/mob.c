@@ -1,3 +1,8 @@
+/**
+ * @file mob.c
+ * @brief Gestion des ennemis, de leur deplacement et de leur apparition.
+ */
+
 #include "headers/main.h"
 
 static SDL_Texture * texture_pawns = NULL;
@@ -13,6 +18,7 @@ static inline void get_player_world_center(float *x, float *y) {
 }
 
 #define TAILLE_FILE_RESPAWN 256
+/** @brief Entree de file pour un respawn planifie de mob. */
 typedef struct { int id; Uint32 quand; } EntreeRespawn;
 
 static EntreeRespawn file_respawn[TAILLE_FILE_RESPAWN];
@@ -83,6 +89,7 @@ void init_mobs(SDL_Renderer * renderer, Mob * mobs[MAX_MOB], t_tile map[W_MAP][H
     int tuile_joueur_y = (int)(joueur_monde_y / DISPLAY_TILE_SIZE);
 
     int capacite = W_MAP * H_MAP;
+    /** @brief Coordonnees de tuile candidate pour un spawn. */
     typedef struct { int x; int y; } PositionTuile;
     PositionTuile *candidats = malloc(sizeof(PositionTuile) * capacite);
     int nb_candidats = 0;

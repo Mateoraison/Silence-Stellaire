@@ -1,0 +1,23 @@
+<map id="borner01" name="borner01">
+<area shape="rect" id="Node000001" title=" " alt="" coords="881,56,952,83"/>
+<area shape="rect" id="Node000002" href="$cinematique_8c.html#a3f45f73f9fa4c87ee3ab7ea9443756cd" title=" " alt="" coords="658,5,833,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="863,54,793,35,793,30,869,55"/>
+<area shape="rect" id="Node000003" href="$cinematique_8c.html#a68c4780c65b14d27f0088cfc6514eb60" title="Lance cinematique crash et gere son deroulement complet." alt="" coords="444,5,610,32"/>
+<area shape="poly" id="edge5_Node000001_Node000003" title=" " alt="" coords="863,66,769,60,657,47,593,35,593,30,658,41,769,55,868,66"/>
+<area shape="rect" id="Node000006" href="$cinematique_8c.html#a418cc3e727578f4cd509ad27cd6a2a31" title="Lance cinematique fin et gere son deroulement complet." alt="" coords="672,107,819,133"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="869,84,794,109,793,103,863,85"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="640,19,611,21,610,16,645,18"/>
+<area shape="rect" id="Node000004" href="$jeux_8c.html#a2d7491d04e8c2bdb52bb6ed7d75e4d78" title="Execute la boucle principale de gameplay pour la planete courante." alt="" coords="103,5,196,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="427,21,197,21,196,16,430,17"/>
+<area shape="rect" id="Node000005" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,56,55,83"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="101,41,57,61,54,57,104,36"/>
+<area shape="rect" id="Node000007" href="$map_8c.html#ad462ccdd50801fb085dc8134fc3765d1" title="Affiche la carte et met a jour les elements visuels associes." alt="" coords="479,107,575,133"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="654,120,575,123,575,117,659,120"/>
+<area shape="poly" id="edge12_Node000007_Node000005" title=" " alt="" coords="462,106,396,97,199,79,55,73,55,67,200,74,397,92,467,106"/>
+<area shape="rect" id="Node000008" href="$vaisseau_8c.html#ace614afc8df3a40bd5ea0771044ff217" title=" " alt="" coords="244,107,396,133"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="461,120,397,123,397,117,467,120"/>
+<area shape="rect" id="Node000009" href="$vaisseau_8c.html#a8ea9afc9440149ddd36e96b97d8ed6c5" title="Lance la scene interieure du vaisseau (deplacement, interactions, mini&#45;jeux, sortie)." alt="" coords="113,107,186,133"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="226,120,187,123,186,117,231,120"/>
+<area shape="poly" id="edge11_Node000009_Node000005" title=" " alt="" coords="100,102,55,82,55,77,105,99"/>
+<area shape="poly" id="edge10_Node000009_Node000006" title=" " alt="" coords="201,134,244,143,347,154,427,156,507,152,609,143,680,134,686,134,610,148,507,157,427,162,346,159,244,148,201,139"/>
+</map>

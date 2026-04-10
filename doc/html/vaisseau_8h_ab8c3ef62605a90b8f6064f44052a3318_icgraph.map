@@ -1,0 +1,18 @@
+<map id="spawn_perso" name="spawn_perso">
+<area shape="rect" id="Node000001" title="Positionne le personnage a une tuile donnee en recentrant la camera." alt="" coords="810,43,908,69"/>
+<area shape="rect" id="Node000002" href="$vaisseau_8c.html#a0a52a68b442fd4ce981c10ec1ff84f8a" title=" " alt="" coords="666,68,762,95"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="797,67,763,76,762,70,792,68"/>
+<area shape="rect" id="Node000006" href="$vaisseau_8c.html#ace614afc8df3a40bd5ea0771044ff217" title=" " alt="" coords="5,43,158,69"/>
+<area shape="poly" id="edge9_Node000001_Node000006" title=" " alt="" coords="794,38,696,19,639,11,582,8,421,8,345,12,269,21,141,45,140,39,268,15,345,6,421,3,582,3,640,6,697,14,799,38"/>
+<area shape="rect" id="Node000003" href="$vaisseau_8c.html#a8ea9afc9440149ddd36e96b97d8ed6c5" title="Lance la scene interieure du vaisseau (deplacement, interactions, mini&#45;jeux, sortie)." alt="" coords="544,81,618,108"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="653,87,618,94,618,88,647,88"/>
+<area shape="rect" id="Node000004" href="$cinematique_8c.html#a418cc3e727578f4cd509ad27cd6a2a31" title="Lance cinematique fin et gere son deroulement complet." alt="" coords="349,93,496,120"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="526,99,497,104,496,98,532,98"/>
+<area shape="rect" id="Node000007" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="57,119,106,145"/>
+<area shape="poly" id="edge8_Node000003_Node000007" title=" " alt="" coords="545,115,497,135,441,144,383,149,271,151,174,145,106,138,107,133,174,140,271,146,383,144,440,139,496,129,540,116"/>
+<area shape="rect" id="Node000005" href="$map_8c.html#ad462ccdd50801fb085dc8134fc3765d1" title="Affiche la carte et met a jour les elements visuels associes." alt="" coords="206,93,301,120"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="331,107,302,109,301,104,336,106"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="188,89,129,73,130,67,193,87"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="188,117,107,131,106,126,193,115"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="173,56,325,64,497,79,546,88,541,88,496,84,324,70,173,62"/>
+</map>

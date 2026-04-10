@@ -1,0 +1,21 @@
+<map id="afficher_option" name="afficher_option">
+<area shape="rect" id="Node000001" title="Affiche option et met a jour les elements visuels associes." alt="" coords="5,183,111,209"/>
+<area shape="rect" id="Node000002" href="$bouton_8c.html#af33c1c08b52d3d015ff6f7039a9734ee" title="Affiche texte centre et met a jour les elements visuels associes." alt="" coords="174,5,316,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="62,181,95,115,122,76,157,42,168,37,164,41,160,46,126,79,99,117,67,183"/>
+<area shape="rect" id="Node000003" href="$bouton_8c.html#a11f55905044ef2518b8c38311df3c48d" title="Dessine la texture du bouton dans son rectangle d&#39;affichage." alt="" coords="188,56,302,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="67,181,104,137,129,113,157,92,176,85,172,89,160,97,132,117,107,141,72,183"/>
+<area shape="rect" id="Node000004" href="$bouton_8c.html#ab4862740c43f8a9abb996fff0aba5ca1" title="Met a jour l&#39;etat du bouton a partir d&#39;un evenement SDL." alt="" coords="161,107,328,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="82,180,158,143,179,137,175,140,160,148,85,184"/>
+<area shape="rect" id="Node000006" href="$bouton_8c.html#a482b1feb9004901d0544e64b1c44051c" title="Initialise un bouton (zone, texture et etat d&#39;interaction)." alt="" coords="201,157,288,184"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="110,186,188,177,184,180,112,191"/>
+<area shape="rect" id="Node000007" href="$son_8c.html#ac32eff9d3cca9f4d196044b77e8be773" title="Indique si la categorie ambiance/musique est active." alt="" coords="159,208,331,235"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="110,201,145,206,141,209,112,206"/>
+<area shape="rect" id="Node000008" href="$son_8c.html#a8a52d99b75360359dcdc073a5617eadf" title="Active ou desactive uniquement les pistes d&#39;ambiance." alt="" coords="171,259,318,301"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="85,207,160,244,174,252,169,253,158,249,85,212"/>
+<area shape="rect" id="Node000009" href="$son_8c.html#af5a69f840820938ab962a3371bd3f929" title="Active ou desactive uniquement les effets sonores (SFX)." alt="" coords="169,325,320,352"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="68,207,105,259,130,287,160,311,170,318,165,319,157,316,127,291,101,262,67,212"/>
+<area shape="rect" id="Node000010" href="$son_8c.html#ae2e2d99b70e1f3a05cb7120d267202f4" title="Indique si la categorie SFX est active." alt="" coords="183,376,307,403"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="64,207,78,240,97,282,125,325,160,362,171,371,166,370,157,366,120,328,92,284,73,242,63,212"/>
+<area shape="rect" id="Node000005" href="$bouton_8c.html#a273a0b22067678e17b3e6b4be36e3641" title=" " alt="" coords="379,107,487,133"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="328,117,366,119,361,121,330,123"/>
+</map>

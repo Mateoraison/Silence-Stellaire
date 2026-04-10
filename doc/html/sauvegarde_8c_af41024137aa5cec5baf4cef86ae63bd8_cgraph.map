@@ -1,0 +1,7 @@
+<map id="sauvegarder_partie_slot" name="sauvegarder_partie_slot">
+<area shape="rect" id="Node000001" title="Serialize l&#39;etat de partie courant dans le slot cible." alt="" coords="5,31,165,57"/>
+<area shape="rect" id="Node000002" href="$sauvegarde_8c.html#a7fa8471112a5e1439781a4d1950fbe51" title=" " alt="" coords="213,5,368,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="165,32,200,29,195,31,166,37"/>
+<area shape="rect" id="Node000003" href="$sauvegarde_8c.html#ab305de40501185a8bfc008354c2d0f15" title=" " alt="" coords="245,56,336,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="165,51,232,62,227,62,165,57"/>
+</map>

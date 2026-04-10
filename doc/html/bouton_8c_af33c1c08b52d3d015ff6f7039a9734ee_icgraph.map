@@ -1,0 +1,23 @@
+<map id="afficher_texte_centre" name="afficher_texte_centre">
+<area shape="rect" id="Node000001" title="Affiche texte centre et met a jour les elements visuels associes." alt="" coords="607,79,749,105"/>
+<area shape="rect" id="Node000002" href="$menu_8c.html#a55097e0b77b0fabc6cae44137b9a839a" title="Affiche menu et met a jour les elements visuels associes." alt="" coords="246,28,348,55"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="648,68,608,42,558,19,500,9,442,11,387,19,342,30,340,25,386,14,441,5,501,4,559,13,610,37,653,69"/>
+<area shape="rect" id="Node000004" href="$option_8c.html#ac77b6b0f042469d82d75b270f5193806" title="Affiche option et met a jour les elements visuels associes." alt="" coords="425,79,531,105"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="589,92,531,95,531,89,594,92"/>
+<area shape="rect" id="Node000005" href="$pause_8c.html#abc45a9e3a6a57d6f0f44706bd52e556d" title="Affiche pause et met a jour les elements visuels associes." alt="" coords="244,129,349,156"/>
+<area shape="poly" id="edge8_Node000001_Node000005" title=" " alt="" coords="606,109,559,120,447,134,350,142,349,137,447,129,558,115,600,110"/>
+<area shape="rect" id="Node000007" href="$game__over_8c.html#a37d3fac8300008a434af7c66a4e695d0" title="Affiche l&#39;ecran de game over et traite le choix du joueur." alt="" coords="254,180,339,207"/>
+<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="637,111,559,144,441,173,340,190,339,185,440,168,558,139,632,113"/>
+<area shape="rect" id="Node000008" href="$sauvegarde_8c.html#ae251037c85a5a7d8172c206539398f49" title="Affiche l&#39;interface de selection de slot (chargement ou sauvegarde)." alt="" coords="397,28,559,55"/>
+<area shape="poly" id="edge11_Node000001_Node000008" title=" " alt="" coords="605,74,533,58,534,53,610,74"/>
+<area shape="rect" id="Node000003" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,79,55,105"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="229,53,103,76,56,88,54,83,102,71,232,48"/>
+<area shape="poly" id="edge7_Node000004_Node000003" title=" " alt="" coords="409,95,55,95,55,89,410,89"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="415,109,348,131,346,126,410,111"/>
+<area shape="rect" id="Node000006" href="$jeux_8c.html#a2d7491d04e8c2bdb52bb6ed7d75e4d78" title="Execute la boucle principale de gameplay pour la planete courante." alt="" coords="103,129,196,156"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="226,143,197,145,196,140,231,142"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="100,124,55,105,55,100,105,121"/>
+<area shape="poly" id="edge10_Node000007_Node000006" title=" " alt="" coords="238,174,190,159,191,154,244,174"/>
+<area shape="poly" id="edge12_Node000008_Node000002" title=" " alt="" coords="379,42,349,44,348,39,384,41"/>
+<area shape="poly" id="edge13_Node000008_Node000005" title=" " alt="" coords="413,60,399,69,351,100,314,131,311,127,348,96,396,64,408,62"/>
+</map>

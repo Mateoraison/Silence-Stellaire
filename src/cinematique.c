@@ -1,3 +1,8 @@
+/**
+ * @file cinematique.c
+ * @brief Lecture des cinematics et enchainement des sequences narratives.
+ */
+
 #include "headers/main.h"
 #include "headers/cinematique.h"
 
@@ -468,6 +473,7 @@ int jouer_cinematique_fin(SDL_Renderer *renderer) {
 
     // Particules simples pour la traînée
     #define MAX_PART 80
+    /** @brief Particule de trainee du vaisseau pendant la cinematique de fin. */
     typedef struct { float x,y,vx,vy,life; int layer; } Part; // layer: 0=behind, 1=front (draw over ship)
     Part parts[MAX_PART];
     for (int i=0;i<MAX_PART;i++) parts[i].life = 0.0f;

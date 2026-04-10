@@ -1,0 +1,17 @@
+<map id="supprimer_minions_boss" name="supprimer_minions_boss">
+<area shape="rect" id="Node000001" title=" " alt="" coords="616,56,781,83"/>
+<area shape="rect" id="Node000002" href="$boss_8c.html#a236f706845850941c512c45d6e52d55b" title="Libere boss et nettoie les ressources associees." alt="" coords="448,5,547,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="625,52,547,34,547,28,630,52"/>
+<area shape="rect" id="Node000005" href="$boss_8c.html#abbb99b844a32a59c50228b7d6dcb888b" title="Met a jour boss en fonction de l&#39;etat courant du jeu." alt="" coords="244,56,379,83"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="597,70,380,72,379,67,602,69"/>
+<area shape="rect" id="Node000006" href="$boss_8c.html#a6ebb70c1cce9efe2e97dfee86382e964" title="Reinitialise boss for retry pour repartir d&#39;un etat propre." alt="" coords="427,107,568,133"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="630,87,554,109,553,103,625,87"/>
+<area shape="rect" id="Node000003" href="$jeux_8c.html#a2d7491d04e8c2bdb52bb6ed7d75e4d78" title="Execute la boucle principale de gameplay pour la planete courante." alt="" coords="103,56,196,83"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="430,23,343,33,244,47,197,58,195,53,244,41,342,27,435,22"/>
+<area shape="rect" id="Node000004" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,56,55,83"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="85,71,56,72,54,67,89,68"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="226,70,197,72,196,67,231,69"/>
+<area shape="rect" id="Node000007" href="$game__over_8c.html#a37d3fac8300008a434af7c66a4e695d0" title="Affiche l&#39;ecran de game over et traite le choix du joueur." alt="" coords="269,107,354,133"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="409,120,355,123,355,117,415,120"/>
+<area shape="poly" id="edge8_Node000007_Node000003" title=" " alt="" coords="251,102,194,86,195,81,257,102"/>
+</map>

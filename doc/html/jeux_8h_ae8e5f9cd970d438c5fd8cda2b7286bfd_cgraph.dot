@@ -1,0 +1,14 @@
+digraph "init_caisse_outils"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="init_caisse_outils",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Initialise la caisse a outils et prepare les ressources necessaires."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="ajouter_item_inventaire",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$inventaire_8c.html#aaa9a799e47ee7f10a1d1ef1bc3ad559b",tooltip="Ajoute un item dans l'inventaire principal (slot libre ou pile compatible)."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="init_item",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$item_8c.html#ac066d9bc77b421f23ca66756b7ff4a33",tooltip="Initialise item et prepare les ressources necessaires."];
+}

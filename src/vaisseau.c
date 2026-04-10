@@ -1,3 +1,8 @@
+/**
+ * @file vaisseau.c
+ * @brief Exploration du vaisseau, interactions et retour vers la planete.
+ */
+
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
 #include <stdbool.h>
@@ -21,18 +26,21 @@ static int planete_entree_vaisseau = 1;
 // --- STRUCTURES ---
 
 // Pour le spawn du personnage après le retour dans la planette 
+/** @brief Point d'apparition du joueur exprime en coordonnees de tuiles. */
 typedef struct {
     int tileX;
     int tileY;
 } SpawnPoint;
 
 // Référence pour une tuile dans le tileset
+/** @brief Reference d'une tuile dans le tileset (colonne, ligne). */
 typedef struct {
     int tileX;
     int tileY;
 } TileRef;
 
 // Position d'un objet dans le monde (en pixels)
+/** @brief Objet interactif place dans l'interieur du vaisseau. */
 typedef struct {
     int type;      // L'ID de la tuile 
     float x, y;    // Sa position en pixels dans le monde

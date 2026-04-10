@@ -1,0 +1,18 @@
+<map id="afficher_perso" name="afficher_perso">
+<area shape="rect" id="Node000001" title="Affiche perso et met a jour les elements visuels associes." alt="" coords="666,56,768,83"/>
+<area shape="rect" id="Node000002" href="$jeux_8c.html#a2d7491d04e8c2bdb52bb6ed7d75e4d78" title="Execute la boucle principale de gameplay pour la planete courante." alt="" coords="376,5,469,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="648,59,470,29,470,24,653,58"/>
+<area shape="rect" id="Node000004" href="$vaisseau_8c.html#a8ea9afc9440149ddd36e96b97d8ed6c5" title="Lance la scene interieure du vaisseau (deplacement, interactions, mini&#45;jeux, sortie)." alt="" coords="544,81,618,108"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="653,81,619,90,618,85,648,82"/>
+<area shape="rect" id="Node000003" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="57,56,106,83"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="358,29,206,53,107,68,106,63,205,48,362,26"/>
+<area shape="poly" id="edge9_Node000004_Node000003" title=" " alt="" coords="528,95,107,73,107,68,529,89"/>
+<area shape="rect" id="Node000005" href="$cinematique_8c.html#a418cc3e727578f4cd509ad27cd6a2a31" title="Lance cinematique fin et gere son deroulement complet." alt="" coords="349,107,496,133"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="532,103,497,111,496,106,526,103"/>
+<area shape="rect" id="Node000006" href="$map_8c.html#ad462ccdd50801fb085dc8134fc3765d1" title="Affiche la carte et met a jour les elements visuels associes." alt="" coords="206,107,301,133"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="331,120,302,123,301,117,336,120"/>
+<area shape="poly" id="edge8_Node000006_Node000003" title=" " alt="" coords="189,103,106,79,107,74,193,100"/>
+<area shape="rect" id="Node000007" href="$vaisseau_8c.html#ace614afc8df3a40bd5ea0771044ff217" title=" " alt="" coords="5,132,158,159"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="188,130,158,137,157,131,193,129"/>
+<area shape="poly" id="edge7_Node000007_Node000004" title=" " alt="" coords="173,156,244,163,326,165,412,159,496,143,532,127,561,109,566,108,535,131,497,148,412,164,326,170,244,168,173,162"/>
+</map>

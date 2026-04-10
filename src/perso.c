@@ -1,3 +1,8 @@
+/**
+ * @file perso.c
+ * @brief Deplacement, animation, combat et collecte du personnage.
+ */
+
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
 #include "headers/main.h"

@@ -1,0 +1,554 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Silence Stellaire: Référence du fichier src/objectifs.c</title>
+<link rel="icon" href="logo_win.png" type="image/x-icon" />
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-theme.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="logo_win.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">Silence Stellaire<span id="projectnumber">&#160;2025-2026</span>
+   </div>
+   <div id="projectbrief">Silence Stellaire, documentation technique de projet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('objectifs_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Référence du fichier objectifs.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Gestion des objectifs de progression et de leur affichage.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="main_8h_source.html">headers/main.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de objectifs.c:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="objectifs_8c__incl.svg" width="1996" height="262"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<p><a href="objectifs_8c_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:af19505951a7bb5f4c75e6d1da4f258e5" id="r_af19505951a7bb5f4c75e6d1da4f258e5"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#af19505951a7bb5f4c75e6d1da4f258e5">AJOUTER</a>(desc_,  verif_)</td></tr>
+<tr class="memitem:a2e29e057d35d72a9a71b918d7618de3a" id="r_a2e29e057d35d72a9a71b918d7618de3a"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a2e29e057d35d72a9a71b918d7618de3a">PANNEAU_Y</a>&#160;&#160;&#160;80.0f</td></tr>
+<tr class="memitem:acc5cb2fb3190ce2ba1a59fb220b3d6de" id="r_acc5cb2fb3190ce2ba1a59fb220b3d6de"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#acc5cb2fb3190ce2ba1a59fb220b3d6de">PANNEAU_W</a>&#160;&#160;&#160;230.0f</td></tr>
+<tr class="memitem:a4f4db04c9a9daa423ac06dfe6ca62891" id="r_a4f4db04c9a9daa423ac06dfe6ca62891"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a4f4db04c9a9daa423ac06dfe6ca62891">LIGNE_H</a>&#160;&#160;&#160;28.0f</td></tr>
+<tr class="memitem:a3eebd09a9a94c914de17855816e6ac45" id="r_a3eebd09a9a94c914de17855816e6ac45"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a3eebd09a9a94c914de17855816e6ac45">PADDING</a>&#160;&#160;&#160;10.0f</td></tr>
+<tr class="memitem:a00c808104388519762202587dbfab972" id="r_a00c808104388519762202587dbfab972"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a00c808104388519762202587dbfab972">ANIM_DUREE</a>&#160;&#160;&#160;800u</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a844bf7cfff25edd874a95fb5f4d9e4a8" id="r_a844bf7cfff25edd874a95fb5f4d9e4a8"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a844bf7cfff25edd874a95fb5f4d9e4a8">objectifs_init</a> (<a class="el" href="structt__objectifs.html">t_objectifs</a> *obj, int planete)</td></tr>
+<tr class="memdesc:a844bf7cfff25edd874a95fb5f4d9e4a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise la liste des objectifs selon la planete en cours.  <br /></td></tr>
+<tr class="memitem:a840df4635762089594ccc3c36dae4924" id="r_a840df4635762089594ccc3c36dae4924"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a840df4635762089594ccc3c36dae4924">objectif_valider</a> (<a class="el" href="structt__objectifs.html">t_objectifs</a> *obj, int index)</td></tr>
+<tr class="memdesc:a840df4635762089594ccc3c36dae4924"><td class="mdescLeft">&#160;</td><td class="mdescRight">Force la validation d'un objectif et declenche son animation visuelle.  <br /></td></tr>
+<tr class="memitem:a9f4b4e261f3bafb3c91a12cbe3408043" id="r_a9f4b4e261f3bafb3c91a12cbe3408043"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a9f4b4e261f3bafb3c91a12cbe3408043">objectifs_afficher</a> (<a class="el" href="structt__objectifs.html">t_objectifs</a> *obj, SDL_Renderer *renderer, TTF_Font *font)</td></tr>
+<tr class="memdesc:a9f4b4e261f3bafb3c91a12cbe3408043"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche le panneau des objectifs et met a jour leur etat de validation.  <br /></td></tr>
+<tr class="memitem:a93ae7ee8d8bf7a0cfd0841f9b5c3c5d5" id="r_a93ae7ee8d8bf7a0cfd0841f9b5c3c5d5"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a93ae7ee8d8bf7a0cfd0841f9b5c3c5d5">objectifs_visible</a> (<a class="el" href="structt__objectifs.html">t_objectifs</a> *obj)</td></tr>
+<tr class="memdesc:a93ae7ee8d8bf7a0cfd0841f9b5c3c5d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bascule la visibilite du panneau d'objectifs.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a72157237fcc8efb662940db83b6329c9" id="r_a72157237fcc8efb662940db83b6329c9"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a72157237fcc8efb662940db83b6329c9">engrenages_poses</a></td></tr>
+<tr class="memitem:a6a603860f3885534a34bf605601fbdf2" id="r_a6a603860f3885534a34bf605601fbdf2"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a6a603860f3885534a34bf605601fbdf2">vaisseau_repare</a></td></tr>
+<tr class="memitem:aaf2331208dfb16a05b9f58f27bb24fa9" id="r_aaf2331208dfb16a05b9f58f27bb24fa9"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#aaf2331208dfb16a05b9f58f27bb24fa9">argent</a></td></tr>
+<tr class="memitem:a7963142dea3652236977bec96c9a8d8a" id="r_a7963142dea3652236977bec96c9a8d8a"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a7963142dea3652236977bec96c9a8d8a">index_item</a></td></tr>
+<tr class="memitem:a9f26241542eb25a396d652e9ec6e77e0" id="r_a9f26241542eb25a396d652e9ec6e77e0"><td class="memItemLeft"><a class="el" href="structt__case.html">t_case</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a> [<a class="el" href="main_8h.html#a8503e5db31d779209111bf7ea2dba16e">HOTBAR_SIZE</a>]</td></tr>
+<tr class="memitem:ad96bc8eaad3feab772ddefd4f682262a" id="r_ad96bc8eaad3feab772ddefd4f682262a"><td class="memItemLeft"><a class="el" href="structboss__t.html">boss_t</a>&#160;</td><td class="memItemRight"><a class="el" href="#ad96bc8eaad3feab772ddefd4f682262a">boss3</a></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Gestion des objectifs de progression et de leur affichage. </p>
+
+<p class="definition">Définition dans le fichier <a class="el" href="objectifs_8c_source.html">objectifs.c</a>.</p>
+</div><a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Documentation des macros</h2>
+<a id="af19505951a7bb5f4c75e6d1da4f258e5" name="af19505951a7bb5f4c75e6d1da4f258e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af19505951a7bb5f4c75e6d1da4f258e5">&#9670;&#160;</a></span>AJOUTER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AJOUTER</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>desc_</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>verif_</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Valeur :</b><div class="fragment"><div class="line">    <span class="keywordflow">do</span> { \</div>
+<div class="line">    obj-&gt;objectifs[obj-&gt;nb].description = (desc_); \</div>
+<div class="line">    obj-&gt;objectifs[obj-&gt;nb].valide      = <span class="keyword">false</span>; \</div>
+<div class="line">    obj-&gt;objectifs[obj-&gt;nb].verifier    = (verif_);\</div>
+<div class="line">    obj-&gt;nb++; \</div>
+<div class="line">} <span class="keywordflow">while</span>(0)</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a00c808104388519762202587dbfab972" name="a00c808104388519762202587dbfab972"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00c808104388519762202587dbfab972">&#9670;&#160;</a></span>ANIM_DUREE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ANIM_DUREE&#160;&#160;&#160;800u</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="objectifs_8c_source.html#l00109">109</a> du fichier <a class="el" href="objectifs_8c_source.html">objectifs.c</a>.</p>
+
+</div>
+</div>
+<a id="a4f4db04c9a9daa423ac06dfe6ca62891" name="a4f4db04c9a9daa423ac06dfe6ca62891"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f4db04c9a9daa423ac06dfe6ca62891">&#9670;&#160;</a></span>LIGNE_H</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LIGNE_H&#160;&#160;&#160;28.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="objectifs_8c_source.html#l00107">107</a> du fichier <a class="el" href="objectifs_8c_source.html">objectifs.c</a>.</p>
+
+</div>
+</div>
+<a id="a3eebd09a9a94c914de17855816e6ac45" name="a3eebd09a9a94c914de17855816e6ac45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3eebd09a9a94c914de17855816e6ac45">&#9670;&#160;</a></span>PADDING</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PADDING&#160;&#160;&#160;10.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="objectifs_8c_source.html#l00108">108</a> du fichier <a class="el" href="objectifs_8c_source.html">objectifs.c</a>.</p>
+
+</div>
+</div>
+<a id="acc5cb2fb3190ce2ba1a59fb220b3d6de" name="acc5cb2fb3190ce2ba1a59fb220b3d6de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc5cb2fb3190ce2ba1a59fb220b3d6de">&#9670;&#160;</a></span>PANNEAU_W</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PANNEAU_W&#160;&#160;&#160;230.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="objectifs_8c_source.html#l00106">106</a> du fichier <a class="el" href="objectifs_8c_source.html">objectifs.c</a>.</p>
+
+</div>
+</div>
+<a id="a2e29e057d35d72a9a71b918d7618de3a" name="a2e29e057d35d72a9a71b918d7618de3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e29e057d35d72a9a71b918d7618de3a">&#9670;&#160;</a></span>PANNEAU_Y</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PANNEAU_Y&#160;&#160;&#160;80.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="objectifs_8c_source.html#l00105">105</a> du fichier <a class="el" href="objectifs_8c_source.html">objectifs.c</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<a id="a840df4635762089594ccc3c36dae4924" name="a840df4635762089594ccc3c36dae4924"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a840df4635762089594ccc3c36dae4924">&#9670;&#160;</a></span>objectif_valider()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void objectif_valider </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__objectifs.html">t_objectifs</a> *</td>          <td class="paramname"><span class="paramname"><em>obj</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>index</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Force la validation d'un objectif et declenche son animation visuelle. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>Structure des objectifs a consulter ou modifier. </td></tr>
+    <tr><td class="paramname">index</td><td>Indice de l'element vise dans la collection concernee. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="objectifs_8c_source.html#l00095">95</a> du fichier <a class="el" href="objectifs_8c_source.html">objectifs.c</a>.</p>
+
+</div>
+</div>
+<a id="a9f4b4e261f3bafb3c91a12cbe3408043" name="a9f4b4e261f3bafb3c91a12cbe3408043"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f4b4e261f3bafb3c91a12cbe3408043">&#9670;&#160;</a></span>objectifs_afficher()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void objectifs_afficher </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__objectifs.html">t_objectifs</a> *</td>          <td class="paramname"><span class="paramname"><em>obj</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TTF_Font *</td>          <td class="paramname"><span class="paramname"><em>font</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche le panneau des objectifs et met a jour leur etat de validation. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>Structure des objectifs a consulter ou modifier. </td></tr>
+    <tr><td class="paramname">renderer</td><td>Contexte SDL utilise pour dessiner les elements 2D et l'interface. </td></tr>
+    <tr><td class="paramname">font</td><td>Police TTF employee pour dessiner les textes de l'interface. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="objectifs_8c_source.html#l00114">114</a> du fichier <a class="el" href="objectifs_8c_source.html">objectifs.c</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="objectifs_8c_a9f4b4e261f3bafb3c91a12cbe3408043_icgraph.svg" width="370" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a844bf7cfff25edd874a95fb5f4d9e4a8" name="a844bf7cfff25edd874a95fb5f4d9e4a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a844bf7cfff25edd874a95fb5f4d9e4a8">&#9670;&#160;</a></span>objectifs_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void objectifs_init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__objectifs.html">t_objectifs</a> *</td>          <td class="paramname"><span class="paramname"><em>obj</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>planete</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise la liste des objectifs selon la planete en cours. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>Structure des objectifs a consulter ou modifier. </td></tr>
+    <tr><td class="paramname">planete</td><td>Identifiant de planete concernee par l'operation. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="objectifs_8c_source.html#l00056">56</a> du fichier <a class="el" href="objectifs_8c_source.html">objectifs.c</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="objectifs_8c_a844bf7cfff25edd874a95fb5f4d9e4a8_icgraph.svg" width="344" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a93ae7ee8d8bf7a0cfd0841f9b5c3c5d5" name="a93ae7ee8d8bf7a0cfd0841f9b5c3c5d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93ae7ee8d8bf7a0cfd0841f9b5c3c5d5">&#9670;&#160;</a></span>objectifs_visible()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void objectifs_visible </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__objectifs.html">t_objectifs</a> *</td>          <td class="paramname"><span class="paramname"><em>obj</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Bascule la visibilite du panneau d'objectifs. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>Structure des objectifs a consulter ou modifier. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="objectifs_8c_source.html#l00253">253</a> du fichier <a class="el" href="objectifs_8c_source.html">objectifs.c</a>.</p>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Documentation des variables</h2>
+<a id="aaf2331208dfb16a05b9f58f27bb24fa9" name="aaf2331208dfb16a05b9f58f27bb24fa9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf2331208dfb16a05b9f58f27bb24fa9">&#9670;&#160;</a></span>argent</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int argent</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00072">72</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="ad96bc8eaad3feab772ddefd4f682262a" name="ad96bc8eaad3feab772ddefd4f682262a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad96bc8eaad3feab772ddefd4f682262a">&#9670;&#160;</a></span>boss3</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structboss__t.html">boss_t</a> boss3</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00077">77</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="a72157237fcc8efb662940db83b6329c9" name="a72157237fcc8efb662940db83b6329c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72157237fcc8efb662940db83b6329c9">&#9670;&#160;</a></span>engrenages_poses</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int engrenages_poses</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00022">22</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="a9f26241542eb25a396d652e9ec6e77e0" name="a9f26241542eb25a396d652e9ec6e77e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f26241542eb25a396d652e9ec6e77e0">&#9670;&#160;</a></span>hotbar</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt__case.html">t_case</a>* hotbar[<a class="el" href="main_8h.html#a8503e5db31d779209111bf7ea2dba16e">HOTBAR_SIZE</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00066">66</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="a7963142dea3652236977bec96c9a8d8a" name="a7963142dea3652236977bec96c9a8d8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7963142dea3652236977bec96c9a8d8a">&#9670;&#160;</a></span>index_item</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int index_item</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00064">64</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="a6a603860f3885534a34bf605601fbdf2" name="a6a603860f3885534a34bf605601fbdf2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a603860f3885534a34bf605601fbdf2">&#9670;&#160;</a></span>vaisseau_repare</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool vaisseau_repare</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00023">23</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="objectifs_8c.html">objectifs.c</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

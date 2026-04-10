@@ -1,3 +1,8 @@
+/**
+ * @file map.c
+ * @brief Chargement, rendu et interactions de la carte du monde.
+ */
+
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
 #include <SDL3_ttf/SDL_ttf.h>
@@ -6,6 +11,7 @@
 
 
 
+/** @brief Animation image etatisee (frame courante, echelle et position). */
 typedef struct{
     IMG_Animation * anim;
     Uint32 dernier_frame;

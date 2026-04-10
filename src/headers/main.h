@@ -1,3 +1,8 @@
+/**
+ * @file main.h
+ * @brief Declarations globales et utilitaires partages entre les modules du jeu.
+ */
+
 #ifndef MAIN_H
 #define MAIN_H
 
@@ -47,20 +52,36 @@
 #define INVENTAIRE_SIZE (INVENTAIRE_COLS * INVENTAIRE_ROWS)
 #define CAISSE_OUTILS_SIZE 6
 
+/**
+ * @enum type_t
+ * @brief Types de tuiles utilises par les cartes de planetes et le systeme de collision.
+ */
 typedef enum {vide, terreP, eau, terreCHG, terreCHD, terreCBG, terreCBD, terreH, terreB, terreG, terreD, feu, pierre, arbrecoupe, arbreEntier, cterreHBG, cterreBBG, cterreHHD, cterrBHD} type_t;
 
+/**
+ * @struct t_tile
+ * @brief Representation d'une tuile logique de carte (type + dimensions de rendu).
+ */
 typedef struct tile_{
     type_t type;
     int width;
     int height;
 }t_tile;
 
+/**
+ * @struct t_tileset
+ * @brief Grille complete de tuiles pour une carte de jeu.
+ */
 typedef struct tileset_{
     int width;
     int height;
     t_tile tab[W_MAP][H_MAP];
 }t_tileset;
 
+/**
+ * @struct Perso
+ * @brief Etat runtime du joueur (position, direction, stats vitales et invincibilite temporaire).
+ */
 typedef struct {
     float x;
     float y;
@@ -73,8 +94,16 @@ typedef struct {
     Uint32 invincibiliter_timer;
 } Perso;
 
+/**
+ * @enum typeItem
+ * @brief Types d'objets manipulables dans l'inventaire, la hotbar et les interactions.
+ */
 typedef enum {PIECE,VIANDE,MARTEAU,SOIN,BRIQUET,BOIS,FEUDECAMP,VIANDECUITE,ENGRENAGE, CLE} typeItem;
 
+/**
+ * @struct t_Item
+ * @brief Instance d'objet present au sol ou dans un conteneur.
+ */
 typedef struct item_ {
     typeItem type;
     SDL_Texture * texture;
@@ -82,6 +111,10 @@ typedef struct item_ {
     float y;
 }t_Item;
 
+/**
+ * @struct Mob
+ * @brief Entite ennemie/neutre active avec son etat de deplacement, vie et drop.
+ */
 typedef struct {
     float x;
     float y;
@@ -100,12 +133,20 @@ typedef struct {
     int drop_chance;
 }Mob;
 
+/**
+ * @enum type_boss_t
+ * @brief Identifiants des variantes de boss disponibles dans le jeu.
+ */
 typedef enum {
     TYPE_BOSS_DEMON_DE_FEU = 0,
     TYPE_BOSS_SENTINELLE = 1,
     TYPE_BOSS_MINOTAURE = 2
 } type_boss_t;
 
+/**
+ * @struct boss_config_t
+ * @brief Parametres statiques d'un boss (ressources, stats et cooldowns de capacites).
+ */
 typedef struct {
     type_boss_t type;
     const char *nom_affiche;
@@ -122,6 +163,10 @@ typedef struct {
     int active_invocation;
 } boss_config_t;
 
+/**
+ * @struct boss_t
+ * @brief Etat dynamique d'un boss en combat (position, phases, animations, cooldowns et IA).
+ */
 typedef struct {
     float x;
     float y;
@@ -156,6 +201,10 @@ typedef struct {
     Uint32 stun_recharge_jusqua;
 }boss_t;
 
+/**
+ * @struct t_case
+ * @brief Slot de stockage UI (hotbar/inventaire/caisse) contenant un item et sa quantite.
+ */
 typedef struct {
     int x;
     int y;
@@ -202,9 +251,18 @@ extern int Planete_actuelle;
 extern int g_screen_w;
 extern int g_screen_h;
 
+/**
+ * @fn void update_screen_metrics(SDL_Renderer *renderer)
+ * @brief Met a jour screen metrics en fonction de l'etat courant du jeu.
+ * @param renderer Contexte SDL utilise pour dessiner les elements 2D et l'interface.
+ */
 void update_screen_metrics(SDL_Renderer *renderer);
 
 /* Retire les engrenages du joueur lors d'un changement de planete */
+/**
+ * @fn void retirer_engrenages_joueur(void)
+ * @brief Retire les engrenages requis du stock joueur pour valider une action.
+ */
 void retirer_engrenages_joueur(void);
 
 static inline float screen_widthf(void) {

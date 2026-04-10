@@ -1,0 +1,1744 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Silence Stellaire: Référence du fichier src/headers/main.h</title>
+<link rel="icon" href="logo_win.png" type="image/x-icon" />
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-theme.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="logo_win.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">Silence Stellaire<span id="projectnumber">&#160;2025-2026</span>
+   </div>
+   <div id="projectbrief">Silence Stellaire, documentation technique de projet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('main_8h.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Référence du fichier main.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Declarations globales et utilitaires partages entre les modules du jeu.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;SDL3/SDL.h&gt;</code><br />
+<code>#include &lt;SDL3_image/SDL_image.h&gt;</code><br />
+<code>#include &lt;math.h&gt;</code><br />
+<code>#include &lt;SDL3_mixer/SDL_mixer.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="menu_8h_source.html">menu.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="game__over_8h_source.html">game_over.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="jeux_8h_source.html">jeux.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="bouton_8h_source.html">bouton.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="option_8h_source.html">option.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="perso_8h_source.html">perso.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="son_8h_source.html">son.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="boss_8h_source.html">boss.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mob_8h_source.html">mob.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vaisseau_8h_source.html">vaisseau.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="map_8h_source.html">map.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="item_8h_source.html">item.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inventaire_8h_source.html">inventaire.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sauvegarde_8h_source.html">sauvegarde.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="objectifs_8h_source.html">objectifs.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cinematique_8h_source.html">cinematique.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="shop_8h_source.html">shop.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de main.h:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="main_8h__incl.svg" width="1996" height="187"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="main_8h__dep__incl.svg" width="2330" height="187"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<p><a href="main_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:tile_5F" id="r_tile_5F"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structtile__.html">tile_</a></td></tr>
+<tr class="memitem:tileset_5F" id="r_tileset_5F"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structtileset__.html">tileset_</a></td></tr>
+<tr class="memitem:Perso" id="r_Perso"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="struct_perso.html">Perso</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Etat runtime du joueur (position, direction, stats vitales et invincibilite temporaire).  <a href="struct_perso.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:item_5F" id="r_item_5F"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structitem__.html">item_</a></td></tr>
+<tr class="memitem:Mob" id="r_Mob"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="struct_mob.html">Mob</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_entite.html" title="Entite simple utilisee pour les mini-jeux d&#39;arcade.">Entite</a> ennemie/neutre active avec son etat de deplacement, vie et drop.  <a href="struct_mob.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:boss_5Fconfig_5Ft" id="r_boss_5Fconfig_5Ft"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structboss__config__t.html">boss_config_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parametres statiques d'un boss (ressources, stats et cooldowns de capacites).  <a href="structboss__config__t.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:boss_5Ft" id="r_boss_5Ft"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structboss__t.html">boss_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Etat dynamique d'un boss en combat (position, phases, animations, cooldowns et IA).  <a href="structboss__t.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:t_5Fcase" id="r_t_5Fcase"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structt__case.html">t_case</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Slot de stockage UI (hotbar/inventaire/caisse) contenant un item et sa quantite.  <a href="structt__case.html#details">Plus de détails...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a9c41512c2c3dfd46ce38258eaadbd541" id="r_a9c41512c2c3dfd46ce38258eaadbd541"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a9c41512c2c3dfd46ce38258eaadbd541">FRAME_DUREE</a>&#160;&#160;&#160;50</td></tr>
+<tr class="memitem:a3799224504478f1beebf6b4207c3d8a9" id="r_a3799224504478f1beebf6b4207c3d8a9"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a3799224504478f1beebf6b4207c3d8a9">W_MAP</a>&#160;&#160;&#160;40</td></tr>
+<tr class="memitem:aa6456846603a55a96519da275aa6bf34" id="r_aa6456846603a55a96519da275aa6bf34"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#aa6456846603a55a96519da275aa6bf34">H_MAP</a>&#160;&#160;&#160;40</td></tr>
+<tr class="memitem:a1fb632be6b8b502b4096fc57e5e62fc8" id="r_a1fb632be6b8b502b4096fc57e5e62fc8"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a1fb632be6b8b502b4096fc57e5e62fc8">SOURCE_TILE_SIZE</a>&#160;&#160;&#160;64</td></tr>
+<tr class="memitem:a306b9d67a19acf564216388396890296" id="r_a306b9d67a19acf564216388396890296"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a306b9d67a19acf564216388396890296">DISPLAY_TILE_SIZE</a>&#160;&#160;&#160;90</td></tr>
+<tr class="memitem:a7fd473621acc581303ba6da319a3f01c" id="r_a7fd473621acc581303ba6da319a3f01c"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a7fd473621acc581303ba6da319a3f01c">PLANETE3_TILE_SIZE</a>&#160;&#160;&#160;16</td></tr>
+<tr class="memitem:a5640405e2454f106d88dbe0b4a6ce756" id="r_a5640405e2454f106d88dbe0b4a6ce756"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a5640405e2454f106d88dbe0b4a6ce756">PLANETE3_ROOM_W</a>&#160;&#160;&#160;10</td></tr>
+<tr class="memitem:a06b0b44843f4eca5bd283f0af4961cab" id="r_a06b0b44843f4eca5bd283f0af4961cab"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a06b0b44843f4eca5bd283f0af4961cab">PLANETE3_ROOM_H</a>&#160;&#160;&#160;7</td></tr>
+<tr class="memitem:abc651b84e126245bd636379a15b0d5c2" id="r_abc651b84e126245bd636379a15b0d5c2"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#abc651b84e126245bd636379a15b0d5c2">PLANETE3_END_W</a>&#160;&#160;&#160;5</td></tr>
+<tr class="memitem:a76a7cc2571c8248133f24dedb8dd205e" id="r_a76a7cc2571c8248133f24dedb8dd205e"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a76a7cc2571c8248133f24dedb8dd205e">PLANETE3_END_H</a>&#160;&#160;&#160;5</td></tr>
+<tr class="memitem:a05819a3f7638959e92d839977878d680" id="r_a05819a3f7638959e92d839977878d680"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a05819a3f7638959e92d839977878d680">VAISSEAU_WORLD_X</a>&#160;&#160;&#160;750.0f</td></tr>
+<tr class="memitem:a16ad90d42ba9b24bd301f74158f2f0d0" id="r_a16ad90d42ba9b24bd301f74158f2f0d0"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a16ad90d42ba9b24bd301f74158f2f0d0">VAISSEAU_WORLD_Y</a>&#160;&#160;&#160;550.0f</td></tr>
+<tr class="memitem:ae3df20df981eced78599bf8f1ae4d6f5" id="r_ae3df20df981eced78599bf8f1ae4d6f5"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ae3df20df981eced78599bf8f1ae4d6f5">VAISSEAU_WIDTH</a>&#160;&#160;&#160;644.0f</td></tr>
+<tr class="memitem:a8683f7771d4d0ab7f753bdb5cbb2944d" id="r_a8683f7771d4d0ab7f753bdb5cbb2944d"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a8683f7771d4d0ab7f753bdb5cbb2944d">VAISSEAU_HEIGHT</a>&#160;&#160;&#160;388.0f</td></tr>
+<tr class="memitem:a5164c2f1e26cd69b36cacf3260cacff7" id="r_a5164c2f1e26cd69b36cacf3260cacff7"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a5164c2f1e26cd69b36cacf3260cacff7">VAISSEAU_SPRITE_SRC_W</a>&#160;&#160;&#160;192.0f</td></tr>
+<tr class="memitem:a8e6e695962af3054e27e865c2ca5a747" id="r_a8e6e695962af3054e27e865c2ca5a747"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a8e6e695962af3054e27e865c2ca5a747">VAISSEAU_SPRITE_SRC_H</a>&#160;&#160;&#160;128.0f</td></tr>
+<tr class="memitem:ac49a54f45ab27f440574585996dfdaa7" id="r_ac49a54f45ab27f440574585996dfdaa7"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ac49a54f45ab27f440574585996dfdaa7">VAISSEAU_SOLID_SRC_X</a>&#160;&#160;&#160;28.0f</td></tr>
+<tr class="memitem:a1281f68a73af8248cfb1af00364a8cd4" id="r_a1281f68a73af8248cfb1af00364a8cd4"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a1281f68a73af8248cfb1af00364a8cd4">VAISSEAU_SOLID_SRC_Y</a>&#160;&#160;&#160;22.0f</td></tr>
+<tr class="memitem:ad2cf454399ee4bc1a90e7cf51c75db7a" id="r_ad2cf454399ee4bc1a90e7cf51c75db7a"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ad2cf454399ee4bc1a90e7cf51c75db7a">VAISSEAU_SOLID_SRC_W</a>&#160;&#160;&#160;148.0f</td></tr>
+<tr class="memitem:a8c7084725e3a42d741c67ca604def08a" id="r_a8c7084725e3a42d741c67ca604def08a"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a8c7084725e3a42d741c67ca604def08a">VAISSEAU_SOLID_SRC_H</a>&#160;&#160;&#160;94.0f</td></tr>
+<tr class="memitem:a8b3f56c8f78082fe846b37ff15208b56" id="r_a8b3f56c8f78082fe846b37ff15208b56"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a8b3f56c8f78082fe846b37ff15208b56">VAISSEAU_COLLISION_X</a>&#160;&#160;&#160;(<a class="el" href="#a05819a3f7638959e92d839977878d680">VAISSEAU_WORLD_X</a> + (<a class="el" href="#ac49a54f45ab27f440574585996dfdaa7">VAISSEAU_SOLID_SRC_X</a> * (<a class="el" href="#ae3df20df981eced78599bf8f1ae4d6f5">VAISSEAU_WIDTH</a> / <a class="el" href="#a5164c2f1e26cd69b36cacf3260cacff7">VAISSEAU_SPRITE_SRC_W</a>)))</td></tr>
+<tr class="memitem:a46784b3a0193cf43a4516ce888fc0c8f" id="r_a46784b3a0193cf43a4516ce888fc0c8f"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a46784b3a0193cf43a4516ce888fc0c8f">VAISSEAU_COLLISION_Y</a>&#160;&#160;&#160;(<a class="el" href="#a16ad90d42ba9b24bd301f74158f2f0d0">VAISSEAU_WORLD_Y</a> + (<a class="el" href="#a1281f68a73af8248cfb1af00364a8cd4">VAISSEAU_SOLID_SRC_Y</a> * (<a class="el" href="#a8683f7771d4d0ab7f753bdb5cbb2944d">VAISSEAU_HEIGHT</a> / <a class="el" href="#a8e6e695962af3054e27e865c2ca5a747">VAISSEAU_SPRITE_SRC_H</a>)))</td></tr>
+<tr class="memitem:ada255da72494991e8da32f92ae14b9cc" id="r_ada255da72494991e8da32f92ae14b9cc"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ada255da72494991e8da32f92ae14b9cc">VAISSEAU_COLLISION_W</a>&#160;&#160;&#160;(<a class="el" href="#ad2cf454399ee4bc1a90e7cf51c75db7a">VAISSEAU_SOLID_SRC_W</a> * (<a class="el" href="#ae3df20df981eced78599bf8f1ae4d6f5">VAISSEAU_WIDTH</a> / <a class="el" href="#a5164c2f1e26cd69b36cacf3260cacff7">VAISSEAU_SPRITE_SRC_W</a>))</td></tr>
+<tr class="memitem:ac5c6bb0caabc1bb5cdde278b2fac645d" id="r_ac5c6bb0caabc1bb5cdde278b2fac645d"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ac5c6bb0caabc1bb5cdde278b2fac645d">VAISSEAU_COLLISION_H</a>&#160;&#160;&#160;(<a class="el" href="#a8c7084725e3a42d741c67ca604def08a">VAISSEAU_SOLID_SRC_H</a> * (<a class="el" href="#a8683f7771d4d0ab7f753bdb5cbb2944d">VAISSEAU_HEIGHT</a> / <a class="el" href="#a8e6e695962af3054e27e865c2ca5a747">VAISSEAU_SPRITE_SRC_H</a>))</td></tr>
+<tr class="memitem:a71a42c4ea136b65af73f3e930fafc7c4" id="r_a71a42c4ea136b65af73f3e930fafc7c4"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a71a42c4ea136b65af73f3e930fafc7c4">MAX_MOB</a>&#160;&#160;&#160;1000</td></tr>
+<tr class="memitem:a1b40ceb455086d9cdb68ed3d3bf2775f" id="r_a1b40ceb455086d9cdb68ed3d3bf2775f"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a1b40ceb455086d9cdb68ed3d3bf2775f">MAX_ITEMS</a>&#160;&#160;&#160;200</td></tr>
+<tr class="memitem:a8503e5db31d779209111bf7ea2dba16e" id="r_a8503e5db31d779209111bf7ea2dba16e"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a8503e5db31d779209111bf7ea2dba16e">HOTBAR_SIZE</a>&#160;&#160;&#160;5</td></tr>
+<tr class="memitem:a2e4d121dcf518480985905131f52ae94" id="r_a2e4d121dcf518480985905131f52ae94"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a2e4d121dcf518480985905131f52ae94">INVENTAIRE_COLS</a>&#160;&#160;&#160;5</td></tr>
+<tr class="memitem:ab92262806ade0a280529307ea75d0948" id="r_ab92262806ade0a280529307ea75d0948"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ab92262806ade0a280529307ea75d0948">INVENTAIRE_ROWS</a>&#160;&#160;&#160;4</td></tr>
+<tr class="memitem:a1214bea12629f1bbee381f63e4573d29" id="r_a1214bea12629f1bbee381f63e4573d29"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a1214bea12629f1bbee381f63e4573d29">INVENTAIRE_SIZE</a>&#160;&#160;&#160;(<a class="el" href="#a2e4d121dcf518480985905131f52ae94">INVENTAIRE_COLS</a> * <a class="el" href="#ab92262806ade0a280529307ea75d0948">INVENTAIRE_ROWS</a>)</td></tr>
+<tr class="memitem:a74a1fb583b1c35f2bcc4245fddf051e0" id="r_a74a1fb583b1c35f2bcc4245fddf051e0"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a74a1fb583b1c35f2bcc4245fddf051e0">CAISSE_OUTILS_SIZE</a>&#160;&#160;&#160;6</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:a8cad75eca1c14cd0cc214f73d7759732" id="r_a8cad75eca1c14cd0cc214f73d7759732"><td class="memItemLeft">typedef struct <a class="el" href="structtile__.html">tile_</a>&#160;</td><td class="memItemRight"><a class="el" href="#a8cad75eca1c14cd0cc214f73d7759732">t_tile</a></td></tr>
+<tr class="memitem:a3a28c9e8c40ae9cf2e200f4e25391206" id="r_a3a28c9e8c40ae9cf2e200f4e25391206"><td class="memItemLeft">typedef struct <a class="el" href="structtileset__.html">tileset_</a>&#160;</td><td class="memItemRight"><a class="el" href="#a3a28c9e8c40ae9cf2e200f4e25391206">t_tileset</a></td></tr>
+<tr class="memitem:a70c4576872bdd4e8fba48f92a7492622" id="r_a70c4576872bdd4e8fba48f92a7492622"><td class="memItemLeft">typedef struct <a class="el" href="structitem__.html">item_</a>&#160;</td><td class="memItemRight"><a class="el" href="#a70c4576872bdd4e8fba48f92a7492622">t_Item</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Énumérations</h2></td></tr>
+<tr class="memitem:adee610a3c7375031538811d29f6a4124" id="r_adee610a3c7375031538811d29f6a4124"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#adee610a3c7375031538811d29f6a4124">type_t</a> { <br />
+&#160;&#160;<a class="el" href="#adee610a3c7375031538811d29f6a4124af9379cac33a48e7d53e1728bdaec879d">vide</a>
+, <a class="el" href="#adee610a3c7375031538811d29f6a4124a4fa49f99f83c3ac24db5a1b7d72cc82f">terreP</a>
+, <a class="el" href="#adee610a3c7375031538811d29f6a4124a0729b1e157ef30cedeef889f7a263594">eau</a>
+, <a class="el" href="#adee610a3c7375031538811d29f6a4124a145198c5659d14b05c2c9000595b13dd">terreCHG</a>
+, <br />
+&#160;&#160;<a class="el" href="#adee610a3c7375031538811d29f6a4124a38be4daf032704ac8cd3ee4b375c3c06">terreCHD</a>
+, <a class="el" href="#adee610a3c7375031538811d29f6a4124adc129ea927c33d73fb1f284107fce74d">terreCBG</a>
+, <a class="el" href="#adee610a3c7375031538811d29f6a4124a3f5cf0bdeecab8e3db751db7a4e6fcb1">terreCBD</a>
+, <a class="el" href="#adee610a3c7375031538811d29f6a4124a2fb199c970fbfba33797143ddacd15b2">terreH</a>
+, <br />
+&#160;&#160;<a class="el" href="#adee610a3c7375031538811d29f6a4124ade81e4f243ba9477f906bde1d097bd38">terreB</a>
+, <a class="el" href="#adee610a3c7375031538811d29f6a4124adbf767e833a2dc64a0a772fad8bd124e">terreG</a>
+, <a class="el" href="#adee610a3c7375031538811d29f6a4124a73c7ad50125f1648c300510e990f6a34">terreD</a>
+, <a class="el" href="#adee610a3c7375031538811d29f6a4124abeaed13a6c54935151875013008013a3">feu</a>
+, <br />
+&#160;&#160;<a class="el" href="#adee610a3c7375031538811d29f6a4124ae53431dd14d67fff6a2e52514d16d49c">pierre</a>
+, <a class="el" href="#adee610a3c7375031538811d29f6a4124a72fb244160316c72ecbce175c344ed51">arbrecoupe</a>
+, <a class="el" href="#adee610a3c7375031538811d29f6a4124ac14376798fff6ec10ca24b92b3e66d87">arbreEntier</a>
+, <a class="el" href="#adee610a3c7375031538811d29f6a4124a825c12388b0b8fa5e5c0922f6525966d">cterreHBG</a>
+, <br />
+&#160;&#160;<a class="el" href="#adee610a3c7375031538811d29f6a4124ac9e1f5f992a228c484a5a06b7af9a7ff">cterreBBG</a>
+, <a class="el" href="#adee610a3c7375031538811d29f6a4124a727d32a994f2b332117f5014ba3fb1db">cterreHHD</a>
+, <a class="el" href="#adee610a3c7375031538811d29f6a4124ae7b557df409c611ccfe53e9a78b69e3c">cterrBHD</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:adee610a3c7375031538811d29f6a4124"><td class="mdescLeft">&#160;</td><td class="mdescRight">Types de tuiles utilises par les cartes de planetes et le systeme de collision.  <a href="#adee610a3c7375031538811d29f6a4124">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:a513dbfc7f10c1a9ff1757ba53bf642e2" id="r_a513dbfc7f10c1a9ff1757ba53bf642e2"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#a513dbfc7f10c1a9ff1757ba53bf642e2">typeItem</a> { <br />
+&#160;&#160;<a class="el" href="#a513dbfc7f10c1a9ff1757ba53bf642e2aa076a6a53f35fea7406422c6915439a5">PIECE</a>
+, <a class="el" href="#a513dbfc7f10c1a9ff1757ba53bf642e2a53c6aa2804050e4d2ba15aaf8e80cfd1">VIANDE</a>
+, <a class="el" href="#a513dbfc7f10c1a9ff1757ba53bf642e2adf35921e120e3eaa2da1a83897498c60">MARTEAU</a>
+, <a class="el" href="#a513dbfc7f10c1a9ff1757ba53bf642e2a008eef4b38b1b1d09ad11572df7307dc">SOIN</a>
+, <br />
+&#160;&#160;<a class="el" href="#a513dbfc7f10c1a9ff1757ba53bf642e2a08ebbd4a45300994f355a8422a66928d">BRIQUET</a>
+, <a class="el" href="#a513dbfc7f10c1a9ff1757ba53bf642e2ace7fdbfddc20b723312ee15e28c5eb2c">BOIS</a>
+, <a class="el" href="#a513dbfc7f10c1a9ff1757ba53bf642e2a5de0e8b11a1c72cff620ca36e4bd2200">FEUDECAMP</a>
+, <a class="el" href="#a513dbfc7f10c1a9ff1757ba53bf642e2a56d8f9e7147cebb0c4e7a6cc72a35297">VIANDECUITE</a>
+, <br />
+&#160;&#160;<a class="el" href="#a513dbfc7f10c1a9ff1757ba53bf642e2a7c3ec164badc2188be875c18ea28b50f">ENGRENAGE</a>
+, <a class="el" href="#a513dbfc7f10c1a9ff1757ba53bf642e2ac3e7481f07fc5ce275329d2f6d3095bf">CLE</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:a513dbfc7f10c1a9ff1757ba53bf642e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Types d'objets manipulables dans l'inventaire, la hotbar et les interactions.  <a href="#a513dbfc7f10c1a9ff1757ba53bf642e2">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:abc2faef89d875ddc4eb4e42c328b14f5" id="r_abc2faef89d875ddc4eb4e42c328b14f5"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#abc2faef89d875ddc4eb4e42c328b14f5">type_boss_t</a> { <a class="el" href="#abc2faef89d875ddc4eb4e42c328b14f5a3cdc968369b6f598618bddd83aeb34de">TYPE_BOSS_DEMON_DE_FEU</a> = 0
+, <a class="el" href="#abc2faef89d875ddc4eb4e42c328b14f5ab9fb6b899acf32ee222ef977939398a7">TYPE_BOSS_SENTINELLE</a> = 1
+, <a class="el" href="#abc2faef89d875ddc4eb4e42c328b14f5a4c9cac9a3a8ad16fb3a461034b6d2572">TYPE_BOSS_MINOTAURE</a> = 2
+ }</td></tr>
+<tr class="memdesc:abc2faef89d875ddc4eb4e42c328b14f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiants des variantes de boss disponibles dans le jeu.  <a href="#abc2faef89d875ddc4eb4e42c328b14f5">Plus de détails...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a82958224f33fa21d40f4f7965f8396bc" id="r_a82958224f33fa21d40f4f7965f8396bc"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a82958224f33fa21d40f4f7965f8396bc">update_screen_metrics</a> (SDL_Renderer *renderer)</td></tr>
+<tr class="memdesc:a82958224f33fa21d40f4f7965f8396bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Met a jour screen metrics en fonction de l'etat courant du jeu.  <br /></td></tr>
+<tr class="memitem:abc7449460fd78756200332223f19ed9b" id="r_abc7449460fd78756200332223f19ed9b"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#abc7449460fd78756200332223f19ed9b">retirer_engrenages_joueur</a> (void)</td></tr>
+<tr class="memdesc:abc7449460fd78756200332223f19ed9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retire les engrenages requis du stock joueur pour valider une action.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:acb611635c7684b1955c46c635ea32215" id="r_acb611635c7684b1955c46c635ea32215"><td class="memItemLeft"><a class="el" href="struct_perso.html">Perso</a>&#160;</td><td class="memItemRight"><a class="el" href="#acb611635c7684b1955c46c635ea32215">perso</a></td></tr>
+<tr class="memitem:acdf31070b4fb73e81447bbd286d25f4e" id="r_acdf31070b4fb73e81447bbd286d25f4e"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#acdf31070b4fb73e81447bbd286d25f4e">animation_frame</a></td></tr>
+<tr class="memitem:adfe93ca7aba69abc894e5ed9ed18a10a" id="r_adfe93ca7aba69abc894e5ed9ed18a10a"><td class="memItemLeft">Uint32&#160;</td><td class="memItemRight"><a class="el" href="#adfe93ca7aba69abc894e5ed9ed18a10a">animation_timer</a></td></tr>
+<tr class="memitem:ade964650c21db9e2e3085aadd845bb56" id="r_ade964650c21db9e2e3085aadd845bb56"><td class="memItemLeft">Uint32&#160;</td><td class="memItemRight"><a class="el" href="#ade964650c21db9e2e3085aadd845bb56">bouge_timer</a></td></tr>
+<tr class="memitem:a37375faffb88626117c0f37c3a4afeae" id="r_a37375faffb88626117c0f37c3a4afeae"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a37375faffb88626117c0f37c3a4afeae">perso_bouge</a></td></tr>
+<tr class="memitem:af559a95708cfd0ab93606697554e1d56" id="r_af559a95708cfd0ab93606697554e1d56"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#af559a95708cfd0ab93606697554e1d56">combat_en_cours</a></td></tr>
+<tr class="memitem:a6a42a0878f51054d42ea24d8b03eefe4" id="r_a6a42a0878f51054d42ea24d8b03eefe4"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a6a42a0878f51054d42ea24d8b03eefe4">combat_frame</a></td></tr>
+<tr class="memitem:aec473d17de578e6f689cb996f182464a" id="r_aec473d17de578e6f689cb996f182464a"><td class="memItemLeft">Uint32&#160;</td><td class="memItemRight"><a class="el" href="#aec473d17de578e6f689cb996f182464a">combat_timer</a></td></tr>
+<tr class="memitem:a84af9ed84c11a72dd7515a42f42af710" id="r_a84af9ed84c11a72dd7515a42f42af710"><td class="memItemLeft">MIX_Track *&#160;</td><td class="memItemRight"><a class="el" href="#a84af9ed84c11a72dd7515a42f42af710">track_global</a></td></tr>
+<tr class="memitem:a9b189e58c2628169cccdd232eef7124f" id="r_a9b189e58c2628169cccdd232eef7124f"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a9b189e58c2628169cccdd232eef7124f">Planete_actuelle</a></td></tr>
+<tr class="memitem:a4f1806d6d442e6cb62608087abb7bfff" id="r_a4f1806d6d442e6cb62608087abb7bfff"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a4f1806d6d442e6cb62608087abb7bfff">g_screen_w</a></td></tr>
+<tr class="memitem:a1e9c8c06158eb6bb073cf1f9dc14da75" id="r_a1e9c8c06158eb6bb073cf1f9dc14da75"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a1e9c8c06158eb6bb073cf1f9dc14da75">g_screen_h</a></td></tr>
+<tr class="memitem:a7963142dea3652236977bec96c9a8d8a" id="r_a7963142dea3652236977bec96c9a8d8a"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a7963142dea3652236977bec96c9a8d8a">index_item</a></td></tr>
+<tr class="memitem:aaf2331208dfb16a05b9f58f27bb24fa9" id="r_aaf2331208dfb16a05b9f58f27bb24fa9"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#aaf2331208dfb16a05b9f58f27bb24fa9">argent</a></td></tr>
+<tr class="memitem:a99e90b23d7f8c25b0be06b706c01d7c0" id="r_a99e90b23d7f8c25b0be06b706c01d7c0"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a99e90b23d7f8c25b0be06b706c01d7c0">vitesse_bonus</a></td></tr>
+<tr class="memitem:a2c39a7a0570ae10b2583fe7aaeca7a61" id="r_a2c39a7a0570ae10b2583fe7aaeca7a61"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a2c39a7a0570ae10b2583fe7aaeca7a61">sortie_vaisseau</a></td></tr>
+<tr class="memitem:a9f26241542eb25a396d652e9ec6e77e0" id="r_a9f26241542eb25a396d652e9ec6e77e0"><td class="memItemLeft"><a class="el" href="structt__case.html">t_case</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a> [<a class="el" href="#a8503e5db31d779209111bf7ea2dba16e">HOTBAR_SIZE</a>]</td></tr>
+<tr class="memitem:a03d5dc84ffa6dacbc5ba7abdd9eb6020" id="r_a03d5dc84ffa6dacbc5ba7abdd9eb6020"><td class="memItemLeft"><a class="el" href="structt__case.html">t_case</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a03d5dc84ffa6dacbc5ba7abdd9eb6020">caisse_outils</a> [<a class="el" href="#a74a1fb583b1c35f2bcc4245fddf051e0">CAISSE_OUTILS_SIZE</a>]</td></tr>
+<tr class="memitem:a5c2df1566e7f2bc9ae563ca9f180aae5" id="r_a5c2df1566e7f2bc9ae563ca9f180aae5"><td class="memItemLeft"><a class="el" href="structt___item.html">t_Item</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a5c2df1566e7f2bc9ae563ca9f180aae5">items</a> [<a class="el" href="#a1b40ceb455086d9cdb68ed3d3bf2775f">MAX_ITEMS</a>]</td></tr>
+<tr class="memitem:a3585292bb8a85d7e8e1e9d0505836d49" id="r_a3585292bb8a85d7e8e1e9d0505836d49"><td class="memItemLeft"><a class="el" href="struct_mob.html">Mob</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a3585292bb8a85d7e8e1e9d0505836d49">mobs</a> [<a class="el" href="#a71a42c4ea136b65af73f3e930fafc7c4">MAX_MOB</a>]</td></tr>
+<tr class="memitem:a4d0a1d1ce5bfa1674274f3f2ecc0ceed" id="r_a4d0a1d1ce5bfa1674274f3f2ecc0ceed"><td class="memItemLeft"><a class="el" href="structboss__t.html">boss_t</a>&#160;</td><td class="memItemRight"><a class="el" href="#a4d0a1d1ce5bfa1674274f3f2ecc0ceed">boss1</a></td></tr>
+<tr class="memitem:ad96bc8eaad3feab772ddefd4f682262a" id="r_ad96bc8eaad3feab772ddefd4f682262a"><td class="memItemLeft"><a class="el" href="structboss__t.html">boss_t</a>&#160;</td><td class="memItemRight"><a class="el" href="#ad96bc8eaad3feab772ddefd4f682262a">boss3</a></td></tr>
+<tr class="memitem:aae482f95118e1d4408a5c6db622f6076" id="r_aae482f95118e1d4408a5c6db622f6076"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#aae482f95118e1d4408a5c6db622f6076">g_mastermind_reussi</a></td></tr>
+<tr class="memitem:a6b40a63f006994be1abc921549ba471c" id="r_a6b40a63f006994be1abc921549ba471c"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a6b40a63f006994be1abc921549ba471c">g_simon_reussi</a></td></tr>
+<tr class="memitem:a8dcd03ba0e2ea187818f82f341ab2b5f" id="r_a8dcd03ba0e2ea187818f82f341ab2b5f"><td class="memItemLeft"><a class="el" href="structt__case.html">t_case</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a8dcd03ba0e2ea187818f82f341ab2b5f">inventaire</a> [<a class="el" href="#a1214bea12629f1bbee381f63e4573d29">INVENTAIRE_SIZE</a>]</td></tr>
+<tr class="memitem:a51cbc61de54ee081cc112e0cb4a51694" id="r_a51cbc61de54ee081cc112e0cb4a51694"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a51cbc61de54ee081cc112e0cb4a51694">inventaire_ouvert</a></td></tr>
+<tr class="memitem:ab8b7ac2c62b73630946468247d22f0a3" id="r_ab8b7ac2c62b73630946468247d22f0a3"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#ab8b7ac2c62b73630946468247d22f0a3">g_planete3_engrenage_recupere</a></td></tr>
+<tr class="memitem:a90539eead6faa0a93480a62815008e35" id="r_a90539eead6faa0a93480a62815008e35"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a90539eead6faa0a93480a62815008e35">g_planete3_boss_spawned</a></td></tr>
+<tr class="memitem:a35aa280233b0f2b73cdade32adbdb67d" id="r_a35aa280233b0f2b73cdade32adbdb67d"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a35aa280233b0f2b73cdade32adbdb67d">g_planete3_spawn_engrenage_defini</a></td></tr>
+<tr class="memitem:ad63d3d2055574bd78f2082ed65fe96b9" id="r_ad63d3d2055574bd78f2082ed65fe96b9"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#ad63d3d2055574bd78f2082ed65fe96b9">g_planete3_spawn_engrenage_x</a></td></tr>
+<tr class="memitem:a007ccd9eb671a0c71e6a95d2e1f44779" id="r_a007ccd9eb671a0c71e6a95d2e1f44779"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a007ccd9eb671a0c71e6a95d2e1f44779">g_planete3_spawn_engrenage_y</a></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Declarations globales et utilitaires partages entre les modules du jeu. </p>
+
+<p class="definition">Définition dans le fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+</div><a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Documentation des macros</h2>
+<a id="a74a1fb583b1c35f2bcc4245fddf051e0" name="a74a1fb583b1c35f2bcc4245fddf051e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74a1fb583b1c35f2bcc4245fddf051e0">&#9670;&#160;</a></span>CAISSE_OUTILS_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CAISSE_OUTILS_SIZE&#160;&#160;&#160;6</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00053">53</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a id="a306b9d67a19acf564216388396890296" name="a306b9d67a19acf564216388396890296"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a306b9d67a19acf564216388396890296">&#9670;&#160;</a></span>DISPLAY_TILE_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DISPLAY_TILE_SIZE&#160;&#160;&#160;90</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00021">21</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a id="a9c41512c2c3dfd46ce38258eaadbd541" name="a9c41512c2c3dfd46ce38258eaadbd541"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c41512c2c3dfd46ce38258eaadbd541">&#9670;&#160;</a></span>FRAME_DUREE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FRAME_DUREE&#160;&#160;&#160;50</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00016">16</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a id="aa6456846603a55a96519da275aa6bf34" name="aa6456846603a55a96519da275aa6bf34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6456846603a55a96519da275aa6bf34">&#9670;&#160;</a></span>H_MAP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define H_MAP&#160;&#160;&#160;40</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00019">19</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a id="a8503e5db31d779209111bf7ea2dba16e" name="a8503e5db31d779209111bf7ea2dba16e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8503e5db31d779209111bf7ea2dba16e">&#9670;&#160;</a></span>HOTBAR_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HOTBAR_SIZE&#160;&#160;&#160;5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00049">49</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a id="a2e4d121dcf518480985905131f52ae94" name="a2e4d121dcf518480985905131f52ae94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e4d121dcf518480985905131f52ae94">&#9670;&#160;</a></span>INVENTAIRE_COLS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INVENTAIRE_COLS&#160;&#160;&#160;5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00050">50</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a id="ab92262806ade0a280529307ea75d0948" name="ab92262806ade0a280529307ea75d0948"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab92262806ade0a280529307ea75d0948">&#9670;&#160;</a></span>INVENTAIRE_ROWS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INVENTAIRE_ROWS&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00051">51</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a id="a1214bea12629f1bbee381f63e4573d29" name="a1214bea12629f1bbee381f63e4573d29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1214bea12629f1bbee381f63e4573d29">&#9670;&#160;</a></span>INVENTAIRE_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INVENTAIRE_SIZE&#160;&#160;&#160;(<a class="el" href="#a2e4d121dcf518480985905131f52ae94">INVENTAIRE_COLS</a> * <a class="el" href="#ab92262806ade0a280529307ea75d0948">INVENTAIRE_ROWS</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00052">52</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a id="a1b40ceb455086d9cdb68ed3d3bf2775f" name="a1b40ceb455086d9cdb68ed3d3bf2775f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b40ceb455086d9cdb68ed3d3bf2775f">&#9670;&#160;</a></span>MAX_ITEMS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_ITEMS&#160;&#160;&#160;200</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00047">47</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a id="a71a42c4ea136b65af73f3e930fafc7c4" name="a71a42c4ea136b65af73f3e930fafc7c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71a42c4ea136b65af73f3e930fafc7c4">&#9670;&#160;</a></span>MAX_MOB</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_MOB&#160;&#160;&#160;1000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00046">46</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a id="a76a7cc2571c8248133f24dedb8dd205e" name="a76a7cc2571c8248133f24dedb8dd205e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76a7cc2571c8248133f24dedb8dd205e">&#9670;&#160;</a></span>PLANETE3_END_H</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PLANETE3_END_H&#160;&#160;&#160;5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00027">27</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a id="abc651b84e126245bd636379a15b0d5c2" name="abc651b84e126245bd636379a15b0d5c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc651b84e126245bd636379a15b0d5c2">&#9670;&#160;</a></span>PLANETE3_END_W</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PLANETE3_END_W&#160;&#160;&#160;5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00026">26</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a id="a06b0b44843f4eca5bd283f0af4961cab" name="a06b0b44843f4eca5bd283f0af4961cab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06b0b44843f4eca5bd283f0af4961cab">&#9670;&#160;</a></span>PLANETE3_ROOM_H</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PLANETE3_ROOM_H&#160;&#160;&#160;7</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00025">25</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a id="a5640405e2454f106d88dbe0b4a6ce756" name="a5640405e2454f106d88dbe0b4a6ce756"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5640405e2454f106d88dbe0b4a6ce756">&#9670;&#160;</a></span>PLANETE3_ROOM_W</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PLANETE3_ROOM_W&#160;&#160;&#160;10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00024">24</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a id="a7fd473621acc581303ba6da319a3f01c" name="a7fd473621acc581303ba6da319a3f01c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fd473621acc581303ba6da319a3f01c">&#9670;&#160;</a></span>PLANETE3_TILE_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PLANETE3_TILE_SIZE&#160;&#160;&#160;16</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00023">23</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a id="a1fb632be6b8b502b4096fc57e5e62fc8" name="a1fb632be6b8b502b4096fc57e5e62fc8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fb632be6b8b502b4096fc57e5e62fc8">&#9670;&#160;</a></span>SOURCE_TILE_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SOURCE_TILE_SIZE&#160;&#160;&#160;64</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00020">20</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a id="ac5c6bb0caabc1bb5cdde278b2fac645d" name="ac5c6bb0caabc1bb5cdde278b2fac645d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5c6bb0caabc1bb5cdde278b2fac645d">&#9670;&#160;</a></span>VAISSEAU_COLLISION_H</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VAISSEAU_COLLISION_H&#160;&#160;&#160;(<a class="el" href="#a8c7084725e3a42d741c67ca604def08a">VAISSEAU_SOLID_SRC_H</a> * (<a class="el" href="#a8683f7771d4d0ab7f753bdb5cbb2944d">VAISSEAU_HEIGHT</a> / <a class="el" href="#a8e6e695962af3054e27e865c2ca5a747">VAISSEAU_SPRITE_SRC_H</a>))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00044">44</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a id="ada255da72494991e8da32f92ae14b9cc" name="ada255da72494991e8da32f92ae14b9cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada255da72494991e8da32f92ae14b9cc">&#9670;&#160;</a></span>VAISSEAU_COLLISION_W</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VAISSEAU_COLLISION_W&#160;&#160;&#160;(<a class="el" href="#ad2cf454399ee4bc1a90e7cf51c75db7a">VAISSEAU_SOLID_SRC_W</a> * (<a class="el" href="#ae3df20df981eced78599bf8f1ae4d6f5">VAISSEAU_WIDTH</a> / <a class="el" href="#a5164c2f1e26cd69b36cacf3260cacff7">VAISSEAU_SPRITE_SRC_W</a>))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00043">43</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a id="a8b3f56c8f78082fe846b37ff15208b56" name="a8b3f56c8f78082fe846b37ff15208b56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b3f56c8f78082fe846b37ff15208b56">&#9670;&#160;</a></span>VAISSEAU_COLLISION_X</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VAISSEAU_COLLISION_X&#160;&#160;&#160;(<a class="el" href="#a05819a3f7638959e92d839977878d680">VAISSEAU_WORLD_X</a> + (<a class="el" href="#ac49a54f45ab27f440574585996dfdaa7">VAISSEAU_SOLID_SRC_X</a> * (<a class="el" href="#ae3df20df981eced78599bf8f1ae4d6f5">VAISSEAU_WIDTH</a> / <a class="el" href="#a5164c2f1e26cd69b36cacf3260cacff7">VAISSEAU_SPRITE_SRC_W</a>)))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00041">41</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a id="a46784b3a0193cf43a4516ce888fc0c8f" name="a46784b3a0193cf43a4516ce888fc0c8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46784b3a0193cf43a4516ce888fc0c8f">&#9670;&#160;</a></span>VAISSEAU_COLLISION_Y</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VAISSEAU_COLLISION_Y&#160;&#160;&#160;(<a class="el" href="#a16ad90d42ba9b24bd301f74158f2f0d0">VAISSEAU_WORLD_Y</a> + (<a class="el" href="#a1281f68a73af8248cfb1af00364a8cd4">VAISSEAU_SOLID_SRC_Y</a> * (<a class="el" href="#a8683f7771d4d0ab7f753bdb5cbb2944d">VAISSEAU_HEIGHT</a> / <a class="el" href="#a8e6e695962af3054e27e865c2ca5a747">VAISSEAU_SPRITE_SRC_H</a>)))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00042">42</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a id="a8683f7771d4d0ab7f753bdb5cbb2944d" name="a8683f7771d4d0ab7f753bdb5cbb2944d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8683f7771d4d0ab7f753bdb5cbb2944d">&#9670;&#160;</a></span>VAISSEAU_HEIGHT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VAISSEAU_HEIGHT&#160;&#160;&#160;388.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00032">32</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a id="a8c7084725e3a42d741c67ca604def08a" name="a8c7084725e3a42d741c67ca604def08a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c7084725e3a42d741c67ca604def08a">&#9670;&#160;</a></span>VAISSEAU_SOLID_SRC_H</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VAISSEAU_SOLID_SRC_H&#160;&#160;&#160;94.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00039">39</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a id="ad2cf454399ee4bc1a90e7cf51c75db7a" name="ad2cf454399ee4bc1a90e7cf51c75db7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2cf454399ee4bc1a90e7cf51c75db7a">&#9670;&#160;</a></span>VAISSEAU_SOLID_SRC_W</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VAISSEAU_SOLID_SRC_W&#160;&#160;&#160;148.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00038">38</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a id="ac49a54f45ab27f440574585996dfdaa7" name="ac49a54f45ab27f440574585996dfdaa7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac49a54f45ab27f440574585996dfdaa7">&#9670;&#160;</a></span>VAISSEAU_SOLID_SRC_X</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VAISSEAU_SOLID_SRC_X&#160;&#160;&#160;28.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00036">36</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a id="a1281f68a73af8248cfb1af00364a8cd4" name="a1281f68a73af8248cfb1af00364a8cd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1281f68a73af8248cfb1af00364a8cd4">&#9670;&#160;</a></span>VAISSEAU_SOLID_SRC_Y</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VAISSEAU_SOLID_SRC_Y&#160;&#160;&#160;22.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00037">37</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a id="a8e6e695962af3054e27e865c2ca5a747" name="a8e6e695962af3054e27e865c2ca5a747"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e6e695962af3054e27e865c2ca5a747">&#9670;&#160;</a></span>VAISSEAU_SPRITE_SRC_H</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VAISSEAU_SPRITE_SRC_H&#160;&#160;&#160;128.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00035">35</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a id="a5164c2f1e26cd69b36cacf3260cacff7" name="a5164c2f1e26cd69b36cacf3260cacff7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5164c2f1e26cd69b36cacf3260cacff7">&#9670;&#160;</a></span>VAISSEAU_SPRITE_SRC_W</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VAISSEAU_SPRITE_SRC_W&#160;&#160;&#160;192.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00034">34</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a id="ae3df20df981eced78599bf8f1ae4d6f5" name="ae3df20df981eced78599bf8f1ae4d6f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3df20df981eced78599bf8f1ae4d6f5">&#9670;&#160;</a></span>VAISSEAU_WIDTH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VAISSEAU_WIDTH&#160;&#160;&#160;644.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00031">31</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a id="a05819a3f7638959e92d839977878d680" name="a05819a3f7638959e92d839977878d680"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05819a3f7638959e92d839977878d680">&#9670;&#160;</a></span>VAISSEAU_WORLD_X</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VAISSEAU_WORLD_X&#160;&#160;&#160;750.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00029">29</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a id="a16ad90d42ba9b24bd301f74158f2f0d0" name="a16ad90d42ba9b24bd301f74158f2f0d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16ad90d42ba9b24bd301f74158f2f0d0">&#9670;&#160;</a></span>VAISSEAU_WORLD_Y</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VAISSEAU_WORLD_Y&#160;&#160;&#160;550.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00030">30</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a id="a3799224504478f1beebf6b4207c3d8a9" name="a3799224504478f1beebf6b4207c3d8a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3799224504478f1beebf6b4207c3d8a9">&#9670;&#160;</a></span>W_MAP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define W_MAP&#160;&#160;&#160;40</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00018">18</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Documentation des définitions de type</h2>
+<a id="a70c4576872bdd4e8fba48f92a7492622" name="a70c4576872bdd4e8fba48f92a7492622"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70c4576872bdd4e8fba48f92a7492622">&#9670;&#160;</a></span>t_Item</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structitem__.html">item_</a> t_Item</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8cad75eca1c14cd0cc214f73d7759732" name="a8cad75eca1c14cd0cc214f73d7759732"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cad75eca1c14cd0cc214f73d7759732">&#9670;&#160;</a></span>t_tile</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structtile__.html">tile_</a> t_tile</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3a28c9e8c40ae9cf2e200f4e25391206" name="a3a28c9e8c40ae9cf2e200f4e25391206"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a28c9e8c40ae9cf2e200f4e25391206">&#9670;&#160;</a></span>t_tileset</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structtileset__.html">tileset_</a> t_tileset</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Documentation du type de l'énumération</h2>
+<a id="abc2faef89d875ddc4eb4e42c328b14f5" name="abc2faef89d875ddc4eb4e42c328b14f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc2faef89d875ddc4eb4e42c328b14f5">&#9670;&#160;</a></span>type_boss_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#abc2faef89d875ddc4eb4e42c328b14f5">type_boss_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Identifiants des variantes de boss disponibles dans le jeu. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="abc2faef89d875ddc4eb4e42c328b14f5a3cdc968369b6f598618bddd83aeb34de" name="abc2faef89d875ddc4eb4e42c328b14f5a3cdc968369b6f598618bddd83aeb34de"></a>TYPE_BOSS_DEMON_DE_FEU&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="abc2faef89d875ddc4eb4e42c328b14f5ab9fb6b899acf32ee222ef977939398a7" name="abc2faef89d875ddc4eb4e42c328b14f5ab9fb6b899acf32ee222ef977939398a7"></a>TYPE_BOSS_SENTINELLE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="abc2faef89d875ddc4eb4e42c328b14f5a4c9cac9a3a8ad16fb3a461034b6d2572" name="abc2faef89d875ddc4eb4e42c328b14f5a4c9cac9a3a8ad16fb3a461034b6d2572"></a>TYPE_BOSS_MINOTAURE&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00140">140</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a id="adee610a3c7375031538811d29f6a4124" name="adee610a3c7375031538811d29f6a4124"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adee610a3c7375031538811d29f6a4124">&#9670;&#160;</a></span>type_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#adee610a3c7375031538811d29f6a4124">type_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Types de tuiles utilises par les cartes de planetes et le systeme de collision. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="adee610a3c7375031538811d29f6a4124af9379cac33a48e7d53e1728bdaec879d" name="adee610a3c7375031538811d29f6a4124af9379cac33a48e7d53e1728bdaec879d"></a>vide&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adee610a3c7375031538811d29f6a4124a4fa49f99f83c3ac24db5a1b7d72cc82f" name="adee610a3c7375031538811d29f6a4124a4fa49f99f83c3ac24db5a1b7d72cc82f"></a>terreP&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adee610a3c7375031538811d29f6a4124a0729b1e157ef30cedeef889f7a263594" name="adee610a3c7375031538811d29f6a4124a0729b1e157ef30cedeef889f7a263594"></a>eau&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adee610a3c7375031538811d29f6a4124a145198c5659d14b05c2c9000595b13dd" name="adee610a3c7375031538811d29f6a4124a145198c5659d14b05c2c9000595b13dd"></a>terreCHG&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adee610a3c7375031538811d29f6a4124a38be4daf032704ac8cd3ee4b375c3c06" name="adee610a3c7375031538811d29f6a4124a38be4daf032704ac8cd3ee4b375c3c06"></a>terreCHD&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adee610a3c7375031538811d29f6a4124adc129ea927c33d73fb1f284107fce74d" name="adee610a3c7375031538811d29f6a4124adc129ea927c33d73fb1f284107fce74d"></a>terreCBG&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adee610a3c7375031538811d29f6a4124a3f5cf0bdeecab8e3db751db7a4e6fcb1" name="adee610a3c7375031538811d29f6a4124a3f5cf0bdeecab8e3db751db7a4e6fcb1"></a>terreCBD&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adee610a3c7375031538811d29f6a4124a2fb199c970fbfba33797143ddacd15b2" name="adee610a3c7375031538811d29f6a4124a2fb199c970fbfba33797143ddacd15b2"></a>terreH&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adee610a3c7375031538811d29f6a4124ade81e4f243ba9477f906bde1d097bd38" name="adee610a3c7375031538811d29f6a4124ade81e4f243ba9477f906bde1d097bd38"></a>terreB&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adee610a3c7375031538811d29f6a4124adbf767e833a2dc64a0a772fad8bd124e" name="adee610a3c7375031538811d29f6a4124adbf767e833a2dc64a0a772fad8bd124e"></a>terreG&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adee610a3c7375031538811d29f6a4124a73c7ad50125f1648c300510e990f6a34" name="adee610a3c7375031538811d29f6a4124a73c7ad50125f1648c300510e990f6a34"></a>terreD&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adee610a3c7375031538811d29f6a4124abeaed13a6c54935151875013008013a3" name="adee610a3c7375031538811d29f6a4124abeaed13a6c54935151875013008013a3"></a>feu&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adee610a3c7375031538811d29f6a4124ae53431dd14d67fff6a2e52514d16d49c" name="adee610a3c7375031538811d29f6a4124ae53431dd14d67fff6a2e52514d16d49c"></a>pierre&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adee610a3c7375031538811d29f6a4124a72fb244160316c72ecbce175c344ed51" name="adee610a3c7375031538811d29f6a4124a72fb244160316c72ecbce175c344ed51"></a>arbrecoupe&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adee610a3c7375031538811d29f6a4124ac14376798fff6ec10ca24b92b3e66d87" name="adee610a3c7375031538811d29f6a4124ac14376798fff6ec10ca24b92b3e66d87"></a>arbreEntier&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adee610a3c7375031538811d29f6a4124a825c12388b0b8fa5e5c0922f6525966d" name="adee610a3c7375031538811d29f6a4124a825c12388b0b8fa5e5c0922f6525966d"></a>cterreHBG&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adee610a3c7375031538811d29f6a4124ac9e1f5f992a228c484a5a06b7af9a7ff" name="adee610a3c7375031538811d29f6a4124ac9e1f5f992a228c484a5a06b7af9a7ff"></a>cterreBBG&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adee610a3c7375031538811d29f6a4124a727d32a994f2b332117f5014ba3fb1db" name="adee610a3c7375031538811d29f6a4124a727d32a994f2b332117f5014ba3fb1db"></a>cterreHHD&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="adee610a3c7375031538811d29f6a4124ae7b557df409c611ccfe53e9a78b69e3c" name="adee610a3c7375031538811d29f6a4124ae7b557df409c611ccfe53e9a78b69e3c"></a>cterrBHD&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00059">59</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a id="a513dbfc7f10c1a9ff1757ba53bf642e2" name="a513dbfc7f10c1a9ff1757ba53bf642e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a513dbfc7f10c1a9ff1757ba53bf642e2">&#9670;&#160;</a></span>typeItem</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a513dbfc7f10c1a9ff1757ba53bf642e2">typeItem</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Types d'objets manipulables dans l'inventaire, la hotbar et les interactions. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="a513dbfc7f10c1a9ff1757ba53bf642e2aa076a6a53f35fea7406422c6915439a5" name="a513dbfc7f10c1a9ff1757ba53bf642e2aa076a6a53f35fea7406422c6915439a5"></a>PIECE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a513dbfc7f10c1a9ff1757ba53bf642e2a53c6aa2804050e4d2ba15aaf8e80cfd1" name="a513dbfc7f10c1a9ff1757ba53bf642e2a53c6aa2804050e4d2ba15aaf8e80cfd1"></a>VIANDE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a513dbfc7f10c1a9ff1757ba53bf642e2adf35921e120e3eaa2da1a83897498c60" name="a513dbfc7f10c1a9ff1757ba53bf642e2adf35921e120e3eaa2da1a83897498c60"></a>MARTEAU&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a513dbfc7f10c1a9ff1757ba53bf642e2a008eef4b38b1b1d09ad11572df7307dc" name="a513dbfc7f10c1a9ff1757ba53bf642e2a008eef4b38b1b1d09ad11572df7307dc"></a>SOIN&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a513dbfc7f10c1a9ff1757ba53bf642e2a08ebbd4a45300994f355a8422a66928d" name="a513dbfc7f10c1a9ff1757ba53bf642e2a08ebbd4a45300994f355a8422a66928d"></a>BRIQUET&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a513dbfc7f10c1a9ff1757ba53bf642e2ace7fdbfddc20b723312ee15e28c5eb2c" name="a513dbfc7f10c1a9ff1757ba53bf642e2ace7fdbfddc20b723312ee15e28c5eb2c"></a>BOIS&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a513dbfc7f10c1a9ff1757ba53bf642e2a5de0e8b11a1c72cff620ca36e4bd2200" name="a513dbfc7f10c1a9ff1757ba53bf642e2a5de0e8b11a1c72cff620ca36e4bd2200"></a>FEUDECAMP&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a513dbfc7f10c1a9ff1757ba53bf642e2a56d8f9e7147cebb0c4e7a6cc72a35297" name="a513dbfc7f10c1a9ff1757ba53bf642e2a56d8f9e7147cebb0c4e7a6cc72a35297"></a>VIANDECUITE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a513dbfc7f10c1a9ff1757ba53bf642e2a7c3ec164badc2188be875c18ea28b50f" name="a513dbfc7f10c1a9ff1757ba53bf642e2a7c3ec164badc2188be875c18ea28b50f"></a>ENGRENAGE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a513dbfc7f10c1a9ff1757ba53bf642e2ac3e7481f07fc5ce275329d2f6d3095bf" name="a513dbfc7f10c1a9ff1757ba53bf642e2ac3e7481f07fc5ce275329d2f6d3095bf"></a>CLE&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8h_source.html#l00101">101</a> du fichier <a class="el" href="main_8h_source.html">main.h</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<a id="abc7449460fd78756200332223f19ed9b" name="abc7449460fd78756200332223f19ed9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc7449460fd78756200332223f19ed9b">&#9670;&#160;</a></span>retirer_engrenages_joueur()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void retirer_engrenages_joueur </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retire les engrenages requis du stock joueur pour valider une action. </p>
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00107">107</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="main_8h_abc7449460fd78756200332223f19ed9b_icgraph.svg" width="378" height="54"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a82958224f33fa21d40f4f7965f8396bc" name="a82958224f33fa21d40f4f7965f8396bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82958224f33fa21d40f4f7965f8396bc">&#9670;&#160;</a></span>update_screen_metrics()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void update_screen_metrics </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Met a jour screen metrics en fonction de l'etat courant du jeu. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>Contexte SDL utilise pour dessiner les elements 2D et l'interface. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8c_source.html#l00027">27</a> du fichier <a class="el" href="main_8c_source.html">main.c</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="main_8h_a82958224f33fa21d40f4f7965f8396bc_icgraph.svg" width="100%" height="584"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Documentation des variables</h2>
+<a id="acdf31070b4fb73e81447bbd286d25f4e" name="acdf31070b4fb73e81447bbd286d25f4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdf31070b4fb73e81447bbd286d25f4e">&#9670;&#160;</a></span>animation_frame</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int animation_frame</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00047">47</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="adfe93ca7aba69abc894e5ed9ed18a10a" name="adfe93ca7aba69abc894e5ed9ed18a10a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfe93ca7aba69abc894e5ed9ed18a10a">&#9670;&#160;</a></span>animation_timer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Uint32 animation_timer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00048">48</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="aaf2331208dfb16a05b9f58f27bb24fa9" name="aaf2331208dfb16a05b9f58f27bb24fa9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf2331208dfb16a05b9f58f27bb24fa9">&#9670;&#160;</a></span>argent</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int argent</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00072">72</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="a4d0a1d1ce5bfa1674274f3f2ecc0ceed" name="a4d0a1d1ce5bfa1674274f3f2ecc0ceed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d0a1d1ce5bfa1674274f3f2ecc0ceed">&#9670;&#160;</a></span>boss1</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structboss__t.html">boss_t</a> boss1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00076">76</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="ad96bc8eaad3feab772ddefd4f682262a" name="ad96bc8eaad3feab772ddefd4f682262a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad96bc8eaad3feab772ddefd4f682262a">&#9670;&#160;</a></span>boss3</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structboss__t.html">boss_t</a> boss3</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00077">77</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="ade964650c21db9e2e3085aadd845bb56" name="ade964650c21db9e2e3085aadd845bb56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade964650c21db9e2e3085aadd845bb56">&#9670;&#160;</a></span>bouge_timer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Uint32 bouge_timer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00050">50</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="a03d5dc84ffa6dacbc5ba7abdd9eb6020" name="a03d5dc84ffa6dacbc5ba7abdd9eb6020"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03d5dc84ffa6dacbc5ba7abdd9eb6020">&#9670;&#160;</a></span>caisse_outils</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt__case.html">t_case</a>* caisse_outils[<a class="el" href="#a74a1fb583b1c35f2bcc4245fddf051e0">CAISSE_OUTILS_SIZE</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00068">68</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="af559a95708cfd0ab93606697554e1d56" name="af559a95708cfd0ab93606697554e1d56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af559a95708cfd0ab93606697554e1d56">&#9670;&#160;</a></span>combat_en_cours</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool combat_en_cours</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00051">51</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="a6a42a0878f51054d42ea24d8b03eefe4" name="a6a42a0878f51054d42ea24d8b03eefe4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a42a0878f51054d42ea24d8b03eefe4">&#9670;&#160;</a></span>combat_frame</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int combat_frame</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00052">52</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="aec473d17de578e6f689cb996f182464a" name="aec473d17de578e6f689cb996f182464a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec473d17de578e6f689cb996f182464a">&#9670;&#160;</a></span>combat_timer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Uint32 combat_timer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00053">53</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="aae482f95118e1d4408a5c6db622f6076" name="aae482f95118e1d4408a5c6db622f6076"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae482f95118e1d4408a5c6db622f6076">&#9670;&#160;</a></span>g_mastermind_reussi</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool g_mastermind_reussi</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="arcade_8c_source.html#l00033">33</a> du fichier <a class="el" href="arcade_8c_source.html">arcade.c</a>.</p>
+
+</div>
+</div>
+<a id="a90539eead6faa0a93480a62815008e35" name="a90539eead6faa0a93480a62815008e35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90539eead6faa0a93480a62815008e35">&#9670;&#160;</a></span>g_planete3_boss_spawned</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool g_planete3_boss_spawned</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00025">25</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="ab8b7ac2c62b73630946468247d22f0a3" name="ab8b7ac2c62b73630946468247d22f0a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8b7ac2c62b73630946468247d22f0a3">&#9670;&#160;</a></span>g_planete3_engrenage_recupere</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool g_planete3_engrenage_recupere</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00024">24</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="a35aa280233b0f2b73cdade32adbdb67d" name="a35aa280233b0f2b73cdade32adbdb67d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35aa280233b0f2b73cdade32adbdb67d">&#9670;&#160;</a></span>g_planete3_spawn_engrenage_defini</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool g_planete3_spawn_engrenage_defini</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00026">26</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="ad63d3d2055574bd78f2082ed65fe96b9" name="ad63d3d2055574bd78f2082ed65fe96b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad63d3d2055574bd78f2082ed65fe96b9">&#9670;&#160;</a></span>g_planete3_spawn_engrenage_x</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float g_planete3_spawn_engrenage_x</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00027">27</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="a007ccd9eb671a0c71e6a95d2e1f44779" name="a007ccd9eb671a0c71e6a95d2e1f44779"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a007ccd9eb671a0c71e6a95d2e1f44779">&#9670;&#160;</a></span>g_planete3_spawn_engrenage_y</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float g_planete3_spawn_engrenage_y</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00028">28</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="a1e9c8c06158eb6bb073cf1f9dc14da75" name="a1e9c8c06158eb6bb073cf1f9dc14da75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e9c8c06158eb6bb073cf1f9dc14da75">&#9670;&#160;</a></span>g_screen_h</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int g_screen_h</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8c_source.html#l00024">24</a> du fichier <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="a4f1806d6d442e6cb62608087abb7bfff" name="a4f1806d6d442e6cb62608087abb7bfff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f1806d6d442e6cb62608087abb7bfff">&#9670;&#160;</a></span>g_screen_w</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int g_screen_w</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8c_source.html#l00023">23</a> du fichier <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="a6b40a63f006994be1abc921549ba471c" name="a6b40a63f006994be1abc921549ba471c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b40a63f006994be1abc921549ba471c">&#9670;&#160;</a></span>g_simon_reussi</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool g_simon_reussi</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="arcade_8c_source.html#l00034">34</a> du fichier <a class="el" href="arcade_8c_source.html">arcade.c</a>.</p>
+
+</div>
+</div>
+<a id="a9f26241542eb25a396d652e9ec6e77e0" name="a9f26241542eb25a396d652e9ec6e77e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f26241542eb25a396d652e9ec6e77e0">&#9670;&#160;</a></span>hotbar</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt__case.html">t_case</a>* hotbar[<a class="el" href="#a8503e5db31d779209111bf7ea2dba16e">HOTBAR_SIZE</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00066">66</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="a7963142dea3652236977bec96c9a8d8a" name="a7963142dea3652236977bec96c9a8d8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7963142dea3652236977bec96c9a8d8a">&#9670;&#160;</a></span>index_item</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int index_item</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00064">64</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="a8dcd03ba0e2ea187818f82f341ab2b5f" name="a8dcd03ba0e2ea187818f82f341ab2b5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8dcd03ba0e2ea187818f82f341ab2b5f">&#9670;&#160;</a></span>inventaire</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt__case.html">t_case</a>* inventaire[<a class="el" href="#a1214bea12629f1bbee381f63e4573d29">INVENTAIRE_SIZE</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00067">67</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="a51cbc61de54ee081cc112e0cb4a51694" name="a51cbc61de54ee081cc112e0cb4a51694"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51cbc61de54ee081cc112e0cb4a51694">&#9670;&#160;</a></span>inventaire_ouvert</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool inventaire_ouvert</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00069">69</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="a5c2df1566e7f2bc9ae563ca9f180aae5" name="a5c2df1566e7f2bc9ae563ca9f180aae5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c2df1566e7f2bc9ae563ca9f180aae5">&#9670;&#160;</a></span>items</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt___item.html">t_Item</a>* items[<a class="el" href="#a1b40ceb455086d9cdb68ed3d3bf2775f">MAX_ITEMS</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00062">62</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="a3585292bb8a85d7e8e1e9d0505836d49" name="a3585292bb8a85d7e8e1e9d0505836d49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3585292bb8a85d7e8e1e9d0505836d49">&#9670;&#160;</a></span>mobs</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_mob.html">Mob</a>* mobs[<a class="el" href="#a71a42c4ea136b65af73f3e930fafc7c4">MAX_MOB</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00063">63</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="acb611635c7684b1955c46c635ea32215" name="acb611635c7684b1955c46c635ea32215"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb611635c7684b1955c46c635ea32215">&#9670;&#160;</a></span>perso</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_perso.html">Perso</a> perso</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00046">46</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="a37375faffb88626117c0f37c3a4afeae" name="a37375faffb88626117c0f37c3a4afeae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37375faffb88626117c0f37c3a4afeae">&#9670;&#160;</a></span>perso_bouge</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool perso_bouge</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00049">49</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="a9b189e58c2628169cccdd232eef7124f" name="a9b189e58c2628169cccdd232eef7124f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b189e58c2628169cccdd232eef7124f">&#9670;&#160;</a></span>Planete_actuelle</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Planete_actuelle</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8c_source.html#l00022">22</a> du fichier <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="a2c39a7a0570ae10b2583fe7aaeca7a61" name="a2c39a7a0570ae10b2583fe7aaeca7a61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c39a7a0570ae10b2583fe7aaeca7a61">&#9670;&#160;</a></span>sortie_vaisseau</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool sortie_vaisseau</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00074">74</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="a84af9ed84c11a72dd7515a42f42af710" name="a84af9ed84c11a72dd7515a42f42af710"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84af9ed84c11a72dd7515a42f42af710">&#9670;&#160;</a></span>track_global</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">MIX_Track* track_global</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="main_8c_source.html#l00025">25</a> du fichier <a class="el" href="main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="a99e90b23d7f8c25b0be06b706c01d7c0" name="a99e90b23d7f8c25b0be06b706c01d7c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99e90b23d7f8c25b0be06b706c01d7c0">&#9670;&#160;</a></span>vitesse_bonus</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float vitesse_bonus</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00073">73</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dir_d0381950fc41278198232cb047ffc1f9.html">headers</a></li><li class="navelem"><a href="main_8h.html">main.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

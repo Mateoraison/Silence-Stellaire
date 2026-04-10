@@ -1,0 +1,9 @@
+<map id="detruire_boss" name="detruire_boss">
+<area shape="rect" id="Node000001" title="Libere boss et nettoie les ressources associees." alt="" coords="5,31,105,57"/>
+<area shape="rect" id="Node000002" href="$boss_8c.html#aa99c5bb57c45ca96ac8cbc9178113ded" title=" " alt="" coords="178,5,293,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="104,34,165,28,160,30,105,40"/>
+<area shape="rect" id="Node000003" href="$boss_8c.html#a06fdb2e8e1170b4f3dbdea1b5d3ee5e9" title=" " alt="" coords="153,56,318,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="105,48,140,55,134,56,105,54"/>
+<area shape="rect" id="Node000004" href="$mob_8c.html#a982672a13ed7a7b25477f268c592c14b" title="Libere un mob et nettoie les ressources associees." alt="" coords="366,56,483,83"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="318,67,353,69,348,69,319,72"/>
+</map>

@@ -1,3 +1,8 @@
+/**
+ * @file menu.c
+ * @brief Menu principal et navigation entre les ecrans.
+ */
+
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
 #include <math.h>

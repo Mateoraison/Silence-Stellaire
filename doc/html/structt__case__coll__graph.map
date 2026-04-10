@@ -1,0 +1,5 @@
+<map id="t_case" name="t_case">
+<area shape="rect" id="Node000001" title="Slot de stockage UI (hotbar/inventaire/caisse) contenant un item et sa quantite." alt="" coords="5,211,85,387"/>
+<area shape="rect" id="Node000002" href="$structitem__.html" title=" " alt="" coords="13,5,77,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="46,135,48,194,43,194,45,141"/>
+</map>

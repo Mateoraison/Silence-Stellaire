@@ -1,0 +1,15 @@
+<map id="afficher_text" name="afficher_text">
+<area shape="rect" id="Node000001" title=" " alt="" coords="666,43,758,69"/>
+<area shape="rect" id="Node000002" href="$vaisseau_8c.html#a8ea9afc9440149ddd36e96b97d8ed6c5" title="Lance la scene interieure du vaisseau (deplacement, interactions, mini&#45;jeux, sortie)." alt="" coords="544,43,618,69"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="647,56,618,59,618,53,653,56"/>
+<area shape="rect" id="Node000003" href="$cinematique_8c.html#a418cc3e727578f4cd509ad27cd6a2a31" title="Lance cinematique fin et gere son deroulement complet." alt="" coords="349,43,496,69"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="526,56,496,59,496,53,532,56"/>
+<area shape="rect" id="Node000006" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="57,5,106,32"/>
+<area shape="poly" id="edge7_Node000002_Node000006" title=" " alt="" coords="527,38,496,33,383,21,271,16,107,20,107,15,271,11,383,15,497,28,532,39"/>
+<area shape="rect" id="Node000004" href="$map_8c.html#ad462ccdd50801fb085dc8134fc3765d1" title="Affiche la carte et met a jour les elements visuels associes." alt="" coords="206,43,301,69"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="331,56,302,59,301,53,336,56"/>
+<area shape="rect" id="Node000005" href="$vaisseau_8c.html#ace614afc8df3a40bd5ea0771044ff217" title=" " alt="" coords="5,68,158,95"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="188,66,158,73,158,67,193,65"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="188,44,106,27,107,21,193,41"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="173,86,325,91,411,88,496,79,541,70,546,69,497,84,411,93,325,96,173,92"/>
+</map>

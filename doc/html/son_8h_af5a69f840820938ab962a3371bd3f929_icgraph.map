@@ -1,0 +1,12 @@
+<map id="son_definir_sfx_active" name="son_definir_sfx_active">
+<area shape="rect" id="Node000001" title="Active ou desactive uniquement les effets sonores (SFX)." alt="" coords="551,31,702,57"/>
+<area shape="rect" id="Node000002" href="$option_8c.html#ac77b6b0f042469d82d75b270f5193806" title="Affiche option et met a jour les elements visuels associes." alt="" coords="397,31,503,57"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="533,44,503,47,503,41,538,44"/>
+<area shape="rect" id="Node000003" href="$pause_8c.html#abc45a9e3a6a57d6f0f44706bd52e556d" title="Affiche pause et met a jour les elements visuels associes." alt="" coords="244,5,349,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="379,33,350,30,350,25,385,33"/>
+<area shape="rect" id="Node000005" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,31,55,57"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="382,47,55,47,55,41,382,41"/>
+<area shape="rect" id="Node000004" href="$jeux_8c.html#a2d7491d04e8c2bdb52bb6ed7d75e4d78" title="Execute la boucle principale de gameplay pour la planete courante." alt="" coords="103,5,196,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="226,19,197,21,196,16,231,18"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="85,33,56,41,55,36,90,31"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="spawn_one_mob_of_type" name="spawn_one_mob_of_type">
+<area shape="rect" id="Node000001" title=" " alt="" coords="391,5,561,32"/>
+<area shape="rect" id="Node000002" href="$mob_8c.html#a1f766d8b9a9348d960e6f211fce5d558" title="Met a jour mobs en fonction de l&#39;etat courant du jeu." alt="" coords="244,5,343,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="373,19,344,21,343,16,379,19"/>
+<area shape="rect" id="Node000003" href="$jeux_8c.html#a2d7491d04e8c2bdb52bb6ed7d75e4d78" title="Execute la boucle principale de gameplay pour la planete courante." alt="" coords="103,5,196,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="226,19,197,21,197,16,231,19"/>
+<area shape="rect" id="Node000004" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,55,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="84,19,55,21,55,16,89,18"/>
+</map>

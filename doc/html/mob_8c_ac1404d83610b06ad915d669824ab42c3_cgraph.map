@@ -1,0 +1,5 @@
+<map id="detruire_mobs" name="detruire_mobs">
+<area shape="rect" id="Node000001" title="Libere mobs et nettoie les ressources associees." alt="" coords="5,5,109,32"/>
+<area shape="rect" id="Node000002" href="$mob_8c.html#a91cbc6442abe5bba7eeeaf19fb5e8811" title="Reinitialise mob respawn queue pour repartir d&#39;un etat propre." alt="" coords="157,5,337,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,16,144,18,138,19,109,21"/>
+</map>

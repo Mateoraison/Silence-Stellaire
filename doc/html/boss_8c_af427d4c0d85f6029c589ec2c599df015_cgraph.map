@@ -1,0 +1,21 @@
+<map id="appliquer_degats_contact" name="appliquer_degats_contact">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,81,175,108"/>
+<area shape="rect" id="Node000002" href="$boss_8c.html#abdd4c54b66ea8d0ee227b3c01036670f" title=" " alt="" coords="223,5,384,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,78,222,41,245,36,240,38,224,47,127,83"/>
+<area shape="rect" id="Node000006" href="$boss_8c.html#aca79e3fbdb8a06a38d6543de2eb5813b" title=" " alt="" coords="226,56,381,83"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="174,82,213,79,208,81,176,87"/>
+<area shape="rect" id="Node000007" href="$main_8h.html#a6c672075bc554c92548a916c9501bdb5" title=" " alt="" coords="245,107,362,133"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="175,102,232,111,227,112,175,107"/>
+<area shape="rect" id="Node000009" href="$main_8h.html#a6456affd0d0a21e911b531a5ba25676d" title=" " alt="" coords="245,157,362,184"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="126,106,224,143,245,152,240,152,222,148,125,111"/>
+<area shape="rect" id="Node000003" href="$son_8c.html#ae145ae699cc1eecf0684bdd530bd26f0" title="Charge (ou recupere du cache) puis joue une piste audio." alt="" coords="446,5,524,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="384,16,434,18,428,19,385,21"/>
+<area shape="rect" id="Node000004" href="$son_8c.html#ad0d6e981433bdc8e4291e672fa8c039b" title=" " alt="" coords="586,5,690,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="524,16,573,18,568,19,525,21"/>
+<area shape="rect" id="Node000005" href="$son_8c.html#aad43af6485e6418e4f26007ec64dba14" title=" " alt="" coords="738,5,852,32"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="690,16,725,18,720,19,691,21"/>
+<area shape="rect" id="Node000008" href="$main_8h.html#aaaa1e9fcb86ff8e60b297faa7815ad1d" title=" " alt="" coords="434,107,536,133"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="362,117,421,120,416,120,363,123"/>
+<area shape="rect" id="Node000010" href="$main_8h.html#a9b4aefc63ea00e60ec88da19e24e8236" title=" " alt="" coords="432,157,538,184"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="362,168,419,171,414,171,362,173"/>
+</map>

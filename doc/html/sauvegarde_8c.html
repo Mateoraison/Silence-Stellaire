@@ -1,0 +1,568 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Silence Stellaire: Référence du fichier src/sauvegarde.c</title>
+<link rel="icon" href="logo_win.png" type="image/x-icon" />
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-theme.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="logo_win.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">Silence Stellaire<span id="projectnumber">&#160;2025-2026</span>
+   </div>
+   <div id="projectbrief">Silence Stellaire, documentation technique de projet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('sauvegarde_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Référence du fichier sauvegarde.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Gestion des sauvegardes, des chargements et des emplacements.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="main_8h_source.html">headers/main.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="sauvegarde_8h_source.html">headers/sauvegarde.h</a>&quot;</code><br />
+<code>#include &lt;SDL3_image/SDL_image.h&gt;</code><br />
+<code>#include &lt;SDL3_ttf/SDL_ttf.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;sys/stat.h&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de sauvegarde.c:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="sauvegarde_8c__incl.svg" width="2243" height="262"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<p><a href="sauvegarde_8c_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:SaveData" id="r_SaveData"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="struct_save_data.html">SaveData</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Format binaire de donnees persistees pour un slot de sauvegarde.  <a href="struct_save_data.html#details">Plus de détails...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:aa355db1b4db1422d523d7e14f78b70bf" id="r_aa355db1b4db1422d523d7e14f78b70bf"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#aa355db1b4db1422d523d7e14f78b70bf">SAVE_MAGIC</a>&#160;&#160;&#160;0x5353544C /* SSTL */</td></tr>
+<tr class="memitem:a620a7acb504c4732c7665915295be27c" id="r_a620a7acb504c4732c7665915295be27c"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a620a7acb504c4732c7665915295be27c">SAVE_VERSION</a>&#160;&#160;&#160;1</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a590205a1d58df634530e608349c8dc6f" id="r_a590205a1d58df634530e608349c8dc6f"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a590205a1d58df634530e608349c8dc6f">sauvegarde_slot_existe</a> (int slot)</td></tr>
+<tr class="memdesc:a590205a1d58df634530e608349c8dc6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifie si un fichier de sauvegarde existe pour un slot donne.  <br /></td></tr>
+<tr class="memitem:a37cdab70aee73a7ba5b6ba7bcfc920c6" id="r_a37cdab70aee73a7ba5b6ba7bcfc920c6"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a37cdab70aee73a7ba5b6ba7bcfc920c6">sauvegarde_get_slot_actif</a> (void)</td></tr>
+<tr class="memdesc:a37cdab70aee73a7ba5b6ba7bcfc920c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le slot marque comme actif dans la session courante.  <br /></td></tr>
+<tr class="memitem:a8011b5d73a5247c42d0d7ea574b54e3a" id="r_a8011b5d73a5247c42d0d7ea574b54e3a"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a8011b5d73a5247c42d0d7ea574b54e3a">sauvegarde_set_slot_actif</a> (int slot)</td></tr>
+<tr class="memdesc:a8011b5d73a5247c42d0d7ea574b54e3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definit le slot actif pour les operations ulterieures.  <br /></td></tr>
+<tr class="memitem:af41024137aa5cec5baf4cef86ae63bd8" id="r_af41024137aa5cec5baf4cef86ae63bd8"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#af41024137aa5cec5baf4cef86ae63bd8">sauvegarder_partie_slot</a> (int slot, int planete)</td></tr>
+<tr class="memdesc:af41024137aa5cec5baf4cef86ae63bd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize l'etat de partie courant dans le slot cible.  <br /></td></tr>
+<tr class="memitem:aadcfca2e129355799bc39cbf1ca30390" id="r_aadcfca2e129355799bc39cbf1ca30390"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#aadcfca2e129355799bc39cbf1ca30390">charger_partie_slot</a> (int slot, int *planete_out)</td></tr>
+<tr class="memdesc:aadcfca2e129355799bc39cbf1ca30390"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge les donnees brutes d'un slot et les place en attente d'application.  <br /></td></tr>
+<tr class="memitem:a749dc51944352ce977ead8fb8ceca1cc" id="r_a749dc51944352ce977ead8fb8ceca1cc"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a749dc51944352ce977ead8fb8ceca1cc">sauvegarde_appliquer_si_disponible</a> (SDL_Renderer *renderer)</td></tr>
+<tr class="memdesc:a749dc51944352ce977ead8fb8ceca1cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applique a l'etat global les donnees precedemment chargees si presentes.  <br /></td></tr>
+<tr class="memitem:ae251037c85a5a7d8172c206539398f49" id="r_ae251037c85a5a7d8172c206539398f49"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ae251037c85a5a7d8172c206539398f49">sauvegarde_choisir_slot</a> (SDL_Renderer *renderer, const char *titre, bool mode_chargement)</td></tr>
+<tr class="memdesc:ae251037c85a5a7d8172c206539398f49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche l'interface de selection de slot (chargement ou sauvegarde).  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a72157237fcc8efb662940db83b6329c9" id="r_a72157237fcc8efb662940db83b6329c9"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a72157237fcc8efb662940db83b6329c9">engrenages_poses</a></td></tr>
+<tr class="memitem:a6a603860f3885534a34bf605601fbdf2" id="r_a6a603860f3885534a34bf605601fbdf2"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a6a603860f3885534a34bf605601fbdf2">vaisseau_repare</a></td></tr>
+<tr class="memitem:a9f26241542eb25a396d652e9ec6e77e0" id="r_a9f26241542eb25a396d652e9ec6e77e0"><td class="memItemLeft"><a class="el" href="structt__case.html">t_case</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a> [<a class="el" href="main_8h.html#a8503e5db31d779209111bf7ea2dba16e">HOTBAR_SIZE</a>]</td></tr>
+<tr class="memitem:a8dcd03ba0e2ea187818f82f341ab2b5f" id="r_a8dcd03ba0e2ea187818f82f341ab2b5f"><td class="memItemLeft"><a class="el" href="structt__case.html">t_case</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a8dcd03ba0e2ea187818f82f341ab2b5f">inventaire</a> [<a class="el" href="main_8h.html#a1214bea12629f1bbee381f63e4573d29">INVENTAIRE_SIZE</a>]</td></tr>
+<tr class="memitem:a03d5dc84ffa6dacbc5ba7abdd9eb6020" id="r_a03d5dc84ffa6dacbc5ba7abdd9eb6020"><td class="memItemLeft"><a class="el" href="structt__case.html">t_case</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a03d5dc84ffa6dacbc5ba7abdd9eb6020">caisse_outils</a> [<a class="el" href="main_8h.html#a74a1fb583b1c35f2bcc4245fddf051e0">CAISSE_OUTILS_SIZE</a>]</td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Gestion des sauvegardes, des chargements et des emplacements. </p>
+
+<p class="definition">Définition dans le fichier <a class="el" href="sauvegarde_8c_source.html">sauvegarde.c</a>.</p>
+</div><a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Documentation des macros</h2>
+<a id="aa355db1b4db1422d523d7e14f78b70bf" name="aa355db1b4db1422d523d7e14f78b70bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa355db1b4db1422d523d7e14f78b70bf">&#9670;&#160;</a></span>SAVE_MAGIC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SAVE_MAGIC&#160;&#160;&#160;0x5353544C /* SSTL */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="sauvegarde_8c_source.html#l00048">48</a> du fichier <a class="el" href="sauvegarde_8c_source.html">sauvegarde.c</a>.</p>
+
+</div>
+</div>
+<a id="a620a7acb504c4732c7665915295be27c" name="a620a7acb504c4732c7665915295be27c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a620a7acb504c4732c7665915295be27c">&#9670;&#160;</a></span>SAVE_VERSION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SAVE_VERSION&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="sauvegarde_8c_source.html#l00049">49</a> du fichier <a class="el" href="sauvegarde_8c_source.html">sauvegarde.c</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<a id="aadcfca2e129355799bc39cbf1ca30390" name="aadcfca2e129355799bc39cbf1ca30390"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aadcfca2e129355799bc39cbf1ca30390">&#9670;&#160;</a></span>charger_partie_slot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int charger_partie_slot </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>slot</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>planete_out</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Charge les donnees brutes d'un slot et les place en attente d'application. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">slot</td><td>Indice du slot de sauvegarde cible. </td></tr>
+    <tr><td class="paramname">planete_out</td><td>Pointeur de sortie optionnel pour recuperer la planete sauvegardee. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succes, -1 en cas d'erreur ou de slot invalide. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="sauvegarde_8c_source.html#l00207">207</a> du fichier <a class="el" href="sauvegarde_8c_source.html">sauvegarde.c</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="sauvegarde_8c_aadcfca2e129355799bc39cbf1ca30390_icgraph.svg" width="390" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a749dc51944352ce977ead8fb8ceca1cc" name="a749dc51944352ce977ead8fb8ceca1cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a749dc51944352ce977ead8fb8ceca1cc">&#9670;&#160;</a></span>sauvegarde_appliquer_si_disponible()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sauvegarde_appliquer_si_disponible </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Applique a l'etat global les donnees precedemment chargees si presentes. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>Contexte SDL utilise pour dessiner les elements 2D et l'interface. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>1 si une sauvegarde en attente a ete appliquee, 0 sinon. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="sauvegarde_8c_source.html#l00228">228</a> du fichier <a class="el" href="sauvegarde_8c_source.html">sauvegarde.c</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="sauvegarde_8c_a749dc51944352ce977ead8fb8ceca1cc_icgraph.svg" width="398" height="54"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="ae251037c85a5a7d8172c206539398f49" name="ae251037c85a5a7d8172c206539398f49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae251037c85a5a7d8172c206539398f49">&#9670;&#160;</a></span>sauvegarde_choisir_slot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sauvegarde_choisir_slot </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>titre</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>mode_chargement</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche l'interface de selection de slot (chargement ou sauvegarde). </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>Contexte SDL utilise pour dessiner les elements 2D et l'interface. </td></tr>
+    <tr><td class="paramname">titre</td><td>Texte affiche en titre de la fenetre (ex: "Charger" / "Sauvegarder"). </td></tr>
+    <tr><td class="paramname">mode_chargement</td><td>true pour charger un slot existant, false pour ecraser/creer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Numero de slot choisi (1..NB_SLOTS_SAUVEGARDE), ou 0 si annulation. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="sauvegarde_8c_source.html#l00254">254</a> du fichier <a class="el" href="sauvegarde_8c_source.html">sauvegarde.c</a>.</p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="sauvegarde_8c_ae251037c85a5a7d8172c206539398f49_cgraph.svg" width="544" height="443"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="sauvegarde_8c_ae251037c85a5a7d8172c206539398f49_icgraph.svg" width="574" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a37cdab70aee73a7ba5b6ba7bcfc920c6" name="a37cdab70aee73a7ba5b6ba7bcfc920c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37cdab70aee73a7ba5b6ba7bcfc920c6">&#9670;&#160;</a></span>sauvegarde_get_slot_actif()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sauvegarde_get_slot_actif </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne le slot marque comme actif dans la session courante. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Numero du slot actif. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="sauvegarde_8c_source.html#l00137">137</a> du fichier <a class="el" href="sauvegarde_8c_source.html">sauvegarde.c</a>.</p>
+
+</div>
+</div>
+<a id="a8011b5d73a5247c42d0d7ea574b54e3a" name="a8011b5d73a5247c42d0d7ea574b54e3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8011b5d73a5247c42d0d7ea574b54e3a">&#9670;&#160;</a></span>sauvegarde_set_slot_actif()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sauvegarde_set_slot_actif </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>slot</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definit le slot actif pour les operations ulterieures. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">slot</td><td>Indice du slot de sauvegarde cible. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="sauvegarde_8c_source.html#l00141">141</a> du fichier <a class="el" href="sauvegarde_8c_source.html">sauvegarde.c</a>.</p>
+
+</div>
+</div>
+<a id="a590205a1d58df634530e608349c8dc6f" name="a590205a1d58df634530e608349c8dc6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a590205a1d58df634530e608349c8dc6f">&#9670;&#160;</a></span>sauvegarde_slot_existe()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sauvegarde_slot_existe </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>slot</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Verifie si un fichier de sauvegarde existe pour un slot donne. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">slot</td><td>Indice du slot de sauvegarde cible. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>1 si le slot existe, 0 sinon. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="sauvegarde_8c_source.html#l00127">127</a> du fichier <a class="el" href="sauvegarde_8c_source.html">sauvegarde.c</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="sauvegarde_8c_a590205a1d58df634530e608349c8dc6f_icgraph.svg" width="780" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="af41024137aa5cec5baf4cef86ae63bd8" name="af41024137aa5cec5baf4cef86ae63bd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af41024137aa5cec5baf4cef86ae63bd8">&#9670;&#160;</a></span>sauvegarder_partie_slot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sauvegarder_partie_slot </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>slot</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>planete</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Serialize l'etat de partie courant dans le slot cible. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">slot</td><td>Indice du slot de sauvegarde cible. </td></tr>
+    <tr><td class="paramname">planete</td><td>Identifiant de planete concernee par l'operation. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succes, -1 en cas d'erreur E/S ou de slot invalide. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="sauvegarde_8c_source.html#l00147">147</a> du fichier <a class="el" href="sauvegarde_8c_source.html">sauvegarde.c</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="sauvegarde_8c_af41024137aa5cec5baf4cef86ae63bd8_icgraph.svg" width="563" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Documentation des variables</h2>
+<a id="a03d5dc84ffa6dacbc5ba7abdd9eb6020" name="a03d5dc84ffa6dacbc5ba7abdd9eb6020"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03d5dc84ffa6dacbc5ba7abdd9eb6020">&#9670;&#160;</a></span>caisse_outils</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt__case.html">t_case</a>* caisse_outils[<a class="el" href="main_8h.html#a74a1fb583b1c35f2bcc4245fddf051e0">CAISSE_OUTILS_SIZE</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00068">68</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="a72157237fcc8efb662940db83b6329c9" name="a72157237fcc8efb662940db83b6329c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72157237fcc8efb662940db83b6329c9">&#9670;&#160;</a></span>engrenages_poses</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int engrenages_poses</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00022">22</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="a9f26241542eb25a396d652e9ec6e77e0" name="a9f26241542eb25a396d652e9ec6e77e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f26241542eb25a396d652e9ec6e77e0">&#9670;&#160;</a></span>hotbar</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt__case.html">t_case</a>* hotbar[<a class="el" href="main_8h.html#a8503e5db31d779209111bf7ea2dba16e">HOTBAR_SIZE</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00066">66</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="a8dcd03ba0e2ea187818f82f341ab2b5f" name="a8dcd03ba0e2ea187818f82f341ab2b5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8dcd03ba0e2ea187818f82f341ab2b5f">&#9670;&#160;</a></span>inventaire</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt__case.html">t_case</a>* inventaire[<a class="el" href="main_8h.html#a1214bea12629f1bbee381f63e4573d29">INVENTAIRE_SIZE</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00067">67</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="a6a603860f3885534a34bf605601fbdf2" name="a6a603860f3885534a34bf605601fbdf2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a603860f3885534a34bf605601fbdf2">&#9670;&#160;</a></span>vaisseau_repare</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool vaisseau_repare</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00023">23</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="sauvegarde_8c.html">sauvegarde.c</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

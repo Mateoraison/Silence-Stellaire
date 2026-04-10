@@ -1,0 +1,5 @@
+<map id="t_objectifs" name="t_objectifs">
+<area shape="rect" id="Node000001" title="Ensemble des objectifs actifs, avec etat d&#39;affichage et animation de validation." alt="" coords="5,189,96,323"/>
+<area shape="rect" id="Node000002" href="$structt__objectif.html" title="Unite d&#39;objectif individuelle (description, etat valide, predicate de verification)." alt="" coords="7,5,94,117"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="51,115,53,173,48,172,50,120"/>
+</map>

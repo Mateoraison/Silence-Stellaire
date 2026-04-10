@@ -1,0 +1,345 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Silence Stellaire: Référence du fichier src/item.c</title>
+<link rel="icon" href="logo_win.png" type="image/x-icon" />
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-theme.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="logo_win.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">Silence Stellaire<span id="projectnumber">&#160;2025-2026</span>
+   </div>
+   <div id="projectbrief">Silence Stellaire, documentation technique de projet</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('item_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Référence du fichier item.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Creation, affichage et ramassage des objets du monde.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="main_8h_source.html">headers/main.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Graphe des dépendances par inclusion de item.c:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="item_8c__incl.svg" width="1996" height="262"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<p><a href="item_8c_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ac066d9bc77b421f23ca66756b7ff4a33" id="r_ac066d9bc77b421f23ca66756b7ff4a33"><td class="memItemLeft"><a class="el" href="structt___item.html">t_Item</a> *&#160;</td><td class="memItemRight"><a class="el" href="#ac066d9bc77b421f23ca66756b7ff4a33">init_item</a> (<a class="el" href="main_8h.html#a513dbfc7f10c1a9ff1757ba53bf642e2">typeItem</a> type, SDL_Renderer *renderer, float x, float y)</td></tr>
+<tr class="memdesc:ac066d9bc77b421f23ca66756b7ff4a33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise item et prepare les ressources necessaires.  <br /></td></tr>
+<tr class="memitem:a48031d146286ca3d6f7d20d8e4276f07" id="r_a48031d146286ca3d6f7d20d8e4276f07"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a48031d146286ca3d6f7d20d8e4276f07">afficher_item</a> (<a class="el" href="structt___item.html">t_Item</a> *<a class="el" href="main_8h.html#a5c2df1566e7f2bc9ae563ca9f180aae5">items</a>[<a class="el" href="main_8h.html#a1b40ceb455086d9cdb68ed3d3bf2775f">MAX_ITEMS</a>], SDL_Renderer *renderer)</td></tr>
+<tr class="memdesc:a48031d146286ca3d6f7d20d8e4276f07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche item et met a jour les elements visuels associes.  <br /></td></tr>
+<tr class="memitem:a020f57f2be35348a3c5d040421d9007b" id="r_a020f57f2be35348a3c5d040421d9007b"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a020f57f2be35348a3c5d040421d9007b">detruire_item</a> (<a class="el" href="structt___item.html">t_Item</a> **item)</td></tr>
+<tr class="memdesc:a020f57f2be35348a3c5d040421d9007b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libere item et nettoie les ressources associees.  <br /></td></tr>
+<tr class="memitem:accc9925bdc1247da3cbb869da6f0dd35" id="r_accc9925bdc1247da3cbb869da6f0dd35"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#accc9925bdc1247da3cbb869da6f0dd35">detruire_tout_item</a> (<a class="el" href="structt___item.html">t_Item</a> *<a class="el" href="main_8h.html#a5c2df1566e7f2bc9ae563ca9f180aae5">items</a>[<a class="el" href="main_8h.html#a1b40ceb455086d9cdb68ed3d3bf2775f">MAX_ITEMS</a>])</td></tr>
+<tr class="memdesc:accc9925bdc1247da3cbb869da6f0dd35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libere tout item et nettoie les ressources associees.  <br /></td></tr>
+<tr class="memitem:a161aa23dc24b7a6f3c5ff3c0d690e442" id="r_a161aa23dc24b7a6f3c5ff3c0d690e442"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a161aa23dc24b7a6f3c5ff3c0d690e442">ramasser_item</a> (<a class="el" href="structt___item.html">t_Item</a> *item, SDL_Renderer *renderer, <a class="el" href="structt__case.html">t_case</a> *<a class="el" href="main_8h.html#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a>[<a class="el" href="main_8h.html#a8503e5db31d779209111bf7ea2dba16e">HOTBAR_SIZE</a>])</td></tr>
+<tr class="memdesc:a161aa23dc24b7a6f3c5ff3c0d690e442"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tente de transferer un item du sol vers la hotbar du joueur.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Creation, affichage et ramassage des objets du monde. </p>
+
+<p class="definition">Définition dans le fichier <a class="el" href="item_8c_source.html">item.c</a>.</p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<a id="a48031d146286ca3d6f7d20d8e4276f07" name="a48031d146286ca3d6f7d20d8e4276f07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48031d146286ca3d6f7d20d8e4276f07">&#9670;&#160;</a></span>afficher_item()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void afficher_item </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt___item.html">t_Item</a> *</td>          <td class="paramname"><span class="paramname"><em>items</em></span>[MAX_ITEMS], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche item et met a jour les elements visuels associes. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="main_8h.html#a5c2df1566e7f2bc9ae563ca9f180aae5">items</a></td><td>Tableau des items presents dans la scene courante. </td></tr>
+    <tr><td class="paramname">renderer</td><td>Contexte SDL utilise pour dessiner les elements 2D et l'interface. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="item_8c_source.html#l00039">39</a> du fichier <a class="el" href="item_8c_source.html">item.c</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="item_8c_a48031d146286ca3d6f7d20d8e4276f07_icgraph.svg" width="346" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a020f57f2be35348a3c5d040421d9007b" name="a020f57f2be35348a3c5d040421d9007b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a020f57f2be35348a3c5d040421d9007b">&#9670;&#160;</a></span>detruire_item()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void detruire_item </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt___item.html">t_Item</a> **</td>          <td class="paramname"><span class="paramname"><em>item</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Libere item et nettoie les ressources associees. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">item</td><td>Adresse du pointeur item a detruire et remettre a NULL. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="item_8c_source.html#l00056">56</a> du fichier <a class="el" href="item_8c_source.html">item.c</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="item_8c_a020f57f2be35348a3c5d040421d9007b_icgraph.svg" width="519" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="accc9925bdc1247da3cbb869da6f0dd35" name="accc9925bdc1247da3cbb869da6f0dd35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accc9925bdc1247da3cbb869da6f0dd35">&#9670;&#160;</a></span>detruire_tout_item()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void detruire_tout_item </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt___item.html">t_Item</a> *</td>          <td class="paramname"><span class="paramname"><em>items</em></span>[MAX_ITEMS]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Libere tout item et nettoie les ressources associees. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="main_8h.html#a5c2df1566e7f2bc9ae563ca9f180aae5">items</a></td><td>Tableau des items presents dans la scene courante. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="item_8c_source.html#l00062">62</a> du fichier <a class="el" href="item_8c_source.html">item.c</a>.</p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="item_8c_accc9925bdc1247da3cbb869da6f0dd35_cgraph.svg" width="280" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="item_8c_accc9925bdc1247da3cbb869da6f0dd35_icgraph.svg" width="375" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="ac066d9bc77b421f23ca66756b7ff4a33" name="ac066d9bc77b421f23ca66756b7ff4a33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac066d9bc77b421f23ca66756b7ff4a33">&#9670;&#160;</a></span>init_item()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt___item.html">t_Item</a> * init_item </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="main_8h.html#a513dbfc7f10c1a9ff1757ba53bf642e2">typeItem</a></td>          <td class="paramname"><span class="paramname"><em>type</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>y</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise item et prepare les ressources necessaires. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Type logique de l'entite ou de l'operation a traiter. </td></tr>
+    <tr><td class="paramname">renderer</td><td>Contexte SDL utilise pour dessiner les elements 2D et l'interface. </td></tr>
+    <tr><td class="paramname">x</td><td>Coordonnee X de reference (monde ou ecran selon le contexte). </td></tr>
+    <tr><td class="paramname">y</td><td>Coordonnee Y de reference (monde ou ecran selon le contexte). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Pointeur vers l'item initialise, ou NULL en cas d'echec d'allocation/texture. </dd></dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="item_8c_source.html#l00012">12</a> du fichier <a class="el" href="item_8c_source.html">item.c</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="item_8c_ac066d9bc77b421f23ca66756b7ff4a33_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a161aa23dc24b7a6f3c5ff3c0d690e442" name="a161aa23dc24b7a6f3c5ff3c0d690e442"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a161aa23dc24b7a6f3c5ff3c0d690e442">&#9670;&#160;</a></span>ramasser_item()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ramasser_item </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt___item.html">t_Item</a> *</td>          <td class="paramname"><span class="paramname"><em>item</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *</td>          <td class="paramname"><span class="paramname"><em>renderer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structt__case.html">t_case</a> *</td>          <td class="paramname"><span class="paramname"><em>hotbar</em></span>[HOTBAR_SIZE]&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tente de transferer un item du sol vers la hotbar du joueur. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">item</td><td>Item cible a ramasser. </td></tr>
+    <tr><td class="paramname">renderer</td><td>Contexte SDL utilise pour dessiner les elements 2D et l'interface. </td></tr>
+    <tr><td class="paramname"><a class="el" href="main_8h.html#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a></td><td>Tableau des slots de raccourcis equipables du joueur. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="item_8c_source.html#l00070">70</a> du fichier <a class="el" href="item_8c_source.html">item.c</a>.</p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="item_8c_a161aa23dc24b7a6f3c5ff3c0d690e442_cgraph.svg" width="302" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="item_8c.html">item.c</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

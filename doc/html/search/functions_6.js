@@ -1,0 +1,7 @@
+var searchData=
+[
+  ['game_5fover_0',['game_over',['../game__over_8c.html#a37d3fac8300008a434af7c66a4e695d0',1,'game_over(SDL_Renderer *renderer, int planete):&#160;game_over.c'],['../game__over_8h.html#a37d3fac8300008a434af7c66a4e695d0',1,'game_over(SDL_Renderer *renderer, int planete):&#160;game_over.c']]],
+  ['generer_5flabyrinthe_5fplanete3_1',['generer_labyrinthe_planete3',['../planete_8h.html#a590f905501246ac7649bbc45bc6677c5',1,'generer_labyrinthe_planete3(t_tile map[W_MAP][H_MAP], int *engrenage_case_x, int *engrenage_case_y):&#160;planete.c'],['../planete_8c.html#a590f905501246ac7649bbc45bc6677c5',1,'generer_labyrinthe_planete3(t_tile map[W_MAP][H_MAP], int *engrenage_case_x, int *engrenage_case_y):&#160;planete.c']]],
+  ['gerer_5fclic_5finventaire_2',['gerer_clic_inventaire',['../inventaire_8h.html#a27d35e407cd81c7cbe1cc7f8e0c7ff17',1,'gerer_clic_inventaire(t_case **inventaire, t_case **hotbar, SDL_Event *event, int inventaire_size, int inventaire_cols, int inventaire_rows):&#160;inventaire.c'],['../inventaire_8c.html#a27d35e407cd81c7cbe1cc7f8e0c7ff17',1,'gerer_clic_inventaire(t_case **inventaire, t_case **hotbar, SDL_Event *event, int inventaire_size, int inventaire_cols, int inventaire_rows):&#160;inventaire.c']]],
+  ['gerer_5fcombat_3',['gerer_combat',['../perso_8h.html#a27a7f2b104972dc84653a7abaf2cedfc',1,'gerer_combat(SDL_Event event):&#160;perso.c'],['../perso_8c.html#a27a7f2b104972dc84653a7abaf2cedfc',1,'gerer_combat(SDL_Event event):&#160;perso.c']]]
+];

@@ -1,0 +1,5 @@
+<map id="supprimer_minions_boss" name="supprimer_minions_boss">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,171,32"/>
+<area shape="rect" id="Node000002" href="$mob_8c.html#a982672a13ed7a7b25477f268c592c14b" title="Libere un mob et nettoie les ressources associees." alt="" coords="219,5,336,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="171,16,206,19,201,19,171,21"/>
+</map>

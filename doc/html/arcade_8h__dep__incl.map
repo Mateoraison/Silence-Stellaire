@@ -1,0 +1,7 @@
+<map id="src/headers/arcade.h" name="src/headers/arcade.h">
+<area shape="rect" id="Node000001" title="Fichier des mini&#45;jeux d&#39;arcade utilises dans la progression." alt="" coords="30,5,174,32"/>
+<area shape="rect" id="Node000002" href="$jeux_8c.html" title="Boucle principale et orchestration des etats de jeu." alt="" coords="5,80,84,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="85,44,56,81,52,78,80,45"/>
+<area shape="rect" id="Node000003" href="$vaisseau_8c.html" title="Exploration du vaisseau, interactions et retour vers la planete." alt="" coords="107,80,214,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="123,42,153,80,148,80,120,47"/>
+</map>

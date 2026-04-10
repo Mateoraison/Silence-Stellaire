@@ -1,0 +1,12 @@
+<map id="get_player_world_center" name="get_player_world_center">
+<area shape="rect" id="Node000001" title=" " alt="" coords="391,31,554,57"/>
+<area shape="rect" id="Node000002" href="$mob_8c.html#aa1ffa891e170487c45dd0bb0fd1c32c8" title="Affiche mob et met a jour les elements visuels associes." alt="" coords="246,5,341,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="373,30,342,28,342,23,378,30"/>
+<area shape="rect" id="Node000005" href="$mob_8c.html#a1f766d8b9a9348d960e6f211fce5d558" title="Met a jour mobs en fonction de l&#39;etat courant du jeu." alt="" coords="244,56,343,83"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="378,57,344,65,344,60,373,58"/>
+<area shape="rect" id="Node000003" href="$jeux_8c.html#a2d7491d04e8c2bdb52bb6ed7d75e4d78" title="Execute la boucle principale de gameplay pour la planete courante." alt="" coords="103,31,196,57"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="228,30,197,38,196,33,233,29"/>
+<area shape="rect" id="Node000004" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,31,55,57"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="85,45,56,47,55,41,89,43"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="226,58,197,55,197,50,231,58"/>
+</map>

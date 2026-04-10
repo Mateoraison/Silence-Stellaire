@@ -1,0 +1,12 @@
+digraph "possible_ramasser_item"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="possible_ramasser_item",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Evalue ramasser item puis applique l'action autorisee si les conditions sont reunies."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="ajouter_item_hotbar",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$inventaire_8c.html#af0bb60f5edfe743f3132d027eaf1bcbb",tooltip="Ajoute un item dans la hotbar (slot libre ou pile compatible)."];
+}

@@ -1,0 +1,29 @@
+<map id="game_over" name="game_over">
+<area shape="rect" id="Node000001" title="Affiche l&#39;ecran de game over et traite le choix du joueur." alt="" coords="5,157,91,184"/>
+<area shape="rect" id="Node000002" href="$bouton_8c.html#af33c1c08b52d3d015ff6f7039a9734ee" title="Affiche texte centre et met a jour les elements visuels associes." alt="" coords="151,5,294,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="53,156,83,101,108,69,137,42,148,37,144,41,140,46,112,73,88,104,58,158"/>
+<area shape="rect" id="Node000003" href="$bouton_8c.html#a11f55905044ef2518b8c38311df3c48d" title="Dessine la texture du bouton dans son rectangle d&#39;affichage." alt="" coords="166,56,279,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="60,155,93,124,137,92,153,87,149,90,140,97,97,128,64,159"/>
+<area shape="rect" id="Node000004" href="$bouton_8c.html#ab4862740c43f8a9abb996fff0aba5ca1" title="Met a jour l&#39;etat du bouton a partir d&#39;un evenement SDL." alt="" coords="139,107,306,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="90,156,161,136,158,140,93,161"/>
+<area shape="rect" id="Node000006" href="$bouton_8c.html#a482b1feb9004901d0544e64b1c44051c" title="Initialise un bouton (zone, texture et etat d&#39;interaction)." alt="" coords="179,157,266,184"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="91,168,165,169,161,172,92,173"/>
+<area shape="rect" id="Node000007" href="$boss_8c.html#a6ebb70c1cce9efe2e97dfee86382e964" title="Reinitialise boss for retry pour repartir d&#39;un etat propre." alt="" coords="152,208,292,235"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="91,180,162,202,157,205,92,186"/>
+<area shape="rect" id="Node000011" href="$main_8h.html#a6c672075bc554c92548a916c9501bdb5" title=" " alt="" coords="164,259,281,285"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="62,182,97,213,140,244,153,252,148,253,137,249,93,218,62,187"/>
+<area shape="rect" id="Node000013" href="$main_8h.html#a6456affd0d0a21e911b531a5ba25676d" title=" " alt="" coords="164,309,281,336"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="56,182,88,238,112,269,140,295,152,304,147,304,137,299,108,272,83,241,54,187"/>
+<area shape="rect" id="Node000005" href="$bouton_8c.html#a273a0b22067678e17b3e6b4be36e3641" title=" " alt="" coords="382,107,491,133"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="305,117,369,119,365,121,307,123"/>
+<area shape="rect" id="Node000008" href="$boss_8c.html#aa99c5bb57c45ca96ac8cbc9178113ded" title=" " alt="" coords="379,157,494,184"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="281,205,366,187,361,189,283,210"/>
+<area shape="rect" id="Node000009" href="$boss_8c.html#a06fdb2e8e1170b4f3dbdea1b5d3ee5e9" title=" " alt="" coords="354,208,519,235"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="293,219,341,221,336,222,293,224"/>
+<area shape="rect" id="Node000010" href="$mob_8c.html#a982672a13ed7a7b25477f268c592c14b" title="Libere un mob et nettoie les ressources associees." alt="" coords="567,208,685,235"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="520,219,555,221,549,222,520,224"/>
+<area shape="rect" id="Node000012" href="$main_8h.html#aaaa1e9fcb86ff8e60b297faa7815ad1d" title=" " alt="" coords="386,259,488,285"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="281,269,373,272,367,272,282,275"/>
+<area shape="rect" id="Node000014" href="$main_8h.html#a9b4aefc63ea00e60ec88da19e24e8236" title=" " alt="" coords="384,309,490,336"/>
+<area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="281,320,371,323,365,323,282,325"/>
+</map>

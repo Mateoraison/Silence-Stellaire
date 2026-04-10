@@ -1,3 +1,8 @@
+/**
+ * @file planete.c
+ * @brief Gestion des planetes et des transitions d'exploration.
+ */
+
 #include <SDL3/SDL.h>
 #include <math.h>
 #include <limits.h>
@@ -74,6 +79,7 @@ static void p3_carve_line(t_tile map[W_MAP][H_MAP], int x0, int y0, int x1, int 
 }
 
 
+/** @brief Cellule de file utilisee pour le remplissage de zone de la planete 3. */
 typedef struct
 {
     int x;

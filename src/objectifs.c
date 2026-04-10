@@ -1,3 +1,8 @@
+/**
+ * @file objectifs.c
+ * @brief Gestion des objectifs de progression et de leur affichage.
+ */
+
 #include "headers/main.h"
 
 extern int  engrenages_poses;
@@ -129,7 +134,7 @@ void objectifs_afficher(t_objectifs *obj, SDL_Renderer *renderer, TTF_Font *font
     /* Calcul hauteur totale du panneau */
     float hauteur = PADDING * 2 + 24.0f /* titre */ + PADDING + obj->nb * LIGNE_H;
  
-    /*  Fond semi-transparent */
+    /*  Assombrir l'ecran pour faire ressortir la liste des objectifs */
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
     SDL_SetRenderDrawColor(renderer, 10, 10, 30, 200);
     SDL_FRect fond = { panneau_x, panneau_y, PANNEAU_W, hauteur };

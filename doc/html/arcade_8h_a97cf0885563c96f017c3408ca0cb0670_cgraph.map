@@ -1,0 +1,15 @@
+<map id="jouer_arcade2" name="jouer_arcade2">
+<area shape="rect" id="Node000001" title="Lance arcade2 et gere son deroulement complet." alt="" coords="5,81,108,108"/>
+<area shape="rect" id="Node000002" href="$arcade_8c.html#a302398ea76b63c15ea172ce82377984d" title=" " alt="" coords="169,5,304,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="80,79,155,42,175,36,170,39,157,46,83,83"/>
+<area shape="rect" id="Node000003" href="$arcade_8c.html#a25752e139d33d2208840bba4bd7597df" title=" " alt="" coords="175,56,298,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="107,85,162,79,157,82,109,90"/>
+<area shape="rect" id="Node000004" href="$arcade_8c.html#adcd100b7250411e655a98a61dace3f5a" title=" " alt="" coords="365,107,489,133"/>
+<area shape="poly" id="edge7_Node000001_Node000004" title=" " alt="" coords="108,95,350,112,349,117,108,101"/>
+<area shape="rect" id="Node000006" href="$arcade_8c.html#af12f65de40144cb2fb5188f647a813d9" title=" " alt="" coords="156,157,317,184"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="89,106,157,136,188,151,183,151,155,141,88,111"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="290,81,362,102,357,102,289,86"/>
+<area shape="rect" id="Node000005" href="$arcade_8c.html#aef73159add1b6705e8ecc9411076a194" title=" " alt="" coords="537,107,652,133"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="490,117,524,120,519,120,490,123"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="289,154,357,138,362,137,290,159"/>
+</map>

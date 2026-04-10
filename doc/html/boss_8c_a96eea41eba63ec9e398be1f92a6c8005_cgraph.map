@@ -1,0 +1,7 @@
+<map id="afficher_barre_vie_boss" name="afficher_barre_vie_boss">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,164,32"/>
+<area shape="rect" id="Node000002" href="$main_8h.html#a6c672075bc554c92548a916c9501bdb5" title=" " alt="" coords="212,5,329,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="164,16,199,19,194,19,164,21"/>
+<area shape="rect" id="Node000003" href="$main_8h.html#aaaa1e9fcb86ff8e60b297faa7815ad1d" title=" " alt="" coords="377,5,479,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="329,16,364,19,359,19,329,21"/>
+</map>

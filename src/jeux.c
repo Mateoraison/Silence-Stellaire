@@ -1,3 +1,8 @@
+/**
+ * @file jeux.c
+ * @brief Boucle principale et orchestration des etats de jeu.
+ */
+
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
 #include <SDL3_mixer/SDL_mixer.h>
@@ -406,6 +411,7 @@ void init_caisse_outils(SDL_Renderer *renderer) {
     }
 }
 
+/** @brief Etat de cuisson d'un item dans la hotbar. */
 typedef struct {
     int actif;
     int slot_hotbar;
@@ -415,6 +421,7 @@ typedef struct {
 
 static t_Cuisson cuisson = {0, -1, 0, NULL};
 
+/** @brief Etat de la console de commandes de debug en jeu. */
 typedef struct {
     int ouvert;
     char saisie[128];
@@ -618,7 +625,7 @@ static void console_afficher(SDL_Renderer *renderer) {
             float cy = screen_center_y();
             float w = (float)s_center->w;
             float h = (float)s_center->h;
-            /* Fond semi-transparent pour lisibilite */
+            /* Assombrir l'arriere-plan pour faire ressortir l'ecran de pause */
             SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
             SDL_SetRenderDrawColor(renderer, 10, 10, 30, 200);
             SDL_FRect bg = {cx - w * 0.5f - 10.0f, cy - h * 0.5f - 6.0f, w + 20.0f, h + 12.0f};

@@ -1,0 +1,9 @@
+<map id="reset_boss_for_retry" name="reset_boss_for_retry">
+<area shape="rect" id="Node000001" title="Reinitialise boss for retry pour repartir d&#39;un etat propre." alt="" coords="5,31,146,57"/>
+<area shape="rect" id="Node000002" href="$boss_8c.html#aa99c5bb57c45ca96ac8cbc9178113ded" title=" " alt="" coords="219,5,334,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="146,33,206,27,201,29,147,38"/>
+<area shape="rect" id="Node000003" href="$boss_8c.html#a06fdb2e8e1170b4f3dbdea1b5d3ee5e9" title=" " alt="" coords="194,56,359,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="146,50,181,57,175,57,146,56"/>
+<area shape="rect" id="Node000004" href="$mob_8c.html#a982672a13ed7a7b25477f268c592c14b" title="Libere un mob et nettoie les ressources associees." alt="" coords="407,56,524,83"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="359,67,394,69,389,69,360,72"/>
+</map>
