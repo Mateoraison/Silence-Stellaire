@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdint.h>
 
 #ifdef _WIN32
 #include <direct.h>
@@ -43,10 +44,29 @@ typedef struct {
 	int inventaire_qte[INVENTAIRE_SIZE];
 	int caisse_type[CAISSE_OUTILS_SIZE];
 	int caisse_qte[CAISSE_OUTILS_SIZE];
+	int boss1_est_battu;
+	int boss1_est_agro;
+	int boss1_vie;
+	int boss1_phase;
+	int boss3_est_battu;
+	int boss3_est_agro;
+	int boss3_vie;
+	int boss3_phase;
+	int planete2_mastermind_engrenage_donne;
+	int planete2_simon_termine;
+	int planete1_engrenage_objectifs_donne;
+	int planete2_engrenage_objectifs_donne;
+	int planete3_engrenage_objectifs_donne;
+	int planete2_barriere4_ouverte;
+	int planete3_engrenage_recupere;
+	int planete3_boss_spawned;
+	int mini_mastermind_reussi;
+	int mini_simon_reussi;
+	uint32_t checksum;
 } SaveData;
 
 #define SAVE_MAGIC 0x5353544C /* SSTL */
-#define SAVE_VERSION 1
+#define SAVE_VERSION 2
 
 static int slot_actif = 1;
 static int chargement_en_attente = 0;
@@ -55,6 +75,51 @@ static SaveData sauvegarde_attente;
 extern t_case *hotbar[HOTBAR_SIZE];
 extern t_case *inventaire[INVENTAIRE_SIZE];
 extern t_case *caisse_outils[CAISSE_OUTILS_SIZE];
+
+static uint32_t calculer_checksum_save(const SaveData *data) {
+	SaveData tmp = *data;
+	tmp.checksum = 0;
+
+	const unsigned char *bytes = (const unsigned char *)&tmp;
+	uint32_t hash = 2166136261u;
+	for (size_t i = 0; i < sizeof(SaveData); i++) {
+		hash ^= (uint32_t)bytes[i];
+		hash *= 16777619u;
+	}
+	return hash;
+}
+
+static void save_set_checksum(SaveData *data) {
+	data->checksum = 0;
+	data->checksum = calculer_checksum_save(data);
+}
+
+static int save_checksum_ok(const SaveData *data) {
+	return data->checksum == calculer_checksum_save(data);
+}
+
+static int save_data_valide(const SaveData *data) {
+	if (data->magic != SAVE_MAGIC) return 0;
+	if (data->version != SAVE_VERSION) return 0;
+	if (data->planete < 1 || data->planete > 3) return 0;
+	if (data->vie_max <= 0 || data->faim_max <= 0) return 0;
+	if (data->vie < 0 || data->vie > data->vie_max) return 0;
+	if (data->faim < 0 || data->faim > data->faim_max) return 0;
+	if (data->direction < 0 || data->direction > 3) return 0;
+
+	for (int i = 0; i < HOTBAR_SIZE; i++) {
+		if (data->hotbar_qte[i] < 0) return 0;
+	}
+	for (int i = 0; i < INVENTAIRE_SIZE; i++) {
+		if (data->inventaire_qte[i] < 0) return 0;
+	}
+	for (int i = 0; i < CAISSE_OUTILS_SIZE; i++) {
+		if (data->caisse_qte[i] < 0) return 0;
+	}
+
+	if (!save_checksum_ok(data)) return 0;
+	return 1;
+}
 
 static void liberer_case_array(t_case **cases, int taille) {
 	for (int i = 0; i < taille; i++) {
@@ -162,6 +227,14 @@ int sauvegarder_partie_slot(int slot, int planete) {
 	data.vitesse_bonus = vitesse_bonus;
 	data.engrenages_poses = engrenages_poses;
 	data.vaisseau_repare = vaisseau_repare ? 1 : 0;
+	data.boss1_est_battu = boss1.est_battu;
+	data.boss1_est_agro = boss1.est_agro;
+	data.boss1_vie = boss1.vie;
+	data.boss1_phase = boss1.phase;
+	data.boss3_est_battu = boss3.est_battu;
+	data.boss3_est_agro = boss3.est_agro;
+	data.boss3_vie = boss3.vie;
+	data.boss3_phase = boss3.phase;
 
 	for (int i = 0; i < HOTBAR_SIZE; i++) {
 		data.hotbar_type[i] = -1;
@@ -190,6 +263,21 @@ int sauvegarder_partie_slot(int slot, int planete) {
 		}
 	}
 
+	progression_jeu_t progression;
+	jeu_get_progression(&progression);
+	data.planete2_mastermind_engrenage_donne = progression.planete2_mastermind_engrenage_donne;
+	data.planete2_simon_termine = progression.planete2_simon_termine;
+	data.planete1_engrenage_objectifs_donne = progression.planete1_engrenage_objectifs_donne;
+	data.planete2_engrenage_objectifs_donne = progression.planete2_engrenage_objectifs_donne;
+	data.planete3_engrenage_objectifs_donne = progression.planete3_engrenage_objectifs_donne;
+	data.planete2_barriere4_ouverte = progression.planete2_barriere4_ouverte;
+	data.planete3_engrenage_recupere = progression.planete3_engrenage_recupere;
+	data.planete3_boss_spawned = progression.planete3_boss_spawned;
+	data.mini_mastermind_reussi = progression.mastermind_reussi;
+	data.mini_simon_reussi = progression.simon_reussi;
+
+	save_set_checksum(&data);
+
 	assurer_dossier_saves();
 	char path[64];
 	chemin_slot(slot, path);
@@ -212,11 +300,26 @@ int charger_partie_slot(int slot, int *planete_out) {
 	FILE *f = fopen(path, "rb");
 	if (!f) return -1;
 
+	fseek(f, 0, SEEK_END);
+	long file_size = ftell(f);
+	if (file_size < 0) {
+		fclose(f);
+		return -1;
+	}
+	rewind(f);
+
 	SaveData data;
-	size_t n = fread(&data, sizeof(SaveData), 1, f);
-	fclose(f);
-	if (n != 1) return -1;
-	if (data.magic != SAVE_MAGIC || data.version != SAVE_VERSION) return -1;
+	SDL_memset(&data, 0, sizeof(data));
+
+	if ((size_t)file_size == sizeof(SaveData)) {
+		size_t n = fread(&data, sizeof(SaveData), 1, f);
+		fclose(f);
+		if (n != 1) return -1;
+		if (!save_data_valide(&data)) return -1;
+	} else {
+		fclose(f);
+		return -1;
+	}
 
 	sauvegarde_attente = data;
 	chargement_en_attente = 1;
@@ -239,6 +342,36 @@ int sauvegarde_appliquer_si_disponible(SDL_Renderer *renderer) {
 	vitesse_bonus = sauvegarde_attente.vitesse_bonus;
 	engrenages_poses = sauvegarde_attente.engrenages_poses;
 	vaisseau_repare = (sauvegarde_attente.vaisseau_repare != 0);
+	boss1.est_battu = sauvegarde_attente.boss1_est_battu;
+	boss1.est_agro = sauvegarde_attente.boss1_est_agro;
+	boss1.vie = sauvegarde_attente.boss1_vie;
+	boss1.phase = sauvegarde_attente.boss1_phase;
+	if (boss1.est_battu) {
+		boss1.est_agro = 0;
+		boss1.frame_anim_mort = 15;
+	}
+	boss3.est_battu = sauvegarde_attente.boss3_est_battu;
+	boss3.est_agro = sauvegarde_attente.boss3_est_agro;
+	boss3.vie = sauvegarde_attente.boss3_vie;
+	boss3.phase = sauvegarde_attente.boss3_phase;
+	if (boss3.est_battu) {
+		boss3.est_agro = 0;
+		boss3.frame_anim_mort = 15;
+	}
+
+	progression_jeu_t progression = {
+		.planete2_mastermind_engrenage_donne = sauvegarde_attente.planete2_mastermind_engrenage_donne,
+		.planete2_simon_termine = sauvegarde_attente.planete2_simon_termine,
+		.planete1_engrenage_objectifs_donne = sauvegarde_attente.planete1_engrenage_objectifs_donne,
+		.planete2_engrenage_objectifs_donne = sauvegarde_attente.planete2_engrenage_objectifs_donne,
+		.planete3_engrenage_objectifs_donne = sauvegarde_attente.planete3_engrenage_objectifs_donne,
+		.planete2_barriere4_ouverte = sauvegarde_attente.planete2_barriere4_ouverte,
+		.planete3_engrenage_recupere = sauvegarde_attente.planete3_engrenage_recupere,
+		.planete3_boss_spawned = sauvegarde_attente.planete3_boss_spawned,
+		.mastermind_reussi = sauvegarde_attente.mini_mastermind_reussi,
+		.simon_reussi = sauvegarde_attente.mini_simon_reussi
+	};
+	jeu_set_progression(&progression);
 
 	liberer_case_array(hotbar, HOTBAR_SIZE);
 	liberer_case_array(inventaire, INVENTAIRE_SIZE);

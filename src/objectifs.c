@@ -9,15 +9,18 @@ extern int  engrenages_poses;
 extern bool vaisseau_repare;
 extern int  argent;
 extern int  index_item;
+progression_jeu_t progression_jeu;
 extern t_case *hotbar[HOTBAR_SIZE];
+extern boss_t boss1;
 extern boss_t boss3;
 
 static int verif_boss3_tue(void) {
     return boss3.est_battu ? 1 : 0;
 }
 
-
-
+static int verif_boss1_tue(void) {
+    return boss1.est_battu ? 1 : 0;
+}
 
 static int verif_ramasser_engrenage(void) {
     for (int i = 0; i < HOTBAR_SIZE; i++) {
@@ -50,6 +53,15 @@ static int verif_pleine_vie(void) {
     return (perso.vie >= perso.vie_max) ? 1 : 0;
 }
 
+static int verif_simon_termine(void) {
+    jeu_get_progression(&progression_jeu);
+    return progression_jeu.simon_reussi ? 1 : 0;
+}
+
+static int verif_mastermind_termine(void) {
+    jeu_get_progression(&progression_jeu);
+    return progression_jeu.mastermind_reussi ? 1 : 0;
+}
 
 
 
@@ -74,8 +86,9 @@ void objectifs_init(t_objectifs *obj, int planete) {
             break;
         case 2:
             AJOUTER("Ramasser un engrenage",           verif_ramasser_engrenage);
-            AJOUTER("Réparer le vaisseau",             verif_reparer_vaisseau);
-            AJOUTER("Accumuler 5 pièces",              verif_cinq_pieces);
+            AJOUTER("Résoudre le puzzle : Mastermind", verif_mastermind_termine);
+            AJOUTER("Résoudre le puzzle : Simon", verif_simon_termine);
+            AJOUTER("Vaincre FireDemon",       verif_boss1_tue);
             break;
         case 3:
             AJOUTER("Trouver l'engrenage dans le labyrinthe", verif_ramasser_engrenage);

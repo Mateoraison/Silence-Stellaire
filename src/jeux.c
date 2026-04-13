@@ -31,6 +31,7 @@ static bool planete2_simon_termine = false;
 static bool planete1_engrenage_objectifs_donne = false;
 static bool planete2_engrenage_objectifs_donne = false;
 static bool planete3_engrenage_objectifs_donne = false;
+static bool planete2_barriere_4_ouverte = false;
 int nb_engrenages_requis = ENGRENAGES_MAX;
 
 /* Petit systeme de message global a l'ecran (HUD) */
@@ -69,6 +70,7 @@ t_case *caisse_outils[CAISSE_OUTILS_SIZE] = {NULL};
 bool inventaire_ouvert = false;
 bool caisse_outils_ouvert = false;
 Uint32 faim_degat_timer = 0;
+Uint32 faim_regen_timer = 0;
 int argent = 0;
 float vitesse_bonus = 0.0f;
 bool sortie_vaisseau = false;
@@ -78,6 +80,36 @@ boss_t boss3;
 
 t_objectifs objectifs_jeu;
 TTF_Font *font_objectifs = NULL;
+
+void jeu_get_progression(progression_jeu_t *out) {
+    if (!out) return;
+
+    out->planete2_mastermind_engrenage_donne = planete2_mastermind_engrenage_donne ? 1 : 0;
+    out->planete2_simon_termine = planete2_simon_termine ? 1 : 0;
+    out->planete1_engrenage_objectifs_donne = planete1_engrenage_objectifs_donne ? 1 : 0;
+    out->planete2_engrenage_objectifs_donne = planete2_engrenage_objectifs_donne ? 1 : 0;
+    out->planete3_engrenage_objectifs_donne = planete3_engrenage_objectifs_donne ? 1 : 0;
+    out->planete2_barriere4_ouverte = planete2_barriere_4_ouverte ? 1 : 0;
+    out->planete3_engrenage_recupere = g_planete3_engrenage_recupere ? 1 : 0;
+    out->planete3_boss_spawned = g_planete3_boss_spawned ? 1 : 0;
+    out->mastermind_reussi = g_mastermind_reussi ? 1 : 0;
+    out->simon_reussi = g_simon_reussi ? 1 : 0;
+}
+
+void jeu_set_progression(const progression_jeu_t *in) {
+    if (!in) return;
+
+    planete2_mastermind_engrenage_donne = (in->planete2_mastermind_engrenage_donne != 0);
+    planete2_simon_termine = (in->planete2_simon_termine != 0);
+    planete1_engrenage_objectifs_donne = (in->planete1_engrenage_objectifs_donne != 0);
+    planete2_engrenage_objectifs_donne = (in->planete2_engrenage_objectifs_donne != 0);
+    planete3_engrenage_objectifs_donne = (in->planete3_engrenage_objectifs_donne != 0);
+    planete2_barriere_4_ouverte = (in->planete2_barriere4_ouverte != 0);
+    g_planete3_engrenage_recupere = (in->planete3_engrenage_recupere != 0);
+    g_planete3_boss_spawned = (in->planete3_boss_spawned != 0);
+    g_mastermind_reussi = (in->mastermind_reussi != 0);
+    g_simon_reussi = (in->simon_reussi != 0);
+}
 
 void remplir_tileset(t_tile map[W_MAP][H_MAP], char * map_txt){
 
@@ -747,6 +779,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         planete1_engrenage_objectifs_donne = false;
         planete2_engrenage_objectifs_donne = false;
         planete3_engrenage_objectifs_donne = false;
+        planete2_barriere_4_ouverte = false;
 
         if (planete == 3) {
             boss3.est_battu = 0;
@@ -796,7 +829,6 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
     const float rock4_center_x_base = rock3_center_x_base + (5.0f * DISPLAY_TILE_SIZE);
     const float rock4_center_y_base = alien_planete2_y_2;
     // variable pour tracker si la barrière 4 est ouverte (si joueur a 2 clés et presse E)
-    static bool barriere_4_ouverte = false;
 
 
 
@@ -878,10 +910,11 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
             g_planete3_spawn_engrenage_x = screen_center_x() - spawn_world_x;
             g_planete3_spawn_engrenage_y = screen_center_y() - spawn_world_y;
             g_planete3_spawn_engrenage_defini = true;
+        } else {
+            g_planete3_spawn_engrenage_defini = false;
+            g_planete3_spawn_engrenage_x = 0.0f;
+            g_planete3_spawn_engrenage_y = 0.0f;
         }
-    g_planete3_spawn_engrenage_defini = false;
-    g_planete3_spawn_engrenage_x = 0.0f;
-    g_planete3_spawn_engrenage_y = 0.0f;
 
         if (sortie_vaisseau && reprendre_partie && index_item < MAX_ITEMS &&
             engrenage_case_x >= 0 && engrenage_case_y >= 0) {
@@ -944,19 +977,31 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
 
     sauvegarde_appliquer_si_disponible(renderer);
 
+    if (reprendre_partie && planete == 3 && g_planete3_boss_spawned) {
+        float spawn_boss_x = 488.0f + (VAISSEAU_WIDTH * 0.8f);
+        float spawn_boss_y = 481.0f;
+        boss3.x = spawn_boss_x;
+        boss3.y = spawn_boss_y;
+        boss3.spawn_x = spawn_boss_x;
+        boss3.spawn_y = spawn_boss_y;
+    }
+
     if (reprendre_partie) {
         init_mobs(renderer, mobs, map, 100, 100);
         if (planete == 2 && sortie_vaisseau) {
             perso.x = 180.0f ;
             perso.y = -(28 * DISPLAY_TILE_SIZE) ;
             perso.direction = 0;
-        } else if (planete == 3 && g_planete3_engrenage_recupere && g_planete3_spawn_engrenage_defini) {
-            perso.x = g_planete3_spawn_engrenage_x;
-            perso.y = g_planete3_spawn_engrenage_y;
-            perso.direction = 0;
-        } else if (planete == 3 && sortie_vaisseau) {
-            perso.x = 160.0f;
-            perso.y = -250.0f;
+        } else if (planete == 3) {
+            if (g_planete3_engrenage_recupere && g_planete3_spawn_engrenage_defini) {
+                /* Si l'engrenage est deja recupere, reprendre directement dans la salle engrenage. */
+                perso.x = g_planete3_spawn_engrenage_x;
+                perso.y = g_planete3_spawn_engrenage_y;
+            } else {
+                /* Sinon, arriver au vaisseau pour eviter les incoherences du labyrinthe aleatoire. */
+                perso.x = 160.0f;
+                perso.y = -250.0f;
+            }
             perso.direction = 0;
         } else if (planete == 1 && sortie_vaisseau) {
             perso.x = -100.0f;
@@ -1014,6 +1059,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
     Uint32 cycle_debut = SDL_GetTicks();
 
     Uint32 faim_timer = SDL_GetTicks();
+    faim_regen_timer = SDL_GetTicks();
 
 
     bool reset_delta = false;
@@ -1146,7 +1192,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
                     }
 
                     /* Gestion barrière 4 : ouvrir si joueur a 2+ clés */
-                    if (planete == 2 && !barriere_4_ouverte) {
+                    if (planete == 2 && !planete2_barriere_4_ouverte) {
                         float rock4_center_x = rock4_center_x_base;
                         float rock4_center_y = rock4_center_y_base;
                         // Convertir les coordonnées écran du joueur en coordonnées monde
@@ -1158,7 +1204,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
                         if (SDL_HasRectIntersectionFloat(&rect_perso_barrier, &rect_barrier4)) {
                             int cles = compter_cles();
                             if (cles >= 2) {
-                                barriere_4_ouverte = true;
+                                planete2_barriere_4_ouverte = true;
                                 // Retirer 2 clés de l'inventaire
                                 int cles_a_retirer = 2;
                                 for (int i = 0; i < HOTBAR_SIZE && cles_a_retirer > 0; i++) {
@@ -1410,7 +1456,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         }
 
         /* quatrième barrière : permanente, bloque jusqu'à avoir 2 clés et ouvrir */
-        if (!collision_trouve && planete == 2 && !barriere_4_ouverte && texture_rocher) {
+        if (!collision_trouve && planete == 2 && !planete2_barriere_4_ouverte && texture_rocher) {
             float rock4_center_x = rock4_center_x_base;
             float rock4_center_y = rock4_center_y_base;
             float rock4_below_y = rock4_center_y + (1.0f * DISPLAY_TILE_SIZE);
@@ -1518,7 +1564,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         }
 
         /* Dessiner la quatrième barrière (permanente jusqu'à ouvrir avec 2 clés) */
-        if (planete == 2 && texture_rocher && !barriere_4_ouverte) {
+        if (planete == 2 && texture_rocher && !planete2_barriere_4_ouverte) {
             float rock4_center_x = rock4_center_x_base;
             float rock4_center_y = rock4_center_y_base;
             float rock4_below_y = rock4_center_y + (1.0f * DISPLAY_TILE_SIZE);
@@ -1633,7 +1679,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
             hud_set_message("Un boss est apparu pres du vaisseau !", 2500);
         }
 
-        if (boss_actif && !(planete == 3 && !g_planete3_boss_spawned)) {
+        if (boss_actif && !(planete == 3 && !g_planete3_boss_spawned) && !(planete == 2 && boss1.est_battu)) {
             mettre_a_jour_boss(renderer, boss_actif);
         }
         possible_ramasser_item(items, renderer, hotbar);
@@ -1659,7 +1705,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
             appliquer_vision_reduite_planete3(renderer, cx, cy, sw, sh);
         }
 
-        if (boss_actif && !(planete == 3 && !g_planete3_boss_spawned)) {
+        if (boss_actif && !(planete == 3 && !g_planete3_boss_spawned) && !(planete == 2 && boss1.est_battu)) {
             afficher_boss(renderer, boss_actif);
         }
 
@@ -1821,6 +1867,15 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
                 perso.vie--;
             }
             faim_degat_timer = maintenant;
+        }
+
+        if (!console_god_mode && perso.faim >= perso.faim_max && perso.vie < perso.vie_max) {
+            if ((maintenant - faim_regen_timer) > 5000) {
+                perso.vie++;
+                faim_regen_timer = maintenant;
+            }
+        } else {
+            faim_regen_timer = maintenant;
         }
 
         afficher_stat(renderer);
