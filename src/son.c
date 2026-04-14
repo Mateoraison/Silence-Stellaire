@@ -115,9 +115,25 @@ MIX_Track *jouer_son(const char* chemin, float volume) {
         g_vaisseau_track = son->track;
     }
 
-    if (!MIX_PlayTrack(son->track, loops)) {
+    SDL_PropertiesID play_options = SDL_CreateProperties();
+    if (play_options) {
+        if (!SDL_SetNumberProperty(play_options, MIX_PROP_PLAY_LOOPS_NUMBER, (Sint64)loops)) {
+            SDL_Log("Erreur configuration boucle track : %s", SDL_GetError());
+        }
+    } else {
+        SDL_Log("Erreur creation options lecture track : %s", SDL_GetError());
+    }
+
+    if (!MIX_PlayTrack(son->track, play_options)) {
+        if (play_options) {
+            SDL_DestroyProperties(play_options);
+        }
         SDL_Log("Erreur lecture track : %s", SDL_GetError());
         return NULL;
+    }
+
+    if (play_options) {
+        SDL_DestroyProperties(play_options);
     }
 
     return son->track;

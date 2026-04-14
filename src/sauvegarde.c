@@ -62,11 +62,14 @@ typedef struct {
 	int planete3_boss_spawned;
 	int mini_mastermind_reussi;
 	int mini_simon_reussi;
+	int planete1_objectifs_valides[MAX_OBJECTIFS];
+	int planete2_objectifs_valides[MAX_OBJECTIFS];
+	int planete3_objectifs_valides[MAX_OBJECTIFS];
 	uint32_t checksum;
 } SaveData;
 
 #define SAVE_MAGIC 0x5353544C /* SSTL */
-#define SAVE_VERSION 2
+#define SAVE_VERSION 3
 
 static int slot_actif = 1;
 static int chargement_en_attente = 0;
@@ -76,7 +79,7 @@ extern t_case *hotbar[HOTBAR_SIZE];
 extern t_case *inventaire[INVENTAIRE_SIZE];
 extern t_case *caisse_outils[CAISSE_OUTILS_SIZE];
 
-static uint32_t calculer_checksum_save(const SaveData *data) {
+static uint32_t calculer_checksum_save_v3(const SaveData *data) {
 	SaveData tmp = *data;
 	tmp.checksum = 0;
 
@@ -89,16 +92,17 @@ static uint32_t calculer_checksum_save(const SaveData *data) {
 	return hash;
 }
 
+
 static void save_set_checksum(SaveData *data) {
 	data->checksum = 0;
-	data->checksum = calculer_checksum_save(data);
+	data->checksum = calculer_checksum_save_v3(data);
 }
 
-static int save_checksum_ok(const SaveData *data) {
-	return data->checksum == calculer_checksum_save(data);
+static int save_checksum_ok_v3(const SaveData *data) {
+	return data->checksum == calculer_checksum_save_v3(data);
 }
 
-static int save_data_valide(const SaveData *data) {
+static int save_data_valide_v3(const SaveData *data) {
 	if (data->magic != SAVE_MAGIC) return 0;
 	if (data->version != SAVE_VERSION) return 0;
 	if (data->planete < 1 || data->planete > 3) return 0;
@@ -117,9 +121,10 @@ static int save_data_valide(const SaveData *data) {
 		if (data->caisse_qte[i] < 0) return 0;
 	}
 
-	if (!save_checksum_ok(data)) return 0;
+	if (!save_checksum_ok_v3(data)) return 0;
 	return 1;
 }
+
 
 static void liberer_case_array(t_case **cases, int taille) {
 	for (int i = 0; i < taille; i++) {
@@ -213,6 +218,7 @@ int sauvegarder_partie_slot(int slot, int planete) {
 	if (slot < 1 || slot > NB_SLOTS_SAUVEGARDE) return -1;
 
 	SaveData data;
+	SDL_memset(&data, 0, sizeof(data));
 	data.magic = SAVE_MAGIC;
 	data.version = SAVE_VERSION;
 	data.planete = planete;
@@ -275,6 +281,11 @@ int sauvegarder_partie_slot(int slot, int planete) {
 	data.planete3_boss_spawned = progression.planete3_boss_spawned;
 	data.mini_mastermind_reussi = progression.mastermind_reussi;
 	data.mini_simon_reussi = progression.simon_reussi;
+	for (int i = 0; i < MAX_OBJECTIFS; i++) {
+		data.planete1_objectifs_valides[i] = progression.planete1_objectifs_valides[i];
+		data.planete2_objectifs_valides[i] = progression.planete2_objectifs_valides[i];
+		data.planete3_objectifs_valides[i] = progression.planete3_objectifs_valides[i];
+	}
 
 	save_set_checksum(&data);
 
@@ -315,7 +326,7 @@ int charger_partie_slot(int slot, int *planete_out) {
 		size_t n = fread(&data, sizeof(SaveData), 1, f);
 		fclose(f);
 		if (n != 1) return -1;
-		if (!save_data_valide(&data)) return -1;
+		if (!save_data_valide_v3(&data)) return -1;
 	} else {
 		fclose(f);
 		return -1;
@@ -369,8 +380,16 @@ int sauvegarde_appliquer_si_disponible(SDL_Renderer *renderer) {
 		.planete3_engrenage_recupere = sauvegarde_attente.planete3_engrenage_recupere,
 		.planete3_boss_spawned = sauvegarde_attente.planete3_boss_spawned,
 		.mastermind_reussi = sauvegarde_attente.mini_mastermind_reussi,
-		.simon_reussi = sauvegarde_attente.mini_simon_reussi
+		.simon_reussi = sauvegarde_attente.mini_simon_reussi,
+		.planete1_objectifs_valides = {0},
+		.planete2_objectifs_valides = {0},
+		.planete3_objectifs_valides = {0}
 	};
+	for (int i = 0; i < MAX_OBJECTIFS; i++) {
+		progression.planete1_objectifs_valides[i] = sauvegarde_attente.planete1_objectifs_valides[i];
+		progression.planete2_objectifs_valides[i] = sauvegarde_attente.planete2_objectifs_valides[i];
+		progression.planete3_objectifs_valides[i] = sauvegarde_attente.planete3_objectifs_valides[i];
+	}
 	jeu_set_progression(&progression);
 
 	liberer_case_array(hotbar, HOTBAR_SIZE);

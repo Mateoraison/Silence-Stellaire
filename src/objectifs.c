@@ -86,8 +86,8 @@ void objectifs_init(t_objectifs *obj, int planete) {
             break;
         case 2:
             AJOUTER("Ramasser un engrenage",           verif_ramasser_engrenage);
-            AJOUTER("Résoudre le puzzle : Mastermind", verif_mastermind_termine);
-            AJOUTER("Résoudre le puzzle : Simon", verif_simon_termine);
+            AJOUTER("Résoudre le puzzle 1", verif_mastermind_termine);
+            AJOUTER("Résoudre le puzzle 2", verif_simon_termine);
             AJOUTER("Vaincre FireDemon",       verif_boss1_tue);
             break;
         case 3:

@@ -7,7 +7,7 @@
 #include <SDL3_image/SDL_image.h>
 #include <SDL3_ttf/SDL_ttf.h>
 
-#define MAX_OBJECTIFS 8
+
 
 
 /**

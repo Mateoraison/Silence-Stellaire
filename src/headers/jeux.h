@@ -7,6 +7,7 @@
 #include <SDL3_image/SDL_image.h>
 #include <SDL3_mixer/SDL_mixer.h>
 
+
 typedef struct {
 	int planete2_mastermind_engrenage_donne;
 	int planete2_simon_termine;
@@ -18,6 +19,9 @@ typedef struct {
 	int planete3_boss_spawned;
 	int mastermind_reussi;
 	int simon_reussi;
+	int planete1_objectifs_valides[MAX_OBJECTIFS];
+	int planete2_objectifs_valides[MAX_OBJECTIFS];
+	int planete3_objectifs_valides[MAX_OBJECTIFS];
 } progression_jeu_t;
 
 /**

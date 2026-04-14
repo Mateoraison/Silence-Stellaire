@@ -680,8 +680,7 @@ const char *lines[] = {
     " - Donné Joshua",
     " - Leroux Maxime",
     "",
-    "Musique: Musicien",
-    "Sons: Effets sonores",
+    "Musique: Cyrian LeHenaff et Raison Matéo",
     "",
     "Retour au menu dans quelques instants...",
 };

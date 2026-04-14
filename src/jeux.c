@@ -32,6 +32,7 @@ static bool planete1_engrenage_objectifs_donne = false;
 static bool planete2_engrenage_objectifs_donne = false;
 static bool planete3_engrenage_objectifs_donne = false;
 static bool planete2_barriere_4_ouverte = false;
+static bool g_objectifs_valides_par_planete[4][MAX_OBJECTIFS] = {{false}};
 int nb_engrenages_requis = ENGRENAGES_MAX;
 
 /* Petit systeme de message global a l'ecran (HUD) */
@@ -81,6 +82,38 @@ boss_t boss3;
 t_objectifs objectifs_jeu;
 TTF_Font *font_objectifs = NULL;
 
+static int objectifs_planete_index(int planete) {
+    switch (planete) {
+        case 1: return 0;
+        case 2: return 1;
+        case 3: return 2;
+        default: return 3;
+    }
+}
+
+static void objectifs_restaurer_etat(t_objectifs *obj, int planete) {
+    if (!obj) return;
+
+    int index_planete = objectifs_planete_index(planete);
+    for (int i = 0; i < obj->nb; i++) {
+        obj->objectifs[i].valide = g_objectifs_valides_par_planete[index_planete][i];
+    }
+}
+
+static void objectifs_sauvegarder_etat(const t_objectifs *obj, int planete) {
+    if (!obj) return;
+
+    int index_planete = objectifs_planete_index(planete);
+    memset(g_objectifs_valides_par_planete[index_planete], 0, sizeof(g_objectifs_valides_par_planete[index_planete]));
+    for (int i = 0; i < obj->nb && i < MAX_OBJECTIFS; i++) {
+        g_objectifs_valides_par_planete[index_planete][i] = obj->objectifs[i].valide;
+    }
+}
+
+static void objectifs_reinitialiser_progression(void) {
+    memset(g_objectifs_valides_par_planete, 0, sizeof(g_objectifs_valides_par_planete));
+}
+
 void jeu_get_progression(progression_jeu_t *out) {
     if (!out) return;
 
@@ -94,6 +127,16 @@ void jeu_get_progression(progression_jeu_t *out) {
     out->planete3_boss_spawned = g_planete3_boss_spawned ? 1 : 0;
     out->mastermind_reussi = g_mastermind_reussi ? 1 : 0;
     out->simon_reussi = g_simon_reussi ? 1 : 0;
+
+    memset(out->planete1_objectifs_valides, 0, sizeof(out->planete1_objectifs_valides));
+    memset(out->planete2_objectifs_valides, 0, sizeof(out->planete2_objectifs_valides));
+    memset(out->planete3_objectifs_valides, 0, sizeof(out->planete3_objectifs_valides));
+
+    for (int i = 0; i < MAX_OBJECTIFS; i++) {
+        out->planete1_objectifs_valides[i] = g_objectifs_valides_par_planete[0][i] ? 1 : 0;
+        out->planete2_objectifs_valides[i] = g_objectifs_valides_par_planete[1][i] ? 1 : 0;
+        out->planete3_objectifs_valides[i] = g_objectifs_valides_par_planete[2][i] ? 1 : 0;
+    }
 }
 
 void jeu_set_progression(const progression_jeu_t *in) {
@@ -109,6 +152,12 @@ void jeu_set_progression(const progression_jeu_t *in) {
     g_planete3_boss_spawned = (in->planete3_boss_spawned != 0);
     g_mastermind_reussi = (in->mastermind_reussi != 0);
     g_simon_reussi = (in->simon_reussi != 0);
+
+    for (int i = 0; i < MAX_OBJECTIFS; i++) {
+        g_objectifs_valides_par_planete[0][i] = (in->planete1_objectifs_valides[i] != 0);
+        g_objectifs_valides_par_planete[1][i] = (in->planete2_objectifs_valides[i] != 0);
+        g_objectifs_valides_par_planete[2][i] = (in->planete3_objectifs_valides[i] != 0);
+    }
 }
 
 void remplir_tileset(t_tile map[W_MAP][H_MAP], char * map_txt){
@@ -770,7 +819,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         caisse_outils_ouvert = false;
         init_caisse_outils(renderer);
 
-        perso = (Perso){screen_center_x() - 1080.0f, screen_center_y() - 900.0f, NULL, 0, 9, 10, 10, 10, SDL_GetTicks()};
+        perso = (Perso){screen_center_x() - 1080.0f, screen_center_y() - 900.0f, NULL, 0, 9, 10, 9, 10, SDL_GetTicks()};
         srand(time(NULL));
     g_planete3_engrenage_recupere = false;
     g_planete3_boss_spawned = false;
@@ -1011,7 +1060,12 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
         
     }
 
+    if (!reprendre_partie && planete == 1) {
+        objectifs_reinitialiser_progression();
+    }
+
     objectifs_init(&objectifs_jeu, planete);
+    objectifs_restaurer_etat(&objectifs_jeu, planete);
     font_objectifs = TTF_OpenFont("assets/police.ttf", 14);
 
     /* Message d'introduction sur ce qu'il faut faire en arrivant sur la planete */
@@ -1880,6 +1934,7 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
 
         afficher_stat(renderer);
             objectifs_afficher(&objectifs_jeu,renderer,font_objectifs);
+            objectifs_sauvegarder_etat(&objectifs_jeu, planete);
             /* Donner un engrenage si tous les objectifs de la planete 1 sont completes (une seule fois) */
             if (planete == 1 && !planete1_engrenage_objectifs_donne) {
                 int valides = 0;

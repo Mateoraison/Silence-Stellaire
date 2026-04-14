@@ -134,7 +134,6 @@ static const boss_config_t *obtenir_config_boss(type_boss_t type) {
 }
 
 static void get_player_world_center(float *x, float *y) {
-    // Match gameplay hitbox center: player hitbox is 40x60 at (screen_center_x, screen_center_y).
     if (x) *x = -perso.x + screen_center_x() + 20.0f;
     if (y) *y = -perso.y + screen_center_y() + 30.0f;
 }
