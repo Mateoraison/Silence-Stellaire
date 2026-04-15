@@ -56,13 +56,18 @@ cd Silence-Stellaire
 2. **Compiler le projet**
 ```bash
 make all        # Linux, Mac et Windows
-build_run.bat   # Windows
 ```
 
 3. **Lancer le jeu**
 ```bash
 ./bin/silenceStellaire       # Linux
 ./bin/Silence-Stellaire.exe  # Windows
+```
+
+4. **Compiler et lancer **
+```bash
+make re run     # Linux, Mac
+build_run.bat   # Windows
 ```
 
 ## 🎯 Utilisation
