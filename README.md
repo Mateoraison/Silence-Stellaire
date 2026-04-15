@@ -64,7 +64,7 @@ make all        # Linux, Mac et Windows
 ./bin/Silence-Stellaire.exe  # Windows
 ```
 
-4. **Compiler et lancer **
+4. **Compiler et lancer**
 ```bash
 make re run     # Linux, Mac
 build_run.bat   # Windows
