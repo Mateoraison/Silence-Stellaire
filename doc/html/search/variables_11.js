@@ -1,19 +1,19 @@
 var searchData=
 [
   ['tab_0',['tab',['../structtileset__.html#abbd27c82565dbe3550cee0d7b7f161cb',1,'tileset_']]],
-  ['target_5fvx_1',['target_vx',['../struct_mob.html#a6dcb870601ed316aedd2e1fc20195100',1,'Mob']]],
-  ['target_5fvy_2',['target_vy',['../struct_mob.html#ad41883a21247c0c9be2f1128bbd3b46a',1,'Mob']]],
-  ['texture_3',['texture',['../struct_bouton.html#a1a4ba192868e6d530570d6bc90084551',1,'Bouton::texture'],['../struct_perso.html#aeeb8435b205fb30b919508b319b0be55',1,'Perso::texture'],['../structitem__.html#a69ad9cc81f495786d261f27aea37d01d',1,'item_::texture'],['../struct_mob.html#a8ad8ff5fbcddfd3b1c58aabb85fdce8c',1,'Mob::texture'],['../structboss__t.html#ad47728ea163bd3c79e1283586887a340',1,'boss_t::texture']]],
+  ['target_5fvx_1',['target_vx',['../structMob.html#a6dcb870601ed316aedd2e1fc20195100',1,'Mob']]],
+  ['target_5fvy_2',['target_vy',['../structMob.html#ad41883a21247c0c9be2f1128bbd3b46a',1,'Mob']]],
+  ['texture_3',['texture',['../structBouton.html#a1a4ba192868e6d530570d6bc90084551',1,'Bouton::texture'],['../structPerso.html#aeeb8435b205fb30b919508b319b0be55',1,'Perso::texture'],['../structitem__.html#a69ad9cc81f495786d261f27aea37d01d',1,'item_::texture'],['../structMob.html#a8ad8ff5fbcddfd3b1c58aabb85fdce8c',1,'Mob::texture'],['../structboss__t.html#ad47728ea163bd3c79e1283586887a340',1,'boss_t::texture']]],
   ['tile_5fmap_4',['tile_map',['../vaisseau_8c.html#af98809504ab7b4e40b52162d3dc056f1',1,'vaisseau.c']]],
-  ['tilex_5',['tileX',['../struct_spawn_point.html#a893ae2e93d5dc3321e7a8493ef6b2868',1,'SpawnPoint::tileX'],['../struct_tile_ref.html#a167a2eefa9176ed97f25863801d3bab1',1,'TileRef::tileX']]],
-  ['tiley_6',['tileY',['../struct_spawn_point.html#acb75a3a5e0c0d4821ce97399330b7980',1,'SpawnPoint::tileY'],['../struct_tile_ref.html#a6c444585e5339f464037aa0474ac14e4',1,'TileRef::tileY']]],
-  ['time_5fchange_5fdir_7',['time_change_dir',['../struct_mob.html#a4be239b2f3d0c80380389100be20238f',1,'Mob']]],
-  ['track_8',['track',['../struct_son_cache.html#a96929657ebdf54866990b74642bed2fc',1,'SonCache']]],
+  ['tilex_5',['tileX',['../structSpawnPoint.html#a893ae2e93d5dc3321e7a8493ef6b2868',1,'SpawnPoint::tileX'],['../structTileRef.html#a167a2eefa9176ed97f25863801d3bab1',1,'TileRef::tileX']]],
+  ['tiley_6',['tileY',['../structSpawnPoint.html#acb75a3a5e0c0d4821ce97399330b7980',1,'SpawnPoint::tileY'],['../structTileRef.html#a6c444585e5339f464037aa0474ac14e4',1,'TileRef::tileY']]],
+  ['time_5fchange_5fdir_7',['time_change_dir',['../structMob.html#a4be239b2f3d0c80380389100be20238f',1,'Mob']]],
+  ['track_8',['track',['../structSonCache.html#a96929657ebdf54866990b74642bed2fc',1,'SonCache']]],
   ['track_5fglobal_9',['track_global',['../main_8h.html#a84af9ed84c11a72dd7515a42f42af710',1,'track_global:&#160;main.c'],['../main_8c.html#a84af9ed84c11a72dd7515a42f42af710',1,'track_global:&#160;main.c']]],
   ['tramblement_5fcamera_5ftimer_10',['tramblement_camera_timer',['../jeux_8c.html#a61a02cf5854bc2e1d8bf83dd000abef9',1,'jeux.c']]],
   ['tramblement_5fcamera_5fx_11',['tramblement_camera_x',['../jeux_8c.html#a35a58cb7eb2b0cb71029bf2636b03ea6',1,'jeux.c']]],
   ['tramblement_5fcamera_5fy_12',['tramblement_camera_y',['../jeux_8c.html#aad335a91e815f7eb7884199dd15b6357',1,'jeux.c']]],
   ['tramblement_5fdegat_5fcamera_13',['tramblement_degat_camera',['../jeux_8c.html#a84a02113cb66180ffdd41f044d6ce1ff',1,'jeux.c']]],
-  ['type_14',['type',['../structtile__.html#a7029bde251cef85c1ac4ec94b3d82753',1,'tile_::type'],['../structitem__.html#a57e965f0dcee37db000e38dcd2e451f4',1,'item_::type'],['../structboss__config__t.html#a4a0a4b248b2ea4fe5d2982ff4facf3a8',1,'boss_config_t::type'],['../structboss__t.html#a77712576b6bb290e22ba229488fc2c72',1,'boss_t::type'],['../struct_objet_interactif.html#ac82efb75b70a01309b64238fb2947b98',1,'ObjetInteractif::type']]],
-  ['type_5fboss_5fproprietaire_15',['type_boss_proprietaire',['../struct_mob.html#aa43a77bec14c431c414f1833f5081f01',1,'Mob']]]
+  ['type_14',['type',['../structtile__.html#a7029bde251cef85c1ac4ec94b3d82753',1,'tile_::type'],['../structitem__.html#a57e965f0dcee37db000e38dcd2e451f4',1,'item_::type'],['../structboss__config__t.html#a4a0a4b248b2ea4fe5d2982ff4facf3a8',1,'boss_config_t::type'],['../structboss__t.html#a77712576b6bb290e22ba229488fc2c72',1,'boss_t::type'],['../structObjetInteractif.html#ac82efb75b70a01309b64238fb2947b98',1,'ObjetInteractif::type']]],
+  ['type_5fboss_5fproprietaire_15',['type_boss_proprietaire',['../structMob.html#aa43a77bec14c431c414f1833f5081f01',1,'Mob']]]
 ];

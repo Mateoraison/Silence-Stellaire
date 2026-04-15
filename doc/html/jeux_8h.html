@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Silence Stellaire: Référence du fichier src/headers/jeux.h</title>
 <link rel="icon" href="logo_win.png" type="image/x-icon" />
@@ -38,7 +38,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.16.1 -->
+<!-- Généré par Doxygen 1.14.0 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
@@ -114,12 +114,20 @@ Ce graphe montre quels fichiers incluent directement ou indirectement ce fichier
 </div>
 <p><a href="jeux_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:progression_5Fjeu_5Ft" id="r_progression_5Fjeu_5Ft"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structprogression__jeu__t.html">progression_jeu_t</a></td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:a2d7491d04e8c2bdb52bb6ed7d75e4d78" id="r_a2d7491d04e8c2bdb52bb6ed7d75e4d78"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a2d7491d04e8c2bdb52bb6ed7d75e4d78">jeu_principal</a> (SDL_Renderer *renderer, int planete, MIX_Track *<a class="el" href="main_8h.html#a84af9ed84c11a72dd7515a42f42af710">track_global</a>, bool reprendre_partie)</td></tr>
+<tr class="memitem:a2d7491d04e8c2bdb52bb6ed7d75e4d78" id="r_a2d7491d04e8c2bdb52bb6ed7d75e4d78"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d7491d04e8c2bdb52bb6ed7d75e4d78">jeu_principal</a> (SDL_Renderer *renderer, int planete, MIX_Track *<a class="el" href="main_8h.html#a84af9ed84c11a72dd7515a42f42af710">track_global</a>, bool reprendre_partie)</td></tr>
 <tr class="memdesc:a2d7491d04e8c2bdb52bb6ed7d75e4d78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute la boucle principale de gameplay pour la planete courante.  <br /></td></tr>
-<tr class="memitem:ae8e5f9cd970d438c5fd8cda2b7286bfd" id="r_ae8e5f9cd970d438c5fd8cda2b7286bfd"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ae8e5f9cd970d438c5fd8cda2b7286bfd">init_caisse_outils</a> (SDL_Renderer *renderer)</td></tr>
+<tr class="memitem:ae8e5f9cd970d438c5fd8cda2b7286bfd" id="r_ae8e5f9cd970d438c5fd8cda2b7286bfd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8e5f9cd970d438c5fd8cda2b7286bfd">init_caisse_outils</a> (SDL_Renderer *renderer)</td></tr>
 <tr class="memdesc:ae8e5f9cd970d438c5fd8cda2b7286bfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise la caisse a outils et prepare les ressources necessaires.  <br /></td></tr>
+<tr class="memitem:affe4ed140aa40ab1adbec1328824838e" id="r_affe4ed140aa40ab1adbec1328824838e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#affe4ed140aa40ab1adbec1328824838e">jeu_get_progression</a> (<a class="el" href="structprogression__jeu__t.html">progression_jeu_t</a> *out)</td></tr>
+<tr class="memdesc:affe4ed140aa40ab1adbec1328824838e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recupere l'etat de progression global du gameplay.  <br /></td></tr>
+<tr class="memitem:a6b202e8fd081bec903b0933869e45747" id="r_a6b202e8fd081bec903b0933869e45747"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b202e8fd081bec903b0933869e45747">jeu_set_progression</a> (const <a class="el" href="structprogression__jeu__t.html">progression_jeu_t</a> *in)</td></tr>
+<tr class="memdesc:a6b202e8fd081bec903b0933869e45747"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applique un etat de progression global au gameplay.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Fichier de la boucle de jeu principale et de son initialisation. </p>
@@ -149,7 +157,7 @@ Fonctions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00397">397</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00532">532</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 <div class="dynheader">
 Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
@@ -159,6 +167,38 @@ Voici le graphe d'appel pour cette fonction :</div>
 Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="jeux_8h_ae8e5f9cd970d438c5fd8cda2b7286bfd_icgraph.svg" width="371" height="63"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="affe4ed140aa40ab1adbec1328824838e" name="affe4ed140aa40ab1adbec1328824838e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affe4ed140aa40ab1adbec1328824838e">&#9670;&#160;</a></span>jeu_get_progression()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void jeu_get_progression </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structprogression__jeu__t.html">progression_jeu_t</a> *</td>          <td class="paramname"><span class="paramname"><em>out</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Recupere l'etat de progression global du gameplay. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">out</td><td>Structure de sortie a remplir. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00120">120</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="jeux_8h_affe4ed140aa40ab1adbec1328824838e_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -197,14 +237,14 @@ Voici le graphe des appelants de cette fonction :</div>
   <table class="params">
     <tr><td class="paramname">renderer</td><td>Contexte SDL utilise pour dessiner les elements 2D et l'interface. </td></tr>
     <tr><td class="paramname">planete</td><td>Identifiant de planete concernee par l'operation. </td></tr>
-    <tr><td class="paramname"><a class="el" href="main_8h.html#a84af9ed84c11a72dd7515a42f42af710">track_global</a></td><td>Piste audio globale (musique d'ambiance) partagee entre ecrans. </td></tr>
+    <tr><td class="paramname">track_global</td><td>Piste audio globale (musique d'ambiance) partagee entre ecrans. </td></tr>
     <tr><td class="paramname">reprendre_partie</td><td>Indique s'il faut relancer une partie depuis une sauvegarde. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>0 si la boucle se termine normalement, 1 en cas de retour menu/fermeture ou erreur de chargement. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00682">682</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00817">817</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 <div class="dynheader">
 Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
@@ -214,6 +254,38 @@ Voici le graphe d'appel pour cette fonction :</div>
 Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="jeux_8h_a2d7491d04e8c2bdb52bb6ed7d75e4d78_icgraph.svg" width="202" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a6b202e8fd081bec903b0933869e45747" name="a6b202e8fd081bec903b0933869e45747"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b202e8fd081bec903b0933869e45747">&#9670;&#160;</a></span>jeu_set_progression()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void jeu_set_progression </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structprogression__jeu__t.html">progression_jeu_t</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Applique un etat de progression global au gameplay. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">in</td><td>Structure source a appliquer. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00145">145</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="jeux_8h_a6b202e8fd081bec903b0933869e45747_icgraph.svg" width="634" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -232,7 +304,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dir_d0381950fc41278198232cb047ffc1f9.html">headers</a></li><li class="navelem"><a href="jeux_8h.html">jeux.h</a></li>
-    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>
 </body>

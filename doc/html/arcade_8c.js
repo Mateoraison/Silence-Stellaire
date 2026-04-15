@@ -1,6 +1,6 @@
 var arcade_8c =
 [
-    [ "Entite", "struct_entite.html", "struct_entite" ],
+    [ "Entite", "structEntite.html", "structEntite" ],
     [ "ARCADE_INFO_H", "arcade_8c.html#ad25a799f220c28a62928e900e3220201", null ],
     [ "ARCADE_INFO_W", "arcade_8c.html#a13d8bb14fb9d459d1ce2a3244c6a7ad2", null ],
     [ "ARCADE_INFO_X", "arcade_8c.html#aed5fe61d117abb58e8891df2786ce583", null ],

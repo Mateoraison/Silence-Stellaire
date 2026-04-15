@@ -1,8 +1,8 @@
 var vaisseau_8c =
 [
-    [ "SpawnPoint", "struct_spawn_point.html", "struct_spawn_point" ],
-    [ "TileRef", "struct_tile_ref.html", "struct_tile_ref" ],
-    [ "ObjetInteractif", "struct_objet_interactif.html", "struct_objet_interactif" ],
+    [ "SpawnPoint", "structSpawnPoint.html", "structSpawnPoint" ],
+    [ "TileRef", "structTileRef.html", "structTileRef" ],
+    [ "ObjetInteractif", "structObjetInteractif.html", "structObjetInteractif" ],
     [ "MAP_H", "vaisseau_8c.html#a07ffd6e3f128f941b2f400c352896a74", null ],
     [ "MAP_W", "vaisseau_8c.html#a4c736195492abc5f49af63a57f487cdb", null ],
     [ "MAX_OBJETS", "vaisseau_8c.html#a31593fcc2ab9aae23c292d955d3d59e2", null ],

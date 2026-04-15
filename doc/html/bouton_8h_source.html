@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Silence Stellaire:  Fichier source de src/headers/bouton.h</title>
 <link rel="icon" href="logo_win.png" type="image/x-icon" />
@@ -38,7 +38,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.16.1 -->
+<!-- Généré par Doxygen 1.14.0 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
@@ -105,34 +105,34 @@ $(function(){initNavTree('bouton_8h_source.html','',''); });
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;SDL3/SDL.h&gt;</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span></div>
 <div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="struct_bouton.html">   17</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">   18</a></span>    SDL_FRect <a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>;       </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="struct_bouton.html#a1a4ba192868e6d530570d6bc90084551">   19</a></span>    SDL_Texture *<a class="code hl_variable" href="struct_bouton.html#a1a4ba192868e6d530570d6bc90084551">texture</a>;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="struct_bouton.html#a92d931d502b4a0c90df1cc314d3f65f1">   20</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_bouton.html#a92d931d502b4a0c90df1cc314d3f65f1">survole</a>;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="struct_bouton.html#a098c1c03720bbfab7babc8a2cc804944">   21</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="struct_bouton.html#a098c1c03720bbfab7babc8a2cc804944">appuye</a>;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>} <a class="code hl_struct" href="struct_bouton.html">Bouton</a>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="structBouton.html">   17</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">   18</a></span>    SDL_FRect <a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>;       </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="structBouton.html#a1a4ba192868e6d530570d6bc90084551">   19</a></span>    SDL_Texture *<a class="code hl_variable" href="structBouton.html#a1a4ba192868e6d530570d6bc90084551">texture</a>;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="structBouton.html#a92d931d502b4a0c90df1cc314d3f65f1">   20</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structBouton.html#a92d931d502b4a0c90df1cc314d3f65f1">survole</a>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="structBouton.html#a098c1c03720bbfab7babc8a2cc804944">   21</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structBouton.html#a098c1c03720bbfab7babc8a2cc804944">appuye</a>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>} <a class="code hl_struct" href="structBouton.html">Bouton</a>;</div>
 </div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">// x, y, w, h = position/taille à l&#39;écran</span></div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">// texture = image déjà chargée (SDL_Texture*)</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keywordtype">void</span> <a class="code hl_function" href="bouton_8h.html#a482b1feb9004901d0544e64b1c44051c">Bouton_Init</a>(<a class="code hl_struct" href="struct_bouton.html">Bouton</a> *b, <span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> w, <span class="keywordtype">float</span> h, SDL_Texture *texture);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keywordtype">void</span> <a class="code hl_function" href="bouton_8h.html#a482b1feb9004901d0544e64b1c44051c">Bouton_Init</a>(<a class="code hl_struct" href="structBouton.html">Bouton</a> *b, <span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y, <span class="keywordtype">float</span> w, <span class="keywordtype">float</span> h, SDL_Texture *texture);</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">// retourne 1 si le bouton a été cliqué à ce frame, sinon 0</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keywordtype">int</span> <a class="code hl_function" href="bouton_8h.html#ab4862740c43f8a9abb996fff0aba5ca1">Bouton_GererEvenement</a>(<a class="code hl_struct" href="struct_bouton.html">Bouton</a> *b, <span class="keyword">const</span> SDL_Event *e);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keywordtype">int</span> <a class="code hl_function" href="bouton_8h.html#ab4862740c43f8a9abb996fff0aba5ca1">Bouton_GererEvenement</a>(<a class="code hl_struct" href="structBouton.html">Bouton</a> *b, <span class="keyword">const</span> SDL_Event *e);</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">// dessine l&#39;image du bouton dans son rect</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keywordtype">void</span> <a class="code hl_function" href="bouton_8h.html#a11f55905044ef2518b8c38311df3c48d">Bouton_Afficher</a>(<a class="code hl_struct" href="struct_bouton.html">Bouton</a> *b, SDL_Renderer *renderer);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keywordtype">void</span> <a class="code hl_function" href="bouton_8h.html#a11f55905044ef2518b8c38311df3c48d">Bouton_Afficher</a>(<a class="code hl_struct" href="structBouton.html">Bouton</a> *b, SDL_Renderer *renderer);</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keywordtype">void</span> <a class="code hl_function" href="bouton_8h.html#af33c1c08b52d3d015ff6f7039a9734ee">afficher_texte_centre</a>(SDL_Renderer *renderer, SDL_Texture *texture, SDL_FRect *rect_bouton);</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
 <div class="ttc" id="abouton_8h_html_a11f55905044ef2518b8c38311df3c48d"><div class="ttname"><a href="bouton_8h.html#a11f55905044ef2518b8c38311df3c48d">Bouton_Afficher</a></div><div class="ttdeci">void Bouton_Afficher(Bouton *b, SDL_Renderer *renderer)</div><div class="ttdoc">Dessine la texture du bouton dans son rectangle d&#39;affichage.</div><div class="ttdef"><b>Definition</b> <a href="bouton_8c_source.html#l00055">bouton.c:55</a></div></div>
 <div class="ttc" id="abouton_8h_html_a482b1feb9004901d0544e64b1c44051c"><div class="ttname"><a href="bouton_8h.html#a482b1feb9004901d0544e64b1c44051c">Bouton_Init</a></div><div class="ttdeci">void Bouton_Init(Bouton *b, float x, float y, float w, float h, SDL_Texture *texture)</div><div class="ttdoc">Initialise un bouton (zone, texture et etat d&#39;interaction).</div><div class="ttdef"><b>Definition</b> <a href="bouton_8c_source.html#l00018">bouton.c:18</a></div></div>
 <div class="ttc" id="abouton_8h_html_ab4862740c43f8a9abb996fff0aba5ca1"><div class="ttname"><a href="bouton_8h.html#ab4862740c43f8a9abb996fff0aba5ca1">Bouton_GererEvenement</a></div><div class="ttdeci">int Bouton_GererEvenement(Bouton *b, const SDL_Event *e)</div><div class="ttdoc">Met a jour l&#39;etat du bouton a partir d&#39;un evenement SDL.</div><div class="ttdef"><b>Definition</b> <a href="bouton_8c_source.html#l00028">bouton.c:28</a></div></div>
 <div class="ttc" id="abouton_8h_html_af33c1c08b52d3d015ff6f7039a9734ee"><div class="ttname"><a href="bouton_8h.html#af33c1c08b52d3d015ff6f7039a9734ee">afficher_texte_centre</a></div><div class="ttdeci">void afficher_texte_centre(SDL_Renderer *renderer, SDL_Texture *texture, SDL_FRect *rect_bouton)</div><div class="ttdoc">Affiche texte centre et met a jour les elements visuels associes.</div><div class="ttdef"><b>Definition</b> <a href="bouton_8c_source.html#l00060">bouton.c:60</a></div></div>
-<div class="ttc" id="astruct_bouton_html"><div class="ttname"><a href="struct_bouton.html">Bouton</a></div><div class="ttdoc">Widget bouton basique: zone de clic, texture et etats survole/appuye.</div><div class="ttdef"><b>Definition</b> <a href="#l00017">bouton.h:17</a></div></div>
-<div class="ttc" id="astruct_bouton_html_a098c1c03720bbfab7babc8a2cc804944"><div class="ttname"><a href="struct_bouton.html#a098c1c03720bbfab7babc8a2cc804944">Bouton::appuye</a></div><div class="ttdeci">int appuye</div><div class="ttdef"><b>Definition</b> <a href="#l00021">bouton.h:21</a></div></div>
-<div class="ttc" id="astruct_bouton_html_a1a4ba192868e6d530570d6bc90084551"><div class="ttname"><a href="struct_bouton.html#a1a4ba192868e6d530570d6bc90084551">Bouton::texture</a></div><div class="ttdeci">SDL_Texture * texture</div><div class="ttdef"><b>Definition</b> <a href="#l00019">bouton.h:19</a></div></div>
-<div class="ttc" id="astruct_bouton_html_a92d931d502b4a0c90df1cc314d3f65f1"><div class="ttname"><a href="struct_bouton.html#a92d931d502b4a0c90df1cc314d3f65f1">Bouton::survole</a></div><div class="ttdeci">int survole</div><div class="ttdef"><b>Definition</b> <a href="#l00020">bouton.h:20</a></div></div>
-<div class="ttc" id="astruct_bouton_html_aeefa9eef35116d91a027e1abae5e80a6"><div class="ttname"><a href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">Bouton::rect</a></div><div class="ttdeci">SDL_FRect rect</div><div class="ttdef"><b>Definition</b> <a href="#l00018">bouton.h:18</a></div></div>
+<div class="ttc" id="astructBouton_html"><div class="ttname"><a href="structBouton.html">Bouton</a></div><div class="ttdoc">Widget bouton basique: zone de clic, texture et etats survole/appuye.</div><div class="ttdef"><b>Definition</b> <a href="#l00017">bouton.h:17</a></div></div>
+<div class="ttc" id="astructBouton_html_a098c1c03720bbfab7babc8a2cc804944"><div class="ttname"><a href="structBouton.html#a098c1c03720bbfab7babc8a2cc804944">Bouton::appuye</a></div><div class="ttdeci">int appuye</div><div class="ttdef"><b>Definition</b> <a href="#l00021">bouton.h:21</a></div></div>
+<div class="ttc" id="astructBouton_html_a1a4ba192868e6d530570d6bc90084551"><div class="ttname"><a href="structBouton.html#a1a4ba192868e6d530570d6bc90084551">Bouton::texture</a></div><div class="ttdeci">SDL_Texture * texture</div><div class="ttdef"><b>Definition</b> <a href="#l00019">bouton.h:19</a></div></div>
+<div class="ttc" id="astructBouton_html_a92d931d502b4a0c90df1cc314d3f65f1"><div class="ttname"><a href="structBouton.html#a92d931d502b4a0c90df1cc314d3f65f1">Bouton::survole</a></div><div class="ttdeci">int survole</div><div class="ttdef"><b>Definition</b> <a href="#l00020">bouton.h:20</a></div></div>
+<div class="ttc" id="astructBouton_html_aeefa9eef35116d91a027e1abae5e80a6"><div class="ttname"><a href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">Bouton::rect</a></div><div class="ttdeci">SDL_FRect rect</div><div class="ttdef"><b>Definition</b> <a href="#l00018">bouton.h:18</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
@@ -140,7 +140,7 @@ $(function(){initNavTree('bouton_8h_source.html','',''); });
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dir_d0381950fc41278198232cb047ffc1f9.html">headers</a></li><li class="navelem"><a href="bouton_8h.html">bouton.h</a></li>
-    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>
 </body>

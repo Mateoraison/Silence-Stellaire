@@ -1,122 +1,122 @@
 <map id="jeu_principal" name="jeu_principal">
-<area shape="rect" id="Node000001" title="Execute la boucle principale de gameplay pour la planete courante." alt="" coords="5,1051,99,1077"/>
-<area shape="rect" id="Node000002" href="$boss_8c.html#a659832e02de0bcb2ab0a339f981809ad" title="Affiche le boss, ses indicateurs visuels et ses effets actifs." alt="" coords="184,5,282,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="51,1050,57,855,74,534,86,367,102,219,121,105,132,67,145,42,170,25,168,30,149,46,137,68,126,107,107,220,91,368,79,534,63,855,56,1050"/>
-<area shape="rect" id="Node000003" href="$perso_8c.html#a21f79a8c0c93416ec42034684f673522" title="Affiche combat et met a jour les elements visuels associes." alt="" coords="176,56,290,83"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="51,1050,58,864,75,559,88,401,103,260,122,153,133,116,145,93,163,80,161,84,149,96,138,118,127,154,108,261,93,401,80,559,63,864,56,1050"/>
-<area shape="rect" id="Node000004" href="$inventaire_8c.html#a9c8bafaebb0a92c5aca9147972ca6db5" title="Affiche hotbar et met a jour les elements visuels associes." alt="" coords="180,107,286,133"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="51,1050,59,873,76,584,89,435,105,302,123,200,133,165,145,144,166,129,164,133,149,147,138,167,128,201,110,302,94,435,82,584,64,873,56,1050"/>
-<area shape="rect" id="Node000005" href="$inventaire_8c.html#a716b7371e129825134dd5d14421b795f" title="Affiche inventaire et met a jour les elements visuels associes." alt="" coords="170,157,296,184"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="51,1050,60,882,78,609,91,468,106,343,124,247,134,215,145,194,157,185,155,190,149,198,139,217,129,249,111,344,96,469,83,609,65,882,57,1050"/>
-<area shape="rect" id="Node000006" href="$item_8c.html#a48031d146286ca3d6f7d20d8e4276f07" title="Affiche item et met a jour les elements visuels associes." alt="" coords="185,208,280,235"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="51,1050,60,891,79,634,92,502,107,385,125,295,134,264,145,245,171,228,169,232,149,248,139,266,130,296,113,386,98,503,85,635,66,891,57,1050"/>
-<area shape="rect" id="Node000007" href="$mob_8c.html#aa1ffa891e170487c45dd0bb0fd1c32c8" title="Affiche mob et met a jour les elements visuels associes." alt="" coords="185,259,280,285"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="50,1050,51,912,61,688,72,569,89,459,113,366,127,330,145,302,172,283,170,288,149,306,132,333,118,368,94,460,77,570,66,688,57,912,56,1050"/>
-<area shape="rect" id="Node000008" href="$pause_8c.html#abc45a9e3a6a57d6f0f44706bd52e556d" title="Affiche pause et met a jour les elements visuels associes." alt="" coords="180,360,286,387"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="51,1050,54,929,66,735,78,633,94,538,116,459,129,428,145,404,167,387,165,392,149,407,134,430,121,460,99,539,83,633,72,736,59,929,56,1051"/>
-<area shape="rect" id="Node000023" href="$main_8c.html#a82958224f33fa21d40f4f7965f8396bc" title="Met a jour screen metrics en fonction de l&#39;etat courant du jeu." alt="" coords="601,461,757,488"/>
-<area shape="poly" id="edge70_Node000001_Node000023" title=" " alt="" coords="50,1050,51,933,61,749,73,653,89,565,113,494,128,467,145,447,166,432,187,423,207,420,227,421,269,432,320,447,334,452,344,459,354,466,368,471,423,480,480,485,588,483,583,487,480,490,422,486,366,476,352,470,342,464,332,457,318,452,268,437,226,427,207,425,188,428,169,437,148,451,132,470,118,496,95,567,78,654,67,750,57,933,56,1050"/>
-<area shape="rect" id="Node000026" href="$perso_8c.html#ae1d84a7757bff4f91b5388a92d99653c" title="Affiche perso et met a jour les elements visuels associes." alt="" coords="182,461,284,488"/>
-<area shape="poly" id="edge25_Node000001_Node000026" title=" " alt="" coords="51,1050,56,943,70,778,82,691,98,611,119,544,131,518,145,498,168,483,166,488,149,502,136,521,124,546,103,612,87,692,75,778,61,944,56,1051"/>
-<area shape="rect" id="Node000027" href="$perso_8c.html#aa234db7602e3e4190d21e9ffc79f3899" title="Affiche les statistiques et met a jour les elements visuels associes." alt="" coords="187,512,279,539"/>
-<area shape="poly" id="edge26_Node000001_Node000027" title=" " alt="" coords="51,1050,58,952,73,801,85,723,101,650,121,590,145,549,173,532,170,536,149,552,125,592,106,652,91,724,78,802,63,952,57,1050"/>
-<area shape="rect" id="Node000028" href="$planete_8c.html#ac2d1eb983f59ec8c4b9643cce9631c0f" title="Applique un masque de vision reduite autour du joueur sur la planete 3." alt="" coords="153,563,313,605"/>
-<area shape="poly" id="edge27_Node000001_Node000028" title=" " alt="" coords="52,1050,61,963,78,834,106,704,124,652,144,616,149,613,147,618,149,619,129,654,111,705,84,835,66,964,57,1051"/>
-<area shape="rect" id="Node000029" href="$boss_8c.html#a51cd354a45226c77472ca20b4caf045f" title="Definit la carte de navigation utilisee par l&#39;IA des boss." alt="" coords="147,629,319,656"/>
-<area shape="poly" id="edge28_Node000001_Node000029" title=" " alt="" coords="52,1050,62,971,80,856,108,742,125,697,145,666,150,663,148,668,149,670,130,700,113,744,85,857,67,972,57,1050"/>
-<area shape="rect" id="Node000030" href="$jeux_8c.html#a1e508a3ee2634b7b8d747311fd55c860" title=" " alt="" coords="176,680,290,707"/>
-<area shape="poly" id="edge29_Node000001_Node000030" title=" " alt="" coords="50,1050,51,990,61,901,72,852,89,803,113,757,145,717,163,705,161,710,149,721,118,760,94,805,77,853,66,902,56,991,55,1050"/>
-<area shape="rect" id="Node000031" href="$perso_8c.html#ac17ff910702e240707df1bb1443a3411" title="Met a jour la position du joueur selon les entrees clavier et le delta temps." alt="" coords="178,731,288,757"/>
-<area shape="poly" id="edge30_Node000001_Node000031" title=" " alt="" coords="51,1050,54,998,67,923,79,881,95,840,117,801,145,767,165,755,162,760,148,771,121,804,100,842,84,883,72,924,59,999,56,1051"/>
-<area shape="rect" id="Node000032" href="$boss_8c.html#a236f706845850941c512c45d6e52d55b" title="Detruit le boss et libere toutes les ressources associees." alt="" coords="183,781,282,808"/>
-<area shape="poly" id="edge31_Node000001_Node000032" title=" " alt="" coords="52,1050,58,1005,73,943,101,876,121,845,145,818,170,804,167,808,148,822,125,848,106,879,78,945,63,1006,57,1050"/>
-<area shape="rect" id="Node000033" href="$mob_8c.html#ac1404d83610b06ad915d669824ab42c3" title="Libere mobs et nettoie les ressources associees." alt="" coords="181,832,284,859"/>
-<area shape="poly" id="edge32_Node000001_Node000033" title=" " alt="" coords="54,1050,64,1015,82,968,108,919,145,875,169,861,166,866,148,879,113,922,87,971,69,1017,59,1051"/>
-<area shape="rect" id="Node000034" href="$mob_8c.html#a91cbc6442abe5bba7eeeaf19fb5e8811" title="Reinitialise mob respawn queue pour repartir d&#39;un etat propre." alt="" coords="367,857,547,884"/>
-<area shape="poly" id="edge60_Node000001_Node000034" title=" " alt="" coords="55,1050,67,1021,86,985,112,949,145,919,181,904,233,892,354,877,350,881,234,897,183,909,148,924,116,953,90,988,72,1023,61,1051"/>
-<area shape="rect" id="Node000035" href="$item_8c.html#accc9925bdc1247da3cbb869da6f0dd35" title="Libere tout item et nettoie les ressources associees." alt="" coords="170,933,296,960"/>
-<area shape="poly" id="edge34_Node000001_Node000035" title=" " alt="" coords="61,1049,96,1009,119,988,145,970,159,964,156,968,148,974,123,992,100,1013,66,1051"/>
-<area shape="rect" id="Node000037" href="$game__over_8c.html#a37d3fac8300008a434af7c66a4e695d0" title="Affiche l&#39;ecran de game over et traite le choix du joueur." alt="" coords="414,107,500,133"/>
-<area shape="poly" id="edge35_Node000001_Node000037" title=" " alt="" coords="50,1050,51,918,61,707,73,595,89,491,113,405,128,372,145,346,165,328,187,320,209,317,231,318,275,317,296,310,317,295,330,279,338,263,342,230,345,195,352,176,365,158,381,145,401,135,398,139,384,149,369,162,357,179,350,196,347,230,343,264,335,282,321,299,298,315,275,323,231,323,209,322,188,325,168,333,149,350,132,374,118,407,95,493,78,596,67,708,57,919,56,1050"/>
-<area shape="rect" id="Node000039" href="$planete_8c.html#a590f905501246ac7649bbc45bc6677c5" title="Genere le labyrinthe procedural de la planete 3 et place l&#39;engrenage objectif." alt="" coords="169,984,296,1027"/>
-<area shape="poly" id="edge40_Node000001_Node000039" title=" " alt="" coords="94,1048,156,1029,153,1033,98,1052"/>
-<area shape="rect" id="Node000040" href="$inventaire_8c.html#a27d35e407cd81c7cbe1cc7f8e0c7ff17" title="Gere clic inventaire a partir des entrees utilisateur et des evenements." alt="" coords="163,1051,303,1077"/>
-<area shape="poly" id="edge41_Node000001_Node000040" title=" " alt="" coords="98,1062,149,1062,145,1066,101,1066"/>
-<area shape="rect" id="Node000041" href="$perso_8c.html#a27a7f2b104972dc84653a7abaf2cedfc" title="Gere combat a partir des entrees utilisateur et des evenements." alt="" coords="183,1101,283,1128"/>
-<area shape="poly" id="edge42_Node000001_Node000041" title=" " alt="" coords="98,1075,170,1095,166,1098,101,1079"/>
-<area shape="rect" id="Node000042" href="$boss_8c.html#af1c8aca032a751db8821bf8b9f592cf9" title="Initialise un boss avec ses ressources graphiques et son etat de combat." alt="" coords="196,1152,270,1179"/>
-<area shape="poly" id="edge43_Node000001_Node000042" title=" " alt="" coords="66,1075,103,1107,148,1138,183,1152,179,1155,145,1142,99,1111,68,1080"/>
-<area shape="rect" id="Node000043" href="$jeux_8c.html#ae8e5f9cd970d438c5fd8cda2b7286bfd" title="Initialise la caisse a outils et prepare les ressources necessaires." alt="" coords="172,1253,294,1280"/>
-<area shape="poly" id="edge44_Node000001_Node000043" title=" " alt="" coords="57,1075,70,1108,89,1150,114,1194,148,1233,166,1245,161,1247,145,1237,110,1197,84,1153,66,1110,58,1080"/>
-<area shape="rect" id="Node000045" href="$item_8c.html#ac066d9bc77b421f23ca66756b7ff4a33" title="Initialise item et prepare les ressources necessaires." alt="" coords="422,1253,492,1280"/>
-<area shape="poly" id="edge46_Node000001_Node000045" title=" " alt="" coords="59,1075,94,1132,118,1163,148,1188,186,1202,255,1220,409,1255,405,1258,254,1225,184,1207,145,1193,114,1166,89,1135,60,1081"/>
-<area shape="rect" id="Node000046" href="$mob_8c.html#af2bb33cec05837a53c00e0f901d38c68" title="Initialise mobs et prepare les ressources necessaires." alt="" coords="194,1456,272,1483"/>
-<area shape="poly" id="edge47_Node000001_Node000046" title=" " alt="" coords="55,1075,68,1151,88,1259,115,1365,131,1407,149,1436,163,1448,182,1457,177,1460,160,1452,145,1439,126,1410,110,1367,83,1260,63,1152,55,1080"/>
-<area shape="rect" id="Node000047" href="$perso_8c.html#a2a53403cf290bb65fb010b095c4843cf" title="Verifie collision et retourne le resultat du test." alt="" coords="408,1463,506,1489"/>
-<area shape="poly" id="edge64_Node000001_Node000047" title=" " alt="" coords="53,1075,57,1134,69,1217,80,1262,97,1307,119,1348,148,1385,182,1400,245,1420,395,1460,391,1463,244,1426,180,1405,145,1389,115,1351,92,1309,75,1264,63,1218,52,1135,53,1081"/>
-<area shape="rect" id="Node000048" href="$son_8c.html#ae145ae699cc1eecf0684bdd530bd26f0" title="Charge (ou recupere du cache) puis joue une piste audio." alt="" coords="640,1500,718,1527"/>
-<area shape="poly" id="edge52_Node000001_Node000048" title=" " alt="" coords="54,1075,60,1128,74,1199,85,1237,101,1275,122,1310,148,1340,214,1363,346,1397,548,1448,641,1492,636,1493,546,1453,345,1402,213,1368,145,1345,118,1313,96,1277,80,1239,68,1200,55,1128,54,1081"/>
-<area shape="rect" id="Node000049" href="$cinematique_8c.html#a68c4780c65b14d27f0088cfc6514eb60" title="Lance cinematique crash et gere son deroulement complet." alt="" coords="374,1539,540,1565"/>
-<area shape="poly" id="edge50_Node000001_Node000049" title=" " alt="" coords="54,1075,62,1172,76,1315,88,1388,104,1455,124,1509,136,1529,148,1543,176,1562,207,1574,240,1581,273,1584,340,1579,401,1568,397,1572,341,1585,273,1589,239,1586,205,1579,174,1566,145,1547,131,1532,119,1511,99,1457,83,1389,71,1315,56,1173,54,1080"/>
-<area shape="rect" id="Node000050" href="$arcade_8c.html#a9be93ac88e97809a94f0ae9b48152aa9" title="Lance le mini&#45;jeu Mastermind utilise dans la progression." alt="" coords="188,1659,278,1685"/>
-<area shape="poly" id="edge53_Node000001_Node000050" title=" " alt="" coords="54,1075,62,1186,76,1354,88,1443,104,1525,124,1592,136,1618,149,1638,161,1649,176,1659,171,1661,157,1653,145,1642,131,1621,119,1594,99,1526,83,1444,71,1355,56,1186,54,1080"/>
-<area shape="rect" id="Node000052" href="$boss_8c.html#abbb99b844a32a59c50228b7d6dcb888b" title="Met a jour la logique du boss pour une frame de jeu." alt="" coords="165,1304,300,1331"/>
-<area shape="poly" id="edge54_Node000001_Node000052" title=" " alt="" coords="55,1075,65,1119,80,1176,107,1237,126,1265,148,1290,154,1295,149,1297,145,1294,122,1269,103,1240,75,1178,59,1120,55,1080"/>
-<area shape="rect" id="Node000055" href="$objectifs_8c.html#a9f4b4e261f3bafb3c91a12cbe3408043" title="Affiche le panneau des objectifs et met a jour leur etat de validation." alt="" coords="173,1709,292,1736"/>
-<area shape="poly" id="edge56_Node000001_Node000055" title=" " alt="" coords="53,1075,59,1196,71,1382,83,1480,99,1571,121,1645,134,1674,149,1696,161,1707,156,1708,145,1699,129,1677,116,1647,94,1572,78,1481,66,1382,54,1196,53,1080"/>
-<area shape="rect" id="Node000056" href="$objectifs_8c.html#a844bf7cfff25edd874a95fb5f4d9e4a8" title="Initialise la liste des objectifs selon la planete en cours." alt="" coords="186,1760,280,1787"/>
-<area shape="poly" id="edge57_Node000001_Node000056" title=" " alt="" coords="53,1075,58,1204,69,1405,80,1512,96,1610,119,1691,133,1723,149,1746,174,1764,169,1766,145,1750,128,1725,114,1693,91,1611,75,1513,63,1406,52,1204,53,1080"/>
-<area shape="rect" id="Node000057" href="$perso_8c.html#ab64bb2370b34b1c0bd7a21a4cce2462b" title="Evalue ramasser item puis applique l&#39;action autorisee si les conditions sont reunies." alt="" coords="152,1811,314,1837"/>
-<area shape="poly" id="edge58_Node000001_Node000057" title=" " alt="" coords="53,1075,56,1213,66,1430,77,1544,94,1650,117,1738,132,1771,149,1797,151,1800,146,1801,145,1800,127,1774,112,1740,88,1651,72,1545,60,1430,51,1213,53,1081"/>
-<area shape="rect" id="Node000059" href="$jeux_8c.html#a1ada56a749d8f318d66e88e6c96c9da0" title=" " alt="" coords="182,1861,284,1888"/>
-<area shape="poly" id="edge59_Node000001_Node000059" title=" " alt="" coords="53,1075,55,1221,63,1453,74,1576,91,1690,115,1784,131,1820,149,1848,169,1864,164,1865,145,1851,126,1823,110,1786,85,1691,68,1576,58,1453,50,1221,53,1080"/>
-<area shape="rect" id="Node000060" href="$jeux_8c.html#abc7449460fd78756200332223f19ed9b" title="Retire les engrenages requis du stock joueur pour valider une action." alt="" coords="169,1912,297,1955"/>
-<area shape="poly" id="edge61_Node000001_Node000060" title=" " alt="" coords="54,1075,66,1240,85,1502,98,1637,114,1757,130,1849,140,1880,149,1898,158,1909,153,1910,144,1902,135,1882,125,1850,108,1758,93,1638,80,1502,61,1241,54,1081"/>
-<area shape="rect" id="Node000061" href="$sauvegarde_8c.html#a749dc51944352ce977ead8fb8ceca1cc" title="Applique a l&#39;etat global les donnees precedemment chargees si presentes." alt="" coords="159,1979,306,2021"/>
-<area shape="poly" id="edge62_Node000001_Node000061" title=" " alt="" coords="54,1075,65,1252,84,1535,96,1681,112,1811,129,1911,139,1945,149,1965,151,1968,145,1968,144,1968,134,1947,124,1912,106,1812,91,1682,78,1535,60,1252,54,1081"/>
-<area shape="rect" id="Node000062" href="$arcade_8c.html#a60b12154cf6385b2392e62c0fb9c4e8a" title="Lance le mini&#45;jeu Simon utilise dans la progression." alt="" coords="205,2045,261,2072"/>
-<area shape="poly" id="edge63_Node000001_Node000062" title=" " alt="" coords="54,1075,63,1264,80,1569,93,1727,108,1867,127,1974,138,2010,149,2032,167,2046,192,2055,186,2056,165,2050,145,2035,133,2012,122,1975,103,1868,88,1727,75,1569,58,1264,54,1081"/>
-<area shape="rect" id="Node000063" href="$perso_8c.html#a3a1b30f1d4b3a050543f4a881d549636" title="Met a jour animation en fonction de l&#39;etat courant du jeu." alt="" coords="171,2096,294,2123"/>
-<area shape="poly" id="edge65_Node000001_Node000063" title=" " alt="" coords="54,1075,63,1273,79,1594,91,1760,107,1908,126,2021,137,2060,149,2082,160,2094,155,2093,145,2086,132,2061,121,2023,102,1909,86,1761,74,1594,57,1273,54,1081"/>
-<area shape="rect" id="Node000064" href="$perso_8c.html#a13de525da0f522f0738bde93c1d62255" title="Met a jour combat en fonction de l&#39;etat courant du jeu." alt="" coords="402,1601,512,1628"/>
-<area shape="poly" id="edge66_Node000001_Node000064" title=" " alt="" coords="54,1075,60,1180,74,1337,86,1418,102,1492,122,1551,135,1574,148,1590,174,1609,203,1622,233,1631,265,1636,329,1636,389,1630,385,1633,329,1641,265,1641,232,1636,201,1627,171,1613,145,1594,130,1577,118,1554,96,1493,80,1419,68,1337,55,1181,54,1081"/>
-<area shape="rect" id="Node000068" href="$mob_8c.html#a1f766d8b9a9348d960e6f211fce5d558" title="Met a jour mobs en fonction de l&#39;etat courant du jeu." alt="" coords="183,1507,282,1533"/>
-<area shape="poly" id="edge68_Node000001_Node000068" title=" " alt="" coords="54,1075,66,1162,83,1287,96,1352,111,1411,128,1460,149,1493,171,1509,166,1511,145,1497,124,1462,106,1413,91,1353,78,1288,60,1162,54,1080"/>
-<area shape="rect" id="Node000009" href="$option_8c.html#ac77b6b0f042469d82d75b270f5193806" title="Affiche option et met a jour les elements visuels associes." alt="" coords="404,208,510,235"/>
-<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="284,359,317,339,334,316,340,293,347,268,365,245,391,231,388,236,369,249,351,271,345,294,339,319,321,343,288,362"/>
-<area shape="rect" id="Node000010" href="$bouton_8c.html#af33c1c08b52d3d015ff6f7039a9734ee" title="Affiche texte centre et met a jour les elements visuels associes." alt="" coords="608,360,750,387"/>
-<area shape="poly" id="edge13_Node000008_Node000010" title=" " alt="" coords="279,385,320,403,335,415,344,427,353,438,368,447,416,462,456,465,496,460,546,447,602,424,650,394,647,398,604,428,548,452,498,465,456,471,415,467,366,452,350,442,340,431,331,419,318,408,282,390"/>
-<area shape="rect" id="Node000011" href="$bouton_8c.html#a11f55905044ef2518b8c38311df3c48d" title="Dessine la texture du bouton dans son rectangle d&#39;affichage." alt="" coords="622,183,736,209"/>
-<area shape="poly" id="edge14_Node000008_Node000011" title=" " alt="" coords="284,360,302,351,317,339,330,321,336,303,337,265,340,228,349,210,365,194,396,177,428,165,462,159,497,157,565,163,624,177,620,179,564,168,497,163,463,165,430,171,398,181,369,198,353,213,345,229,343,265,341,304,335,324,321,343,305,356,288,364"/>
-<area shape="rect" id="Node000012" href="$bouton_8c.html#ab4862740c43f8a9abb996fff0aba5ca1" title="Met a jour l&#39;etat du bouton a partir d&#39;un evenement SDL." alt="" coords="595,259,763,285"/>
-<area shape="poly" id="edge15_Node000008_Node000012" title=" " alt="" coords="284,359,604,287,601,291,288,364"/>
-<area shape="rect" id="Node000014" href="$bouton_8c.html#a482b1feb9004901d0544e64b1c44051c" title="Initialise un bouton (zone, texture et etat d&#39;interaction)." alt="" coords="635,120,723,147"/>
-<area shape="poly" id="edge16_Node000008_Node000014" title=" " alt="" coords="254,358,287,331,317,296,329,267,334,240,331,188,330,163,333,139,344,115,365,93,398,74,434,64,471,62,510,66,582,85,642,111,637,114,580,90,509,71,471,67,435,69,400,79,369,97,348,118,338,140,335,163,336,188,339,240,334,269,321,299,291,335,258,361"/>
-<area shape="rect" id="Node000019" href="$son_8c.html#a034468875b501292a7c8520c6b6a02de" title="Met en pause une piste audio si elle est valide." alt="" coords="415,360,499,387"/>
-<area shape="poly" id="edge17_Node000008_Node000019" title=" " alt="" coords="285,371,401,372,397,375,288,375"/>
-<area shape="rect" id="Node000020" href="$son_8c.html#a70ea47d9c00bc921d67e4bea89f0ee4b" title="Reprend une piste si le son global et la categorie associee sont actifs." alt="" coords="406,259,509,285"/>
-<area shape="poly" id="edge18_Node000008_Node000020" title=" " alt="" coords="276,358,318,339,341,320,366,302,396,289,393,293,368,306,345,325,320,344,281,361"/>
-<area shape="rect" id="Node000021" href="$sauvegarde_8c.html#ae251037c85a5a7d8172c206539398f49" title="Affiche l&#39;interface de selection de slot (chargement ou sauvegarde)." alt="" coords="376,411,538,437"/>
-<area shape="poly" id="edge19_Node000008_Node000021" title=" " alt="" coords="285,383,382,405,378,408,288,388"/>
-<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="509,229,549,244,565,256,575,268,597,296,653,349,648,350,593,299,571,272,561,260,546,249,511,234"/>
-<area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="509,213,609,202,605,206,512,217"/>
-<area shape="poly" id="edge11_Node000009_Node000012" title=" " alt="" coords="509,231,604,253,600,256,512,236"/>
-<area shape="poly" id="edge12_Node000009_Node000014" title=" " alt="" coords="491,206,631,151,628,155,495,209"/>
-<area shape="poly" id="edge20_Node000021_Node000010" title=" " alt="" coords="517,408,605,389,601,393,521,412"/>
-<area shape="poly" id="edge21_Node000021_Node000011" title=" " alt="" coords="529,409,546,397,560,379,568,361,571,325,574,287,580,266,593,245,610,228,632,215,629,219,613,232,597,248,585,268,579,288,577,325,573,363,564,382,549,401,533,412"/>
-<area shape="poly" id="edge22_Node000021_Node000012" title=" " alt="" coords="521,408,546,396,561,385,571,374,593,346,652,294,649,298,597,350,575,377,565,389,549,401,525,412"/>
-<area shape="poly" id="edge23_Node000021_Node000014" title=" " alt="" coords="530,409,545,397,565,369,573,342,574,315,571,287,568,258,568,229,575,200,593,169,623,148,620,153,597,172,580,202,573,230,573,258,576,286,579,314,578,343,569,372,549,401,535,412"/>
-<area shape="poly" id="edge24_Node000021_Node000023" title=" " alt="" coords="518,436,605,456,600,459,520,440"/>
-<area shape="poly" id="edge33_Node000033_Node000034" title=" " alt="" coords="284,849,354,857,349,860,286,853"/>
-<area shape="poly" id="edge36_Node000037_Node000010" title=" " alt="" coords="479,131,515,159,549,194,566,222,574,246,582,269,598,296,622,324,650,349,645,351,619,328,593,299,577,271,569,247,561,224,545,198,512,163,480,136"/>
-<area shape="poly" id="edge37_Node000037_Node000011" title=" " alt="" coords="498,132,626,176,621,178,500,136"/>
-<area shape="poly" id="edge38_Node000037_Node000012" title=" " alt="" coords="476,131,597,219,643,249,638,251,594,224,477,137"/>
-<area shape="poly" id="edge39_Node000037_Node000014" title=" " alt="" coords="499,120,622,128,618,131,502,125"/>
-<area shape="poly" id="edge45_Node000043_Node000045" title=" " alt="" coords="293,1264,408,1265,404,1268,295,1269"/>
-<area shape="poly" id="edge48_Node000046_Node000047" title=" " alt="" coords="271,1468,395,1472,391,1476,273,1473"/>
-<area shape="poly" id="edge49_Node000047_Node000048" title=" " alt="" coords="505,1482,627,1503,623,1505,507,1487"/>
-<area shape="poly" id="edge51_Node000049_Node000048" title=" " alt="" coords="536,1536,627,1521,622,1524,539,1540"/>
-<area shape="poly" id="edge55_Node000052_Node000045" title=" " alt="" coords="294,1301,409,1276,405,1280,297,1306"/>
-<area shape="poly" id="edge67_Node000064_Node000048" title=" " alt="" coords="491,1599,546,1575,639,1533,635,1536,548,1580,494,1603"/>
-<area shape="poly" id="edge69_Node000068_Node000047" title=" " alt="" coords="281,1508,395,1487,391,1490,284,1513"/>
+<area shape="rect" id="Node000001" title="Execute la boucle principale de gameplay pour la planete courante." alt="" coords="5,1032,111,1057"/>
+<area shape="rect" id="Node000002" href="$boss_8c.html#a659832e02de0bcb2ab0a339f981809ad" title="Affiche le boss, ses indicateurs visuels et ses effets actifs." alt="" coords="200,5,308,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="57,1032,64,841,82,524,96,360,112,214,132,102,144,64,157,40,170,29,186,21,188,26,173,33,161,44,149,66,138,103,118,215,101,361,88,525,70,841,62,1032"/>
+<area shape="rect" id="Node000003" href="$perso_8c.html#a21f79a8c0c93416ec42034684f673522" title="Affiche combat et met a jour les elements visuels associes." alt="" coords="191,55,317,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="57,1032,65,850,84,549,97,393,114,254,133,148,144,112,157,90,176,75,179,79,161,93,149,114,139,149,119,255,103,394,89,550,70,850,62,1032"/>
+<area shape="rect" id="Node000004" href="$inventaire_8c.html#a9c8bafaebb0a92c5aca9147972ca6db5" title="Affiche hotbar et met a jour les elements visuels associes." alt="" coords="194,104,314,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="57,1032,66,858,85,573,99,425,115,294,134,194,145,160,157,139,180,123,183,127,161,142,150,162,140,196,121,295,104,426,91,573,71,858,63,1032"/>
+<area shape="rect" id="Node000005" href="$inventaire_8c.html#a716b7371e129825134dd5d14421b795f" title="Affiche inventaire et met a jour les elements visuels associes." alt="" coords="182,153,326,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="57,1032,67,866,87,597,101,458,117,335,135,240,146,208,157,188,168,178,171,183,161,192,150,210,141,242,122,336,106,459,92,598,72,867,63,1032"/>
+<area shape="rect" id="Node000006" href="$item_8c.html#a48031d146286ca3d6f7d20d8e4276f07" title="Affiche item et met a jour les elements visuels associes." alt="" coords="200,203,308,228"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="56,1032,56,886,64,647,76,520,94,402,120,304,137,266,157,238,170,226,186,219,188,224,173,231,161,241,142,269,125,306,99,403,81,520,70,647,61,886,62,1032"/>
+<area shape="rect" id="Node000007" href="$mob_8c.html#aa1ffa891e170487c45dd0bb0fd1c32c8" title="Affiche mob et met a jour les elements visuels associes." alt="" coords="201,252,307,277"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="57,1032,58,896,70,675,82,557,99,448,124,358,139,322,157,295,170,283,186,274,189,279,173,287,161,298,144,325,129,359,105,449,87,558,75,675,64,896,62,1032"/>
+<area shape="rect" id="Node000008" href="$pause_8c.html#abc45a9e3a6a57d6f0f44706bd52e556d" title="Affiche pause et met a jour les elements visuels associes." alt="" coords="195,353,313,379"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="57,1032,61,912,75,722,88,621,105,528,128,450,141,420,157,396,181,378,184,382,161,400,146,422,133,452,110,529,93,622,81,722,66,913,62,1032"/>
+<area shape="rect" id="Node000023" href="$main_8c.html#a82958224f33fa21d40f4f7965f8396bc" title="Met a jour screen metrics en fonction de l&#39;etat courant du jeu." alt="" coords="651,465,825,491"/>
+<area shape="poly" id="edge70_Node000001_Node000023" title=" " alt="" coords="57,1032,59,917,71,737,83,642,101,556,125,486,140,459,157,440,181,423,203,414,225,411,247,413,294,425,350,439,374,449,398,458,459,468,522,475,638,479,637,484,522,480,458,474,397,463,372,454,349,445,293,430,247,418,225,416,205,419,183,428,160,444,144,462,130,488,106,557,89,643,77,737,64,917,62,1032"/>
+<area shape="rect" id="Node000027" href="$perso_8c.html#ae1d84a7757bff4f91b5388a92d99653c" title="Affiche perso et met a jour les elements visuels associes." alt="" coords="197,455,311,480"/>
+<area shape="poly" id="edge25_Node000001_Node000027" title=" " alt="" coords="57,1032,63,927,79,764,92,678,109,599,130,534,143,509,157,489,182,473,185,477,161,493,147,512,135,536,114,601,97,679,84,764,68,927,62,1032"/>
+<area shape="rect" id="Node000028" href="$perso_8c.html#aa234db7602e3e4190d21e9ffc79f3899" title="Affiche les statistiques et met a jour les elements visuels associes." alt="" coords="203,504,305,529"/>
+<area shape="poly" id="edge26_Node000001_Node000028" title=" " alt="" coords="57,1031,65,935,82,787,95,710,112,639,132,580,157,540,171,529,188,521,190,526,174,533,161,544,137,583,117,641,101,711,88,788,70,936,63,1032"/>
+<area shape="rect" id="Node000029" href="$planete_8c.html#ac2d1eb983f59ec8c4b9643cce9631c0f" title="Applique un masque de vision reduite autour du joueur sur la planete 3." alt="" coords="163,554,345,594"/>
+<area shape="poly" id="edge27_Node000001_Node000029" title=" " alt="" coords="58,1031,68,946,87,818,101,752,117,690,135,639,157,604,160,600,164,604,161,608,140,642,122,692,106,753,92,819,73,947,63,1032"/>
+<area shape="rect" id="Node000030" href="$boss_8c.html#a51cd354a45226c77472ca20b4caf045f" title="Definit la carte de navigation utilisee par l&#39;IA des boss." alt="" coords="159,619,349,644"/>
+<area shape="poly" id="edge28_Node000001_Node000030" title=" " alt="" coords="58,1031,69,955,89,841,118,728,136,684,157,654,161,650,164,654,161,657,141,686,124,730,94,842,74,955,64,1032"/>
+<area shape="rect" id="Node000031" href="$jeux_8c.html#a1e508a3ee2634b7b8d747311fd55c860" title=" " alt="" coords="190,668,318,693"/>
+<area shape="poly" id="edge29_Node000001_Node000031" title=" " alt="" coords="56,1032,58,973,69,884,82,836,99,787,124,742,157,703,176,690,179,694,160,707,129,745,104,790,87,837,75,885,63,973,62,1032"/>
+<area shape="rect" id="Node000032" href="$perso_8c.html#ac17ff910702e240707df1bb1443a3411" title="Met a jour la position du joueur selon les entrees clavier et le delta temps." alt="" coords="193,717,315,743"/>
+<area shape="poly" id="edge30_Node000001_Node000032" title=" " alt="" coords="57,1032,61,980,75,905,88,864,105,823,128,785,157,752,179,738,182,743,160,756,132,788,110,825,93,865,81,906,67,981,62,1032"/>
+<area shape="rect" id="Node000033" href="$boss_8c.html#a236f706845850941c512c45d6e52d55b" title="Detruit le boss et libere toutes les ressources associees." alt="" coords="199,767,309,792"/>
+<area shape="poly" id="edge31_Node000001_Node000033" title=" " alt="" coords="58,1031,65,988,82,925,111,859,132,828,157,801,184,786,186,791,160,805,136,831,116,861,87,927,70,989,63,1032"/>
+<area shape="rect" id="Node000034" href="$mob_8c.html#ac1404d83610b06ad915d669824ab42c3" title="Libere mobs et nettoie les ressources associees." alt="" coords="196,816,312,841"/>
+<area shape="poly" id="edge32_Node000001_Node000034" title=" " alt="" coords="60,1031,71,997,90,951,119,902,157,859,182,843,184,848,160,863,123,905,95,953,76,999,65,1033"/>
+<area shape="rect" id="Node000035" href="$mob_8c.html#a91cbc6442abe5bba7eeeaf19fb5e8811" title="Reinitialise mob respawn queue pour repartir d&#39;un etat propre." alt="" coords="397,841,597,867"/>
+<area shape="poly" id="edge60_Node000001_Node000035" title=" " alt="" coords="62,1031,74,1003,95,968,122,932,157,902,197,887,253,875,383,859,384,864,254,880,198,892,160,907,126,936,99,971,79,1006,67,1033"/>
+<area shape="rect" id="Node000036" href="$item_8c.html#accc9925bdc1247da3cbb869da6f0dd35" title="Libere tout item et nettoie les ressources associees." alt="" coords="183,917,325,943"/>
+<area shape="poly" id="edge34_Node000001_Node000036" title=" " alt="" coords="68,1030,105,992,130,971,157,953,175,945,177,950,160,958,133,975,109,996,72,1033"/>
+<area shape="rect" id="Node000038" href="$game__over_8c.html#a37d3fac8300008a434af7c66a4e695d0" title="Affiche l&#39;ecran de game over et traite le choix du joueur." alt="" coords="450,101,545,127"/>
+<area shape="poly" id="edge35_Node000001_Node000038" title=" " alt="" coords="57,1032,59,902,71,694,83,584,100,482,125,397,140,364,157,339,180,320,203,311,227,308,252,310,300,310,324,303,348,287,361,271,368,255,372,222,375,188,382,170,395,152,414,137,436,126,438,131,417,142,399,156,387,172,380,189,377,223,373,257,365,274,351,291,326,308,301,315,252,315,228,314,205,316,182,324,161,342,144,367,130,399,106,483,88,584,76,695,64,903,62,1032"/>
+<area shape="rect" id="Node000040" href="$planete_8c.html#a590f905501246ac7649bbc45bc6677c5" title="Genere le labyrinthe procedural de la planete 3 et place l&#39;engrenage objectif." alt="" coords="181,967,327,1007"/>
+<area shape="poly" id="edge40_Node000001_Node000040" title=" " alt="" coords="101,1029,171,1009,173,1014,103,1034"/>
+<area shape="rect" id="Node000041" href="$inventaire_8c.html#a27d35e407cd81c7cbe1cc7f8e0c7ff17" title="Gere clic inventaire a partir des entrees utilisateur et des evenements." alt="" coords="175,1032,333,1057"/>
+<area shape="poly" id="edge41_Node000001_Node000041" title=" " alt="" coords="111,1042,161,1042,161,1047,111,1047"/>
+<area shape="rect" id="Node000042" href="$perso_8c.html#a27a7f2b104972dc84653a7abaf2cedfc" title="Gere combat a partir des entrees utilisateur et des evenements." alt="" coords="198,1081,310,1107"/>
+<area shape="poly" id="edge42_Node000001_Node000042" title=" " alt="" coords="110,1055,190,1075,189,1080,108,1060"/>
+<area shape="rect" id="Node000043" href="$boss_8c.html#af1c8aca032a751db8821bf8b9f592cf9" title="Initialise un boss avec ses ressources graphiques et son etat de combat." alt="" coords="214,1131,294,1156"/>
+<area shape="poly" id="edge43_Node000001_Node000043" title=" " alt="" coords="75,1055,112,1086,160,1116,201,1130,200,1135,158,1120,109,1090,71,1059"/>
+<area shape="rect" id="Node000044" href="$jeux_8c.html#ae8e5f9cd970d438c5fd8cda2b7286bfd" title="Initialise la caisse a outils et prepare les ressources necessaires." alt="" coords="187,1232,321,1257"/>
+<area shape="poly" id="edge44_Node000001_Node000044" title=" " alt="" coords="66,1057,78,1088,97,1129,125,1173,160,1211,183,1224,180,1229,157,1215,121,1176,93,1132,73,1090,61,1059"/>
+<area shape="rect" id="Node000046" href="$item_8c.html#ac066d9bc77b421f23ca66756b7ff4a33" title="Initialise item et prepare les ressources necessaires." alt="" coords="457,1232,537,1257"/>
+<area shape="poly" id="edge46_Node000001_Node000046" title=" " alt="" coords="68,1056,102,1110,129,1140,160,1165,202,1179,277,1198,444,1232,443,1237,276,1203,200,1184,157,1170,125,1144,98,1113,64,1059"/>
+<area shape="rect" id="Node000047" href="$mob_8c.html#af2bb33cec05837a53c00e0f901d38c68" title="Initialise mobs et prepare les ressources necessaires." alt="" coords="211,1433,297,1459"/>
+<area shape="poly" id="edge47_Node000001_Node000047" title=" " alt="" coords="61,1057,62,1120,73,1215,85,1267,103,1319,128,1369,161,1412,178,1426,198,1434,196,1439,175,1430,157,1416,123,1371,98,1321,80,1269,68,1216,57,1120,56,1058"/>
+<area shape="rect" id="Node000048" href="$perso_8c.html#a2a53403cf290bb65fb010b095c4843cf" title="Verifie collision et retourne le resultat du test." alt="" coords="443,1440,551,1465"/>
+<area shape="poly" id="edge64_Node000001_Node000048" title=" " alt="" coords="62,1058,65,1113,77,1195,90,1240,107,1284,130,1326,160,1361,193,1373,263,1392,430,1434,429,1439,261,1398,191,1378,157,1366,126,1329,102,1287,85,1242,72,1197,59,1114,57,1058"/>
+<area shape="rect" id="Node000049" href="$son_8c.html#ae145ae699cc1eecf0684bdd530bd26f0" title="Charge (ou recupere du cache) puis joue une piste audio." alt="" coords="695,1464,781,1489"/>
+<area shape="poly" id="edge52_Node000001_Node000049" title=" " alt="" coords="63,1058,68,1106,83,1177,95,1214,112,1252,134,1286,160,1316,232,1339,377,1374,598,1425,691,1457,690,1462,597,1430,375,1379,231,1344,157,1320,129,1289,107,1254,90,1216,78,1178,63,1107,57,1058"/>
+<area shape="rect" id="Node000050" href="$cinematique_8c.html#a68c4780c65b14d27f0088cfc6514eb60" title="Lance cinematique crash et gere son deroulement complet." alt="" coords="405,1503,590,1528"/>
+<area shape="poly" id="edge50_Node000001_Node000050" title=" " alt="" coords="63,1057,69,1150,85,1292,98,1365,115,1432,135,1485,147,1505,160,1519,193,1539,230,1552,269,1558,309,1558,387,1548,450,1530,452,1535,388,1553,310,1564,269,1563,229,1557,191,1544,157,1523,143,1508,131,1487,110,1433,93,1366,80,1293,64,1151,57,1058"/>
+<area shape="rect" id="Node000051" href="$arcade_8c.html#a9be93ac88e97809a94f0ae9b48152aa9" title="Lance le mini&#45;jeu Mastermind utilise dans la progression." alt="" coords="203,1635,305,1660"/>
+<area shape="poly" id="edge53_Node000001_Node000051" title=" " alt="" coords="62,1057,69,1164,85,1331,98,1420,114,1501,135,1568,147,1594,161,1614,174,1625,191,1634,189,1639,171,1630,157,1617,143,1597,130,1570,109,1502,92,1421,79,1332,63,1164,57,1058"/>
+<area shape="rect" id="Node000053" href="$boss_8c.html#abbb99b844a32a59c50228b7d6dcb888b" title="Met a jour la logique du boss pour une frame de jeu." alt="" coords="179,1281,329,1307"/>
+<area shape="poly" id="edge54_Node000001_Node000053" title=" " alt="" coords="64,1057,72,1098,89,1155,118,1215,137,1243,160,1267,169,1273,166,1277,157,1271,133,1246,113,1218,84,1157,67,1099,59,1058"/>
+<area shape="rect" id="Node000056" href="$objectifs_8c.html#a9f4b4e261f3bafb3c91a12cbe3408043" title="Affiche le panneau des objectifs et met a jour leur etat de validation." alt="" coords="187,1684,321,1709"/>
+<area shape="poly" id="edge56_Node000001_Node000056" title=" " alt="" coords="62,1058,66,1175,80,1360,92,1458,110,1547,132,1621,146,1650,161,1671,176,1683,173,1687,157,1675,141,1652,127,1623,104,1549,87,1458,75,1360,61,1175,57,1058"/>
+<area shape="rect" id="Node000057" href="$objectifs_8c.html#a844bf7cfff25edd874a95fb5f4d9e4a8" title="Initialise la liste des objectifs selon la planete en cours." alt="" coords="201,1733,307,1759"/>
+<area shape="poly" id="edge57_Node000001_Node000057" title=" " alt="" coords="62,1058,65,1183,77,1383,89,1489,107,1586,130,1666,145,1697,161,1720,173,1731,189,1738,186,1742,170,1735,157,1724,140,1700,125,1668,102,1587,84,1489,72,1383,59,1183,57,1058"/>
+<area shape="rect" id="Node000058" href="$perso_8c.html#ab64bb2370b34b1c0bd7a21a4cce2462b" title="Evalue ramasser item puis applique l&#39;action autorisee si les conditions sont reunies." alt="" coords="163,1783,345,1808"/>
+<area shape="poly" id="edge58_Node000001_Node000058" title=" " alt="" coords="62,1057,63,1190,74,1405,86,1519,104,1625,128,1711,144,1745,161,1770,164,1773,160,1776,157,1773,139,1747,123,1713,99,1626,81,1520,69,1406,58,1190,57,1057"/>
+<area shape="rect" id="Node000060" href="$jeux_8c.html#a1ada56a749d8f318d66e88e6c96c9da0" title=" " alt="" coords="195,1832,313,1857"/>
+<area shape="poly" id="edge59_Node000001_Node000060" title=" " alt="" coords="62,1058,62,1199,71,1429,83,1551,101,1663,127,1756,142,1792,161,1819,183,1834,180,1839,157,1823,138,1795,122,1758,96,1665,78,1551,66,1429,57,1199,56,1058"/>
+<area shape="rect" id="Node000061" href="$jeux_8c.html#a1ede7bcce591c86816a4fad2739d8b75" title=" " alt="" coords="174,1882,334,1922"/>
+<area shape="poly" id="edge61_Node000001_Node000061" title=" " alt="" coords="62,1058,62,1206,71,1450,82,1580,100,1700,126,1800,142,1839,161,1868,165,1873,161,1876,157,1872,138,1841,121,1802,95,1701,77,1581,66,1450,56,1206,56,1058"/>
+<area shape="rect" id="Node000062" href="$sauvegarde_8c.html#a749dc51944352ce977ead8fb8ceca1cc" title="Applique a l&#39;etat global les donnees precedemment chargees si presentes." alt="" coords="171,1946,337,1986"/>
+<area shape="poly" id="edge62_Node000001_Node000062" title=" " alt="" coords="63,1057,72,1228,92,1507,106,1652,122,1781,141,1879,151,1912,161,1933,163,1935,159,1939,156,1935,146,1914,135,1881,117,1782,101,1653,87,1508,67,1228,57,1058"/>
+<area shape="rect" id="Node000064" href="$arcade_8c.html#a60b12154cf6385b2392e62c0fb9c4e8a" title="Lance le mini&#45;jeu Simon utilise dans la progression." alt="" coords="223,2011,285,2036"/>
+<area shape="poly" id="edge63_Node000001_Node000064" title=" " alt="" coords="62,1057,71,1239,89,1540,103,1695,119,1834,139,1940,149,1975,161,1996,183,2012,210,2020,208,2025,181,2017,157,2000,145,1977,134,1941,114,1835,98,1696,84,1540,65,1239,57,1057"/>
+<area shape="rect" id="Node000065" href="$perso_8c.html#a3a1b30f1d4b3a050543f4a881d549636" title="Met a jour animation en fonction de l&#39;etat courant du jeu." alt="" coords="184,2060,324,2085"/>
+<area shape="poly" id="edge65_Node000001_Node000065" title=" " alt="" coords="62,1057,70,1248,88,1565,101,1729,118,1876,138,1987,149,2025,161,2047,173,2058,170,2062,157,2050,144,2027,132,1989,112,1876,96,1730,82,1565,64,1248,57,1057"/>
+<area shape="rect" id="Node000066" href="$perso_8c.html#a13de525da0f522f0738bde93c1d62255" title="Met a jour combat en fonction de l&#39;etat courant du jeu." alt="" coords="436,1577,559,1603"/>
+<area shape="poly" id="edge66_Node000001_Node000066" title=" " alt="" coords="62,1057,68,1158,83,1313,96,1393,113,1466,134,1526,147,1548,160,1564,191,1585,224,1600,260,1609,298,1614,371,1613,435,1603,436,1608,372,1618,297,1619,259,1615,222,1605,188,1590,157,1568,142,1551,129,1528,108,1468,91,1394,78,1313,63,1158,57,1058"/>
+<area shape="rect" id="Node000070" href="$mob_8c.html#a1f766d8b9a9348d960e6f211fce5d558" title="Met a jour mobs en fonction de l&#39;etat courant du jeu." alt="" coords="199,1483,309,1508"/>
+<area shape="poly" id="edge68_Node000001_Node000070" title=" " alt="" coords="63,1057,73,1140,92,1264,106,1329,122,1388,140,1436,161,1468,187,1485,184,1489,157,1472,135,1438,116,1389,100,1330,87,1265,68,1141,58,1058"/>
+<area shape="rect" id="Node000009" href="$option_8c.html#ac77b6b0f042469d82d75b270f5193806" title="Affiche option et met a jour les elements visuels associes." alt="" coords="438,203,557,228"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="312,352,331,343,347,332,364,309,370,285,377,261,384,249,396,237,424,222,426,227,399,241,388,252,382,263,375,287,369,311,351,336,333,348,314,357"/>
+<area shape="rect" id="Node000010" href="$bouton_8c.html#af33c1c08b52d3d015ff6f7039a9734ee" title="Affiche texte centre et met a jour les elements visuels associes." alt="" coords="658,377,818,403"/>
+<area shape="poly" id="edge13_Node000008_Node000010" title=" " alt="" coords="305,376,351,396,365,407,375,418,384,429,398,437,438,447,479,452,520,451,561,445,637,427,696,406,698,411,638,432,562,451,521,456,479,457,437,453,396,442,380,433,371,422,362,411,348,400,303,381"/>
+<area shape="rect" id="Node000011" href="$bouton_8c.html#a11f55905044ef2518b8c38311df3c48d" title="Dessine la texture du bouton dans son rectangle d&#39;affichage." alt="" coords="675,189,801,215"/>
+<area shape="poly" id="edge14_Node000008_Node000011" title=" " alt="" coords="312,353,331,345,347,332,360,314,367,296,368,259,371,222,379,204,396,188,431,168,470,156,511,151,552,152,630,164,693,182,692,187,628,169,551,157,511,157,471,162,433,173,399,192,384,207,376,223,373,259,372,297,365,317,351,336,334,349,314,358"/>
+<area shape="rect" id="Node000012" href="$bouton_8c.html#ab4862740c43f8a9abb996fff0aba5ca1" title="Met a jour l&#39;etat du bouton a partir d&#39;un evenement SDL." alt="" coords="645,271,831,296"/>
+<area shape="poly" id="edge15_Node000008_Node000012" title=" " alt="" coords="313,353,397,338,646,296,647,301,398,343,313,358"/>
+<area shape="rect" id="Node000014" href="$bouton_8c.html#a482b1feb9004901d0544e64b1c44051c" title="Initialise un bouton (zone, texture et etat d&#39;interaction)." alt="" coords="690,115,786,140"/>
+<area shape="poly" id="edge16_Node000008_Node000014" title=" " alt="" coords="277,351,314,324,332,307,347,287,360,259,365,233,362,181,361,156,364,132,374,109,396,87,432,65,473,55,515,53,558,57,600,67,639,79,703,106,700,111,637,84,599,72,558,62,515,58,474,60,434,70,399,91,379,112,369,134,366,156,367,181,370,233,365,261,352,290,336,311,317,329,280,355"/>
+<area shape="rect" id="Node000019" href="$son_8c.html#a034468875b501292a7c8520c6b6a02de" title="Met en pause une piste audio si elle est valide." alt="" coords="452,353,543,379"/>
+<area shape="poly" id="edge17_Node000008_Node000019" title=" " alt="" coords="313,363,438,363,438,369,313,369"/>
+<area shape="rect" id="Node000020" href="$son_8c.html#a70ea47d9c00bc921d67e4bea89f0ee4b" title="Reprend une piste si le son global et la categorie associee sont actifs." alt="" coords="440,252,555,277"/>
+<area shape="poly" id="edge18_Node000008_Node000020" title=" " alt="" coords="302,351,348,332,372,313,396,294,432,279,434,284,399,299,375,317,351,336,304,356"/>
+<area shape="rect" id="Node000021" href="$sauvegarde_8c.html#ae251037c85a5a7d8172c206539398f49" title="Affiche l&#39;interface de selection de slot (chargement ou sauvegarde)." alt="" coords="408,403,587,428"/>
+<area shape="poly" id="edge19_Node000008_Node000021" title=" " alt="" coords="314,375,421,397,420,403,312,380"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="558,220,579,227,599,237,616,253,626,270,634,287,647,306,712,366,708,370,643,309,629,289,621,272,612,257,596,242,577,232,556,225"/>
+<area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="557,209,662,204,662,209,557,215"/>
+<area shape="poly" id="edge11_Node000009_Node000012" title=" " alt="" coords="554,225,598,237,686,264,685,269,597,242,553,231"/>
+<area shape="poly" id="edge12_Node000009_Node000014" title=" " alt="" coords="532,200,689,142,690,147,534,205"/>
+<area shape="poly" id="edge20_Node000021_Node000010" title=" " alt="" coords="587,403,644,397,645,402,587,409"/>
+<area shape="poly" id="edge21_Node000021_Node000011" title=" " alt="" coords="577,400,596,388,609,373,616,358,621,326,625,293,631,275,643,256,666,235,692,218,695,223,669,239,647,260,636,277,630,294,627,327,621,359,613,376,599,392,580,405"/>
+<area shape="poly" id="edge22_Node000021_Node000012" title=" " alt="" coords="563,400,596,388,630,369,661,347,712,304,715,308,664,351,632,373,598,392,565,405"/>
+<area shape="poly" id="edge23_Node000021_Node000014" title=" " alt="" coords="579,400,595,388,614,363,623,338,624,312,622,286,620,260,620,233,627,204,643,175,662,157,683,144,686,148,665,161,647,178,632,206,625,233,625,260,627,286,629,312,628,339,619,365,599,392,582,405"/>
+<area shape="poly" id="edge24_Node000021_Node000023" title=" " alt="" coords="548,425,676,459,674,464,546,431"/>
+<area shape="poly" id="edge33_Node000034_Node000035" title=" " alt="" coords="313,832,384,840,383,845,312,837"/>
+<area shape="poly" id="edge36_Node000038_Node000010" title=" " alt="" coords="523,124,562,151,599,188,617,220,625,248,631,275,648,306,677,340,709,367,706,371,674,344,643,309,626,277,619,249,612,222,595,192,558,155,520,129"/>
+<area shape="poly" id="edge37_Node000038_Node000011" title=" " alt="" coords="541,124,598,143,695,181,693,186,596,149,539,129"/>
+<area shape="poly" id="edge38_Node000038_Node000012" title=" " alt="" coords="517,125,647,224,705,262,702,266,644,228,514,129"/>
+<area shape="poly" id="edge39_Node000038_Node000014" title=" " alt="" coords="545,114,677,121,676,127,545,119"/>
+<area shape="poly" id="edge45_Node000044_Node000046" title=" " alt="" coords="322,1242,444,1242,444,1247,322,1247"/>
+<area shape="poly" id="edge48_Node000047_Node000048" title=" " alt="" coords="298,1445,429,1448,429,1453,298,1450"/>
+<area shape="poly" id="edge49_Node000048_Node000049" title=" " alt="" coords="552,1455,682,1468,681,1474,551,1461"/>
+<area shape="poly" id="edge51_Node000050_Node000049" title=" " alt="" coords="577,1500,682,1483,682,1488,578,1505"/>
+<area shape="poly" id="edge55_Node000053_Node000046" title=" " alt="" coords="317,1279,444,1253,445,1258,318,1284"/>
+<area shape="poly" id="edge67_Node000066_Node000049" title=" " alt="" coords="524,1575,697,1493,699,1498,527,1580"/>
+<area shape="poly" id="edge69_Node000070_Node000048" title=" " alt="" coords="309,1483,429,1462,430,1467,310,1488"/>
 </map>

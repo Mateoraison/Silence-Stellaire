@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mob_0',['Mob',['../struct_mob.html',1,'']]]
+  ['mob_0',['Mob',['../structMob.html',1,'']]]
 ];

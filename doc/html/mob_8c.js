@@ -1,6 +1,6 @@
 var mob_8c =
 [
-    [ "EntreeRespawn", "struct_entree_respawn.html", "struct_entree_respawn" ],
+    [ "EntreeRespawn", "structEntreeRespawn.html", "structEntreeRespawn" ],
     [ "TAILLE_FILE_RESPAWN", "mob_8c.html#ac5d2821634d3119a6e7098a3639d196d", null ],
     [ "afficher_mob", "mob_8c.html#aa1ffa891e170487c45dd0bb0fd1c32c8", null ],
     [ "detruire_mobs", "mob_8c.html#ac1404d83610b06ad915d669824ab42c3", null ],

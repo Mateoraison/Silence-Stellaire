@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['id_0',['id',['../struct_mob.html#a12a767df35e5c435b5b6e68ac9640e8e',1,'Mob::id'],['../struct_entree_respawn.html#af61a885acb8b21869a7c22e8a68e63e7',1,'EntreeRespawn::id']]],
+  ['id_0',['id',['../structMob.html#a12a767df35e5c435b5b6e68ac9640e8e',1,'Mob::id'],['../structEntreeRespawn.html#af61a885acb8b21869a7c22e8a68e63e7',1,'EntreeRespawn::id']]],
   ['index_5fitem_1',['index_item',['../main_8h.html#a7963142dea3652236977bec96c9a8d8a',1,'index_item:&#160;jeux.c'],['../jeux_8c.html#a7963142dea3652236977bec96c9a8d8a',1,'index_item:&#160;jeux.c'],['../objectifs_8c.html#a7963142dea3652236977bec96c9a8d8a',1,'index_item:&#160;jeux.c']]],
   ['index_5fobjet_5fecran_5fgauche_2',['index_objet_ecran_gauche',['../vaisseau_8c.html#a2387a933a9ad7839840401f47df0dcd1',1,'vaisseau.c']]],
   ['init_5fboss_3',['init_boss',['../boss_8c.html#af1c8aca032a751db8821bf8b9f592cf9',1,'init_boss(SDL_Renderer *renderer, boss_t *boss_ref, type_boss_t type, float x, float y):&#160;boss.c'],['../boss_8h.html#a6eec57eb8ce16b0359a037e265063291',1,'init_boss(SDL_Renderer *renderer, boss_t *boss, type_boss_t type, float x, float y):&#160;boss.c']]],
@@ -13,11 +13,11 @@ var searchData=
   ['inventaire_2eh_10',['inventaire.h',['../inventaire_8h.html',1,'']]],
   ['inventaire_5fcols_11',['INVENTAIRE_COLS',['../main_8h.html#a2e4d121dcf518480985905131f52ae94',1,'main.h']]],
   ['inventaire_5fouvert_12',['inventaire_ouvert',['../main_8h.html#a51cbc61de54ee081cc112e0cb4a51694',1,'inventaire_ouvert:&#160;jeux.c'],['../jeux_8c.html#a51cbc61de54ee081cc112e0cb4a51694',1,'inventaire_ouvert:&#160;jeux.c']]],
-  ['inventaire_5fqte_13',['inventaire_qte',['../struct_save_data.html#a91929bf5b04c83c81906138c1eb2d789',1,'SaveData']]],
+  ['inventaire_5fqte_13',['inventaire_qte',['../structSaveData.html#a91929bf5b04c83c81906138c1eb2d789',1,'SaveData']]],
   ['inventaire_5frows_14',['INVENTAIRE_ROWS',['../main_8h.html#ab92262806ade0a280529307ea75d0948',1,'main.h']]],
   ['inventaire_5fsize_15',['INVENTAIRE_SIZE',['../main_8h.html#a1214bea12629f1bbee381f63e4573d29',1,'main.h']]],
-  ['inventaire_5ftype_16',['inventaire_type',['../struct_save_data.html#a5fd1a17d6edbe40e3311704c9910df34',1,'SaveData']]],
-  ['invincibiliter_5ftimer_17',['invincibiliter_timer',['../struct_perso.html#aa34611c338e757c4fcfc473d246c5bb1',1,'Perso']]],
+  ['inventaire_5ftype_16',['inventaire_type',['../structSaveData.html#a5fd1a17d6edbe40e3311704c9910df34',1,'SaveData']]],
+  ['invincibiliter_5ftimer_17',['invincibiliter_timer',['../structPerso.html#aa34611c338e757c4fcfc473d246c5bb1',1,'Perso']]],
   ['item_18',['item',['../structt__case.html#a68ad606772a60c919285488f4a238379',1,'t_case']]],
   ['item_2ec_19',['item.c',['../item_8c.html',1,'']]],
   ['item_2eh_20',['item.h',['../item_8h.html',1,'']]],

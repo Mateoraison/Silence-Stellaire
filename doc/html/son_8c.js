@@ -1,6 +1,6 @@
 var son_8c =
 [
-    [ "SonCache", "struct_son_cache.html", "struct_son_cache" ],
+    [ "SonCache", "structSonCache.html", "structSonCache" ],
     [ "MAX_SONS_CACHE", "son_8c.html#ad91cd3d58877e5a3c7cc8e1c82e37e13", null ],
     [ "jouer_son", "son_8c.html#ae145ae699cc1eecf0684bdd530bd26f0", null ],
     [ "pause_son", "son_8c.html#a034468875b501292a7c8520c6b6a02de", null ],

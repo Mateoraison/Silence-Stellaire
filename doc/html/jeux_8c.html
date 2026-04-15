@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Silence Stellaire: Référence du fichier src/jeux.c</title>
 <link rel="icon" href="logo_win.png" type="image/x-icon" />
@@ -38,7 +38,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.16.1 -->
+<!-- Généré par Doxygen 1.14.0 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
@@ -120,66 +120,72 @@ Graphe des dépendances par inclusion de jeux.c:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:t_5FCuisson" id="r_t_5FCuisson"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structt___cuisson.html">t_Cuisson</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Etat de cuisson d'un item dans la hotbar.  <a href="structt___cuisson.html#details">Plus de détails...</a><br /></td></tr>
-<tr class="memitem:t_5Fconsole_5Fcmd" id="r_t_5Fconsole_5Fcmd"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="structt__console__cmd.html">t_console_cmd</a></td></tr>
+<tr class="memitem:t_5FCuisson" id="r_t_5FCuisson"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structt__Cuisson.html">t_Cuisson</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Etat de cuisson d'un item dans la hotbar.  <a href="structt__Cuisson.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:t_5Fconsole_5Fcmd" id="r_t_5Fconsole_5Fcmd"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structt__console__cmd.html">t_console_cmd</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Etat de la console de commandes de debug en jeu.  <a href="structt__console__cmd.html#details">Plus de détails...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a2629d00cb3344a57a1f424bce8640cbf" id="r_a2629d00cb3344a57a1f424bce8640cbf"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a2629d00cb3344a57a1f424bce8640cbf">ENGRENAGES_MAX</a>&#160;&#160;&#160;3</td></tr>
+<tr class="memitem:a2629d00cb3344a57a1f424bce8640cbf" id="r_a2629d00cb3344a57a1f424bce8640cbf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2629d00cb3344a57a1f424bce8640cbf">ENGRENAGES_MAX</a>&#160;&#160;&#160;3</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:a1ada56a749d8f318d66e88e6c96c9da0" id="r_a1ada56a749d8f318d66e88e6c96c9da0"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a1ada56a749d8f318d66e88e6c96c9da0">remplir_tileset</a> (<a class="el" href="structt__tile.html">t_tile</a> map[<a class="el" href="main_8h.html#a3799224504478f1beebf6b4207c3d8a9">W_MAP</a>][<a class="el" href="main_8h.html#aa6456846603a55a96519da275aa6bf34">H_MAP</a>], char *map_txt)</td></tr>
-<tr class="memitem:abc7449460fd78756200332223f19ed9b" id="r_abc7449460fd78756200332223f19ed9b"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#abc7449460fd78756200332223f19ed9b">retirer_engrenages_joueur</a> (void)</td></tr>
+<tr class="memitem:affe4ed140aa40ab1adbec1328824838e" id="r_affe4ed140aa40ab1adbec1328824838e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#affe4ed140aa40ab1adbec1328824838e">jeu_get_progression</a> (<a class="el" href="structprogression__jeu__t.html">progression_jeu_t</a> *out)</td></tr>
+<tr class="memdesc:affe4ed140aa40ab1adbec1328824838e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recupere l'etat de progression global du gameplay.  <br /></td></tr>
+<tr class="memitem:a6b202e8fd081bec903b0933869e45747" id="r_a6b202e8fd081bec903b0933869e45747"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b202e8fd081bec903b0933869e45747">jeu_set_progression</a> (const <a class="el" href="structprogression__jeu__t.html">progression_jeu_t</a> *in)</td></tr>
+<tr class="memdesc:a6b202e8fd081bec903b0933869e45747"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applique un etat de progression global au gameplay.  <br /></td></tr>
+<tr class="memitem:a1ada56a749d8f318d66e88e6c96c9da0" id="r_a1ada56a749d8f318d66e88e6c96c9da0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ada56a749d8f318d66e88e6c96c9da0">remplir_tileset</a> (<a class="el" href="structt__tile.html">t_tile</a> map[<a class="el" href="main_8h.html#a3799224504478f1beebf6b4207c3d8a9">W_MAP</a>][<a class="el" href="main_8h.html#aa6456846603a55a96519da275aa6bf34">H_MAP</a>], char *map_txt)</td></tr>
+<tr class="memitem:abc7449460fd78756200332223f19ed9b" id="r_abc7449460fd78756200332223f19ed9b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc7449460fd78756200332223f19ed9b">retirer_engrenages_joueur</a> (void)</td></tr>
 <tr class="memdesc:abc7449460fd78756200332223f19ed9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retire les engrenages requis du stock joueur pour valider une action.  <br /></td></tr>
-<tr class="memitem:a1e508a3ee2634b7b8d747311fd55c860" id="r_a1e508a3ee2634b7b8d747311fd55c860"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a1e508a3ee2634b7b8d747311fd55c860">charger_tilemap</a> (SDL_Renderer *renderer, SDL_Texture *tileset, <a class="el" href="structt__tile.html">t_tile</a> map[<a class="el" href="main_8h.html#a3799224504478f1beebf6b4207c3d8a9">W_MAP</a>][<a class="el" href="main_8h.html#aa6456846603a55a96519da275aa6bf34">H_MAP</a>], int foam[<a class="el" href="main_8h.html#a3799224504478f1beebf6b4207c3d8a9">W_MAP</a>][<a class="el" href="main_8h.html#aa6456846603a55a96519da275aa6bf34">H_MAP</a>], int planete)</td></tr>
-<tr class="memitem:ae8e5f9cd970d438c5fd8cda2b7286bfd" id="r_ae8e5f9cd970d438c5fd8cda2b7286bfd"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ae8e5f9cd970d438c5fd8cda2b7286bfd">init_caisse_outils</a> (SDL_Renderer *renderer)</td></tr>
+<tr class="memitem:a1ede7bcce591c86816a4fad2739d8b75" id="r_a1ede7bcce591c86816a4fad2739d8b75"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ede7bcce591c86816a4fad2739d8b75">retirer_n_engrenages_joueur</a> (int n)</td></tr>
+<tr class="memitem:a1e508a3ee2634b7b8d747311fd55c860" id="r_a1e508a3ee2634b7b8d747311fd55c860"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e508a3ee2634b7b8d747311fd55c860">charger_tilemap</a> (SDL_Renderer *renderer, SDL_Texture *tileset, <a class="el" href="structt__tile.html">t_tile</a> map[<a class="el" href="main_8h.html#a3799224504478f1beebf6b4207c3d8a9">W_MAP</a>][<a class="el" href="main_8h.html#aa6456846603a55a96519da275aa6bf34">H_MAP</a>], int foam[<a class="el" href="main_8h.html#a3799224504478f1beebf6b4207c3d8a9">W_MAP</a>][<a class="el" href="main_8h.html#aa6456846603a55a96519da275aa6bf34">H_MAP</a>], int planete)</td></tr>
+<tr class="memitem:ae8e5f9cd970d438c5fd8cda2b7286bfd" id="r_ae8e5f9cd970d438c5fd8cda2b7286bfd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8e5f9cd970d438c5fd8cda2b7286bfd">init_caisse_outils</a> (SDL_Renderer *renderer)</td></tr>
 <tr class="memdesc:ae8e5f9cd970d438c5fd8cda2b7286bfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise la caisse a outils et prepare les ressources necessaires.  <br /></td></tr>
-<tr class="memitem:a2d7491d04e8c2bdb52bb6ed7d75e4d78" id="r_a2d7491d04e8c2bdb52bb6ed7d75e4d78"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a2d7491d04e8c2bdb52bb6ed7d75e4d78">jeu_principal</a> (SDL_Renderer *renderer, int planete, MIX_Track *<a class="el" href="main_8h.html#a84af9ed84c11a72dd7515a42f42af710">track_global</a>, bool reprendre_partie)</td></tr>
+<tr class="memitem:a2d7491d04e8c2bdb52bb6ed7d75e4d78" id="r_a2d7491d04e8c2bdb52bb6ed7d75e4d78"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d7491d04e8c2bdb52bb6ed7d75e4d78">jeu_principal</a> (SDL_Renderer *renderer, int planete, MIX_Track *<a class="el" href="main_8h.html#a84af9ed84c11a72dd7515a42f42af710">track_global</a>, bool reprendre_partie)</td></tr>
 <tr class="memdesc:a2d7491d04e8c2bdb52bb6ed7d75e4d78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute la boucle principale de gameplay pour la planete courante.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a72157237fcc8efb662940db83b6329c9" id="r_a72157237fcc8efb662940db83b6329c9"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a72157237fcc8efb662940db83b6329c9">engrenages_poses</a> = 0</td></tr>
-<tr class="memitem:a6a603860f3885534a34bf605601fbdf2" id="r_a6a603860f3885534a34bf605601fbdf2"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a6a603860f3885534a34bf605601fbdf2">vaisseau_repare</a> = false</td></tr>
-<tr class="memitem:ab8b7ac2c62b73630946468247d22f0a3" id="r_ab8b7ac2c62b73630946468247d22f0a3"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#ab8b7ac2c62b73630946468247d22f0a3">g_planete3_engrenage_recupere</a> = false</td></tr>
-<tr class="memitem:a90539eead6faa0a93480a62815008e35" id="r_a90539eead6faa0a93480a62815008e35"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a90539eead6faa0a93480a62815008e35">g_planete3_boss_spawned</a> = false</td></tr>
-<tr class="memitem:a35aa280233b0f2b73cdade32adbdb67d" id="r_a35aa280233b0f2b73cdade32adbdb67d"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a35aa280233b0f2b73cdade32adbdb67d">g_planete3_spawn_engrenage_defini</a> = false</td></tr>
-<tr class="memitem:ad63d3d2055574bd78f2082ed65fe96b9" id="r_ad63d3d2055574bd78f2082ed65fe96b9"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#ad63d3d2055574bd78f2082ed65fe96b9">g_planete3_spawn_engrenage_x</a> = 0.0f</td></tr>
-<tr class="memitem:a007ccd9eb671a0c71e6a95d2e1f44779" id="r_a007ccd9eb671a0c71e6a95d2e1f44779"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a007ccd9eb671a0c71e6a95d2e1f44779">g_planete3_spawn_engrenage_y</a> = 0.0f</td></tr>
-<tr class="memitem:a13433f01362d145424958aba6ef57f71" id="r_a13433f01362d145424958aba6ef57f71"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a13433f01362d145424958aba6ef57f71">nb_engrenages_requis</a> = <a class="el" href="#a2629d00cb3344a57a1f424bce8640cbf">ENGRENAGES_MAX</a></td></tr>
-<tr class="memitem:acb611635c7684b1955c46c635ea32215" id="r_acb611635c7684b1955c46c635ea32215"><td class="memItemLeft"><a class="el" href="struct_perso.html">Perso</a>&#160;</td><td class="memItemRight"><a class="el" href="#acb611635c7684b1955c46c635ea32215">perso</a></td></tr>
-<tr class="memitem:acdf31070b4fb73e81447bbd286d25f4e" id="r_acdf31070b4fb73e81447bbd286d25f4e"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#acdf31070b4fb73e81447bbd286d25f4e">animation_frame</a> = 0</td></tr>
-<tr class="memitem:adfe93ca7aba69abc894e5ed9ed18a10a" id="r_adfe93ca7aba69abc894e5ed9ed18a10a"><td class="memItemLeft">Uint32&#160;</td><td class="memItemRight"><a class="el" href="#adfe93ca7aba69abc894e5ed9ed18a10a">animation_timer</a> = 0</td></tr>
-<tr class="memitem:a37375faffb88626117c0f37c3a4afeae" id="r_a37375faffb88626117c0f37c3a4afeae"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a37375faffb88626117c0f37c3a4afeae">perso_bouge</a> = false</td></tr>
-<tr class="memitem:ade964650c21db9e2e3085aadd845bb56" id="r_ade964650c21db9e2e3085aadd845bb56"><td class="memItemLeft">Uint32&#160;</td><td class="memItemRight"><a class="el" href="#ade964650c21db9e2e3085aadd845bb56">bouge_timer</a> = 0</td></tr>
-<tr class="memitem:af559a95708cfd0ab93606697554e1d56" id="r_af559a95708cfd0ab93606697554e1d56"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#af559a95708cfd0ab93606697554e1d56">combat_en_cours</a> = false</td></tr>
-<tr class="memitem:a6a42a0878f51054d42ea24d8b03eefe4" id="r_a6a42a0878f51054d42ea24d8b03eefe4"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a6a42a0878f51054d42ea24d8b03eefe4">combat_frame</a> = 0</td></tr>
-<tr class="memitem:aec473d17de578e6f689cb996f182464a" id="r_aec473d17de578e6f689cb996f182464a"><td class="memItemLeft">Uint32&#160;</td><td class="memItemRight"><a class="el" href="#aec473d17de578e6f689cb996f182464a">combat_timer</a> = 0</td></tr>
-<tr class="memitem:ae0c34fdf03c09f5bf4363d2088acaba8" id="r_ae0c34fdf03c09f5bf4363d2088acaba8"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ae0c34fdf03c09f5bf4363d2088acaba8">est_animation_degat</a> = 0</td></tr>
-<tr class="memitem:a16224a40282ed2ed51e962d74198e6d3" id="r_a16224a40282ed2ed51e962d74198e6d3"><td class="memItemLeft">Uint32&#160;</td><td class="memItemRight"><a class="el" href="#a16224a40282ed2ed51e962d74198e6d3">animation_degat_timer</a> = 0</td></tr>
-<tr class="memitem:a84a02113cb66180ffdd41f044d6ce1ff" id="r_a84a02113cb66180ffdd41f044d6ce1ff"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a84a02113cb66180ffdd41f044d6ce1ff">tramblement_degat_camera</a> = 0</td></tr>
-<tr class="memitem:a61a02cf5854bc2e1d8bf83dd000abef9" id="r_a61a02cf5854bc2e1d8bf83dd000abef9"><td class="memItemLeft">Uint32&#160;</td><td class="memItemRight"><a class="el" href="#a61a02cf5854bc2e1d8bf83dd000abef9">tramblement_camera_timer</a> = 0</td></tr>
-<tr class="memitem:a35a58cb7eb2b0cb71029bf2636b03ea6" id="r_a35a58cb7eb2b0cb71029bf2636b03ea6"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a35a58cb7eb2b0cb71029bf2636b03ea6">tramblement_camera_x</a> = 0.0f</td></tr>
-<tr class="memitem:aad335a91e815f7eb7884199dd15b6357" id="r_aad335a91e815f7eb7884199dd15b6357"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#aad335a91e815f7eb7884199dd15b6357">tramblement_camera_y</a> = 0.0f</td></tr>
-<tr class="memitem:a5c2df1566e7f2bc9ae563ca9f180aae5" id="r_a5c2df1566e7f2bc9ae563ca9f180aae5"><td class="memItemLeft"><a class="el" href="structt___item.html">t_Item</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a5c2df1566e7f2bc9ae563ca9f180aae5">items</a> [<a class="el" href="main_8h.html#a1b40ceb455086d9cdb68ed3d3bf2775f">MAX_ITEMS</a>] = {NULL}</td></tr>
-<tr class="memitem:a3585292bb8a85d7e8e1e9d0505836d49" id="r_a3585292bb8a85d7e8e1e9d0505836d49"><td class="memItemLeft"><a class="el" href="struct_mob.html">Mob</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a3585292bb8a85d7e8e1e9d0505836d49">mobs</a> [<a class="el" href="main_8h.html#a71a42c4ea136b65af73f3e930fafc7c4">MAX_MOB</a>] = {NULL}</td></tr>
-<tr class="memitem:a7963142dea3652236977bec96c9a8d8a" id="r_a7963142dea3652236977bec96c9a8d8a"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a7963142dea3652236977bec96c9a8d8a">index_item</a> = 0</td></tr>
-<tr class="memitem:a9f26241542eb25a396d652e9ec6e77e0" id="r_a9f26241542eb25a396d652e9ec6e77e0"><td class="memItemLeft"><a class="el" href="structt__case.html">t_case</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a> [<a class="el" href="main_8h.html#a8503e5db31d779209111bf7ea2dba16e">HOTBAR_SIZE</a>] = {NULL}</td></tr>
-<tr class="memitem:a8dcd03ba0e2ea187818f82f341ab2b5f" id="r_a8dcd03ba0e2ea187818f82f341ab2b5f"><td class="memItemLeft"><a class="el" href="structt__case.html">t_case</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a8dcd03ba0e2ea187818f82f341ab2b5f">inventaire</a> [<a class="el" href="main_8h.html#a1214bea12629f1bbee381f63e4573d29">INVENTAIRE_SIZE</a>] = {NULL}</td></tr>
-<tr class="memitem:a03d5dc84ffa6dacbc5ba7abdd9eb6020" id="r_a03d5dc84ffa6dacbc5ba7abdd9eb6020"><td class="memItemLeft"><a class="el" href="structt__case.html">t_case</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a03d5dc84ffa6dacbc5ba7abdd9eb6020">caisse_outils</a> [<a class="el" href="main_8h.html#a74a1fb583b1c35f2bcc4245fddf051e0">CAISSE_OUTILS_SIZE</a>] = {NULL}</td></tr>
-<tr class="memitem:a51cbc61de54ee081cc112e0cb4a51694" id="r_a51cbc61de54ee081cc112e0cb4a51694"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a51cbc61de54ee081cc112e0cb4a51694">inventaire_ouvert</a> = false</td></tr>
-<tr class="memitem:a6ff5b78f55ed18511e6a43408306cac5" id="r_a6ff5b78f55ed18511e6a43408306cac5"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a6ff5b78f55ed18511e6a43408306cac5">caisse_outils_ouvert</a> = false</td></tr>
-<tr class="memitem:ad483eed1af674d201cceebee6c13e0fa" id="r_ad483eed1af674d201cceebee6c13e0fa"><td class="memItemLeft">Uint32&#160;</td><td class="memItemRight"><a class="el" href="#ad483eed1af674d201cceebee6c13e0fa">faim_degat_timer</a> = 0</td></tr>
-<tr class="memitem:aaf2331208dfb16a05b9f58f27bb24fa9" id="r_aaf2331208dfb16a05b9f58f27bb24fa9"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#aaf2331208dfb16a05b9f58f27bb24fa9">argent</a> = 0</td></tr>
-<tr class="memitem:a99e90b23d7f8c25b0be06b706c01d7c0" id="r_a99e90b23d7f8c25b0be06b706c01d7c0"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a99e90b23d7f8c25b0be06b706c01d7c0">vitesse_bonus</a> = 0.0f</td></tr>
-<tr class="memitem:a2c39a7a0570ae10b2583fe7aaeca7a61" id="r_a2c39a7a0570ae10b2583fe7aaeca7a61"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a2c39a7a0570ae10b2583fe7aaeca7a61">sortie_vaisseau</a> = false</td></tr>
-<tr class="memitem:a4d0a1d1ce5bfa1674274f3f2ecc0ceed" id="r_a4d0a1d1ce5bfa1674274f3f2ecc0ceed"><td class="memItemLeft"><a class="el" href="structboss__t.html">boss_t</a>&#160;</td><td class="memItemRight"><a class="el" href="#a4d0a1d1ce5bfa1674274f3f2ecc0ceed">boss1</a></td></tr>
-<tr class="memitem:ad96bc8eaad3feab772ddefd4f682262a" id="r_ad96bc8eaad3feab772ddefd4f682262a"><td class="memItemLeft"><a class="el" href="structboss__t.html">boss_t</a>&#160;</td><td class="memItemRight"><a class="el" href="#ad96bc8eaad3feab772ddefd4f682262a">boss3</a></td></tr>
-<tr class="memitem:aa64be74bf8dfd59e681447d8431bbee5" id="r_aa64be74bf8dfd59e681447d8431bbee5"><td class="memItemLeft"><a class="el" href="structt__objectifs.html">t_objectifs</a>&#160;</td><td class="memItemRight"><a class="el" href="#aa64be74bf8dfd59e681447d8431bbee5">objectifs_jeu</a></td></tr>
-<tr class="memitem:a9b148abb484576fe01ed0c25620bced2" id="r_a9b148abb484576fe01ed0c25620bced2"><td class="memItemLeft">TTF_Font *&#160;</td><td class="memItemRight"><a class="el" href="#a9b148abb484576fe01ed0c25620bced2">font_objectifs</a> = NULL</td></tr>
+<tr class="memitem:a72157237fcc8efb662940db83b6329c9" id="r_a72157237fcc8efb662940db83b6329c9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72157237fcc8efb662940db83b6329c9">engrenages_poses</a> = 0</td></tr>
+<tr class="memitem:a6a603860f3885534a34bf605601fbdf2" id="r_a6a603860f3885534a34bf605601fbdf2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a603860f3885534a34bf605601fbdf2">vaisseau_repare</a> = false</td></tr>
+<tr class="memitem:ab8b7ac2c62b73630946468247d22f0a3" id="r_ab8b7ac2c62b73630946468247d22f0a3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab8b7ac2c62b73630946468247d22f0a3">g_planete3_engrenage_recupere</a> = false</td></tr>
+<tr class="memitem:a90539eead6faa0a93480a62815008e35" id="r_a90539eead6faa0a93480a62815008e35"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90539eead6faa0a93480a62815008e35">g_planete3_boss_spawned</a> = false</td></tr>
+<tr class="memitem:a35aa280233b0f2b73cdade32adbdb67d" id="r_a35aa280233b0f2b73cdade32adbdb67d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a35aa280233b0f2b73cdade32adbdb67d">g_planete3_spawn_engrenage_defini</a> = false</td></tr>
+<tr class="memitem:ad63d3d2055574bd78f2082ed65fe96b9" id="r_ad63d3d2055574bd78f2082ed65fe96b9"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad63d3d2055574bd78f2082ed65fe96b9">g_planete3_spawn_engrenage_x</a> = 0.0f</td></tr>
+<tr class="memitem:a007ccd9eb671a0c71e6a95d2e1f44779" id="r_a007ccd9eb671a0c71e6a95d2e1f44779"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a007ccd9eb671a0c71e6a95d2e1f44779">g_planete3_spawn_engrenage_y</a> = 0.0f</td></tr>
+<tr class="memitem:a13433f01362d145424958aba6ef57f71" id="r_a13433f01362d145424958aba6ef57f71"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a13433f01362d145424958aba6ef57f71">nb_engrenages_requis</a> = <a class="el" href="#a2629d00cb3344a57a1f424bce8640cbf">ENGRENAGES_MAX</a></td></tr>
+<tr class="memitem:acb611635c7684b1955c46c635ea32215" id="r_acb611635c7684b1955c46c635ea32215"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPerso.html">Perso</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb611635c7684b1955c46c635ea32215">perso</a></td></tr>
+<tr class="memitem:acdf31070b4fb73e81447bbd286d25f4e" id="r_acdf31070b4fb73e81447bbd286d25f4e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acdf31070b4fb73e81447bbd286d25f4e">animation_frame</a> = 0</td></tr>
+<tr class="memitem:adfe93ca7aba69abc894e5ed9ed18a10a" id="r_adfe93ca7aba69abc894e5ed9ed18a10a"><td class="memItemLeft" align="right" valign="top">Uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adfe93ca7aba69abc894e5ed9ed18a10a">animation_timer</a> = 0</td></tr>
+<tr class="memitem:a37375faffb88626117c0f37c3a4afeae" id="r_a37375faffb88626117c0f37c3a4afeae"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37375faffb88626117c0f37c3a4afeae">perso_bouge</a> = false</td></tr>
+<tr class="memitem:ade964650c21db9e2e3085aadd845bb56" id="r_ade964650c21db9e2e3085aadd845bb56"><td class="memItemLeft" align="right" valign="top">Uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade964650c21db9e2e3085aadd845bb56">bouge_timer</a> = 0</td></tr>
+<tr class="memitem:af559a95708cfd0ab93606697554e1d56" id="r_af559a95708cfd0ab93606697554e1d56"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af559a95708cfd0ab93606697554e1d56">combat_en_cours</a> = false</td></tr>
+<tr class="memitem:a6a42a0878f51054d42ea24d8b03eefe4" id="r_a6a42a0878f51054d42ea24d8b03eefe4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a42a0878f51054d42ea24d8b03eefe4">combat_frame</a> = 0</td></tr>
+<tr class="memitem:aec473d17de578e6f689cb996f182464a" id="r_aec473d17de578e6f689cb996f182464a"><td class="memItemLeft" align="right" valign="top">Uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aec473d17de578e6f689cb996f182464a">combat_timer</a> = 0</td></tr>
+<tr class="memitem:ae0c34fdf03c09f5bf4363d2088acaba8" id="r_ae0c34fdf03c09f5bf4363d2088acaba8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae0c34fdf03c09f5bf4363d2088acaba8">est_animation_degat</a> = 0</td></tr>
+<tr class="memitem:a16224a40282ed2ed51e962d74198e6d3" id="r_a16224a40282ed2ed51e962d74198e6d3"><td class="memItemLeft" align="right" valign="top">Uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a16224a40282ed2ed51e962d74198e6d3">animation_degat_timer</a> = 0</td></tr>
+<tr class="memitem:a84a02113cb66180ffdd41f044d6ce1ff" id="r_a84a02113cb66180ffdd41f044d6ce1ff"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84a02113cb66180ffdd41f044d6ce1ff">tramblement_degat_camera</a> = 0</td></tr>
+<tr class="memitem:a61a02cf5854bc2e1d8bf83dd000abef9" id="r_a61a02cf5854bc2e1d8bf83dd000abef9"><td class="memItemLeft" align="right" valign="top">Uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61a02cf5854bc2e1d8bf83dd000abef9">tramblement_camera_timer</a> = 0</td></tr>
+<tr class="memitem:a35a58cb7eb2b0cb71029bf2636b03ea6" id="r_a35a58cb7eb2b0cb71029bf2636b03ea6"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a35a58cb7eb2b0cb71029bf2636b03ea6">tramblement_camera_x</a> = 0.0f</td></tr>
+<tr class="memitem:aad335a91e815f7eb7884199dd15b6357" id="r_aad335a91e815f7eb7884199dd15b6357"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad335a91e815f7eb7884199dd15b6357">tramblement_camera_y</a> = 0.0f</td></tr>
+<tr class="memitem:a5c2df1566e7f2bc9ae563ca9f180aae5" id="r_a5c2df1566e7f2bc9ae563ca9f180aae5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structt__Item.html">t_Item</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c2df1566e7f2bc9ae563ca9f180aae5">items</a> [<a class="el" href="main_8h.html#a1b40ceb455086d9cdb68ed3d3bf2775f">MAX_ITEMS</a>] = {NULL}</td></tr>
+<tr class="memitem:a3585292bb8a85d7e8e1e9d0505836d49" id="r_a3585292bb8a85d7e8e1e9d0505836d49"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structMob.html">Mob</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3585292bb8a85d7e8e1e9d0505836d49">mobs</a> [<a class="el" href="main_8h.html#a71a42c4ea136b65af73f3e930fafc7c4">MAX_MOB</a>] = {NULL}</td></tr>
+<tr class="memitem:a7963142dea3652236977bec96c9a8d8a" id="r_a7963142dea3652236977bec96c9a8d8a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7963142dea3652236977bec96c9a8d8a">index_item</a> = 0</td></tr>
+<tr class="memitem:a9f26241542eb25a396d652e9ec6e77e0" id="r_a9f26241542eb25a396d652e9ec6e77e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structt__case.html">t_case</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a> [<a class="el" href="main_8h.html#a8503e5db31d779209111bf7ea2dba16e">HOTBAR_SIZE</a>] = {NULL}</td></tr>
+<tr class="memitem:a8dcd03ba0e2ea187818f82f341ab2b5f" id="r_a8dcd03ba0e2ea187818f82f341ab2b5f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structt__case.html">t_case</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8dcd03ba0e2ea187818f82f341ab2b5f">inventaire</a> [<a class="el" href="main_8h.html#a1214bea12629f1bbee381f63e4573d29">INVENTAIRE_SIZE</a>] = {NULL}</td></tr>
+<tr class="memitem:a03d5dc84ffa6dacbc5ba7abdd9eb6020" id="r_a03d5dc84ffa6dacbc5ba7abdd9eb6020"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structt__case.html">t_case</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a03d5dc84ffa6dacbc5ba7abdd9eb6020">caisse_outils</a> [<a class="el" href="main_8h.html#a74a1fb583b1c35f2bcc4245fddf051e0">CAISSE_OUTILS_SIZE</a>] = {NULL}</td></tr>
+<tr class="memitem:a51cbc61de54ee081cc112e0cb4a51694" id="r_a51cbc61de54ee081cc112e0cb4a51694"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a51cbc61de54ee081cc112e0cb4a51694">inventaire_ouvert</a> = false</td></tr>
+<tr class="memitem:a6ff5b78f55ed18511e6a43408306cac5" id="r_a6ff5b78f55ed18511e6a43408306cac5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6ff5b78f55ed18511e6a43408306cac5">caisse_outils_ouvert</a> = false</td></tr>
+<tr class="memitem:ad483eed1af674d201cceebee6c13e0fa" id="r_ad483eed1af674d201cceebee6c13e0fa"><td class="memItemLeft" align="right" valign="top">Uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad483eed1af674d201cceebee6c13e0fa">faim_degat_timer</a> = 0</td></tr>
+<tr class="memitem:af730bf8e073e50948c87d686dc3f9903" id="r_af730bf8e073e50948c87d686dc3f9903"><td class="memItemLeft" align="right" valign="top">Uint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af730bf8e073e50948c87d686dc3f9903">faim_regen_timer</a> = 0</td></tr>
+<tr class="memitem:aaf2331208dfb16a05b9f58f27bb24fa9" id="r_aaf2331208dfb16a05b9f58f27bb24fa9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf2331208dfb16a05b9f58f27bb24fa9">argent</a> = 0</td></tr>
+<tr class="memitem:a99e90b23d7f8c25b0be06b706c01d7c0" id="r_a99e90b23d7f8c25b0be06b706c01d7c0"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a99e90b23d7f8c25b0be06b706c01d7c0">vitesse_bonus</a> = 0.0f</td></tr>
+<tr class="memitem:a2c39a7a0570ae10b2583fe7aaeca7a61" id="r_a2c39a7a0570ae10b2583fe7aaeca7a61"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c39a7a0570ae10b2583fe7aaeca7a61">sortie_vaisseau</a> = false</td></tr>
+<tr class="memitem:a4d0a1d1ce5bfa1674274f3f2ecc0ceed" id="r_a4d0a1d1ce5bfa1674274f3f2ecc0ceed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structboss__t.html">boss_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d0a1d1ce5bfa1674274f3f2ecc0ceed">boss1</a></td></tr>
+<tr class="memitem:ad96bc8eaad3feab772ddefd4f682262a" id="r_ad96bc8eaad3feab772ddefd4f682262a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structboss__t.html">boss_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad96bc8eaad3feab772ddefd4f682262a">boss3</a></td></tr>
+<tr class="memitem:aa64be74bf8dfd59e681447d8431bbee5" id="r_aa64be74bf8dfd59e681447d8431bbee5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structt__objectifs.html">t_objectifs</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa64be74bf8dfd59e681447d8431bbee5">objectifs_jeu</a></td></tr>
+<tr class="memitem:a9b148abb484576fe01ed0c25620bced2" id="r_a9b148abb484576fe01ed0c25620bced2"><td class="memItemLeft" align="right" valign="top">TTF_Font *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b148abb484576fe01ed0c25620bced2">font_objectifs</a> = NULL</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Boucle principale et orchestration des etats de jeu. </p>
@@ -237,7 +243,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00148">148</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00283">283</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 <div class="dynheader">
 Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
@@ -269,7 +275,7 @@ Voici le graphe des appelants de cette fonction :</div>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00397">397</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00532">532</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 <div class="dynheader">
 Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
@@ -279,6 +285,38 @@ Voici le graphe d'appel pour cette fonction :</div>
 Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="jeux_8c_ae8e5f9cd970d438c5fd8cda2b7286bfd_icgraph.svg" width="371" height="63"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="affe4ed140aa40ab1adbec1328824838e" name="affe4ed140aa40ab1adbec1328824838e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affe4ed140aa40ab1adbec1328824838e">&#9670;&#160;</a></span>jeu_get_progression()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void jeu_get_progression </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structprogression__jeu__t.html">progression_jeu_t</a> *</td>          <td class="paramname"><span class="paramname"><em>out</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Recupere l'etat de progression global du gameplay. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">out</td><td>Structure de sortie a remplir. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00120">120</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="jeux_8c_affe4ed140aa40ab1adbec1328824838e_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -317,14 +355,14 @@ Voici le graphe des appelants de cette fonction :</div>
   <table class="params">
     <tr><td class="paramname">renderer</td><td>Contexte SDL utilise pour dessiner les elements 2D et l'interface. </td></tr>
     <tr><td class="paramname">planete</td><td>Identifiant de planete concernee par l'operation. </td></tr>
-    <tr><td class="paramname"><a class="el" href="main_8h.html#a84af9ed84c11a72dd7515a42f42af710">track_global</a></td><td>Piste audio globale (musique d'ambiance) partagee entre ecrans. </td></tr>
+    <tr><td class="paramname">track_global</td><td>Piste audio globale (musique d'ambiance) partagee entre ecrans. </td></tr>
     <tr><td class="paramname">reprendre_partie</td><td>Indique s'il faut relancer une partie depuis une sauvegarde. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>0 si la boucle se termine normalement, 1 en cas de retour menu/fermeture ou erreur de chargement. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00682">682</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00817">817</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 <div class="dynheader">
 Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
@@ -334,6 +372,38 @@ Voici le graphe d'appel pour cette fonction :</div>
 Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="jeux_8c_a2d7491d04e8c2bdb52bb6ed7d75e4d78_icgraph.svg" width="202" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+
+</div>
+</div>
+<a id="a6b202e8fd081bec903b0933869e45747" name="a6b202e8fd081bec903b0933869e45747"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b202e8fd081bec903b0933869e45747">&#9670;&#160;</a></span>jeu_set_progression()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void jeu_set_progression </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structprogression__jeu__t.html">progression_jeu_t</a> *</td>          <td class="paramname"><span class="paramname"><em>in</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Applique un etat de progression global au gameplay. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">in</td><td>Structure source a appliquer. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00145">145</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<div class="dynheader">
+Voici le graphe des appelants de cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="jeux_8c_a6b202e8fd081bec903b0933869e45747_icgraph.svg" width="634" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -357,7 +427,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00082">82</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00166">166</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 <div class="dynheader">
 Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
@@ -383,11 +453,30 @@ Voici le graphe des appelants de cette fonction :</div>
 
 <p>Retire les engrenages requis du stock joueur pour valider une action. </p>
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00107">107</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00191">191</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="a1ede7bcce591c86816a4fad2739d8b75" name="a1ede7bcce591c86816a4fad2739d8b75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ede7bcce591c86816a4fad2739d8b75">&#9670;&#160;</a></span>retirer_n_engrenages_joueur()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int retirer_n_engrenages_joueur </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00222">222</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 <div class="dynheader">
 Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="jeux_8c_abc7449460fd78756200332223f19ed9b_icgraph.svg" width="378" height="54"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="jeux_8c_a1ede7bcce591c86816a4fad2739d8b75_icgraph.svg" width="427" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -405,7 +494,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00055">55</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00060">60</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -421,7 +510,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00047">47</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00052">52</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -437,7 +526,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00048">48</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00053">53</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -453,7 +542,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00072">72</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00078">78</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -469,7 +558,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00076">76</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00082">82</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -485,7 +574,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00077">77</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00083">83</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -501,7 +590,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00050">50</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00055">55</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -517,7 +606,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00068">68</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00073">73</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -533,7 +622,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00070">70</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00075">75</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -549,7 +638,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00051">51</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00056">56</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -565,7 +654,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00052">52</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00057">57</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -581,7 +670,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00053">53</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00058">58</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -597,7 +686,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00022">22</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00023">23</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -613,7 +702,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00054">54</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00059">59</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -629,7 +718,23 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00071">71</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00076">76</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+
+</div>
+</div>
+<a id="af730bf8e073e50948c87d686dc3f9903" name="af730bf8e073e50948c87d686dc3f9903"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af730bf8e073e50948c87d686dc3f9903">&#9670;&#160;</a></span>faim_regen_timer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Uint32 faim_regen_timer = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00077">77</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -645,7 +750,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00080">80</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00086">86</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -661,7 +766,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00025">25</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00026">26</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -677,7 +782,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00024">24</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00025">25</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -693,7 +798,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00026">26</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00027">27</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -709,7 +814,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00027">27</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00028">28</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -725,7 +830,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00028">28</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00029">29</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -741,7 +846,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00066">66</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00071">71</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -757,7 +862,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00064">64</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00069">69</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -773,7 +878,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00067">67</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00072">72</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -789,7 +894,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00069">69</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00074">74</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -800,12 +905,12 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structt___item.html">t_Item</a>* items[<a class="el" href="main_8h.html#a1b40ceb455086d9cdb68ed3d3bf2775f">MAX_ITEMS</a>] = {NULL}</td>
+          <td class="memname"><a class="el" href="structt__Item.html">t_Item</a>* items[<a class="el" href="main_8h.html#a1b40ceb455086d9cdb68ed3d3bf2775f">MAX_ITEMS</a>] = {NULL}</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00062">62</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00067">67</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -816,12 +921,12 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_mob.html">Mob</a>* mobs[<a class="el" href="main_8h.html#a71a42c4ea136b65af73f3e930fafc7c4">MAX_MOB</a>] = {NULL}</td>
+          <td class="memname"><a class="el" href="structMob.html">Mob</a>* mobs[<a class="el" href="main_8h.html#a71a42c4ea136b65af73f3e930fafc7c4">MAX_MOB</a>] = {NULL}</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00063">63</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00068">68</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -837,7 +942,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00034">34</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00037">37</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -853,7 +958,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00079">79</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00085">85</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -864,12 +969,12 @@ Voici le graphe des appelants de cette fonction :</div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_perso.html">Perso</a> perso</td>
+          <td class="memname"><a class="el" href="structPerso.html">Perso</a> perso</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00046">46</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00051">51</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -885,7 +990,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00049">49</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00054">54</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -901,7 +1006,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00074">74</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00080">80</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -917,7 +1022,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00057">57</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00062">62</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -933,7 +1038,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00058">58</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00063">63</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -949,7 +1054,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00059">59</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00064">64</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -965,7 +1070,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00056">56</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00061">61</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -981,7 +1086,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00023">23</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00024">24</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -997,7 +1102,7 @@ Voici le graphe des appelants de cette fonction :</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00073">73</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00079">79</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -1015,7 +1120,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="jeux_8c.html">jeux.c</a></li>
-    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>
 </body>

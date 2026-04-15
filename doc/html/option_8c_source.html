@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Silence Stellaire:  Fichier source de src/option.c</title>
 <link rel="icon" href="logo_win.png" type="image/x-icon" />
@@ -38,7 +38,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.16.1 -->
+<!-- Généré par Doxygen 1.14.0 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
@@ -135,8 +135,8 @@ $(function(){initNavTree('option_8c_source.html','',''); });
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    }</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    </div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <a class="code hl_struct" href="struct_bouton.html">Bouton</a> bouton_ambiance;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <a class="code hl_struct" href="struct_bouton.html">Bouton</a> bouton_sfx;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <a class="code hl_struct" href="structBouton.html">Bouton</a> bouton_ambiance;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <a class="code hl_struct" href="structBouton.html">Bouton</a> bouton_sfx;</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <a class="code hl_function" href="bouton_8c.html#a482b1feb9004901d0544e64b1c44051c">Bouton_Init</a>(&amp;bouton_ambiance, 0.0f, 0.0f, 280.0f, 60.0f, bouton_texture);</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <a class="code hl_function" href="bouton_8c.html#a482b1feb9004901d0544e64b1c44051c">Bouton_Init</a>(&amp;bouton_sfx, 0.0f, 0.0f, 280.0f, 60.0f, bouton_texture);</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    </div>
@@ -156,14 +156,14 @@ $(function(){initNavTree('option_8c_source.html','',''); });
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keywordtype">float</span> text_x = panel_x + 20.0f;</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="keywordtype">float</span> gap_boutons = 20.0f;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keywordtype">float</span> largeur_total = bouton_ambiance.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.w + bouton_sfx.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.w + gap_boutons;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keywordtype">float</span> largeur_total = bouton_ambiance.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.w + bouton_sfx.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.w + gap_boutons;</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="keywordtype">float</span> debut_x = (w - largeur_total) * 0.5f;</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        bouton_ambiance.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.x = debut_x;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        bouton_ambiance.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.y = h - 180.0f;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        bouton_ambiance.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.x = debut_x;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        bouton_ambiance.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.y = h - 180.0f;</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        bouton_sfx.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.x = debut_x + bouton_ambiance.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.w + gap_boutons;</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        bouton_sfx.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.y = h - 180.0f;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        bouton_sfx.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.x = debut_x + bouton_ambiance.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.w + gap_boutons;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        bouton_sfx.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.y = h - 180.0f;</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        </div>
@@ -228,7 +228,7 @@ $(function(){initNavTree('option_8c_source.html','',''); });
 <div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        }</div>
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        SDL_Surface *surface_ambiance = TTF_RenderText_Solid(font, texte_ambiance, strlen(texte_ambiance), blanc);</div>
 <div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        SDL_Texture *texture_ambiance = SDL_CreateTextureFromSurface(renderer, surface_ambiance);</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        <a class="code hl_function" href="bouton_8c.html#af33c1c08b52d3d015ff6f7039a9734ee">afficher_texte_centre</a>(renderer, texture_ambiance, &amp;bouton_ambiance.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>);</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        <a class="code hl_function" href="bouton_8c.html#af33c1c08b52d3d015ff6f7039a9734ee">afficher_texte_centre</a>(renderer, texture_ambiance, &amp;bouton_ambiance.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>);</div>
 <div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        SDL_DestroyTexture(texture_ambiance);</div>
 <div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        SDL_DestroySurface(surface_ambiance);</div>
 <div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        </div>
@@ -240,7 +240,7 @@ $(function(){initNavTree('option_8c_source.html','',''); });
 <div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>        }</div>
 <div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        SDL_Surface *surface_sfx = TTF_RenderText_Solid(font, texte_sfx, strlen(texte_sfx), blanc);</div>
 <div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        SDL_Texture *texture_sfx = SDL_CreateTextureFromSurface(renderer, surface_sfx);</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        <a class="code hl_function" href="bouton_8c.html#af33c1c08b52d3d015ff6f7039a9734ee">afficher_texte_centre</a>(renderer, texture_sfx, &amp;bouton_sfx.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>);</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        <a class="code hl_function" href="bouton_8c.html#af33c1c08b52d3d015ff6f7039a9734ee">afficher_texte_centre</a>(renderer, texture_sfx, &amp;bouton_sfx.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>);</div>
 <div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        SDL_DestroyTexture(texture_sfx);</div>
 <div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        SDL_DestroySurface(surface_sfx);</div>
 <div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
@@ -304,12 +304,12 @@ $(function(){initNavTree('option_8c_source.html','',''); });
 <div class="ttc" id="amain_8h_html"><div class="ttname"><a href="main_8h.html">main.h</a></div><div class="ttdoc">Declarations globales et utilitaires partages entre les modules du jeu.</div></div>
 <div class="ttc" id="amain_8h_html_a84af9ed84c11a72dd7515a42f42af710"><div class="ttname"><a href="main_8h.html#a84af9ed84c11a72dd7515a42f42af710">track_global</a></div><div class="ttdeci">MIX_Track * track_global</div><div class="ttdef"><b>Definition</b> <a href="main_8c_source.html#l00025">main.c:25</a></div></div>
 <div class="ttc" id="aoption_8c_html_ac77b6b0f042469d82d75b270f5193806"><div class="ttname"><a href="option_8c.html#ac77b6b0f042469d82d75b270f5193806">afficher_option</a></div><div class="ttdeci">int afficher_option(SDL_Renderer *renderer, MIX_Track *track_global)</div><div class="ttdoc">Affiche option et met a jour les elements visuels associes.</div><div class="ttdef"><b>Definition</b> <a href="#l00016">option.c:16</a></div></div>
-<div class="ttc" id="ason_8h_html_a8a52d99b75360359dcdc073a5617eadf"><div class="ttname"><a href="son_8h.html#a8a52d99b75360359dcdc073a5617eadf">son_definir_ambiance_active</a></div><div class="ttdeci">void son_definir_ambiance_active(int actif)</div><div class="ttdoc">Active ou desactive uniquement les pistes d&#39;ambiance.</div><div class="ttdef"><b>Definition</b> <a href="son_8c_source.html#l00166">son.c:166</a></div></div>
-<div class="ttc" id="ason_8h_html_ac32eff9d3cca9f4d196044b77e8be773"><div class="ttname"><a href="son_8h.html#ac32eff9d3cca9f4d196044b77e8be773">son_ambiance_est_active</a></div><div class="ttdeci">int son_ambiance_est_active(void)</div><div class="ttdoc">Indique si la categorie ambiance/musique est active.</div><div class="ttdef"><b>Definition</b> <a href="son_8c_source.html#l00162">son.c:162</a></div></div>
-<div class="ttc" id="ason_8h_html_ae2e2d99b70e1f3a05cb7120d267202f4"><div class="ttname"><a href="son_8h.html#ae2e2d99b70e1f3a05cb7120d267202f4">son_sfx_est_actif</a></div><div class="ttdeci">int son_sfx_est_actif(void)</div><div class="ttdoc">Indique si la categorie SFX est active.</div><div class="ttdef"><b>Definition</b> <a href="son_8c_source.html#l00178">son.c:178</a></div></div>
-<div class="ttc" id="ason_8h_html_af5a69f840820938ab962a3371bd3f929"><div class="ttname"><a href="son_8h.html#af5a69f840820938ab962a3371bd3f929">son_definir_sfx_active</a></div><div class="ttdeci">void son_definir_sfx_active(int actif)</div><div class="ttdoc">Active ou desactive uniquement les effets sonores (SFX).</div><div class="ttdef"><b>Definition</b> <a href="son_8c_source.html#l00182">son.c:182</a></div></div>
-<div class="ttc" id="astruct_bouton_html"><div class="ttname"><a href="struct_bouton.html">Bouton</a></div><div class="ttdoc">Widget bouton basique: zone de clic, texture et etats survole/appuye.</div><div class="ttdef"><b>Definition</b> <a href="bouton_8h_source.html#l00017">bouton.h:17</a></div></div>
-<div class="ttc" id="astruct_bouton_html_aeefa9eef35116d91a027e1abae5e80a6"><div class="ttname"><a href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">Bouton::rect</a></div><div class="ttdeci">SDL_FRect rect</div><div class="ttdef"><b>Definition</b> <a href="bouton_8h_source.html#l00018">bouton.h:18</a></div></div>
+<div class="ttc" id="ason_8h_html_a8a52d99b75360359dcdc073a5617eadf"><div class="ttname"><a href="son_8h.html#a8a52d99b75360359dcdc073a5617eadf">son_definir_ambiance_active</a></div><div class="ttdeci">void son_definir_ambiance_active(int actif)</div><div class="ttdoc">Active ou desactive uniquement les pistes d&#39;ambiance.</div><div class="ttdef"><b>Definition</b> <a href="son_8c_source.html#l00182">son.c:182</a></div></div>
+<div class="ttc" id="ason_8h_html_ac32eff9d3cca9f4d196044b77e8be773"><div class="ttname"><a href="son_8h.html#ac32eff9d3cca9f4d196044b77e8be773">son_ambiance_est_active</a></div><div class="ttdeci">int son_ambiance_est_active(void)</div><div class="ttdoc">Indique si la categorie ambiance/musique est active.</div><div class="ttdef"><b>Definition</b> <a href="son_8c_source.html#l00178">son.c:178</a></div></div>
+<div class="ttc" id="ason_8h_html_ae2e2d99b70e1f3a05cb7120d267202f4"><div class="ttname"><a href="son_8h.html#ae2e2d99b70e1f3a05cb7120d267202f4">son_sfx_est_actif</a></div><div class="ttdeci">int son_sfx_est_actif(void)</div><div class="ttdoc">Indique si la categorie SFX est active.</div><div class="ttdef"><b>Definition</b> <a href="son_8c_source.html#l00194">son.c:194</a></div></div>
+<div class="ttc" id="ason_8h_html_af5a69f840820938ab962a3371bd3f929"><div class="ttname"><a href="son_8h.html#af5a69f840820938ab962a3371bd3f929">son_definir_sfx_active</a></div><div class="ttdeci">void son_definir_sfx_active(int actif)</div><div class="ttdoc">Active ou desactive uniquement les effets sonores (SFX).</div><div class="ttdef"><b>Definition</b> <a href="son_8c_source.html#l00198">son.c:198</a></div></div>
+<div class="ttc" id="astructBouton_html"><div class="ttname"><a href="structBouton.html">Bouton</a></div><div class="ttdoc">Widget bouton basique: zone de clic, texture et etats survole/appuye.</div><div class="ttdef"><b>Definition</b> <a href="bouton_8h_source.html#l00017">bouton.h:17</a></div></div>
+<div class="ttc" id="astructBouton_html_aeefa9eef35116d91a027e1abae5e80a6"><div class="ttname"><a href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">Bouton::rect</a></div><div class="ttdeci">SDL_FRect rect</div><div class="ttdef"><b>Definition</b> <a href="bouton_8h_source.html#l00018">bouton.h:18</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
@@ -317,7 +317,7 @@ $(function(){initNavTree('option_8c_source.html','',''); });
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="option_8c.html">option.c</a></li>
-    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>
 </body>

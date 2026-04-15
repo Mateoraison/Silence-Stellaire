@@ -1,0 +1,11 @@
+<map id="jeu_get_progression" name="jeu_get_progression">
+<area shape="rect" id="Node000001" title="Recupere l&#39;etat de progression global du gameplay." alt="" coords="653,5,807,31"/>
+<area shape="rect" id="Node000002" href="$sauvegarde_8c.html#af41024137aa5cec5baf4cef86ae63bd8" title="Serialize l&#39;etat de partie courant dans le slot cible." alt="" coords="427,5,605,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="639,21,605,21,605,15,639,15"/>
+<area shape="rect" id="Node000003" href="$pause_8c.html#abc45a9e3a6a57d6f0f44706bd52e556d" title="Affiche pause et met a jour les elements visuels associes." alt="" coords="261,5,379,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="413,21,379,21,379,15,413,15"/>
+<area shape="rect" id="Node000004" href="$jeux_8c.html#a2d7491d04e8c2bdb52bb6ed7d75e4d78" title="Execute la boucle principale de gameplay pour la planete courante." alt="" coords="108,5,213,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="248,21,214,21,214,15,248,15"/>
+<area shape="rect" id="Node000005" href="$main_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
+</map>

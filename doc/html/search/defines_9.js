@@ -7,7 +7,7 @@ var searchData=
   ['max_5fennemis_4',['MAX_ENNEMIS',['../arcade_8c.html#a8726c213b97fd1dc39477c4d6e605d71',1,'arcade.c']]],
   ['max_5fitems_5',['MAX_ITEMS',['../main_8h.html#a1b40ceb455086d9cdb68ed3d3bf2775f',1,'main.h']]],
   ['max_5fmob_6',['MAX_MOB',['../main_8h.html#a71a42c4ea136b65af73f3e930fafc7c4',1,'main.h']]],
-  ['max_5fobjectifs_7',['MAX_OBJECTIFS',['../objectifs_8h.html#a4cc72772b6b0a775edc03653d96cb8a7',1,'objectifs.h']]],
+  ['max_5fobjectifs_7',['MAX_OBJECTIFS',['../main_8h.html#a4cc72772b6b0a775edc03653d96cb8a7',1,'main.h']]],
   ['max_5fobjets_8',['MAX_OBJETS',['../vaisseau_8c.html#a31593fcc2ab9aae23c292d955d3d59e2',1,'vaisseau.c']]],
   ['max_5fpart_9',['MAX_PART',['../cinematique_8c.html#aae1c291782a22dfa1d54bd80cba5c1fa',1,'cinematique.c']]],
   ['max_5fprojectiles_10',['MAX_PROJECTILES',['../arcade_8c.html#adbc131e9b147b67d84003e054b355365',1,'arcade.c']]],

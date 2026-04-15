@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Silence Stellaire: Référence du fichier src/arcade.c</title>
 <link rel="icon" href="logo_win.png" type="image/x-icon" />
@@ -38,7 +38,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.16.1 -->
+<!-- Généré par Doxygen 1.14.0 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
@@ -113,43 +113,43 @@ Graphe des dépendances par inclusion de arcade.c:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:Entite" id="r_Entite"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="struct_entite.html">Entite</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_entite.html" title="Entite simple utilisee pour les mini-jeux d&#39;arcade.">Entite</a> simple utilisee pour les mini-jeux d'arcade.  <a href="struct_entite.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:Entite" id="r_Entite"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEntite.html">Entite</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structEntite.html" title="Entite simple utilisee pour les mini-jeux d&#39;arcade.">Entite</a> simple utilisee pour les mini-jeux d'arcade.  <a href="structEntite.html#details">Plus de détails...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ae71449b1cc6e6250b91f539153a7a0d3" id="r_ae71449b1cc6e6250b91f539153a7a0d3"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ae71449b1cc6e6250b91f539153a7a0d3">M_PI</a>&#160;&#160;&#160;3.14159265358979323846</td></tr>
-<tr class="memitem:adbc131e9b147b67d84003e054b355365" id="r_adbc131e9b147b67d84003e054b355365"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#adbc131e9b147b67d84003e054b355365">MAX_PROJECTILES</a>&#160;&#160;&#160;5</td></tr>
-<tr class="memitem:a8726c213b97fd1dc39477c4d6e605d71" id="r_a8726c213b97fd1dc39477c4d6e605d71"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a8726c213b97fd1dc39477c4d6e605d71">MAX_ENNEMIS</a>&#160;&#160;&#160;8</td></tr>
-<tr class="memitem:a3e0da9d1035d39f54890d8931d29e3c0" id="r_a3e0da9d1035d39f54890d8931d29e3c0"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a3e0da9d1035d39f54890d8931d29e3c0">ARCADE_SCREEN_X</a>&#160;&#160;&#160;300.0f</td></tr>
-<tr class="memitem:a52ecb5646bfdfd98d17e7b3a72ba470d" id="r_a52ecb5646bfdfd98d17e7b3a72ba470d"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a52ecb5646bfdfd98d17e7b3a72ba470d">ARCADE_SCREEN_Y</a>&#160;&#160;&#160;200.0f</td></tr>
-<tr class="memitem:aff32984ff98ed60847d1e0a4de2c882c" id="r_aff32984ff98ed60847d1e0a4de2c882c"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#aff32984ff98ed60847d1e0a4de2c882c">ARCADE_SCREEN_W</a>&#160;&#160;&#160;200.0f</td></tr>
-<tr class="memitem:a90ed41bd0b1c4307f13a9d92a4b20cd3" id="r_a90ed41bd0b1c4307f13a9d92a4b20cd3"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a90ed41bd0b1c4307f13a9d92a4b20cd3">ARCADE_SCREEN_H</a>&#160;&#160;&#160;400.0f</td></tr>
-<tr class="memitem:a4a07977cb6b691eb9695f10da56b864c" id="r_a4a07977cb6b691eb9695f10da56b864c"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a4a07977cb6b691eb9695f10da56b864c">ARCADE_TEXT_PADDING</a>&#160;&#160;&#160;8.0f</td></tr>
-<tr class="memitem:aed5fe61d117abb58e8891df2786ce583" id="r_aed5fe61d117abb58e8891df2786ce583"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#aed5fe61d117abb58e8891df2786ce583">ARCADE_INFO_X</a>&#160;&#160;&#160;<a class="el" href="#a3e0da9d1035d39f54890d8931d29e3c0">ARCADE_SCREEN_X</a></td></tr>
-<tr class="memitem:abac43b396b5970b7712cb5b16f4709b8" id="r_abac43b396b5970b7712cb5b16f4709b8"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#abac43b396b5970b7712cb5b16f4709b8">ARCADE_INFO_Y</a>&#160;&#160;&#160;(<a class="el" href="#a52ecb5646bfdfd98d17e7b3a72ba470d">ARCADE_SCREEN_Y</a> + <a class="el" href="#a90ed41bd0b1c4307f13a9d92a4b20cd3">ARCADE_SCREEN_H</a> + 10.0f)</td></tr>
-<tr class="memitem:a13d8bb14fb9d459d1ce2a3244c6a7ad2" id="r_a13d8bb14fb9d459d1ce2a3244c6a7ad2"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a13d8bb14fb9d459d1ce2a3244c6a7ad2">ARCADE_INFO_W</a>&#160;&#160;&#160;<a class="el" href="#aff32984ff98ed60847d1e0a4de2c882c">ARCADE_SCREEN_W</a></td></tr>
-<tr class="memitem:ad25a799f220c28a62928e900e3220201" id="r_ad25a799f220c28a62928e900e3220201"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ad25a799f220c28a62928e900e3220201">ARCADE_INFO_H</a>&#160;&#160;&#160;56.0f</td></tr>
+<tr class="memitem:ae71449b1cc6e6250b91f539153a7a0d3" id="r_ae71449b1cc6e6250b91f539153a7a0d3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae71449b1cc6e6250b91f539153a7a0d3">M_PI</a>&#160;&#160;&#160;3.14159265358979323846</td></tr>
+<tr class="memitem:adbc131e9b147b67d84003e054b355365" id="r_adbc131e9b147b67d84003e054b355365"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adbc131e9b147b67d84003e054b355365">MAX_PROJECTILES</a>&#160;&#160;&#160;5</td></tr>
+<tr class="memitem:a8726c213b97fd1dc39477c4d6e605d71" id="r_a8726c213b97fd1dc39477c4d6e605d71"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8726c213b97fd1dc39477c4d6e605d71">MAX_ENNEMIS</a>&#160;&#160;&#160;8</td></tr>
+<tr class="memitem:a3e0da9d1035d39f54890d8931d29e3c0" id="r_a3e0da9d1035d39f54890d8931d29e3c0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e0da9d1035d39f54890d8931d29e3c0">ARCADE_SCREEN_X</a>&#160;&#160;&#160;300.0f</td></tr>
+<tr class="memitem:a52ecb5646bfdfd98d17e7b3a72ba470d" id="r_a52ecb5646bfdfd98d17e7b3a72ba470d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52ecb5646bfdfd98d17e7b3a72ba470d">ARCADE_SCREEN_Y</a>&#160;&#160;&#160;200.0f</td></tr>
+<tr class="memitem:aff32984ff98ed60847d1e0a4de2c882c" id="r_aff32984ff98ed60847d1e0a4de2c882c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff32984ff98ed60847d1e0a4de2c882c">ARCADE_SCREEN_W</a>&#160;&#160;&#160;200.0f</td></tr>
+<tr class="memitem:a90ed41bd0b1c4307f13a9d92a4b20cd3" id="r_a90ed41bd0b1c4307f13a9d92a4b20cd3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90ed41bd0b1c4307f13a9d92a4b20cd3">ARCADE_SCREEN_H</a>&#160;&#160;&#160;400.0f</td></tr>
+<tr class="memitem:a4a07977cb6b691eb9695f10da56b864c" id="r_a4a07977cb6b691eb9695f10da56b864c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4a07977cb6b691eb9695f10da56b864c">ARCADE_TEXT_PADDING</a>&#160;&#160;&#160;8.0f</td></tr>
+<tr class="memitem:aed5fe61d117abb58e8891df2786ce583" id="r_aed5fe61d117abb58e8891df2786ce583"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed5fe61d117abb58e8891df2786ce583">ARCADE_INFO_X</a>&#160;&#160;&#160;<a class="el" href="#a3e0da9d1035d39f54890d8931d29e3c0">ARCADE_SCREEN_X</a></td></tr>
+<tr class="memitem:abac43b396b5970b7712cb5b16f4709b8" id="r_abac43b396b5970b7712cb5b16f4709b8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abac43b396b5970b7712cb5b16f4709b8">ARCADE_INFO_Y</a>&#160;&#160;&#160;(<a class="el" href="#a52ecb5646bfdfd98d17e7b3a72ba470d">ARCADE_SCREEN_Y</a> + <a class="el" href="#a90ed41bd0b1c4307f13a9d92a4b20cd3">ARCADE_SCREEN_H</a> + 10.0f)</td></tr>
+<tr class="memitem:a13d8bb14fb9d459d1ce2a3244c6a7ad2" id="r_a13d8bb14fb9d459d1ce2a3244c6a7ad2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a13d8bb14fb9d459d1ce2a3244c6a7ad2">ARCADE_INFO_W</a>&#160;&#160;&#160;<a class="el" href="#aff32984ff98ed60847d1e0a4de2c882c">ARCADE_SCREEN_W</a></td></tr>
+<tr class="memitem:ad25a799f220c28a62928e900e3220201" id="r_ad25a799f220c28a62928e900e3220201"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad25a799f220c28a62928e900e3220201">ARCADE_INFO_H</a>&#160;&#160;&#160;56.0f</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:adcd100b7250411e655a98a61dace3f5a" id="r_adcd100b7250411e655a98a61dace3f5a"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#adcd100b7250411e655a98a61dace3f5a">arcade_draw_text</a> (SDL_Renderer *r, const char *text, float x, float y, bool center)</td></tr>
-<tr class="memitem:a6af91075a7d4eb204378373cbe08646a" id="r_a6af91075a7d4eb204378373cbe08646a"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a6af91075a7d4eb204378373cbe08646a">minijeu_draw_text</a> (SDL_Renderer *r, const char *text, float x, float y, bool center)</td></tr>
-<tr class="memitem:ac90ef500e15768a0d93b6e4d0c324a5c" id="r_ac90ef500e15768a0d93b6e4d0c324a5c"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ac90ef500e15768a0d93b6e4d0c324a5c">jouer_arcade1</a> (SDL_Renderer *renderer)</td></tr>
+<tr class="memitem:adcd100b7250411e655a98a61dace3f5a" id="r_adcd100b7250411e655a98a61dace3f5a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adcd100b7250411e655a98a61dace3f5a">arcade_draw_text</a> (SDL_Renderer *r, const char *text, float x, float y, bool center)</td></tr>
+<tr class="memitem:a6af91075a7d4eb204378373cbe08646a" id="r_a6af91075a7d4eb204378373cbe08646a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6af91075a7d4eb204378373cbe08646a">minijeu_draw_text</a> (SDL_Renderer *r, const char *text, float x, float y, bool center)</td></tr>
+<tr class="memitem:ac90ef500e15768a0d93b6e4d0c324a5c" id="r_ac90ef500e15768a0d93b6e4d0c324a5c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac90ef500e15768a0d93b6e4d0c324a5c">jouer_arcade1</a> (SDL_Renderer *renderer)</td></tr>
 <tr class="memdesc:ac90ef500e15768a0d93b6e4d0c324a5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lance arcade1 et gere son deroulement complet.  <br /></td></tr>
-<tr class="memitem:a97cf0885563c96f017c3408ca0cb0670" id="r_a97cf0885563c96f017c3408ca0cb0670"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a97cf0885563c96f017c3408ca0cb0670">jouer_arcade2</a> (SDL_Renderer *renderer)</td></tr>
+<tr class="memitem:a97cf0885563c96f017c3408ca0cb0670" id="r_a97cf0885563c96f017c3408ca0cb0670"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a97cf0885563c96f017c3408ca0cb0670">jouer_arcade2</a> (SDL_Renderer *renderer)</td></tr>
 <tr class="memdesc:a97cf0885563c96f017c3408ca0cb0670"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lance arcade2 et gere son deroulement complet.  <br /></td></tr>
-<tr class="memitem:a4d835eb6e2ce82e2c147bbc29a36a3ce" id="r_a4d835eb6e2ce82e2c147bbc29a36a3ce"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a4d835eb6e2ce82e2c147bbc29a36a3ce">jouer_arcade3</a> (SDL_Renderer *renderer)</td></tr>
+<tr class="memitem:a4d835eb6e2ce82e2c147bbc29a36a3ce" id="r_a4d835eb6e2ce82e2c147bbc29a36a3ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d835eb6e2ce82e2c147bbc29a36a3ce">jouer_arcade3</a> (SDL_Renderer *renderer)</td></tr>
 <tr class="memdesc:a4d835eb6e2ce82e2c147bbc29a36a3ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lance arcade3 et gere son deroulement complet.  <br /></td></tr>
-<tr class="memitem:a9be93ac88e97809a94f0ae9b48152aa9" id="r_a9be93ac88e97809a94f0ae9b48152aa9"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a9be93ac88e97809a94f0ae9b48152aa9">mastermind</a> (SDL_Renderer *renderer)</td></tr>
+<tr class="memitem:a9be93ac88e97809a94f0ae9b48152aa9" id="r_a9be93ac88e97809a94f0ae9b48152aa9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9be93ac88e97809a94f0ae9b48152aa9">mastermind</a> (SDL_Renderer *renderer)</td></tr>
 <tr class="memdesc:a9be93ac88e97809a94f0ae9b48152aa9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lance le mini-jeu Mastermind utilise dans la progression.  <br /></td></tr>
-<tr class="memitem:a60b12154cf6385b2392e62c0fb9c4e8a" id="r_a60b12154cf6385b2392e62c0fb9c4e8a"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a60b12154cf6385b2392e62c0fb9c4e8a">simon</a> (SDL_Renderer *renderer)</td></tr>
+<tr class="memitem:a60b12154cf6385b2392e62c0fb9c4e8a" id="r_a60b12154cf6385b2392e62c0fb9c4e8a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a60b12154cf6385b2392e62c0fb9c4e8a">simon</a> (SDL_Renderer *renderer)</td></tr>
 <tr class="memdesc:a60b12154cf6385b2392e62c0fb9c4e8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lance le mini-jeu Simon utilise dans la progression.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:aae482f95118e1d4408a5c6db622f6076" id="r_aae482f95118e1d4408a5c6db622f6076"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#aae482f95118e1d4408a5c6db622f6076">g_mastermind_reussi</a> = false</td></tr>
-<tr class="memitem:a6b40a63f006994be1abc921549ba471c" id="r_a6b40a63f006994be1abc921549ba471c"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a6b40a63f006994be1abc921549ba471c">g_simon_reussi</a> = false</td></tr>
+<tr class="memitem:aae482f95118e1d4408a5c6db622f6076" id="r_aae482f95118e1d4408a5c6db622f6076"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae482f95118e1d4408a5c6db622f6076">g_mastermind_reussi</a> = false</td></tr>
+<tr class="memitem:a6b40a63f006994be1abc921549ba471c" id="r_a6b40a63f006994be1abc921549ba471c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b40a63f006994be1abc921549ba471c">g_simon_reussi</a> = false</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Gestion de la séquence d'arcade et de ses ecrans associes. </p>
@@ -654,7 +654,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="arcade_8c.html">arcade.c</a></li>
-    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>
 </body>

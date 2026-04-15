@@ -1,6 +1,6 @@
 var sauvegarde_8c =
 [
-    [ "SaveData", "struct_save_data.html", "struct_save_data" ],
+    [ "SaveData", "structSaveData.html", "structSaveData" ],
     [ "SAVE_MAGIC", "sauvegarde_8c.html#aa355db1b4db1422d523d7e14f78b70bf", null ],
     [ "SAVE_VERSION", "sauvegarde_8c.html#a620a7acb504c4732c7665915295be27c", null ],
     [ "charger_partie_slot", "sauvegarde_8c.html#aadcfca2e129355799bc39cbf1ca30390", null ],

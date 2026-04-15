@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Silence Stellaire: Référence du fichier src/sauvegarde.c</title>
 <link rel="icon" href="logo_win.png" type="image/x-icon" />
@@ -38,7 +38,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.16.1 -->
+<!-- Généré par Doxygen 1.14.0 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
@@ -104,49 +104,50 @@ $(function(){initNavTree('sauvegarde_8c.html','',''); });
 <code>#include &lt;SDL3_ttf/SDL_ttf.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &lt;sys/stat.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Graphe des dépendances par inclusion de sauvegarde.c:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="sauvegarde_8c__incl.svg" width="100%" height="496"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="sauvegarde_8c__incl.svg" width="100%" height="492"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 </div>
 <p><a href="sauvegarde_8c_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:SaveData" id="r_SaveData"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="struct_save_data.html">SaveData</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Format binaire de donnees persistees pour un slot de sauvegarde.  <a href="struct_save_data.html#details">Plus de détails...</a><br /></td></tr>
+<tr class="memitem:SaveData" id="r_SaveData"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSaveData.html">SaveData</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Format binaire de donnees persistees pour un slot de sauvegarde.  <a href="structSaveData.html#details">Plus de détails...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:aa355db1b4db1422d523d7e14f78b70bf" id="r_aa355db1b4db1422d523d7e14f78b70bf"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#aa355db1b4db1422d523d7e14f78b70bf">SAVE_MAGIC</a>&#160;&#160;&#160;0x5353544C /* SSTL */</td></tr>
-<tr class="memitem:a620a7acb504c4732c7665915295be27c" id="r_a620a7acb504c4732c7665915295be27c"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a620a7acb504c4732c7665915295be27c">SAVE_VERSION</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memitem:aa355db1b4db1422d523d7e14f78b70bf" id="r_aa355db1b4db1422d523d7e14f78b70bf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa355db1b4db1422d523d7e14f78b70bf">SAVE_MAGIC</a>&#160;&#160;&#160;0x5353544C /* SSTL */</td></tr>
+<tr class="memitem:a620a7acb504c4732c7665915295be27c" id="r_a620a7acb504c4732c7665915295be27c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a620a7acb504c4732c7665915295be27c">SAVE_VERSION</a>&#160;&#160;&#160;3</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:a590205a1d58df634530e608349c8dc6f" id="r_a590205a1d58df634530e608349c8dc6f"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a590205a1d58df634530e608349c8dc6f">sauvegarde_slot_existe</a> (int slot)</td></tr>
+<tr class="memitem:a590205a1d58df634530e608349c8dc6f" id="r_a590205a1d58df634530e608349c8dc6f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a590205a1d58df634530e608349c8dc6f">sauvegarde_slot_existe</a> (int slot)</td></tr>
 <tr class="memdesc:a590205a1d58df634530e608349c8dc6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifie si un fichier de sauvegarde existe pour un slot donne.  <br /></td></tr>
-<tr class="memitem:a37cdab70aee73a7ba5b6ba7bcfc920c6" id="r_a37cdab70aee73a7ba5b6ba7bcfc920c6"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a37cdab70aee73a7ba5b6ba7bcfc920c6">sauvegarde_get_slot_actif</a> (void)</td></tr>
+<tr class="memitem:a37cdab70aee73a7ba5b6ba7bcfc920c6" id="r_a37cdab70aee73a7ba5b6ba7bcfc920c6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37cdab70aee73a7ba5b6ba7bcfc920c6">sauvegarde_get_slot_actif</a> (void)</td></tr>
 <tr class="memdesc:a37cdab70aee73a7ba5b6ba7bcfc920c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le slot marque comme actif dans la session courante.  <br /></td></tr>
-<tr class="memitem:a8011b5d73a5247c42d0d7ea574b54e3a" id="r_a8011b5d73a5247c42d0d7ea574b54e3a"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a8011b5d73a5247c42d0d7ea574b54e3a">sauvegarde_set_slot_actif</a> (int slot)</td></tr>
+<tr class="memitem:a8011b5d73a5247c42d0d7ea574b54e3a" id="r_a8011b5d73a5247c42d0d7ea574b54e3a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8011b5d73a5247c42d0d7ea574b54e3a">sauvegarde_set_slot_actif</a> (int slot)</td></tr>
 <tr class="memdesc:a8011b5d73a5247c42d0d7ea574b54e3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definit le slot actif pour les operations ulterieures.  <br /></td></tr>
-<tr class="memitem:af41024137aa5cec5baf4cef86ae63bd8" id="r_af41024137aa5cec5baf4cef86ae63bd8"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#af41024137aa5cec5baf4cef86ae63bd8">sauvegarder_partie_slot</a> (int slot, int planete)</td></tr>
+<tr class="memitem:af41024137aa5cec5baf4cef86ae63bd8" id="r_af41024137aa5cec5baf4cef86ae63bd8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af41024137aa5cec5baf4cef86ae63bd8">sauvegarder_partie_slot</a> (int slot, int planete)</td></tr>
 <tr class="memdesc:af41024137aa5cec5baf4cef86ae63bd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize l'etat de partie courant dans le slot cible.  <br /></td></tr>
-<tr class="memitem:aadcfca2e129355799bc39cbf1ca30390" id="r_aadcfca2e129355799bc39cbf1ca30390"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#aadcfca2e129355799bc39cbf1ca30390">charger_partie_slot</a> (int slot, int *planete_out)</td></tr>
+<tr class="memitem:aadcfca2e129355799bc39cbf1ca30390" id="r_aadcfca2e129355799bc39cbf1ca30390"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aadcfca2e129355799bc39cbf1ca30390">charger_partie_slot</a> (int slot, int *planete_out)</td></tr>
 <tr class="memdesc:aadcfca2e129355799bc39cbf1ca30390"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge les donnees brutes d'un slot et les place en attente d'application.  <br /></td></tr>
-<tr class="memitem:a749dc51944352ce977ead8fb8ceca1cc" id="r_a749dc51944352ce977ead8fb8ceca1cc"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a749dc51944352ce977ead8fb8ceca1cc">sauvegarde_appliquer_si_disponible</a> (SDL_Renderer *renderer)</td></tr>
+<tr class="memitem:a749dc51944352ce977ead8fb8ceca1cc" id="r_a749dc51944352ce977ead8fb8ceca1cc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a749dc51944352ce977ead8fb8ceca1cc">sauvegarde_appliquer_si_disponible</a> (SDL_Renderer *renderer)</td></tr>
 <tr class="memdesc:a749dc51944352ce977ead8fb8ceca1cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applique a l'etat global les donnees precedemment chargees si presentes.  <br /></td></tr>
-<tr class="memitem:ae251037c85a5a7d8172c206539398f49" id="r_ae251037c85a5a7d8172c206539398f49"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#ae251037c85a5a7d8172c206539398f49">sauvegarde_choisir_slot</a> (SDL_Renderer *renderer, const char *titre, bool mode_chargement)</td></tr>
+<tr class="memitem:ae251037c85a5a7d8172c206539398f49" id="r_ae251037c85a5a7d8172c206539398f49"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae251037c85a5a7d8172c206539398f49">sauvegarde_choisir_slot</a> (SDL_Renderer *renderer, const char *titre, bool mode_chargement)</td></tr>
 <tr class="memdesc:ae251037c85a5a7d8172c206539398f49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche l'interface de selection de slot (chargement ou sauvegarde).  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a72157237fcc8efb662940db83b6329c9" id="r_a72157237fcc8efb662940db83b6329c9"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a72157237fcc8efb662940db83b6329c9">engrenages_poses</a></td></tr>
-<tr class="memitem:a6a603860f3885534a34bf605601fbdf2" id="r_a6a603860f3885534a34bf605601fbdf2"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a6a603860f3885534a34bf605601fbdf2">vaisseau_repare</a></td></tr>
-<tr class="memitem:a9f26241542eb25a396d652e9ec6e77e0" id="r_a9f26241542eb25a396d652e9ec6e77e0"><td class="memItemLeft"><a class="el" href="structt__case.html">t_case</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a> [<a class="el" href="main_8h.html#a8503e5db31d779209111bf7ea2dba16e">HOTBAR_SIZE</a>]</td></tr>
-<tr class="memitem:a8dcd03ba0e2ea187818f82f341ab2b5f" id="r_a8dcd03ba0e2ea187818f82f341ab2b5f"><td class="memItemLeft"><a class="el" href="structt__case.html">t_case</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a8dcd03ba0e2ea187818f82f341ab2b5f">inventaire</a> [<a class="el" href="main_8h.html#a1214bea12629f1bbee381f63e4573d29">INVENTAIRE_SIZE</a>]</td></tr>
-<tr class="memitem:a03d5dc84ffa6dacbc5ba7abdd9eb6020" id="r_a03d5dc84ffa6dacbc5ba7abdd9eb6020"><td class="memItemLeft"><a class="el" href="structt__case.html">t_case</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a03d5dc84ffa6dacbc5ba7abdd9eb6020">caisse_outils</a> [<a class="el" href="main_8h.html#a74a1fb583b1c35f2bcc4245fddf051e0">CAISSE_OUTILS_SIZE</a>]</td></tr>
+<tr class="memitem:a72157237fcc8efb662940db83b6329c9" id="r_a72157237fcc8efb662940db83b6329c9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72157237fcc8efb662940db83b6329c9">engrenages_poses</a></td></tr>
+<tr class="memitem:a6a603860f3885534a34bf605601fbdf2" id="r_a6a603860f3885534a34bf605601fbdf2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a603860f3885534a34bf605601fbdf2">vaisseau_repare</a></td></tr>
+<tr class="memitem:a9f26241542eb25a396d652e9ec6e77e0" id="r_a9f26241542eb25a396d652e9ec6e77e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structt__case.html">t_case</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a> [<a class="el" href="main_8h.html#a8503e5db31d779209111bf7ea2dba16e">HOTBAR_SIZE</a>]</td></tr>
+<tr class="memitem:a8dcd03ba0e2ea187818f82f341ab2b5f" id="r_a8dcd03ba0e2ea187818f82f341ab2b5f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structt__case.html">t_case</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8dcd03ba0e2ea187818f82f341ab2b5f">inventaire</a> [<a class="el" href="main_8h.html#a1214bea12629f1bbee381f63e4573d29">INVENTAIRE_SIZE</a>]</td></tr>
+<tr class="memitem:a03d5dc84ffa6dacbc5ba7abdd9eb6020" id="r_a03d5dc84ffa6dacbc5ba7abdd9eb6020"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structt__case.html">t_case</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a03d5dc84ffa6dacbc5ba7abdd9eb6020">caisse_outils</a> [<a class="el" href="main_8h.html#a74a1fb583b1c35f2bcc4245fddf051e0">CAISSE_OUTILS_SIZE</a>]</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Gestion des sauvegardes, des chargements et des emplacements. </p>
@@ -165,7 +166,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="sauvegarde_8c_source.html#l00048">48</a> du fichier <a class="el" href="sauvegarde_8c_source.html">sauvegarde.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sauvegarde_8c_source.html#l00071">71</a> du fichier <a class="el" href="sauvegarde_8c_source.html">sauvegarde.c</a>.</p>
 
 </div>
 </div>
@@ -176,12 +177,12 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define SAVE_VERSION&#160;&#160;&#160;1</td>
+          <td class="memname">#define SAVE_VERSION&#160;&#160;&#160;3</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="sauvegarde_8c_source.html#l00049">49</a> du fichier <a class="el" href="sauvegarde_8c_source.html">sauvegarde.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sauvegarde_8c_source.html#l00072">72</a> du fichier <a class="el" href="sauvegarde_8c_source.html">sauvegarde.c</a>.</p>
 
 </div>
 </div>
@@ -215,7 +216,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succes, -1 en cas d'erreur ou de slot invalide. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="sauvegarde_8c_source.html#l00207">207</a> du fichier <a class="el" href="sauvegarde_8c_source.html">sauvegarde.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sauvegarde_8c_source.html#l00306">306</a> du fichier <a class="el" href="sauvegarde_8c_source.html">sauvegarde.c</a>.</p>
 <div class="dynheader">
 Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
@@ -248,7 +249,12 @@ Voici le graphe des appelants de cette fonction :</div>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>1 si une sauvegarde en attente a ete appliquee, 0 sinon. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="sauvegarde_8c_source.html#l00228">228</a> du fichier <a class="el" href="sauvegarde_8c_source.html">sauvegarde.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sauvegarde_8c_source.html#l00342">342</a> du fichier <a class="el" href="sauvegarde_8c_source.html">sauvegarde.c</a>.</p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="sauvegarde_8c_a749dc51944352ce977ead8fb8ceca1cc_cgraph.svg" width="378" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 <div class="dynheader">
 Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
@@ -292,7 +298,7 @@ Voici le graphe des appelants de cette fonction :</div>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>Numero de slot choisi (1..NB_SLOTS_SAUVEGARDE), ou 0 si annulation. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="sauvegarde_8c_source.html#l00254">254</a> du fichier <a class="el" href="sauvegarde_8c_source.html">sauvegarde.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sauvegarde_8c_source.html#l00406">406</a> du fichier <a class="el" href="sauvegarde_8c_source.html">sauvegarde.c</a>.</p>
 <div class="dynheader">
 Voici le graphe d'appel pour cette fonction :</div>
 <div class="dyncontent">
@@ -324,7 +330,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <p>Retourne le slot marque comme actif dans la session courante. </p>
 <dl class="section return"><dt>Renvoie</dt><dd>Numero du slot actif. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="sauvegarde_8c_source.html#l00137">137</a> du fichier <a class="el" href="sauvegarde_8c_source.html">sauvegarde.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sauvegarde_8c_source.html#l00207">207</a> du fichier <a class="el" href="sauvegarde_8c_source.html">sauvegarde.c</a>.</p>
 
 </div>
 </div>
@@ -351,7 +357,7 @@ Voici le graphe des appelants de cette fonction :</div>
   </dd>
 </dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="sauvegarde_8c_source.html#l00141">141</a> du fichier <a class="el" href="sauvegarde_8c_source.html">sauvegarde.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sauvegarde_8c_source.html#l00211">211</a> du fichier <a class="el" href="sauvegarde_8c_source.html">sauvegarde.c</a>.</p>
 
 </div>
 </div>
@@ -379,7 +385,7 @@ Voici le graphe des appelants de cette fonction :</div>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>1 si le slot existe, 0 sinon. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="sauvegarde_8c_source.html#l00127">127</a> du fichier <a class="el" href="sauvegarde_8c_source.html">sauvegarde.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sauvegarde_8c_source.html#l00197">197</a> du fichier <a class="el" href="sauvegarde_8c_source.html">sauvegarde.c</a>.</p>
 <div class="dynheader">
 Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
@@ -417,7 +423,12 @@ Voici le graphe des appelants de cette fonction :</div>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succes, -1 en cas d'erreur E/S ou de slot invalide. </dd></dl>
 
-<p class="definition">Définition à la ligne <a class="el" href="sauvegarde_8c_source.html#l00147">147</a> du fichier <a class="el" href="sauvegarde_8c_source.html">sauvegarde.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="sauvegarde_8c_source.html#l00217">217</a> du fichier <a class="el" href="sauvegarde_8c_source.html">sauvegarde.c</a>.</p>
+<div class="dynheader">
+Voici le graphe d'appel pour cette fonction :</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="sauvegarde_8c_af41024137aa5cec5baf4cef86ae63bd8_cgraph.svg" width="391" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 <div class="dynheader">
 Voici le graphe des appelants de cette fonction :</div>
 <div class="dyncontent">
@@ -447,7 +458,7 @@ Voici le graphe des appelants de cette fonction :</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00068">68</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00073">73</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -471,7 +482,7 @@ Voici le graphe des appelants de cette fonction :</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00022">22</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00023">23</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -495,7 +506,7 @@ Voici le graphe des appelants de cette fonction :</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00066">66</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00071">71</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -519,7 +530,7 @@ Voici le graphe des appelants de cette fonction :</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00067">67</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00072">72</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -543,7 +554,7 @@ Voici le graphe des appelants de cette fonction :</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00023">23</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
+<p class="definition">Définition à la ligne <a class="el" href="jeux_8c_source.html#l00024">24</a> du fichier <a class="el" href="jeux_8c_source.html">jeux.c</a>.</p>
 
 </div>
 </div>
@@ -561,7 +572,7 @@ Voici le graphe des appelants de cette fonction :</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="sauvegarde_8c.html">sauvegarde.c</a></li>
-    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>
 </body>

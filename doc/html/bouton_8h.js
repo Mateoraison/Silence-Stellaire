@@ -1,6 +1,6 @@
 var bouton_8h =
 [
-    [ "Bouton", "struct_bouton.html", "struct_bouton" ],
+    [ "Bouton", "structBouton.html", "structBouton" ],
     [ "BOUTON_H", "bouton_8h.html#a5dfda9928537f97348da4fe302c7ae1f", null ],
     [ "afficher_texte_centre", "bouton_8h.html#af33c1c08b52d3d015ff6f7039a9734ee", null ],
     [ "Bouton_Afficher", "bouton_8h.html#a11f55905044ef2518b8c38311df3c48d", null ],

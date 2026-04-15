@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Silence Stellaire:  Fichier source de src/inventaire.c</title>
 <link rel="icon" href="logo_win.png" type="image/x-icon" />
@@ -38,7 +38,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.16.1 -->
+<!-- Généré par Doxygen 1.14.0 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
@@ -148,7 +148,7 @@ $(function(){initNavTree('inventaire_8c_source.html','',''); });
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
 <div class="foldopen" id="foldopen00054" data-start="{" data-end="}">
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="inventaire_8h.html#af0bb60f5edfe743f3132d027eaf1bcbb">   54</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="inventaire_8c.html#af0bb60f5edfe743f3132d027eaf1bcbb">ajouter_item_hotbar</a>(<a class="code hl_struct" href="structt__case.html">t_case</a> *<a class="code hl_variable" href="main_8h.html#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a>[<a class="code hl_define" href="main_8h.html#a8503e5db31d779209111bf7ea2dba16e">HOTBAR_SIZE</a>], <a class="code hl_struct" href="structt___item.html">t_Item</a> *item, SDL_Renderer *renderer) {</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="inventaire_8h.html#af0bb60f5edfe743f3132d027eaf1bcbb">   54</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="inventaire_8c.html#af0bb60f5edfe743f3132d027eaf1bcbb">ajouter_item_hotbar</a>(<a class="code hl_struct" href="structt__case.html">t_case</a> *<a class="code hl_variable" href="main_8h.html#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a>[<a class="code hl_define" href="main_8h.html#a8503e5db31d779209111bf7ea2dba16e">HOTBAR_SIZE</a>], <a class="code hl_struct" href="structt__Item.html">t_Item</a> *item, SDL_Renderer *renderer) {</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="comment">// Le rendu n&#39;intervient pas ici, mais la signature reste alignee avec les autres appels.</span></div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    (void)renderer;</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
@@ -166,7 +166,7 @@ $(function(){initNavTree('inventaire_8c_source.html','',''); });
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            <span class="keywordflow">if</span> (!<a class="code hl_variable" href="main_8h.html#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a>[i]) <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  </div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            <a class="code hl_struct" href="structt___item.html">t_Item</a> *copie = malloc(<span class="keyword">sizeof</span>(<a class="code hl_struct" href="structt___item.html">t_Item</a>));</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            <a class="code hl_struct" href="structt__Item.html">t_Item</a> *copie = malloc(<span class="keyword">sizeof</span>(<a class="code hl_struct" href="structt__Item.html">t_Item</a>));</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            <span class="keywordflow">if</span> (!copie) { </div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                free(<a class="code hl_variable" href="main_8h.html#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a>[i]); <a class="code hl_variable" href="main_8h.html#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a>[i] = NULL; <span class="keywordflow">return</span>; </div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            }</div>
@@ -291,7 +291,7 @@ $(function(){initNavTree('inventaire_8c_source.html','',''); });
 <div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
 <div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span> </div>
 <div class="foldopen" id="foldopen00193" data-start="{" data-end="}">
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno"><a class="line" href="inventaire_8h.html#aaa9a799e47ee7f10a1d1ef1bc3ad559b">  193</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="inventaire_8c.html#aaa9a799e47ee7f10a1d1ef1bc3ad559b">ajouter_item_inventaire</a>(<a class="code hl_struct" href="structt__case.html">t_case</a> **<a class="code hl_variable" href="main_8h.html#a8dcd03ba0e2ea187818f82f341ab2b5f">inventaire</a>, <span class="keywordtype">int</span> inventaire_size, <a class="code hl_struct" href="structt___item.html">t_Item</a> *item) {</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno"><a class="line" href="inventaire_8h.html#aaa9a799e47ee7f10a1d1ef1bc3ad559b">  193</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="inventaire_8c.html#aaa9a799e47ee7f10a1d1ef1bc3ad559b">ajouter_item_inventaire</a>(<a class="code hl_struct" href="structt__case.html">t_case</a> **<a class="code hl_variable" href="main_8h.html#a8dcd03ba0e2ea187818f82f341ab2b5f">inventaire</a>, <span class="keywordtype">int</span> inventaire_size, <a class="code hl_struct" href="structt__Item.html">t_Item</a> *item) {</div>
 <div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; inventaire_size; i++) {</div>
 <div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="main_8h.html#a8dcd03ba0e2ea187818f82f341ab2b5f">inventaire</a>[i] != NULL &amp;&amp; <a class="code hl_variable" href="main_8h.html#a8dcd03ba0e2ea187818f82f341ab2b5f">inventaire</a>[i]-&gt;item != NULL &amp;&amp;</div>
 <div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>            <a class="code hl_variable" href="main_8h.html#a8dcd03ba0e2ea187818f82f341ab2b5f">inventaire</a>[i]-&gt;item-&gt;type == item-&gt;type) {</div>
@@ -305,7 +305,7 @@ $(function(){initNavTree('inventaire_8c_source.html','',''); });
 <div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>            <a class="code hl_variable" href="main_8h.html#a8dcd03ba0e2ea187818f82f341ab2b5f">inventaire</a>[i] = malloc(<span class="keyword">sizeof</span>(<a class="code hl_struct" href="structt__case.html">t_case</a>));</div>
 <div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>            <span class="keywordflow">if</span> (!<a class="code hl_variable" href="main_8h.html#a8dcd03ba0e2ea187818f82f341ab2b5f">inventaire</a>[i]) <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span> </div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>            <a class="code hl_struct" href="structt___item.html">t_Item</a> *copie = malloc(<span class="keyword">sizeof</span>(<a class="code hl_struct" href="structt___item.html">t_Item</a>));</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>            <a class="code hl_struct" href="structt__Item.html">t_Item</a> *copie = malloc(<span class="keyword">sizeof</span>(<a class="code hl_struct" href="structt__Item.html">t_Item</a>));</div>
 <div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>            <span class="keywordflow">if</span> (!copie) { free(<a class="code hl_variable" href="main_8h.html#a8dcd03ba0e2ea187818f82f341ab2b5f">inventaire</a>[i]); <a class="code hl_variable" href="main_8h.html#a8dcd03ba0e2ea187818f82f341ab2b5f">inventaire</a>[i] = NULL; <span class="keywordflow">return</span>; }</div>
 <div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>            copie-&gt;type    = item-&gt;type;</div>
 <div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>            copie-&gt;texture = item-&gt;texture;</div>
@@ -408,10 +408,10 @@ $(function(){initNavTree('inventaire_8c_source.html','',''); });
 <div class="ttc" id="ainventaire_8c_html_af0bb60f5edfe743f3132d027eaf1bcbb"><div class="ttname"><a href="inventaire_8c.html#af0bb60f5edfe743f3132d027eaf1bcbb">ajouter_item_hotbar</a></div><div class="ttdeci">void ajouter_item_hotbar(t_case *hotbar[HOTBAR_SIZE], t_Item *item, SDL_Renderer *renderer)</div><div class="ttdoc">Ajoute un item dans la hotbar (slot libre ou pile compatible).</div><div class="ttdef"><b>Definition</b> <a href="#l00054">inventaire.c:54</a></div></div>
 <div class="ttc" id="amain_8h_html"><div class="ttname"><a href="main_8h.html">main.h</a></div><div class="ttdoc">Declarations globales et utilitaires partages entre les modules du jeu.</div></div>
 <div class="ttc" id="amain_8h_html_a8503e5db31d779209111bf7ea2dba16e"><div class="ttname"><a href="main_8h.html#a8503e5db31d779209111bf7ea2dba16e">HOTBAR_SIZE</a></div><div class="ttdeci">#define HOTBAR_SIZE</div><div class="ttdef"><b>Definition</b> <a href="main_8h_source.html#l00049">main.h:49</a></div></div>
-<div class="ttc" id="amain_8h_html_a8dcd03ba0e2ea187818f82f341ab2b5f"><div class="ttname"><a href="main_8h.html#a8dcd03ba0e2ea187818f82f341ab2b5f">inventaire</a></div><div class="ttdeci">t_case * inventaire[INVENTAIRE_SIZE]</div><div class="ttdef"><b>Definition</b> <a href="jeux_8c_source.html#l00067">jeux.c:67</a></div></div>
-<div class="ttc" id="amain_8h_html_a9f26241542eb25a396d652e9ec6e77e0"><div class="ttname"><a href="main_8h.html#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a></div><div class="ttdeci">t_case * hotbar[HOTBAR_SIZE]</div><div class="ttdef"><b>Definition</b> <a href="jeux_8c_source.html#l00066">jeux.c:66</a></div></div>
-<div class="ttc" id="astructt___item_html"><div class="ttname"><a href="structt___item.html">t_Item</a></div><div class="ttdoc">Instance d&#39;objet present au sol ou dans un conteneur.</div></div>
-<div class="ttc" id="astructt__case_html"><div class="ttname"><a href="structt__case.html">t_case</a></div><div class="ttdoc">Slot de stockage UI (hotbar/inventaire/caisse) contenant un item et sa quantite.</div><div class="ttdef"><b>Definition</b> <a href="main_8h_source.html#l00208">main.h:208</a></div></div>
+<div class="ttc" id="amain_8h_html_a8dcd03ba0e2ea187818f82f341ab2b5f"><div class="ttname"><a href="main_8h.html#a8dcd03ba0e2ea187818f82f341ab2b5f">inventaire</a></div><div class="ttdeci">t_case * inventaire[INVENTAIRE_SIZE]</div><div class="ttdef"><b>Definition</b> <a href="jeux_8c_source.html#l00072">jeux.c:72</a></div></div>
+<div class="ttc" id="amain_8h_html_a9f26241542eb25a396d652e9ec6e77e0"><div class="ttname"><a href="main_8h.html#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a></div><div class="ttdeci">t_case * hotbar[HOTBAR_SIZE]</div><div class="ttdef"><b>Definition</b> <a href="jeux_8c_source.html#l00071">jeux.c:71</a></div></div>
+<div class="ttc" id="astructt__Item_html"><div class="ttname"><a href="structt__Item.html">t_Item</a></div><div class="ttdoc">Instance d&#39;objet present au sol ou dans un conteneur.</div></div>
+<div class="ttc" id="astructt__case_html"><div class="ttname"><a href="structt__case.html">t_case</a></div><div class="ttdoc">Slot de stockage UI (hotbar/inventaire/caisse) contenant un item et sa quantite.</div><div class="ttdef"><b>Definition</b> <a href="main_8h_source.html#l00209">main.h:209</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
@@ -419,7 +419,7 @@ $(function(){initNavTree('inventaire_8c_source.html','',''); });
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="inventaire_8c.html">inventaire.c</a></li>
-    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>
 </body>

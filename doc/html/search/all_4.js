@@ -1,13 +1,13 @@
 var searchData=
 [
   ['eau_0',['eau',['../main_8h.html#adee610a3c7375031538811d29f6a4124a0729b1e157ef30cedeef889f7a263594',1,'main.h']]],
-  ['echelle_1',['echelle',['../structt___animation.html#aca234eb0187268c433a5a81a651757f9',1,'t_Animation']]],
+  ['echelle_1',['echelle',['../structt__Animation.html#aca234eb0187268c433a5a81a651757f9',1,'t_Animation']]],
   ['en_5fcollision_2',['en_collision',['../vaisseau_8c.html#a2d5dec4ed1b45587058f07a6de497eaf',1,'vaisseau.c']]],
   ['engrenage_3',['ENGRENAGE',['../main_8h.html#a513dbfc7f10c1a9ff1757ba53bf642e2a7c3ec164badc2188be875c18ea28b50f',1,'main.h']]],
   ['engrenages_5fmax_4',['ENGRENAGES_MAX',['../jeux_8c.html#a2629d00cb3344a57a1f424bce8640cbf',1,'jeux.c']]],
-  ['engrenages_5fposes_5',['engrenages_poses',['../struct_save_data.html#ab5ad89881e57644c1f30866f66adc805',1,'SaveData::engrenages_poses'],['../jeux_8c.html#a72157237fcc8efb662940db83b6329c9',1,'engrenages_poses:&#160;jeux.c'],['../objectifs_8c.html#a72157237fcc8efb662940db83b6329c9',1,'engrenages_poses:&#160;jeux.c'],['../sauvegarde_8c.html#a72157237fcc8efb662940db83b6329c9',1,'engrenages_poses:&#160;jeux.c']]],
-  ['entite_6',['Entite',['../struct_entite.html',1,'']]],
-  ['entreerespawn_7',['EntreeRespawn',['../struct_entree_respawn.html',1,'']]],
+  ['engrenages_5fposes_5',['engrenages_poses',['../structSaveData.html#ab5ad89881e57644c1f30866f66adc805',1,'SaveData::engrenages_poses'],['../jeux_8c.html#a72157237fcc8efb662940db83b6329c9',1,'engrenages_poses:&#160;jeux.c'],['../objectifs_8c.html#a72157237fcc8efb662940db83b6329c9',1,'engrenages_poses:&#160;jeux.c'],['../sauvegarde_8c.html#a72157237fcc8efb662940db83b6329c9',1,'engrenages_poses:&#160;jeux.c']]],
+  ['entite_6',['Entite',['../structEntite.html',1,'']]],
+  ['entreerespawn_7',['EntreeRespawn',['../structEntreeRespawn.html',1,'']]],
   ['est_5fagro_8',['est_agro',['../structboss__t.html#ad97e4ab3ec1a96895ca52bdbc6064e0c',1,'boss_t']]],
   ['est_5fanimation_5fdegat_9',['est_animation_degat',['../jeux_8c.html#ae0c34fdf03c09f5bf4363d2088acaba8',1,'jeux.c']]],
   ['est_5fbattu_10',['est_battu',['../structboss__t.html#a72e46c16297be94daf1020706a5cd2c9',1,'boss_t']]],

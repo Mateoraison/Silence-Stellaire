@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Silence Stellaire:  Fichier source de src/headers/objectifs.h</title>
 <link rel="icon" href="logo_win.png" type="image/x-icon" />
@@ -38,7 +38,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.16.1 -->
+<!-- Généré par Doxygen 1.14.0 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
@@ -101,7 +101,7 @@ $(function(){initNavTree('objectifs_8h_source.html','',''); });
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;SDL3_image/SDL_image.h&gt;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;SDL3_ttf/SDL_ttf.h&gt;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="objectifs_8h.html#a4cc72772b6b0a775edc03653d96cb8a7">   10</a></span><span class="preprocessor">#define MAX_OBJECTIFS 8</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span></div>
 <div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
@@ -115,7 +115,7 @@ $(function(){initNavTree('objectifs_8h_source.html','',''); });
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span></div>
 <div class="foldopen" id="foldopen00028" data-start="{" data-end="};">
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structt__objectifs.html">   28</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structt__objectifs.html#aa1edea4a19bc4e10e01ec7c47e470584">   29</a></span>    <a class="code hl_struct" href="structt__objectif.html">t_objectif</a> <a class="code hl_variable" href="structt__objectifs.html#aa1edea4a19bc4e10e01ec7c47e470584">objectifs</a>[<a class="code hl_define" href="objectifs_8h.html#a4cc72772b6b0a775edc03653d96cb8a7">MAX_OBJECTIFS</a>];</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structt__objectifs.html#aa1edea4a19bc4e10e01ec7c47e470584">   29</a></span>    <a class="code hl_struct" href="structt__objectif.html">t_objectif</a> <a class="code hl_variable" href="structt__objectifs.html#aa1edea4a19bc4e10e01ec7c47e470584">objectifs</a>[<a class="code hl_define" href="main_8h.html#a4cc72772b6b0a775edc03653d96cb8a7">MAX_OBJECTIFS</a>];</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="structt__objectifs.html#ab0b68c0420bf84e68919e65a742e0217">   30</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structt__objectifs.html#ab0b68c0420bf84e68919e65a742e0217">nb</a>;</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    </div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="structt__objectifs.html#a728c1775ea2bca35368d5db8eb7ac9a6">   32</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="structt__objectifs.html#a728c1775ea2bca35368d5db8eb7ac9a6">visible</a>;</div>
@@ -131,11 +131,11 @@ $(function(){initNavTree('objectifs_8h_source.html','',''); });
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keywordtype">void</span> <a class="code hl_function" href="objectifs_8h.html#a9f4b4e261f3bafb3c91a12cbe3408043">objectifs_afficher</a>(<a class="code hl_struct" href="structt__objectifs.html">t_objectifs</a> *obj, SDL_Renderer *renderer, TTF_Font *font);</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="keywordtype">void</span> <a class="code hl_function" href="objectifs_8h.html#a840df4635762089594ccc3c36dae4924">objectif_valider</a>(<a class="code hl_struct" href="structt__objectifs.html">t_objectifs</a> *obj, <span class="keywordtype">int</span> index);</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="keywordtype">void</span> <a class="code hl_function" href="objectifs_8h.html#a93ae7ee8d8bf7a0cfd0841f9b5c3c5d5">objectifs_visible</a>(<a class="code hl_struct" href="structt__objectifs.html">t_objectifs</a> *obj);</div>
-<div class="ttc" id="aobjectifs_8h_html_a4cc72772b6b0a775edc03653d96cb8a7"><div class="ttname"><a href="objectifs_8h.html#a4cc72772b6b0a775edc03653d96cb8a7">MAX_OBJECTIFS</a></div><div class="ttdeci">#define MAX_OBJECTIFS</div><div class="ttdef"><b>Definition</b> <a href="#l00010">objectifs.h:10</a></div></div>
-<div class="ttc" id="aobjectifs_8h_html_a840df4635762089594ccc3c36dae4924"><div class="ttname"><a href="objectifs_8h.html#a840df4635762089594ccc3c36dae4924">objectif_valider</a></div><div class="ttdeci">void objectif_valider(t_objectifs *obj, int index)</div><div class="ttdoc">Force la validation d&#39;un objectif et declenche son animation visuelle.</div><div class="ttdef"><b>Definition</b> <a href="objectifs_8c_source.html#l00095">objectifs.c:95</a></div></div>
-<div class="ttc" id="aobjectifs_8h_html_a844bf7cfff25edd874a95fb5f4d9e4a8"><div class="ttname"><a href="objectifs_8h.html#a844bf7cfff25edd874a95fb5f4d9e4a8">objectifs_init</a></div><div class="ttdeci">void objectifs_init(t_objectifs *obj, int planete)</div><div class="ttdoc">Initialise la liste des objectifs selon la planete en cours.</div><div class="ttdef"><b>Definition</b> <a href="objectifs_8c_source.html#l00056">objectifs.c:56</a></div></div>
-<div class="ttc" id="aobjectifs_8h_html_a93ae7ee8d8bf7a0cfd0841f9b5c3c5d5"><div class="ttname"><a href="objectifs_8h.html#a93ae7ee8d8bf7a0cfd0841f9b5c3c5d5">objectifs_visible</a></div><div class="ttdeci">void objectifs_visible(t_objectifs *obj)</div><div class="ttdoc">Bascule la visibilite du panneau d&#39;objectifs.</div><div class="ttdef"><b>Definition</b> <a href="objectifs_8c_source.html#l00253">objectifs.c:253</a></div></div>
-<div class="ttc" id="aobjectifs_8h_html_a9f4b4e261f3bafb3c91a12cbe3408043"><div class="ttname"><a href="objectifs_8h.html#a9f4b4e261f3bafb3c91a12cbe3408043">objectifs_afficher</a></div><div class="ttdeci">void objectifs_afficher(t_objectifs *obj, SDL_Renderer *renderer, TTF_Font *font)</div><div class="ttdoc">Affiche le panneau des objectifs et met a jour leur etat de validation.</div><div class="ttdef"><b>Definition</b> <a href="objectifs_8c_source.html#l00114">objectifs.c:114</a></div></div>
+<div class="ttc" id="amain_8h_html_a4cc72772b6b0a775edc03653d96cb8a7"><div class="ttname"><a href="main_8h.html#a4cc72772b6b0a775edc03653d96cb8a7">MAX_OBJECTIFS</a></div><div class="ttdeci">#define MAX_OBJECTIFS</div><div class="ttdef"><b>Definition</b> <a href="main_8h_source.html#l00054">main.h:54</a></div></div>
+<div class="ttc" id="aobjectifs_8h_html_a840df4635762089594ccc3c36dae4924"><div class="ttname"><a href="objectifs_8h.html#a840df4635762089594ccc3c36dae4924">objectif_valider</a></div><div class="ttdeci">void objectif_valider(t_objectifs *obj, int index)</div><div class="ttdoc">Force la validation d&#39;un objectif et declenche son animation visuelle.</div><div class="ttdef"><b>Definition</b> <a href="objectifs_8c_source.html#l00108">objectifs.c:108</a></div></div>
+<div class="ttc" id="aobjectifs_8h_html_a844bf7cfff25edd874a95fb5f4d9e4a8"><div class="ttname"><a href="objectifs_8h.html#a844bf7cfff25edd874a95fb5f4d9e4a8">objectifs_init</a></div><div class="ttdeci">void objectifs_init(t_objectifs *obj, int planete)</div><div class="ttdoc">Initialise la liste des objectifs selon la planete en cours.</div><div class="ttdef"><b>Definition</b> <a href="objectifs_8c_source.html#l00068">objectifs.c:68</a></div></div>
+<div class="ttc" id="aobjectifs_8h_html_a93ae7ee8d8bf7a0cfd0841f9b5c3c5d5"><div class="ttname"><a href="objectifs_8h.html#a93ae7ee8d8bf7a0cfd0841f9b5c3c5d5">objectifs_visible</a></div><div class="ttdeci">void objectifs_visible(t_objectifs *obj)</div><div class="ttdoc">Bascule la visibilite du panneau d&#39;objectifs.</div><div class="ttdef"><b>Definition</b> <a href="objectifs_8c_source.html#l00266">objectifs.c:266</a></div></div>
+<div class="ttc" id="aobjectifs_8h_html_a9f4b4e261f3bafb3c91a12cbe3408043"><div class="ttname"><a href="objectifs_8h.html#a9f4b4e261f3bafb3c91a12cbe3408043">objectifs_afficher</a></div><div class="ttdeci">void objectifs_afficher(t_objectifs *obj, SDL_Renderer *renderer, TTF_Font *font)</div><div class="ttdoc">Affiche le panneau des objectifs et met a jour leur etat de validation.</div><div class="ttdef"><b>Definition</b> <a href="objectifs_8c_source.html#l00127">objectifs.c:127</a></div></div>
 <div class="ttc" id="astructt__objectif_html"><div class="ttname"><a href="structt__objectif.html">t_objectif</a></div><div class="ttdoc">Unite d&#39;objectif individuelle (description, etat valide, predicate de verification).</div><div class="ttdef"><b>Definition</b> <a href="#l00017">objectifs.h:17</a></div></div>
 <div class="ttc" id="astructt__objectif_html_a243003982fe8871a45733bbdfa639ad7"><div class="ttname"><a href="structt__objectif.html#a243003982fe8871a45733bbdfa639ad7">t_objectif::verifier</a></div><div class="ttdeci">int(* verifier)(void)</div><div class="ttdef"><b>Definition</b> <a href="#l00020">objectifs.h:20</a></div></div>
 <div class="ttc" id="astructt__objectif_html_a56db68c3a090d580d1f08f37fb081db2"><div class="ttname"><a href="structt__objectif.html#a56db68c3a090d580d1f08f37fb081db2">t_objectif::description</a></div><div class="ttdeci">char * description</div><div class="ttdef"><b>Definition</b> <a href="#l00018">objectifs.h:18</a></div></div>
@@ -153,7 +153,7 @@ $(function(){initNavTree('objectifs_8h_source.html','',''); });
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dir_d0381950fc41278198232cb047ffc1f9.html">headers</a></li><li class="navelem"><a href="objectifs_8h.html">objectifs.h</a></li>
-    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>
 </body>

@@ -11,9 +11,11 @@ var objectifs_8c =
     [ "objectifs_init", "objectifs_8c.html#a844bf7cfff25edd874a95fb5f4d9e4a8", null ],
     [ "objectifs_visible", "objectifs_8c.html#a93ae7ee8d8bf7a0cfd0841f9b5c3c5d5", null ],
     [ "argent", "objectifs_8c.html#aaf2331208dfb16a05b9f58f27bb24fa9", null ],
+    [ "boss1", "objectifs_8c.html#a4d0a1d1ce5bfa1674274f3f2ecc0ceed", null ],
     [ "boss3", "objectifs_8c.html#ad96bc8eaad3feab772ddefd4f682262a", null ],
     [ "engrenages_poses", "objectifs_8c.html#a72157237fcc8efb662940db83b6329c9", null ],
     [ "hotbar", "objectifs_8c.html#a9f26241542eb25a396d652e9ec6e77e0", null ],
     [ "index_item", "objectifs_8c.html#a7963142dea3652236977bec96c9a8d8a", null ],
+    [ "progression_jeu", "objectifs_8c.html#a4abb758af6fbaacfa862b46dcc0bf8cd", null ],
     [ "vaisseau_repare", "objectifs_8c.html#a6a603860f3885534a34bf605601fbdf2", null ]
 ];

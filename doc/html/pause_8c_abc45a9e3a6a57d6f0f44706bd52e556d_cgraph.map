@@ -1,45 +1,47 @@
 <map id="afficher_pause" name="afficher_pause">
-<area shape="rect" id="Node000001" title="Affiche pause et met a jour les elements visuels associes." alt="" coords="5,284,111,311"/>
-<area shape="rect" id="Node000002" href="$option_8c.html#ac77b6b0f042469d82d75b270f5193806" title="Affiche option et met a jour les elements visuels associes." alt="" coords="187,309,292,336"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="110,302,174,312,169,315,112,307"/>
-<area shape="rect" id="Node000003" href="$bouton_8c.html#af33c1c08b52d3d015ff6f7039a9734ee" title="Affiche texte centre et met a jour les elements visuels associes." alt="" coords="383,107,525,133"/>
-<area shape="poly" id="edge11_Node000001_Node000003" title=" " alt="" coords="59,283,66,244,84,190,113,136,133,112,157,92,174,86,197,82,252,83,316,90,378,102,373,104,315,95,252,88,197,87,176,91,160,97,137,116,117,139,88,192,72,245,64,284"/>
-<area shape="rect" id="Node000004" href="$bouton_8c.html#a11f55905044ef2518b8c38311df3c48d" title="Dessine la texture du bouton dans son rectangle d&#39;affichage." alt="" coords="398,157,511,184"/>
-<area shape="poly" id="edge12_Node000001_Node000004" title=" " alt="" coords="75,282,112,255,158,231,215,211,274,195,384,177,380,180,275,200,217,216,160,236,114,260,79,285"/>
-<area shape="rect" id="Node000005" href="$bouton_8c.html#ab4862740c43f8a9abb996fff0aba5ca1" title="Met a jour l&#39;etat du bouton a partir d&#39;un evenement SDL." alt="" coords="370,208,538,235"/>
-<area shape="poly" id="edge13_Node000001_Node000005" title=" " alt="" coords="98,281,158,264,259,244,358,231,353,234,260,250,159,269,101,286"/>
-<area shape="rect" id="Node000007" href="$bouton_8c.html#a482b1feb9004901d0544e64b1c44051c" title="Initialise un bouton (zone, texture et etat d&#39;interaction)." alt="" coords="410,259,498,285"/>
-<area shape="poly" id="edge14_Node000001_Node000007" title=" " alt="" coords="111,291,396,273,394,278,112,297"/>
-<area shape="rect" id="Node000012" href="$son_8c.html#a034468875b501292a7c8520c6b6a02de" title="Met en pause une piste audio si elle est valide." alt="" coords="197,360,282,387"/>
-<area shape="poly" id="edge15_Node000001_Node000012" title=" " alt="" coords="84,309,160,346,185,356,180,358,158,350,84,314"/>
-<area shape="rect" id="Node000013" href="$son_8c.html#a70ea47d9c00bc921d67e4bea89f0ee4b" title="Reprend une piste si le son global et la categorie associee sont actifs." alt="" coords="188,411,291,437"/>
-<area shape="poly" id="edge16_Node000001_Node000013" title=" " alt="" coords="69,309,108,352,132,376,160,396,176,406,171,407,157,401,129,380,104,356,69,314"/>
-<area shape="rect" id="Node000014" href="$sauvegarde_8c.html#ae251037c85a5a7d8172c206539398f49" title="Affiche l&#39;interface de selection de slot (chargement ou sauvegarde)." alt="" coords="159,107,320,133"/>
-<area shape="poly" id="edge17_Node000001_Node000014" title=" " alt="" coords="63,283,97,220,124,183,157,150,179,138,175,142,160,154,128,186,101,223,68,285"/>
-<area shape="rect" id="Node000017" href="$sauvegarde_8c.html#af41024137aa5cec5baf4cef86ae63bd8" title="Serialize l&#39;etat de partie courant dans le slot cible." alt="" coords="160,461,319,488"/>
-<area shape="poly" id="edge24_Node000001_Node000017" title=" " alt="" coords="65,308,100,376,127,414,160,447,168,454,162,454,157,451,123,418,95,378,64,314"/>
-<area shape="rect" id="Node000018" href="$son_8c.html#a1a3616f7218893fdf54329eac9298f6b" title="Indique si l&#39;audio global du jeu est active." alt="" coords="190,512,289,539"/>
-<area shape="poly" id="edge25_Node000001_Node000018" title=" " alt="" coords="62,308,75,348,93,398,121,452,139,476,160,498,178,511,172,510,157,502,135,480,117,455,88,400,69,349,62,314"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="245,307,261,274,287,230,323,183,366,143,378,139,373,142,370,147,327,187,292,233,266,277,249,310"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="249,307,295,252,329,221,367,194,385,187,381,190,369,198,332,225,299,256,253,311"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="259,307,307,276,367,244,387,239,382,241,369,249,309,281,262,311"/>
-<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="292,308,398,284,393,287,294,313"/>
-<area shape="rect" id="Node000008" href="$son_8c.html#ac32eff9d3cca9f4d196044b77e8be773" title="Indique si la categorie ambiance/musique est active." alt="" coords="368,309,540,336"/>
-<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="292,320,355,322,350,324,293,325"/>
-<area shape="rect" id="Node000009" href="$son_8c.html#a8a52d99b75360359dcdc073a5617eadf" title="Active ou desactive uniquement les pistes d&#39;ambiance." alt="" coords="380,360,528,403"/>
-<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="291,334,368,356,363,358,291,339"/>
-<area shape="rect" id="Node000010" href="$son_8c.html#af5a69f840820938ab962a3371bd3f929" title="Active ou desactive uniquement les effets sonores (SFX)." alt="" coords="378,427,530,453"/>
-<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="292,331,322,346,338,363,346,380,354,397,370,413,378,420,373,419,366,417,350,400,342,383,334,366,318,350,292,337"/>
-<area shape="rect" id="Node000011" href="$son_8c.html#ae2e2d99b70e1f3a05cb7120d267202f4" title="Indique si la categorie SFX est active." alt="" coords="392,477,516,504"/>
-<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="293,329,322,346,334,361,342,376,346,406,351,436,358,450,370,463,381,473,375,472,366,467,353,452,346,437,341,407,337,378,330,364,318,350,292,335"/>
-<area shape="rect" id="Node000006" href="$bouton_8c.html#a273a0b22067678e17b3e6b4be36e3641" title=" " alt="" coords="588,208,697,235"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="537,219,575,221,570,222,539,224"/>
-<area shape="poly" id="edge18_Node000014_Node000003" title=" " alt="" coords="319,118,370,119,365,121,321,122"/>
-<area shape="poly" id="edge19_Node000014_Node000004" title=" " alt="" coords="299,131,385,153,380,155,300,137"/>
-<area shape="poly" id="edge20_Node000014_Node000005" title=" " alt="" coords="260,131,309,162,369,194,387,202,382,203,367,198,307,167,260,136"/>
-<area shape="poly" id="edge21_Node000014_Node000007" title=" " alt="" coords="251,131,299,186,332,218,369,244,398,259,393,260,367,249,329,222,295,190,250,136"/>
-<area shape="rect" id="Node000015" href="$sauvegarde_8c.html#a590205a1d58df634530e608349c8dc6f" title="Verifie si un fichier de sauvegarde existe pour un slot donne." alt="" coords="375,5,533,32"/>
-<area shape="poly" id="edge22_Node000014_Node000015" title=" " alt="" coords="258,104,307,73,367,42,387,36,382,39,369,46,309,78,262,108"/>
-<area shape="rect" id="Node000016" href="$main_8c.html#a82958224f33fa21d40f4f7965f8396bc" title="Met a jour screen metrics en fonction de l&#39;etat courant du jeu." alt="" coords="376,56,532,83"/>
-<area shape="poly" id="edge23_Node000014_Node000016" title=" " alt="" coords="298,104,382,85,378,88,301,108"/>
+<area shape="rect" id="Node000001" title="Affiche pause et met a jour les elements visuels associes." alt="" coords="5,280,123,305"/>
+<area shape="rect" id="Node000002" href="$option_8c.html#ac77b6b0f042469d82d75b270f5193806" title="Affiche option et met a jour les elements visuels associes." alt="" coords="201,305,319,331"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,298,187,306,186,311,122,303"/>
+<area shape="rect" id="Node000003" href="$bouton_8c.html#af33c1c08b52d3d015ff6f7039a9734ee" title="Affiche texte centre et met a jour les elements visuels associes." alt="" coords="413,55,573,80"/>
+<area shape="poly" id="edge11_Node000001_Node000003" title=" " alt="" coords="65,279,74,240,93,187,124,132,145,108,169,88,198,72,228,60,293,48,357,46,414,50,413,55,356,51,293,53,230,66,200,77,172,92,148,112,128,135,98,189,79,242,70,280"/>
+<area shape="rect" id="Node000004" href="$bouton_8c.html#a11f55905044ef2518b8c38311df3c48d" title="Dessine la texture du bouton dans son rectangle d&#39;affichage." alt="" coords="430,153,555,179"/>
+<area shape="poly" id="edge12_Node000001_Node000004" title=" " alt="" coords="80,278,119,250,170,224,233,203,298,187,416,169,416,175,299,192,234,208,172,228,122,255,83,282"/>
+<area shape="rect" id="Node000005" href="$bouton_8c.html#ab4862740c43f8a9abb996fff0aba5ca1" title="Met a jour l&#39;etat du bouton a partir d&#39;un evenement SDL." alt="" coords="400,203,585,228"/>
+<area shape="poly" id="edge13_Node000001_Node000005" title=" " alt="" coords="101,277,170,258,281,238,386,223,387,229,282,243,171,263,103,283"/>
+<area shape="rect" id="Node000007" href="$bouton_8c.html#a482b1feb9004901d0544e64b1c44051c" title="Initialise un bouton (zone, texture et etat d&#39;interaction)." alt="" coords="445,252,541,277"/>
+<area shape="poly" id="edge14_Node000001_Node000007" title=" " alt="" coords="123,286,431,266,431,271,123,292"/>
+<area shape="rect" id="Node000012" href="$son_8c.html#a034468875b501292a7c8520c6b6a02de" title="Met en pause une piste audio si elle est valide." alt="" coords="215,355,305,380"/>
+<area shape="poly" id="edge15_Node000001_Node000012" title=" " alt="" coords="90,303,172,341,202,351,201,356,170,346,88,308"/>
+<area shape="rect" id="Node000013" href="$son_8c.html#a70ea47d9c00bc921d67e4bea89f0ee4b" title="Reprend une piste si le son global et la categorie associee sont actifs." alt="" coords="203,404,317,429"/>
+<area shape="poly" id="edge16_Node000001_Node000013" title=" " alt="" coords="77,304,116,347,142,370,172,390,191,399,189,404,169,395,139,374,112,350,73,307"/>
+<area shape="rect" id="Node000014" href="$sauvegarde_8c.html#ae251037c85a5a7d8172c206539398f49" title="Affiche l&#39;interface de selection de slot (chargement ou sauvegarde)." alt="" coords="171,103,349,128"/>
+<area shape="poly" id="edge17_Node000001_Node000014" title=" " alt="" coords="69,278,105,216,134,178,169,145,194,131,196,136,172,149,138,182,110,219,74,281"/>
+<area shape="rect" id="Node000017" href="$sauvegarde_8c.html#af41024137aa5cec5baf4cef86ae63bd8" title="Serialize l&#39;etat de partie courant dans le slot cible." alt="" coords="171,453,349,479"/>
+<area shape="poly" id="edge24_Node000001_Node000017" title=" " alt="" coords="73,304,108,370,137,408,172,440,181,445,178,450,169,444,133,411,104,373,68,307"/>
+<area shape="rect" id="Node000019" href="$son_8c.html#a1a3616f7218893fdf54329eac9298f6b" title="Indique si l&#39;audio global du jeu est active." alt="" coords="206,503,314,528"/>
+<area shape="poly" id="edge26_Node000001_Node000019" title=" " alt="" coords="71,305,82,342,102,392,131,444,150,468,172,489,194,502,192,506,169,493,146,472,127,447,97,394,77,343,66,306"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="265,304,323,192,361,130,379,105,396,89,404,84,407,88,399,93,383,109,365,133,328,194,270,307"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="269,303,319,248,355,215,396,188,416,179,418,184,399,192,359,219,323,251,273,307"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="279,303,331,271,396,238,421,229,423,234,398,243,333,276,282,307"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="316,303,431,276,432,281,317,308"/>
+<area shape="rect" id="Node000008" href="$son_8c.html#ac32eff9d3cca9f4d196044b77e8be773" title="Indique si la categorie ambiance/musique est active." alt="" coords="397,351,588,376"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="320,327,414,345,413,351,319,332"/>
+<area shape="rect" id="Node000009" href="$son_8c.html#a8a52d99b75360359dcdc073a5617eadf" title="Active ou desactive uniquement les pistes d&#39;ambiance." alt="" coords="411,401,575,441"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="321,328,351,341,366,352,376,364,385,375,399,386,410,393,408,397,396,391,381,379,371,367,362,356,348,346,319,333"/>
+<area shape="rect" id="Node000010" href="$son_8c.html#af5a69f840820938ab962a3371bd3f929" title="Active ou desactive uniquement les effets sonores (SFX)." alt="" coords="409,465,576,491"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="321,325,351,341,363,355,371,369,376,398,381,425,388,438,399,451,407,457,404,461,396,455,383,441,376,427,371,399,365,371,359,358,348,345,318,329"/>
+<area shape="rect" id="Node000011" href="$son_8c.html#ae2e2d99b70e1f3a05cb7120d267202f4" title="Indique si la categorie SFX est active." alt="" coords="425,301,560,327"/>
+<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="319,314,411,313,412,318,319,320"/>
+<area shape="rect" id="Node000006" href="$bouton_8c.html#a273a0b22067678e17b3e6b4be36e3641" title=" " alt="" coords="636,203,753,228"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="585,213,622,213,622,218,585,218"/>
+<area shape="poly" id="edge18_Node000014_Node000003" title=" " alt="" coords="322,100,417,80,418,85,323,105"/>
+<area shape="poly" id="edge19_Node000014_Node000004" title=" " alt="" coords="320,126,421,148,420,153,319,131"/>
+<area shape="poly" id="edge20_Node000014_Node000005" title=" " alt="" coords="282,126,334,156,398,188,423,196,421,201,396,192,331,161,280,130"/>
+<area shape="poly" id="edge21_Node000014_Node000007" title=" " alt="" coords="273,126,323,181,359,212,399,238,432,252,430,257,396,243,356,216,320,185,269,130"/>
+<area shape="rect" id="Node000015" href="$sauvegarde_8c.html#a590205a1d58df634530e608349c8dc6f" title="Verifie si un fichier de sauvegarde existe pour un slot donne." alt="" coords="405,104,581,129"/>
+<area shape="poly" id="edge22_Node000014_Node000015" title=" " alt="" coords="350,113,391,113,391,119,350,119"/>
+<area shape="rect" id="Node000016" href="$main_8c.html#a82958224f33fa21d40f4f7965f8396bc" title="Met a jour screen metrics en fonction de l&#39;etat courant du jeu." alt="" coords="406,5,579,31"/>
+<area shape="poly" id="edge23_Node000014_Node000016" title=" " alt="" coords="280,100,332,70,396,40,418,32,420,37,398,44,334,75,283,105"/>
+<area shape="rect" id="Node000018" href="$jeux_8c.html#affe4ed140aa40ab1adbec1328824838e" title="Recupere l&#39;etat de progression global du gameplay." alt="" coords="416,515,569,540"/>
+<area shape="poly" id="edge25_Node000017_Node000018" title=" " alt="" coords="308,476,398,501,428,509,427,514,397,506,307,481"/>
 </map>

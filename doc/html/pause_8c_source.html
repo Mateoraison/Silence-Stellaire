@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Silence Stellaire:  Fichier source de src/pause.c</title>
 <link rel="icon" href="logo_win.png" type="image/x-icon" />
@@ -38,7 +38,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.16.1 -->
+<!-- Généré par Doxygen 1.14.0 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
@@ -133,7 +133,7 @@ $(function(){initNavTree('pause_8c_source.html','',''); });
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">float</span> cx  = screen_center_x() - btn_w * 0.5f;</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">float</span> y0  = 290.0f;</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <a class="code hl_struct" href="struct_bouton.html">Bouton</a> btn_reprendre, btn_sauvegarder, btn_options, btn_menu;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <a class="code hl_struct" href="structBouton.html">Bouton</a> btn_reprendre, btn_sauvegarder, btn_options, btn_menu;</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <a class="code hl_function" href="bouton_8c.html#a482b1feb9004901d0544e64b1c44051c">Bouton_Init</a>(&amp;btn_reprendre,   cx, y0,                       btn_w, btn_h, btn_tex);</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <a class="code hl_function" href="bouton_8c.html#a482b1feb9004901d0544e64b1c44051c">Bouton_Init</a>(&amp;btn_sauvegarder, cx, y0 + (btn_h + gap),       btn_w, btn_h, btn_tex);</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <a class="code hl_function" href="bouton_8c.html#a482b1feb9004901d0544e64b1c44051c">Bouton_Init</a>(&amp;btn_options,     cx, y0 + (btn_h + gap) * 2,   btn_w, btn_h, btn_tex);</div>
@@ -244,10 +244,10 @@ $(function(){initNavTree('pause_8c_source.html','',''); });
 <div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        <a class="code hl_function" href="bouton_8c.html#a11f55905044ef2518b8c38311df3c48d">Bouton_Afficher</a>(&amp;btn_options,     renderer);</div>
 <div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        <a class="code hl_function" href="bouton_8c.html#a11f55905044ef2518b8c38311df3c48d">Bouton_Afficher</a>(&amp;btn_menu,        renderer);</div>
 <div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        <span class="keywordflow">if</span> (t_rep) <a class="code hl_function" href="bouton_8c.html#af33c1c08b52d3d015ff6f7039a9734ee">afficher_texte_centre</a>(renderer, t_rep, &amp;btn_reprendre.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>);</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        <span class="keywordflow">if</span> (t_sav) <a class="code hl_function" href="bouton_8c.html#af33c1c08b52d3d015ff6f7039a9734ee">afficher_texte_centre</a>(renderer, t_sav, &amp;btn_sauvegarder.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>);</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        <span class="keywordflow">if</span> (t_opt) <a class="code hl_function" href="bouton_8c.html#af33c1c08b52d3d015ff6f7039a9734ee">afficher_texte_centre</a>(renderer, t_opt, &amp;btn_options.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>);</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        <span class="keywordflow">if</span> (t_men) <a class="code hl_function" href="bouton_8c.html#af33c1c08b52d3d015ff6f7039a9734ee">afficher_texte_centre</a>(renderer, t_men, &amp;btn_menu.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>);</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        <span class="keywordflow">if</span> (t_rep) <a class="code hl_function" href="bouton_8c.html#af33c1c08b52d3d015ff6f7039a9734ee">afficher_texte_centre</a>(renderer, t_rep, &amp;btn_reprendre.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>);</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        <span class="keywordflow">if</span> (t_sav) <a class="code hl_function" href="bouton_8c.html#af33c1c08b52d3d015ff6f7039a9734ee">afficher_texte_centre</a>(renderer, t_sav, &amp;btn_sauvegarder.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>);</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        <span class="keywordflow">if</span> (t_opt) <a class="code hl_function" href="bouton_8c.html#af33c1c08b52d3d015ff6f7039a9734ee">afficher_texte_centre</a>(renderer, t_opt, &amp;btn_options.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>);</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        <span class="keywordflow">if</span> (t_men) <a class="code hl_function" href="bouton_8c.html#af33c1c08b52d3d015ff6f7039a9734ee">afficher_texte_centre</a>(renderer, t_men, &amp;btn_menu.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>);</div>
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
 <div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        <span class="comment">// Message temporaire apres une sauvegarde.</span></div>
 <div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        <span class="keywordflow">if</span> (notif_sav &amp;&amp; SDL_GetTicks() - notif_time &lt; 2500) {</div>
@@ -258,7 +258,7 @@ $(function(){initNavTree('pause_8c_source.html','',''); });
 <div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>            <span class="keywordflow">if</span> (s) {</div>
 <div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>                SDL_Texture *t = SDL_CreateTextureFromSurface(renderer, s);</div>
 <div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>                SDL_FRect dst = {screen_center_x() - s-&gt;w * 0.5f,</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>                                 btn_sauvegarder.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.y + btn_h + 4.0f,</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>                                 btn_sauvegarder.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.y + btn_h + 4.0f,</div>
 <div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>                                 (float)s-&gt;w, (<span class="keywordtype">float</span>)s-&gt;h};</div>
 <div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>                SDL_RenderTexture(renderer, t, NULL, &amp;dst);</div>
 <div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>                SDL_DestroyTexture(t);</div>
@@ -315,13 +315,13 @@ $(function(){initNavTree('pause_8c_source.html','',''); });
 <div class="ttc" id="apause_8h_html"><div class="ttname"><a href="pause_8h.html">pause.h</a></div><div class="ttdoc">Fichier du menu pause et des actions de reprise/sauvegarde.</div></div>
 <div class="ttc" id="apause_8h_html_a8862185eb1cc0c8c9d78d0667bd20368"><div class="ttname"><a href="pause_8h.html#a8862185eb1cc0c8c9d78d0667bd20368">PAUSE_MENU</a></div><div class="ttdeci">#define PAUSE_MENU</div><div class="ttdef"><b>Definition</b> <a href="pause_8h_source.html#l00014">pause.h:14</a></div></div>
 <div class="ttc" id="apause_8h_html_ae5d4fe25ec049831647d9baf932994f4"><div class="ttname"><a href="pause_8h.html#ae5d4fe25ec049831647d9baf932994f4">PAUSE_REPRENDRE</a></div><div class="ttdeci">#define PAUSE_REPRENDRE</div><div class="ttdef"><b>Definition</b> <a href="pause_8h_source.html#l00013">pause.h:13</a></div></div>
-<div class="ttc" id="asauvegarde_8h_html_ae251037c85a5a7d8172c206539398f49"><div class="ttname"><a href="sauvegarde_8h.html#ae251037c85a5a7d8172c206539398f49">sauvegarde_choisir_slot</a></div><div class="ttdeci">int sauvegarde_choisir_slot(SDL_Renderer *renderer, const char *titre, bool mode_chargement)</div><div class="ttdoc">Affiche l&#39;interface de selection de slot (chargement ou sauvegarde).</div><div class="ttdef"><b>Definition</b> <a href="sauvegarde_8c_source.html#l00254">sauvegarde.c:254</a></div></div>
-<div class="ttc" id="asauvegarde_8h_html_af41024137aa5cec5baf4cef86ae63bd8"><div class="ttname"><a href="sauvegarde_8h.html#af41024137aa5cec5baf4cef86ae63bd8">sauvegarder_partie_slot</a></div><div class="ttdeci">int sauvegarder_partie_slot(int slot, int planete)</div><div class="ttdoc">Serialize l&#39;etat de partie courant dans le slot cible.</div><div class="ttdef"><b>Definition</b> <a href="sauvegarde_8c_source.html#l00147">sauvegarde.c:147</a></div></div>
-<div class="ttc" id="ason_8h_html_a034468875b501292a7c8520c6b6a02de"><div class="ttname"><a href="son_8h.html#a034468875b501292a7c8520c6b6a02de">pause_son</a></div><div class="ttdeci">void pause_son(MIX_Track *track)</div><div class="ttdoc">Met en pause une piste audio si elle est valide.</div><div class="ttdef"><b>Definition</b> <a href="son_8c_source.html#l00126">son.c:126</a></div></div>
-<div class="ttc" id="ason_8h_html_a1a3616f7218893fdf54329eac9298f6b"><div class="ttname"><a href="son_8h.html#a1a3616f7218893fdf54329eac9298f6b">son_est_actif</a></div><div class="ttdeci">int son_est_actif(void)</div><div class="ttdoc">Indique si l&#39;audio global du jeu est active.</div><div class="ttdef"><b>Definition</b> <a href="son_8c_source.html#l00142">son.c:142</a></div></div>
-<div class="ttc" id="ason_8h_html_a70ea47d9c00bc921d67e4bea89f0ee4b"><div class="ttname"><a href="son_8h.html#a70ea47d9c00bc921d67e4bea89f0ee4b">reprendre_son</a></div><div class="ttdeci">void reprendre_son(MIX_Track *track)</div><div class="ttdoc">Reprend une piste si le son global et la categorie associee sont actifs.</div><div class="ttdef"><b>Definition</b> <a href="son_8c_source.html#l00130">son.c:130</a></div></div>
-<div class="ttc" id="astruct_bouton_html"><div class="ttname"><a href="struct_bouton.html">Bouton</a></div><div class="ttdoc">Widget bouton basique: zone de clic, texture et etats survole/appuye.</div><div class="ttdef"><b>Definition</b> <a href="bouton_8h_source.html#l00017">bouton.h:17</a></div></div>
-<div class="ttc" id="astruct_bouton_html_aeefa9eef35116d91a027e1abae5e80a6"><div class="ttname"><a href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">Bouton::rect</a></div><div class="ttdeci">SDL_FRect rect</div><div class="ttdef"><b>Definition</b> <a href="bouton_8h_source.html#l00018">bouton.h:18</a></div></div>
+<div class="ttc" id="asauvegarde_8h_html_ae251037c85a5a7d8172c206539398f49"><div class="ttname"><a href="sauvegarde_8h.html#ae251037c85a5a7d8172c206539398f49">sauvegarde_choisir_slot</a></div><div class="ttdeci">int sauvegarde_choisir_slot(SDL_Renderer *renderer, const char *titre, bool mode_chargement)</div><div class="ttdoc">Affiche l&#39;interface de selection de slot (chargement ou sauvegarde).</div><div class="ttdef"><b>Definition</b> <a href="sauvegarde_8c_source.html#l00406">sauvegarde.c:406</a></div></div>
+<div class="ttc" id="asauvegarde_8h_html_af41024137aa5cec5baf4cef86ae63bd8"><div class="ttname"><a href="sauvegarde_8h.html#af41024137aa5cec5baf4cef86ae63bd8">sauvegarder_partie_slot</a></div><div class="ttdeci">int sauvegarder_partie_slot(int slot, int planete)</div><div class="ttdoc">Serialize l&#39;etat de partie courant dans le slot cible.</div><div class="ttdef"><b>Definition</b> <a href="sauvegarde_8c_source.html#l00217">sauvegarde.c:217</a></div></div>
+<div class="ttc" id="ason_8h_html_a034468875b501292a7c8520c6b6a02de"><div class="ttname"><a href="son_8h.html#a034468875b501292a7c8520c6b6a02de">pause_son</a></div><div class="ttdeci">void pause_son(MIX_Track *track)</div><div class="ttdoc">Met en pause une piste audio si elle est valide.</div><div class="ttdef"><b>Definition</b> <a href="son_8c_source.html#l00142">son.c:142</a></div></div>
+<div class="ttc" id="ason_8h_html_a1a3616f7218893fdf54329eac9298f6b"><div class="ttname"><a href="son_8h.html#a1a3616f7218893fdf54329eac9298f6b">son_est_actif</a></div><div class="ttdeci">int son_est_actif(void)</div><div class="ttdoc">Indique si l&#39;audio global du jeu est active.</div><div class="ttdef"><b>Definition</b> <a href="son_8c_source.html#l00158">son.c:158</a></div></div>
+<div class="ttc" id="ason_8h_html_a70ea47d9c00bc921d67e4bea89f0ee4b"><div class="ttname"><a href="son_8h.html#a70ea47d9c00bc921d67e4bea89f0ee4b">reprendre_son</a></div><div class="ttdeci">void reprendre_son(MIX_Track *track)</div><div class="ttdoc">Reprend une piste si le son global et la categorie associee sont actifs.</div><div class="ttdef"><b>Definition</b> <a href="son_8c_source.html#l00146">son.c:146</a></div></div>
+<div class="ttc" id="astructBouton_html"><div class="ttname"><a href="structBouton.html">Bouton</a></div><div class="ttdoc">Widget bouton basique: zone de clic, texture et etats survole/appuye.</div><div class="ttdef"><b>Definition</b> <a href="bouton_8h_source.html#l00017">bouton.h:17</a></div></div>
+<div class="ttc" id="astructBouton_html_aeefa9eef35116d91a027e1abae5e80a6"><div class="ttname"><a href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">Bouton::rect</a></div><div class="ttdeci">SDL_FRect rect</div><div class="ttdef"><b>Definition</b> <a href="bouton_8h_source.html#l00018">bouton.h:18</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
@@ -329,7 +329,7 @@ $(function(){initNavTree('pause_8c_source.html','',''); });
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="pause_8c.html">pause.c</a></li>
-    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>
 </body>

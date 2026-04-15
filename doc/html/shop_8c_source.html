@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Silence Stellaire:  Fichier source de src/shop.c</title>
 <link rel="icon" href="logo_win.png" type="image/x-icon" />
@@ -38,7 +38,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.16.1 -->
+<!-- Généré par Doxygen 1.14.0 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
@@ -122,7 +122,7 @@ $(function(){initNavTree('shop_8c_source.html','',''); });
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">static</span> <span class="keywordtype">void</span> achat_kit_soin(SDL_Renderer *renderer, <a class="code hl_struct" href="structt__case.html">t_case</a> *<a class="code hl_variable" href="main_8h.html#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a>[<a class="code hl_define" href="main_8h.html#a8503e5db31d779209111bf7ea2dba16e">HOTBAR_SIZE</a>], <span class="keywordtype">char</span> notif[96], Uint32 *notif_time) {</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordtype">int</span> prix = 3;</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="main_8h.html#aaf2331208dfb16a05b9f58f27bb24fa9">argent</a> &gt;= prix) {</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <a class="code hl_struct" href="structt___item.html">t_Item</a> *soin = <a class="code hl_function" href="item_8h.html#ac066d9bc77b421f23ca66756b7ff4a33">init_item</a>(<a class="code hl_enumvalue" href="main_8h.html#a513dbfc7f10c1a9ff1757ba53bf642e2a008eef4b38b1b1d09ad11572df7307dc">SOIN</a>, renderer, 0.0f, 0.0f);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <a class="code hl_struct" href="structt__Item.html">t_Item</a> *soin = <a class="code hl_function" href="item_8h.html#ac066d9bc77b421f23ca66756b7ff4a33">init_item</a>(<a class="code hl_enumvalue" href="main_8h.html#a513dbfc7f10c1a9ff1757ba53bf642e2a008eef4b38b1b1d09ad11572df7307dc">SOIN</a>, renderer, 0.0f, 0.0f);</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keywordflow">if</span> (soin) {</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            <a class="code hl_function" href="inventaire_8h.html#af0bb60f5edfe743f3132d027eaf1bcbb">ajouter_item_hotbar</a>(<a class="code hl_variable" href="main_8h.html#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a>, soin, renderer);</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            free(soin);</div>
@@ -137,17 +137,17 @@ $(function(){initNavTree('shop_8c_source.html','',''); });
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    *notif_time = SDL_GetTicks();</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>}</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keyword">static</span> <span class="keywordtype">void</span> achat_vie_max(<span class="keywordtype">char</span> notif[96], Uint32 *notif_time) {</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">int</span> prix = 5;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keyword">static</span> <span class="keywordtype">void</span> achat_viande(SDL_Renderer *renderer, <a class="code hl_struct" href="structt__case.html">t_case</a> *<a class="code hl_variable" href="main_8h.html#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a>[<a class="code hl_define" href="main_8h.html#a8503e5db31d779209111bf7ea2dba16e">HOTBAR_SIZE</a>], <span class="keywordtype">char</span> notif[96], Uint32 *notif_time) {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">int</span> prix = 4;</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="main_8h.html#aaf2331208dfb16a05b9f58f27bb24fa9">argent</a> &gt;= prix) {</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a>.vie_max &lt; 20) {</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            <a class="code hl_variable" href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a>.vie_max += 2;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            <a class="code hl_variable" href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a>.vie += 2;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a>.vie &gt; <a class="code hl_variable" href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a>.vie_max) <a class="code hl_variable" href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a>.vie = <a class="code hl_variable" href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a>.vie_max;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <a class="code hl_struct" href="structt__Item.html">t_Item</a> *viande = <a class="code hl_function" href="item_8h.html#ac066d9bc77b421f23ca66756b7ff4a33">init_item</a>(<a class="code hl_enumvalue" href="main_8h.html#a513dbfc7f10c1a9ff1757ba53bf642e2a56d8f9e7147cebb0c4e7a6cc72a35297">VIANDECUITE</a>, renderer, 0.0f, 0.0f);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keywordflow">if</span> (viande) {</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            <a class="code hl_function" href="inventaire_8h.html#af0bb60f5edfe743f3132d027eaf1bcbb">ajouter_item_hotbar</a>(<a class="code hl_variable" href="main_8h.html#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a>, viande, renderer);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            free(viande);</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            <a class="code hl_variable" href="main_8h.html#aaf2331208dfb16a05b9f58f27bb24fa9">argent</a> -= prix;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            SDL_snprintf(notif, 96, <span class="stringliteral">&quot;Achat: Vie max +2&quot;</span>);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            SDL_snprintf(notif, 96, <span class="stringliteral">&quot;Achat: Viande&quot;</span>);</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            SDL_snprintf(notif, 96, <span class="stringliteral">&quot;Vie max deja au maximum&quot;</span>);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            SDL_snprintf(notif, 96, <span class="stringliteral">&quot;Erreur creation viande&quot;</span>);</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        }</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        SDL_snprintf(notif, 96, <span class="stringliteral">&quot;Pas assez d&#39;argent&quot;</span>);</div>
@@ -155,17 +155,17 @@ $(function(){initNavTree('shop_8c_source.html','',''); });
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    *notif_time = SDL_GetTicks();</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>}</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keyword">static</span> <span class="keywordtype">void</span> achat_faim_max(<span class="keywordtype">char</span> notif[96], Uint32 *notif_time) {</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">int</span> prix = 4;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keyword">static</span> <span class="keywordtype">void</span> achat_vie_max(<span class="keywordtype">char</span> notif[96], Uint32 *notif_time) {</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">int</span> prix = 5;</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="main_8h.html#aaf2331208dfb16a05b9f58f27bb24fa9">argent</a> &gt;= prix) {</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a>.faim_max &lt; 20) {</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            <a class="code hl_variable" href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a>.faim_max += 2;</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            <a class="code hl_variable" href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a>.faim += 2;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a>.faim &gt; <a class="code hl_variable" href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a>.faim_max) <a class="code hl_variable" href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a>.faim = <a class="code hl_variable" href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a>.faim_max;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a>.vie_max &lt; 20) {</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            <a class="code hl_variable" href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a>.vie_max += 2;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            <a class="code hl_variable" href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a>.vie += 2;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a>.vie &gt; <a class="code hl_variable" href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a>.vie_max) <a class="code hl_variable" href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a>.vie = <a class="code hl_variable" href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a>.vie_max;</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            <a class="code hl_variable" href="main_8h.html#aaf2331208dfb16a05b9f58f27bb24fa9">argent</a> -= prix;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            SDL_snprintf(notif, 96, <span class="stringliteral">&quot;Achat: Faim max +2&quot;</span>);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            SDL_snprintf(notif, 96, <span class="stringliteral">&quot;Achat: Vie max +2&quot;</span>);</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            SDL_snprintf(notif, 96, <span class="stringliteral">&quot;Faim max deja au maximum&quot;</span>);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            SDL_snprintf(notif, 96, <span class="stringliteral">&quot;Vie max deja au maximum&quot;</span>);</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        }</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        SDL_snprintf(notif, 96, <span class="stringliteral">&quot;Pas assez d&#39;argent&quot;</span>);</div>
@@ -173,189 +173,218 @@ $(function(){initNavTree('shop_8c_source.html','',''); });
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    *notif_time = SDL_GetTicks();</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>}</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="keyword">static</span> <span class="keywordtype">void</span> achat_vitesse(<span class="keywordtype">char</span> notif[96], Uint32 *notif_time) {</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordtype">int</span> prix = 6;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="keyword">static</span> <span class="keywordtype">void</span> achat_faim_max(<span class="keywordtype">char</span> notif[96], Uint32 *notif_time) {</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keywordtype">int</span> prix = 4;</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="main_8h.html#aaf2331208dfb16a05b9f58f27bb24fa9">argent</a> &gt;= prix) {</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="main_8h.html#a99e90b23d7f8c25b0be06b706c01d7c0">vitesse_bonus</a> &lt; 160.0f) {</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            <a class="code hl_variable" href="main_8h.html#a99e90b23d7f8c25b0be06b706c01d7c0">vitesse_bonus</a> += 20.0f;</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>            <a class="code hl_variable" href="main_8h.html#aaf2331208dfb16a05b9f58f27bb24fa9">argent</a> -= prix;</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            SDL_snprintf(notif, 96, <span class="stringliteral">&quot;Achat: Vitesse +20&quot;</span>);</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            SDL_snprintf(notif, 96, <span class="stringliteral">&quot;Vitesse deja au maximum&quot;</span>);</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        }</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        SDL_snprintf(notif, 96, <span class="stringliteral">&quot;Pas assez d&#39;argent&quot;</span>);</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    }</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    *notif_time = SDL_GetTicks();</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>}</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="foldopen" id="foldopen00098" data-start="{" data-end="}">
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="shop_8h.html#ad1ea096e4fe280946f862273fc94eb30">   98</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="shop_8c.html#ad1ea096e4fe280946f862273fc94eb30">afficher_shop</a>(SDL_Renderer *renderer, <a class="code hl_struct" href="structt__case.html">t_case</a> *<a class="code hl_variable" href="main_8h.html#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a>[<a class="code hl_define" href="main_8h.html#a8503e5db31d779209111bf7ea2dba16e">HOTBAR_SIZE</a>]) {</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    TTF_Font *font_title = TTF_OpenFont(<span class="stringliteral">&quot;assets/police_titre.ttf&quot;</span>, 28);</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    TTF_Font *font = TTF_OpenFont(<span class="stringliteral">&quot;assets/police.ttf&quot;</span>, 20);</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordflow">if</span> (!font) {</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <span class="keywordflow">if</span> (font_title) TTF_CloseFont(font_title);</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    }</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordflow">if</span> (!font_title) font_title = font;</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    SDL_Color white = {255, 255, 255, 255};</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    SDL_Color soft = {190, 190, 210, 255};</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    SDL_Color ok = {110, 230, 120, 255};</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    SDL_Color ko = {255, 120, 120, 255};</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    SDL_Texture *btn_tex = IMG_LoadTexture(renderer, <span class="stringliteral">&quot;assets/menu/bouton.png&quot;</span>);</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keywordflow">if</span> (!btn_tex) {</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <span class="keywordflow">if</span> (font_title != font) TTF_CloseFont(font_title);</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        TTF_CloseFont(font);</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    }</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <a class="code hl_struct" href="struct_bouton.html">Bouton</a> btn_kit, btn_vie, btn_faim, btn_vit, btn_fermer;</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <a class="code hl_function" href="bouton_8c.html#a482b1feb9004901d0544e64b1c44051c">Bouton_Init</a>(&amp;btn_kit, 0.0f, 0.0f, 650.0f, 52.0f, btn_tex);</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <a class="code hl_function" href="bouton_8c.html#a482b1feb9004901d0544e64b1c44051c">Bouton_Init</a>(&amp;btn_vie, 0.0f, 0.0f, 650.0f, 52.0f, btn_tex);</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <a class="code hl_function" href="bouton_8c.html#a482b1feb9004901d0544e64b1c44051c">Bouton_Init</a>(&amp;btn_faim, 0.0f, 0.0f, 650.0f, 52.0f, btn_tex);</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <a class="code hl_function" href="bouton_8c.html#a482b1feb9004901d0544e64b1c44051c">Bouton_Init</a>(&amp;btn_vit, 0.0f, 0.0f, 650.0f, 52.0f, btn_tex);</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <a class="code hl_function" href="bouton_8c.html#a482b1feb9004901d0544e64b1c44051c">Bouton_Init</a>(&amp;btn_fermer, 0.0f, 0.0f, 310.0f, 52.0f, btn_tex);</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="keywordtype">char</span> notif[96] = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    Uint32 notif_time = 0;</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <span class="keywordtype">int</span> running = 1;</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="keywordflow">while</span> (running) {</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        <a class="code hl_function" href="main_8h.html#a82958224f33fa21d40f4f7965f8396bc">update_screen_metrics</a>(renderer);</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        <span class="keywordtype">float</span> panel_w = 780.0f;</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        <span class="keywordtype">float</span> panel_h = 560.0f;</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        <span class="keywordtype">float</span> panel_x = (screen_widthf() - panel_w) * 0.5f;</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        <span class="keywordtype">float</span> panel_y = (screen_heightf() - panel_h) * 0.5f;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a>.faim_max &lt; 20) {</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            <a class="code hl_variable" href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a>.faim_max += 2;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>            <a class="code hl_variable" href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a>.faim += 2;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a>.faim &gt; <a class="code hl_variable" href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a>.faim_max) <a class="code hl_variable" href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a>.faim = <a class="code hl_variable" href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a>.faim_max;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            <a class="code hl_variable" href="main_8h.html#aaf2331208dfb16a05b9f58f27bb24fa9">argent</a> -= prix;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            SDL_snprintf(notif, 96, <span class="stringliteral">&quot;Achat: Faim max +2&quot;</span>);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            SDL_snprintf(notif, 96, <span class="stringliteral">&quot;Faim max deja au maximum&quot;</span>);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        }</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        SDL_snprintf(notif, 96, <span class="stringliteral">&quot;Pas assez d&#39;argent&quot;</span>);</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    }</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    *notif_time = SDL_GetTicks();</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>}</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="keyword">static</span> <span class="keywordtype">void</span> achat_vitesse(<span class="keywordtype">char</span> notif[96], Uint32 *notif_time) {</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordtype">int</span> prix = 6;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="main_8h.html#aaf2331208dfb16a05b9f58f27bb24fa9">argent</a> &gt;= prix) {</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="main_8h.html#a99e90b23d7f8c25b0be06b706c01d7c0">vitesse_bonus</a> &lt; 160.0f) {</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>            <a class="code hl_variable" href="main_8h.html#a99e90b23d7f8c25b0be06b706c01d7c0">vitesse_bonus</a> += 20.0f;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>            <a class="code hl_variable" href="main_8h.html#aaf2331208dfb16a05b9f58f27bb24fa9">argent</a> -= prix;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            SDL_snprintf(notif, 96, <span class="stringliteral">&quot;Achat: Vitesse +20&quot;</span>);</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>            SDL_snprintf(notif, 96, <span class="stringliteral">&quot;Vitesse deja au maximum&quot;</span>);</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        }</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        SDL_snprintf(notif, 96, <span class="stringliteral">&quot;Pas assez d&#39;argent&quot;</span>);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    }</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    *notif_time = SDL_GetTicks();</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>}</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="foldopen" id="foldopen00116" data-start="{" data-end="}">
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="shop_8h.html#ad1ea096e4fe280946f862273fc94eb30">  116</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="shop_8c.html#ad1ea096e4fe280946f862273fc94eb30">afficher_shop</a>(SDL_Renderer *renderer, <a class="code hl_struct" href="structt__case.html">t_case</a> *<a class="code hl_variable" href="main_8h.html#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a>[<a class="code hl_define" href="main_8h.html#a8503e5db31d779209111bf7ea2dba16e">HOTBAR_SIZE</a>]) {</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    TTF_Font *font_title = TTF_OpenFont(<span class="stringliteral">&quot;assets/police_titre.ttf&quot;</span>, 28);</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    TTF_Font *font = TTF_OpenFont(<span class="stringliteral">&quot;assets/police.ttf&quot;</span>, 20);</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keywordflow">if</span> (!font) {</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        <span class="keywordflow">if</span> (font_title) TTF_CloseFont(font_title);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    }</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="keywordflow">if</span> (!font_title) font_title = font;</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    SDL_Color white = {255, 255, 255, 255};</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    SDL_Color soft = {190, 190, 210, 255};</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    SDL_Color ok = {110, 230, 120, 255};</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    SDL_Color ko = {255, 120, 120, 255};</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    SDL_Texture *btn_tex = IMG_LoadTexture(renderer, <span class="stringliteral">&quot;assets/menu/bouton.png&quot;</span>);</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="keywordflow">if</span> (!btn_tex) {</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        <span class="keywordflow">if</span> (font_title != font) TTF_CloseFont(font_title);</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        TTF_CloseFont(font);</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    }</div>
 <div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        <span class="keywordtype">float</span> row_x = panel_x + 65.0f;</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        <span class="keywordtype">float</span> row_w = panel_w - 130.0f;</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        <span class="keywordtype">float</span> first_row_y = panel_y + 150.0f;</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        <span class="keywordtype">float</span> row_gap = 60.0f;</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        btn_kit.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.x = row_x;</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        btn_kit.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.y = first_row_y;</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        btn_kit.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.w = row_w;</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>        btn_kit.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.h = 52.0f;</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        btn_vie.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.x = row_x;</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        btn_vie.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.y = first_row_y + row_gap;</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        btn_vie.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.w = row_w;</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        btn_vie.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.h = 52.0f;</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        btn_faim.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.x = row_x;</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        btn_faim.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.y = first_row_y + row_gap * 2.0f;</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        btn_faim.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.w = row_w;</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        btn_faim.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.h = 52.0f;</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        btn_vit.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.x = row_x;</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        btn_vit.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.y = first_row_y + row_gap * 3.0f;</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        btn_vit.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.w = row_w;</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        btn_vit.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.h = 52.0f;</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        btn_fermer.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.x = panel_x + (panel_w - 310.0f) * 0.5f;</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        btn_fermer.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.y = panel_y + 400.0f;</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        btn_fermer.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.w = 310.0f;</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        btn_fermer.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.h = 52.0f;</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span> </div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        SDL_Event ev;</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        <span class="keywordflow">while</span> (SDL_PollEvent(&amp;ev)) {</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>            <span class="keywordflow">if</span> (ev.type == SDL_EVENT_MOUSE_MOTION ||</div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>                ev.type == SDL_EVENT_MOUSE_BUTTON_DOWN ||</div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>                ev.type == SDL_EVENT_MOUSE_BUTTON_UP) {</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>                SDL_ConvertEventToRenderCoordinates(renderer, &amp;ev);</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>            }</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>            <span class="keywordflow">if</span> (ev.type == SDL_EVENT_QUIT) {</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>                <span class="keywordflow">if</span> (font_title != font) TTF_CloseFont(font_title);</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>                TTF_CloseFont(font);</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>                <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>            }</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>            <span class="keywordflow">if</span> (ev.type == SDL_EVENT_KEY_DOWN) {</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>                <span class="keywordflow">if</span> (ev.key.key == SDLK_ESCAPE) {</div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>                    running = 0;</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>                }</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    <a class="code hl_struct" href="structBouton.html">Bouton</a> btn_kit, btn_vie, btn_faim, btn_vit, btn_fermer, btn_viande;</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    <a class="code hl_function" href="bouton_8c.html#a482b1feb9004901d0544e64b1c44051c">Bouton_Init</a>(&amp;btn_kit, 0.0f, 0.0f, 650.0f, 52.0f, btn_tex);</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    <a class="code hl_function" href="bouton_8c.html#a482b1feb9004901d0544e64b1c44051c">Bouton_Init</a>(&amp;btn_vie, 0.0f, 0.0f, 650.0f, 52.0f, btn_tex);</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <a class="code hl_function" href="bouton_8c.html#a482b1feb9004901d0544e64b1c44051c">Bouton_Init</a>(&amp;btn_faim, 0.0f, 0.0f, 650.0f, 52.0f, btn_tex);</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <a class="code hl_function" href="bouton_8c.html#a482b1feb9004901d0544e64b1c44051c">Bouton_Init</a>(&amp;btn_viande, 0.0f, 0.0f, 650.0f, 52.0f, btn_tex);</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    <a class="code hl_function" href="bouton_8c.html#a482b1feb9004901d0544e64b1c44051c">Bouton_Init</a>(&amp;btn_vit, 0.0f, 0.0f, 650.0f, 52.0f, btn_tex);</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <a class="code hl_function" href="bouton_8c.html#a482b1feb9004901d0544e64b1c44051c">Bouton_Init</a>(&amp;btn_fermer, 0.0f, 0.0f, 310.0f, 52.0f, btn_tex);</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    <span class="keywordtype">char</span> notif[96] = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    Uint32 notif_time = 0;</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <span class="keywordtype">int</span> running = 1;</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="keywordflow">while</span> (running) {</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        <a class="code hl_function" href="main_8h.html#a82958224f33fa21d40f4f7965f8396bc">update_screen_metrics</a>(renderer);</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        <span class="keywordtype">float</span> panel_w = 780.0f;</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        <span class="keywordtype">float</span> panel_h = 610.0f;</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        <span class="keywordtype">float</span> panel_x = (screen_widthf() - panel_w) * 0.5f;</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        <span class="keywordtype">float</span> panel_y = (screen_heightf() - panel_h) * 0.5f;</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        <span class="keywordtype">float</span> row_x = panel_x + 65.0f;</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        <span class="keywordtype">float</span> row_w = panel_w - 130.0f;</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        <span class="keywordtype">float</span> first_row_y = panel_y + 150.0f;</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        <span class="keywordtype">float</span> row_gap = 60.0f;</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        btn_kit.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.x = row_x;</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        btn_kit.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.y = first_row_y;</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        btn_kit.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.w = row_w;</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        btn_kit.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.h = 52.0f;</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        btn_vie.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.x = row_x;</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        btn_vie.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.y = first_row_y + row_gap;</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        btn_vie.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.w = row_w;</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        btn_vie.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.h = 52.0f;</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        btn_faim.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.x = row_x;</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        btn_faim.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.y = first_row_y + row_gap * 2.0f;</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>        btn_faim.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.w = row_w;</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>        btn_faim.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.h = 52.0f;</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>        btn_vit.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.x = row_x;</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        btn_vit.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.y = first_row_y + row_gap * 3.0f;</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        btn_vit.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.w = row_w;</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        btn_vit.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.h = 52.0f;</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        btn_viande.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.x = row_x;</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        btn_viande.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.y = first_row_y + row_gap * 4.0f;</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        btn_viande.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.w = row_w;</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        btn_viande.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.h = 52.0f;</div>
 <div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>                <span class="keywordflow">if</span> (ev.key.key == SDLK_1) {</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>                    achat_kit_soin(renderer, <a class="code hl_variable" href="main_8h.html#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a>, notif, &amp;notif_time);</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>                }</div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span> </div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>                <span class="keywordflow">if</span> (ev.key.key == SDLK_2) {</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>                    achat_vie_max(notif, &amp;notif_time);</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>                }</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span> </div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>                <span class="keywordflow">if</span> (ev.key.key == SDLK_3) {</div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>                    achat_faim_max(notif, &amp;notif_time);</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>                }</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span> </div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>                <span class="keywordflow">if</span> (ev.key.key == SDLK_4) {</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>                    achat_vitesse(notif, &amp;notif_time);</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>                }</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>            }</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="bouton_8c.html#ab4862740c43f8a9abb996fff0aba5ca1">Bouton_GererEvenement</a>(&amp;btn_kit, &amp;ev)) {</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>                achat_kit_soin(renderer, <a class="code hl_variable" href="main_8h.html#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a>, notif, &amp;notif_time);</div>
-<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>            }</div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="bouton_8c.html#ab4862740c43f8a9abb996fff0aba5ca1">Bouton_GererEvenement</a>(&amp;btn_vie, &amp;ev)) {</div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>                achat_vie_max(notif, &amp;notif_time);</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>            }</div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="bouton_8c.html#ab4862740c43f8a9abb996fff0aba5ca1">Bouton_GererEvenement</a>(&amp;btn_faim, &amp;ev)) {</div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>                achat_faim_max(notif, &amp;notif_time);</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>            }</div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="bouton_8c.html#ab4862740c43f8a9abb996fff0aba5ca1">Bouton_GererEvenement</a>(&amp;btn_vit, &amp;ev)) {</div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>                achat_vitesse(notif, &amp;notif_time);</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>            }</div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="bouton_8c.html#ab4862740c43f8a9abb996fff0aba5ca1">Bouton_GererEvenement</a>(&amp;btn_fermer, &amp;ev)) {</div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>                running = 0;</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>            }</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        }</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span> </div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);</div>
-<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 190);</div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>        SDL_FRect full = {0.0f, 0.0f, screen_widthf(), screen_heightf()};</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        SDL_RenderFillRect(renderer, &amp;full);</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span> </div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        SDL_SetRenderDrawColor(renderer, 20, 24, 40, 240);</div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>        SDL_FRect panel = {panel_x, panel_y, panel_w, panel_h};</div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>        SDL_RenderFillRect(renderer, &amp;panel);</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>        SDL_SetRenderDrawColor(renderer, 100, 150, 220, 255);</div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>        SDL_RenderRect(renderer, &amp;panel);</div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span> </div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>        draw_line(renderer, font_title, <span class="stringliteral">&quot;Boutique du Vaisseau&quot;</span>, panel_x + 210.0f, panel_y + 35.0f, white);</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span> </div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>        <span class="keywordtype">char</span> stats[128];</div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>        SDL_snprintf(stats, <span class="keyword">sizeof</span>(stats), <span class="stringliteral">&quot;Argent: %d$ | Vie max: %d | Faim max: %d | Bonus vitesse: +%.0f&quot;</span>, <a class="code hl_variable" href="main_8h.html#aaf2331208dfb16a05b9f58f27bb24fa9">argent</a>, <a class="code hl_variable" href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a>.vie_max, <a class="code hl_variable" href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a>.faim_max, <a class="code hl_variable" href="main_8h.html#a99e90b23d7f8c25b0be06b706c01d7c0">vitesse_bonus</a>);</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>        draw_line(renderer, font, stats, panel_x + 35.0f, panel_y + 95.0f, soft);</div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span> </div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>        <a class="code hl_function" href="bouton_8c.html#a11f55905044ef2518b8c38311df3c48d">Bouton_Afficher</a>(&amp;btn_kit, renderer);</div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>        <a class="code hl_function" href="bouton_8c.html#a11f55905044ef2518b8c38311df3c48d">Bouton_Afficher</a>(&amp;btn_vie, renderer);</div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>        <a class="code hl_function" href="bouton_8c.html#a11f55905044ef2518b8c38311df3c48d">Bouton_Afficher</a>(&amp;btn_faim, renderer);</div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>        <a class="code hl_function" href="bouton_8c.html#a11f55905044ef2518b8c38311df3c48d">Bouton_Afficher</a>(&amp;btn_vit, renderer);</div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>        <a class="code hl_function" href="bouton_8c.html#a11f55905044ef2518b8c38311df3c48d">Bouton_Afficher</a>(&amp;btn_fermer, renderer);</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span> </div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        draw_line(renderer, font, <span class="stringliteral">&quot;[1] Kit de soin (+1 en hotbar) - 3$&quot;</span>, panel_x + 100.0f, first_row_y + 16.0f, white);</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>        draw_line(renderer, font, <span class="stringliteral">&quot;[2] Amelioration vie max (+2) - 5$&quot;</span>, panel_x + 100.0f, first_row_y + row_gap + 16.0f, white);</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        draw_line(renderer, font, <span class="stringliteral">&quot;[3] Amelioration faim max (+2) - 4$&quot;</span>, panel_x + 100.0f, first_row_y + row_gap * 2.0f + 16.0f, white);</div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        draw_line(renderer, font, <span class="stringliteral">&quot;[4] Amelioration vitesse (+20) - 6$&quot;</span>, panel_x + 100.0f, first_row_y + row_gap * 3.0f + 16.0f, white);</div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        draw_line(renderer, font, <span class="stringliteral">&quot;Fermer la boutique&quot;</span>, btn_fermer.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.x + 75.0f, btn_fermer.<a class="code hl_variable" href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.y + 16.0f, soft);</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>        draw_line(renderer, font, <span class="stringliteral">&quot;(Souris: cliquez sur un bouton)  |  (Clavier: 1,2,3,4)&quot;</span>, panel_x + 110.0f, panel_y + panel_h - 75.0f, soft);</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span> </div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        <span class="keywordflow">if</span> (notif[0] != <span class="charliteral">&#39;\0&#39;</span> &amp;&amp; SDL_GetTicks() - notif_time &lt; 1800) {</div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>            draw_line(renderer, font, notif, panel_x + 45.0f, panel_y + panel_h - 115.0f,</div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>                      (SDL_strstr(notif, <span class="stringliteral">&quot;Pas assez&quot;</span>) || SDL_strstr(notif, <span class="stringliteral">&quot;maximum&quot;</span>) || SDL_strstr(notif, <span class="stringliteral">&quot;Erreur&quot;</span>)) ? ko : ok);</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>        }</div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span> </div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>        SDL_RenderPresent(renderer);</div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>        SDL_Delay(16);</div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>    }</div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span> </div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>    SDL_DestroyTexture(btn_tex);</div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>    <span class="keywordflow">if</span> (font_title != font) TTF_CloseFont(font_title);</div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    TTF_CloseFont(font);</div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>}</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>        btn_fermer.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.x = panel_x + (panel_w - 310.0f) * 0.5f;</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        btn_fermer.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.y = panel_y + 460.0f;</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        btn_fermer.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.w = 310.0f;</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        btn_fermer.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.h = 52.0f;</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        SDL_Event ev;</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        <span class="keywordflow">while</span> (SDL_PollEvent(&amp;ev)) {</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>            <span class="keywordflow">if</span> (ev.type == SDL_EVENT_MOUSE_MOTION ||</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>                ev.type == SDL_EVENT_MOUSE_BUTTON_DOWN ||</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>                ev.type == SDL_EVENT_MOUSE_BUTTON_UP) {</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>                SDL_ConvertEventToRenderCoordinates(renderer, &amp;ev);</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>            }</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>            <span class="keywordflow">if</span> (ev.type == SDL_EVENT_QUIT) {</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>                <span class="keywordflow">if</span> (font_title != font) TTF_CloseFont(font_title);</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>                TTF_CloseFont(font);</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>                <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>            }</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>            <span class="keywordflow">if</span> (ev.type == SDL_EVENT_KEY_DOWN) {</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>                <span class="keywordflow">if</span> (ev.key.key == SDLK_ESCAPE) {</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>                    running = 0;</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>                }</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span> </div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>                <span class="keywordflow">if</span> (ev.key.key == SDLK_1) {</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>                    achat_kit_soin(renderer, <a class="code hl_variable" href="main_8h.html#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a>, notif, &amp;notif_time);</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>                }</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span> </div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>                <span class="keywordflow">if</span> (ev.key.key == SDLK_2) {</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>                    achat_vie_max(notif, &amp;notif_time);</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>                }</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span> </div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>                <span class="keywordflow">if</span> (ev.key.key == SDLK_3) {</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>                    achat_faim_max(notif, &amp;notif_time);</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>                }</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span> </div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>                <span class="keywordflow">if</span> (ev.key.key == SDLK_4) {</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>                    achat_vitesse(notif, &amp;notif_time);</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>                }</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>            }</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span> </div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="bouton_8c.html#ab4862740c43f8a9abb996fff0aba5ca1">Bouton_GererEvenement</a>(&amp;btn_kit, &amp;ev)) {</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>                achat_kit_soin(renderer, <a class="code hl_variable" href="main_8h.html#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a>, notif, &amp;notif_time);</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>            }</div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="bouton_8c.html#ab4862740c43f8a9abb996fff0aba5ca1">Bouton_GererEvenement</a>(&amp;btn_vie, &amp;ev)) {</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>                achat_vie_max(notif, &amp;notif_time);</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>            }</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="bouton_8c.html#ab4862740c43f8a9abb996fff0aba5ca1">Bouton_GererEvenement</a>(&amp;btn_faim, &amp;ev)) {</div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>                achat_faim_max(notif, &amp;notif_time);</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>            }</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="bouton_8c.html#ab4862740c43f8a9abb996fff0aba5ca1">Bouton_GererEvenement</a>(&amp;btn_vit, &amp;ev)) {</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>                achat_vitesse(notif, &amp;notif_time);</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>            }</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>            <span class="keywordflow">if</span>(<a class="code hl_function" href="bouton_8c.html#ab4862740c43f8a9abb996fff0aba5ca1">Bouton_GererEvenement</a>(&amp;btn_viande, &amp;ev)) {</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>                achat_viande(renderer, <a class="code hl_variable" href="main_8h.html#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a>, notif, &amp;notif_time);</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>            }</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="bouton_8c.html#ab4862740c43f8a9abb996fff0aba5ca1">Bouton_GererEvenement</a>(&amp;btn_fermer, &amp;ev)) {</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>                running = 0;</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>            }</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        }</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span> </div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 190);</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        SDL_FRect full = {0.0f, 0.0f, screen_widthf(), screen_heightf()};</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        SDL_RenderFillRect(renderer, &amp;full);</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span> </div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>        SDL_SetRenderDrawColor(renderer, 20, 24, 40, 240);</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>        SDL_FRect panel = {panel_x, panel_y, panel_w, panel_h};</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>        SDL_RenderFillRect(renderer, &amp;panel);</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>        SDL_SetRenderDrawColor(renderer, 100, 150, 220, 255);</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>        SDL_RenderRect(renderer, &amp;panel);</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span> </div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>        draw_line(renderer, font_title, <span class="stringliteral">&quot;Boutique du Vaisseau&quot;</span>, panel_x + 210.0f, panel_y + 35.0f, white);</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span> </div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>        <span class="keywordtype">char</span> stats[128];</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>        SDL_snprintf(stats, <span class="keyword">sizeof</span>(stats), <span class="stringliteral">&quot;Argent: %d$ | Vie max: %d | Faim max: %d | Bonus vitesse: +%.0f&quot;</span>, <a class="code hl_variable" href="main_8h.html#aaf2331208dfb16a05b9f58f27bb24fa9">argent</a>, <a class="code hl_variable" href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a>.vie_max, <a class="code hl_variable" href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a>.faim_max, <a class="code hl_variable" href="main_8h.html#a99e90b23d7f8c25b0be06b706c01d7c0">vitesse_bonus</a>);</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>        draw_line(renderer, font, stats, panel_x + 35.0f, panel_y + 95.0f, soft);</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span> </div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>        <a class="code hl_function" href="bouton_8c.html#a11f55905044ef2518b8c38311df3c48d">Bouton_Afficher</a>(&amp;btn_kit, renderer);</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>        <a class="code hl_function" href="bouton_8c.html#a11f55905044ef2518b8c38311df3c48d">Bouton_Afficher</a>(&amp;btn_vie, renderer);</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>        <a class="code hl_function" href="bouton_8c.html#a11f55905044ef2518b8c38311df3c48d">Bouton_Afficher</a>(&amp;btn_faim, renderer);</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>        <a class="code hl_function" href="bouton_8c.html#a11f55905044ef2518b8c38311df3c48d">Bouton_Afficher</a>(&amp;btn_vit, renderer);</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>        <a class="code hl_function" href="bouton_8c.html#a11f55905044ef2518b8c38311df3c48d">Bouton_Afficher</a>(&amp;btn_viande, renderer);</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>        <a class="code hl_function" href="bouton_8c.html#a11f55905044ef2518b8c38311df3c48d">Bouton_Afficher</a>(&amp;btn_fermer, renderer);</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span> </div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>        draw_line(renderer, font, <span class="stringliteral">&quot;[1] Kit de soin (+1 en hotbar) - 3$&quot;</span>, panel_x + 100.0f, first_row_y + 16.0f, white);</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>        draw_line(renderer, font, <span class="stringliteral">&quot;[2] Amelioration vie max (+2) - 5$&quot;</span>, panel_x + 100.0f, first_row_y + row_gap + 16.0f, white);</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>        draw_line(renderer, font, <span class="stringliteral">&quot;[3] Amelioration faim max (+2) - 4$&quot;</span>, panel_x + 100.0f, first_row_y + row_gap * 2.0f + 16.0f, white);</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>        draw_line(renderer, font, <span class="stringliteral">&quot;[4] Amelioration vitesse (+20) - 6$&quot;</span>, panel_x + 100.0f, first_row_y + row_gap * 3.0f + 16.0f, white);</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>        draw_line(renderer, font, <span class="stringliteral">&quot;[5] Achat de viande - 4$&quot;</span>, panel_x + 100.0f, first_row_y + row_gap * 4.0f + 16.0f, white);</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>        draw_line(renderer, font, <span class="stringliteral">&quot;Fermer la boutique&quot;</span>, btn_fermer.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.x + 75.0f, btn_fermer.<a class="code hl_variable" href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">rect</a>.y + 16.0f, soft);</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>        draw_line(renderer, font, <span class="stringliteral">&quot;(Souris: cliquez sur un bouton)  |  (Clavier: 1,2,3,4)&quot;</span>, panel_x + 110.0f, panel_y + panel_h - 75.0f, soft);</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span> </div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>        <span class="keywordflow">if</span> (notif[0] != <span class="charliteral">&#39;\0&#39;</span> &amp;&amp; SDL_GetTicks() - notif_time &lt; 1800) {</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>            draw_line(renderer, font, notif, panel_x + 45.0f, panel_y + panel_h - 115.0f,</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>                      (SDL_strstr(notif, <span class="stringliteral">&quot;Pas assez&quot;</span>) || SDL_strstr(notif, <span class="stringliteral">&quot;maximum&quot;</span>) || SDL_strstr(notif, <span class="stringliteral">&quot;Erreur&quot;</span>)) ? ko : ok);</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>        }</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span> </div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>        SDL_RenderPresent(renderer);</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>        SDL_Delay(16);</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>    }</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span> </div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>    SDL_DestroyTexture(btn_tex);</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>    <span class="keywordflow">if</span> (font_title != font) TTF_CloseFont(font_title);</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>    TTF_CloseFont(font);</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>}</div>
 </div>
 <div class="ttc" id="abouton_8c_html_a11f55905044ef2518b8c38311df3c48d"><div class="ttname"><a href="bouton_8c.html#a11f55905044ef2518b8c38311df3c48d">Bouton_Afficher</a></div><div class="ttdeci">void Bouton_Afficher(Bouton *b, SDL_Renderer *renderer)</div><div class="ttdoc">Dessine la texture du bouton dans son rectangle d&#39;affichage.</div><div class="ttdef"><b>Definition</b> <a href="bouton_8c_source.html#l00055">bouton.c:55</a></div></div>
 <div class="ttc" id="abouton_8c_html_a482b1feb9004901d0544e64b1c44051c"><div class="ttname"><a href="bouton_8c.html#a482b1feb9004901d0544e64b1c44051c">Bouton_Init</a></div><div class="ttdeci">void Bouton_Init(Bouton *b, float x, float y, float w, float h, SDL_Texture *texture)</div><div class="ttdoc">Initialise un bouton (zone, texture et etat d&#39;interaction).</div><div class="ttdef"><b>Definition</b> <a href="bouton_8c_source.html#l00018">bouton.c:18</a></div></div>
@@ -363,18 +392,19 @@ $(function(){initNavTree('shop_8c_source.html','',''); });
 <div class="ttc" id="ainventaire_8h_html_af0bb60f5edfe743f3132d027eaf1bcbb"><div class="ttname"><a href="inventaire_8h.html#af0bb60f5edfe743f3132d027eaf1bcbb">ajouter_item_hotbar</a></div><div class="ttdeci">void ajouter_item_hotbar(t_case *hotbar[HOTBAR_SIZE], t_Item *item, SDL_Renderer *renderer)</div><div class="ttdoc">Ajoute un item dans la hotbar (slot libre ou pile compatible).</div><div class="ttdef"><b>Definition</b> <a href="inventaire_8c_source.html#l00054">inventaire.c:54</a></div></div>
 <div class="ttc" id="aitem_8h_html_ac066d9bc77b421f23ca66756b7ff4a33"><div class="ttname"><a href="item_8h.html#ac066d9bc77b421f23ca66756b7ff4a33">init_item</a></div><div class="ttdeci">t_Item * init_item(typeItem type, SDL_Renderer *renderer, float x, float y)</div><div class="ttdoc">Initialise item et prepare les ressources necessaires.</div><div class="ttdef"><b>Definition</b> <a href="item_8c_source.html#l00012">item.c:12</a></div></div>
 <div class="ttc" id="amain_8h_html"><div class="ttname"><a href="main_8h.html">main.h</a></div><div class="ttdoc">Declarations globales et utilitaires partages entre les modules du jeu.</div></div>
-<div class="ttc" id="amain_8h_html_a513dbfc7f10c1a9ff1757ba53bf642e2a008eef4b38b1b1d09ad11572df7307dc"><div class="ttname"><a href="main_8h.html#a513dbfc7f10c1a9ff1757ba53bf642e2a008eef4b38b1b1d09ad11572df7307dc">SOIN</a></div><div class="ttdeci">@ SOIN</div><div class="ttdef"><b>Definition</b> <a href="main_8h_source.html#l00101">main.h:101</a></div></div>
+<div class="ttc" id="amain_8h_html_a513dbfc7f10c1a9ff1757ba53bf642e2a008eef4b38b1b1d09ad11572df7307dc"><div class="ttname"><a href="main_8h.html#a513dbfc7f10c1a9ff1757ba53bf642e2a008eef4b38b1b1d09ad11572df7307dc">SOIN</a></div><div class="ttdeci">@ SOIN</div><div class="ttdef"><b>Definition</b> <a href="main_8h_source.html#l00102">main.h:102</a></div></div>
+<div class="ttc" id="amain_8h_html_a513dbfc7f10c1a9ff1757ba53bf642e2a56d8f9e7147cebb0c4e7a6cc72a35297"><div class="ttname"><a href="main_8h.html#a513dbfc7f10c1a9ff1757ba53bf642e2a56d8f9e7147cebb0c4e7a6cc72a35297">VIANDECUITE</a></div><div class="ttdeci">@ VIANDECUITE</div><div class="ttdef"><b>Definition</b> <a href="main_8h_source.html#l00102">main.h:102</a></div></div>
 <div class="ttc" id="amain_8h_html_a82958224f33fa21d40f4f7965f8396bc"><div class="ttname"><a href="main_8h.html#a82958224f33fa21d40f4f7965f8396bc">update_screen_metrics</a></div><div class="ttdeci">void update_screen_metrics(SDL_Renderer *renderer)</div><div class="ttdoc">Met a jour screen metrics en fonction de l&#39;etat courant du jeu.</div><div class="ttdef"><b>Definition</b> <a href="main_8c_source.html#l00027">main.c:27</a></div></div>
 <div class="ttc" id="amain_8h_html_a8503e5db31d779209111bf7ea2dba16e"><div class="ttname"><a href="main_8h.html#a8503e5db31d779209111bf7ea2dba16e">HOTBAR_SIZE</a></div><div class="ttdeci">#define HOTBAR_SIZE</div><div class="ttdef"><b>Definition</b> <a href="main_8h_source.html#l00049">main.h:49</a></div></div>
-<div class="ttc" id="amain_8h_html_a99e90b23d7f8c25b0be06b706c01d7c0"><div class="ttname"><a href="main_8h.html#a99e90b23d7f8c25b0be06b706c01d7c0">vitesse_bonus</a></div><div class="ttdeci">float vitesse_bonus</div><div class="ttdef"><b>Definition</b> <a href="jeux_8c_source.html#l00073">jeux.c:73</a></div></div>
-<div class="ttc" id="amain_8h_html_a9f26241542eb25a396d652e9ec6e77e0"><div class="ttname"><a href="main_8h.html#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a></div><div class="ttdeci">t_case * hotbar[HOTBAR_SIZE]</div><div class="ttdef"><b>Definition</b> <a href="jeux_8c_source.html#l00066">jeux.c:66</a></div></div>
-<div class="ttc" id="amain_8h_html_aaf2331208dfb16a05b9f58f27bb24fa9"><div class="ttname"><a href="main_8h.html#aaf2331208dfb16a05b9f58f27bb24fa9">argent</a></div><div class="ttdeci">int argent</div><div class="ttdef"><b>Definition</b> <a href="jeux_8c_source.html#l00072">jeux.c:72</a></div></div>
-<div class="ttc" id="amain_8h_html_acb611635c7684b1955c46c635ea32215"><div class="ttname"><a href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a></div><div class="ttdeci">Perso perso</div><div class="ttdef"><b>Definition</b> <a href="jeux_8c_source.html#l00046">jeux.c:46</a></div></div>
-<div class="ttc" id="ashop_8c_html_ad1ea096e4fe280946f862273fc94eb30"><div class="ttname"><a href="shop_8c.html#ad1ea096e4fe280946f862273fc94eb30">afficher_shop</a></div><div class="ttdeci">int afficher_shop(SDL_Renderer *renderer, t_case *hotbar[HOTBAR_SIZE])</div><div class="ttdoc">Affiche shop et met a jour les elements visuels associes.</div><div class="ttdef"><b>Definition</b> <a href="#l00098">shop.c:98</a></div></div>
-<div class="ttc" id="astruct_bouton_html"><div class="ttname"><a href="struct_bouton.html">Bouton</a></div><div class="ttdoc">Widget bouton basique: zone de clic, texture et etats survole/appuye.</div><div class="ttdef"><b>Definition</b> <a href="bouton_8h_source.html#l00017">bouton.h:17</a></div></div>
-<div class="ttc" id="astruct_bouton_html_aeefa9eef35116d91a027e1abae5e80a6"><div class="ttname"><a href="struct_bouton.html#aeefa9eef35116d91a027e1abae5e80a6">Bouton::rect</a></div><div class="ttdeci">SDL_FRect rect</div><div class="ttdef"><b>Definition</b> <a href="bouton_8h_source.html#l00018">bouton.h:18</a></div></div>
-<div class="ttc" id="astructt___item_html"><div class="ttname"><a href="structt___item.html">t_Item</a></div><div class="ttdoc">Instance d&#39;objet present au sol ou dans un conteneur.</div></div>
-<div class="ttc" id="astructt__case_html"><div class="ttname"><a href="structt__case.html">t_case</a></div><div class="ttdoc">Slot de stockage UI (hotbar/inventaire/caisse) contenant un item et sa quantite.</div><div class="ttdef"><b>Definition</b> <a href="main_8h_source.html#l00208">main.h:208</a></div></div>
+<div class="ttc" id="amain_8h_html_a99e90b23d7f8c25b0be06b706c01d7c0"><div class="ttname"><a href="main_8h.html#a99e90b23d7f8c25b0be06b706c01d7c0">vitesse_bonus</a></div><div class="ttdeci">float vitesse_bonus</div><div class="ttdef"><b>Definition</b> <a href="jeux_8c_source.html#l00079">jeux.c:79</a></div></div>
+<div class="ttc" id="amain_8h_html_a9f26241542eb25a396d652e9ec6e77e0"><div class="ttname"><a href="main_8h.html#a9f26241542eb25a396d652e9ec6e77e0">hotbar</a></div><div class="ttdeci">t_case * hotbar[HOTBAR_SIZE]</div><div class="ttdef"><b>Definition</b> <a href="jeux_8c_source.html#l00071">jeux.c:71</a></div></div>
+<div class="ttc" id="amain_8h_html_aaf2331208dfb16a05b9f58f27bb24fa9"><div class="ttname"><a href="main_8h.html#aaf2331208dfb16a05b9f58f27bb24fa9">argent</a></div><div class="ttdeci">int argent</div><div class="ttdef"><b>Definition</b> <a href="jeux_8c_source.html#l00078">jeux.c:78</a></div></div>
+<div class="ttc" id="amain_8h_html_acb611635c7684b1955c46c635ea32215"><div class="ttname"><a href="main_8h.html#acb611635c7684b1955c46c635ea32215">perso</a></div><div class="ttdeci">Perso perso</div><div class="ttdef"><b>Definition</b> <a href="jeux_8c_source.html#l00051">jeux.c:51</a></div></div>
+<div class="ttc" id="ashop_8c_html_ad1ea096e4fe280946f862273fc94eb30"><div class="ttname"><a href="shop_8c.html#ad1ea096e4fe280946f862273fc94eb30">afficher_shop</a></div><div class="ttdeci">int afficher_shop(SDL_Renderer *renderer, t_case *hotbar[HOTBAR_SIZE])</div><div class="ttdoc">Affiche shop et met a jour les elements visuels associes.</div><div class="ttdef"><b>Definition</b> <a href="#l00116">shop.c:116</a></div></div>
+<div class="ttc" id="astructBouton_html"><div class="ttname"><a href="structBouton.html">Bouton</a></div><div class="ttdoc">Widget bouton basique: zone de clic, texture et etats survole/appuye.</div><div class="ttdef"><b>Definition</b> <a href="bouton_8h_source.html#l00017">bouton.h:17</a></div></div>
+<div class="ttc" id="astructBouton_html_aeefa9eef35116d91a027e1abae5e80a6"><div class="ttname"><a href="structBouton.html#aeefa9eef35116d91a027e1abae5e80a6">Bouton::rect</a></div><div class="ttdeci">SDL_FRect rect</div><div class="ttdef"><b>Definition</b> <a href="bouton_8h_source.html#l00018">bouton.h:18</a></div></div>
+<div class="ttc" id="astructt__Item_html"><div class="ttname"><a href="structt__Item.html">t_Item</a></div><div class="ttdoc">Instance d&#39;objet present au sol ou dans un conteneur.</div></div>
+<div class="ttc" id="astructt__case_html"><div class="ttname"><a href="structt__case.html">t_case</a></div><div class="ttdoc">Slot de stockage UI (hotbar/inventaire/caisse) contenant un item et sa quantite.</div><div class="ttdef"><b>Definition</b> <a href="main_8h_source.html#l00209">main.h:209</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
@@ -382,7 +412,7 @@ $(function(){initNavTree('shop_8c_source.html','',''); });
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="shop_8c.html">shop.c</a></li>
-    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>
 </body>

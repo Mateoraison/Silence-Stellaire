@@ -2,19 +2,19 @@ var searchData=
 [
   ['a_5fcible_5fpatrouille_0',['a_cible_patrouille',['../structboss__t.html#a3120a30c3dc853248328ad066d58b1c5',1,'boss_t']]],
   ['accessoire_5fmap_1',['accessoire_map',['../vaisseau_8c.html#ae1f0bce479239b61ea5bf876d6d228c8',1,'vaisseau.c']]],
-  ['actif_2',['actif',['../struct_entite.html#add54f45f7e6d085744b4e00edac3142f',1,'Entite::actif'],['../structboss__projectile__t.html#a493063fdeab69c1d135917fcd5f4fa8a',1,'boss_projectile_t::actif'],['../structt___cuisson.html#a38e50c6c7fc80878dd7095e15a653d09',1,'t_Cuisson::actif']]],
+  ['actif_2',['actif',['../structEntite.html#add54f45f7e6d085744b4e00edac3142f',1,'Entite::actif'],['../structboss__projectile__t.html#a493063fdeab69c1d135917fcd5f4fa8a',1,'boss_projectile_t::actif'],['../structt__Cuisson.html#a38e50c6c7fc80878dd7095e15a653d09',1,'t_Cuisson::actif']]],
   ['active_5finvocation_3',['active_invocation',['../structboss__config__t.html#a1fc1a1695b6e00b123ad7ee238ac89f0',1,'boss_config_t']]],
   ['active_5fprojectile_4',['active_projectile',['../structboss__config__t.html#a396c3d6a100c83e73fc6915ab987ece2',1,'boss_config_t']]],
   ['active_5fzone_5',['active_zone',['../structboss__config__t.html#a73a437f27ccc1ad5ba2bf32f9514ad2d',1,'boss_config_t']]],
-  ['anim_6',['anim',['../structt___animation.html#a137ab538db7856df66297b573b6cd0af',1,'t_Animation']]],
+  ['anim_6',['anim',['../structt__Animation.html#a137ab538db7856df66297b573b6cd0af',1,'t_Animation']]],
   ['anim_5fdebut_7',['anim_debut',['../structt__objectifs.html#ae9e8c71c34ff097f8ab547a4d1da3670',1,'t_objectifs']]],
   ['anim_5fslot_8',['anim_slot',['../structt__objectifs.html#a27c6c581e37e7338d5038414e9de11f1',1,'t_objectifs']]],
   ['animation_5fdegat_5ftimer_9',['animation_degat_timer',['../jeux_8c.html#a16224a40282ed2ed51e962d74198e6d3',1,'jeux.c']]],
   ['animation_5fframe_10',['animation_frame',['../main_8h.html#acdf31070b4fb73e81447bbd286d25f4e',1,'animation_frame:&#160;jeux.c'],['../jeux_8c.html#acdf31070b4fb73e81447bbd286d25f4e',1,'animation_frame:&#160;jeux.c']]],
   ['animation_5ftimer_11',['animation_timer',['../structboss__t.html#ac2f2c5c4679fad2aba694b135634fc17',1,'boss_t::animation_timer'],['../main_8h.html#adfe93ca7aba69abc894e5ed9ed18a10a',1,'animation_timer:&#160;jeux.c'],['../jeux_8c.html#adfe93ca7aba69abc894e5ed9ed18a10a',1,'animation_timer:&#160;jeux.c']]],
-  ['appuye_12',['appuye',['../struct_bouton.html#a098c1c03720bbfab7babc8a2cc804944',1,'Bouton']]],
-  ['argent_13',['argent',['../struct_save_data.html#aaa6f341597864722fa04f61fe34a450d',1,'SaveData::argent'],['../main_8h.html#aaf2331208dfb16a05b9f58f27bb24fa9',1,'argent:&#160;jeux.c'],['../jeux_8c.html#aaf2331208dfb16a05b9f58f27bb24fa9',1,'argent:&#160;jeux.c'],['../objectifs_8c.html#aaf2331208dfb16a05b9f58f27bb24fa9',1,'argent:&#160;jeux.c']]],
+  ['appuye_12',['appuye',['../structBouton.html#a098c1c03720bbfab7babc8a2cc804944',1,'Bouton']]],
+  ['argent_13',['argent',['../structSaveData.html#aaa6f341597864722fa04f61fe34a450d',1,'SaveData::argent'],['../main_8h.html#aaf2331208dfb16a05b9f58f27bb24fa9',1,'argent:&#160;jeux.c'],['../jeux_8c.html#aaf2331208dfb16a05b9f58f27bb24fa9',1,'argent:&#160;jeux.c'],['../objectifs_8c.html#aaf2331208dfb16a05b9f58f27bb24fa9',1,'argent:&#160;jeux.c']]],
   ['attaque_14',['attaque',['../structboss__t.html#acbf008bfb082570e2e2e1ca4a884f415',1,'boss_t']]],
   ['attaque_5fcontact_15',['attaque_contact',['../structboss__config__t.html#a3fa1af198bb02b9834175d7b88fcb9cc',1,'boss_config_t']]],
-  ['audio_16',['audio',['../struct_son_cache.html#a296311745fcd86998170c1cb8bb4bb6e',1,'SonCache']]]
+  ['audio_16',['audio',['../structSonCache.html#a296311745fcd86998170c1cb8bb4bb6e',1,'SonCache']]]
 ];

@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
-<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Silence Stellaire:  Fichier source de src/arcade.c</title>
 <link rel="icon" href="logo_win.png" type="image/x-icon" />
@@ -38,7 +38,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.16.1 -->
+<!-- Généré par Doxygen 1.14.0 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 </script>
@@ -110,7 +110,7 @@ $(function(){initNavTree('arcade_8c_source.html','',''); });
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="arcade_8c.html#adbc131e9b147b67d84003e054b355365">   16</a></span><span class="preprocessor">#define MAX_PROJECTILES 5</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="arcade_8c.html#a8726c213b97fd1dc39477c4d6e605d71">   17</a></span><span class="preprocessor">#define MAX_ENNEMIS 8</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="struct_entite.html#add54f45f7e6d085744b4e00edac3142f">   20</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{ <span class="keywordtype">float</span> <a class="code hl_variable" href="struct_entite.html#ae3fbc7c23402de25037d7b80dbf864a7">x</a>, <a class="code hl_variable" href="struct_entite.html#a7e02e8840854e4c179233d881a7ee1ab">y</a>; <span class="keywordtype">bool</span> <a class="code hl_variable" href="struct_entite.html#add54f45f7e6d085744b4e00edac3142f">actif</a>; } <a class="code hl_struct" href="struct_entite.html">Entite</a>;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="structEntite.html#add54f45f7e6d085744b4e00edac3142f">   20</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{ <span class="keywordtype">float</span> <a class="code hl_variable" href="structEntite.html#ae3fbc7c23402de25037d7b80dbf864a7">x</a>, <a class="code hl_variable" href="structEntite.html#a7e02e8840854e4c179233d881a7ee1ab">y</a>; <span class="keywordtype">bool</span> <a class="code hl_variable" href="structEntite.html#add54f45f7e6d085744b4e00edac3142f">actif</a>; } <a class="code hl_struct" href="structEntite.html">Entite</a>;</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="arcade_8c.html#a3e0da9d1035d39f54890d8931d29e3c0">   22</a></span><span class="preprocessor">#define ARCADE_SCREEN_X 300.0f</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="arcade_8c.html#a52ecb5646bfdfd98d17e7b3a72ba470d">   23</a></span><span class="preprocessor">#define ARCADE_SCREEN_Y 200.0f</span></div>
@@ -177,11 +177,11 @@ $(function(){initNavTree('arcade_8c_source.html','',''); });
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <a class="code hl_function" href="arcade_8c.html#adcd100b7250411e655a98a61dace3f5a">arcade_draw_text</a>(renderer, line2, 400, <a class="code hl_define" href="arcade_8c.html#abac43b396b5970b7712cb5b16f4709b8">ARCADE_INFO_Y</a> + 28.0f, <span class="keyword">true</span>);</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>}</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="keyword">static</span> <span class="keywordtype">void</span> reset_projectiles(<a class="code hl_struct" href="struct_entite.html">Entite</a> *tirs) {</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="keyword">static</span> <span class="keywordtype">void</span> reset_projectiles(<a class="code hl_struct" href="structEntite.html">Entite</a> *tirs) {</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_define" href="arcade_8c.html#adbc131e9b147b67d84003e054b355365">MAX_PROJECTILES</a>; i++) tirs[i].actif = <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>}</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="keyword">static</span> <span class="keywordtype">void</span> reset_ennemis(<a class="code hl_struct" href="struct_entite.html">Entite</a> *ennemis) {</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="keyword">static</span> <span class="keywordtype">void</span> reset_ennemis(<a class="code hl_struct" href="structEntite.html">Entite</a> *ennemis) {</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_define" href="arcade_8c.html#a8726c213b97fd1dc39477c4d6e605d71">MAX_ENNEMIS</a>; i++) ennemis[i].actif = <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>}</div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
@@ -248,8 +248,8 @@ $(function(){initNavTree('arcade_8c_source.html','',''); });
 <div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <span class="keywordtype">bool</span> running = <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    <span class="keywordtype">int</span> etat = 0; <span class="comment">// 0: Menu, 1: Jeu, 2: Perdu</span></div>
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <span class="keywordtype">float</span> j_x = 400.0f;</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    <a class="code hl_struct" href="struct_entite.html">Entite</a> tirs[<a class="code hl_define" href="arcade_8c.html#adbc131e9b147b67d84003e054b355365">MAX_PROJECTILES</a>] = {0};</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <a class="code hl_struct" href="struct_entite.html">Entite</a> ennemis[<a class="code hl_define" href="arcade_8c.html#a8726c213b97fd1dc39477c4d6e605d71">MAX_ENNEMIS</a>] = {0};</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    <a class="code hl_struct" href="structEntite.html">Entite</a> tirs[<a class="code hl_define" href="arcade_8c.html#adbc131e9b147b67d84003e054b355365">MAX_PROJECTILES</a>] = {0};</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <a class="code hl_struct" href="structEntite.html">Entite</a> ennemis[<a class="code hl_define" href="arcade_8c.html#a8726c213b97fd1dc39477c4d6e605d71">MAX_ENNEMIS</a>] = {0};</div>
 <div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <span class="keywordtype">int</span> score = 0;</div>
 <div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    Uint32 last_e = 0;</div>
 <div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
@@ -267,7 +267,7 @@ $(function(){initNavTree('arcade_8c_source.html','',''); });
 <div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>                }</div>
 <div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>                <span class="keywordflow">if</span> (etat == 1 &amp;&amp; ev.key.key == SDLK_SPACE) {</div>
 <div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>                    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;<a class="code hl_define" href="arcade_8c.html#adbc131e9b147b67d84003e054b355365">MAX_PROJECTILES</a>; i++) <span class="keywordflow">if</span>(!tirs[i].actif) {</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>                        tirs[i].<a class="code hl_variable" href="struct_entite.html#ae3fbc7c23402de25037d7b80dbf864a7">x</a> = j_x + 12; tirs[i].<a class="code hl_variable" href="struct_entite.html#a7e02e8840854e4c179233d881a7ee1ab">y</a> = 530; tirs[i].<a class="code hl_variable" href="struct_entite.html#add54f45f7e6d085744b4e00edac3142f">actif</a> = <span class="keyword">true</span>; <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>                        tirs[i].<a class="code hl_variable" href="structEntite.html#ae3fbc7c23402de25037d7b80dbf864a7">x</a> = j_x + 12; tirs[i].<a class="code hl_variable" href="structEntite.html#a7e02e8840854e4c179233d881a7ee1ab">y</a> = 530; tirs[i].<a class="code hl_variable" href="structEntite.html#add54f45f7e6d085744b4e00edac3142f">actif</a> = <span class="keyword">true</span>; <span class="keywordflow">break</span>;</div>
 <div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>                    }</div>
 <div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>                }</div>
 <div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>            }</div>
@@ -281,20 +281,20 @@ $(function(){initNavTree('arcade_8c_source.html','',''); });
 <div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>            Uint32 now = SDL_GetTicks();</div>
 <div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>            <span class="keywordflow">if</span> (now - last_e &gt; 1000) {</div>
 <div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>                <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;<a class="code hl_define" href="arcade_8c.html#a8726c213b97fd1dc39477c4d6e605d71">MAX_ENNEMIS</a>; i++) <span class="keywordflow">if</span>(!ennemis[i].actif) {</div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>                    ennemis[i].<a class="code hl_variable" href="struct_entite.html#ae3fbc7c23402de25037d7b80dbf864a7">x</a> = 310 + (rand() % 160); ennemis[i].<a class="code hl_variable" href="struct_entite.html#a7e02e8840854e4c179233d881a7ee1ab">y</a> = 200;</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>                    ennemis[i].<a class="code hl_variable" href="struct_entite.html#add54f45f7e6d085744b4e00edac3142f">actif</a> = <span class="keyword">true</span>; last_e = now; <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>                    ennemis[i].<a class="code hl_variable" href="structEntite.html#ae3fbc7c23402de25037d7b80dbf864a7">x</a> = 310 + (rand() % 160); ennemis[i].<a class="code hl_variable" href="structEntite.html#a7e02e8840854e4c179233d881a7ee1ab">y</a> = 200;</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>                    ennemis[i].<a class="code hl_variable" href="structEntite.html#add54f45f7e6d085744b4e00edac3142f">actif</a> = <span class="keyword">true</span>; last_e = now; <span class="keywordflow">break</span>;</div>
 <div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>                }</div>
 <div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>            }</div>
 <div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;<a class="code hl_define" href="arcade_8c.html#adbc131e9b147b67d84003e054b355365">MAX_PROJECTILES</a>; i++) <span class="keywordflow">if</span>(tirs[i].actif) {</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>                tirs[i].<a class="code hl_variable" href="struct_entite.html#a7e02e8840854e4c179233d881a7ee1ab">y</a> -= 7; <span class="keywordflow">if</span>(tirs[i].y &lt; 200) tirs[i].<a class="code hl_variable" href="struct_entite.html#add54f45f7e6d085744b4e00edac3142f">actif</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>                tirs[i].<a class="code hl_variable" href="structEntite.html#a7e02e8840854e4c179233d881a7ee1ab">y</a> -= 7; <span class="keywordflow">if</span>(tirs[i].y &lt; 200) tirs[i].<a class="code hl_variable" href="structEntite.html#add54f45f7e6d085744b4e00edac3142f">actif</a> = <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>            }</div>
 <div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;<a class="code hl_define" href="arcade_8c.html#a8726c213b97fd1dc39477c4d6e605d71">MAX_ENNEMIS</a>; i++) <span class="keywordflow">if</span>(ennemis[i].actif) {</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>                ennemis[i].<a class="code hl_variable" href="struct_entite.html#a7e02e8840854e4c179233d881a7ee1ab">y</a> += 3;</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>                ennemis[i].<a class="code hl_variable" href="structEntite.html#a7e02e8840854e4c179233d881a7ee1ab">y</a> += 3;</div>
 <div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>                <span class="keywordflow">if</span>(ennemis[i].y &gt; 550) etat = 2; <span class="comment">// Perdu si un ennemi passe</span></div>
 <div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>                <span class="keywordflow">for</span>(<span class="keywordtype">int</span> j=0; j&lt;<a class="code hl_define" href="arcade_8c.html#adbc131e9b147b67d84003e054b355365">MAX_PROJECTILES</a>; j++) <span class="keywordflow">if</span>(tirs[j].actif &amp;&amp; ennemis[i].actif) {</div>
 <div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>                    <span class="keywordflow">if</span>(tirs[j].x &lt; ennemis[i].x + 20 &amp;&amp; tirs[j].x + 5 &gt; ennemis[i].x &amp;&amp;</div>
 <div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>                       tirs[j].y &lt; ennemis[i].y + 20 &amp;&amp; tirs[j].y + 10 &gt; ennemis[i].y) {</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>                        tirs[j].<a class="code hl_variable" href="struct_entite.html#add54f45f7e6d085744b4e00edac3142f">actif</a> = <span class="keyword">false</span>; ennemis[i].<a class="code hl_variable" href="struct_entite.html#add54f45f7e6d085744b4e00edac3142f">actif</a> = <span class="keyword">false</span>; score++;</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>                        tirs[j].<a class="code hl_variable" href="structEntite.html#add54f45f7e6d085744b4e00edac3142f">actif</a> = <span class="keyword">false</span>; ennemis[i].<a class="code hl_variable" href="structEntite.html#add54f45f7e6d085744b4e00edac3142f">actif</a> = <span class="keyword">false</span>; score++;</div>
 <div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>                    }</div>
 <div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>                }</div>
 <div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>            }</div>
@@ -320,11 +320,11 @@ $(function(){initNavTree('arcade_8c_source.html','',''); });
 <div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>            SDL_FRect rj = { j_x, 540, 30, 10 }; SDL_RenderFillRect(renderer, &amp;rj);</div>
 <div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>            SDL_SetRenderDrawColor(renderer, 255, 50, 50, 255);</div>
 <div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;<a class="code hl_define" href="arcade_8c.html#a8726c213b97fd1dc39477c4d6e605d71">MAX_ENNEMIS</a>; i++) <span class="keywordflow">if</span>(ennemis[i].actif) {</div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>                SDL_FRect r = { ennemis[i].<a class="code hl_variable" href="struct_entite.html#ae3fbc7c23402de25037d7b80dbf864a7">x</a>, ennemis[i].<a class="code hl_variable" href="struct_entite.html#a7e02e8840854e4c179233d881a7ee1ab">y</a>, 20, 20 }; SDL_RenderFillRect(renderer, &amp;r);</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>                SDL_FRect r = { ennemis[i].<a class="code hl_variable" href="structEntite.html#ae3fbc7c23402de25037d7b80dbf864a7">x</a>, ennemis[i].<a class="code hl_variable" href="structEntite.html#a7e02e8840854e4c179233d881a7ee1ab">y</a>, 20, 20 }; SDL_RenderFillRect(renderer, &amp;r);</div>
 <div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>            }</div>
 <div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>            SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);</div>
 <div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;<a class="code hl_define" href="arcade_8c.html#adbc131e9b147b67d84003e054b355365">MAX_PROJECTILES</a>; i++) <span class="keywordflow">if</span>(tirs[i].actif) {</div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>                SDL_FRect r = { tirs[i].<a class="code hl_variable" href="struct_entite.html#ae3fbc7c23402de25037d7b80dbf864a7">x</a>, tirs[i].<a class="code hl_variable" href="struct_entite.html#a7e02e8840854e4c179233d881a7ee1ab">y</a>, 4, 10 }; SDL_RenderFillRect(renderer, &amp;r);</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>                SDL_FRect r = { tirs[i].<a class="code hl_variable" href="structEntite.html#ae3fbc7c23402de25037d7b80dbf864a7">x</a>, tirs[i].<a class="code hl_variable" href="structEntite.html#a7e02e8840854e4c179233d881a7ee1ab">y</a>, 4, 10 }; SDL_RenderFillRect(renderer, &amp;r);</div>
 <div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>            }</div>
 <div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>        }</div>
 <div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>        SDL_RenderPresent(renderer);</div>
@@ -896,10 +896,10 @@ $(function(){initNavTree('arcade_8c_source.html','',''); });
 <div class="ttc" id="aarcade_8c_html_aed5fe61d117abb58e8891df2786ce583"><div class="ttname"><a href="arcade_8c.html#aed5fe61d117abb58e8891df2786ce583">ARCADE_INFO_X</a></div><div class="ttdeci">#define ARCADE_INFO_X</div><div class="ttdef"><b>Definition</b> <a href="#l00027">arcade.c:27</a></div></div>
 <div class="ttc" id="aarcade_8c_html_aff32984ff98ed60847d1e0a4de2c882c"><div class="ttname"><a href="arcade_8c.html#aff32984ff98ed60847d1e0a4de2c882c">ARCADE_SCREEN_W</a></div><div class="ttdeci">#define ARCADE_SCREEN_W</div><div class="ttdef"><b>Definition</b> <a href="#l00024">arcade.c:24</a></div></div>
 <div class="ttc" id="amain_8h_html"><div class="ttname"><a href="main_8h.html">main.h</a></div><div class="ttdoc">Declarations globales et utilitaires partages entre les modules du jeu.</div></div>
-<div class="ttc" id="astruct_entite_html"><div class="ttname"><a href="struct_entite.html">Entite</a></div><div class="ttdoc">Entite simple utilisee pour les mini-jeux d&#39;arcade.</div><div class="ttdef"><b>Definition</b> <a href="#l00020">arcade.c:20</a></div></div>
-<div class="ttc" id="astruct_entite_html_a7e02e8840854e4c179233d881a7ee1ab"><div class="ttname"><a href="struct_entite.html#a7e02e8840854e4c179233d881a7ee1ab">Entite::y</a></div><div class="ttdeci">float y</div><div class="ttdef"><b>Definition</b> <a href="#l00020">arcade.c:20</a></div></div>
-<div class="ttc" id="astruct_entite_html_add54f45f7e6d085744b4e00edac3142f"><div class="ttname"><a href="struct_entite.html#add54f45f7e6d085744b4e00edac3142f">Entite::actif</a></div><div class="ttdeci">bool actif</div><div class="ttdef"><b>Definition</b> <a href="#l00020">arcade.c:20</a></div></div>
-<div class="ttc" id="astruct_entite_html_ae3fbc7c23402de25037d7b80dbf864a7"><div class="ttname"><a href="struct_entite.html#ae3fbc7c23402de25037d7b80dbf864a7">Entite::x</a></div><div class="ttdeci">float x</div><div class="ttdef"><b>Definition</b> <a href="#l00020">arcade.c:20</a></div></div>
+<div class="ttc" id="astructEntite_html"><div class="ttname"><a href="structEntite.html">Entite</a></div><div class="ttdoc">Entite simple utilisee pour les mini-jeux d&#39;arcade.</div><div class="ttdef"><b>Definition</b> <a href="#l00020">arcade.c:20</a></div></div>
+<div class="ttc" id="astructEntite_html_a7e02e8840854e4c179233d881a7ee1ab"><div class="ttname"><a href="structEntite.html#a7e02e8840854e4c179233d881a7ee1ab">Entite::y</a></div><div class="ttdeci">float y</div><div class="ttdef"><b>Definition</b> <a href="#l00020">arcade.c:20</a></div></div>
+<div class="ttc" id="astructEntite_html_add54f45f7e6d085744b4e00edac3142f"><div class="ttname"><a href="structEntite.html#add54f45f7e6d085744b4e00edac3142f">Entite::actif</a></div><div class="ttdeci">bool actif</div><div class="ttdef"><b>Definition</b> <a href="#l00020">arcade.c:20</a></div></div>
+<div class="ttc" id="astructEntite_html_ae3fbc7c23402de25037d7b80dbf864a7"><div class="ttname"><a href="structEntite.html#ae3fbc7c23402de25037d7b80dbf864a7">Entite::x</a></div><div class="ttdeci">float x</div><div class="ttdef"><b>Definition</b> <a href="#l00020">arcade.c:20</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
@@ -907,7 +907,7 @@ $(function(){initNavTree('arcade_8c_source.html','',''); });
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="arcade_8c.html">arcade.c</a></li>
-    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>
 </body>
