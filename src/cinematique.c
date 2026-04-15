@@ -647,11 +647,6 @@ int jouer_cinematique_fin(SDL_Renderer *renderer) {
             rendre_texture_centre_natif(renderer, txt_sub, screen_center_x(), screen_center_y() + 48.0f);
         }
 
-        if (tf >= 1.0f) {
-            // jouer son de victoire une fois
-            static int win_played = 0;
-            if (!win_played) { jouer_son("assets/audio/win.mp3", 0.5f); win_played = 1; }
-        }
 
         SDL_RenderPresent(renderer);
         if (after >= duree_fade + 2200) break; // laisser le message quelques instants

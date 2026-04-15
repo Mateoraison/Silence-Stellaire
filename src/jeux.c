@@ -19,6 +19,7 @@
 
 #define ENGRENAGES_MAX 3
 
+
 int engrenages_poses = 0;
 bool vaisseau_repare = false;
 bool g_planete3_engrenage_recupere = false;
@@ -34,6 +35,8 @@ static bool planete3_engrenage_objectifs_donne = false;
 static bool planete2_barriere_4_ouverte = false;
 static bool g_objectifs_valides_par_planete[4][MAX_OBJECTIFS] = {{false}};
 int nb_engrenages_requis = ENGRENAGES_MAX;
+/* tracke si une planète a déjà été débloquée (index 1..4) */
+static bool planete_debloquee[5] = { false, true, false, false, false };
 
 /* Petit systeme de message global a l'ecran (HUD) */
 static char g_message_hud[128] = "";
@@ -212,6 +215,57 @@ void retirer_engrenages_joueur(void) {
             caisse_outils[i] = NULL;
         }
     }
+}
+
+/* Retire jusqu'a n engrenages du joueur en priorisant hotbar, inventaire, puis caisse.
+   Retourne le nombre effectivement retire. */
+int retirer_n_engrenages_joueur(int n) {
+    if (n <= 0) return 0;
+    int rest = n;
+
+    for (int i = 0; i < HOTBAR_SIZE && rest > 0; ++i) {
+        if (hotbar[i] && hotbar[i]->item && hotbar[i]->item->type == ENGRENAGE) {
+            if (hotbar[i]->quantiter > rest) {
+                hotbar[i]->quantiter -= rest;
+                rest = 0;
+            } else {
+                rest -= hotbar[i]->quantiter;
+                free(hotbar[i]->item);
+                free(hotbar[i]);
+                hotbar[i] = NULL;
+            }
+        }
+    }
+
+    for (int i = 0; i < INVENTAIRE_SIZE && rest > 0; ++i) {
+        if (inventaire[i] && inventaire[i]->item && inventaire[i]->item->type == ENGRENAGE) {
+            if (inventaire[i]->quantiter > rest) {
+                inventaire[i]->quantiter -= rest;
+                rest = 0;
+            } else {
+                rest -= inventaire[i]->quantiter;
+                free(inventaire[i]->item);
+                free(inventaire[i]);
+                inventaire[i] = NULL;
+            }
+        }
+    }
+
+    for (int i = 0; i < CAISSE_OUTILS_SIZE && rest > 0; ++i) {
+        if (caisse_outils[i] && caisse_outils[i]->item && caisse_outils[i]->item->type == ENGRENAGE) {
+            if (caisse_outils[i]->quantiter > rest) {
+                caisse_outils[i]->quantiter -= rest;
+                rest = 0;
+            } else {
+                rest -= caisse_outils[i]->quantiter;
+                free(caisse_outils[i]->item);
+                free(caisse_outils[i]);
+                caisse_outils[i] = NULL;
+            }
+        }
+    }
+
+    return n - rest;
 }
 
 static void retirer_item_type_depuis_caisse(t_case *inv[], int size, typeItem type) {
@@ -776,8 +830,19 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
     if (planete == 1) nb_engrenages_requis = 3;
     else nb_engrenages_requis = 1;
 
-    /* Consommer les engrenages du joueur lors de l'arrivee sur cette planete */
-    retirer_engrenages_joueur();
+    /* Consommer 3 engrenages uniquement si on découvre la planète pour la
+       première fois (et si on ne reprend pas une partie). */
+    if (planete >= 3 && planete <= 4) {
+        if (!planete_debloquee[planete]) {
+            /* retirer exactement 3 engrenages (priorité hotbar->inventaire->caisse) */
+            extern int retirer_n_engrenages_joueur(int n);
+            (void)retirer_n_engrenages_joueur(3);
+            planete_debloquee[planete] = true;
+        } else {
+            /* reprise : marquer comme débloquée */
+            planete_debloquee[planete] = true;
+        }
+    }
 
     init_boss(renderer, &boss1, TYPE_BOSS_DEMON_DE_FEU, 2550.0f, -100.0f);
     /*
@@ -1207,14 +1272,6 @@ int jeu_principal(SDL_Renderer *renderer, int planete, MIX_Track *track_global, 
                 }
                 if(event.key.key == SDLK_I){
                     inventaire_ouvert = !inventaire_ouvert;
-                }
-                if(event.key.key == SDLK_P){
-                    // Test Mastermind
-                    mastermind(renderer);
-                }
-                if(event.key.key == SDLK_O){
-                    // Test Simon
-                    simon(renderer);
                 }
                 if(event.key.key == SDLK_E) {
                     if (planete == 2 && texture_alien_planete2 && !planete2_simon_termine) {
