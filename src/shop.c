@@ -43,6 +43,24 @@ static void achat_kit_soin(SDL_Renderer *renderer, t_case *hotbar[HOTBAR_SIZE], 
     *notif_time = SDL_GetTicks();
 }
 
+static void achat_viande(SDL_Renderer *renderer, t_case *hotbar[HOTBAR_SIZE], char notif[96], Uint32 *notif_time) {
+    int prix = 4;
+    if (argent >= prix) {
+        t_Item *viande = init_item(VIANDECUITE, renderer, 0.0f, 0.0f);
+        if (viande) {
+            ajouter_item_hotbar(hotbar, viande, renderer);
+            free(viande);
+            argent -= prix;
+            SDL_snprintf(notif, 96, "Achat: Viande");
+        } else {
+            SDL_snprintf(notif, 96, "Erreur creation viande");
+        }
+    } else {
+        SDL_snprintf(notif, 96, "Pas assez d'argent");
+    }
+    *notif_time = SDL_GetTicks();
+}
+
 static void achat_vie_max(char notif[96], Uint32 *notif_time) {
     int prix = 5;
     if (argent >= prix) {
@@ -116,10 +134,11 @@ int afficher_shop(SDL_Renderer *renderer, t_case *hotbar[HOTBAR_SIZE]) {
         return 0;
     }
 
-    Bouton btn_kit, btn_vie, btn_faim, btn_vit, btn_fermer;
+    Bouton btn_kit, btn_vie, btn_faim, btn_vit, btn_fermer, btn_viande;
     Bouton_Init(&btn_kit, 0.0f, 0.0f, 650.0f, 52.0f, btn_tex);
     Bouton_Init(&btn_vie, 0.0f, 0.0f, 650.0f, 52.0f, btn_tex);
     Bouton_Init(&btn_faim, 0.0f, 0.0f, 650.0f, 52.0f, btn_tex);
+    Bouton_Init(&btn_viande, 0.0f, 0.0f, 650.0f, 52.0f, btn_tex);
     Bouton_Init(&btn_vit, 0.0f, 0.0f, 650.0f, 52.0f, btn_tex);
     Bouton_Init(&btn_fermer, 0.0f, 0.0f, 310.0f, 52.0f, btn_tex);
 
@@ -130,7 +149,7 @@ int afficher_shop(SDL_Renderer *renderer, t_case *hotbar[HOTBAR_SIZE]) {
     while (running) {
         update_screen_metrics(renderer);
         float panel_w = 780.0f;
-        float panel_h = 560.0f;
+        float panel_h = 610.0f;
         float panel_x = (screen_widthf() - panel_w) * 0.5f;
         float panel_y = (screen_heightf() - panel_h) * 0.5f;
 
@@ -159,8 +178,13 @@ int afficher_shop(SDL_Renderer *renderer, t_case *hotbar[HOTBAR_SIZE]) {
         btn_vit.rect.w = row_w;
         btn_vit.rect.h = 52.0f;
 
+        btn_viande.rect.x = row_x;
+        btn_viande.rect.y = first_row_y + row_gap * 4.0f;
+        btn_viande.rect.w = row_w;
+        btn_viande.rect.h = 52.0f;
+
         btn_fermer.rect.x = panel_x + (panel_w - 310.0f) * 0.5f;
-        btn_fermer.rect.y = panel_y + 400.0f;
+        btn_fermer.rect.y = panel_y + 460.0f;
         btn_fermer.rect.w = 310.0f;
         btn_fermer.rect.h = 52.0f;
 
@@ -212,6 +236,9 @@ int afficher_shop(SDL_Renderer *renderer, t_case *hotbar[HOTBAR_SIZE]) {
             if (Bouton_GererEvenement(&btn_vit, &ev)) {
                 achat_vitesse(notif, &notif_time);
             }
+            if(Bouton_GererEvenement(&btn_viande, &ev)) {
+                achat_viande(renderer, hotbar, notif, &notif_time);
+            }
             if (Bouton_GererEvenement(&btn_fermer, &ev)) {
                 running = 0;
             }
@@ -238,12 +265,14 @@ int afficher_shop(SDL_Renderer *renderer, t_case *hotbar[HOTBAR_SIZE]) {
         Bouton_Afficher(&btn_vie, renderer);
         Bouton_Afficher(&btn_faim, renderer);
         Bouton_Afficher(&btn_vit, renderer);
+        Bouton_Afficher(&btn_viande, renderer);
         Bouton_Afficher(&btn_fermer, renderer);
 
         draw_line(renderer, font, "[1] Kit de soin (+1 en hotbar) - 3$", panel_x + 100.0f, first_row_y + 16.0f, white);
         draw_line(renderer, font, "[2] Amelioration vie max (+2) - 5$", panel_x + 100.0f, first_row_y + row_gap + 16.0f, white);
         draw_line(renderer, font, "[3] Amelioration faim max (+2) - 4$", panel_x + 100.0f, first_row_y + row_gap * 2.0f + 16.0f, white);
         draw_line(renderer, font, "[4] Amelioration vitesse (+20) - 6$", panel_x + 100.0f, first_row_y + row_gap * 3.0f + 16.0f, white);
+        draw_line(renderer, font, "[5] Achat de viande - 4$", panel_x + 100.0f, first_row_y + row_gap * 4.0f + 16.0f, white);
         draw_line(renderer, font, "Fermer la boutique", btn_fermer.rect.x + 75.0f, btn_fermer.rect.y + 16.0f, soft);
         draw_line(renderer, font, "(Souris: cliquez sur un bouton)  |  (Clavier: 1,2,3,4)", panel_x + 110.0f, panel_y + panel_h - 75.0f, soft);
 
